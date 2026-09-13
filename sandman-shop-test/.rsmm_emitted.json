@@ -1,5 +1,9 @@
 [
   "EntitySettings/Allies/NPC_Sandman/NPC_Sandman.entity.ot.EntitySettingsResource.gen",
+  "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Armor.entity.ot.EntitySettingsResource.gen",
+  "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Critical_Chance.entity.ot.EntitySettingsResource.gen",
+  "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Grimoire_Armor_High.entity.ot.EntitySettingsResource.gen",
+  "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Grimoire_Damage_Medium.entity.ot.EntitySettingsResource.gen",
   "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Sandman_Major_Duplicate_Epic_Object.entity.ot.EntitySettingsResource.gen",
   "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Sandman_Major_Upgrade_Talent_To_Legendary.entity.ot.EntitySettingsResource.gen",
   "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Sandman_Medium_Duplicate_Common_Object.entity.ot.EntitySettingsResource.gen",
@@ -9,5 +13,6 @@
   "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Sandman_Minor_Heal.entity.ot.EntitySettingsResource.gen",
   "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Sandman_Minor_Reroll.entity.ot.EntitySettingsResource.gen",
   "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Sandman_Minor_Shield.entity.ot.EntitySettingsResource.gen",
-  "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Sandman_Minor_Strength.entity.ot.EntitySettingsResource.gen"
+  "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Sandman_Minor_Strength.entity.ot.EntitySettingsResource.gen",
+  "EntitySettings/Objects/Magical_Objects/Powerups/Power_Up_Vitality.entity.ot.EntitySettingsResource.gen"
 ]
