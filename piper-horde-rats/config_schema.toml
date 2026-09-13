@@ -1,0 +1,5 @@
+[fields.rarity]
+label   = "Rarity of the granted Horde talent"
+type    = "enum"
+values  = ["common", "rare", "epic", "legendary"]
+default = "common"

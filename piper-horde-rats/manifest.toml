@@ -1,0 +1,99 @@
+# Piper — Horde: rats every X notes
+#
+# HOW THE PIECES ARE WIRED (read off Hero_Piper.entity, 2026-09-13)
+# ------------------------------------------------------------------
+# Horde (`Skill Controller Trait More Controllable Pets`) switches on the state
+# `Skill Trait More Controllable Pets`. Nothing listens to that state except two
+# selectors — rats spawn in groups of 3, and the max controllable count goes up
+# (6 -> 8 / 10 / 12 by rarity) — plus its one child, the Legendary tester.
+#
+# Ghost Notes already has an "every N notes" machine:
+#   Event Attack Shoot Active (every ATTACK / POWER / ULTIMATE note)
+#     -> Skill Attack Ghost Notes Notify Tester   [sub-test: Ghost Notes state active]
+#     -> ... -> SKILL_ATTACK_GHOST_NOTES_COUNTER_INC Event Sender
+#   Skill Attack Ghost Notes Counter  (child of the Ghost Notes state, so it only
+#     runs while Ghost Notes is owned) counts that event up to
+#     `Skill Attack Ghost Notes Requirement Selector` (10 / 8 / 7 / 6 by rarity)
+#     and fires `Event Skill Attack Ghost Notes Proc`.
+# PiperGhostHorde (in-game proven 2026-06-04) showed that repointing that proc at
+# `Event Trait Ability Spawn Pets` makes the counter spawn rats.
+#
+# WHAT THIS MOD BUILDS
+# --------------------
+# A second copy of that machine, owned by Horde, leaving Ghost Notes' own intact:
+#   1. `Horde Attacks Required Selector`  = Ghost Notes' threshold selector,
+#      rarity conditions keyed to the Horde controller.
+#   2. `Horde Attacks Counter`            = Ghost Notes' counter, threshold from
+#      (1), completion fires `Event Trait Ability Spawn Pets`. It listens to the
+#      same INC event.
+#   3. `Horde Attacks State`              = Ghost Notes' state, holding (2) and
+#      Horde's Legendary tester.
+#   4. Every reference to Horde's old state (controller + both selectors) moves
+#      to (3), so owning Horde runs the counter AND keeps groups of 3 / more rats.
+#   5. The INC event is only sent while Ghost Notes is owned. Its gate's one
+#      sub-test is repointed from the Ghost Notes state to
+#      `Character_Common\Base\Child State Can Fight`, so every note sends it.
+#      Ghost Notes itself is unchanged in play: its counter is a child of its own
+#      state and is not running unless that talent is owned.
+#
+# UNPROVEN — watch for these in the playtest
+#   * rats every 10 notes with Horde (fewer at higher rarity);
+#   * Ghost Notes NOT firing when you do not own it (if ghost notes appear
+#     without the talent, counters count while their state is inactive, and
+#     step 5 must be undone);
+#   * Ghost Notes still working normally when you do own it.
+
+[mod]
+id          = "piper-horde-rats"
+name        = "Piper: Horde of Rats"
+version     = "0.1.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Horde now also spawns a group of rats every 10 notes Piper plays (8 / 7 / 6 at higher rarity), on top of bigger groups and a higher rat cap."
+sdk_version = "3"
+enabled     = true
+tags        = ["talents", "piper", "rats"]
+
+# `skill` (relabel) is rated below confirmed as a kind.
+experimental = true
+
+# Three cloned nodes + two rewires in the hero entity, plus text. init.lua only
+# grants Horde at run start for testing.
+multiplayer_scope = "local-only"
+
+[[content]]
+kind = "talent"
+id   = "horde_rats_wiring"
+hero = "Piper"
+file = "Hero_Piper.entity"
+
+clone_nodes = [
+  { source = "Skill Attack Ghost Notes Requirement Selector", name = "Horde Attacks Required Selector", retarget = [
+    { from = '[Dt Skill Controller] Hero_Piper\Skills\Skill Controller Attack Ghost Notes', to = '[Dt Skill Controller] Hero_Piper\Skills\Skill Controller Trait More Controllable Pets' },
+  ] },
+  { source = "Skill Attack Ghost Notes Counter", name = "Horde Attacks Counter", retarget = [
+    { from = '[State] Hero_Piper\Skill Attack Ghost Notes\Event Skill Attack Ghost Notes Proc', to = '[State] Hero_Piper\Ability Trait\Event Trait Ability Spawn Pets' },
+    { from = '[Value Selector] Hero_Piper\Skill Attack Ghost Notes\Skill Attack Ghost Notes Requirement Selector', to = '[Value Selector] Hero_Piper\Skill Trait More Controllable Pets\Horde Attacks Required Selector' },
+  ] },
+  { source = "Skill Attack Ghost Notes", name = "Horde Attacks State", retarget = [
+    { from = '[Counter] Hero_Piper\Skill Attack Ghost Notes\Skill Attack Ghost Notes Counter', to = '[Counter] Hero_Piper\Skill Trait More Controllable Pets\Horde Attacks Counter' },
+    { from = '[Entity 3d Node] Hero_Piper\Skill Attack Ghost Notes\Skill Attack Ghost Notes 3d Node Left', to = '[Cpnt Value Tester] Hero_Piper\Skill Trait More Controllable Pets\Skill Trait More Controllable Pets Legendary Tester' },
+  ] },
+]
+
+rewires = [
+  # (4) Horde's controller and both rat selectors -> the new state.
+  { trigger = '[State] Hero_Piper\Skill Trait More Controllable Pets\Skill Trait More Controllable Pets', action = "Horde Attacks State", exact = true, all = true },
+  # (5) The note-counting gate. `subtest_of` keeps this off the Ghost Notes
+  # controller, which carries the same label earlier in the file.
+  { trigger = '[State] Hero_Piper\Skill Attack Ghost Notes\Skill Attack Ghost Notes', action = '[State] Character_Common\Base\Child State Can Fight', exact = true, subtest_of = "Skill Attack Ghost Notes Notify Tester" },
+]
+
+[[content]]
+kind   = "skill"
+id     = "horde_rats_text"
+hero   = "Piper"
+mode   = "relabel"
+source = "Skill_Trait_More_Controllable_Pets"
+
+description = "• Every #10@ notes played (#8@ Rare, #7@ Epic, #6@ Legendary), rats spawn\n• Rats spawn in groups of #{0}@ (instead of {1})\n• Increase maximum controllable rats by &{2}~"
