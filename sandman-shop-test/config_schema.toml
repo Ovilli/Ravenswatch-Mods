@@ -16,7 +16,7 @@ id      = "minor"
 label   = "Offers"
 group   = "Minor dreams"
 accepts = { role = "offer" }
-count   = { label = "Offers per visit", min = 1, max = 4, default = 4 }
+count   = { label = "Offers per visit", min = 2, max = 4, default = 4 }   # the game crashes below 2
 
 [[fields.shop.sections]]
 id      = "medium"
@@ -31,6 +31,13 @@ group   = "Medium dreams"
 accepts = { role = "duplicate" }
 
 [[fields.shop.sections]]
+id      = "medium_object"
+label   = "Magical object"
+group   = "Medium dreams"
+accepts = { role = "offer" }
+empty   = "A random Common or Rare magical object. Add items to sell those instead."
+
+[[fields.shop.sections]]
 id      = "major"
 label   = "Offer"
 group   = "Major dreams"
@@ -41,6 +48,13 @@ id      = "major_duplicate"
 label   = "Copies a magical object"
 group   = "Major dreams"
 accepts = { role = "duplicate" }
+
+[[fields.shop.sections]]
+id      = "major_object"
+label   = "Magical object"
+group   = "Major dreams"
+accepts = { role = "offer" }
+empty   = "A random Epic, Legendary or Cursed magical object. Add items to sell those instead."
 
 [fields.shop.theme]
 title       = "Ui/SandMan/UI_SandManTitle_Bg.png"
