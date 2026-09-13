@@ -74,8 +74,16 @@
 # and value type match, so per-rarity controller checks survive). Vanilla Horde
 # never did this; the earlier "counts too many notes" fix was real but separate.
 
+# v0.4.4 — CARD SLOT FORMAT
+# PLAYTESTED v0.4.3: "For every 6.7263e-44 notes" — 48 read correctly, printed
+# as a float. A String Format slot has its own FORMAT TYPE (0 decimal, 1 integer)
+# in its entry header, separate from the value's type, and Sound Barrier's slots
+# 1 / 3 / 4 were decimal. `clone_nodes` now sets a repointed slot's format type
+# from the value it reads and takes its display option from a shipped slot that
+# shows the same value (Horde's own card, for three of the five).
+
 # UNPROVEN — watch for these in the playtest
-#   * 3 / 4 / 5 attacking rats every 48 BASIC attacks (about 17 s of attacking),
+#   * 3 / 4 / 5 attacking rats every 16 BASIC attacks (about 6 s of attacking),
 #     and none extra from spamming POWER / the ultimate;
 #   * Ghost Notes, if owned, still counting basic attacks AND abilities;
 #   * a data-defined event name (HORDE_ATTACKS_COUNTER_INC) being delivered like
@@ -84,10 +92,10 @@
 [mod]
 id          = "piper-horde-rats"
 name        = "Piper: Horde of Rats"
-version     = "0.4.3"
+version     = "0.4.5"
 author      = "Ovilli"
 license     = "MIT"
-description = "Horde now also summons 3 / 4 / 5 rats (by rarity) that attack at once, like Invasive Blast, every 48 basic attacks, on top of a higher rat cap."
+description = "Horde now also summons 3 / 4 / 5 rats (by rarity) that attack at once, like Invasive Blast, every 16 basic attacks, on top of a higher rat cap."
 sdk_version = "3"
 enabled     = true
 tags        = ["talents", "piper", "rats"]
@@ -158,7 +166,7 @@ clone_nodes = [
   # and point each slot at the Horde value, then give the copy Horde's text key.
   # Slots 1 / 3 / 4 read float values in the source; the clone gives each slot
   # the accessor and value type of the Horde value it now reads.
-  #   {0} rats per trigger  (3 / 4 / 5 / 5)   {1} basic attacks needed (48)
+  #   {0} rats per trigger  (3 / 4 / 5 / 5)   {1} basic attacks needed (16)
   #   {2} rats per group    (Horde: 3)        {3} rats per group without Horde (2)
   #   {4} extra max rats    (6 / 8 / 10 / 12)
   { source = "Skill String Desc Defensive Armor Quest", name = "Skill String Desc Horde Rats", retarget = [
@@ -174,13 +182,15 @@ clone_nodes = [
 
 # Selector values sit at odd union indices, highest rarity first, common last.
 union_patches = [
-  # Every 48 basic attacks at any rarity (Ghost Notes' copy was 6 / 7 / 8 / 10).
+  # Every 16 basic attacks at any rarity (Ghost Notes' copy was 6 / 7 / 8 / 10).
   # A basic attack fires a note about every 0.35 s (Basic Attack Continuous
-  # Attack: 0.15 delay + 0.2 release), so this is roughly 17 s of attacking.
-  { label = "Horde Attacks Required Selector", index = 1, old = 6, new = 48 },
-  { label = "Horde Attacks Required Selector", index = 3, old = 7, new = 48 },
-  { label = "Horde Attacks Required Selector", index = 5, old = 8, new = 48 },
-  { label = "Horde Attacks Required Selector", index = 7, old = 10, new = 48 },
+  # Attack: 0.15 delay + 0.2 release), so this is roughly 6 s of attacking.
+  # 48 in v0.4.x; lowered to 16 at the user's request once only basic attacks
+  # counted.
+  { label = "Horde Attacks Required Selector", index = 1, old = 6, new = 16 },
+  { label = "Horde Attacks Required Selector", index = 3, old = 7, new = 16 },
+  { label = "Horde Attacks Required Selector", index = 5, old = 8, new = 16 },
+  { label = "Horde Attacks Required Selector", index = 7, old = 10, new = 16 },
   # 3 rats common, 4 rare, 5 epic and legendary (Invasive Blast's copy was 7 / 6 / 5 / 4).
   { label = "Horde Rats Count Selector", index = 1, old = 7, new = 5 },
   { label = "Horde Rats Count Selector", index = 3, old = 6, new = 5 },
