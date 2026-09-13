@@ -3,7 +3,7 @@ id           = "sandman-shop-test"
 name         = "Sandman Shop Test"
 version      = "0.2.0"
 author       = "Ovilli"
-description  = "Edit what the Sandman sells and what it costs, from a shop-styled config editor. Playtest values: every Sandman item costs 1 and the Minor row offers 2."
+description  = "Edit what the Sandman sells and what it costs, from a shop-styled config editor: prices, which items each offer slot sells, and offers per visit. Experimental."
 enabled      = true
 experimental = true
 sdk_version  = ">=3.0,<4"
