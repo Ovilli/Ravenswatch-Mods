@@ -24,8 +24,8 @@
 #   1. `Horde Attacks Required Selector`  = Ghost Notes' threshold selector,
 #      rarity conditions keyed to the Horde controller.
 #   2. `Horde Attacks Counter`            = Ghost Notes' counter, threshold from
-#      (1), completion fires `Event Trait Ability Spawn Pets`. It listens to the
-#      same INC event.
+#      (1), completion fires Invasive Blast's `Event Skill Defense Spawn Pets
+#      Proc` (see v0.2 below). It listens to the same INC event.
 #   3. `Horde Attacks State`              = Ghost Notes' state, holding (2) and
 #      Horde's Legendary tester.
 #   4. Every reference to Horde's old state (controller + both selectors) moves
@@ -36,8 +36,21 @@
 #      Ghost Notes itself is unchanged in play: its counter is a child of its own
 #      state and is not running unless that talent is owned.
 #
+# v0.2 — RATS ATTACK AT ONCE, LIKE INVASIVE BLAST
+# ----------------------------------------------
+# v0.1 fired `Event Trait Ability Spawn Pets` directly, which spawns the normal
+# trait rats behind Piper. That event asks `Trait Ability Spawn Pets Spread Pos
+# Selector` which spawn to use: while `Event Skill Defense Spawn Pets Proc` is
+# running it picks Invasive Blast's spread (around Piper, smoke puff, FMod
+# appear) and its own spawner, whose `Starting Behaviour Spawner Value` starts
+# the rat attacking; the count then comes from `Skill Defense Spawn Pets Max
+# Count Selector` (4, or 5 / 6 / 7 if Invasive Blast is owned at a higher
+# rarity) instead of Horde's group size. Firing that proc — which itself fires
+# the spawn event — makes every Horde trigger an Invasive Blast spawn.
+
 # UNPROVEN — watch for these in the playtest
-#   * rats every 10 notes with Horde (fewer at higher rarity);
+#   * 3 / 4 / 5 attacking rats every 48 notes with Horde, and Invasive Blast
+#     still spawning its own 4 / 5 / 6 / 7 when you use DEFENSE;
 #   * Ghost Notes NOT firing when you do not own it (if ghost notes appear
 #     without the talent, counters count while their state is inactive, and
 #     step 5 must be undone);
@@ -46,10 +59,10 @@
 [mod]
 id          = "piper-horde-rats"
 name        = "Piper: Horde of Rats"
-version     = "0.1.0"
+version     = "0.3.1"
 author      = "Ovilli"
 license     = "MIT"
-description = "Horde now also spawns a group of rats every 10 notes Piper plays (8 / 7 / 6 at higher rarity), on top of bigger groups and a higher rat cap."
+description = "Horde now also summons 3 / 4 / 5 rats (by rarity) that attack at once, like Invasive Blast, every 48 notes Piper plays, on top of a higher rat cap."
 sdk_version = "3"
 enabled     = true
 tags        = ["talents", "piper", "rats"]
@@ -68,11 +81,34 @@ hero = "Piper"
 file = "Hero_Piper.entity"
 
 clone_nodes = [
+  # v0.3 — the rat COUNT. Invasive Blast's spawn stores its count from its own
+  # `Skill Defense Spawn Pets Max Count Selector` (keyed to Invasive Blast). To
+  # give Horde its own count without touching Invasive Blast:
+  #   * `Horde Rats Count Selector` = that selector keyed to Horde (3/4/5/5).
+  #   * `Horde Rats Proc` = a one-child event wrapping Invasive Blast's proc; the
+  #     counter fires this instead of the proc directly.
+  #   * `Horde Rats Count Switch` = "Horde Rats Proc running ? Horde count :
+  #     Invasive Blast's count", shaped like `Trait Ability Max Controllable Pets
+  #     Selector` (state -> int, default -> int). Invasive Blast's count store is
+  #     pointed at the switch. The spawn already reads "is this event running"
+  #     from inside a nested event (its spread selector tests the proc while the
+  #     proc's child runs), which is what the switch relies on.
+  { source = "Skill Defense Spawn Pets Max Count Selector", name = "Horde Rats Count Selector", retarget = [
+    { from = '[Dt Skill Controller] Hero_Piper\Skills\Skill Controller Defense Spawn Pets', to = '[Dt Skill Controller] Hero_Piper\Skills\Skill Controller Trait More Controllable Pets' },
+  ] },
+  { source = "Event Skill Attack Ghost Notes Notify Default", name = "Horde Rats Proc", retarget = [
+    { from = '[Named Event Sender] Hero_Piper\Skill Attack Ghost Notes\SKILL_ATTACK_GHOST_NOTES_COUNTER_INC Event Sender', to = '[State] Hero_Piper\Skill Defense Spawn Pets\Event Skill Defense Spawn Pets Proc' },
+  ] },
+  { source = "Trait Ability Max Controllable Pets Selector", name = "Horde Rats Count Switch", retarget = [
+    { from = '[State] Hero_Piper\Skill Trait More Controllable Pets\Skill Trait More Controllable Pets', to = '[State] Hero_Piper\Skill Trait More Controllable Pets\Horde Rats Proc' },
+    { from = '[Value Operation] Hero_Piper\Skill Trait More Controllable Pets\Skill Trait More Controllable Pets Count Operation', to = '[Value Selector] Hero_Piper\Skill Trait More Controllable Pets\Horde Rats Count Selector' },
+    { from = '[Value] Hero_Piper\Ability Trait\Trait Ability Max Controllable Pets Default Amount', to = '[Value Selector] Hero_Piper\Skill Defense Spawn Pets\Skill Defense Spawn Pets Max Count Selector' },
+  ] },
   { source = "Skill Attack Ghost Notes Requirement Selector", name = "Horde Attacks Required Selector", retarget = [
     { from = '[Dt Skill Controller] Hero_Piper\Skills\Skill Controller Attack Ghost Notes', to = '[Dt Skill Controller] Hero_Piper\Skills\Skill Controller Trait More Controllable Pets' },
   ] },
   { source = "Skill Attack Ghost Notes Counter", name = "Horde Attacks Counter", retarget = [
-    { from = '[State] Hero_Piper\Skill Attack Ghost Notes\Event Skill Attack Ghost Notes Proc', to = '[State] Hero_Piper\Ability Trait\Event Trait Ability Spawn Pets' },
+    { from = '[State] Hero_Piper\Skill Attack Ghost Notes\Event Skill Attack Ghost Notes Proc', to = '[State] Hero_Piper\Skill Trait More Controllable Pets\Horde Rats Proc' },
     { from = '[Value Selector] Hero_Piper\Skill Attack Ghost Notes\Skill Attack Ghost Notes Requirement Selector', to = '[Value Selector] Hero_Piper\Skill Trait More Controllable Pets\Horde Attacks Required Selector' },
   ] },
   { source = "Skill Attack Ghost Notes", name = "Horde Attacks State", retarget = [
@@ -81,7 +117,27 @@ clone_nodes = [
   ] },
 ]
 
+# Selector values sit at odd union indices, highest rarity first, common last.
+union_patches = [
+  # Every 48 notes at any rarity (Ghost Notes' copy was 6 / 7 / 8 / 10).
+  # v0.3 used 16 and was too frequent in play: basic attack fires a note about
+  # every 0.35 s (Basic Attack Continuous Attack: 0.15 delay + 0.2 release) and
+  # every POWER shot counts too, so 16 notes went by in a few seconds.
+  { label = "Horde Attacks Required Selector", index = 1, old = 6, new = 48 },
+  { label = "Horde Attacks Required Selector", index = 3, old = 7, new = 48 },
+  { label = "Horde Attacks Required Selector", index = 5, old = 8, new = 48 },
+  { label = "Horde Attacks Required Selector", index = 7, old = 10, new = 48 },
+  # 3 rats common, 4 rare, 5 epic and legendary (Invasive Blast's copy was 7 / 6 / 5 / 4).
+  { label = "Horde Rats Count Selector", index = 1, old = 7, new = 5 },
+  { label = "Horde Rats Count Selector", index = 3, old = 6, new = 5 },
+  { label = "Horde Rats Count Selector", index = 5, old = 5, new = 4 },
+  { label = "Horde Rats Count Selector", index = 7, old = 4, new = 3 },
+]
+
 rewires = [
+  # (v0.3) Invasive Blast's count store reads the switch instead of its own
+  # table; outside a Horde trigger the switch hands back that same table.
+  { trigger = '[Value Selector] Hero_Piper\Skill Defense Spawn Pets\Skill Defense Spawn Pets Max Count Selector', action = "Horde Rats Count Switch", exact = true, within = "Skill Defense Spawn Pets Count Operation Store", within_span = 400 },
   # (4) Horde's controller and both rat selectors -> the new state.
   { trigger = '[State] Hero_Piper\Skill Trait More Controllable Pets\Skill Trait More Controllable Pets', action = "Horde Attacks State", exact = true, all = true },
   # (5) The note-counting gate. `subtest_of` keeps this off the Ghost Notes
@@ -96,4 +152,4 @@ hero   = "Piper"
 mode   = "relabel"
 source = "Skill_Trait_More_Controllable_Pets"
 
-description = "• Every #10@ notes played (#8@ Rare, #7@ Epic, #6@ Legendary), rats spawn\n• Rats spawn in groups of #{0}@ (instead of {1})\n• Increase maximum controllable rats by &{2}~"
+description = "• Every #48@ notes played, &3~ rats (#4@ Rare, #5@ Epic and Legendary) spawn and immediately attack nearby enemies\n• Rats spawn in groups of #{0}@ (instead of {1})\n• Increase maximum controllable rats by &{2}~"
