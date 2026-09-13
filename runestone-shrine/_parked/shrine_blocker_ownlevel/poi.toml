@@ -1,0 +1,75 @@
+# THE DIFFERENTIAL — the same shrine, cloned from a BLOCKER tile instead.
+#
+# `shrine_tile` is cloned from the healing-fountain clearing and declares
+# `Fountain` + `Blocker`. Both are real slot kinds — they are in the Dark Hills
+# tile-generation level's vocabulary — but a tiledef also carries FLAGS, and
+# slots constrain them (`oCDtTileFlagConstraint` in that same level). A tile
+# cloned from a fountain may therefore be refused by a blocker slot no matter
+# what its `kinds` list says, which would leave it competing only for the rare
+# fountain slots.
+#
+# This def is that hypothesis as an experiment: identical contents, cloned from
+# a tile that IS a blocker, declaring only `Blocker`. If this one turns up and
+# `shrine_tile` does not, the gate is the donor's flags, not the kind list —
+# and the fix is to pick the donor by slot family rather than by how pretty the
+# clearing is.
+own_level = true
+base      = "Dark_Hills/6x6_Blocker_02"
+chapters  = ["Dark_Hills"]
+kinds     = ["Blocker"]
+copies    = 6
+
+[swaps]
+# Bone_A is set dressing; the blocker tile has two of them.
+"DarkHills\\SceneryObjects_DarkHills\\Bone_A.entity.ot" = "DarkHills\\Objects_DarkHills\\Altar_Of_Heroes_Dark_Hills.entity.ot"
+"DarkHills\\SceneryObjects_DarkHills\\Barricade_Broken_2x2_B.entity.ot" = "DarkHills\\SceneryObjects_DarkHills\\Dolmen_A.entity.ot"
+
+# ⚠ THE MARKER DOES NOT RIDE THE OBELISK, and cannot.
+#
+# `Dolmen_A` is a SceneryObjects_* entity, and the shipped corpus is
+# unambiguous about what that means: of 2150 SceneryObjects entities, exactly
+# ZERO carry or inherit a minimap marker or an interaction, while 39
+# non-scenery entities carry markers and 24 carry interactions. Scenery is
+# drawn, not simulated. Hanging gameplay components on it is byte-perfect,
+# passes every cache and reference check, and does nothing — which is exactly
+# what four playtests measured: the tiles placed and built, and no icon ever
+# appeared. The one time an inherited marker DID draw (2026-09-05, ping icons)
+# the host was `Objects_DarkHills\\Lantern_A_Light` — not scenery.
+#
+# So the marker rides a separate, non-scenery entity standing in the same tile.
+# The host is `Objects_DarkHills\\Pontoon_Pillar_12m_C`: non-scenery, a SINGLE
+# mesh (so it renders as a plain prop rather than a state-driven object with
+# several meshes drawing at once — the emitter refuses those), no children, no
+# parents, and Dark-Hills-rooted with a borrowable Dark Hills cache donor.
+# `pois/shrine_marker/` is what gives it the icon and the prompt.
+#
+# ⚠ An AVALON pure-marker entity was tried here first and CRASHED level build:
+# EXCEPTION_ACCESS_VIOLATION read @ 0 at 0x1401273b6, reached from
+# LevelObject_DestroyVectors — the teardown loop destroying a null in the
+# preloaded vector. Its closure was NOT the problem (the borrowed Avalon tile
+# cache was unioned in whole, 0 of 116 lines missing, and every entity in the
+# level resolved). What differed was the ROOT: an Avalon-tree entity standing
+# in a Dark Hills level. Keep swap targets inside the chapter's own biome, or
+# under a neutral root.
+
+# ── DIAGNOSTIC, not the design ────────────────────────────────────────────────
+#
+# This tile stands a shipped `Altar_Of_Heroes_Dark_Hills` where its sibling
+# `shrine_tile` stands our own component-carrying host. The altar is a POI the
+# GAME marks on the map and makes interactive, entirely through its own shipped
+# wiring — nothing of ours touches it.
+#
+# That splits the one question five playtests have failed to answer, because
+# the two defs differ in exactly one thing:
+#
+#   altar icon shows here, pillar icon does not  -> mod tiles CAN host markers,
+#       and the inherit+override approach is what is wrong. Copy what the altar
+#       does instead of adding parents.
+#   NEITHER shows                                -> a mod-owned tile cannot host
+#       a marker at all, which is a far bigger finding than any host choice and
+#       is where the next RE goes.
+#   both show                                    -> the marker works and the
+#       earlier misses were the reveal state machine, not the host.
+#
+# It costs 6 extra Altars of Heroes per map while it is enabled, which is a real
+# gameplay change — revert this swap the moment it has answered.

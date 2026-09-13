@@ -1,0 +1,66 @@
+# THE SITE — the shrine, built into a SHIPPED tile's level, in place.
+#
+# ⚠ The "one failed load step per placed mod tile" that this def was built
+# around WAS NOT A FAILURE. Corrected 2026-09-05 by reading the code instead of
+# the correlation:
+#
+#     call LevelLoad_ProgressTick(container)   ; takes NO level argument
+#     cmp eax, 1 ; je -> return false          ; <- the branch that fired
+#     mov eax, [obj+0x38] ; cmp 1 ; jne -> return false
+#     call LevelBinary_Load(...)
+#
+# `LevelLoad_ProgressTick` (0x140516cd0) gates on thread id and a global float
+# accumulator and tail-calls a timing sample. It is a per-frame load BUDGET, so
+# a step it refuses is deferred to the next frame, not dropped. The abort count
+# tracks the tile count because more tiles is more load work is more deferrals.
+# The symbol note's original "inert" finding was right; six playtests were spent
+# treating a deferral as the cause of an invisible prop.
+#
+# Keeping no `own_level` anyway: editing the shipped `6x6_Blocker_02` level in
+# place is the mechanism the art override was CONFIRMED with in-game on
+# 2026-08-13, so it is the shorter path, just not for the reason written here
+# before. `pois/shrine_pool` then clones this
+# tiledef WITHOUT its own level, so every clone shares this edited one.
+#
+# Two swaps, both into props this tile can spare:
+#   Log_4m_Broken_B        -> Pontoon_Pillar_12m_C the obelisk, which also
+#                                                  carries the icon and the
+#                                                  prompt (see pois/shrine)
+replace_base = true
+base         = "Dark_Hills/6x6_Blocker_02"
+chapters     = ["Dark_Hills"]
+
+[swaps]
+"DarkHills\\SceneryObjects_DarkHills\\Log_4m_Broken_B.entity.ot" = "DarkHills\\Objects_DarkHills\\Pontoon_Pillar_12m_C.entity.ot"
+# ⚠ REMOVED 2026-09-06: `Bone_A -> Pontoon_Pillar_12m_C`. A swapped object
+# inherits the donor's transform whole, and the pillar's mesh spans y
+# -8.84..+3.16 — it is authored to be driven DOWN from a platform. Stood on a
+# bone lying flat (y -0.06..+0.07) it put 8.78 of its 12.00 units underground
+# and showed a stub. Its marker and interaction both worked, because those are
+# components at the entity ORIGIN, so in-game this read as "an icon and a
+# prompt with no object" — measured 2026-09-06. `_assert_swap_target_is_not_
+# sunk` now refuses this at emit time, so it cannot come back by accident.
+# ⚠ CONTROL REMOVED 2026-09-06 — `Pike_4m_A -> Menhir_Big_A`.
+#
+# It asked "do swaps render at all?", and that is answered twice over: the
+# shrine's icon and interaction both fired in-game, and the control's own stones
+# were plainly visible. What it did in the meantime was drown the POI.
+#
+# `6x6_Blocker_02` places `Pike_4m_A` FIVE times, at tilts 25.2, 108.5, 33.3,
+# 148.3 and 47.3 degrees — pikes are laid at whatever angle looks good. Each
+# became a 7.86-unit standing stone, so every shrine tile grew five leaning
+# menhirs, and `shrine_pool` copies = 8 put up to FORTY of them on one map.
+#
+# That is three in-game reports in one line: "some of them tipped over", "random
+# rocks that could be the POI", and "some pois are the stone and some are the
+# pillar that can be interacted with". A control that cannot be told apart from
+# the thing it is controlling for is not a control.
+
+# ⚠ ANCHOR SLOT CHANGED 2026-09-06, measured with `rsmm.engine.level_placements`.
+# `Barricade_Broken_2x2_B` sits at TILT 11.2 deg — a swapped object inherits the
+# donor's rotation, so the obelisk leaned ("it is not standing", in-game). Its
+# slot is also off-centre at (1.52, 0.01, -0.48) with `Rock_Big_B` 0.62 away, so
+# an over-scaled obelisk grew into the boulder ("stuck in some stone").
+#
+# `Log_4m_Broken_B` is the only single-placement slot in this tile at tilt 0.0,
+# and it sits at (0.08, 0.00, 0.19) — the middle of a 6x6 tile.

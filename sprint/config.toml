@@ -1,0 +1,6 @@
+# Edited values for the `sprint` mod. The schema (types, defaults, docs) lives
+# in manifest.toml under [config.*]; the loader only reads THIS file, and a key
+# absent here falls back to the mod's own hardcoded default, NOT to the
+# manifest's — so a default that only exists in the manifest never reaches the
+# game. Ship the value here whenever it matters.
+multiplier = 30.0

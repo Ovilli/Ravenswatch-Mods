@@ -1,0 +1,22 @@
+[mod]
+name = "Banned Items"
+version = "1.0.0"
+author = "RSMM"
+description = "Removes the selected magical objects from the game's catalog, so they can never be offered, dropped or found. Edited from the item picker."
+enabled = false
+load_order = 50
+sdk_version = ">=3.0,<4"
+license = "MIT"
+tags = [
+  "items",
+  "challenge",
+  "difficulty",
+]
+multiplayer_scope = "deterministic-shared"
+id = "banned-items"
+
+[[content]]
+kind = "item"
+mode = "ban"
+id = "banned_items"
+items = []

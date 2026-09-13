@@ -1,0 +1,64 @@
+# THE PLACE — a mod-owned tile that stands the shrine in a clearing of its own.
+#
+# This is the half that makes the shrine a STRUCTURE rather than a re-skin: a
+# new tiledef, in the Dark Hills pool, with its OWN level. It is picked by map
+# generation the same way a healing fountain or a blood spring is.
+#
+# `6x6_Healing_01` is the donor because it is the shape a small POI has in this
+# game — one centrepiece on a finished 6x6 clearing, with its terrain patch,
+# grass and surrounding props already composed. `swaps` stands a Dolmen_A where
+# its fountain stood, so the shrine inherits that transform: upright, grounded,
+# centred.
+#
+# `own_level` is required for `swaps` in additive mode, and it is safe: a
+# mod-owned LEVEL loads fine as long as it places only SHIPPED entities (proven
+# 2026-08-23, four mod-owned levels through a full chapter, no crash). What a
+# level cannot do is reference an entity the MOD owns — which is exactly why the
+# shrine's art arrives as an in-place override of Dolmen_A next door rather than
+# as a new prop entity.
+#
+# ⚠ `copies = 6` is a PLAYTEST number, not a shipping one. `Fountain` is the
+# generic small-POI slot (the blood spring and the HEALING fountain fill it) and
+# `Blocker` is what makes the tile turn up often enough to judge: 6 copies is a
+# 75% share of fountain slots and 46% of blocker slots, so a map that contains
+# none of it is a real negative rather than a lost roll. At 2 copies the first
+# run placed none and that told us nothing. Drop it to 1-2 once confirmed —
+# at these numbers healing fountains get noticeably rarer.
+own_level = true
+base      = "Dark_Hills/6x6_Healing_01"
+chapters  = ["Dark_Hills"]
+kinds     = ["Fountain", "Blocker"]
+copies    = 6
+
+[swaps]
+# Root_B is one of three interchangeable roots; losing one costs nothing.
+"DarkHills\\SceneryObjects_DarkHills\\Root_B.entity.ot" = "DarkHills\\Objects_DarkHills\\Pontoon_Pillar_12m_C.entity.ot"
+"Objects_Common\\Health_Fountain.entity.ot" = "DarkHills\\SceneryObjects_DarkHills\\Dolmen_A.entity.ot"
+
+# ⚠ THE MARKER DOES NOT RIDE THE OBELISK, and cannot.
+#
+# `Dolmen_A` is a SceneryObjects_* entity, and the shipped corpus is
+# unambiguous about what that means: of 2150 SceneryObjects entities, exactly
+# ZERO carry or inherit a minimap marker or an interaction, while 39
+# non-scenery entities carry markers and 24 carry interactions. Scenery is
+# drawn, not simulated. Hanging gameplay components on it is byte-perfect,
+# passes every cache and reference check, and does nothing — which is exactly
+# what four playtests measured: the tiles placed and built, and no icon ever
+# appeared. The one time an inherited marker DID draw (2026-09-05, ping icons)
+# the host was `Objects_DarkHills\\Lantern_A_Light` — not scenery.
+#
+# So the marker rides a separate, non-scenery entity standing in the same tile.
+# The host is `Objects_DarkHills\\Pontoon_Pillar_12m_C`: non-scenery, a SINGLE
+# mesh (so it renders as a plain prop rather than a state-driven object with
+# several meshes drawing at once — the emitter refuses those), no children, no
+# parents, and Dark-Hills-rooted with a borrowable Dark Hills cache donor.
+# `pois/shrine_marker/` is what gives it the icon and the prompt.
+#
+# ⚠ An AVALON pure-marker entity was tried here first and CRASHED level build:
+# EXCEPTION_ACCESS_VIOLATION read @ 0 at 0x1401273b6, reached from
+# LevelObject_DestroyVectors — the teardown loop destroying a null in the
+# preloaded vector. Its closure was NOT the problem (the borrowed Avalon tile
+# cache was unioned in whole, 0 of 116 lines missing, and every entity in the
+# level resolved). What differed was the ROOT: an Avalon-tree entity standing
+# in a Dark Hills level. Keep swap targets inside the chapter's own biome, or
+# under a neutral root.

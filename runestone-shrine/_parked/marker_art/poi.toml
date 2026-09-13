@@ -1,0 +1,38 @@
+# PROBE A — can a POI put its OWN icon on the map? (2026-09-05)
+#
+# Three playtests established that a marker works iff the entity carrying it
+# has ZERO gating components: Minimap_Ping and Minimap_Warning_Ping (0 gates)
+# both showed, while Stairs (1), Orchard (3) and Reveal_Model (27) showed
+# nothing — and Orchard failed even when placed WHOLE, with its own namespace
+# and literal pictures, which is what ruled out name-binding as the cause.
+#
+# That leaves art. The two zero-gate entities are the ping markers, and their
+# records carry NO picture at all — the art is baked into the UI entity they
+# spawn (Minimap_Marker_BigUi_Ping). So inheriting one gives a working icon
+# that is permanently the teammate-ping art.
+#
+# Orchard's records are the other shape: they name the *Standard* UI entity
+# plus a literal `MiniMap\Icons\Map_Icons_Npc_Quest.png`. So this splits the
+# roles — inherit the zero-gate ping for the MACHINERY, splice Orchard's two
+# records for the PICTURE, and repaint that shipped png with our own art.
+#
+# The icon is overridden in place rather than given a new path, because a new
+# asset name is the one thing that reliably does not work. Map_Icons_Npc_Quest
+# is an Avalon quest icon and never appears in Dark Hills, so the blast radius
+# is a chapter this mod does not touch.
+#
+# Host: Wall_Ruins_Block_Big_B, 9 of them on the start tile, so it is on screen
+# within seconds and impossible to miss if it works.
+replace_base  = true
+base          = "Dark_Hills/40x40_Dark_Hills_Start_Update3"
+chapters      = ["Dark_Hills"]
+replaces      = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Big_B.entity.ot"
+entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Big_B.entity.ot"
+material_base = "Scenery\\DarkHills\\M_Menhirs_Moss.mat.ot"
+allow_shared_art = true
+
+components = ["GameUis\\MinimapMarkers\\Minimap_Warning_Ping.entity.ot"]
+
+[marker]
+donor = "Avalon\\Objects_Tree_Quest\\Orchard_Minimap_Marker.entity.ot"
+icon  = "marker_icon.png"

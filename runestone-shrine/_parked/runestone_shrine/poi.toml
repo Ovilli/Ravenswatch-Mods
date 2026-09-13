@@ -1,0 +1,59 @@
+# The rune-carved obelisk, standing in the Dark Hills menhir camp.
+#
+# `replace_base` re-skins one shipped prop in place: the mod's mesh is written
+# over the donor's own cooked path. No new asset name is introduced, because a
+# level cannot reference an asset a mod introduced.
+#
+# ---------------------------------------------------------------------------
+# DONOR: Menhir_Big_A (narrowed 2026-08-14, after the pipeline was proven)
+# ---------------------------------------------------------------------------
+#
+# `Pebbles_4x4` did its job — it put a mod-authored mesh on screen for the
+# first time — but it needed `allow_shared_art`, and that mesh is placed by 15
+# tile levels, so every pebble pile in the chapter became an obelisk. Correct
+# for a diagnostic, wrong for content.
+#
+# `Menhir_Big_A` needs no waiver at all:
+#
+#   one mesh                Scenery\DarkHills\Menhir_Big_A.fbx
+#   used by                 exactly 1 entity
+#   placed by               exactly 1 tile (64x64_Dark_Hills_Menhir_Cultist_Camp)
+#   children                none
+#   placement               tilt 0.0 deg, scale 1.00
+#
+# It is also the right *subject*. A menhir is already a standing stone in a
+# cultist stone circle, so an obelisk in its place reads as content rather than
+# as a prop that failed to load — which is not a cosmetic point, since every
+# wrong result so far has been read off how the world looked.
+#
+# The same tile places five more exclusive menhirs (`Menhir_Medium_A/B`,
+# `Menhir_Small_A/B`, `Dolmen_A`), each individually eligible. A future version
+# can re-skin the whole circle instead of one stone.
+#
+# COST: the tile is one entry among the chapter's ~15 `Camp` pool entries, so
+# the shrine appears when that camp rolls, not every run. That is the honest
+# trade for containment, and it is the reason the diagnostics deliberately went
+# the other way first.
+replace_base  = true
+base          = "Dark_Hills/64x64_Dark_Hills_Menhir_Cultist_Camp"
+chapters      = ["Dark_Hills"]
+replaces      = "DarkHills\\SceneryObjects_DarkHills\\Menhir_Big_A.entity.ot"
+entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Menhir_Big_A.entity.ot"
+material_base = "Scenery\\DarkHills\\M_Menhirs_Moss.mat.ot"
+
+# The donor is a mounting point, not a size reference.
+transform = { fit = "none" }
+
+# No textures: the obelisk keeps the donor's mossy stone material, which suits
+# it. Custom textures are now known to WORK in place (proven by overriding a
+# minimap icon), so this is a choice, not a limitation.
+
+# No `icon` key, deliberately. A tiledef's icon field draws nothing on the
+# minimap — that was measured, twice. Map icons come from
+# `oCDtEntityCpntMinimapMarkerSettings` on the ENTITY standing in the tile, and
+# only 12 shipped entities carry one. A scenery donor is not among them, so
+# this POI cannot be marked on the map by any in-place means. That is what the
+# additive experiment (mods/additive-poi-test) exists to unblock.
+
+# The map icon lives in the sibling def `shrine_marker`, on Dolmen_A: this
+# entity is placed 13 times by the camp, so a marker here would be 13 icons.

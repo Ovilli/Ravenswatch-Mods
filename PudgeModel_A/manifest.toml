@@ -1,0 +1,25 @@
+# Pudge A — canonical Beowulf rig
+# Official Dota Pudge on the Beowulf skeleton (canonical final model). Real FBX weights re-keyed to the core Beo bones; sickle in the right hand, meat hook in the left hand; Pudge textures baked onto the Beo material slots.
+
+[mod]
+id          = "PudgeModel_A"
+name        = "Pudge A — canonical Beowulf rig"
+version     = "0.1.1"
+author      = "rsmm real-pudge pipeline"
+description = "Official Dota Pudge on the Beowulf skeleton (canonical final model). Real FBX weights re-keyed to the core Beo bones; sickle in the right hand, meat hook in the left hand; Pudge textures baked onto the Beo material slots."
+tags        = ["skin", "beowulf", "pudge", "model"]
+license     = "MIT"
+sdk_version = ">=3.0,<4"
+experimental = true
+enabled     = true
+
+[[content]]
+kind   = "mesh"
+id     = "pudge_body"
+target = "Characters\\Heroes\\Beowulf\\Beowulf_GEO.fbx"
+model  = "art/pudge_beowulf.glb"
+
+[content.transform]
+skin       = "gltf"
+fit        = "rig"
+submeshes  = "map"

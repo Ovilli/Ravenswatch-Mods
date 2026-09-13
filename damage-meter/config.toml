@@ -1,0 +1,119 @@
+# Edited values for the `damage-meter` mod. The schema (types, ranges, labels)
+# lives in config_schema.toml, which is an AUTHOR-time file and is deliberately
+# not shipped into the game — the loader reads THIS file, and a key absent here
+# falls back to the mod's own hardcoded default, not to the schema's. So a value
+# worth choosing is spelled out here even when it matches the default.
+
+# ---------------------------------------------------------------------------
+# What counts as damage?
+# ---------------------------------------------------------------------------
+# true  = rank damage dealt to ENEMIES only. Fences, jars, vegetation and
+#         dream-shard nodes are skipped, and what they absorbed is reported
+#         separately as "(+N into props)" — never silently dropped.
+# false = count everything, which is what the GAME counts: its own end-of-run
+#         total includes prop damage.
+#
+# Why the default is true: a destructible prop takes a flat 1.0 per hit, so
+# counting scenery barely moves the damage column but badly distorts HIT COUNTS
+# and DPS (a live run showed a player at 89 hits for 632 damage). Set it false
+# if you would rather the board agree with the end-of-run screen exactly.
+ignore_scenery = true
+
+# Log what the first 12 distinct targets were, and which components each
+# carried. Diagnostic only: turn it on if a game update makes the board look
+# wrong, and send the lines to a bug report.
+probe_victims = false
+
+# ---------------------------------------------------------------------------
+# Reporting
+# ---------------------------------------------------------------------------
+# Seconds between scoreboard reports in the loader log (0 = never).
+report_seconds = 15
+
+# How often the live snapshot behind the overlay is rewritten (0 = off).
+snapshot_seconds = 1
+
+# Rolling window the DPS figure averages over. Keep it >= report_seconds: with
+# a 10s window and a 15s report, a player who stopped attacking 11s ago prints
+# 0.0 dps on the same line that shows their damage climbing, which reads as a
+# broken column. The mod logs a note at startup when this is set lower.
+window_seconds = 15
+
+# Skip a report when nothing changed since the last one.
+quiet_when_idle = true
+
+# Log every individual hit. DEBUGGING ONLY, and it costs frames: the callback
+# runs inside the damage detour on the GAME thread, so every hit becomes a
+# formatted string and a synchronous file write mid-frame. Measured in session
+# 174f (a real 4-player run): 1,932 hit lines in 8.5 minutes, bursting to 48
+# writes in a single second. If the game stutters in co-op, this is the first
+# thing to turn off.
+log_hits = false
+
+# Hunt for each player's name in memory (whole-address-space scan, then a
+# 24,000-probe-per-tick walk of every ally's controller). OFF, and it should
+# stay off: it does not find a field, it finds a coincidence. Across every log
+# this project has, it produced nine ally names through NINE DIFFERENT offset
+# chains -- no offset ever repeated. A real field answers at the same place
+# every time. Once (session 6136) it named the LOCAL row with another player's
+# gamertag, which also consumed that name so its real owner finished the run as
+# a placeholder. It is also slow: 89 seconds of sweeping in session 174f for
+# zero names.
+#
+# ⚠ This flag does NOT turn off player names. It used to, by accident: the
+# cheap peer-id search lived inside the same function as the blind sweep, so
+# switching the sweep off took real names with it and every ally row went back
+# to "Player N" (2026-08-20). The peer-id search now runs regardless; this
+# flag gates ONLY the blind sweep described above.
+#
+# Set player_1..player_4 below to label a run by hand. Those always win.
+identity_hunt = false
+
+# ---------------------------------------------------------------------------
+# Names
+# ---------------------------------------------------------------------------
+# Real names arrive from the lobby automatically when a row can be PROVEN to be
+# a given player (the meter finds the player's own name inside their hero
+# object). A row it cannot prove stays "Player N" — a wrong name against a real
+# damage total is not something you can catch from inside the game.
+#
+# true (default) = hand the leftover lobby names to the leftover rows in join
+#        order anyway. Those rows print with a trailing "?" so a guess never
+#        reads like a measurement.
+#
+# Default true because the alternative is worse in practice: the lobby hook
+# reliably learns all four names, but nothing on this build proves WHICH row is
+# which (the hero-id join is dead here — several players pick the same hero —
+# and the owner-GUID join has no member bridge yet). With this off, a run where
+# every name is known still prints "Player 1..4", which is what shipped on
+# 2026-08-20 and is strictly less useful than a marked guess. Set it false if
+# you would rather see no name than a "?" one.
+#
+# For names you can trust, fill in player_1..player_4 below — they always win
+# and are never marked.
+guess_names = true
+
+# The targeted memory scan that puts REAL names on ally rows.
+#
+# Bounded: once a sweep of the current lobby has named nobody it stands down
+# for the rest of the session. Set this to false if you still feel it — the
+# board keeps its lobby names, they just stay marked "?", and player_1..4 below
+# give names that are never guesses.
+identity_scan = true
+
+# Show every player in the lobby on the board, even before they have dealt any
+# damage.
+#
+# A row is otherwise created on a player's FIRST counted hit, so a support who
+# spends the opening minutes healing is simply missing from the scoreboard.
+# With this on they appear at 0 and climb; turn it off to list only players who
+# have actually dealt damage.
+roster_rows = true
+
+# Fixed names by JOIN ORDER — slot N is the row the board prints as "Player N".
+# These always win, so they are the reliable way to label a run: play a minute,
+# see which slot is whose, then fill these in.
+player_1 = ""
+player_2 = ""
+player_3 = ""
+player_4 = ""

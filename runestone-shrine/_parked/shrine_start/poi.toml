@@ -1,0 +1,43 @@
+# THE GUARANTEE — a shrine in the spawn room of every single run.
+#
+# Every other def here depends on map generation CHOOSING a tile, and a miss is
+# indistinguishable from a broken marker, a broken mesh or a broken interaction.
+# Two playtests were spent on that ambiguity. The start tile is placed by
+# definition, so this def turns a roll into a ten-second check: spawn, turn
+# around, and the obelisk is either there with an icon and a prompt, or the
+# feature is broken and the pooled tiles were never the question.
+#
+# `swaps` edits THIS tile's level only — `Cart` is placed by three tiles, but a
+# swap rewrites one level, not the entity, so the other two are untouched. The
+# art, the icon and the interaction all ride on the Dolmen_A entity that
+# `pois/shrine/` set up, so this def ships nothing but the placement.
+#
+# Delete it once the feature is confirmed; a shrine in the spawn room is a
+# diagnostic, not a design.
+replace_base = true
+base         = "Dark_Hills/40x40_Dark_Hills_Start_Update3"
+chapters     = ["Dark_Hills"]
+
+[swaps]
+"DarkHills\\SceneryObjects_DarkHills\\Cart.entity.ot" = "DarkHills\\SceneryObjects_DarkHills\\Dolmen_A.entity.ot"
+
+# PARKED 2026-09-05, and do not un-park it without a reason.
+#
+# The first run containing this def started with the camera sitting on the
+# ground and the hero never becoming valid (`pending hero REJECTED: hp=0.0
+# max=0.0`, then two HP-field scans 30 s and 90 s into live play finding no
+# candidate pair — a healthy run finds them immediately). Level-load-step
+# aborts went 4 -> 14 in the same run.
+#
+# The level edit itself is provably clean: diffed against vanilla it is ONE
+# string, `Cart.entity.ot` -> `Dolmen_A.entity.ot`, +4 bytes, 136 entity refs
+# unchanged, and the tile's cache carries the full closure. So the bytes are
+# not the problem — standing an entity that inherits Interactive_Object_Model
+# and Minimap_Marker_Reveal_Model in the SPAWN room, where the hero attach
+# sequence runs, is. That is a hypothesis, not a conclusion; what is certain is
+# that the spawn tile is the one tile whose failure costs the whole run.
+#
+# It is also no longer needed. It existed to remove placement luck, and the
+# same run measured placement outright: `mod_tile_placed PASS — 7 of 140 placed
+# tile(s) are ours, 7 built`, plus six `shrine_blocker` tiles in blocker slots.
+# The pooled tiles ARE chosen and instantiated, so the canary has done its job.

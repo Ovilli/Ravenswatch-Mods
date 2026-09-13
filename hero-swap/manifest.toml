@@ -1,0 +1,69 @@
+[mod]
+id = "hero-swap"
+name = "Hero Swap"
+version = "0.2.0"
+author = "RSMM"
+description = "Play Beowulf when another player has already taken him — without giving up a hero you own. Beowulf's definition is shipped on the Merlin slot, which is DLC you do not have and therefore cost you nothing. Pick Merlin in the lobby and you play Beowulf. Requires the unlock-heroes mod."
+enabled = false
+sdk_version = ">=3.0,<4"
+tags = ["heroes", "multiplayer", "experimental"]
+license = "MIT"
+multiplayer_scope = "deterministic-shared"
+
+# PROVEN MECHANISM, NEW SLOT.
+#
+# v0.1.0 put Beowulf on Sun_Wukong and it WORKED in-game (2026-09-01) — the
+# whole duplicate-hero problem solved by never approaching the check: you pick
+# a slot nobody is on, so nothing is a duplicate and nothing validates. The
+# only cost was that Sun Wukong became unplayable as himself.
+#
+# This version moves the vehicle to a slot that costs nothing: Merlin, which is
+# DLC the player does not own and could never select anyway.
+#
+# WHY THAT CAN WORK, when forcing the ownership gate deliberately cannot.
+# A hero's unlock conditions live INSIDE its definition — Beowulf's carries
+# HeroProgressionUnlockConditionSettings, Merlin's carries
+# AdditionalContentGameUnlockConditionSettings (`*(this+0x28) == 3`, the
+# ownership check). Replacing the definition replaces the conditions with it,
+# so the slot is gated on Beowulf's progression instead, which unlock-heroes
+# already answers true. Nothing forces an ownership check, and no DLC content
+# is delivered: the player gets Beowulf, whom they own, and Merlin becomes LESS
+# reachable rather than more — his definition is not on the slot any more.
+#
+# ⚠ THIS MIGHT NOT WORK, and the reason is worth knowing before testing.
+# The lobby blob carries `UnlockedHeroFlag: 2047` — 11 bits set for 12 heroes,
+# with Merlin the clear one. If the roster UI gates selection on that FLAG
+# rather than on the definition's conditions, the slot stays locked no matter
+# what definition sits on it, and the answer is to go back to a slot you own.
+# One launch settles it.
+#
+# CACHE = THE DONOR'S, VERBATIM. The enemy kind unions its caches because it
+# edits one field of a retail definition and the rest of that definition's own
+# closure still has to load. Here the definition is replaced WHOLE, so the
+# target's closure is dead weight — and on a DLC slot, unioning would preload
+# Merlin's assets for no reason at all.
+#
+# ⚠ EVERY PLAYER NEEDS THIS MOD. Spawning is host-authoritative: the host
+# resolves the definition through its own copy, so an unmodded host spawns
+# whatever it has on that slot. Same rule as random-monsters.
+#
+# RETARGET: rebuild the two files under assets/Definitions/Heroes/ from any
+# pair. A hero definition carries no id of its own — its strings are content
+# refs (memoir banks, codex art) — so the engine identifies it purely by file
+# path. Copy <source>.herodef...gen onto the target's name and write the
+# target's cache as the SOURCE's, sorted.
+
+# WHAT TO RECORD. The manifest above names the one thing that could sink this:
+# the roster may gate on the lobby's UnlockedHeroFlag rather than on the
+# definition's own unlock conditions, in which case the slot stays locked no
+# matter what is planted on it. That is a look at the hero-select screen.
+#
+#   rsmm exp answer hero-swap slot_selectable fail -m "Merlin slot still greyed"
+#
+[[experiment]]
+id       = "slot_selectable"
+question = "is the Merlin slot selectable? (fail = the roster gates on UnlockedHeroFlag, not the definition)"
+
+[[experiment]]
+id       = "plays_as_beowulf"
+question = "once picked, do you get Beowulf's kit and model?"

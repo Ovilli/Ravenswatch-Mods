@@ -1,0 +1,29 @@
+# The same shrine, in Avalon — and the control for the Dark Hills icon test.
+#
+# `Cone_Chantier` is the single best in-place donor in the game, and it is worth
+# saying why so the next mod does not have to re-derive it. Of every prop that
+# is placed by exactly one tile, spawns no children, and stands upright at
+# ground level in a tile some chapter actually pools, eleven have a mesh no
+# other entity uses — and exactly one of those eleven also has materials no
+# other entity uses. This is it. (It is a construction cone, left in an Avalon
+# blocker tile; the tile places nothing else, four of them.)
+#
+# Its materials are flat-colour (`M_Orange` / `M_White`, no texture maps), so
+# there is nothing to bind custom textures to and this def ships geometry only,
+# the same as the Dark Hills one.
+replace_base  = true
+base          = "Avalon/6x6_Blocker_Wall_Up_01"
+chapters      = ["Avalon"]
+replaces      = "DarkHills\\SceneryObjects_DarkHills\\Cone_Chantier.entity.ot"
+entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Cone_Chantier.entity.ot"
+material_base = "Scenery\\DarkHills\\M_Orange.mat.ot"
+
+# Decoded from the tile's level: all four placements are position y = 0.00,
+# identity rotation, unit scale. No correction needed, just keep our own size.
+transform = { fit = "none" }
+
+# The shipped icon, deliberately. The Dark Hills shrine ships a NEW `Ui` name to
+# find out whether a tiledef can reference an asset the mod introduced; this one
+# has to keep a name the game already ships or there is no control to compare
+# against.
+icon = "MiniMap\\Icons\\Map_Icons_Boss_Shrine.png"

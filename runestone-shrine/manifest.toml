@@ -1,0 +1,99 @@
+[mod]
+id          = "runestone-shrine"
+name        = "Runestone Shrine"
+version     = "1.1.0"
+author      = "RSMM"
+description = "Adds a structure Ravenswatch does not have: a rune-carved pillar on a stepped plinth with a faceted crystal floating above it, standing alone at the centre of a clearing of its own. It generates on the Dark Hills map, carries its own minimap icon, and can be interacted with. The mesh, its three texture maps and the icon are all authored by this mod."
+enabled     = false
+load_order  = 31
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+# The `poi` kind is still rated 'experimental'. The additive chain it rests on
+# is proven in-game as of 2026-09-12 — a mod-owned tiledef pooled and placed, a
+# mod-owned level built, a mod-owned entity instantiated and drawn, and a
+# mod-owned minimap marker rendering this mod's own icon — but the INTERACTION
+# on a mod-owned host has not been confirmed, so the flag stays honest.
+experimental = true
+tags = ["world", "map", "poi", "structures", "custom-art"]
+# Map generation is part of the seeded run state, so every peer must agree on
+# the tile pool. Everyone in the lobby needs this mod at the same version.
+multiplayer_scope = "deterministic-shared"
+
+# WHAT THIS SHIPS, and where each piece comes from.
+#
+# The whole mod is one folder — `pois/shrine/` — holding a model, three texture
+# maps, an icon and a config file. `tools/make_shrine_assets.py` authors the art
+# from scratch; no game bytes are copied into the pixels or the vertices.
+#
+#   model.glb    a stepped plinth, a tapered runed obelisk, a floating crystal
+#   albedo.png   layered value noise for stone, carved rune bands, climbing moss
+#   mra.png      metal / roughness / AO
+#   normal.png   the same detail as surface relief
+#   icon.png     48x48, the house style: transparent, thick dark outline, flat
+#                saturated fill. Used twice — the tiledef's slot and the marker.
+#
+# NOTHING SHIPPED IS OVERWRITTEN. The mesh, the material, all three textures,
+# the prop entity, the tile, its prefab, its level and the icon are names the
+# game has never seen. The only shipped files the mod touches are the chapter's
+# mapdef and its resource cache, which it must extend to get its tile into the
+# pool — 77 vanilla pool entries become 78, and every vanilla entry survives.
+#
+# THE SHRINE STANDS ALONE. Its clearing is a clone of `6x6_Crystal_01`, a bare
+# grass tile whose only prop is one crystal at the origin, with the pillar put
+# in that crystal's place. It gets the whole clearing and 1.8 units of open
+# floor on every side.
+#
+# It was ADDED to the healing clearing until 2026-09-12, on the reasoning that a
+# shrine should not cost the player their fountain. That failed on both counts:
+# the fountain is 5.05 units wide in a tile with about 5.6 of span, so there is
+# no scale and no position at which a pillar clears it — in-game it stood inside
+# the fountain — and a landmark parked beside somebody else's landmark is set
+# dressing, not a point of interest.
+#
+# WHAT IT COSTS, said plainly: Dark Hills pools three Crystal tiles, so one copy
+# of ours means roughly a quarter of crystal clearings grow a shrine instead of
+# a crystal. A generated map has a fixed number of slots and anything added
+# takes one. Crystal is the cheapest family to spend — not progression like Key,
+# not traversal like Teleporter — and of the 77 pooled tiles the only ones with
+# an empty floor are single-resource clearings. Every Blocker tile, which would
+# have cost nothing, is full of rubble with no clear centre.
+
+# HISTORY, because the shape of this mod is the shape of what was blocking it.
+#
+# Until 2026-09-12 this def was a diagnostic that overwrote every healing
+# fountain in the chapter, because a pooled mod tile appeared to build nothing.
+# The cause turned out to be in the writer, not the engine: `add_placement` grew
+# the level's own list of what it owns without growing `uOjbectsCount`, the
+# count the engine creates its objects from before it reads a single payload
+# byte. The stream then held one more block than the engine read, so every
+# object after the insertion point deserialized from its predecessor's bytes and
+# the level's own root block was consumed as the last prop. Four playtests of an
+# empty tile were measuring that. See docs/_re/kinds/pois.md.
+
+# WHAT TO RECORD. All of it is on screen, so none of it closes itself:
+#
+#   rsmm exp answer runestone-shrine shrine_found pass -m "north of the fountain"
+
+[[experiment]]
+id       = "shrine_found"
+question = "did you find a clearing with the PILLAR standing alone at its centre? (one of the chapter's three crystal clearings is ours, so expect roughly one a run, and expect NO crystal in that one)"
+
+[[experiment]]
+id       = "art_renders"
+question = "does the pillar look right — stone texture and rune bands rather than flat grey or a checkerboard, upright, standing ON the ground, roughly three times a hero's height? (this mod cooks its own albedo, MRA and normal onto a material of its own, so flat grey means the texture chain failed, not the shape)"
+
+[[experiment]]
+id       = "stands_alone"
+question = "is it centred in an empty clearing with clear floor all round, and NOT clipping into anything? (it is 7.00 tall and 2.20 across in a tile that runs to about 2.9 from the centre; the two earlier attempts both ended up inside the thing they were sharing a tile with)"
+
+[[experiment]]
+id       = "minimap_marked"
+question = "does the shrine show its icon on BOTH the corner minimap and the full map screen, and is it OUR icon — a cyan crystal over a grey pillar — rather than a ping, a corpse or a cauldron?"
+
+[[experiment]]
+id       = "poi_interactable"
+question = "can you INTERACT with the pillar — does a hold prompt appear, does the ring fill, does the success effect play? (nothing should be GIVEN to you; a cooking ingredient means the override exclusion filter leaked). This is the one part of the chain never confirmed in-game."
+
+[[experiment]]
+id       = "no_crash"
+question = "did the run survive, and did the OTHER crystal clearings still spawn their crystals? (a resource the tile's cache never lists faults at level build — read @ 0 near 0x1401273b6)"

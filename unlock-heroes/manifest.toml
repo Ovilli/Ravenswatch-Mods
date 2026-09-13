@@ -1,0 +1,20 @@
+[mod]
+id = "unlock-heroes"
+name = "Unlock Heroes"
+version = "0.1.0"
+author = "RSMM"
+description = "Makes progression-locked heroes selectable — the rank, story and challenge gates the hero picker draws a padlock for. Runtime only: your save is never touched, so turning the mod off puts every lock straight back."
+enabled = false
+sdk_version = ">=3.0,<4"
+tags = ["heroes", "progression", "quality-of-life"]
+license = "MIT"
+
+# Every unlock condition answers through the same vftable slot, and the hook
+# forces only the PROGRESSION-flavoured subclasses to true. Ownership is a
+# different subclass on the same slot (`return *(int*)(this+0x28) == 3`) and is
+# deliberately left alone — a hero gated on DLC you have not bought stays
+# locked. See R.hero.unlock_progression.
+#
+# Nothing shared changes: the gate is evaluated locally while the picker draws
+# the screen, and Profile_*.ob is not written.
+multiplayer_scope = "local-only"

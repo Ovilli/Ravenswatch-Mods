@@ -1,0 +1,27 @@
+[fields.rescues_per_run]
+label   = "Rescues per run"
+type    = "int"
+min     = 1
+max     = 5
+default = 1
+
+[fields.heal_amount]
+label   = "Heal on rescue (HP)"
+type    = "int"
+min     = 1
+max     = 500
+default = 60
+
+[fields.surge_attack_power]
+label   = "Attack power surge (displayed units)"
+type    = "int"
+min     = 0
+max     = 200
+default = 30
+
+[fields.surge_seconds]
+label   = "Surge duration (seconds)"
+type    = "int"
+min     = 1
+max     = 60
+default = 10

@@ -1,0 +1,35 @@
+[fields.target_class]
+label   = "Class to dump (suffix match: \"EnemyDefinition\" finds oCDtEnemyDefinition)"
+type    = "string"
+default = "oCDtEnemyDefinition"
+
+[fields.dump_registry]
+label   = "Log the whole definition-registry inventory once"
+type    = "bool"
+default = true
+
+[fields.delay]
+label   = "Seconds after 'ready' before the probe runs (defs load during initial loading)"
+type    = "int"
+min     = 0
+max     = 600
+default = 20
+
+[fields.count]
+label   = "How many instances of that class to dump (each is one file)"
+type    = "int"
+min     = 1
+max     = 64
+default = 1
+
+[fields.mutate]
+label   = "Run the live-object mutation experiment (tiledef width/height)"
+type    = "bool"
+default = false
+
+[fields.sentinel]
+label   = "Value written into a candidate field during the mutation experiment"
+type    = "int"
+min     = 1
+max     = 65535
+default = 77

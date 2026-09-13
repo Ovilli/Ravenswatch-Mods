@@ -1,0 +1,68 @@
+[fields.quest_slots]
+label   = "How many objectives are active at once"
+type    = "int"
+default = 3
+min     = 1
+max     = 6
+
+[fields.xp_multiplier]
+label   = "XP gain multiplier"
+type    = "float"
+default = 1.0
+min     = 0.1
+max     = 10.0
+
+[fields.show_overlay]
+label   = "Publish the objectives HUD"
+type    = "bool"
+default = true
+
+[fields.report_on_run_end]
+label   = "Print a run summary when a run ends"
+type    = "bool"
+default = true
+
+[fields.report_on_menu]
+label   = "Print your rank and totals at the main menu"
+type    = "bool"
+default = true
+
+[fields.attribute_to_me]
+label   = "In co-op, only count what YOU did"
+type    = "bool"
+default = true
+
+# --- challenge generator -----------------------------------------------------
+
+[fields.challenge_tier]
+label   = "Challenge tier"
+type    = "enum"
+values  = ["off", "flavor", "light", "standard", "hard", "brutal",
+           "impossible", "weekly_a", "weekly_b", "random"]
+default = "on"
+
+[fields.challenge_seed]
+label   = "Challenge seed (blank = today's date, or the ISO week for a weekly)"
+type    = "string"
+default = ""
+
+[fields.challenge_coop]
+label   = "Include the co-op-only rules in the draw"
+type    = "bool"
+default = false
+
+[fields.challenge_apply]
+label   = "EXPERIMENTAL: write the rolled modifiers into the game instead of printing them"
+type    = "bool"
+default = false
+
+[fields.challenge_hero]
+label   = "Hero you will play (blank = any; gates the Aladdin-only rules)"
+type    = "string"
+default = ""
+
+[fields.challenge_preset]
+label   = "Hand-designed preset to use instead of rolling"
+type    = "enum"
+values  = ["", "Blood Moon Pack"]
+default = ""

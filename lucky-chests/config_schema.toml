@@ -1,0 +1,26 @@
+[fields.chance_percent]
+label   = "Chance per chest (%)"
+type    = "int"
+min     = 1
+max     = 100
+default = 20
+
+[fields.rarity]
+label   = "Which rarity to duplicate"
+type    = "enum"
+values  = ["any", "common", "rare", "epic"]
+default = "any"
+
+[fields.pity_after]
+label   = "Guarantee a duplicate after this many chests with no luck (0 = off)"
+type    = "int"
+min     = 0
+max     = 50
+default = 6
+
+[fields.max_per_run]
+label   = "Maximum bonus objects per run (0 = unlimited)"
+type    = "int"
+min     = 0
+max     = 50
+default = 0

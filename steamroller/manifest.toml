@@ -1,0 +1,18 @@
+[mod]
+id          = "steamroller"
+name        = "Steamroller"
+version     = "1.1.0"
+author      = "RSMM"
+description = "A TEST HARNESS, not a content mod. Pins attack power, crit and move speed high and tops your health back up, so a chapter can be cleared in a couple of minutes. It exists to reach a chapter transition quickly when reproducing a load-time crash — delete it once you are done."
+enabled     = false
+load_order  = 90
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags = ["dev", "testing", "cheat"]
+# Every write goes through R.stat / R.combat into the LOCAL hero's value store.
+# Nothing is networked, but a peer sees the results (an ally one-shotting a
+# boss), so this is not something to take into someone else's lobby.
+multiplayer_scope = "local-only"
+# R.stat writes land in the store's override cache; `stick` re-asserts them
+# after every recompute. Proven in-game for attack_power, not for every key.
+experimental = true

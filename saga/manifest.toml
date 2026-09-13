@@ -1,0 +1,59 @@
+[mod]
+id          = "saga"
+name        = "Saga"
+version     = "1.5.0"
+author      = "RSMM"
+description = "Meta-progression Ravenswatch does not ship: a global XP bar that grows across every run you ever play, ranks you climb, feats that unlock once and stay unlocked, a rotating set of objectives that hand out XP when you finish them, and a weighted challenge generator that rolls a tiered run ruleset and tracks the rules it can verify."
+enabled     = true
+load_order  = 15
+sdk_version = ">=3.0,<4"
+# Observation only AS SHIPPED — it subscribes to the bus and writes to its own
+# key-value store, nothing else. The scope is the stronger one because ONE
+# setting can reach further: `challenge_apply` writes game-modifier state into
+# the hero's entity-value store, which is a stat tweak and must therefore match
+# on every peer. That setting is off by default; with it off the mod touches no
+# engine state at all.
+multiplayer_scope = "deterministic-shared"
+license     = "MIT"
+tags = ["stats", "progression", "achievements", "quests", "hud"]
+
+# The HUD. Shape is declared here; live rows come from R.overlay.publish.
+[overlay]
+title     = "Saga"
+icon      = "trophy"
+# No `sort`: publish order IS the order. The rank bar has to be row one, and
+# sorting by progress buried it in the middle of the list.
+highlight = "done"
+empty     = "No objectives yet — start a run."
+
+# Exactly ONE `text` column, on purpose. The client gives every text column
+# `flex-1`, so they SHARE the row's slack — a Type/Objective/Progress trio left
+# the objective itself on a third of the width and truncated the only part
+# worth reading. Number columns are `shrink-0` and cost exactly their own
+# digits, so everything else is expressed as a number and `name` keeps the rest.
+# The type marker went with it: a run objective's text already says "in one
+# run", and feats are prefixed with a star.
+[[overlay.columns]]
+key = "name"
+label = "Objective"
+type = "text"
+
+# XP sits next to the name, NOT after the bar. Trailing the progress bar it
+# read as part of the progress ("360 left, ▓░░, 700") instead of as the
+# objective's payout.
+[[overlay.columns]]
+key = "xp"
+label = "XP"
+type = "number"
+format = "compact"
+
+[[overlay.columns]]
+key = "left"
+label = "Left"
+type = "number"
+format = "compact"
+
+[[overlay.columns]]
+key = "pct"
+label = ""
+type = "bar"

@@ -1,0 +1,68 @@
+# The shrine's own POI: a mod-owned TILE, appearing as often as we choose.
+#
+# This is the shape that survives everything measured on 2026-08-14. The two
+# halves that provably work are composed, and nothing that provably fails is
+# used:
+#
+#   mod-owned tiledef  ──points at──▶  the SHIPPED menhir-camp level
+#                                          │ places
+#                                          ▼
+#                                    Menhir_Big_A (exclusive to this tile)
+#                                          │ art overridden in place
+#                                          ▼
+#                                    the mod's obelisk
+#
+# The tile is ours, so its frequency is a design choice. The structure is ours,
+# via the in-place override in `runestone_shrine`. And no mod-owned LEVEL
+# exists anywhere in the chain — which is the thing that crashes
+# (`custom_clone` in mods/additive-poi-test: new tiledef + prefab + level +
+# prop entity ⇒ null resource at level build; disabling just that folder ran
+# clean, so the tiledef half is innocent and the level half is the wall).
+#
+# WHY THIS EXISTS AT ALL
+#
+# `runestone_shrine` alone re-skins one menhir in one tile, and that tile is 1
+# of the chapter's 15 `Camp` pool entries — so the shrine turned up in roughly
+# one run in fifteen, which in practice meant "never seen".
+#
+# `copies = 16` (the SDK cap) is a DIAGNOSTIC number, not a design one. The chapter's
+# TileGeneration level names `Camp` three times, i.e. about three camp slots
+# per run, and Camp splits 8x 40x40 / 7x 64x64. At 6 copies this was still a
+# coin flip per run (~29% share, three draws), and a miss looks exactly like a
+# tile that is pooled but never placed — which is the open question. At 16 we
+# hold 16 of 31 Camp entries (~52%), or 16 of 23 among 64x64 camps (~70%) if
+# slots are footprint-bound, so three draws miss only ~2-8% of the time.
+#
+# If a menhir camp still never appears at this share, the tile is being pooled
+# and never PLACED, and the next suspect is the flag filter in the
+# TileGeneration level (`oCCustomFlagFilter` / `oCDtTileFlagConstraint`) rather
+# than anything the tiledef carries. Drop this to 2-4 once the answer is in.
+#
+# THE SIDE EFFECT, STATED PLAINLY: a tiledef clone brings the whole tile, not
+# just the shrine. Menhir cultist camps themselves get commoner, cultists and
+# all. Lower `copies` if the chapter starts feeling like a quarry.
+chapters = ["Dark_Hills"]
+base     = "Dark_Hills/64x64_Dark_Hills_Menhir_Cultist_Camp"
+# Dark_Hills ships 15 `Camp` slots and one of them is already the menhir camp,
+# which this mod edits in place — so the shrine rides the vanilla entry too.
+# With 4 clones the shrine holds 5 of 19 Camp slots (~26%), which finds it in
+# most runs without making it the camp you always get. 16 was a test crank
+# (52%); 2 was too thin (~18%).
+copies   = 4
+
+# MUST be stated. Without it the def inherits the `clearing` preset's
+# `kinds = ["Fountain"]`, and a 64x64 tile advertising a 6x6 slot kind can
+# never fill a slot: it would be registered, pooled, and never placed, with no
+# error anywhere. Every shipped `Camp` tile is 40x40 or 64x64, so this one fits.
+kinds = ["Camp"]
+
+# No `weight`. It is a TIER field, not a spawn rate — every tier-suffixed
+# family in the corpus carries exactly T1=0.0, T2=0.333, T3=0.667 — so raising
+# it would mark this as a higher-tier variant and gate it behind run
+# progression, which is the opposite of what is wanted. Frequency comes from
+# `copies` (pool share), and from nothing else.
+
+# No `icon`, deliberately: a tiledef's icon field draws nothing on the minimap.
+# Map icons live on `oCDtEntityCpntMinimapMarkerSettings`, a component on an
+# ENTITY, and an in-place override cannot add a component. Until a mod can own
+# an entity, this POI is unmarked on the map by construction.

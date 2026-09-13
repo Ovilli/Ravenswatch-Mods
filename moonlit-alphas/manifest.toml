@@ -1,0 +1,43 @@
+[mod]
+id          = "moonlit-alphas"
+name        = "Moonlit Alphas"
+version     = "1.0.0"
+author      = "RSMM"
+description = "LOCAL ONLY. Alpha wolves wear Melion's runebound pelt on YOUR screen — dark fur, glowing cyan sigils. In co-op nobody else sees it. Ships the baked albedo/MRA maps directly, so it reproduces on any install."
+enabled     = false
+load_order  = 20
+sdk_version = ">=3.0,<4"
+# Texture-only data override: real DDS bytes under assets/ replace the target
+# cooked files at apply time. No loader, no detour, no engine call, and
+# `rsmm restore` puts the originals back. The DDS content is Melion's albedo/
+# MRA baked out once (see assets/) rather than read from the user's install
+# at apply time — that keeps the mod reproducible for players whose install
+# state, patch version, or file layout differs from the one it was authored on.
+multiplayer_scope = "cosmetic"
+license     = "MIT"
+tags = ["cosmetic", "enemies", "texture", "readability"]
+
+# WHY THESE TWO ASSETS
+#
+# Melion (the named wolf) and the Alpha share a mesh: measured against the
+# mirrored vanilla corpus, their albedo UV coverage has an IoU of 1.0000 and
+# both maps are 1024x1024. A donor from any other creature would smear its
+# detail across unrelated parts of the model — that is the failure mode that
+# makes most texture swaps look broken, and it is why this mod stays inside
+# one family.
+#
+# Melion's runes live in the ALBEDO, not in an emissive map. That matters: the
+# wolves' material samples a flat black texture for emissive, so a glow could
+# not be added by swapping textures at all — it would need the material itself
+# repointed. Borrowing the albedo sidesteps that entirely.
+#
+# ALPHA ONLY, deliberately. Putting this on the common Timber and Dire wolves
+# would look striking and cost you the ability to tell an elite from a trash
+# mob at a glance. Restricting it to the Alpha does the opposite: the elite
+# gets louder while the commons stay legible.
+#
+# No [[patch]] here — the override files under assets/ ARE Melion's albedo
+# and MRA maps, decoded from a cooked oCTexture and re-encoded as plain DDS
+# once at authoring time (BC1, 1024x1024, byte-identical pixels to the donor).
+# `rsmm apply` picks them up through the normal assets/<decoded_path> drop-in
+# convention and cook_cache re-cooks them into the target's container.

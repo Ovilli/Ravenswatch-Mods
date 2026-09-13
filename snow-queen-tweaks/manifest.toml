@@ -1,0 +1,96 @@
+# Snow Queen tweaks
+#
+# Two edits, both plain f32 overrides inside cooked hero entities. No re-cook,
+# no registration, no Lua.
+
+[mod]
+id          = "snow-queen-tweaks"
+name        = "Snow Queen Tweaks"
+version     = "0.1.0"
+author      = "RSMM"
+license     = "MIT"
+description = "Ice Clone detonation -20% damage, and Defense costs a 2s cooldown instead of 8s when held to full duration."
+sdk_version = "3"
+enabled     = false
+tags        = ["balance", "talents", "snow-queen"]
+
+# Asset-only: two f32s in cooked entities, no Lua, nothing a peer can
+# disagree with.
+multiplayer_scope = "local-only"
+
+# ---------------------------------------------------------------------------
+# 1. Ice Clone detonation: -20% damage
+#
+# The clone's explosion damage lives in the clone's OWN entity, not the hero's.
+# `Explosion Damage` is an oCDtEntityCpntDamageSettings node whose first
+# picker/union is the damage channel; it is the only non-zero damage number in
+# the clone, and the explosion attack references it as
+# `[Dt Damage] Hero_Snow_Queen_Ice_Clone\Explosion Damage`.
+#
+# Hero_Snow_Queen_Royal_Ice_Clone is a 3157-byte inheritance stub with no
+# values of its own, so the Royal skin inherits this too.
+# ---------------------------------------------------------------------------
+
+[[content]]
+kind = "talent"
+id   = "ice_clone_detonation_damage"
+hero = "Snow_Queen"
+# `Explosion Damage` exists on other entities too — restrict to the clone.
+file = "Hero_Snow_Queen_Ice_Clone.entity"
+
+value_patches = [
+  { label = "Explosion Damage", old = 10.0, new = 8.0 },
+]
+
+# ---------------------------------------------------------------------------
+# 2. Defense: full duration, short cooldown
+#
+# Defense is a HELD ability and its cooldown is proportional to how long you
+# held it. Two Operation nodes interpolate it against the duration timer:
+#
+#   Ability Defense Min Cooldown Ratio Operation  <- Min Cooldown (0.0) + timer
+#   Ability Defense Max Cooldown Ratio Operation  <- Max Cooldown (8.0) + timer
+#
+# with `Ability Defense Duration Default` = 2.0 s and a floor of
+# `Ability Defense Min Activity Duration` = 0.5 s. So releasing instantly costs
+# ~0 s, and skating the full 2 s costs the full 8 s.
+#
+# That is the thing being changed: the full-duration price drops 8 -> 2, so
+# using Defense for its whole duration no longer locks it out. Min Cooldown
+# stays 0.0, so the ramp still exists, just over a much smaller range.
+# ---------------------------------------------------------------------------
+
+[[content]]
+kind = "talent"
+id   = "defense_full_duration_short_cooldown"
+hero = "Snow_Queen"
+file = "Hero_Snow_Queen.entity"
+
+value_patches = [
+  { label = "Ability Defense Max Cooldown", old = 8.0, new = 2.0 },
+]
+
+# ---------------------------------------------------------------------------
+# NOT ENABLED — the Ultimate 1 "Z Offset" experiment
+#
+# `Ability Ultimate 1 Z Offset Value` (6.0) is NOT the Queen's own height. It
+# feeds `Ability Ultimate 1 Spawning Z Offset Selector`, which is consumed by
+# `Ability Ultimate 1 Target Entity Spawner` — it is the spawn height of the
+# ultimate's TARGET entity, the thing the ice beam is anchored to. A sibling
+# value, `Ability Ultimate 1 Mouse Max Z Offset Value` (8.0), separately clamps
+# the mouse-driven part of that offset.
+#
+# The Queen's levitation is her ability animation (Ability Ultimate 1 In Anim /
+# Loop Anim / Out Anim), which this value does not touch. So raising it to 20
+# should hoist the beam's anchor point far overhead, not the character.
+#
+# Uncomment to try it — it is one f32 and fully reversible.
+#
+# [[content]]
+# kind = "talent"
+# id   = "ultimate_1_high_anchor"
+# hero = "Snow_Queen"
+# file = "Hero_Snow_Queen.entity"
+# value_patches = [
+#   { label = "Ability Ultimate 1 Z Offset Value", old = 6.0, new = 20.0 },
+# ]

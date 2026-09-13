@@ -1,0 +1,37 @@
+# Per-chapter monster picker. Each field is one chapter's cast: pick the
+# monsters you want that chapter to spawn, leave it empty to keep the seeded
+# roll for that chapter. One monster picked = the whole chapter is that
+# monster. Options come from the `enemy-roster` provider (every creature a
+# camp can roll, grouped by the chapter it ships in).
+#
+# The list and the re-emit both read the game's own cooked files, so this
+# works on a plain install — pick, then `rsmm apply` (the desktop app's Apply
+# button) rebuilds the enemy definitions from the install's pristine copies.
+# Nothing has to be downloaded and no authoring checkout is needed.
+#
+# Co-op: the cast is baked into the installed assets, so every player must
+# make the same picks (or install the same packed copy of the mod).
+
+[fields.Dark_Hills]
+type = "multiselect"
+source = "enemy-roster"
+label = "Dark Hills monsters"
+default = []
+
+[fields.Avalon]
+type = "multiselect"
+source = "enemy-roster"
+label = "Avalon monsters"
+default = []
+
+[fields.Storm_Island]
+type = "multiselect"
+source = "enemy-roster"
+label = "Storm Island monsters"
+default = []
+
+[fields.Common]
+type = "multiselect"
+source = "enemy-roster"
+label = "Shared monsters (all chapters)"
+default = []

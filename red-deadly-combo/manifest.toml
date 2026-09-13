@@ -1,0 +1,115 @@
+# Red — "Deadly Combo"
+#
+# WHAT THE LAST TWO PLAYTESTS TAUGHT US
+# -------------------------------------
+# Attempt 1 repointed Red's herodef row at the cut `Skill Controller Primary
+# Finisher`. The file was correct on disk and the game loaded it, but the
+# talent still displayed as "Short Wick". A marker-string diagnostic settled
+# it: the display resolves through the OLD `Skill_Special_Quick_Bombs_*` keys,
+# so the herodef row's name and identity GUID do NOT drive it. That edit was
+# inert and carried the brick risk of touching a herodef, so it is gone —
+# this mod does not modify Red.herodef at all.
+#
+# What DOES work is the text override (the marker proved it), and the entity
+# GUID rewire.
+#
+# WHY A REWIRE RATHER THAN A NEW TALENT
+# -------------------------------------
+# `Skill Controller Primary Finisher` is a talent that shipped in Red's entity
+# and was never given a roster seat. Its GUID appears exactly 4 times in
+# Hero_Red.entity: its own definition, plus 3 `[Dt Skill Controller]` condition
+# references inside `Skill Primary Finisher Finisher Damage Multiplier
+# Selector` (one per rarity tier).
+#
+# It appears NOWHERE in the finisher's attack or state nodes — so the finisher
+# is not gated by the talent. The POWER finisher exists as an ability
+# (RED_Human_Primary_RushFinisher.fbx is in Red's preload cache); the talent
+# only SCALES it. That is why the rewire below is the whole job: point those
+# three tier conditions at the Quick Bombs controller, and the talent the
+# player actually has drives the finisher's damage.
+
+[mod]
+id          = "red-deadly-combo"
+name        = "Red: Deadly Combo"
+version     = "0.4.0"
+author      = "RSMM"
+license     = "MIT"
+description = "Renames Red's Short Wick to Deadly Combo and repoints the cut POWER-finisher damage scaling onto it, at a flat 60% across all rarities."
+sdk_version = "3"
+enabled     = false
+tags        = ["talents", "red", "balance"]
+
+# The `skill` kind is rated `guess` as a whole. Only its `relabel` mode is used
+# here, and that mode is the one the marker diagnostic proved in-game — but the
+# rating covers the kind, so the opt-in is required.
+experimental = true
+
+# Asset-only: text bank values plus GUIDs and f32s in one entity. No Lua, no
+# herodef.
+multiplayer_scope = "local-only"
+
+# ---------------------------------------------------------------------------
+# 1. The name and description.
+#
+# Overriding the value of an EXISTING key is count-neutral and is the path the
+# marker diagnostic proved reaches the screen. `source` is the slot's own
+# controller, so the keys resolve to Skill_Special_Quick_Bombs_*.
+# ---------------------------------------------------------------------------
+
+[[content]]
+kind   = "skill"
+id     = "deadly_combo_text"
+hero   = "Red"
+mode   = "relabel"
+source = "Secondary Quick Bombs"
+
+name        = "Deadly Combo"
+description = "• #POWER@ ends with an area attack dealing &60%~ damage"
+
+# Cooked over the slot's own icon texture (Ui/Heroes/Red/Skill Special Quick
+# Bombs.png.Texture.dxt), scaled to its 128x128. In place, so Short Wick's icon
+# is what gets replaced and nothing needs registering.
+icon = "art/Skill Primary Deadly Combo.png"
+
+# ---------------------------------------------------------------------------
+# 2. The behaviour, and the damage.
+#
+# `all = true` is required: the selector carries one condition reference per
+# rarity tier, and moving only the first would leave two tiers reading the
+# dead controller.
+#
+# The multipliers then sit at odd union indices (each tier is an enabled-bool
+# followed by its number): 1=0.7, 3=0.6, 5=0.5, 7=0.4. Index 3 is already 0.6;
+# flattening the rest makes the "60%" in the description true at any rarity.
+# ---------------------------------------------------------------------------
+
+[[content]]
+kind = "talent"
+id   = "deadly_combo_wiring"
+hero = "Red"
+file = "Hero_Red.entity"
+
+rewires = [
+  # THE BEHAVIOUR. Every talent controller has exactly one `[State]` reference:
+  # the state that owning the talent switches on. Short Wick's controller
+  # pointed at `Skill Secondary Quick Bombs`, so taking "Deadly Combo" still
+  # switched on the bomb-fuse behaviour and nothing else. The cut finisher's
+  # state, `Skill Primary Finisher`, is read by exactly two gameplay nodes —
+  # `Ability Primary` and `Ability Wolf Primary`, i.e. POWER in both forms —
+  # and nothing owned ever turned it on. Point the controller at it.
+  #
+  # `exact` + `within` are required: the same `[State]` text is a substring of
+  # `[Modifier] ...Skill Secondary Quick Bombs CD Reduction Modifier`, which
+  # comes earlier in the file, and a loose match rewires that instead.
+  { trigger = '[State] Hero_Red\Skill Secondary Quick Bombs\Skill Secondary Quick Bombs', action = '[State] Hero_Red\Skill Primary Finisher\Skill Primary Finisher', exact = true, within = "Skill Controller Secondary Quick Bombs", within_span = 400 },
+
+  # THE DAMAGE. The finisher's 4-tier damage multiplier conditions are keyed to
+  # its own (never owned) controller; point all three at the owned one.
+  { trigger = "Skill Controller Primary Finisher", action = "Skill Controller Secondary Quick Bombs", all = true },
+]
+
+union_patches = [
+  { label = "Skill Primary Finisher Finisher Damage Multiplier Selector", index = 1, old = 0.7, new = 0.6 },
+  { label = "Skill Primary Finisher Finisher Damage Multiplier Selector", index = 5, old = 0.5, new = 0.6 },
+  { label = "Skill Primary Finisher Finisher Damage Multiplier Selector", index = 7, old = 0.4, new = 0.6 },
+]

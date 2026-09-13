@@ -1,0 +1,75 @@
+[fields.report_seconds]
+label   = "Seconds between scoreboard reports (0 = only on request)"
+type    = "int"
+min     = 0
+max     = 300
+default = 15
+
+[fields.snapshot_seconds]
+label   = "Seconds between scoreboard snapshots for the overlay (0 = off)"
+type    = "int"
+min     = 0
+max     = 60
+default = 1
+
+[fields.window_seconds]
+label   = "Rolling window behind the DPS figure"
+type    = "int"
+min     = 2
+max     = 120
+default = 10
+
+[fields.quiet_when_idle]
+label   = "Skip a report when nothing changed since the last one"
+type    = "bool"
+default = true
+
+[fields.ignore_scenery]
+label   = "Count only damage dealt to enemies (skip fences, jars, props)"
+type    = "bool"
+default = true
+
+[fields.probe_victims]
+label   = "Log what the first few targets were (debugging the enemy test)"
+type    = "bool"
+default = false
+
+[fields.log_hits]
+label   = "Log every single hit (very noisy — debugging only)"
+type    = "bool"
+default = false
+
+[fields.guess_names]
+label   = "Give unidentified rows the leftover lobby names by join order (marked ?)"
+type    = "bool"
+default = true
+
+[fields.roster_rows]
+label   = "Show every player in the lobby, even before they deal any damage"
+type    = "bool"
+default = true
+
+[fields.identity_scan]
+label   = "Scan memory to put real names on ally rows (off = names stay guesses)"
+type    = "bool"
+default = true
+
+[fields.player_1]
+label   = "Name for the first player seen (blank = auto)"
+type    = "string"
+default = ""
+
+[fields.player_2]
+label   = "Name for the second player seen (blank = auto)"
+type    = "string"
+default = ""
+
+[fields.player_3]
+label   = "Name for the third player seen (blank = auto)"
+type    = "string"
+default = ""
+
+[fields.player_4]
+label   = "Name for the fourth player seen (blank = auto)"
+type    = "string"
+default = ""

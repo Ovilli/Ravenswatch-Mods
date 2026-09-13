@@ -1,0 +1,19 @@
+[mod]
+id          = "sprint"
+name        = "Sprint"
+version     = "1.0.0"
+author      = "RSMM"
+description = "Multiplies hero move speed so crossing a generated map to inspect a mod takes seconds instead of a long walk. A testing tool, not a balance change."
+enabled     = false
+load_order  = 6
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags = ["dev", "testing"]
+# Move speed is a local stat write, not part of map generation or the run seed,
+# so it does not have to match across a lobby.
+multiplayer_scope = "local-only"
+
+[config.multiplier]
+type        = "float"
+default     = 30.0
+description = "Move-speed ratio. 1.0 is vanilla; 3.0 crosses a map roughly three times faster. Very high values can outrun collision."

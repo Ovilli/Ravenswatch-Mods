@@ -1,0 +1,106 @@
+# THE MARKER HOST — the entity the icon and the prompt actually ride.
+#
+# They cannot ride the obelisk. `Dolmen_A` is a SceneryObjects_* entity, and of
+# the 2150 SceneryObjects entities the game ships, exactly ZERO carry or inherit
+# a minimap marker or an interaction (39 non-scenery entities carry markers, 24
+# carry interactions). Scenery is drawn, not simulated. Four playtests of
+# byte-perfect files that placed, built, and did nothing were all this one rule.
+#
+# Picking the host took three tries and each rejection is a rule worth keeping:
+#
+#   Round_Table_Room_Entrance_Minimap_Marker  a pure marker, drew nothing, and
+#       CRASHED level build — EXCEPTION_ACCESS_VIOLATION read @ 0 at
+#       0x1401273b6 from LevelObject_DestroyVectors, the teardown loop
+#       destroying a null in the preloaded vector. Its closure was NOT missing
+#       (the borrowed Avalon tile cache came in whole, 0 of 116 lines absent).
+#       It is an AVALON-rooted entity standing in a Dark Hills level, and it
+#       has no mesh at all — either could be the null. Do not swap in a foreign
+#       biome root, and do not swap in a mesh-less entity.
+#   Wall_Lantern_A_Light  non-scenery and single-tile, but carries TWO meshes,
+#       so it is state-driven; placed as level scenery nothing drives its
+#       selector and both meshes draw at once. The emitter refuses it.
+#   Lantern_post  ideal on paper — one mesh, no children, no parents — but NO
+#       shipped tiledef places it, so there is no cache to borrow and no way to
+#       prove its closure. That is the crash above waiting to happen.
+#
+# `Pontoon_Pillar_12m_C` clears all three: Dark-Hills-rooted, one mesh, no
+# children, no parents, and placed by a Dark Hills tile whose cache can be
+# borrowed. Its own tile places it twice, so that camp gains two icons — the
+# entire collateral, and cosmetic.
+#
+# `allow_shared_art` is set because this def ships no art at all; it only adds
+# components. The exclusivity check exists to stop a mod re-skinning a mesh
+# other props share, which is not what is happening here — the OBELISK stays on
+# Dolmen_A and only the components come to this entity.
+replace_base     = true
+base             = "Storm_Island/40x40_Storm_Island_Refugee_Camp_01"
+chapters         = ["Dark_Hills"]
+replaces         = "DarkHills\\Objects_DarkHills\\BonFire.entity.ot"
+entity_base      = "DarkHills\\Objects_DarkHills\\BonFire.entity.ot"
+material_base    = "Scenery\\DarkHills\\M_Wood_Planks_A.mat.ot"
+allow_shared_art = true
+
+interactive = true
+
+# ── CONTROL RESULT, 2026-09-05: inheriting `GameUis\MinimapMarkers\
+# Minimap_Warning_Ping` DID draw icons on the map, which proved the swap
+# reaches the world, inheritance reaches the live entity, and the cache closure
+# is sufficient. Placement was never the bug.
+#
+# Removed again for two reasons, both measured the same run: walking to a ping
+# found NOTHING standing there (a `GameUis\` parent is documented to suppress
+# an inherited mesh, and it appears to suppress the host's own), and while it
+# was attached it was a confound for the marker test below — a suppressed
+# marker and an inert override look identical from the map screen.
+
+[marker]
+icon = "marker_icon.png"
+# 2026-09-05: past any plausible map size, ON PURPOSE. The parent is a
+# hero-PRESENCE marker and the default 300 left "no icon" ambiguous between
+# "the override records are inert" and "nobody walked close enough". At this
+# radius proximity is satisfied from spawn, so the next run tests only one
+# thing: whether the copied override records reach the live entity at all.
+#
+#   icon visible from run start -> overrides are LIVE; only the reveal gating
+#       was ever wrong, and the fix is a zero-gate parent.
+#   still no icon, with pings on the same entity proving it is in the world
+#       -> the override records are INERT, and the icon has to come from a
+#       parent that names its UI entity directly, the way Minimap_Ping does.
+#
+# Drop back to a sane value once that is settled.
+reveal_radius = 20000.0
+
+# ⚠ UNPARKED 2026-09-06 — separating the marker from the ART is not optional.
+#
+# Merging both onto one entity was tried and measured: the icon drew and the
+# obelisk did NOT. That is the phenomenon this repo already recorded and never
+# isolated — "inheriting a GameUis\ entity SUPPRESSES an inherited 3D mesh" —
+# and `Minimap_Marker_Reveal_Model` drags three `GameUis\MinimapMarkers\`
+# entities in with it. A marker host is therefore an INVISIBLE anchor by
+# nature, which is also why its own buried mesh does not matter.
+#
+# The camp swap lives here because this def is the one based on the Ghouls
+# Camp: it keeps that tile's two pillars vanilla so the camp does not sprout
+# two more icons.
+
+# ⚠ HOST CHANGED 2026-09-06 — `Pontoon_Pillar_12m_C` -> `BonFire`, and this is
+# the fix for "I can only interact with the ones next to the house, and those
+# have no model".
+#
+# The old host is placed TWELVE times, and ten of those are in
+# `Map_Dark_Hills_Scenery_NorthEast` — a background scenery map. The override is
+# global, so every one of them carried this mod's icon and interaction: ten
+# invisible interactables scattered around the map, which is exactly what was
+# found. Measured from the run: `Pontoon_Pillar_12m_C` resolved 12 times,
+# `Dolmen_A` (2 tiles, 1 each) resolved 2.
+#
+# `BonFire` is placed exactly ONCE in the entire game, is non-scenery (so it can
+# carry the components at all), has one mesh, and sits on its own origin
+# (y 0.03..1.09). One collateral instance instead of twelve — and a small fire
+# beside a shrine reads as intentional rather than as a stray post.
+#
+# `base` is the Storm Island refugee camp because that is the one tile that
+# places it, so that is where its cache is borrowed from. The ENTITY is
+# Dark-Hills-rooted, which is the rule that matters (an Avalon-rooted entity in
+# a Dark Hills level crashed level build on 2026-09-05); only the cache lines
+# come from Storm Island.

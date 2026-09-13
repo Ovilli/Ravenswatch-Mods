@@ -1,0 +1,15 @@
+[mod]
+id          = "serialize-probe"
+name        = "Serializer Bridge Probe"
+version     = "1.0.0"
+author      = "RSMM"
+description = "A diagnostic, not a content mod. Proves (or disproves) that the game's own oCBinarySaver can be driven from a mod to write a cooked asset — the capability the map editor and every future cooked-write path depend on. Delete it once the answer is in."
+enabled     = false
+load_order  = 95
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags = ["dev", "testing", "serializer", "cooked"]
+# Reads the definition registry and writes ONE file, inside this mod's own
+# directory. It touches no gameplay state and sends nothing, so peers cannot
+# disagree about anything — but it is a probe, so run it solo anyway.
+multiplayer_scope = "local-only"

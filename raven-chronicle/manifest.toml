@@ -1,0 +1,14 @@
+[mod]
+id          = "raven-chronicle"
+name        = "Raven Chronicle"
+version     = "1.0.0"
+author      = "RSMM"
+description = "A career log that survives between sessions: kills, bosses, chests, melodies, deaths and runs. Read-only — it watches, it never touches the game."
+enabled     = false
+load_order  = 10
+sdk_version = ">=3.0,<4"
+# Observes the event bus and writes only to the mod's own key-value store.
+# Nothing about the game changes, so it is safe in any multiplayer session.
+multiplayer_scope = "cosmetic"
+license     = "MIT"
+tags = ["stats", "events", "quality-of-life"]

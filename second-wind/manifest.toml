@@ -1,0 +1,15 @@
+[mod]
+id          = "second-wind"
+name        = "Second Wind"
+version     = "1.0.0"
+author      = "RSMM"
+description = "Go down once per run and you get back up swinging: a burst heal and a short surge of attack power. After that you are on your own."
+enabled     = false
+load_order  = 50
+sdk_version = ">=3.0,<4"
+# Reacts to the local hero going into death's door and heals that same hero.
+# Nothing is written to shared run state, but healing IS a gameplay effect, so
+# in co-op each peer running the mod rescues only themselves.
+multiplayer_scope = "local-only"
+license     = "MIT"
+tags = ["survival", "events", "quality-of-life"]

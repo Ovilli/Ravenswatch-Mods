@@ -1,0 +1,149 @@
+[mod]
+id          = "shrek-hero"
+name        = "Everyone Is Shrek"
+version     = "1.0.0"
+author      = "Ovilli"
+description = "Replaces every playable hero's body mesh with Shrek. Ogres are like onions. They have layers."
+enabled     = false
+load_order  = 40
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags = ["cosmetic", "meme", "skins"]
+# The `mesh` kind is 'experimental': the cook is the same one `prop` uses and
+# the override is ordinary asset replacement, but a mod-supplied mesh has not
+# been confirmed rendering in-game yet.
+experimental = true
+# Purely visual and purely LOCAL: this rewrites cooked art in your own install.
+# Map generation, the run seed and all gameplay state are untouched, so it does
+# not have to match across a lobby — everyone else sees their normal heroes.
+multiplayer_scope = "cosmetic"
+
+# ONE model, twelve targets. Each block writes the mod's cooked geometry over a
+# shipped mesh's OWN cooked path, so every entity, material, level, tile and
+# resource cache keeps referring to the exact same resource name and nothing
+# else has to move.
+#
+# The body mesh is `<Hero>_GEO` in each hero's folder. Two exceptions worth
+# knowing: Scarlet's folder is `RED` and her human body is `RED_Human_GEO`
+# (`RED_wolf_GEO` is her wolf form, deliberately left alone — a Shrek-shaped
+# wolf reads as a bug, not a joke), and Sun Wukong's folder is `Wukong`.
+#
+# Weapons, capes, hats, mounts and transformation meshes are all separate
+# assets and stay vanilla, so the heroes keep their silhouettes' accessories.
+#
+# `transform.skin = "rigid"` is the load-bearing setting.
+#
+# The default ("transfer") rebuilds per-vertex bone weights from the nearest
+# vertices of the mesh being replaced. That works when the custom mesh occupies
+# roughly the same space as the original — a prop, or a same-shaped body. Shrek
+# is not shaped like these heroes, so his verts bound to whatever bone happened
+# to be nearest and the model was shredded the moment the skeleton animated.
+#
+# "rigid" binds the whole model to ONE bone (the one owning the template vertex
+# nearest its centre — a spine or pelvis on a humanoid). Shrek then slides and
+# turns with the character, fully intact, and simply does not bend. For a
+# replacement body that is the correct trade: a stiff ogre reads as the joke,
+# a torn one reads as a broken mod.
+#
+# `fit` is left at the default, which scales to the TARGET's height, so each
+# Shrek comes out the size of the hero he replaced rather than one absolute
+# size across a roster that is not all the same height.
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_aladdin"
+target = "Characters\\Heroes\\Aladdin\\Aladdin_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_beowulf"
+target = "Characters\\Heroes\\Beowulf\\Beowulf_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_carmilla"
+target = "Characters\\Heroes\\Carmilla\\Carmilla_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_geppetto"
+target = "Characters\\Heroes\\Geppetto\\Geppetto_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_juliet"
+target = "Characters\\Heroes\\Juliet\\Juliet_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_melusine"
+target = "Characters\\Heroes\\Melusine\\Melusine_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_merlin"
+target = "Characters\\Heroes\\Merlin\\Merlin_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_piper"
+target = "Characters\\Heroes\\Piper\\Piper_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_scarlet"
+target = "Characters\\Heroes\\RED\\RED_Human_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_romeo"
+target = "Characters\\Heroes\\Romeo\\Romeo_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_snowqueen"
+target = "Characters\\Heroes\\SnowQueen\\SnowQueen_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+[[content]]
+kind   = "mesh"
+id     = "shrek_wukong"
+target = "Characters\\Heroes\\Wukong\\Wukong_GEO.fbx"
+model  = "shrek_og_xbox_rig.glb"
+transform = { skin = "rigid" }
+
+# WHAT TO RECORD. The `mesh` kind is rated experimental for exactly one reason:
+# a custom mesh has never been SEEN rendering in-game. This mod is the cheapest
+# way to answer that, because the swap is on the hero you are looking at for
+# the whole run.
+#
+#   rsmm exp answer shrek-hero mesh_renders pass -m "Wukong is an ogre"
+#
+[[experiment]]
+id       = "mesh_renders"
+question = "does the custom mesh render in place of the hero?"
+
+[[experiment]]
+id       = "rig_survives"
+question = "does it animate with the skeleton, or is the pose broken?"

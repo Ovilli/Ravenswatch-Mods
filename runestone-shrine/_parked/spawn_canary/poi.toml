@@ -1,0 +1,43 @@
+# CANARY — is the in-place override working on THIS build, right now?
+#
+# The problem this solves is that two different failures look identical from
+# inside the game: "my tile never got placed" and "my tile got placed and the
+# art did not show". Everything measurable so far cannot separate them —
+# the IO trace shows every pooled tile's tiledef, cache AND level being opened
+# during map load, because the chapter preloads the whole pool. Opening is not
+# placement.
+#
+# So this def puts the same obelisk on a prop that is in EVERY run, in the
+# first room, and cannot be missed:
+#
+#   Lantern_A_Light   5 placements in the start tile, tilt 0.0, scale 1.00
+#                     mesh confirmed OPENED during a real Dark Hills load
+#                     one child, which draws nothing (a light), so the
+#                     composite gate passes on merit rather than on a waiver
+#
+# READING IT, next run:
+#
+#   obelisks at spawn, none in a menhir camp  -> in-place override works on
+#       this build; the mod-owned camp tiles are being POOLED but never
+#       PLACED. That would mean layer 1's "it works" was only ever "it loads",
+#       and placement is a separate gate — the next suspect being the flag
+#       filter in the chapter's TileGeneration level (`oCCustomFlagFilter` /
+#       `oCDtTileFlagConstraint`), which a tiledef does not carry.
+#
+#   no obelisks at spawn either               -> the override itself stopped
+#       working between the pebbles run (where it demonstrably worked) and
+#       now, and the donor change is the only thing that moved.
+#
+# COST: `Lantern_A.fbx` is used by 12 tile levels, so every lantern in Dark
+# Hills becomes an obelisk while this is enabled. That is the point — it is a
+# canary, not content. Delete this folder once the answer is in.
+allow_shared_art = true
+
+replace_base  = true
+base          = "Dark_Hills/40x40_Dark_Hills_Start_Update3"
+chapters      = ["Dark_Hills"]
+replaces      = "DarkHills\\Objects_DarkHills\\Lantern_A_Light.entity.ot"
+entity_base   = "DarkHills\\Objects_DarkHills\\Lantern_A_Light.entity.ot"
+material_base = "Scenery\\DarkHills\\M_Lantern_A.mat.ot"
+
+transform = { fit = "none" }

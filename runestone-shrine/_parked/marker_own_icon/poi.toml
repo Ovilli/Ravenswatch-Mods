@@ -1,0 +1,40 @@
+# PROBE C — can a POI's map icon live on a path the MOD owns? (2026-09-05)
+#
+# The sibling probe (marker_art) repaints a shipped icon in place. That works
+# but always has collateral: every marker icon in the game is preloaded by at
+# least one Dark Hills definition, so a repaint restyles something else —
+# Map_Icons_Npc_Quest alone is used by the three pigs' houses and Jack's
+# beanstalk. There is no "unused" icon to borrow.
+#
+# So this asks whether the icon can simply be OURS. The marker record names the
+# .png it draws, and we already rewrite strings inside the record, so the
+# reference can point anywhere; the file is then registered in UsedRscList.ot
+# exactly like this mod's 16 new tiledefs.
+#
+# It is a weaker claim than the repaint and that is the point of running both.
+# A mod cannot introduce a new ENTITY name — proven repeatedly, it is the wall
+# this whole kind is built around. But a texture is not an entity: nothing
+# looks it up by name except a component we control. Whether the engine agrees
+# is exactly what has never been measured.
+#
+#   own icon draws   -> mod-owned textures work; POI icons need no collateral
+#                       and marker_art's repaint path can be retired
+#   nothing draws    -> new asset names are refused for textures too, and a
+#                       repaint (with the blast-radius warning) is the ceiling
+#
+# Host: Wall_Ruins_Block_Big_A, 7 on the start tile, a different prop from the
+# repaint probe so the two results can never be confused for one another.
+replace_base  = true
+base          = "Dark_Hills/40x40_Dark_Hills_Start_Update3"
+chapters      = ["Dark_Hills"]
+replaces      = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Big_A.entity.ot"
+entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Big_A.entity.ot"
+material_base = "Scenery\\DarkHills\\M_Menhirs_Moss.mat.ot"
+allow_shared_art = true
+
+components = ["GameUis\\MinimapMarkers\\Minimap_Warning_Ping.entity.ot"]
+
+[marker]
+donor     = "Avalon\\Objects_Tree_Quest\\Orchard_Minimap_Marker.entity.ot"
+icon      = "marker_icon.png"
+own_icon  = true

@@ -1,0 +1,100 @@
+# THE SHRINE, IN THE TILE THE HERO SPAWNS IN.
+#
+# Same mechanism as `pois/shrine_site` — an in-place swap inside a SHIPPED
+# level, no `own_level` — pointed at the Dark Hills starting tile instead of a
+# blocker. The point is observability, not a second feature.
+#
+# Every playtest so far ended "I don't see it", and the reason was never
+# settled because there was no way to tell "the marker is broken" apart from
+# "the two blocker tiles carrying it are somewhere else on a large map, among
+# clutter that looks exactly like them". The hero stands in this tile at run
+# start, so both questions get answered in the first five seconds: the obelisk
+# is either there or it is not, and the icon is either under the hero on the
+# minimap or it is not. It also makes the interaction reachable — walking into
+# the pillar has never once been testable.
+#
+# Two single-instance props, both pure decor, both expendable:
+#   Cart      -> Dolmen_A               the obelisk (art, scenery)
+#   Skull_Pig -> Pontoon_Pillar_12m_C   the marker + interaction host
+#
+# `Pontoon_Pillar_12m_C` is the same host `shrine_site` uses and was chosen
+# there on rules that still hold (Dark-Hills-rooted, exactly one mesh, no
+# children, no parents, placed by a shipped tile whose cache can be borrowed).
+# Swapping a SceneryObjects slot to an Objects_* entity is what that def
+# already does (Bone_A -> Pontoon_Pillar), so this is not a new mechanism.
+replace_base = true
+base         = "Dark_Hills/40x40_Dark_Hills_Start_Update3"
+chapters     = ["Dark_Hills"]
+
+[swaps]
+"DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_B.entity.ot" = "DarkHills\\Objects_DarkHills\\Pontoon_Pillar_12m_C.entity.ot"
+# ⚠ THE DONOR'S TRANSFORM IS INHERITED — POSITION, ROTATION AND SCALE.
+#
+# Measured 2026-09-05: nine menhirs swapped onto `Wall_Ruins_Block_Big_B` were
+# VISIBLE, and several stood TIPPED OVER, because wall blocks lie at angles. A
+# swapped object is not re-oriented; it adopts the donor's placement whole.
+#
+# That one fact explains every "I don't see anything" in this feature's history.
+# The donors used until now were small ground clutter -- skull, cart, pig skull,
+# bone, pike, barricade -- so a menhir, a dolmen or a 12m pillar standing on
+# their anchors sat mostly or entirely inside the terrain. The pipeline was
+# working the whole time; the props were buried.
+#
+# So the marker host now rides `Lantern_A_Light`: UPRIGHT, `Objects_*` (not
+# scenery, so it can carry the marker and interaction), placed five times in the
+# spawn room, and the very entity the 2026-09-05 inheritance proof used.
+# CONTROL — a VANILLA entity with VANILLA art, swapped into the spawn room.
+#
+# Both other swaps here are modified goods: `Dolmen_A` carries this mod's
+# custom mesh, `Pontoon_Pillar_12m_C` carries its appended marker/interaction
+# parents. If either modification breaks rendering, the prop is invisible for a
+# reason that has nothing to do with the level edit — and with only those two in
+# the tile, "I see nothing at spawn" cannot tell the two apart.
+#
+# `Menhir_Big_A` is untouched by this mod in every respect, and a standing stone
+# in the middle of the spawn room is unmistakable.
+#
+#   menhir visible -> the level edit reaches the world; the other two are
+#       invisible for per-entity reasons (mesh cook / component append).
+#   menhir absent  -> the level edit does not reach rendering at all, and no
+#       amount of marker work matters yet.
+# 2026-09-05: the donor is now a BIG prop, and that is the point.
+#
+# The engine proved it instantiates our swaps: with 2 blocker tiles placed the
+# resolve counts came out at exactly 2x5+1 Menhir and 2x1+1 Dolmen -- the "+1"
+# in each is this tile. The objects exist. What every swap so far shared is
+# that it put a LARGE object on a SMALL prop's anchor (skull, cart, pig skull,
+# bone, pike, barricade), and an object inherits its donor's transform, so a
+# menhir standing where a skull lay can sit almost entirely inside the ground.
+#
+# `Wall_Ruins_Block_Big_B` is a big, waist-high-plus block placed NINE times in
+# the spawn room, so its anchors already suit something large and the result is
+# nine standing stones you cannot walk past.
+#
+#   stones visible -> swaps render; every earlier "nothing there" was a buried
+#       or mis-anchored prop, not a broken pipeline.
+#   still nothing  -> objects instantiate and are never drawn, and the next
+#       thing to inspect is the object record's own transform/scale fields.
+# ⚠ REMOVED 2026-09-06, same reason as in `shrine_site`: the pillar hangs
+# below its own origin (y -8.84..+3.16), so on a wall block's anchor (y -0.65)
+# 8.19 of its 12.00 units were underground. The icon and the prompt now ride
+# the obelisk, which stands on its origin; the emitter refuses this swap.
+
+# ⚠ 2026-09-05: `Lantern_A_Light` -> `Pontoon_Pillar_12m_C` was REMOVED. The
+# trace showed `Lantern_A_Light` resolving ZERO times (so the rewrite landed)
+# while the lanterns were still standing in-game and no pillar appeared — the
+# visible lanterns come from a composition sub-level, not from this level's own
+# refs, so rewriting the ref changed nothing anyone can see.
+#
+# `Wall_Ruins_Block_Big_B` is the only donor in this tile MEASURED to render a
+# swap (nine menhirs, seen in-game). It now carries the marker host instead, so
+# the icon and the interaction are finally testable on something visible — and
+# it doubles as the test of whether a SceneryObjects slot can host an
+# `Objects_*` entity at all, which is the difference the lantern result and the
+# blocker tile's `Bone_A` -> `Pontoon_Pillar` result both point at.
+
+# ⚠ ANCHOR SLOT CHANGED 2026-09-06. `Cart` is placed at TILT 173.2 deg in this
+# tile — very nearly upside down — and a swap inherits that, so the obelisk was
+# hanging inverted. `Wall_Ruins_Block_Small_B` is upright (0.0), placed exactly
+# once, and its own mesh sits on its origin (ymin -0.13). Measured with
+# `rsmm.engine.level_placements`, not guessed.

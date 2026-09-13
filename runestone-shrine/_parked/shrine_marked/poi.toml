@@ -1,0 +1,52 @@
+# FINAL TEST — the icon and the interaction.
+#
+# The pillar already SPAWNS (`menhir_camp`: an additive Camp tile, 16 copies —
+# placement measured 2026-09-04) and already RENDERS (`runestone_shrine`
+# re-skins Menhir_Big_A, confirmed in-game 2026-08-13). What it has never had
+# is a MINIMAP ICON or anything to INTERACT with.
+#
+# Both are entity COMPONENTS. A level cannot reference a mod-owned entity and
+# an in-place override cannot ADD a component, so the only route is to stand a
+# SHIPPED entity that already carries one at a transform in this tile. That is
+# `swaps`, and `swaps` needs either `own_level` or `replace_base`.
+#
+# ⚠ own_level was tried FIRST and the emitter refused it: this donor's prefab
+# names a scenery sub-level before its own, so `clone_tile_level` cannot prove
+# which level is the tile's ("level does not name itself ... refs[0] is
+# TileScenery\64x64_DarkHills_CultistCamp_Alt.level.ot"). Hence replace_base.
+#
+# replace_base edits the SHIPPED tile's level in place, and that is exactly
+# what makes it reach our copies: `menhir_camp` clones the tiledef WITHOUT
+# own_level, so all 16 clones share this donor's level. One edit, and every
+# menhir camp on the map — vanilla and ours — carries the marker and the lock.
+#
+# WHY THESE TWO DONORS, out of the whole corpus:
+#
+#   Orchard_Minimap_Marker  the ONLY placeable entity carrying a minimap
+#                           marker. Every other marker-bearing entity
+#                           (Reward_Spawner_Interactive_Model, Key_Keeper_Key,
+#                           Map_Boss_Spawner_Model, Teleporter_Model) is a
+#                           sub-entity a spawner selects and is NOT placeable;
+#                           swapping to one builds nothing and crashes.
+#   Key_Lock                one of only TWO placeable entities carrying an
+#                           interaction. The other, Jack_NPC_Delivery, drags a
+#                           story quest along with it.
+#
+# Both are non-composite, checked with the emitter's own guard.
+#
+# ⚠ Enemy_Camp_Reward_Spawner_Dark_Hills was tried first and CRASHED level
+# build (ACCESS_VIOLATION read @ 0 at 0x1401273b6), attributed by a
+# differential run. It runs seeded reward generation of its own. Key_Lock
+# carries lock/key logic and is the riskier of the two below: on the same
+# crash signature, drop the Key_Lock line first and keep the marker.
+#
+# The icon is not bolted to the pillar's mesh — Orchard_Minimap_Marker draws
+# nothing at all (no mesh, no material), it is a pure marker. It stands in the
+# same tile, so the POI is marked and the pillar is what you find there.
+replace_base = true
+base         = "Dark_Hills/64x64_Dark_Hills_Menhir_Cultist_Camp"
+chapters     = ["Dark_Hills"]
+
+[swaps]
+"DarkHills\\Haunted_Hollow\\SceneryObjects_HauntedHollow\\Tombstone_Stand_Medium.entity.ot" = "Avalon\\Objects_Tree_Quest\\Orchard_Minimap_Marker.entity.ot"
+"DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Big.entity.ot" = "Objects\\Key_Lock\\Key_Lock.entity.ot"

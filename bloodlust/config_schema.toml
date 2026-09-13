@@ -1,0 +1,39 @@
+[fields.kills_per_stack]
+label   = "Kills per stack"
+type    = "int"
+min     = 1
+max     = 20
+default = 3
+
+[fields.attack_power_per_stack]
+label   = "Attack power per stack (displayed units)"
+type    = "int"
+min     = 1
+max     = 100
+default = 6
+
+[fields.max_stacks]
+label   = "Maximum stacks"
+type    = "int"
+min     = 1
+max     = 20
+default = 5
+
+[fields.stack_seconds]
+label   = "Seconds a stack lasts"
+type    = "int"
+min     = 2
+max     = 60
+default = 8
+
+[fields.stacks_lost_on_hit]
+label   = "Stacks lost when you take a hit (0 = never lose stacks)"
+type    = "int"
+min     = 0
+max     = 20
+default = 1
+
+[fields.announce]
+label   = "Log each stack to the loader log"
+type    = "bool"
+default = true

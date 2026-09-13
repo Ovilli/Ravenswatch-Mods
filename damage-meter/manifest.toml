@@ -1,0 +1,54 @@
+[mod]
+id          = "damage-meter"
+name        = "Damage Meter"
+version     = "1.2.4"
+author      = "RSMM"
+description = "Per-player damage tracking for co-op — who is carrying the run. Reads the local attack resolver and the replicated damage event, boards every hero it sees, and reports damage, share and rolling DPS."
+enabled     = false
+load_order  = 60
+sdk_version = ">=3.0,<4"
+# Pure observation: the meter replays the attack resolver with the exact
+# arguments it received and returns the engine's own result, so no damage
+# number, target list or event is altered. Nothing is networked, and each peer
+# counts from what its own machine sees (the host, which owns the enemies, is
+# the peer with the complete board).
+multiplayer_scope = "local-only"
+license     = "MIT"
+tags = ["combat", "multiplayer", "events", "hud"]
+
+# The HUD this mod publishes. The client draws exactly this and nothing else —
+# shape is declared here, live rows come from R.overlay.publish at runtime.
+[overlay]
+title     = "Damage"
+icon      = "swords"
+sort      = { key = "dealt", dir = "desc" }
+highlight = "is_local"
+empty     = "Waiting for a run."
+
+[[overlay.columns]]
+key = "label"
+label = "Player"
+type = "text"
+
+[[overlay.columns]]
+key = "dealt"
+label = "Damage"
+type = "number"
+format = "compact"
+
+[[overlay.columns]]
+key = "share"
+label = "Share"
+type = "bar"
+
+[[overlay.columns]]
+key = "pct"
+label = "%"
+type = "percent"
+
+[[overlay.columns]]
+key = "dps"
+label = "DPS"
+type = "number"
+format = "compact"
+suffix = "/s"

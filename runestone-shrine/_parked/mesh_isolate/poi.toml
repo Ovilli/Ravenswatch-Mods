@@ -1,0 +1,27 @@
+# PROBE B — does inheriting a GameUis entity suppress an inherited mesh?
+#
+# Round 1 gave the lantern one parent, Menhir_Medium_A, and a standing stone
+# appeared at every lantern. Rounds 2 and 3 added a GameUis ping parent
+# alongside it and the stone was GONE both times, the host back to its shipped
+# look. Twice is not a fluke, and it matters: a POI wants a marker AND its own
+# art, so if a UI parent cancels a mesh parent the two features are mutually
+# exclusive.
+#
+# This is round 1's exact configuration on a different host — ONE parent, a
+# plain scenery mesh, no UI entity anywhere near it. Pebbles_4x4 is placed 3
+# times on the start tile.
+#
+#   stone at the pebbles -> the suppression is real and specific to having a
+#                           GameUis parent; isolate that next
+#   no stone             -> round 1's result did not reproduce at all and the
+#                           mesh finding needs re-establishing before anything
+#                           is built on it
+replace_base  = true
+base          = "Dark_Hills/40x40_Dark_Hills_Start_Update3"
+chapters      = ["Dark_Hills"]
+replaces      = "DarkHills\\SceneryObjects_DarkHills\\Pebbles_4x4.entity.ot"
+entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Pebbles_4x4.entity.ot"
+material_base = "Scenery\\DarkHills\\M_Menhirs_Moss.mat.ot"
+allow_shared_art = true
+
+components = ["DarkHills\\SceneryObjects_DarkHills\\Menhir_Medium_A.entity.ot"]

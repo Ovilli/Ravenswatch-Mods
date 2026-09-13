@@ -1,0 +1,14 @@
+[mod]
+id          = "lucky-chests"
+name        = "Lucky Chests"
+version     = "1.0.0"
+author      = "RSMM"
+description = "Chests sometimes pay out twice. A configurable chance on every chest to duplicate one of the magical objects you already carry."
+enabled     = false
+load_order  = 50
+sdk_version = ">=3.0,<4"
+# Duplicating an object changes the local hero's inventory, which in co-op is
+# owned by the host. Each peer running this affects only their own loadout.
+multiplayer_scope = "local-only"
+license     = "MIT"
+tags = ["loot", "events", "fun"]

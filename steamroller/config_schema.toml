@@ -1,0 +1,25 @@
+[fields.attack_power]
+label   = "Attack power (displayed value)"
+type    = "int"
+default = 4000
+min     = 100
+max     = 100000
+
+[fields.move_speed]
+label   = "Move speed multiplier"
+type    = "float"
+default = 1.6
+min     = 1.0
+max     = 4.0
+
+[fields.godmode]
+label   = "Top health back up when it drops"
+type    = "bool"
+default = true
+
+[fields.heal_below]
+label   = "Health fraction that triggers a top-up"
+type    = "float"
+default = 0.5
+min     = 0.05
+max     = 0.95

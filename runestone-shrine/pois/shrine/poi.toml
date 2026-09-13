@@ -1,0 +1,105 @@
+# THE RUNESTONE SHRINE — a structure Ravenswatch does not ship, standing alone
+# in a clearing of its own, marked on the minimap, and interactive.
+#
+# ⚠ IT IS ITS OWN TILE NOW, 2026-09-12. It used to be ADDED to the healing
+# clearing on the reasoning that a shrine taking a fountain slot should not cost
+# the player their fountain. That was wrong twice over, and the second time is
+# the interesting one:
+#
+#   * it did not fit. The healing fountain mesh is 5.05 units wide and centred
+#     at (-0.42, -0.47) rather than the origin, in a tile whose props span about
+#     5.6 by 5.2. Clearing it needs 4.62 units of separation. There is no scale
+#     and no position that gets there — even a 2.10-wide pillar still overlapped
+#     by 0.89. In-game the obelisk stood inside the fountain.
+#   * and sharing was the wrong goal anyway. A point of interest that is parked
+#     beside somebody else's landmark is not a point of interest, it is set
+#     dressing on one.
+#
+# So the shrine owns a clearing. The whole search is worth recording, because
+# every alternative was checked: of the 77 tiles the Dark Hills chapter pools,
+# the only ones with a genuinely empty floor are single-resource clearings — a
+# teleporter, a key, a crystal, a stone reserve. Every Blocker tile, which would
+# have cost the player nothing, is full of pikes, bones and rubble with no
+# clear centre. There is no empty tile in Dark Hills that holds nothing.
+
+# THE TILE. `6x6_Crystal_01` is a bare grass clearing: 22 objects, of which 21
+# are terrain and exactly ONE is a placed entity. The shrine takes that entity's
+# place, which is the cleanest anchor in the chapter — dead centre at the
+# origin, zero tilt, zero yaw, unit scale. A swap inherits the donor's transform
+# whole, and this one has nothing to inherit but a perfect one.
+base      = "Dark_Hills/6x6_Crystal_01"
+chapters  = ["Dark_Hills"]
+kinds     = ["Crystal"]
+
+# ⚠ THIS IS THE MOD'S ONE REAL COST TO THE PLAYER, stated plainly rather than
+# buried: Dark Hills pools three Crystal tiles, so one copy of ours means about
+# a quarter of crystal clearings grow a shrine instead of a crystal. That is the
+# price of a POI existing at all — a generated map has a fixed number of slots
+# and anything added takes one. Crystal is the cheapest slot family to spend:
+# it is not progression, unlike Key, and not traversal, unlike Teleporter, and
+# crystals drop from other sources too.
+#
+# Raise this for a louder mod and lower it to 0 to uninstall the tile without
+# touching the rest. The SDK caps at 16 and warns past a sensible share.
+copies    = 1
+
+# `replaces` is what the clone swaps OUT, and naming it is what puts the shrine
+# at the centre instead of beside something. No `own_level` and no `places`:
+# those are the ADDITIVE path, which adds an object to a level that already has
+# one, and adding is exactly what did not fit here.
+replaces      = "Objects_Common\\DreamCrystal_Medium.entity.ot"
+
+# THE PROP. A ruin block is the donor because its material is a real textured
+# stone one — `M_Walls_Ruins` names an albedo, an MRA and a normal — and this
+# mod ships its own for all three. An earlier donor was a bonfire on
+# `Dt_GreyColor.mat.ot`, a flat-colour shader with NO texture slots at all, so
+# there was nothing for custom maps to override and the pillar wore a flat grey.
+#
+# Nothing shipped is repainted: the material is cloned under this mod's name
+# with this mod's maps wired into it.
+entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.entity.ot"
+material_base = "Scenery\\DarkHills\\M_Walls_Ruins.mat.ot"
+
+# `fit = "rig"` keeps the authored coordinates — centred on the origin, base at
+# y=0 — instead of re-centring the mesh onto the template's bounding box, which
+# for a 0.99-unit ruin slab would squash the pillar to a third of its height.
+#
+# The mesh is 1.10 across by 3.50 tall, so this is a 2.20 by 7.00 pillar in a
+# clearing that runs to about 2.9 in every direction from the centre. 1.8 units
+# of floor on all four sides, and nothing else in the tile to clear.
+#
+# ⚠ SCALE LIVES HERE AND NOWHERE ELSE. It was once 2.0 here AND 2.0 on a
+# placement, and those multiply — the engine drew a 5.78-unit mesh at 11.56.
+transform     = { fit = "rig", scale = 2.0 }
+
+# THE ICON AND THE PROMPT, both components on the entity this mod owns.
+#
+# A tiledef also carries an `icon` and it draws NOTHING on the minimap — proven
+# in-game 2026-08-14 by repointing the Dark Hills teleporter's, a tile in every
+# run whose icon is unmissable, which changed nothing. What draws one is
+# `oCDtEntityCpntMinimapMarkerSettings`, and `_decorate_host` inherits it onto
+# the prop along with the override records that fill it in. Inheriting alone
+# draws nothing: the reveal model ships every texture Value empty, which three
+# earlier playtests measured and mis-read as the parent being gated.
+interactive = true
+
+# ⚠ EVERY TABLE HEADER GOES BELOW THIS LINE. `places` once sat after [slots] and
+# TOML read it as `slots.places` — the def then had no placement at all and the
+# shrine simply was not in the level. Nothing warns, because a def with no
+# `places` is legitimate.
+
+# The donor textures this mod's own maps stand in for. They have to name what
+# `material_base` actually references, not what the preset happens to carry —
+# the `clearing` preset's slots are the BLOOD FOUNTAIN's textures, because the
+# presets were written for the in-place path where `replaces` is the fountain.
+[slots]
+albedo = "Scenery\\DarkHills\\T_Walls_Ruins_ALB.tga"
+mra    = "Scenery\\DarkHills\\T_Walls_Ruins_MRA.tga"
+normal = "Scenery\\DarkHills\\T_Walls_Ruins_NRM.tga"
+
+[marker]
+icon = "icon.png"
+# The parent is a hero-PRESENCE marker: it reveals only once the hero is already
+# close, which is right for a shipped landmark and circular for a mod POI, where
+# the icon IS how the player finds the thing. Large enough to cover a map.
+reveal_radius = 20000.0

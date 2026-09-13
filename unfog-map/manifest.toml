@@ -1,0 +1,65 @@
+[mod]
+id          = "unfog-map"
+name        = "Reveal Map"
+version     = "2.0.0"
+author      = "RSMM"
+description = "Diagnostic. Reveals every POI on the chapter map from the start of a run, so a missing mod marker reads as a real negative instead of an unexplored map."
+enabled     = true
+load_order  = 95
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags = ["dev", "testing", "minimap"]
+# Two display globals. Map generation is untouched, so peers do not need it.
+multiplayer_scope = "cosmetic"
+
+# ⚠ WHY THIS EXISTS. POI markers in Ravenswatch are not shown at run start —
+# not even shipped ones. `Common_Settings\Minimap_Marker_Reveal_Model` flips
+# `State Minimap Marker Displayed` on HERO PROXIMITY, so an icon appears only
+# once you are already standing near the thing it was supposed to lead you to.
+# Measured 2026-09-05: an Altar of Heroes planted as a control showed no icon
+# at run start either, which invalidated four earlier "the mod's marker is
+# broken" observations. Until the map can be revealed on demand, a missing mod
+# marker and an unexplored map look exactly the same.
+#
+# HOW IT WORKS, v2. Two shipped global values, patched in place. Both are
+# `oCGlobalEntityValueSettings` records the game already reads; nothing new is
+# introduced and no engine call is made.
+#
+#   Start_Revealed_Map                  bool  false -> true
+#   Minimap_Marker_Reveal_Radius_Bonus  f32   0.0   -> 10000.0
+#
+# The first is the game's own named switch for exactly this. The second is
+# belt-and-braces: it is added to every marker's `Hero Presence Detection
+# Radius`, and the reveal parent ships NO radius of its own (only two entities
+# in the whole corpus override it — Ruin_Model 25.0, Ingredient_Key 20.0), so a
+# large bonus should reveal every marker in the chapter whatever the first one
+# does. If the map opens up, one of them is read; which one is a later question.
+#
+# ⚠ v1 DID NOT WORK AND ITS MECHANISM IS RETIRED. It edited
+# `Dt_MinimapFogOfWarEraser`'s shader constants — `u_CircleRadius` 0.75 -> 64,
+# `u_BackgroundColor` alpha 1 -> 0. Measured afterwards (see the header of
+# src/loader/lua/rsmm/map.lua): that radius is in the erase stamp's OWN UV
+# space and saturates at 1.0, so 64 grew the cleared area about 20% and no
+# further. The quad is sized engine-side and the combine step is a compiled
+# shader, so the fog raster is out of reach from assets entirely. The asset is
+# deleted; do not re-add it.
+#
+# ⚠ THIS IS A MEASURING TOOL, NOT A FEATURE. A POI is supposed to be
+# DISCOVERED. Turn it off before playing for real.
+
+[[patch]]
+kind  = "stat"
+name  = "Start_Revealed_Map"
+value = true
+
+[[patch]]
+kind  = "stat"
+name  = "Minimap_Marker_Reveal_Radius_Bonus"
+value = 10000.0
+
+# The reveal is itself a hypothesis, and it has to be graded before any verdict
+# about a mod's icon means anything. If this is a FAIL the map screen said
+# nothing this run, and `runestone-shrine`'s `minimap_marked` must stay open.
+[[experiment]]
+id       = "map_starts_revealed"
+question = "open the map at spawn, before exploring: are POI icons showing across the WHOLE chapter (teleporters, chests, the boss), or only the couple next to you? (a no means neither global is read and this diagnostic is dead — fall back to R.map.reveal)"

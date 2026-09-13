@@ -1,0 +1,7 @@
+[config]
+count = 1
+delay = 25
+dump_registry = true
+mutate = false
+sentinel = 77
+target_class = "oCDtTileDefinition"

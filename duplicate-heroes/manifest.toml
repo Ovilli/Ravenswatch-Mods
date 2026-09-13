@@ -1,0 +1,45 @@
+[mod]
+id = "duplicate-heroes"
+name = "Duplicate Heroes"
+version = "0.3.0"
+author = "Dzikii"
+description = "Pick a hero another player has already taken. The lobby is told you chose a different, free slot, so the duplicate never reaches the check that refuses it. No hero is replaced and no game file is changed."
+enabled = false
+sdk_version = ">=3.0,<4"
+tags = ["multiplayer", "heroes"]
+license = "MIT"
+
+# Nothing on disk changes and no hero is disturbed — the only effect is one
+# u32 swapped inside the outbound attribute call and put straight back.
+multiplayer_scope = "local-only"
+
+# v0.3.0 — THE APPROACH CHANGED. What came before did not work, and one part of
+# it crashed the game.
+#
+# Every LOCAL gate was found and forced: HeroSelect_IsHeroAvailable, the
+# confirm block byte, HeroSelect_ConfirmBlockReason, and the button's own
+# widget state (which measured healthy — state 1, listener present, visible,
+# no press-lock). All accepted, none changed anything. Pressing READY un-readies
+# you instantly, and that is an authority reversing a decision your client
+# already took — not a local refusal. The check is not reachable from here.
+#
+# ⚠ The old version also cached the confirm widget's pointer and cleared a byte
+# through it every tick, forever, long after the page was destroyed and that
+# memory reused. Crash 5ff60612 — a null deref in
+# oCDtNamedEventPowerUpCollectRequest, minutes later and nowhere near the
+# cause — is consistent with exactly that. Deleted, not patched.
+#
+# NOW: `LobbyAttributes_Serialize` is what broadcasts YOUR attributes, and the
+# field that collides is one u32 at record+0x10 (disassembled, not assumed —
+# `mov r8d, dword ptr [rdi + 0x10]`, and the record is param 1, which corrects
+# that symbol's note). The hook swaps it to DECOY_SLOT for the length of that
+# call and restores it immediately, even if the call raises. The lobby sees a
+# hero nobody is on; your own selection is never modified.
+#
+# ⚠ SET DECOY_SLOT in init.lua to a hero NOBODY in your lobby is playing. It is
+# 9 by default, which is a guess.
+#
+# ⚠ UNKNOWN, and this is the test: whether the run spawns from your local
+# selection or from the attribute that just went out. Local -> you play your
+# real pick and this is the answer. Host-driven -> you spawn as the decoy, and
+# the swap has to move to the spawn path instead. Either result settles it.

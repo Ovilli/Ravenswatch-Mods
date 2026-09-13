@@ -1,0 +1,144 @@
+[mod]
+id          = "random-monsters"
+name        = "Random Monsters"
+version     = "1.5.0"
+author      = "RSMM"
+description = "REQUIRES RSMM 5.4.3 OR NEWER, and 5.4.4+ if you use [content.casts] — on an older app this mod is skipped with an 'unknown field' error (repoint_pools, or casts) rather than planting a stale roll. Randomises which monster every enemy slot actually spawns, or lets you hand-pick the cast: uncomment the [content.casts] table in manifest.toml to say exactly which monsters each chapter spawns. A gnoll camp on Storm Island can come up all crabs; a Dark Hills patrol can be treants and ghouls in whatever mix the seed rolled. Camps, tiers and difficulty are untouched — only the creature each slot instantiates changes. Swap `mix` for `entity` to turn a whole biome into one monster instead. Co-op: every player must install this mod with the same seed — an unmodded peer cannot see the imported monsters at all."
+enabled     = false
+load_order  = 50
+sdk_version = ">=3.0,<4"
+
+# ⚠ There is NO machine-checkable app-version floor. `sdk_version` is declared
+# by every scaffold and enforced by nothing — no code in the CLI, the installer
+# or lint reads it. And a floor added today could not help anyway: the check
+# would have to run in the OLDER client, which does not have it.
+#
+# So the requirement lives in `description`, which the registry shows BEFORE a
+# download. On an older app the failure is at least loud and contained:
+# `unknown field(s) repoint_pools` raises a ContentError, emit_content_blocks
+# catches it and calls _drop_emitted, so the mod plants nothing rather than
+# planting a stale roll.
+license     = "MIT"
+tags = ["enemies", "challenge", "chaos", "randomizer"]
+# The roll is baked into the emitted assets, so every peer that installs the
+# same seed loads byte-identical world data.
+multiplayer_scope = "deterministic-shared"
+
+# The `enemy` kind is 'experimental'. `mode = "override"` itself is proven
+# in-game (2026-08-28 playtest: pool repoint streams the prefab, entity_ref
+# instantiates it, merged per-def cache preloads it, no crash) — the rating is
+# held back by `mode = "clone"`, which adds a NEW definition and is untested.
+experimental = true
+
+# The roll happens once, at `rsmm apply`, and is baked into the emitted assets
+# — it is not re-rolled per run. That is deliberate: co-op needs every peer to
+# load identical world data, and the seed is the only thing they have to agree
+# on. Change `seed` and re-apply to get a different world; share the seed to
+# play the same one.
+#
+# EVERY PEER MUST INSTALL THIS MOD, with the same seed. Spawning is
+# host-authoritative: the host rolls a definition and tells the peer to
+# instantiate it, and the peer resolves that definition through ITS OWN copy
+# of the file. An unmodded peer therefore sees the creature the definition
+# shipped with while the host sees the one it was repointed to — two players
+# fighting different monsters in the same camp.
+#
+# ⚠ An unmodded peer reported imported creatures rendering as NOTHING while
+# still dealing damage (2026-08-30 playtest). That was measured while this mod
+# repointed the biome pools; it no longer does (`repoint_pools = false`), so
+# the peer's own pool is now the same file the host has. Whether that changes
+# what a mismatched peer sees is UNTESTED — assume it does not, and have
+# everyone install the same version and seed.
+
+[[content]]
+kind        = "enemy"
+mode        = "override"
+id          = "random_roster"
+
+# Draw every biome's cast from EVERY creature in the game.
+cross_biome = true
+
+# ...but do NOT rewrite a single `EntityPooling` level asset.
+#
+# That repoint is the only edit this kind has ever made to a LEVEL, and it is
+# the only known cause of the chapter-2 failure: chapter 1 renders imports
+# fine (in-game 2026-08-28), every later chapter black-screens or crashes in
+# the teardown of a half-built level. Three explanations were tried and
+# measured dead (pool overlap, a cancelled load, resource state), and
+# `imports = N` did not soften it, so the failure is not proportional to how
+# much new streaming a transition does.
+#
+# The repoint turns out to be redundant. `_emit_merged_cache` already unions
+# the DONOR definition's `.UsedRscCache.ot` into the one beside each override,
+# and a definition's cache lists its own `.entity.ot` — 56 of 56, no
+# exceptions. So the imported prefab and its whole closure are preloaded by
+# the definition that points at it, without any level asset changing at all.
+# With this false, the chapter-transition path is byte-identical to vanilla.
+#
+# PROVEN IN-GAME 2026-09-01: pool membership is NOT a second gate. A full
+# game-wide deal with no pool rewritten played through with the imported
+# creatures spawning and no chapter failure. The repoint was never what made
+# cross-biome work — only what broke the transition.
+repoint_pools = false
+
+# "shuffle" over a game-wide cast: each biome gets as many DISTINCT creatures
+# as it has slots (Dark Hills 15, Avalon 13, Storm Island 12, Common 10),
+# each used once. "random" draws with replacement and leaves ~1/3 of the
+# slots unused, so the roster comes out smaller — the opposite of the point
+# here.
+mix         = "shuffle"
+seed        = 1337
+
+# Flatten the weighted pick so no single creature dominates a camp.
+weight      = 5.0
+
+# ---------------------------------------------------------------------------
+# PICK YOUR OWN MONSTERS (optional)
+# ---------------------------------------------------------------------------
+# There are two ways in, and they write the same thing.
+#
+# 1. THE CONFIG PANEL (what most people want). `config_schema.toml` beside this
+#    file declares one monster picker per chapter, so the desktop app shows a
+#    grouped, searchable list under this mod's Config button. A chapter you
+#    pick for uses exactly those monsters; a chapter you leave empty keeps the
+#    seeded roll. A pick beats the table below for the same chapter.
+#
+# 2. THE TABLE BELOW, for hand-editing or for sharing a manifest.
+#
+# Monsters from OTHER chapters are in the list too, grouped by the chapter
+# they ship in — that is what `cross_biome = true` + `repoint_pools = false`
+# above buy, and it is the proven combination. Put Storm Island crabs in the
+# Dark Hills if you want them there.
+#
+# Either way the cast is baked at `rsmm apply`, which re-emits the 98 enemy
+# definitions by reading the game install's own cooked files (pristine
+# `.rsmm.bak` copies when a previous apply made them). No 7 GB corpus, no
+# authoring checkout — picking and pressing Apply is the whole loop.
+#
+# Co-op: peers must end up with the same cast, so make the same picks or share
+# a packed copy of the mod.
+#
+# Uncomment the table below to hand-write which monsters a chapter spawns,
+# instead of letting the seed deal them. A chapter you list draws ONLY from
+# the monsters written there; a chapter you leave out keeps its rolled cast,
+# so you can pin one chapter and let the rest stay random.
+#
+# `mix` still decides how that cast is spread over the chapter's ~15 enemy
+# definitions, so a one-monster list makes the whole chapter that monster.
+#
+# Chapter names are the biome pools: Dark_Hills, Avalon, Storm_Island and
+# Common (the creatures shared across chapters). `rsmm enemies pools` lists
+# them; `rsmm enemies pool Dark_Hills` lists what a chapter ships with and
+# `rsmm enemies list` every monster in the game. A monster may be named by
+# its definition id (Elite_Wolf_Alpha), its prefab stem, or the full entity
+# ref (Enemies\Wolves\Elite_Wolf_Alpha.entity.ot).
+#
+# Casting a monster from another chapter is exactly what `cross_biome = true`
+# + `repoint_pools = false` above already allow — that combination is the one
+# proven in-game, and it is what lets Storm Island crabs appear in the Dark
+# Hills. Every peer still has to install the same manifest: the cast is baked
+# into the emitted assets at `rsmm apply`, like the roll.
+#
+# [content.casts]
+# Dark_Hills   = ["Elite_Wolf_Alpha", "Standard_Reef_Crab", "Standard_Storm_Jinn"]
+# Storm_Island = ["Standard_Clawed_Treant"]

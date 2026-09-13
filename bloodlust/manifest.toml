@@ -1,0 +1,16 @@
+[mod]
+id          = "bloodlust"
+name        = "Bloodlust"
+version     = "1.0.0"
+author      = "RSMM"
+description = "Chain kills to stack a temporary attack-power frenzy. Stop killing and it fades. Pure event logic — no assets touched."
+enabled     = false
+load_order  = 50
+sdk_version = ">=3.0,<4"
+# Runs entirely off the gameplay event bus and R.stat.modify, which inserts a
+# real engine modifier (it composes with item/talent modifiers and expires on
+# its own). Every peer computes its own streak from its own kills, so there is
+# nothing to desync.
+multiplayer_scope = "local-only"
+license     = "MIT"
+tags = ["combat", "events", "buff"]

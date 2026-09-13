@@ -1,0 +1,9 @@
+[fields.report_on_menu]
+label   = "Print the chronicle when you return to the menu"
+type    = "bool"
+default = true
+
+[fields.report_on_run_end]
+label   = "Print a run summary when a run ends"
+type    = "bool"
+default = true
