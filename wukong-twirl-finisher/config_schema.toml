@@ -1,0 +1,10 @@
+[fields.rarity]
+label   = "Rarity of the granted talents"
+type    = "enum"
+values  = ["common", "rare", "epic", "legendary"]
+default = "common"
+
+[fields.grant_pillar]
+label   = "Also grant Celestial Pillar (to test how the two interact)"
+type    = "bool"
+default = true

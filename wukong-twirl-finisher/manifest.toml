@@ -1,0 +1,130 @@
+# Wukong — Stick Twirl becomes the combo finisher
+#
+# HOW STICK TWIRL IS WIRED (read off Hero_SunWukong.entity, 2026-09-13)
+# ---------------------------------------------------------------------
+# Stick Twirl is not a separate ability. It is a CLIP SWAP on step 1 of the
+# basic combo:
+#
+#   State Basic Attack Step 1
+#     -> Basic Attack Clip Selector Step 1
+#          [Skill Dash Attack Clip]  if  Basic Attack Is Skill Dash Attack Condition
+#          [Basic Attack Clip 1]     otherwise
+#
+# The condition is: Stick Twirl owned AND (dash window timer running, 1.0 s
+# "Skill Dash Attack Enabled Duration", OR the twirl is already ongoing).
+#
+# An Anim Clip carries two things: an Animatic (the FBX plus its animation
+# EVENT KEYS) and the state that runs while it plays. The strikes are keys,
+# not a timer:
+#
+#   Skill Dash Attack Clip -> Wukong_Skill_Stick_Twirl_*.fbx, 5 keys at
+#                             0.06/0.24/0.44/0.61/0.74 s -> Event Skill Dash
+#                             Attack Active; state State Skill Dash Attack Ongoing
+#   Basic Attack Clip 4    -> Wukong_Attack_Combo_4_*.fbx, 1 key at 0.70 s ->
+#                             Event Basic Attack Active 4 -> Basic Attack 4
+#                             (zone attack, FX, camera shake); state State
+#                             Basic Attack Step 4
+#
+# So repointing the selector's first entry at Clip 4 brings the whole attack
+# (animation, hit, FX, sound) along with it. The talent's GATE is untouched:
+# without Stick Twirl owned, nothing changes.
+#
+# WHAT THE DASH ATTACK BECOMES (v0.2)
+# -----------------------------------
+# The dash entry now points at a cloned selector (see `clone_nodes` below):
+#   * Celestial Pillar owned -> `Skill Attack Finisher Clip`: the Pillar slam,
+#     State Skill Attack Finisher, so its damage selector (4 / 5 / 6 / 7 by
+#     Pillar rarity) and its stun apply;
+#   * otherwise -> `Basic Attack Clip 4`: the 4th combo hit, State Basic Attack
+#     Step 4, flat 4.5x plus step 4's pushback and stagger.
+# Either way State Skill Dash Attack Ongoing is never entered, so Stick
+# Twirl's own per-strike multiplier (1.05 / 0.9 / 0.75 / 0.6, x5) is unused and
+# its rarity no longer changes the damage.
+#
+# CELESTIAL PILLAR IN THE NORMAL CHAIN
+# ------------------------------------
+# Pillar swaps the whole `Basic Attack Combo` (4 steps) for `Skill Attack
+# Finisher Combo` (steps 1-4 + Pillar). Both share State Basic Attack Step 1,
+# which is where the dash attack is chosen, so the clone sees the same Pillar
+# state the combo selector does. The chain after the slam is still decided by
+# `Basic Attack Start Combo Store` and is untested.
+#
+# KNOWN RISK TO WATCH FOR
+# -----------------------
+# The 1.0 s dash window is only restarted by a dash. If the slam finishes
+# inside that window, a second attack may be another slam instead of
+# continuing the combo.
+#
+# PLAYTESTED 2026-09-13 (v0.1, direct Clip 4): the dash attack became the 4th
+# combo hit. v0.2's clone is not yet playtested.
+
+[mod]
+id          = "wukong-twirl-finisher"
+name        = "Wukong: Twirl Finisher"
+version     = "0.2.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Stick Twirl no longer plays its own spin: the attack after a dash is the end of Wukong's combo — Celestial Pillar's slam if you own it, otherwise the 4th basic attack."
+sdk_version = "3"
+enabled     = true
+tags        = ["talents", "wukong", "animation"]
+
+# `skill` (relabel) is rated below confirmed as a kind.
+experimental = true
+
+# One cloned selector + one GUID in the hero entity, plus text values. init.lua only grants Stick
+# Twirl (and, by config, Celestial Pillar) at run start for testing.
+multiplayer_scope = "local-only"
+
+# ---------------------------------------------------------------------------
+# 1. The behaviour: one cloned selector, and the dash entry pointed at it.
+#
+# `exact` + `within` pin the SOURCE to the one reference inside the clip
+# selector. The clone has no references yet, so the rewire resolves its GUID
+# from the node's own definition.
+# ---------------------------------------------------------------------------
+
+[[content]]
+kind = "talent"
+id   = "twirl_finisher_wiring"
+hero = "SunWukong"
+file = "Hero_SunWukong.entity"
+
+# v0.1 pointed the dash entry straight at Clip 4. PLAYTESTED 2026-09-13: the
+# dash attack became the 4th combo hit, but never Celestial Pillar's slam.
+#
+# v0.2 needs "Pillar owned ? Pillar slam : 4th hit", and no node says that.
+# `Basic Attack Combo Selector` has exactly that SHAPE — entry 1 picks
+# `Skill Attack Finisher Combo` while `[State] Skill Attack Finisher` (Pillar
+# owned) is active, the default entry picks `Basic Attack Combo` — so clone it
+# and swap its two outputs for the two clips. A selector choosing a selector is
+# shipped data, not a guess: Aladdin's `Basic Attack Clip Selector Step 1`
+# picks `Skill Dash Attack Clip Selector` the same way.
+clone_nodes = [
+  { source = "Basic Attack Combo Selector", name = "Skill Dash Attack Finisher Clip Selector", retarget = [
+    { from = '[Dt Attack Combo] Hero_SunWukong\Skill Attack Finisher\Skill Attack Finisher Combo', to = '[Anim Clip] Hero_SunWukong\Skill Attack Finisher\Skill Attack Finisher Clip' },
+    { from = '[Dt Attack Combo] Hero_SunWukong\Ability Basic\Basic Attack Combo', to = '[Anim Clip] Hero_SunWukong\Ability Basic\Basic Attack Clip 4' },
+  ] },
+]
+
+rewires = [
+  { trigger = '[Anim Clip] Hero_SunWukong\Skill Dash Attack\Skill Dash Attack Clip', action = "Skill Dash Attack Finisher Clip Selector", exact = true, within = "Basic Attack Clip Selector Step 1", within_span = 600 },
+]
+
+# ---------------------------------------------------------------------------
+# 2. The card text.
+#
+# The controller is `Dash Attack` but its text key is `Skill_Attack_After_Dash`,
+# so `source` names the key base directly. `hero` is the herodef stem
+# (`Sun_Wukong`), unlike the talent kind above which takes the entity folder.
+# Only the description is overridden, so the name stays localized.
+# ---------------------------------------------------------------------------
+
+[[content]]
+kind   = "skill"
+id     = "twirl_finisher_text"
+hero   = "Sun_Wukong"
+mode   = "relabel"
+source = "Skill_Attack_After_Dash"
+
+description = "• #ATTACK@ triggered after a #DASH@ unleashes the final blow of the #ATTACK@ combo"
