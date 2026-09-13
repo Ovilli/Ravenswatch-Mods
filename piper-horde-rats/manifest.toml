@@ -61,6 +61,19 @@
 # POWER, the ultimate and the dash note still go through the original
 # Event Attack Shoot Active, which never sends Horde's event.
 #
+# v0.4.3 — THE REAL CAUSE OF THE SUDDEN FILL-UP (and of "every 0 notes")
+# PLAYTESTED v0.4.2: 3 rats, then one batch up to ~25; the card read "every 0
+# notes". A value picker reads its target through a 4-byte ACCESSOR that
+# follows the reference label, and the accessor is tied to the target's class
+# and value type (value/selector int 65c9d20f, value operation int 8686d20f,
+# state 2a83d20f, ...). The count switch's Horde branch was cloned from a Value
+# Operation reference and repointed at a Value Selector with the operation
+# accessor kept, so the engine read Horde's count with the wrong method and got
+# a garbage number; three card slots had the same fault. `clone_nodes` and
+# `rewires` now rewrite the accessor for the new target (keeping it when class
+# and value type match, so per-rarity controller checks survive). Vanilla Horde
+# never did this; the earlier "counts too many notes" fix was real but separate.
+
 # UNPROVEN — watch for these in the playtest
 #   * 3 / 4 / 5 attacking rats every 48 BASIC attacks (about 17 s of attacking),
 #     and none extra from spamming POWER / the ultimate;
@@ -71,7 +84,7 @@
 [mod]
 id          = "piper-horde-rats"
 name        = "Piper: Horde of Rats"
-version     = "0.4.2"
+version     = "0.4.3"
 author      = "Ovilli"
 license     = "MIT"
 description = "Horde now also summons 3 / 4 / 5 rats (by rarity) that attack at once, like Invasive Blast, every 48 basic attacks, on top of a higher rat cap."
@@ -143,8 +156,8 @@ clone_nodes = [
   # with rarity, `#{N}@` a fixed one). Horde's own format has 3 slots and the
   # new text needs 5, so copy the only 5-slot format on Piper (Sound Barrier's)
   # and point each slot at the Horde value, then give the copy Horde's text key.
-  # Slots 0 and 2 are int-typed and 1 / 3 / 4 float-typed in the source; the
-  # float ones are converted to int in `union_patches` below.
+  # Slots 1 / 3 / 4 read float values in the source; the clone gives each slot
+  # the accessor and value type of the Horde value it now reads.
   #   {0} rats per trigger  (3 / 4 / 5 / 5)   {1} basic attacks needed (48)
   #   {2} rats per group    (Horde: 3)        {3} rats per group without Horde (2)
   #   {4} extra max rats    (6 / 8 / 10 / 12)
