@@ -1,0 +1,55 @@
+# The editor below is this mod's own declaration. rsmm renders any `item-grid`
+# generically; the Sandman layout, copy and look are defined here, and the art
+# is decoded from the player's install when the editor opens (nothing shipped).
+
+[fields.shop]
+type   = "item-grid"
+label  = "Sandman shop"
+source = "shop-items"
+title  = "The Sandman, Dream Dealer"
+layout = "columns"
+quote  = "Every dream has its price. Choose what I carry, and what it costs."
+number = { attr = "price", label = "Price", min = 0, max = 99999, editable = "priceEditable" }
+
+[[fields.shop.sections]]
+id      = "minor"
+label   = "Offers"
+group   = "Minor dreams"
+accepts = { role = "offer" }
+count   = { label = "Offers per visit", min = 1, max = 4, default = 4 }
+
+[[fields.shop.sections]]
+id      = "medium"
+label   = "Offer"
+group   = "Medium dreams"
+accepts = { role = "offer" }
+
+[[fields.shop.sections]]
+id      = "medium_duplicate"
+label   = "Copies a magical object"
+group   = "Medium dreams"
+accepts = { role = "duplicate" }
+
+[[fields.shop.sections]]
+id      = "major"
+label   = "Offer"
+group   = "Major dreams"
+accepts = { role = "offer" }
+
+[[fields.shop.sections]]
+id      = "major_duplicate"
+label   = "Copies a magical object"
+group   = "Major dreams"
+accepts = { role = "duplicate" }
+
+[fields.shop.theme]
+title       = "Ui/SandMan/UI_SandManTitle_Bg.png"
+panel       = "Ui/SandMan/UI_SandManBg.png"
+separator   = "Ui/SandMan/UI_SandMan_categories_Separator.png"
+header      = { texture = "Ui/SandMan/UI_SandMan_categoriesBG.png", ink = "dark" }
+details     = { texture = "Ui/SandMan/Ui_SandMan_DescriptionBG.png", ink = "dark" }
+quote       = { texture = "Ui/SandMan/UI_QuoteBg.png", ink = "light" }
+remove      = "Ui/SandMan/Ui_SandMan_Close_Button_Normal.png"
+removeHover = "Ui/SandMan/Ui_SandMan_Close_Button_Selected.png"
+numberIcon  = "Ui/HUD/HUD_Dream_Shards_Icon.png"
+portrait    = "Ui/NPC/NPC_Sandman_Portrait.png"

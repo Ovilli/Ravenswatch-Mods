@@ -1,0 +1,2 @@
+[config]
+shop = { sections = { minor = { count = 2 } }, numbers = { Power_Up_Sandman_Major_Duplicate_Epic_Object = 1, Power_Up_Sandman_Major_Upgrade_Talent_To_Legendary = 1, Power_Up_Sandman_Medium_Duplicate_Common_Object = 1, Power_Up_Sandman_Medium_Duplicate_Object = 1, Power_Up_Sandman_Medium_Duplicate_Rare_Object = 1, Power_Up_Sandman_Medium_Upgrade_2_Talent = 1, Power_Up_Sandman_Minor_Heal = 1, Power_Up_Sandman_Minor_Reroll = 1, Power_Up_Sandman_Minor_Shield = 1, Power_Up_Sandman_Minor_Strength = 1 } }

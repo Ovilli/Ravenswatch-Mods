@@ -1,0 +1,16 @@
+[mod]
+id           = "sandman-shop-test"
+name         = "Sandman Shop Test"
+version      = "0.2.0"
+author       = "Ovilli"
+description  = "Edit what the Sandman sells and what it costs, from a shop-styled config editor. Playtest values: every Sandman item costs 1 and the Minor row offers 2."
+enabled      = true
+experimental = true
+sdk_version  = ">=3.0,<4"
+multiplayer_scope = "deterministic-shared"
+tags = ["shop", "test"]
+
+[[content]]
+kind   = "shop"
+id     = "sandman"
+config = "shop"
