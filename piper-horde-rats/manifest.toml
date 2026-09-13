@@ -71,7 +71,7 @@
 [mod]
 id          = "piper-horde-rats"
 name        = "Piper: Horde of Rats"
-version     = "0.4.0"
+version     = "0.4.1"
 author      = "Ovilli"
 license     = "MIT"
 description = "Horde now also summons 3 / 4 / 5 rats (by rarity) that attack at once, like Invasive Blast, every 48 basic attacks, on top of a higher rat cap."
@@ -135,6 +135,29 @@ clone_nodes = [
   { source = "Event Attack Shoot Active", name = "Horde Basic Attack Shoot", retarget = [
     { from = '[Cpnt Value Tester] Hero_Piper\Skill Attack Ghost Notes\Skill Attack Ghost Notes Notify Tester', to = '[State] Hero_Piper\Skill Trait More Controllable Pets\Horde Basic Attack Notify' },
   ] },
+
+  # -- the card text's numbers (v0.4.1) ----------------------------------------
+  # Talent cards never spell out rarities: every number is a `{N}` placeholder
+  # fed by a String Format node, so the card shows the value for the CURRENT
+  # rarity and an upgrade shows what it adds (`&{N}~` marks a value that grows
+  # with rarity, `#{N}@` a fixed one). Horde's own format has 3 slots and the
+  # new text needs 5, so copy the only 5-slot format on Piper (Sound Barrier's)
+  # and point each slot at the Horde value, then give the copy Horde's text key.
+  # Slots 0 and 2 are int-typed, 1 / 3 / 4 float-typed; a slot sourced from a
+  # node uses that node's value, and the shipped float slots (armor, shield
+  # duration) show whole numbers, but the rarity-scaled count sits in slot 0.
+  #   {0} rats per trigger  (3 / 4 / 5 / 5)   {1} basic attacks needed (48)
+  #   {2} rats per group    (Horde: 3)        {3} rats per group without Horde (2)
+  #   {4} extra max rats    (6 / 8 / 10 / 12)
+  { source = "Skill String Desc Defensive Armor Quest", name = "Skill String Desc Horde Rats", retarget = [
+    { from = '[Value Selector] Hero_Piper\Skill Defensive Armor Quest\Skill Defensive Armor Quest Objective Count Selector', to = '[Value Selector] Hero_Piper\Skill Trait More Controllable Pets\Horde Rats Count Selector' },
+    { from = '[Value] Hero_Piper\Skill Defensive Armor Quest\Skill Defensive Armor Quest Armor Per Proc', to = '[Value Selector] Hero_Piper\Skill Trait More Controllable Pets\Horde Attacks Required Selector' },
+    { from = '[Value] Hero_Piper\Skill Defensive Armor Quest\Skill Defensive Armor Quest Character Impacts Required', to = '[Value Selector] Hero_Piper\Skill Trait More Controllable Pets\Skill Trait More Controllable Pets Per Spawn Amount Selector' },
+    { from = '[Multi values operations] Hero_Piper\Skill Defensive Armor Quest\Skill Defensive Armor Quest Complete Shield Operation', to = '[Value] Hero_Piper\Ability Trait\Trait Ability Pets Per Spawn Default Amount' },
+    { from = '[Value] Hero_Piper\Skill Defensive Armor Quest\Skill Defensive Armor Quest Complete Shield Duration', to = '[Value Selector] Hero_Piper\Skill Trait More Controllable Pets\Skill Trait More Controllable Pets Amount Selector' },
+  ], rename = [
+    { from = "Skill_Defense_Armor_Quest_Desc", to = "Skill_Trait_More_Controllable_Pets_Desc" },
+  ] },
 ]
 
 # Selector values sit at odd union indices, highest rarity first, common last.
@@ -159,6 +182,8 @@ rewires = [
   { trigger = '[Value Selector] Hero_Piper\Skill Defense Spawn Pets\Skill Defense Spawn Pets Max Count Selector', action = "Horde Rats Count Switch", exact = true, within = "Skill Defense Spawn Pets Count Operation Store", within_span = 400 },
   # Horde's controller and both rat selectors -> the new state.
   { trigger = '[State] Hero_Piper\Skill Trait More Controllable Pets\Skill Trait More Controllable Pets', action = "Horde Attacks State", exact = true, all = true },
+  # Horde's card reads its numbers from the 5-slot format above.
+  { trigger = '[String Format] Hero_Piper\Skills\Skill String Desc Trait More Controllable Pets', action = "Skill String Desc Horde Rats", exact = true },
   # Only the BASIC attack shot goes through Horde's notify.
   { trigger = '[State] Hero_Piper\Ability Common\Event Attack Shoot Active', action = "Horde Basic Attack Shoot", exact = true, within = "Event Basic Attack Shoot Active", within_span = 300 },
 ]
@@ -170,4 +195,7 @@ hero   = "Piper"
 mode   = "relabel"
 source = "Skill_Trait_More_Controllable_Pets"
 
-description = "• Every #48@ basic attacks, &3~ rats (#4@ Rare, #5@ Epic and Legendary) spawn and immediately attack nearby enemies\n• Rats spawn in groups of #{0}@ (instead of {1})\n• Increase maximum controllable rats by &{2}~"
+# Written like the shipped cards: every number is a placeholder (see the
+# `Skill String Desc Horde Rats` note above), `&..~` for values that grow with
+# rarity, `#..@` for fixed ones and ability keywords.
+description = "• For every #{1}@ notes played with #ATTACK@, summon &{0}~ rats that immediately attack nearby enemies\n• Rats spawn in groups of #{2}@ (instead of {3})\n• Increase maximum controllable rats by &{4}~"
