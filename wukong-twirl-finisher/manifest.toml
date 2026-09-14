@@ -60,11 +60,11 @@
 
 [mod]
 id          = "wukong-twirl-finisher"
-name        = "Wukong: Twirl Finisher"
-version     = "0.2.0"
+name        = "Wukong: Talent Tweaks"
+version     = "0.3.0"
 author      = "Ovilli"
 license     = "MIT"
-description = "Stick Twirl no longer plays its own spin: the attack after a dash is the end of Wukong's combo — Celestial Pillar's slam if you own it, otherwise the 4th basic attack."
+description = "Stick Twirl's dash attack becomes the end of Wukong's combo (Celestial Pillar's slam if owned, else the 4th hit), and Fiery Dragon / Frost Tiger also reduce TRAIT cooldown by 10-25% by rarity."
 sdk_version = "3"
 enabled     = true
 tags        = ["talents", "wukong", "animation"]
@@ -128,3 +128,141 @@ mode   = "relabel"
 source = "Skill_Attack_After_Dash"
 
 description = "• #ATTACK@ triggered after a #DASH@ unleashes the final blow of the #ATTACK@ combo"
+
+# ---------------------------------------------------------------------------
+# Fire: Fiery Dragon also reduces TRAIT cooldown.
+#
+# Beowulf's Draconic Binds does this on quest completion with one modifier:
+# `Skill Trait Quest Complete CD Reduction Modifier`, stat 8a5db415 (TRAIT
+# cooldown — the same stat Geppetto's Extra Charge uses; 845d/865d/885d are
+# POWER/SPECIAL/DEFENSE), value from a selector, target its owner, child of the
+# state that owns the effect. Wukong's `Skill Trait Fire` state has NO children
+# (other nodes test it to add the explosion), so:
+#   * `Skill Trait Fire Cooldown Reduction Selector` = the talent's own damage
+#     selector (already keyed to its rarity), numbers replaced below;
+#   * `Skill Trait Fire Cooldown Reduction Modifier` = Power Hold's self AP
+#     modifier (same layout as Beowulf's), reading that selector, with
+#     Beowulf's stat; it gets its own self-collector sub-object;
+#   * `Skill Trait Fire With Cooldown` = Power Hold's state (one modifier child),
+#     holding the new modifier; EVERY reference to `Skill Trait Fire` moves here,
+#     the controller's and the explosion check's alike.
+# The card gets a 2-slot format (Dash Sprint's: a percent slot and a plain one).
+# UNPROVEN in game.
+# ---------------------------------------------------------------------------
+
+[[content]]
+kind = "talent"
+id   = "trait_fire_cooldown_wiring"
+hero = "SunWukong"
+file = "Hero_SunWukong.entity"
+
+clone_nodes = [
+  { source = "Skill Trait Fire Damage Multiplier Selector", name = "Skill Trait Fire Cooldown Reduction Selector" },
+  { source = "Skill Power Hold AP Modifier", name = "Skill Trait Fire Cooldown Reduction Modifier", modifier_stat = { hero = "Beowulf", node = "Skill Trait Quest Complete CD Reduction Modifier" }, retarget = [
+    { from = '[Value Selector] Hero_SunWukong\Skill Power Hold\Skill Power Hold AP Selector', to = '[Value Selector] Hero_SunWukong\Skill Trait Fire\Skill Trait Fire Cooldown Reduction Selector' },
+  ] },
+  { source = "Skill Power Hold", name = "Skill Trait Fire With Cooldown", retarget = [
+    { from = '[Modifier] Hero_SunWukong\Skill Power Hold\Skill Power Hold AP Modifier', to = '[Modifier] Hero_SunWukong\Skill Trait Fire\Skill Trait Fire Cooldown Reduction Modifier' },
+  ] },
+  { source = "Skill String Desc Dash Sprint", name = "Skill String Desc Trait Fire With Cooldown", retarget = [
+    { from = '[Value Selector] Hero_SunWukong\Skill Dash Sprint\Skill Dash Sprint Move Speed Increase Selector', to = '[Value Selector] Hero_SunWukong\Skill Trait Fire\Skill Trait Fire Cooldown Reduction Selector' },
+    { from = '[Value] Hero_SunWukong\Skill Dash Sprint\Skill Dash Sprint Max Duration', to = '[Multi values operations] Hero_SunWukong\Skill Trait Fire\Skill Trait Fire Supposed Damage Operation' },
+  ], rename = [
+    { from = "Skill_Dash_Sprint_Desc", to = "Skill_Trait_Fire_Desc" },
+  ] },
+]
+
+# TRAIT cooldown -10% common, -15% rare, -20% epic, -25% legendary (Draconic
+# Binds gives a flat -25% once its quest is done). Selector values sit at odd
+# union indices, highest rarity first; the old values are the damage numbers
+# the selector was copied from.
+union_patches = [
+  { label = "Skill Trait Fire Cooldown Reduction Selector", index = 1, old = 3.85, new = 0.25 },
+  { label = "Skill Trait Fire Cooldown Reduction Selector", index = 3, old = 3.3, new = 0.20 },
+  { label = "Skill Trait Fire Cooldown Reduction Selector", index = 5, old = 2.75, new = 0.15 },
+  { label = "Skill Trait Fire Cooldown Reduction Selector", index = 7, old = 2.2, new = 0.10 },
+]
+
+rewires = [
+  { trigger = '[State] Hero_SunWukong\Skill Trait Fire\Skill Trait Fire', action = "Skill Trait Fire With Cooldown", exact = true, all = true },
+  { trigger = '[String Format] Hero_SunWukong\Skills\Skill String Desc Trait Fire', action = "Skill String Desc Trait Fire With Cooldown", exact = true },
+]
+
+[[content]]
+kind   = "skill"
+id     = "trait_fire_cooldown_text"
+hero   = "Sun_Wukong"
+mode   = "relabel"
+source = "Skill_Trait_Fire"
+
+# {0} = TRAIT cooldown reduction (grows with rarity), {1} = explosion damage.
+description = "• Adds an explosion of fire to the activation effects of $YANG STANCE*, dealing &{1}~ area damage and inflicting enemies with #IGNITE@\n• #TRAIT@ cooldown &-{0}%~"
+
+# ---------------------------------------------------------------------------
+# Frost: Frost Tiger also reduces TRAIT cooldown.
+#
+# Beowulf's Draconic Binds does this on quest completion with one modifier:
+# `Skill Trait Quest Complete CD Reduction Modifier`, stat 8a5db415 (TRAIT
+# cooldown — the same stat Geppetto's Extra Charge uses; 845d/865d/885d are
+# POWER/SPECIAL/DEFENSE), value from a selector, target its owner, child of the
+# state that owns the effect. Wukong's `Skill Trait Frost` state has NO children
+# (other nodes test it to add the explosion), so:
+#   * `Skill Trait Frost Cooldown Reduction Selector` = the talent's own damage
+#     selector (already keyed to its rarity), numbers replaced below;
+#   * `Skill Trait Frost Cooldown Reduction Modifier` = Power Hold's self AP
+#     modifier (same layout as Beowulf's), reading that selector, with
+#     Beowulf's stat; it gets its own self-collector sub-object;
+#   * `Skill Trait Frost With Cooldown` = Power Hold's state (one modifier child),
+#     holding the new modifier; EVERY reference to `Skill Trait Frost` moves here,
+#     the controller's and the explosion check's alike.
+# The card gets a 2-slot format (Dash Sprint's: a percent slot and a plain one).
+# UNPROVEN in game.
+# ---------------------------------------------------------------------------
+
+[[content]]
+kind = "talent"
+id   = "trait_frost_cooldown_wiring"
+hero = "SunWukong"
+file = "Hero_SunWukong.entity"
+
+clone_nodes = [
+  { source = "Skill Trait Frost Damage Multiplier Selector", name = "Skill Trait Frost Cooldown Reduction Selector" },
+  { source = "Skill Power Hold AP Modifier", name = "Skill Trait Frost Cooldown Reduction Modifier", modifier_stat = { hero = "Beowulf", node = "Skill Trait Quest Complete CD Reduction Modifier" }, retarget = [
+    { from = '[Value Selector] Hero_SunWukong\Skill Power Hold\Skill Power Hold AP Selector', to = '[Value Selector] Hero_SunWukong\Skill Trait Frost\Skill Trait Frost Cooldown Reduction Selector' },
+  ] },
+  { source = "Skill Power Hold", name = "Skill Trait Frost With Cooldown", retarget = [
+    { from = '[Modifier] Hero_SunWukong\Skill Power Hold\Skill Power Hold AP Modifier', to = '[Modifier] Hero_SunWukong\Skill Trait Frost\Skill Trait Frost Cooldown Reduction Modifier' },
+  ] },
+  { source = "Skill String Desc Dash Sprint", name = "Skill String Desc Trait Frost With Cooldown", retarget = [
+    { from = '[Value Selector] Hero_SunWukong\Skill Dash Sprint\Skill Dash Sprint Move Speed Increase Selector', to = '[Value Selector] Hero_SunWukong\Skill Trait Frost\Skill Trait Frost Cooldown Reduction Selector' },
+    { from = '[Value] Hero_SunWukong\Skill Dash Sprint\Skill Dash Sprint Max Duration', to = '[Multi values operations] Hero_SunWukong\Skill Trait Frost\Skill Trait Frost Supposed Damage Operation' },
+  ], rename = [
+    { from = "Skill_Dash_Sprint_Desc", to = "Skill_Trait_Frost_Desc" },
+  ] },
+]
+
+# TRAIT cooldown -10% common, -15% rare, -20% epic, -25% legendary (Draconic
+# Binds gives a flat -25% once its quest is done). Selector values sit at odd
+# union indices, highest rarity first; the old values are the damage numbers
+# the selector was copied from.
+union_patches = [
+  { label = "Skill Trait Frost Cooldown Reduction Selector", index = 1, old = 7.7, new = 0.25 },
+  { label = "Skill Trait Frost Cooldown Reduction Selector", index = 3, old = 6.6, new = 0.20 },
+  { label = "Skill Trait Frost Cooldown Reduction Selector", index = 5, old = 5.5, new = 0.15 },
+  { label = "Skill Trait Frost Cooldown Reduction Selector", index = 7, old = 4.4, new = 0.10 },
+]
+
+rewires = [
+  { trigger = '[State] Hero_SunWukong\Skill Trait Frost\Skill Trait Frost', action = "Skill Trait Frost With Cooldown", exact = true, all = true },
+  { trigger = '[String Format] Hero_SunWukong\Skills\Skill String Desc Trait Frost', action = "Skill String Desc Trait Frost With Cooldown", exact = true },
+]
+
+[[content]]
+kind   = "skill"
+id     = "trait_frost_cooldown_text"
+hero   = "Sun_Wukong"
+mode   = "relabel"
+source = "Skill_Trait_Frost"
+
+# {0} = TRAIT cooldown reduction (grows with rarity), {1} = explosion damage.
+description = "• Adds an explosion of frost to the activation effects of \\YIN STANCE§, dealing &{1}~ area damage and inflicting enemies with #CHILLED@\n• #TRAIT@ cooldown &-{0}%~"

@@ -1,9 +1,10 @@
--- Wukong: Twirl Finisher — testing grant.
+-- Wukong: Talent Tweaks — testing grant.
 --
--- The rewire only changes anything once Stick Twirl is owned, and waiting for
--- the game to offer it turns every test into a lottery. This hands it over at
--- the start of each run (and Celestial Pillar too, when `grant_pillar` is on,
--- because how the two interact is the other half of the test).
+-- Every change in this mod only shows once its talent is owned, and waiting for
+-- the game to offer it turns every test into a lottery. This hands the talents
+-- over at the start of each run: Stick Twirl, Celestial Pillar (how the two
+-- interact is half the Twirl test), and Fiery Dragon / Frost Tiger for the TRAIT
+-- cooldown reduction. Each optional one has a config toggle.
 --
 -- A controller's name resolves either as "Skill Controller Dash Attack" or as
 -- its text key "Skill_Attack_After_Dash", so each talent is tried under both.
@@ -17,12 +18,18 @@ local RARITY = { common = 0, rare = 1, epic = 2, legendary = 3 }
 local cfg = {
     tier         = RARITY[R.config.get("rarity", "common")] or 0,
     grant_pillar = R.config.get("grant_pillar", true),
+    grant_fire   = R.config.get("grant_fire", true),
+    grant_frost  = R.config.get("grant_frost", true),
 }
 
 local TALENTS = {
     { label = "Stick Twirl",      queries = { "Skill Controller Dash Attack", "Attack After Dash" } },
     { label = "Celestial Pillar", queries = { "Skill Controller Attack Finisher", "Attack Finisher" },
       optional = "grant_pillar" },
+    { label = "Fiery Dragon",     queries = { "Skill Controller Trait Fire", "Skill_Trait_Fire" },
+      optional = "grant_fire" },
+    { label = "Frost Tiger",      queries = { "Skill Controller Trait Frost", "Skill_Trait_Frost" },
+      optional = "grant_frost" },
 }
 
 local done = false

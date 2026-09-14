@@ -8,3 +8,13 @@ default = "common"
 label   = "Also grant Celestial Pillar (to test how the two interact)"
 type    = "bool"
 default = true
+
+[fields.grant_fire]
+label   = "Also grant Fiery Dragon (TRAIT cooldown reduction)"
+type    = "bool"
+default = true
+
+[fields.grant_frost]
+label   = "Also grant Frost Tiger (TRAIT cooldown reduction)"
+type    = "bool"
+default = true
