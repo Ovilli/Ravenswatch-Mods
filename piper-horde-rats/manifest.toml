@@ -103,8 +103,8 @@ tags        = ["talents", "piper", "rats"]
 # `skill` (relabel) is rated below confirmed as a kind.
 experimental = true
 
-# Cloned nodes + rewires in the hero entity, plus text. init.lua only grants
-# Horde at run start for testing.
+# Cloned nodes + rewires in the hero entity, plus text. No Lua: the testing
+# auto-grant was removed before publishing (use the talent-grant dev mod).
 multiplayer_scope = "local-only"
 
 [[content]]

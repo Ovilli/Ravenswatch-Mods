@@ -72,8 +72,8 @@ tags        = ["talents", "wukong", "animation"]
 # `skill` (relabel) is rated below confirmed as a kind.
 experimental = true
 
-# One cloned selector + one GUID in the hero entity, plus text values. init.lua only grants Stick
-# Twirl (and, by config, Celestial Pillar) at run start for testing.
+# Cloned nodes + rewires in the hero entity, plus text values. No Lua: the testing
+# auto-grant was removed before publishing (use the talent-grant dev mod).
 multiplayer_scope = "local-only"
 
 # ---------------------------------------------------------------------------
