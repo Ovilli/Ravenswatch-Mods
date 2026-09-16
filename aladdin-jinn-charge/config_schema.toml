@@ -1,0 +1,10 @@
+[fields.auto_grant]
+label   = "Grant Jinn Charge at the start of every run (testing)"
+type    = "bool"
+default = true
+
+[fields.rarity]
+label   = "Rarity of the granted talent"
+type    = "enum"
+values  = ["common", "rare", "epic", "legendary"]
+default = "legendary"

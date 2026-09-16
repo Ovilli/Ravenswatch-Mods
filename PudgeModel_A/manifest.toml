@@ -11,8 +11,7 @@ tags        = ["skin", "beowulf", "pudge", "model"]
 license     = "MIT"
 sdk_version = ">=3.0,<4"
 experimental = true
-enabled     = true
-
+enabled     = false
 [[content]]
 kind   = "mesh"
 id     = "pudge_body"

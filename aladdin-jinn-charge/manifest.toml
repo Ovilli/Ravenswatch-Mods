@@ -1,0 +1,173 @@
+# Aladdin — Cyclonic Appearance becomes Jinn Charge
+#
+# OLD: "When triggering POWER, Jinn hits all nearby enemies and deals X% of
+#       POWER's damage"
+# NEW: "DASH used after POWER summons the Jinn to charge through enemies and
+#       deal 43 damage" (legendary; 25 / 31 / 37 / 43 at base damage, grows
+#       with level like every other damage number on a card)
+#
+# The talent keeps its roster seat (controller `Skill Controller Power Start
+# AOE`, icon, rarity tiers). Only its behaviour and its card change.
+#
+# HOW CYCLONIC APPEARANCE IS WIRED (read off Hero_Aladdin.entity, 2026-09-15)
+# --------------------------------------------------------------------------
+#   State Ability Primary In            (POWER pressed)
+#     on enter -> Skill Power Start AOE Trigger Tester
+#                   if [State] Skill Power Start AOE (talent owned)
+#                   -> start Skill Power Start AOE Attack Delay (timer)
+#                        on complete -> Event Skill Power Start AOE Active
+#                                         = zone attack + Jinn FX + sound
+#
+# So the game already has a talent-gated "POWER was triggered" signal. We keep
+# it and change what it fires: the timer now OPENS A 2 s CHARGE WINDOW instead
+# of the area hit, which is what removes Cyclonic Appearance. POWER holds for
+# at most 0.65 s, so a window opened on press covers the hold and ~1 s after.
+#
+# THE CHARGE
+# ----------
+# Every dash picks its animation in `Dash Ability Clip Selector`:
+#     [Quick Ride carpet]   if Quick Ride owned
+#     [Dash Ability Clip]   otherwise
+# The default entry now points at a cloned selector:
+#     [State Skill Power Jinn Charge Dash]  if the charge condition holds
+#     [Dash Ability Clip]                   otherwise
+# The charge state plays the NORMAL dash clip (so movement is unchanged) and,
+# while it runs, keeps a zone attack active — a copy of Quick Ride's, the one
+# that damages everything the carpet passes, but dealing Jinn Charge's damage
+# and playing Cyclonic Appearance's Jinn impact FX/sound on each enemy hit.
+#
+# The state is a copy of Spinning Strikes' `State Skill Attack Flurry Basic
+# Attack`, which has exactly this job ("next action within a window"): on
+# enter it starts an FX and CONSUMES its window timer, on exit it stops the FX.
+# Consuming the timer would flip a selector back to the plain dash mid-charge,
+# which is why the condition is a copy of Leaping Strike's:
+#     charge in progress  OR  (Jinn Charge owned AND window running)
+# so one POWER gives one charge.
+#
+# NOTE: with Quick Ride also owned, the carpet dash wins (its entry comes
+# first). UNPROVEN in game.
+
+[mod]
+id          = "aladdin-jinn-charge"
+name        = "Aladdin: Jinn Charge"
+version     = "0.1.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Replaces Aladdin's Cyclonic Appearance with Jinn Charge: a DASH used right after POWER summons the Jinn to charge through enemies, damaging everything Aladdin passes."
+sdk_version = "3"
+enabled     = true
+tags        = ["talents", "aladdin"]
+
+# `skill` (relabel) is rated below confirmed as a kind.
+experimental = true
+
+# Gameplay change to the hero entity, plus an init.lua that grants the talent
+# for testing. Strip init.lua + config_schema.toml before publishing.
+multiplayer_scope = "local-only"
+
+[[content]]
+kind = "talent"
+id   = "jinn_charge_wiring"
+hero = "Aladdin"
+file = "Hero_Aladdin.entity"
+
+clone_nodes = [
+  # -- the window: opened by POWER, 2 s ---------------------------------------
+  { source = "Skill Dash Attack Enabled Duration", name = "Skill Power Jinn Charge Window Duration" },
+  { source = "Skill Dash Attack Timer", name = "Skill Power Jinn Charge Window Timer", retarget = [
+    { from = '[Value] Hero_Aladdin\Skill Dash Attack\Skill Dash Attack Enabled Duration', to = '[Value] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Window Duration' },
+  ] },
+  # Deactivate + activate = restart, so a second POWER refreshes the window.
+  { source = "Event Skill Dash Attack Reset Timer", name = "Event Skill Power Jinn Charge Open Window", retarget = [
+    { from = '[Timer] Hero_Aladdin\Skill Dash Attack\Skill Dash Attack Timer', to = '[Timer] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Window Timer' },
+  ] },
+
+  # -- the damage --------------------------------------------------------------
+  # Cyclonic Appearance's own selector, so the tiers stay keyed to this talent;
+  # numbers replaced below. It is a straight damage ratio, like Quick Ride's.
+  { source = "Skill Power Start AOE Damage Multiplier Selector", name = "Skill Power Jinn Charge Damage Selector" },
+  # Cyclonic Appearance's damage node (a POWER hit, with its Jinn impact FX and
+  # sound), reading the ratio directly instead of "% of POWER's damage".
+  { source = "Skill Power Start AOE Damage", name = "Skill Power Jinn Charge Damage", retarget = [
+    { from = '[Value Operation] Hero_Aladdin\Skill Power Start AOE\Skill Power Start AOE Damage Multiplier Operation', to = '[Value Selector] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Damage Selector' },
+  ] },
+  # Quick Ride's zone attack: stays active while its state runs and hits what
+  # the hero passes. Its damage is named in an owned sub-object, copied with it.
+  { source = "Skill Ultimate 2 Carpet Dash Attack", name = "Skill Power Jinn Charge Attack", retarget = [
+    { from = '[Dt Damage] Hero_Aladdin\Skill Ultimate 2 Carpet Dash\Skill Ultimate 2 Carpet Dash Damage', to = '[Dt Damage] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Damage' },
+  ] },
+
+  # -- the charge state ----------------------------------------------------------
+  # L1 on enter: inertia tester (kept), FX       L2 on enter: stop window timer
+  # L6 on exit:  stop FX                         children: clip, look-at,
+  #                                                         detector (kept), AP modifier
+  { source = "State Skill Attack Flurry Basic Attack", name = "State Skill Power Jinn Charge Dash", retarget = [
+    { from = '[Fx] Hero_Aladdin\Skill Attack Flurry\Skill Attack Flurry Fx Loop', to = '[Fx] Hero_Aladdin_FX\Skill Power Start AOE\Skill Power Start AOE Fx Active' },
+    { from = '[Timer] Hero_Aladdin\Skill Attack Flurry\Skill Attack Flurry Timer', to = '[Timer] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Window Timer' },
+    { from = '[Anim Clip] Hero_Aladdin\Skill Attack Flurry\Skill Attack Flurry Clip', to = '[Anim Clip] Hero_Common\Ability Dash\Dash Ability Clip' },
+    # the attack look-at would steer the dash toward an enemy
+    { from = '[Look At TopDown] Hero_Common\Base\Default Attack Look At', to = '[Gpn Zone Attack] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Attack' },
+    # Spinning Strikes' attack-power bonus must not come along
+    { from = '[Modifier] Hero_Aladdin\Skill Attack Flurry\Skill Attack Flurry AP Modifier', to = '[FMod Event] Hero_Aladdin\Skill Power Start AOE\Skill Power Start AOE FMod Event Active' },
+  ] },
+
+  # -- when a dash charges -------------------------------------------------------
+  # Leaping Strike's: attack in progress OR (owned AND window running).
+  { source = "Basic Attack Is Skill Dash Attack Condition", name = "Skill Power Jinn Charge Dash Condition", retarget = [
+    { from = '[State] Hero_Aladdin\Skill Dash Attack\State Skill Dash Attack Basic Attack', to = '[State] Hero_Aladdin\Skill Power Start AOE\State Skill Power Jinn Charge Dash' },
+    { from = '[State] Hero_Aladdin\Skill Dash Attack\Skill Dash Attack', to = '[State] Hero_Aladdin\Skill Power Start AOE\Skill Power Start AOE' },
+    { from = '[Timer] Hero_Aladdin\Skill Dash Attack\Skill Dash Attack Timer', to = '[Timer] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Window Timer' },
+  ] },
+  { source = "Skill Dash Attack Clip Selector", name = "Skill Power Jinn Charge Dash Clip Selector", retarget = [
+    { from = '[Anim Clip] Hero_Aladdin\Skill Dash Attack\Skill Dash Attack Clip 2', to = '[State] Hero_Aladdin\Skill Power Start AOE\State Skill Power Jinn Charge Dash' },
+    { from = '[Cpnt Value Tester] Hero_Aladdin\Ability Basic\Basic Attack Use Alt Clip Condition', to = '[Cpnt Value Tester] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Dash Condition' },
+    { from = '[Anim Clip] Hero_Aladdin\Skill Dash Attack\Skill Dash Attack Clip 1', to = '[Anim Clip] Hero_Common\Ability Dash\Dash Ability Clip' },
+  ] },
+
+  # -- the card number -----------------------------------------------------------
+  # base damage x POWER attack-power multiplier x ratio, the way POWER's own
+  # card computes its number.
+  { source = "Primary Abillity Supposed Damage Operation", name = "Skill Power Jinn Charge Supposed Damage", retarget = [
+    { from = '[Value] Hero_Aladdin\Ability Primary\Ability Primary Damage Multiplier Min', to = '[Value Selector] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Damage Selector' },
+  ] },
+  # Healing Blades' card has one slot already showing a damage-style number
+  # (Cyclonic's shows a percent).
+  { source = "Skill String Desc Special Healing", name = "Skill String Desc Power Jinn Charge", retarget = [
+    { from = '[Multi values operations] Hero_Aladdin\Skill Special Healing\Skill Special Healing Max Healing Operation', to = '[Multi values operations] Hero_Aladdin\Skill Power Start AOE\Skill Power Jinn Charge Supposed Damage' },
+  ], rename = [
+    { from = "Skill_Special_Healing_Desc", to = "Skill_Power_Start_AOE_Desc" },
+  ] },
+]
+
+value_patches = [
+  { label = "Skill Power Jinn Charge Window Duration", old = 3.0, new = 2.0 },
+]
+
+# Damage ratio x base damage. Highest rarity first, common last (odd indices).
+# At base damage (10) the card reads 43 / 37 / 31 / 25. For scale: Quick Ride
+# is 7 / 6 / 5 / 4, Cyclonic Appearance was 6.4 / 5.6 / 4.8 / 4.0.
+union_patches = [
+  { label = "Skill Power Jinn Charge Damage Selector", index = 1, old = 0.8, new = 4.3 },
+  { label = "Skill Power Jinn Charge Damage Selector", index = 3, old = 0.7, new = 3.7 },
+  { label = "Skill Power Jinn Charge Damage Selector", index = 5, old = 0.6, new = 3.1 },
+  { label = "Skill Power Jinn Charge Damage Selector", index = 7, old = 0.5, new = 2.5 },
+]
+
+rewires = [
+  # POWER's talent-gated trigger opens the window instead of the area hit.
+  { trigger = '[State] Hero_Aladdin\Skill Power Start AOE\Event Skill Power Start AOE Active', action = "Event Skill Power Jinn Charge Open Window", exact = true },
+  # Every dash that is not a Quick Ride goes through the charge selector.
+  { trigger = '[Anim Clip] Hero_Common\Ability Dash\Dash Ability Clip', action = "Skill Power Jinn Charge Dash Clip Selector", exact = true, within = "Dash Ability Clip Selector", within_span = 700 },
+  { trigger = '[String Format] Hero_Aladdin\Skills\Skill String Desc Power Start AOE', action = "Skill String Desc Power Jinn Charge", exact = true },
+]
+
+[[content]]
+kind   = "skill"
+id     = "jinn_charge_text"
+hero   = "Aladdin"
+mode   = "relabel"
+source = "Skill_Power_Start_AOE"
+
+display_name = "Jinn Charge"
+# {0} = damage (grows with rarity and level)
+description  = "• #DASH@ used after #POWER@ summons the Jinn to charge through enemies and deal &{0}~ damage"

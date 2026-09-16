@@ -4,7 +4,7 @@ name        = "Spawn Test (dev)"
 version     = "0.1.0"
 author      = "RSMM"
 description = "Testing tool for R.spawn: logs the spawn chain, then spawns copies of an enemy the game has already spawned this run, beside the hero."
-enabled     = true
+enabled     = false
 load_order  = 90
 sdk_version = ">=3.0,<4"
 license     = "MIT"
