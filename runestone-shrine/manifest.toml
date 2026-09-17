@@ -8,12 +8,11 @@ enabled     = true
 load_order  = 31
 sdk_version = ">=3.0,<4"
 license     = "MIT"
-# The `poi` kind is still rated 'experimental'. The additive chain it rests on
-# is proven in-game as of 2026-09-12 — a mod-owned tiledef pooled and placed, a
-# mod-owned level built, a mod-owned entity instantiated and drawn, and a
-# mod-owned minimap marker rendering this mod's own icon — but the INTERACTION
-# on a mod-owned host has not been confirmed, so the flag stays honest.
-experimental = true
+# The `poi` kind is rated 'confirmed' as of 2026-09-17, so no experimental
+# opt-in is needed any more. The whole chain is proven in-game on this mod: the
+# tiledef is pooled and placed, its level builds, this mod's own entity is
+# instantiated and drawn with its own mesh and textures, its minimap icon draws,
+# the hold prompt appears on the pillar, and the interaction runs to success.
 tags = ["world", "map", "poi", "structures", "custom-art"]
 # Map generation is part of the seeded run state, so every peer must agree on
 # the tile pool. Everyone in the lobby needs this mod at the same version.
