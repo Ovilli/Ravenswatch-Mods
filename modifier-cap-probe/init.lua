@@ -69,6 +69,28 @@ local armed = R.modifier.on_slots(function(count, _controller)
     end
 end)
 
+-- STAGE 2 — ask for a sixth slot.
+--
+-- Stage 1 (above) established that the stored count stops at five while the
+-- engine's padding only ever appends. Since the UI spawns one widget per vector
+-- element, a six-element vector should draw a sixth EMPTY slot. What happens
+-- when you click it is the whole answer:
+--
+--   the slot fills   -> "add" just finds a free slot, and the cap is the slot
+--                       list alone -- no byte patching needed
+--   it refuses       -> the bound lives in the store, and the serialization
+--                       risk is the real obstacle
+--
+-- Off by default because it WRITES to a live engine vector. Turn it on with
+-- `slots = 6` in this mod's config (5 = vanilla behaviour, 8 is the ceiling the
+-- SDK allows).
+local want = R.config and R.config.get("slots", 5) or 5
+if armed and type(want) == "number" and want > 5 then
+    R.modifier.slot_count(want)
+    R.log(("[modifier-cap] STAGE 2: asking for %d slots. Open the custom-run "
+           .. "page, then try to fill the extra slot."):format(want))
+end
+
 if armed then
     R.log("[modifier-cap] watching. Add modifiers on the custom-run page, and "
           .. "try for a sixth.")
