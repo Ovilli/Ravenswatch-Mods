@@ -1,30 +1,33 @@
--- THE SHRINE'S INTERACTION — the last unproven link in the POI chain.
+-- THE SHRINE'S INTERACTION — confirmed, and now filterable.
 --
--- Everything else is confirmed in game: the tile generates, the mesh renders,
--- the minimap icon draws. The prop entity already inherits
--- `Interactive_Object_Model` and carries all ten override records the machine
--- reads, including `Event Interaction Available At Start`, which is what ARMS
--- the interaction at spawn. So the prompt should work. Nobody has watched it.
+-- Settled in game on 2026-09-17: the pillar shows the hold prompt and runs the
+-- full protocol (validate -> request -> local_success -> success, with
+-- `canceled` on an early release). Tile, mesh, marker and interaction are all
+-- proven on a mod-owned POI.
 --
--- This file exists because of a second, sharper gap. `R.interact` publishes
--- every interaction in the run -- chest, fountain, teleporter, ours -- and does
--- NOT say which object fired it. The event payload words (`a`, `b`) and the
--- dispatcher pointer are handed over verbatim on purpose, so that one playtest
--- can pin down which of them identifies the source, instead of the SDK guessing
--- a meaning and mods building on the guess.
+-- What this file is still for is the second half: `R.interact` fires for every
+-- chest, fountain and teleporter in the run, so a mod needs to know which
+-- interaction is ITS OWN.
 --
--- So this probe answers two questions in one run:
+-- That took four attempts and only the last one holds:
 --
---   1. does the shrine's prompt appear, fill and succeed?
---   2. which handle names the object, so a mod can react to OUR shrine only?
+--   1. first string within 0x1000 of the object   -> a neighbouring melody
+--   2. the `+0x220` field                         -> the same melody, stably
+--   3. an RTTI walk for an oCEntitySettingsResource -> no such field in range
+--   4. POSITION                                   -> works
+--
+-- The lesson is in the first three: reading strings near an object answers
+-- "what text is nearby", which is a different question from "what is this".
+-- A coordinate cannot be borrowed from a neighbour. The object reports
+-- (-160.5, 0, -22.85) and `R.poi.placed` had already recorded a shrine tile at
+-- (-158, 0, -22), so the match is against a number this mod wrote down itself.
 --
 -- Read it back with `rsmm log --grep shrine-probe`, and close the experiment
 -- with `rsmm exp answer runestone-shrine poi_interactable pass`.
 --
--- The interaction protocol is host-authoritative (a client ASKS, the host
--- validates, the outcome comes back), so `request` is an intent that may never
--- land. Anything real hangs off `success` / `local_success`. This probe only
--- observes -- it changes nothing in the run.
+-- The protocol is host-authoritative (a client ASKS, the host validates), so
+-- `request` is an intent that may never land. Anything real hangs off
+-- `success` / `local_success`. This probe only observes.
 
 local R = require "rsmm"
 
@@ -48,6 +51,26 @@ end
 -- does not re-dump it. Keyed by pointer.
 local seen = {}
 
+-- Where our shrines stand this run, filled in by the tile report below. This is
+-- what makes "is this OUR point of interest" answerable: the interacted object
+-- reports its own world position, and ours are the only placements we recorded.
+local shrines = {}
+
+-- A tile is 6 units across and the prop sits near its origin; the measured gap
+-- between the pillar and its tile was about 2.6 units. Ten is comfortably
+-- inside "same clearing" without reaching the next one.
+local NEAR = 10.0
+
+local function at_a_shrine(pos)
+    if not pos then return nil end
+    for i, s in ipairs(shrines) do
+        local dx, dz = pos[1] - s[1], pos[3] - s[3]
+        local d = math.sqrt(dx * dx + dz * dz)
+        if d <= NEAR then return i, d end
+    end
+    return nil
+end
+
 R.interact.on("*", function(ev)
     -- `entity` is the object interacted WITH, which the first playtest
     -- (2026-09-17) established is carried by `request` in `b` and by `validate`
@@ -57,6 +80,14 @@ R.interact.on("*", function(ev)
 
     if entity and not seen[entity] then
         seen[entity] = true
+        -- The object's OWN class, straight from RTTI. Unlike a name walk this
+        -- cannot pick up a neighbour: it is read off the object's vtable. A
+        -- melody pickup and a scenery prop are not the same class, so this
+        -- alone separates "the name lookup is wrong" from "the target really
+        -- is a melody".
+        local cls = R.rtti and R.rtti.name and R.rtti.name(entity) or nil
+        note(("entity 0x%x class=%s"):format(entity, tostring(cls)))
+
         local name, off, all = R.interact.name(ev)
         -- EVERY candidate, not just the chosen one. The first attempt picked a
         -- neighbouring melody's resource path and reported it as the shrine's
@@ -72,18 +103,26 @@ R.interact.on("*", function(ev)
             note(("  [%d] +0x%-4x %s%s"):format(
                 i, c.at or 0, c.text, c.text:find(OURS, 1, true) and "   <<< OURS" or ""))
         end
-        if not all or #all == 0 then
-            note("no strings reachable — dumping the object so the field can be found")
-            R.debug.dump(entity, 0x200, "shrine-entity")
-        end
+        -- IDENTITY BY POSITION, because the name walks have now been wrong
+        -- twice and this checks itself against numbers we already hold.
+        --
+        -- The tile report above prints where each shrine was placed. The object
+        -- the hero interacts with stands at one of those spots, so its world
+        -- position is in this dump — and finding the tile's own coordinates
+        -- inside the object both identifies it and names the offset the
+        -- position lives at. A name lookup can pick up a neighbour; a
+        -- coordinate that matches a placement we recorded cannot.
+        R.debug.dump(entity, 0x300, "shrine-entity")
     end
 
-    local name = entity and R.interact.name(ev) or nil
-    if name and name:find(OURS, 1, true) then
-        -- ★ Ours, and filterable: this is exactly what a mod needs to react to
-        -- its OWN point of interest instead of to every chest in the run.
-        note(("★ OUR SHRINE on %s (seq %s) — entity 0x%x named %q"):format(
-            tostring(ev.phase), tostring(ev.seq), entity, name))
+    -- IS THIS OURS? By position, against the placements recorded at generation.
+    -- Names were tried three ways and were wrong three ways; a coordinate that
+    -- lands on a tile we placed is not a heuristic.
+    local which, dist = at_a_shrine(ev.pos)
+    if which then
+        note(("★ OUR SHRINE #%d on %s (seq %s) — %.1f units from the tile at (%.0f, %.0f, %.0f)")
+            :format(which, tostring(ev.phase), tostring(ev.seq), dist,
+                    shrines[which][1], shrines[which][2], shrines[which][3]))
         if ev.phase == "success" or ev.phase == "local_success" then
             note("★★ INTERACTION SUCCEEDED on the shrine — the POI chain is complete end to end")
         end
@@ -113,6 +152,10 @@ end)
 if R.poi and R.poi.on_generated then
     local armed = R.poi.on_generated(function(spawner)
         local entries = R.poi.placed(spawner)
+        -- Each generation replaces the map, so last chapter's coordinates are
+        -- not just stale, they are actively wrong: a live interaction could
+        -- land within 10 units of a shrine that no longer exists.
+        shrines = {}
         local ours = {}
         for _, e in ipairs(entries or {}) do
             if e.name and e.name:find(OURS, 1, true) then ours[#ours + 1] = e end
@@ -130,6 +173,7 @@ if R.poi and R.poi.on_generated then
             local where = e.pos
                 and (" at (%.0f, %.0f, %.0f)"):format(e.pos[1], e.pos[2], e.pos[3])
                 or " (position did not read)"
+            if e.pos then shrines[#shrines + 1] = { e.pos[1], e.pos[2], e.pos[3] } end
             R.log(("[shrine-probe] ★ SHRINE TILE PLACED%s — %s%s"):format(
                 where, e.name, e.entity and "" or " [no entity — placed but not instantiated]"))
         end
