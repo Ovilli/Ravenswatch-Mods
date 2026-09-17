@@ -45,7 +45,7 @@ local logged = 0
 -- point of the probe.
 local counts = {}
 
-local armed = R.modifier.on_slots(function(count, _controller)
+local armed = R.modifier.on_slots(function(count, _controller, vec)
     if count == nil then
         if logged < 3 then
             logged = logged + 1
@@ -57,15 +57,16 @@ local armed = R.modifier.on_slots(function(count, _controller)
     if count > seen_max then
         seen_max = count
         R.log(("[modifier-cap] ★ NEW MAXIMUM: %d selected modifier(s) reached the "
-               .. "display path%s"):format(
-              count, count > 5 and " — ABOVE FIVE, so the display is not the cap"
-                              or ""))
+               .. "display path (vector 0x%x)%s"):format(
+              count, vec or 0,
+              count > 5 and " — ABOVE FIVE, so the display is not the cap" or ""))
         return
     end
 
     if not counts[count] then
         counts[count] = true
-        R.log(("[modifier-cap] %d selected modifier(s)"):format(count))
+        R.log(("[modifier-cap] %d selected modifier(s) (vector 0x%x)")
+              :format(count, vec or 0))
     end
 end)
 
