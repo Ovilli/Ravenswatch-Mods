@@ -44,58 +44,50 @@ local function note(text)
     R.log("[shrine-probe] " .. text)
 end
 
---- Names any engine resource paths reachable from a handle.
---
--- `R.interact.identify` is best-effort by construction: it reads the strings
--- hanging off a pointer and keeps the ones shaped like a resource path. That is
--- exactly the right tool for FINDING the identifier and the wrong one to key
--- behaviour on, which is why this probe reports what it sees rather than
--- deciding what it means.
-local function probe(label, handle)
-    if not handle then return nil end
-    local first, all = R.interact.identify(handle)
-    if not first then return nil end
-    note(("  %s -> %d path(s), first=%s"):format(label, #all, tostring(first)))
-    for _, path in ipairs(all) do
-        if path:find(OURS, 1, true) then
-            return path
-        end
-    end
-    return nil
-end
+-- Entities already reported on, so a repeated interaction with the same object
+-- does not re-dump it. Keyed by pointer.
+local seen = {}
 
 R.interact.on("*", function(ev)
-    local quiet = logged >= LOG_BUDGET
+    -- `entity` is the object interacted WITH, which the first playtest
+    -- (2026-09-17) established is carried by `request` in `b` and by `validate`
+    -- as its own dispatcher, 0x4d8 above it. The SDK now normalises both into
+    -- this one field.
+    local entity = ev.entity
 
-    -- Identify BEFORE deciding to stay quiet: a hit on our shrine is the
-    -- finding, and budgeting it away would lose the one line that matters.
-    local hits = {}
-    for _, field in ipairs({ "dispatcher", "a", "b" }) do
-        local path = probe(field, ev[field])
-        if path then hits[#hits + 1] = field .. "=" .. path end
+    if entity and not seen[entity] then
+        seen[entity] = true
+        local name, off = R.interact.name(ev)
+        if name then
+            note(("entity 0x%x names %q%s"):format(
+                entity, name, off and (" (field +0x%x)"):format(off) or ""))
+        else
+            -- A miss is a result too: it says the name is not reachable by
+            -- either walk, and the raw object view is what finds the field.
+            note(("entity 0x%x — no name found, dumping it"):format(entity))
+            R.debug.dump(entity, 0x200, "shrine-entity")
+        end
     end
 
-    if #hits > 0 then
-        -- ★ The answer to question 2. Whichever field named our own asset is
-        -- the handle a mod can filter on.
-        note(("★ OUR SHRINE on %s (seq %s) via %s"):format(
-            tostring(ev.phase), tostring(ev.seq), table.concat(hits, ", ")))
-
-        -- The full protocol reaching success is what "the interaction works"
-        -- means. Reported as it happens, so a partial run still says how far
-        -- it got.
+    local name = entity and R.interact.name(ev) or nil
+    if name and name:find(OURS, 1, true) then
+        -- ★ Ours, and filterable: this is exactly what a mod needs to react to
+        -- its OWN point of interest instead of to every chest in the run.
+        note(("★ OUR SHRINE on %s (seq %s) — entity 0x%x named %q"):format(
+            tostring(ev.phase), tostring(ev.seq), entity, name))
         if ev.phase == "success" or ev.phase == "local_success" then
             note("★★ INTERACTION SUCCEEDED on the shrine — the POI chain is complete end to end")
         end
         return
     end
 
-    if quiet then return end
+    if logged >= LOG_BUDGET then return end
     if logged == LOG_BUDGET - 1 then
         note("log budget reached; staying quiet now except for hits on our own shrine")
     end
-    note(("%s seq=%s dispatcher=%s a=%s b=%s class=%s"):format(
+    note(("%s seq=%s dispatcher=%s entity=%s a=%s b=%s class=%s"):format(
         tostring(ev.phase), tostring(ev.seq), tostring(ev.dispatcher),
+        entity and ("0x%x"):format(entity) or "nil",
         tostring(ev.a), tostring(ev.b), tostring(ev.class)))
 end)
 
