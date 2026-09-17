@@ -57,14 +57,23 @@ R.interact.on("*", function(ev)
 
     if entity and not seen[entity] then
         seen[entity] = true
-        local name, off = R.interact.name(ev)
-        if name then
-            note(("entity 0x%x names %q%s"):format(
-                entity, name, off and (" (field +0x%x)"):format(off) or ""))
-        else
-            -- A miss is a result too: it says the name is not reachable by
-            -- either walk, and the raw object view is what finds the field.
-            note(("entity 0x%x — no name found, dumping it"):format(entity))
+        local name, off, all = R.interact.name(ev)
+        -- EVERY candidate, not just the chosen one. The first attempt picked a
+        -- neighbouring melody's resource path and reported it as the shrine's
+        -- name, which is what a single confident answer buys you here.
+        note(("entity 0x%x — %d name candidate(s), best=%s%s"):format(
+            entity, all and #all or 0, tostring(name),
+            off and (" @+0x%x"):format(off) or ""))
+        for i, c in ipairs(all or {}) do
+            if i > 12 then
+                note(("  ... %d more"):format(#all - 12))
+                break
+            end
+            note(("  [%d] +0x%-4x %s%s"):format(
+                i, c.at or 0, c.text, c.text:find(OURS, 1, true) and "   <<< OURS" or ""))
+        end
+        if not all or #all == 0 then
+            note("no strings reachable — dumping the object so the field can be found")
             R.debug.dump(entity, 0x200, "shrine-entity")
         end
     end
