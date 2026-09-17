@@ -97,7 +97,7 @@ author      = "Ovilli"
 license     = "MIT"
 description = "Horde now also summons 3 / 4 / 5 rats (by rarity) that attack at once, like Invasive Blast, every 16 basic attacks, on top of a higher rat cap."
 sdk_version = "3"
-enabled     = true
+enabled     = false
 tags        = ["talents", "piper", "rats"]
 
 # `skill` (relabel) is rated below confirmed as a kind.

@@ -4,7 +4,7 @@ name        = "Saga"
 version     = "1.5.0"
 author      = "RSMM"
 description = "Meta-progression Ravenswatch does not ship: a global XP bar that grows across every run you ever play, ranks you climb, feats that unlock once and stay unlocked, a rotating set of objectives that hand out XP when you finish them, and a weighted challenge generator that rolls a tiered run ruleset and tracks the rules it can verify."
-enabled     = true
+enabled     = false
 load_order  = 15
 sdk_version = ">=3.0,<4"
 # Observation only AS SHIPPED — it subscribes to the bus and writes to its own

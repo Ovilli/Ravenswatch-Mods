@@ -4,7 +4,7 @@ name        = 'red_talent'
 version     = "0.1.0"
 author      = "you"           # <- your name; `rsmm lint` flags this default
 description = ''
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []              # e.g. ["items", "balance"] — how players find it
 license     = ""              # e.g. "MIT" — omit and nobody may fork it

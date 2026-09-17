@@ -55,7 +55,7 @@ author      = "Ovilli"
 license     = "MIT"
 description = "Replaces Aladdin's Cyclonic Appearance with Jinn Charge: a DASH used right after POWER summons the Jinn to charge through enemies, damaging everything Aladdin passes."
 sdk_version = "3"
-enabled     = true
+enabled     = false
 tags        = ["talents", "aladdin"]
 
 # `skill` (relabel) is rated below confirmed as a kind.

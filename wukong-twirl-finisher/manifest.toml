@@ -66,7 +66,7 @@ author      = "Ovilli"
 license     = "MIT"
 description = "Stick Twirl's dash attack becomes the end of Wukong's combo (Celestial Pillar's slam if owned, else the 4th hit), and Fiery Dragon / Frost Tiger also reduce TRAIT cooldown by 10-25% by rarity."
 sdk_version = "3"
-enabled     = true
+enabled     = false
 tags        = ["talents", "wukong", "animation"]
 
 # `skill` (relabel) is rated below confirmed as a kind.
