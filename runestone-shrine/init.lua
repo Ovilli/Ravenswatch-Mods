@@ -100,4 +100,46 @@ R.interact.on("*", function(ev)
         tostring(ev.a), tostring(ev.b), tostring(ev.class)))
 end)
 
+-- IS THE SHRINE EVEN IN THIS RUN?
+--
+-- Without this, "no prompt appeared" and "the tile never generated" produce the
+-- same evidence: silence. Three runs were spent reading interaction traffic
+-- that turned out to be a melody, with no way to tell whether the pillar was
+-- standing somewhere unvisited the whole time.
+--
+-- `R.poi.on_generated` fires once per map generation with the spawner that just
+-- placed the tiles, and `R.poi.placed` names what it placed. So each chapter now
+-- says out loud whether our tile is in it.
+if R.poi and R.poi.on_generated then
+    local armed = R.poi.on_generated(function(spawner)
+        local entries = R.poi.placed(spawner)
+        local ours = {}
+        for _, e in ipairs(entries or {}) do
+            if e.name and e.name:find(OURS, 1, true) then ours[#ours + 1] = e end
+        end
+        if #ours == 0 then
+            R.log(("[shrine-probe] map generated: %d tile(s) placed, NONE ours — "
+                   .. "the shrine is not in this chapter, so nothing to interact with")
+                  :format(#(entries or {})))
+            return
+        end
+        for _, e in ipairs(ours) do
+            -- `pos` is nil when the placement does not read, and that means
+            -- UNKNOWN, never the origin — reporting (0,0,0) would send you to
+            -- the wrong corner of the map and read as the tile being missing.
+            local where = e.pos
+                and (" at (%.0f, %.0f, %.0f)"):format(e.pos[1], e.pos[2], e.pos[3])
+                or " (position did not read)"
+            R.log(("[shrine-probe] ★ SHRINE TILE PLACED%s — %s%s"):format(
+                where, e.name, e.entity and "" or " [no entity — placed but not instantiated]"))
+        end
+    end)
+    if not armed then
+        -- Fails closed rather than detouring a stale address, so say so: a
+        -- silent probe would read as "the tile never placed".
+        R.log("[shrine-probe] tile reporting unavailable on this build "
+              .. "(the map-generation symbol did not resolve)")
+    end
+end
+
 R.log("[shrine-probe] armed — interact with the pillar, then: rsmm log --grep shrine-probe")
