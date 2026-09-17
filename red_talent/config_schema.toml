@@ -1,0 +1,4 @@
+# Optional: declare typed config fields here.
+# [fields.example]
+# type    = "bool"
+# default = true
