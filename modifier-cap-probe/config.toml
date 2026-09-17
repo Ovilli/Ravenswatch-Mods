@@ -1,3 +1,5 @@
-# Stage 2 armed: offer a sixth slot and see whether it can be filled.
-# Set back to 5 for the game's own behaviour.
-slots = 6
+# Stage 2 DISARMED (2026-09-17). Growing the padded display vector to six was
+# measured and does not produce a sixth slot: the widget count is not driven by
+# that vector's length, and the vector itself is a per-refresh stack temporary.
+# Left at 5 so the mod is read-only again.
+slots = 5
