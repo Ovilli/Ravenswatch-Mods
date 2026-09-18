@@ -3,9 +3,9 @@ id           = "sandman-shop-test"
 name         = "Sandman Shop Test"
 version      = "0.2.0"
 author       = "Ovilli"
-description  = "Edit what the Sandman sells and what it costs, from a shop-styled config editor: prices, which items each offer slot sells, and offers per visit. Experimental."
+description  = "Edit what the Sandman sells and what it costs, from a shop-styled config editor: prices, which items each offer slot sells, and offers per visit."
 enabled      = false
-experimental = true
+experimental = false
 sdk_version  = ">=3.0,<4"
 multiplayer_scope = "deterministic-shared"
 tags = ["shop", "test"]

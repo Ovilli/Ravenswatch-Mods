@@ -142,10 +142,10 @@ local function top_up()
     -- pointer. The value-store lookup is the one gate that told the truth, so
     -- gate on it.
     if pins_ok == 0 then return end
-    local frac = R.entity.hp_frac()
-    if not frac or frac >= cfg.heal_below then return end
-    local max = R.entity.max_hp()
-    if max then R.combat.set_hp(max) end
+    -- The top-up itself is OFF since 2026-09-18: the "HP" field this read and
+    -- wrote is the dream-shard count, so it never healed anything — it reset
+    -- the shards. It comes back once real HP is located. The capture verdict
+    -- above still runs, which is what the harness reports on.
 end
 
 -- Both of these MUTATE ENGINE STATE, so they may only run on the game's main
