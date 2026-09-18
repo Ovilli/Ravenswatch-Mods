@@ -1,9 +1,9 @@
 [mod]
 id          = "second-wind"
 name        = "Second Wind"
-version     = "1.1.0"
+version     = "1.2.0"
 author      = "RSMM"
-description = "Go down once per run and you get back up swinging: a handful of dream shards and a short surge of attack power. After that you are on your own."
+description = "Go down once per run and you get back up swinging: a burst heal and a short surge of attack power. After that you are on your own."
 enabled     = false
 load_order  = 50
 sdk_version = ">=3.0,<4"

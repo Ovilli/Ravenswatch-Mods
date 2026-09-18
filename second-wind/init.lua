@@ -36,10 +36,10 @@ local function rescue()
         return
     end
 
-    -- R.shards, not a heal: the field the SDK used to call HP is the
-    -- dream-shard count (settled 2026-09-18). Real HP is not located yet.
-    if not R.shards.add(cfg.heal) then
-        R.log("[SecondWind] shard grant refused; rescue not consumed")
+    -- R.hp is the real health (proven in game 2026-09-18). The old R.combat
+    -- call this mod used moved dream shards, not health.
+    if not R.hp.heal(cfg.heal) then
+        R.log("[SecondWind] heal refused; rescue not consumed")
         return
     end
     used = used + 1
@@ -49,7 +49,7 @@ local function rescue()
         R.stat.modify("attack_power", cfg.surge_power / 100, cfg.surge_seconds)
     end
 
-    R.log(("[SecondWind] back up! +%d dream shards, +%d attack power for %ds (%d/%d used)")
+    R.log(("[SecondWind] back up! +%d HP, +%d attack power for %ds (%d/%d used)")
         :format(cfg.heal, cfg.surge_power, cfg.surge_seconds, used, cfg.rescues))
 end
 
