@@ -3,6 +3,7 @@ id          = "damage-meter"
 name        = "Damage Meter"
 version     = "1.2.4"
 author      = "RSMM"
+summary     = "Per-player damage, share and DPS for co-op runs, with a live on-top overlay."
 description = "Per-player damage tracking for co-op — who is carrying the run. Reads the local attack resolver and the replicated damage event, boards every hero it sees, and reports damage, share and rolling DPS."
 enabled     = false
 load_order  = 60
