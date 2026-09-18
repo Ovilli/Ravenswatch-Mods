@@ -1,0 +1,13 @@
+[mod]
+id          = "hp-probe"
+name        = "HP Probe (dev)"
+version     = "0.1.0"
+author      = "RSMM"
+description = "Testing tool: logs the hero's real HP every few seconds and heals 25 on each enemy kill, to prove R.hp in game."
+enabled     = true
+load_order  = 95
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags        = ["dev", "testing"]
+# Heals THIS machine's hero only.
+multiplayer_scope = "local-only"
