@@ -8,7 +8,7 @@ R.schedule.every(5, function()
         R.log(("[hp-probe] hp %.1f / %.1f (%.0f%%)  shards %s")
             :format(cur, mx or 0, (R.hp.frac() or 0) * 100, tostring(R.shards.get())))
     else
-        R.log("[hp-probe] no verified HitPoint component yet")
+        R.log("[hp-probe] no verified HitPoint component yet: " .. R.hp.diagnose())
     end
 end)
 
