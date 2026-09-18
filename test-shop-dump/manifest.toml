@@ -1,0 +1,12 @@
+[mod]
+id          = "test-shop-dump"
+name        = "TEST: Sandman shop dump"
+version     = "0.1.0"
+author      = "RSMM"
+description = "Dev test for the shop reroll RE. When you interact with the Sandman, dumps each of its offer generators right away and again 3 s later, so the offer lists can be read off the log. Read-only."
+enabled     = true
+load_order  = 96
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags        = ["dev", "testing"]
+multiplayer_scope = "local-only"

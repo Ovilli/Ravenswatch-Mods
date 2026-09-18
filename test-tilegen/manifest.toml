@@ -1,0 +1,22 @@
+[mod]
+id           = "test-tilegen"
+name         = "TEST: busier Dark Hills"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "Dev test. Dark Hills generates 8 camps and at most 2 wishing wells. Pass: the chapter map shows noticeably more camps than usual."
+enabled     = true
+load_order   = 96
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["dev", "testing"]
+multiplayer_scope = "deterministic-shared"
+experimental = true
+
+[[content]]
+kind    = "tilegen"
+id      = "test_camps"
+chapter = "DarkHills"
+[content.kinds.Camp]
+count = 8
+[content.quotas]
+Wishing_Well = 2

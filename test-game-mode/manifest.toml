@@ -1,0 +1,19 @@
+[mod]
+id           = "test-game-mode"
+name         = "TEST: repeat chapter order"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "Dev test. A new game mode that plays Dark Hills three times. Pass: it shows up as a mode, and finishing chapter 1 lands you in Dark Hills again."
+enabled     = false
+load_order   = 96
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["dev", "testing"]
+multiplayer_scope = "deterministic-shared"
+experimental = true
+
+[[content]]
+kind     = "game_mode"
+id       = "TestRepeatHills"
+base     = "All_Chapters"
+chapters = [0, 0, 0]

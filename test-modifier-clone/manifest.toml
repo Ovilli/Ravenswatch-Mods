@@ -1,0 +1,20 @@
+[mod]
+id           = "test-modifier-clone"
+name         = "TEST: cloned run modifier"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "Dev test. Adds a relabelled clone of More Experience. Pass: a 'TEST Double XP' row appears on the challenge screen."
+enabled     = true
+load_order   = 96
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["dev", "testing"]
+multiplayer_scope = "deterministic-shared"
+experimental = true
+
+[[content]]
+kind        = "modifier"
+id          = "TestDoubleXp"
+base        = "MoreExperience"
+name        = "TEST Double XP"
+description = "Cloned modifier. If you can read this, the clone reached the UI."

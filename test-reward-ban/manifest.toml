@@ -1,0 +1,19 @@
+[mod]
+id           = "test-reward-ban"
+name         = "TEST: reward ban"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "Dev test. Bans astrolabs from Dark Hills camp rewards. Pass: clearing Dark Hills camps never drops an astrolab."
+enabled     = true
+load_order   = 96
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["dev", "testing"]
+multiplayer_scope = "deterministic-shared"
+experimental = true
+
+[[content]]
+kind = "reward"
+id   = "test_no_astrolabs"
+base = "Camp_Rewards_Dark_Hills_Update5"
+ban  = ["Astrolab"]
