@@ -1,0 +1,36 @@
+[mod]
+id          = "enemy-clone-test"
+name        = "Enemy Clone Test (dev)"
+version     = "0.1.0"
+author      = "RSMM"
+description = "A diagnostic, not a content mod. Proves (or disproves) that kind=\"enemy\" mode=\"clone\" adds a NET-NEW enemy that camps actually spawn: a Gnolls-tribe clone wearing a Mud Crab body. A crab standing in a GNOLL camp on Storm Island can only be the clone. Delete it once the answer is in."
+enabled     = true
+load_order  = 95
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags = ["dev", "testing", "enemies"]
+multiplayer_scope = "local-only"
+# `enemy` is experimental — and mode="clone" is exactly the half that holds it
+# there. This mod is the playtest that settles it.
+experimental = true
+
+# Why these choices, each against a confound the first clone test (Dreadgnoll,
+# 2026-06-02: loaded, never spawned) could not rule out:
+#   * base Gnoll_Shielded, tribe UNCHANGED — the roster a def self-registers
+#     into (EnemyDef_PostLoad -> tribe+0x2b8) is the Gnolls roster, the one
+#     Storm Island gnoll camps build their candidate list from. Dreadgnoll
+#     rewrote tribe_ref; this does not.
+#   * entity = Standard_Mud_Crab — distinguishable by eye, and already in the
+#     Storm Island EntityPooling list, so the prefab streams there with no pool
+#     edit. Its preload closure is borrowed from the def that owns it.
+#   * weight 20 (vanilla gnolls are 3) — dominant without the 9999 that crashed
+#     the game. Crabs in most gnoll camps is the expected reading.
+#   * the clone now ships its OWN <id>.enemydef.UsedRscCache.ot. Dreadgnoll had
+#     none, and a def with no cache is how mod tiledefs were "registered, never
+#     placed" until caches were emitted.
+[[content]]
+kind   = "enemy"
+id     = "Clone_Gnoll_Crab"
+base   = "Gnoll_Shielded"
+entity = "Enemies\\Crabs\\Standard_Mud_Crab.entity.ot"
+weight = 20.0
