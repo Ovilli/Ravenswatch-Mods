@@ -53,7 +53,30 @@ local armed = R.poi.on_generated(function(spawner)
     -- names, so it is reported rather than used to suppress the line.
     local where = is_dark_hills(entries) and "Dark Hills"
                   or "chapter ?(no Dark_Hills tile name seen)"
+    -- 2026-09-19 (ed36): Camp count 2 still gave 7 camps, so the count is a
+    -- floor, not a cap. The decisive edit is now the FOOTPRINT mask: Camp may
+    -- not use 40x40 slots. Every map measured so far placed several 40x40
+    -- camps, so zero of them is unmistakable.
+    local small, large = 0, 0
+    for _, n in ipairs(names) do
+        if n:sub(1, 6) == "40x40_" then small = small + 1
+        elseif n:sub(1, 6) == "64x64_" then large = large + 1 end
+    end
     local verdict
+    if where == "Dark Hills" then
+        if small == 0 and large > 0 then
+            verdict = "PASS — footprint edit honoured (no 40x40 camps)"
+        elseif small > 0 then
+            verdict = "FAIL — 40x40 camps placed despite the footprint edit"
+        else
+            verdict = "INCONCLUSIVE — no camps named"
+        end
+    end
+    R.log(("[tilegen-proof] %s camps by footprint: 40x40=%d 64x64=%d"):format(where, small, large))
+    if verdict then
+        R.log("[tilegen-proof] footprint verdict: " .. verdict)
+    end
+    verdict = nil
     if where ~= "Dark Hills" then
         verdict = "not Dark Hills: an UNEDITED sample (recipe says 5)"
     elseif camps <= MOD_CAMPS then
