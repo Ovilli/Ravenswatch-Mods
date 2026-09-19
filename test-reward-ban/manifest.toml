@@ -1,9 +1,9 @@
 [mod]
 id           = "test-reward-ban"
-name         = "TEST: reward ban"
+name         = "TEST: reward counts"
 version      = "0.1.0"
 author       = "RSMM"
-description  = "Dev test. Bans astrolabs from Dark Hills camp rewards. Pass: clearing Dark Hills camps never drops an astrolab."
+description  = "Dev test. Forces 3 astrolabs from Dark Hills camp rewards (vanilla 0-1). Pass: rsmm log --grep reward-proof counts 3 astrolabs in the scene."
 enabled     = true
 load_order   = 96
 sdk_version  = ">=3.0,<4"
@@ -14,6 +14,8 @@ experimental = true
 
 [[content]]
 kind = "reward"
-id   = "test_no_astrolabs"
+id   = "test_three_astrolabs"
 base = "Camp_Rewards_Dark_Hills_Update5"
-ban  = ["Astrolab"]
+# reward_types index 2 = the astrolab type (T1/T2/T3), vanilla [0, 1].
+[content.counts]
+2 = [3, 3]

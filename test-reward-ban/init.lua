@@ -1,48 +1,85 @@
--- REWARD PROOF — does the engine hold OUR Dark Hills camp reward def?
+-- REWARD PROOF — does the level's reward roll honour an edited reward def?
 --
--- The manifest drops the three astrolabs from Camp_Rewards_Dark_Hills_Update5,
--- which turns its astrolab type (min 0, max 1, 3 items) into (0, 0, 0). Seeing
--- no astrolab in a run proves nothing: vanilla already allows zero. So this
--- reads every LIVE reward def's type shape and looks for ours:
+-- Settled already (session 774f): the override is LOADED — R.rewards found
+-- Camp_Rewards_Dark_Hills_Update5 live in its edited shape and no vanilla
+-- copy of it. Only the LiveOps5 versiondef references that def, so it is the
+-- one Dark Hills rolls from. What is left is whether the ROLL obeys its
+-- counts, which a ban can never show (vanilla already rolls 0..1 astrolabs).
+-- So this forces the astrolab type to exactly 3 and counts what the level
+-- actually placed:
 --
---   (1,2,2)(3,4,3)(0,0,0)(1,3,1)   ours    -> the override is what got loaded
---   (1,2,2)(3,4,3)(0,1,3)(1,3,1)   vanilla -> the override was not loaded
+--   Astrolab == 3     -> the roll honoured the def (PASS)
+--   Astrolab <= 1     -> vanilla behaviour, the count edit was ignored (FAIL)
 --
--- Reward defs load with the level, so it reports at run start and again a
--- little later, once the level's reward roll has run.
+-- Two readings:
+--   1. R.rewards — the live def's shape, expected (1,2,2)(3,4,3)(3,3,3)(1,3,1)
+--   2. R.spawn.entities — every entity the scene spawner placed, tallied by
+--      template name. If reward entities are not on that list the tally says
+--      0 across the board, which reads as "wrong list", not as a FAIL.
 local R = require "rsmm"
 
-local OURS    = "(1,2,2)(3,4,3)(0,0,0)(1,3,1)"
-local VANILLA = "(1,2,2)(3,4,3)(0,1,3)(1,3,1)"
+local OURS = "(1,2,2)(3,4,3)(3,3,3)(1,3,1)"
 local TAG = "[reward-proof]"
+local WATCH = { "Astrolab", "Basic_Chest", "DreamCrystal", "Baba_Yaga_Eye" }
 
-if not R.rewards then
-    R.log(TAG .. " R.rewards missing on this SDK — cannot measure")
-    return
+local function shape_check(when)
+    if not R.rewards then
+        R.log(TAG .. " R.rewards missing on this SDK")
+        return
+    end
+    local hits = 0
+    for _, e in ipairs(R.rewards.defs()) do
+        if R.rewards.format(e.shape) == OURS then hits = hits + 1 end
+    end
+    R.log(("%s %s: edited def live = %s"):format(TAG, when,
+        hits > 0 and "yes" or "NO (override not loaded)"))
 end
 
-local function verdict(when)
-    local ours = R.rewards.report(OURS, TAG)
-    local vanilla = 0
-    for _, e in ipairs(R.rewards.defs()) do
-        if R.rewards.format(e.shape) == VANILLA then vanilla = vanilla + 1 end
+local names = {}   -- template -> name (or false), so each is resolved once
+local function tally(when)
+    if not (R.spawn and R.spawn.entities and R.spawn.name_of) then
+        R.log(TAG .. " R.spawn missing on this SDK — cannot count the scene")
+        return
     end
+    local rows = R.spawn.entities()
+    local counts, other = {}, 0
+    for _, w in ipairs(WATCH) do counts[w] = 0 end
+    for _, row in ipairs(rows) do
+        local n = names[row.template]
+        if n == nil then
+            n = R.spawn.name_of(row.template) or false
+            names[row.template] = n
+        end
+        local hit = false
+        if n then
+            for _, w in ipairs(WATCH) do
+                if n:find(w, 1, true) then counts[w] = counts[w] + 1; hit = true; break end
+            end
+        end
+        if not hit then other = other + 1 end
+    end
+    local a = counts.Astrolab
     local v
-    if ours > 0 and vanilla == 0 then
-        v = "PASS — the live Dark Hills camp def is our override"
-    elseif vanilla > 0 and ours == 0 then
-        v = "FAIL — the live def is still vanilla"
-    elseif ours > 0 and vanilla > 0 then
-        v = "MIXED — both shapes live; another def may share the vanilla shape"
+    if #rows == 0 then
+        v = "NO SCENE (hero not captured yet?)"
+    elseif a == 3 then
+        v = "PASS — the roll placed exactly the edited count"
+    elseif a <= 1 and (counts.Basic_Chest + counts.DreamCrystal) > 0 then
+        v = "FAIL — vanilla-range astrolabs while other rewards are visible"
+    elseif a == 0 and counts.Basic_Chest == 0 and counts.DreamCrystal == 0 then
+        v = "UNKNOWN — no reward entity on the scene list at all (wrong list?)"
     else
-        v = "NOT FOUND — neither shape live (not in Dark Hills yet, or offsets moved)"
+        v = "INCONCLUSIVE — astrolabs = " .. a
     end
-    R.log(("%s %s: ours=%d vanilla=%d -> %s"):format(TAG, when, ours, vanilla, v))
+    R.log(("%s %s: scene %d entities — astrolab %d, chest %d, crystal %d, eye %d, other %d -> %s")
+          :format(TAG, when, #rows, a, counts.Basic_Chest, counts.DreamCrystal,
+                  counts.Baba_Yaga_Eye, other, v))
 end
 
 R.on("run:start", function()
-    verdict("run start")
-    R.schedule.after(20, function() verdict("run start +20s") end)
+    shape_check("run start")
+    R.schedule.after(15, function() tally("run start +15s") end)
+    R.schedule.after(60, function() tally("run start +60s") end)
 end)
 
 R.log(TAG .. " armed — start a Dark Hills run, then: rsmm log --grep reward-proof")
