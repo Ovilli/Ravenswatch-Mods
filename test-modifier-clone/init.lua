@@ -24,6 +24,7 @@ local TAG = "[modifier-proof]"
 local KEYS = { "gamemodifier_more_experience", "global_xp_modifier",
                "difficulty_xp_modifier" }
 
+local dumped = false
 local function report(when)
     if not (R.game and R.game.get) then
         R.log(TAG .. " R.game missing on this SDK")
@@ -45,6 +46,15 @@ local function report(when)
         verdict = "More experience OFF — FAIL if the clone was selected"
     end
     R.log(("%s %s: %s -> %s"):format(TAG, when, table.concat(parts, ", "), verdict))
+    -- Layout evidence, once: the raw unions of the modifier keys beside a key
+    -- that is not a modifier ("Current chapter"), so the next session can read
+    -- the non-inline shape off the dump instead of guessing it.
+    if not dumped and R.game.raw then
+        dumped = true
+        R.log(("%s current_chapter reads %s"):format(TAG, tostring(R.game.get("current_chapter"))))
+        for _, k in ipairs(KEYS) do R.game.raw(k) end
+        R.game.raw("current_chapter")
+    end
 end
 
 R.on("run:start", function()

@@ -63,8 +63,21 @@ local function tally(when)
         if not hit then other = other + 1 end
     end
     local a = counts.Astrolab
+    -- Which chapter: reward entities carry it in their name
+    -- (Dark_Hills_Astrolab_T1, Storm_Island_Basic_Chest_T3 ...). The edit is
+    -- Dark Hills only; any other chapter is an unedited baseline sample.
+    local dh, other_ch = 0, 0
+    for _, n in pairs(names) do
+        if n then
+            if n:find("Dark_Hills_", 1, true) then dh = dh + 1
+            elseif n:find("Storm_Island_", 1, true) or n:find("Avalon_", 1, true) then
+                other_ch = other_ch + 1 end
+        end
+    end
     local v
-    if #rows == 0 then
+    if dh == 0 and other_ch > 0 then
+        v = "not Dark Hills — unedited baseline (vanilla astrolabs 0..1)"
+    elseif #rows == 0 then
         v = "NO SCENE (hero not captured yet?)"
     elseif a == 3 then
         v = "PASS — the roll placed exactly the edited count"
