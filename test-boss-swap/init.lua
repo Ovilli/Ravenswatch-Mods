@@ -45,8 +45,8 @@ local function scan()
             local v = ""
             if dh and n == "Boss_Crab" then
                 v = " -> PASS: a crab boss in Dark Hills is the swapped ghoul den"
-            elseif dh and n == "Boss_Marsh_Ghoul" then
-                v = " -> FAIL: the den still spawned the ghoul"
+            elseif dh and (n == "Boss_Marsh_Ghoul" or n == "Boss_White_Lady") then
+                v = " -> FAIL: the arena still spawned its own boss"
             end
             R.log(("%s %s boss in scene: %s (x%d)%s"):format(TAG,
                 dh and "[Dark Hills]" or "[other chapter]", n, c, v))
