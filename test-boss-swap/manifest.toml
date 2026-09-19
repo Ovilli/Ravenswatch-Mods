@@ -1,0 +1,19 @@
+[mod]
+id           = "test-boss-swap"
+name         = "TEST: ghoul den fights the crab"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "Dev test. The Dark Hills ghoul den (Boss_Marsh_Ghoul) spawns the Storm Island giant crab (Boss_Crab). Pass: rsmm log --grep boss-proof names Boss_Crab in the den, or you see the crab at the bottom of the den."
+enabled      = true
+load_order   = 96
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["dev", "testing"]
+multiplayer_scope = "deterministic-shared"
+experimental = true
+
+[[content]]
+kind    = "boss"
+id      = "ghoul_den_crab"
+base    = "Boss_Marsh_Ghoul"
+becomes = "Boss_Crab"
