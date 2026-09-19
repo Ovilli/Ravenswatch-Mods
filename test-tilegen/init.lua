@@ -66,7 +66,10 @@ local armed = R.poi.on_generated(function(spawner)
 end)
 
 if not armed then
-    R.log("[tilegen-proof] map-generation symbol did not resolve — no measurement")
+    -- false = the symbol did not resolve OR another mod's state already owns
+    -- the detour (R.poi has one owner per launch; rsmm.poi logs which). The
+    -- manifest's load_order puts this mod first for exactly that reason.
+    R.log("[tilegen-proof] NOT armed (see the [rsmm.poi] line above) — no measurement")
 else
     R.log("[tilegen-proof] armed — start a Dark Hills run, then: rsmm log --grep tilegen-proof")
 end
