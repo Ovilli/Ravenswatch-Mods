@@ -36,6 +36,7 @@ local function shape_check(when)
 end
 
 local names = {}   -- template -> name (or false), so each is resolved once
+local histo_done = false
 local function tally(when)
     if not (R.spawn and R.spawn.entities and R.spawn.name_of) then
         R.log(TAG .. " R.spawn missing on this SDK — cannot count the scene")
@@ -70,6 +71,29 @@ local function tally(when)
         v = "UNKNOWN — no reward entity on the scene list at all (wrong list?)"
     else
         v = "INCONCLUSIVE — astrolabs = " .. a
+    end
+    -- What IS on the list: without this a zero tally cannot tell "rewards are
+    -- elsewhere" from "names do not resolve".
+    if not histo_done then
+        histo_done = true
+        local by, unnamed = {}, 0
+        for _, row in ipairs(rows) do
+            local n = names[row.template]
+            if n then
+                local short = n:match("([^\\/]+)$") or n
+                by[short] = (by[short] or 0) + 1
+            else
+                unnamed = unnamed + 1
+            end
+        end
+        local list = {}
+        for k, c in pairs(by) do list[#list + 1] = { k, c } end
+        table.sort(list, function(x, y) return x[2] > y[2] end)
+        R.log(("%s scene list: %d named template(s), %d unnamed entit(ies)")
+              :format(TAG, #list, unnamed))
+        for i = 1, math.min(#list, 40) do
+            R.log(("%s   %4d  %s"):format(TAG, list[i][2], list[i][1]))
+        end
     end
     R.log(("%s %s: scene %d entities — astrolab %d, chest %d, crystal %d, eye %d, other %d -> %s")
           :format(TAG, when, #rows, a, counts.Basic_Chest, counts.DreamCrystal,
