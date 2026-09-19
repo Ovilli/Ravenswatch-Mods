@@ -1,17 +1,18 @@
 -- GAME MODE PROOF — does the engine play a REPEATED chapter order?
 --
--- The manifest rewrites All_Chapters in place to [0, 0, 1]: Dark Hills,
--- Dark Hills again, Storm Island. Override-in-place and skipping chapters are
--- proven; a repeated index is not. This logs the live chapter list, so the
+-- The manifest rewrites All_Chapters in place to [1, 0]: Storm Island, then
+-- Dark Hills. Override-in-place and ascending subsets are proven; a repeat is
+-- proven NOT to work (skipped). What is open is a DESCENDING order. This logs the live chapter list, so the
 -- data half is visible at boot, and counts run starts, so the log shows how
 -- many chapters were entered. test-tilegen's probe logs every map generation
 -- with its chapter, which is the second, independent reading:
 --
---   tilegen-proof "Dark Hills" twice, then a non-Dark-Hills map -> PASS
+--   tilegen-proof: a non-Dark-Hills map, then "Dark Hills"  -> PASS
+--   Storm Island, then Avalon / the run ends                  -> FAIL
 local R = require "rsmm"
 
 local TAG = "[mode-proof]"
-local EXPECT = "0,0,1"
+local EXPECT = "1,0"
 
 local function chapters(when)
     if not (R.maps and R.maps.chapters) then
