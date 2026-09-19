@@ -69,8 +69,33 @@ local pins_ok = 0
 -- engine on every single gameplay event.
 local pin_tries = 0
 
+-- Attack power goes through the ENGINE as a real modifier, not stick(): the
+-- in-run stat strip reads a cache the engine refreshes only when it folds a
+-- modifier itself (a stick()-pinned 40 showed 0). R.stat.modify's default
+-- route sends it as ADD_MODIFIER on the hero's bus, the game's own path —
+-- counted once, shown on the strip, and carried into the next chapter like the
+-- game's own upgrades (all proven 2026-09-19), so a chapter change does NOT
+-- re-apply it; only a new run does. Never stick() this stat as well: the two
+-- would fight.
+--
+-- Its own latch because the bus needs the hero's dispatcher, which only exists
+-- once the hero has acted: the other stats can land first, and sharing their
+-- latch would give up on attack for the whole run.
+local attack_done = false
+local function try_attack()
+    if attack_done then return true end
+    -- Latch BEFORE the call. Our own dispatch reaches this mod's R.on("*")
+    -- handler synchronously, so latching on the return value let every nested
+    -- handler call modify again: 99 deep and +99 attack in game (2026-09-19).
+    attack_done = true
+    if not R.stat.modify("attack_power", PINS.attack_power) then
+        attack_done = false   -- genuinely refused (no dispatcher yet): retry later
+    end
+    return attack_done
+end
+
 local function pin()
-    if pinned then return end
+    if pinned then try_attack(); return end
     -- DELIBERATELY NOT gated on R.entity.ready(). That is exactly "has the hero
     -- ENTITY been captured", and capture is the part that keeps failing — but
     -- R.stat does not need the entity any more. Its store hangs off the hero's
@@ -84,7 +109,12 @@ local function pin()
     pin_tries = pin_tries + 1
     local ok = {}
     for name, value in pairs(PINS) do
-        if R.stat.stick(name, value) then ok[#ok + 1] = name end
+        if name == "attack_power" and R.stat.modify then
+            -- Applied by try_attack(), on its own latch — see there.
+            if try_attack() then ok[#ok + 1] = name end
+        elseif R.stat.stick(name, value) then
+            ok[#ok + 1] = name
+        end
     end
     if #ok == 0 then
         -- Nothing to write to yet (no captured hero AND no published context —
@@ -152,6 +182,31 @@ local function top_up()
     if max then R.hp.set(max) end
 end
 
+-- DIAGNOSTIC: the in-run stat strip reads a CACHE (R.stat.cached), not the
+-- store R.stat writes, and the engine refreshes it only when it folds a
+-- modifier itself. With attack going through R.stat.modify the two should
+-- move together (4000 on the strip); a store/cache split in this line means
+-- that stopped being true. Logs once at pin, then on any change. Read-only;
+-- skipped on an SDK that predates R.stat.cached.
+local last_cached = false   -- false = never logged; nil is a real reading
+local last_store  = false
+local function report_stats()
+    if not (pinned and R.stat.cached) then return end
+    local cached = R.stat.cached("attack_power")
+    local store = R.stat.get("attack_power")
+    -- Log when EITHER side moves; they can move independently.
+    if last_cached ~= false and cached == last_cached and store == last_store then return end
+    local first = last_cached == false
+    local what = first and "" or ((cached ~= last_cached and store ~= last_store) and "  <- STORE+CACHE CHANGED"
+        or (cached ~= last_cached and "  <- CACHE CHANGED" or "  <- STORE CHANGED"))
+    last_cached, last_store = cached, store
+    exp.observe("stats_pinned", first and "cache_at_pin" or "cache_changed", cached)
+    R.log(("[%s] attack_power: store=%s  cached=%s  (strip shows cached x100 = %s)%s"):format(
+        TAG, tostring(R.stat.get("attack_power")), tostring(cached),
+        cached and tostring(math.floor(cached * 100 + 0.5)) or "?",
+        what))
+end
+
 -- Both of these MUTATE ENGINE STATE, so they may only run on the game's main
 -- thread. The gameplay bus dispatches there; "tick" is the loader's background
 -- thread and calling either from it is the documented way to crash the game
@@ -169,6 +224,7 @@ R.on("*", function(ev)
     if not (ev and ev.source == "gameplay") then return end
     pin()
     top_up()
+    report_stats()
     if not pinned and not warned then
         seen_gameplay = seen_gameplay + 1
         if seen_gameplay >= QUIET_EVENTS then
@@ -196,7 +252,9 @@ for _, boundary in ipairs({ "run:start", "run:end", "menu:enter" }) do
         -- unverified capture — the 8c4f crash shape exactly. The mods spec
         -- caught this the moment pin() stopped latching unconditionally.
         pinned, pin_tries, pins_ok = false, 0, 0
+        attack_done = false   -- a new RUN (not a new chapter) starts a new hero
         seen_gameplay, warned = 0, false
+        last_cached, last_store = false, false
         -- `captured` is deliberately NOT reset with the rest. It latches a
         -- verdict, not a capability, and re-closing the same case on every run
         -- boundary would write to disk for no new information.
