@@ -16,12 +16,24 @@ local R = require "rsmm"
 local TAG = "[boss-proof]"
 local seen = {}
 
+-- Names come from R.interact.name (the entity's own template name, proven on
+-- live entities); R.spawn.enemies' string-walk named nothing on this build.
+local names = {}
 local function scan()
-    if not (R.spawn and R.spawn.enemies) then return end
-    local ok, rows = pcall(R.spawn.enemies)
+    if not (R.spawn and R.spawn.entities and R.interact and R.interact.name) then return end
+    local ok, rows = pcall(R.spawn.entities)
     if not ok or type(rows) ~= "table" then return end
-    for _, r in ipairs(rows) do
-        local n = r.name or ""
+    local counts = {}
+    for _, row in ipairs(rows) do
+        local n = names[row.template]
+        if n == nil then
+            n = R.interact.name(row.entity) or false
+            names[row.template] = n
+        end
+        if n then counts[n] = (counts[n] or 0) + 1 end
+    end
+    for n, c in pairs(counts) do
+        local r = { count = c }
         if n:find("Boss_", 1, true) and not seen[n] then
             seen[n] = true
             local v = ""
@@ -35,7 +47,7 @@ local function scan()
     end
 end
 
-if not (R.spawn and R.spawn.enemies) then
+if not (R.spawn and R.spawn.entities and R.interact and R.interact.name) then
     R.log(TAG .. " R.spawn missing on this SDK — watch the den by eye")
 else
     R.schedule.every(5, scan)

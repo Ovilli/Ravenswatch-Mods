@@ -4,7 +4,7 @@ name         = "TEST: cloned map in chapter 1"
 version      = "0.1.0"
 author       = "RSMM"
 description  = "Dev test. Clones Dark Hills with the Knights tribe and makes the first chapter play the clone. Pass: the log says 5 mapdefs live, and the first chapter still loads (look for knights)."
-enabled      = true
+enabled      = false
 load_order   = 96
 sdk_version  = ">=3.0,<4"
 license      = "MIT"

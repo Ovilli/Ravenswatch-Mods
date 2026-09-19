@@ -38,7 +38,7 @@ end
 local names = {}   -- template -> name (or false), so each is resolved once
 local histo_done = false
 local function tally(when)
-    if not (R.spawn and R.spawn.entities and R.spawn.name_of) then
+    if not (R.spawn and R.spawn.entities and R.interact and R.interact.name) then
         R.log(TAG .. " R.spawn missing on this SDK — cannot count the scene")
         return
     end
@@ -46,9 +46,12 @@ local function tally(when)
     local counts, other = {}, 0
     for _, w in ipairs(WATCH) do counts[w] = 0 end
     for _, row in ipairs(rows) do
+        -- R.interact.name reads the entity's own template name (entity+0x28
+        -- -> settings -> resource name), proven on live entities. The older
+        -- R.spawn.name_of string-walk named 0 of 437 on this build.
         local n = names[row.template]
         if n == nil then
-            n = R.spawn.name_of(row.template) or false
+            n = R.interact.name(row.entity) or false
             names[row.template] = n
         end
         local hit = false

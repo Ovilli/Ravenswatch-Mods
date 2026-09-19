@@ -1,23 +1,25 @@
 -- TILEGEN PROOF — does an edited recipe change what the generator places?
 --
--- The manifest raises Dark Hills' Camp count 5 -> 8 and the Wishing_Well quota
--- 1 -> 2. Looking at a minimap for "more camps than usual" is a judgement call;
+-- The manifest LOWERS Dark Hills' Camp count 5 -> 2 and raises the
+-- Wishing_Well quota 1 -> 2. Looking at a minimap for "more camps than usual" is a judgement call;
 -- the spawner's own placed set is a number. So every map generation is tallied
 -- here and compared against both recipes.
 --
 -- Classifier: all 15 Camp-flagged tiles in the Dark Hills pool, and nothing
 -- else, end in `_Camp` (Refugee_Camp_01 / Wandering_Camp_01 / JackOldHouseCamp
--- do not). The Camp kind has 138 eligible slots against a count of 8, so slot
--- supply is not what would hold the number down.
+-- do not). Storm Island's pool obeys the same rule.
 --
 -- Verdict per Dark Hills generation:
---   camps == 8  -> the edited recipe was honoured (PASS)
---   camps == 5  -> the engine placed the vanilla count (FAIL: override ignored)
---   other       -> reported raw; min_distance 100 m can starve a count, so a
---                  6 or 7 is worth a second run before reading it either way.
+--   camps <= 2  -> the edited recipe was honoured (PASS)
+--   camps >= 5  -> the edit did not bring the count down (FAIL)
+--   3 or 4      -> inconclusive; run again
+-- Any other chapter is logged as an UNEDITED sample, which is the baseline.
 local R = require "rsmm"
 
-local VANILLA_CAMPS, MOD_CAMPS = 5, 8
+-- Count 2, not 8: Storm Island placed 8 camps on 2026-09-19 with its recipe
+-- saying 5, so a high count cannot be told from what the generator adds on its
+-- own. A LOW count can: only an honoured edit brings Dark Hills down to 2.
+local VANILLA_CAMPS, MOD_CAMPS = 5, 2
 
 local function is_dark_hills(entries)
     for _, e in ipairs(entries) do
@@ -52,10 +54,12 @@ local armed = R.poi.on_generated(function(spawner)
     local where = is_dark_hills(entries) and "Dark Hills"
                   or "chapter ?(no Dark_Hills tile name seen)"
     local verdict
-    if camps == MOD_CAMPS then
+    if where ~= "Dark Hills" then
+        verdict = "not Dark Hills: an UNEDITED sample (recipe says 5)"
+    elseif camps <= MOD_CAMPS then
         verdict = "PASS — edited recipe honoured"
-    elseif camps == VANILLA_CAMPS then
-        verdict = "FAIL — vanilla count, override ignored"
+    elseif camps >= VANILLA_CAMPS then
+        verdict = "FAIL — the edit did not bring the count down"
     else
         verdict = "INCONCLUSIVE — run again"
     end
