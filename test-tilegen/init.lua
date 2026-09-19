@@ -43,8 +43,18 @@ end
 local dumped = false
 local armed = R.poi.on_generated(function(spawner, before)
     if not dumped and before and R.debug and R.debug.dump then
-        for _, k in ipairs(before) do
-            if k.name == "Camp" and k.entry then
+        -- Kind names read nil on this build (2026-09-19 324f), so pick Camp
+        -- by POSITION: the live table had 14 entries, Dark Hills' recipe has
+        -- 14 kinds, and Camp is the 9th (Teleporter, Start, Map_Boss,
+        -- Altar_Of_Heroes, Thieves_Entrance, Special, Key_Keeper,
+        -- Corpse_Master, Camp, ...). Teleporter (count 17, min distance 55)
+        -- is dumped beside it as a known reference.
+        for i, k in ipairs(before) do
+            if #before == 14 and (i == 9 or i == 1) and k.entry then
+                R.log(("[tilegen-proof] live kind #%d entry 0x%x (pool %d)"):format(i, k.entry, k.count))
+                R.debug.dump(k.entry, 0x90, i == 9 and "camp-kind" or "teleporter-kind")
+            end
+            if (k.name == "Camp" or (#before == 14 and i == 9)) and k.entry then
                 dumped = true
                 R.log(("[tilegen-proof] live Camp kind entry 0x%x (pool %d)"):format(k.entry, k.count))
                 R.debug.dump(k.entry, 0x90, "camp-kind")

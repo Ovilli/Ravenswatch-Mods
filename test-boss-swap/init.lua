@@ -44,7 +44,7 @@ local function scan()
             seen[n] = true
             local v = ""
             if dh and n == "Boss_Crab" then
-                v = " -> PASS: a crab boss in Dark Hills is the swapped ghoul den"
+                v = " -> PASS: a crab boss in Dark Hills is a swapped arena (ghoul den or White Lady shrine)"
             elseif dh and (n == "Boss_Marsh_Ghoul" or n == "Boss_White_Lady") then
                 v = " -> FAIL: the arena still spawned its own boss"
             end
