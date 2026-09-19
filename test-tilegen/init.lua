@@ -36,7 +36,26 @@ if not (R.poi and R.poi.on_generated) then
     return
 end
 
-local armed = R.poi.on_generated(function(spawner)
+-- Is our edit even in the LIVE kind table? The installed file carries Camp
+-- count 2 / footprints [0,0,0,1] (checked on disk), yet generation ignored
+-- both. Dump the runtime Camp entry once: our 2 and the 0,0,0,1 mask bytes, or
+-- the vanilla 5 and 0,0,1,1, answer "not loaded" vs "not consulted".
+local dumped = false
+local armed = R.poi.on_generated(function(spawner, before)
+    if not dumped and before and R.debug and R.debug.dump then
+        for _, k in ipairs(before) do
+            if k.name == "Camp" and k.entry then
+                dumped = true
+                R.log(("[tilegen-proof] live Camp kind entry 0x%x (pool %d)"):format(k.entry, k.count))
+                R.debug.dump(k.entry, 0x90, "camp-kind")
+            end
+        end
+        if not dumped then
+            local ns = {}
+            for _, k in ipairs(before) do ns[#ns + 1] = tostring(k.name) end
+            R.log("[tilegen-proof] no Camp kind by name; kinds = " .. table.concat(ns, ","))
+        end
+    end
     local entries, misses = R.poi.placed(spawner)
     entries = entries or {}
     local camps, wells, names = 0, 0, {}
