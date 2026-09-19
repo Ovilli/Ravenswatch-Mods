@@ -18,7 +18,7 @@
 --      0 across the board, which reads as "wrong list", not as a FAIL.
 local R = require "rsmm"
 
-local OURS = "(1,2,2)(3,4,3)(3,3,3)(1,3,1)"
+local OURS = "(1,2,2)(3,4,3)(3,3,3)(0,0,0)"
 local TAG = "[reward-proof]"
 local WATCH = { "Astrolab", "Basic_Chest", "DreamCrystal", "Baba_Yaga_Eye" }
 
@@ -79,8 +79,10 @@ local function tally(when)
         v = "not Dark Hills — unedited baseline (vanilla astrolabs 0..1)"
     elseif #rows == 0 then
         v = "NO SCENE (hero not captured yet?)"
+    elseif a == 3 and counts.DreamCrystal == 0 then
+        v = "PASS — 3 astrolabs (count) and 0 crystals (ban)"
     elseif a == 3 then
-        v = "PASS — the roll placed exactly the edited count"
+        v = ("COUNT PASS, BAN FAIL — %d crystal(s) despite the ban"):format(counts.DreamCrystal)
     elseif a <= 1 and (counts.Basic_Chest + counts.DreamCrystal) > 0 then
         v = "FAIL — vanilla-range astrolabs while other rewards are visible"
     elseif a == 0 and counts.Basic_Chest == 0 and counts.DreamCrystal == 0 then
