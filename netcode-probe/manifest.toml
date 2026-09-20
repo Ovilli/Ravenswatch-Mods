@@ -1,0 +1,33 @@
+# Netcode Probe (dev)
+#
+# Answers two questions that have been open since August, in ONE co-op match:
+#
+#   1. Does the RakNet owner join work? Every hero replica carries its owning
+#      machine's RakNetGUID (Replica3::creatingSystemGUID). RakPeer's
+#      remote-system table maps that GUID to a UDP port, and the engine's peer
+#      table carries that port beside the player's display NAME. The chain is
+#      fully read out of RE'd offsets, and has never once been run with real
+#      peers on the other end.
+#
+#   2. Does the host migrate when the host leaves? RakNet's FullyConnectedMesh2
+#      is linked into the shipped exe and the game HANDLES ID_FCM2_NEW_HOST --
+#      but only while the session state is ConnectingToPeers or Pending. Once
+#      Connected the handler is a no-op. This mod watches the session state and
+#      the host GUID, so a mid-match host leave either moves them or does not.
+#
+# Read-only. Every value is a guarded load; nothing is written, nothing is
+# called into the engine, and no hook is installed.
+
+[mod]
+id          = "netcode-probe"
+name        = "Netcode Probe (dev)"
+version     = "0.1.0"
+author      = "RSMM"
+description = "Testing tool: logs the P2P session state, host GUID, peer table and RakNet remote-system table, and announces every host or state change. Read-only."
+enabled     = true
+load_order  = 95
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags        = ["dev", "testing", "netcode"]
+# Reads only. Nothing it does is visible to, or dependent on, other players.
+multiplayer_scope = "local-only"

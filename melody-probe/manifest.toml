@@ -4,7 +4,7 @@ name        = "Melody Probe (dev)"
 version     = "0.1.0"
 author      = "RSMM"
 description = "A PROBE, not a content mod. Watches the CHOOSE_MELODY / REMOVE_MELODY bus events so a real one can be compared against ours, and fires one experimental R.melody.choose per run to test whether a melody can be granted. Delete it once the question is answered."
-enabled     = true
+enabled     = false
 load_order  = 95
 sdk_version = ">=3.0,<4"
 license     = "MIT"
