@@ -4,7 +4,7 @@ name         = "TEST: ghoul den fights the crab"
 version      = "0.1.0"
 author       = "RSMM"
 description  = "Dev test. The Dark Hills ghoul den AND the White Lady shrine spawn the Storm Island giant crab (Boss_Crab). Pass: rsmm log --grep boss-proof shows Boss_Crab in Dark Hills (the den boss is listed at level start; the White Lady appears when her shrine is activated)."
-enabled      = true
+enabled      = false
 load_order   = 96
 sdk_version  = ">=3.0,<4"
 license      = "MIT"

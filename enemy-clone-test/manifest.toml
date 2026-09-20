@@ -4,7 +4,7 @@ name        = "Enemy Clone Test (dev)"
 version     = "0.1.0"
 author      = "RSMM"
 description = "A diagnostic, not a content mod. Proves (or disproves) that kind=\"enemy\" mode=\"clone\" adds a NET-NEW enemy that camps actually spawn: a Gnolls-tribe clone wearing a Mud Crab body. A crab standing in a GNOLL camp on Storm Island can only be the clone. Delete it once the answer is in."
-enabled     = true
+enabled     = false
 load_order  = 95
 sdk_version = ">=3.0,<4"
 license     = "MIT"

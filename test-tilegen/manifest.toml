@@ -4,7 +4,7 @@ name         = "TEST: busier Dark Hills"
 version      = "0.1.0"
 author       = "RSMM"
 description  = "Dev test. Dark Hills camps may only use 64x64 slots (40x40 off). Pass: rsmm log --grep tilegen-proof counts 0 camps named 40x40_* in Dark Hills (every unedited map so far had several)."
-enabled     = true
+enabled     = false
 load_order   = 30   # below runestone-shrine (31): R.poi has one owner per launch
 sdk_version  = ">=3.0,<4"
 license      = "MIT"

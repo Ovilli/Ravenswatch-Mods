@@ -4,7 +4,7 @@ name        = "TEST: interaction names"
 version     = "0.1.0"
 author      = "RSMM"
 description = "Dev test. Logs what R.interact.name returns for everything you interact with. Pair with runestone-shrine and hold-interact on the pillar."
-enabled     = true
+enabled     = false
 load_order  = 96
 sdk_version = ">=3.0,<4"
 license     = "MIT"

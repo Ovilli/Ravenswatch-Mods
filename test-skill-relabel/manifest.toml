@@ -4,7 +4,7 @@ name         = "TEST: skill relabel"
 version      = "0.1.0"
 author       = "RSMM"
 description  = "Dev test. Renames Aladdin's Attack Dive. Pass: Aladdin's Skill Menu and level-up card say 'TEST Meteor'."
-enabled     = true
+enabled     = false
 load_order   = 96
 sdk_version  = ">=3.0,<4"
 license      = "MIT"

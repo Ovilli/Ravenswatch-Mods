@@ -4,7 +4,7 @@ name         = "TEST: melody retune"
 version      = "0.1.0"
 author       = "RSMM"
 description  = "Dev test. Makes the Piper's Fully Heal melody reveal the map instead. Pass: as the Piper, collect and play Fully Heal and the map is revealed."
-enabled     = true
+enabled     = false
 load_order   = 96
 sdk_version  = ">=3.0,<4"
 license      = "MIT"

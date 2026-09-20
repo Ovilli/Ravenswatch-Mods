@@ -4,7 +4,7 @@ name         = "TEST: cloned run modifier"
 version      = "0.1.0"
 author       = "RSMM"
 description  = "Dev test. Adds a relabelled clone of More Experience. Pass: a 'TEST Double XP' row appears on the challenge screen."
-enabled     = true
+enabled     = false
 load_order   = 96
 sdk_version  = ">=3.0,<4"
 license      = "MIT"

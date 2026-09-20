@@ -4,7 +4,7 @@ name        = "Modifier Cap Probe"
 version     = "0.1.0"
 author      = "RSMM"
 description = "Diagnostic. Watches how many selected game modifiers reach the challenge page's display path, to find where the five-negative-modes limit is actually enforced. Read-only: it logs and changes nothing."
-enabled     = true
+enabled     = false
 load_order  = 90
 sdk_version = ">=3.0,<4"
 license     = "MIT"
