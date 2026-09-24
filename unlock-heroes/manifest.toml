@@ -4,7 +4,7 @@ name = "Unlock Heroes"
 version = "0.1.0"
 author = "RSMM"
 description = "Makes progression-locked heroes selectable — the rank, story and challenge gates the hero picker draws a padlock for. Runtime only: your save is never touched, so turning the mod off puts every lock straight back."
-enabled = true
+enabled = false
 sdk_version = ">=3.0,<4"
 tags = ["heroes", "progression", "quality-of-life"]
 license = "MIT"
