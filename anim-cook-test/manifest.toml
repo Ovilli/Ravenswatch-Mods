@@ -1,0 +1,19 @@
+[mod]
+id           = "anim-cook-test"
+name         = "TEST: animation cooker (Piper spin dash)"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "Dev test for the glTF animation cooker. Replaces Piper's dash clip with a generated one: her spine spins a full turn through the dash while every other bone holds the dash's first pose. Pass: play Piper and dash — the upper body spins, the rest looks frozen. The source glTF is generated (no game data)."
+enabled      = true
+load_order   = 93
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["dev", "testing", "animation"]
+multiplayer_scope = "cosmetic"
+experimental = true
+
+[[content]]
+kind   = "animation"
+id     = "piper_dash_spin"
+target = "Characters\\Heroes\\Piper\\Animations\\Piper_Dash_Default.fbx"
+source = "anims/spine_spin.glb"
