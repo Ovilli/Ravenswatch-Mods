@@ -4,7 +4,7 @@ name         = "TEST: repeat chapter order"
 version      = "0.1.0"
 author       = "RSMM"
 description  = "Dev test. The run plays Storm Island FIRST, then Dark Hills. Pass: chapter 2 is Dark Hills (rsmm log --grep tilegen-proof names it); a jump to Avalon or the run ending means only ascending orders work."
-enabled      = false
+enabled      = true
 load_order   = 96
 sdk_version  = ">=3.0,<4"
 license      = "MIT"
