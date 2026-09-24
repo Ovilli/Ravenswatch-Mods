@@ -3,8 +3,8 @@ id           = "test-tilegen"
 name         = "TEST: busier Dark Hills"
 version      = "0.1.0"
 author       = "RSMM"
-description  = "Dev test. Dark Hills camps may only use 64x64 slots (40x40 off). Pass: rsmm log --grep tilegen-proof counts 0 camps named 40x40_* in Dark Hills (every unedited map so far had several)."
-enabled     = false
+description  = "Dev test. Camp forbidden in every Dark Hills 40x40 SLOT (per-slot allow mask; kind count/footprints proved ineffective 2026-09-24). Pass: rsmm log --grep tilegen-proof reports 40x40=0 camps (vanilla ~5)."
+enabled     = true
 load_order   = 30   # below runestone-shrine (31): R.poi has one owner per launch
 sdk_version  = ">=3.0,<4"
 license      = "MIT"
@@ -12,12 +12,27 @@ tags         = ["dev", "testing"]
 multiplayer_scope = "deterministic-shared"
 experimental = true
 
+# 2026-09-24 experiment: kind count/footprints are loaded but NOT honoured
+# (live Camp count read 2, 8 camps placed incl. five 40x40). Test the
+# per-slot allow mask instead: Camp forbidden in every 40x40 slot.
+# PASS = zero 40x40 camps (vanilla places ~5).
 [[content]]
 kind    = "tilegen"
 id      = "test_camps"
 chapter = "DarkHills"
-[content.kinds.Camp]
-count = 2
-footprints = { "40x40" = false }
-[content.quotas]
-Wishing_Well = 2
+
+[content.slots]
+"30" = { pos = [-56.0, 8.0, 147.0], allow = { Camp = false } }
+"31" = { pos = [-50.0, 8.0, 87.0], allow = { Camp = false } }
+"32" = { pos = [-135.0, 12.0, 92.0], allow = { Camp = false } }
+"33" = { pos = [-124.0, 4.0, 19.0], allow = { Camp = false } }
+"34" = { pos = [-72.0, 4.0, -10.0], allow = { Camp = false } }
+"35" = { pos = [-148.0, 0.0, -53.0], allow = { Camp = false } }
+"36" = { pos = [-61.0, 0.0, -90.0], allow = { Camp = false } }
+"37" = { pos = [6.0, 0.0, -66.5], allow = { Camp = false } }
+"38" = { pos = [10.0, 0.0, -165.0], allow = { Camp = false } }
+"39" = { pos = [58.0, 0.0, -144.0], allow = { Camp = false } }
+"40" = { pos = [132.0, 0.0, -168.5], allow = { Camp = false } }
+"41" = { pos = [108.0, 0.0, -103.0], allow = { Camp = false } }
+"42" = { pos = [101.0, 0.0, -56.0], allow = { Camp = false } }
+"43" = { pos = [49.0, 0.0, 80.0], allow = { Camp = false } }
