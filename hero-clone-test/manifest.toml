@@ -1,0 +1,18 @@
+[mod]
+id           = "hero-clone-test"
+name         = "TEST: 13th hero (Piper clone)"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "Dev test. Adds a clone of Piper as a new hero definition. The hero-select roster is every registered herodef, so the clone should appear as a 13th portrait (a second Piper). Pass: rsmm log --grep hero-clone says 13 hero defs live, and the select screen shows two Pipers. Enable unlock-heroes too: the clone's index has no unlock bit in any save."
+enabled      = true
+load_order   = 94
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["dev", "testing", "heroes"]
+multiplayer_scope = "local-only"
+experimental = true
+
+[[content]]
+kind = "hero"
+id   = "Zz_Piper_Clone"
+base = "Piper"
