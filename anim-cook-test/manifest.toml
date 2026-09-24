@@ -10,7 +10,6 @@ sdk_version  = ">=3.0,<4"
 license      = "MIT"
 tags         = ["dev", "testing", "animation"]
 multiplayer_scope = "cosmetic"
-experimental = true
 
 [[content]]
 kind   = "animation"
