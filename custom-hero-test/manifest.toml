@@ -3,7 +3,7 @@ id           = "custom-hero-test"
 name         = "TEST: custom hero (Nyx)"
 version      = "0.1.0"
 author       = "RSMM"
-description  = "Dev test for a hero of its own. Each piece is visible: Nyx is MAGENTA with a GOLD flute; her DASH spins her spine (Piper's dash must stay normal); skin slots 2 and 3 are outfits Frost (cyan) and Moss (green). Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
+description  = "Dev test for a hero of its own. Each piece is visible: Nyx is MAGENTA with a GOLD flute; her DASH spins her spine (Piper's dash must stay normal); skin slots 2 and 3 are outfits Frost (cyan) and Moss (green, Mercenaries body shape); her Rat King ultimate recharges in 5 s and she spawns 6 rats; her day notes look like Juliet's bullets. Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
 enabled      = true
 load_order   = 94
 sdk_version  = ">=3.0,<4"
@@ -37,4 +37,15 @@ albedo = "art/cyan.png"
 
 [[content.outfits]]
 name   = "Moss"
+model  = "art/moss_body.glb"     # a body of its own (Piper's Mercenaries shape)
 albedo = "art/green.png"
+
+# Her numbers (rsmm export-character Piper --list-values): a 5 s Rat King
+# cooldown and 6 rats per spawn instead of 2.
+[content.values]
+"Ultimate Power 2 Cooldown Max" = 5
+"Trait Ability Pets Per Spawn Default Amount" = 6
+
+# Her day notes fly as Juliet's bullet trail.
+[content.references]
+"Settings\\Heroes\\Hero_Piper_FX\\Piper_Note_Day_01.vfx.ot" = "Settings\\Heroes\\Hero_Juliet_FX\\Juliet_Basic_Bullet_Trail_01.vfx.ot"
