@@ -1,0 +1,40 @@
+[mod]
+id           = "custom-hero-test"
+name         = "TEST: custom hero (Nyx)"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "Dev test for a hero of its own. Each piece is visible: Nyx is MAGENTA with a GOLD flute; her DASH spins her spine (Piper's dash must stay normal); skin slots 2 and 3 are outfits Frost (cyan) and Moss (green). Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
+enabled      = true
+load_order   = 94
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["dev", "testing", "heroes"]
+multiplayer_scope = "local-only"
+experimental = true
+
+[[content]]
+kind        = "hero"
+id          = "Nyx"
+base        = "Piper"
+name        = "Nyx"
+description = "A test hero built by rsmm: Piper's moves, her own look."
+model       = "art/nyx.glb"
+albedo      = "art/alb.png"
+
+# A weapon of her own (label = the base's graphic object, see export-character).
+[content.weapons."Weapon In Left Hand Mesh"]
+model  = "art/flute.glb"
+albedo = "art/gold.png"
+
+# Her own dash: only Nyx plays it, Piper keeps hers.
+[content.animations.Piper_Dash_Default]
+source = "art/spin.glb"
+clip   = "a"
+
+[[content.outfits]]
+name   = "Frost"
+albedo = "art/cyan.png"
+
+[[content.outfits]]
+name   = "Moss"
+albedo = "art/green.png"
