@@ -1,0 +1,13 @@
+[mod]
+id           = "hero-alias-probe"
+name         = "TEST: hero alias probe"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "Dev probe, two extra heroes that are both Piper underneath. 'Probe Skin' = a NEW skin entity file keeping Piper's alias. 'Probe Alias' = the same new skin with a NEW alias entry pointing at Piper's ORIGINAL gameplay entity. Which one is lit and playable says which link breaks a custom hero."
+enabled      = false
+load_order   = 95
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["dev", "testing", "heroes"]
+multiplayer_scope = "local-only"
+experimental = true
