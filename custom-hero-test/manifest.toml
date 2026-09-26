@@ -3,7 +3,7 @@ id           = "custom-hero-test"
 name         = "TEST: custom hero (Nyx)"
 version      = "0.1.0"
 author       = "RSMM"
-description  = "Dev test for a hero of its own. Each piece is visible: Nyx is MAGENTA with a GOLD flute; her DASH spins her spine (Piper's dash must stay normal); skin slots 2 and 3 are outfits Frost (cyan) and Moss (green, Mercenaries body shape); her Rat King ultimate recharges in 5 s and she spawns 6 rats; her day notes look like Juliet's bullets. Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
+description  = "Dev test for a hero of its own. NEW ABILITIES: dashing spawns a rat (Rat Dash); a kill with her flute solo (primary) summons a rat (Feast); her defensive blast also drops her secondary zone (Echo Zone). Piper must keep none of these. Each piece is visible: Nyx is MAGENTA with a GOLD flute; her DASH spins her spine (Piper's dash must stay normal); skin slots 2 and 3 are outfits Frost (cyan) and Moss (green, Mercenaries body shape); her Rat King ultimate recharges in 5 s and she spawns 6 rats; her day notes look like Juliet's bullets. Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
 enabled      = true
 load_order   = 94
 sdk_version  = ">=3.0,<4"
@@ -49,3 +49,25 @@ albedo = "art/green.png"
 # Her day notes fly as Juliet's bullet trail.
 [content.references]
 "Settings\\Heroes\\Hero_Piper_FX\\Piper_Note_Day_01.vfx.ot" = "Settings\\Heroes\\Hero_Juliet_FX\\Juliet_Basic_Bullet_Trail_01.vfx.ot"
+
+# New abilities (rsmm ability-editor builds these steps). Each one is visible:
+# Rat Dash: dashing spawns a rat.
+[[content.abilities]]
+add_link = "Child State Dash Ability.activates"
+to = "Event Trait Ability Spawn One Pet"
+
+# Feast: a kill with her primary (the flute solo) summons a rat. Piper's
+# kill event fires and triggers nothing; Nyx's triggers the one-rat spawn.
+[[content.abilities]]
+add_link = "Event On Primary Ability Character Killed.activates"
+to = "Event Trait Ability Spawn One Pet"
+
+# Echo Zone: her defensive blast also drops a copy of her secondary zone, from
+# a cloned ability of her own ("Echo") so her real secondary is untouched.
+[[content.abilities]]
+clone = "Ability Secondary"
+as = "Echo"
+
+[[content.abilities]]
+add_link = "Event Defensive Ability Active.activates"
+to = "Event Secondary Ability Activate Echo"
