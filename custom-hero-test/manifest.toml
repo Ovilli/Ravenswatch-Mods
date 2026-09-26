@@ -145,26 +145,78 @@ to = "Defensive Ability Attack Pushback Nyx Blast Damage"
 # CROSS QUAKE: her special, entirely replacing Piper's zone. Beowulf's power
 # (his travelling shockwave, Hero_Beowulf_Shockwave) fired twice: first
 # VERTICALLY (forward + back), then 0.4 s later HORIZONTALLY (left + right),
-# so the two lines make a cross. Each direction is a copy of Beowulf's
-# spawner and the three values it hands the shockwave (lifetime 0.4 s, speed
-# 20, damage x5 of her attack power), turned by the yaw in the spawner's
-# `position` block (literal 8). Its `transform` yaw is IGNORED for this spawn:
-# tried first, and all four went the way she faces (playtest 2026-09-26).
+# so the two lines make a cross.
+#
+# HOW A SPAWN IS TURNED. A spawner's own yaw fields are ignored for this
+# (transform[5] and position[8] were both tried in game: every wave went the
+# way she faced). The game turns a spawn the way Piper fans her notes: the
+# spawner reads a 3D node on her, and the node's Y angle comes from a VALUE.
+# So each direction copies Piper's note spawner with its shoot node, points
+# the node's angle (obj_4[5]) at a value of its own and its sideways offset
+# (obj_4[3]) at zero, and swaps the spawner's template from her note to
+# Beowulf's shockwave, fed Beowulf's lifetime (0.4 s), speed (20) and damage
+# (x5 of her attack power).
 
-# Shockwave N (forward).
+# ---- Shockwave N (forward) ----
 [[content.abilities]]
 from   = "Beowulf"
-clone  = ["Primary Ability Effect Spawner", "Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
+clone  = ["Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
 suffix = " Cross N"
 
 [[content.abilities]]
 link = "Primary Ability Damage Coeff Spawner Value Cross N.value"
 to   = "Primary Ability Damage Multiplier Default Cross N"
 
-# Shockwave S (back).
+[[content.abilities]]
+clone  = ["Attack Shoot Projectile Spawner 02", "Attack Shoot 3d Node 02"]
+suffix = " Cross N"
+
+[[content.abilities]]
+clone  = ["Primary Ability Shots Delay"]
+suffix = " Cross Yaw N"
+
+[[content.abilities]]
+set   = "Primary Ability Shots Delay Cross Yaw N.value"
+value = 0.0
+
+[[content.abilities]]
+link = "Attack Shoot 3d Node 02 Cross N.obj_4[5]"
+to   = "Primary Ability Shots Delay Cross Yaw N"
+
+[[content.abilities]]
+link = "Attack Shoot 3d Node 02 Cross N.obj_4[3]"
+to   = "Primary Ability Shots Delay Cross Yaw N"
+
+[[content.abilities]]
+set   = "Attack Shoot Projectile Spawner 02 Cross N.template[1]"
+value = "Heroes\\Hero_Beowulf\\Hero_Beowulf_Shockwave.entity.ot"
+
+[[content.abilities]]
+remove_link = "Attack Shoot Projectile Spawner 02 Cross N.spawner_values[0]"
+
+[[content.abilities]]
+remove_link = "Attack Shoot Projectile Spawner 02 Cross N.spawner_values[0]"
+
+[[content.abilities]]
+link = "Attack Shoot Projectile Spawner 02 Cross N.speed?"
+to   = "Primary Ability Shots Delay Cross Yaw N"
+
+[[content.abilities]]
+link = "Primary Ability Lifetime Spawner Value Cross N.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross N"
+
+[[content.abilities]]
+link = "Primary Ability Move Speed Spawner Value Cross N.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross N"
+
+[[content.abilities]]
+link = "Primary Ability Damage Coeff Spawner Value Cross N.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross N"
+
+# ---- Shockwave S (back) ----
 [[content.abilities]]
 from   = "Beowulf"
-clone  = ["Primary Ability Effect Spawner", "Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
+clone  = ["Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
 suffix = " Cross S"
 
 [[content.abilities]]
@@ -172,13 +224,55 @@ link = "Primary Ability Damage Coeff Spawner Value Cross S.value"
 to   = "Primary Ability Damage Multiplier Default Cross S"
 
 [[content.abilities]]
-set   = "Primary Ability Effect Spawner Cross S.position[8]"
+clone  = ["Attack Shoot Projectile Spawner 02", "Attack Shoot 3d Node 02"]
+suffix = " Cross S"
+
+[[content.abilities]]
+clone  = ["Primary Ability Shots Delay"]
+suffix = " Cross Yaw S"
+
+[[content.abilities]]
+set   = "Primary Ability Shots Delay Cross Yaw S.value"
 value = 3.1415927
 
-# Shockwave E (right).
+[[content.abilities]]
+link = "Attack Shoot 3d Node 02 Cross S.obj_4[5]"
+to   = "Primary Ability Shots Delay Cross Yaw S"
+
+[[content.abilities]]
+link = "Attack Shoot 3d Node 02 Cross S.obj_4[3]"
+to   = "Primary Ability Shots Delay Cross Yaw N"
+
+[[content.abilities]]
+set   = "Attack Shoot Projectile Spawner 02 Cross S.template[1]"
+value = "Heroes\\Hero_Beowulf\\Hero_Beowulf_Shockwave.entity.ot"
+
+[[content.abilities]]
+remove_link = "Attack Shoot Projectile Spawner 02 Cross S.spawner_values[0]"
+
+[[content.abilities]]
+remove_link = "Attack Shoot Projectile Spawner 02 Cross S.spawner_values[0]"
+
+[[content.abilities]]
+link = "Attack Shoot Projectile Spawner 02 Cross S.speed?"
+to   = "Primary Ability Shots Delay Cross Yaw N"
+
+[[content.abilities]]
+link = "Primary Ability Lifetime Spawner Value Cross S.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross S"
+
+[[content.abilities]]
+link = "Primary Ability Move Speed Spawner Value Cross S.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross S"
+
+[[content.abilities]]
+link = "Primary Ability Damage Coeff Spawner Value Cross S.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross S"
+
+# ---- Shockwave E (right) ----
 [[content.abilities]]
 from   = "Beowulf"
-clone  = ["Primary Ability Effect Spawner", "Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
+clone  = ["Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
 suffix = " Cross E"
 
 [[content.abilities]]
@@ -186,13 +280,55 @@ link = "Primary Ability Damage Coeff Spawner Value Cross E.value"
 to   = "Primary Ability Damage Multiplier Default Cross E"
 
 [[content.abilities]]
-set   = "Primary Ability Effect Spawner Cross E.position[8]"
+clone  = ["Attack Shoot Projectile Spawner 02", "Attack Shoot 3d Node 02"]
+suffix = " Cross E"
+
+[[content.abilities]]
+clone  = ["Primary Ability Shots Delay"]
+suffix = " Cross Yaw E"
+
+[[content.abilities]]
+set   = "Primary Ability Shots Delay Cross Yaw E.value"
 value = 1.5707964
 
-# Shockwave W (left).
+[[content.abilities]]
+link = "Attack Shoot 3d Node 02 Cross E.obj_4[5]"
+to   = "Primary Ability Shots Delay Cross Yaw E"
+
+[[content.abilities]]
+link = "Attack Shoot 3d Node 02 Cross E.obj_4[3]"
+to   = "Primary Ability Shots Delay Cross Yaw N"
+
+[[content.abilities]]
+set   = "Attack Shoot Projectile Spawner 02 Cross E.template[1]"
+value = "Heroes\\Hero_Beowulf\\Hero_Beowulf_Shockwave.entity.ot"
+
+[[content.abilities]]
+remove_link = "Attack Shoot Projectile Spawner 02 Cross E.spawner_values[0]"
+
+[[content.abilities]]
+remove_link = "Attack Shoot Projectile Spawner 02 Cross E.spawner_values[0]"
+
+[[content.abilities]]
+link = "Attack Shoot Projectile Spawner 02 Cross E.speed?"
+to   = "Primary Ability Shots Delay Cross Yaw N"
+
+[[content.abilities]]
+link = "Primary Ability Lifetime Spawner Value Cross E.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross E"
+
+[[content.abilities]]
+link = "Primary Ability Move Speed Spawner Value Cross E.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross E"
+
+[[content.abilities]]
+link = "Primary Ability Damage Coeff Spawner Value Cross E.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross E"
+
+# ---- Shockwave W (left) ----
 [[content.abilities]]
 from   = "Beowulf"
-clone  = ["Primary Ability Effect Spawner", "Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
+clone  = ["Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
 suffix = " Cross W"
 
 [[content.abilities]]
@@ -200,9 +336,52 @@ link = "Primary Ability Damage Coeff Spawner Value Cross W.value"
 to   = "Primary Ability Damage Multiplier Default Cross W"
 
 [[content.abilities]]
-set   = "Primary Ability Effect Spawner Cross W.position[8]"
+clone  = ["Attack Shoot Projectile Spawner 02", "Attack Shoot 3d Node 02"]
+suffix = " Cross W"
+
+[[content.abilities]]
+clone  = ["Primary Ability Shots Delay"]
+suffix = " Cross Yaw W"
+
+[[content.abilities]]
+set   = "Primary Ability Shots Delay Cross Yaw W.value"
 value = -1.5707964
 
+[[content.abilities]]
+link = "Attack Shoot 3d Node 02 Cross W.obj_4[5]"
+to   = "Primary Ability Shots Delay Cross Yaw W"
+
+[[content.abilities]]
+link = "Attack Shoot 3d Node 02 Cross W.obj_4[3]"
+to   = "Primary Ability Shots Delay Cross Yaw N"
+
+[[content.abilities]]
+set   = "Attack Shoot Projectile Spawner 02 Cross W.template[1]"
+value = "Heroes\\Hero_Beowulf\\Hero_Beowulf_Shockwave.entity.ot"
+
+[[content.abilities]]
+remove_link = "Attack Shoot Projectile Spawner 02 Cross W.spawner_values[0]"
+
+[[content.abilities]]
+remove_link = "Attack Shoot Projectile Spawner 02 Cross W.spawner_values[0]"
+
+[[content.abilities]]
+link = "Attack Shoot Projectile Spawner 02 Cross W.speed?"
+to   = "Primary Ability Shots Delay Cross Yaw N"
+
+[[content.abilities]]
+link = "Primary Ability Lifetime Spawner Value Cross W.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross W"
+
+[[content.abilities]]
+link = "Primary Ability Move Speed Spawner Value Cross W.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross W"
+
+[[content.abilities]]
+link = "Primary Ability Damage Coeff Spawner Value Cross W.spawner"
+to   = "Attack Shoot Projectile Spawner 02 Cross W"
+
+# ---- Wiring the special ----
 # Piper's zone no longer spawns: the special is the cross.
 [[content.abilities]]
 remove_link = "Event Secondary Ability Activate.activates[0]"
@@ -210,11 +389,11 @@ remove_link = "Event Secondary Ability Activate.activates[0]"
 # Beat 1, vertical: forward + back as the special starts.
 [[content.abilities]]
 add_link = "Event Secondary Ability Activate.activates"
-to = "Primary Ability Effect Spawner Cross N"
+to = "Attack Shoot Projectile Spawner 02 Cross N"
 
 [[content.abilities]]
 add_link = "Event Secondary Ability Activate.activates"
-to = "Primary Ability Effect Spawner Cross S"
+to = "Attack Shoot Projectile Spawner 02 Cross S"
 
 # Beat 2, horizontal: a state that fires left + right ...
 [[content.abilities]]
@@ -226,19 +405,18 @@ remove_link = "Event Secondary Ability Destroy Zone Cross Horizontal.activates[0
 
 [[content.abilities]]
 add_link = "Event Secondary Ability Destroy Zone Cross Horizontal.activates"
-to = "Primary Ability Effect Spawner Cross E"
+to = "Attack Shoot Projectile Spawner 02 Cross E"
 
 [[content.abilities]]
 add_link = "Event Secondary Ability Destroy Zone Cross Horizontal.activates"
-to = "Primary Ability Effect Spawner Cross W"
+to = "Attack Shoot Projectile Spawner 02 Cross W"
 
-# ... ticked once by a 0.4 s timer that runs inside the special's state.
+# ... ticked once by a timer inside the special's state, as long as the
+# forward wave lives (0.4 s): the second line starts as the first fades.
 [[content.abilities]]
 clone  = ["Ability Secondary Active Timer"]
 suffix = " Cross"
 
-# Its delay is the forward shockwave's own lifetime (0.4 s): the second line
-# starts as the first one fades.
 [[content.abilities]]
 link = "Ability Secondary Active Timer Cross.duration"
 to   = "Primary Ability Lifetime Cross N"
