@@ -3,7 +3,7 @@ id           = "custom-hero-test"
 name         = "TEST: custom hero (Nyx)"
 version      = "0.1.0"
 author       = "RSMM"
-description  = "Dev test for a hero of its own. NEW ABILITIES: dashing spawns a rat (Rat Dash); a kill with her flute solo (primary) summons a rat (Feast); her defensive blast also drops her secondary zone (Echo Zone). Piper must keep none of these. Each piece is visible: Nyx is MAGENTA with a GOLD flute; her DASH spins her spine (Piper's dash must stay normal); skin slots 2 and 3 are outfits Frost (cyan) and Moss (green, Mercenaries body shape); her Rat King ultimate recharges in 5 s and she spawns 6 rats; her day notes look like Juliet's bullets. Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
+description  = "Dev test for a hero of its own. HUGE DEFENSIVE: her blast is 6x Piper's size and deals damage (x50). NEW ABILITIES: dashing spawns a rat (Rat Dash); a kill with her flute solo (primary) summons a rat (Feast); her defensive blast also drops her secondary zone (Echo Zone). Piper must keep none of these. Each piece is visible: Nyx is MAGENTA with a GOLD flute; her DASH spins her spine (Piper's dash must stay normal); skin slots 2 and 3 are outfits Frost (cyan) and Moss (green, Mercenaries body shape); her Rat King ultimate recharges in 5 s and she spawns 6 rats; her day notes look like Juliet's bullets. Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
 enabled      = true
 load_order   = 94
 sdk_version  = ">=3.0,<4"
@@ -64,10 +64,33 @@ to = "Event Trait Ability Spawn One Pet"
 
 # Echo Zone: her defensive blast also drops a copy of her secondary zone, from
 # a cloned ability of her own ("Echo") so her real secondary is untouched.
+# DISABLED 2026-09-26: suspect for a crash 2 s into a Nyx run (NamedEvent_Dispatch
+# reading -1 during the level-up burst of the XP grant). The copy includes a
+# cloned MASTER_DESTROY named-event SENDER. Re-enable once cleared.
+# [[content.abilities]]
+# clone = "Ability Secondary"
+# as = "Echo"
+#
+# [[content.abilities]]
+# add_link = "Event Defensive Ability Active.activates"
+# to = "Event Secondary Ability Activate Echo"
+
+# Huge defensive: Piper's blast (radius 5) goes to 30 - six times the size,
+# its effect scales with it - and it DEALS DAMAGE. Piper's blast only pushes
+# (its damage multiplier is 0 unless the Defensive Deals Damage talent is
+# taken, which gives 4..7); Nyx's reads a multiplier of 50 of her own.
 [[content.abilities]]
-clone = "Ability Secondary"
-as = "Echo"
+set = "Defensive Ability Attack Radius.value"
+value = 30
 
 [[content.abilities]]
-add_link = "Event Defensive Ability Active.activates"
-to = "Event Secondary Ability Activate Echo"
+clone = ["Defensive Ability Attack Pushback"]
+suffix = " Nyx Blast Damage"
+
+[[content.abilities]]
+set = "Defensive Ability Attack Pushback Nyx Blast Damage.value"
+value = 50
+
+[[content.abilities]]
+link = "Defensive Ability Attack Damage Enemies.value_28"
+to = "Defensive Ability Attack Pushback Nyx Blast Damage"
