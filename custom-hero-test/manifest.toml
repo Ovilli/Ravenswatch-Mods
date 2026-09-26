@@ -3,7 +3,7 @@ id           = "custom-hero-test"
 name         = "TEST: custom hero (Nyx)"
 version      = "0.1.0"
 author       = "RSMM"
-description  = "Dev test for a hero of its own. HUGE DEFENSIVE: her blast is 6x Piper's size and deals damage (x50). NEW ABILITIES: dashing spawns a rat (Rat Dash); a kill with her flute solo (primary) summons a rat (Feast); her defensive blast also drops her secondary zone (Echo Zone). Piper must keep none of these. Each piece is visible: Nyx is MAGENTA with a GOLD flute; her DASH spins her spine (Piper's dash must stay normal); skin slots 2 and 3 are outfits Frost (cyan) and Moss (green, Mercenaries body shape); her Rat King ultimate recharges in 5 s and she spawns 6 rats; her day notes look like Juliet's bullets. Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
+description  = "Dev test for a hero of its own. HUGE DEFENSIVE: her blast is 6x Piper's size and deals damage (x50). NEW ABILITIES: dashing spawns a rat (Rat Dash); a kill with her flute solo (primary) summons a rat (Feast); her defensive blast also drops her secondary zone (Echo Zone). Piper must keep none of these. Each piece is visible: Nyx has her own painted art (midnight-violet starred cloak, silver hair, moon-pale skin), a SILVER flute, her own portrait and VIOLET effects; her DASH spins her spine (Piper's dash must stay normal); all nine skin slots are her outfits (Frost, Moss with the Poison body shape, Eclipse, Ember, Nebula, Bone, Abyss, Dusk, Aurora); her Rat King ultimate recharges in 5 s and she spawns 6 rats; her day notes look like Juliet's bullets. Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
 enabled      = true
 load_order   = 94
 sdk_version  = ">=3.0,<4"
@@ -19,26 +19,66 @@ base        = "Piper"
 name        = "Nyx"
 description = "A test hero built by rsmm: Piper's moves, her own look."
 model       = "art/nyx.glb"
-albedo      = "art/alb.png"
+# Her art, painted from Piper's own maps (region recolour, shading kept):
+# midnight-violet starred cloak, silver hair, plum leather, moon-pale skin.
+albedo      = "art/nyx_alb.png"
+# One PNG for the select-screen portraits and the in-run portrait.
+portrait    = "art/portrait.png"
 
 # A weapon of her own (label = the base's graphic object, see export-character).
 [content.weapons."Weapon In Left Hand Mesh"]
 model  = "art/flute.glb"
-albedo = "art/gold.png"
+albedo = "art/flute_silver.png"
+
+# Her effects, violet. Every effect in Piper's own FX folder is copied under
+# Nyx_<name> and recoloured; Piper keeps hers.
+[content.effects."*"]
+tint = "#8a5cff"
 
 # Her own dash: only Nyx plays it, Piper keeps hers.
 [content.animations.Piper_Dash_Default]
 source = "art/spin.glb"
 clip   = "a"
 
+# Outfits fill skin slots 1..9 in order. NINE IS THE LIMIT: Piper has Default
+# plus nine skins, and the engine's skin roster is a hard-coded nine - a tenth
+# outfit would have no slot to take.
 [[content.outfits]]
 name   = "Frost"
-albedo = "art/cyan.png"
+albedo = "art/outfit_frost.png"
 
 [[content.outfits]]
 name   = "Moss"
-model  = "art/moss_body.glb"     # a body of its own (Piper's Mercenaries shape)
-albedo = "art/green.png"
+model  = "art/moss_body.glb"     # a body of its own (Piper's Poison skin shape)
+albedo = "art/outfit_moss.png"
+
+[[content.outfits]]
+name   = "Eclipse"
+albedo = "art/outfit_eclipse.png"
+
+[[content.outfits]]
+name   = "Ember"
+albedo = "art/outfit_ember.png"
+
+[[content.outfits]]
+name   = "Nebula"
+albedo = "art/outfit_nebula.png"
+
+[[content.outfits]]
+name   = "Bone"
+albedo = "art/outfit_bone.png"
+
+[[content.outfits]]
+name   = "Abyss"
+albedo = "art/outfit_abyss.png"
+
+[[content.outfits]]
+name   = "Dusk"
+albedo = "art/outfit_dusk.png"
+
+[[content.outfits]]
+name   = "Aurora"
+albedo = "art/outfit_aurora.png"
 
 # Her numbers (rsmm export-character Piper --list-values): a 5 s Rat King
 # cooldown and 6 rats per spawn instead of 2.
