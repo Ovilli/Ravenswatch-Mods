@@ -147,7 +147,9 @@ to = "Defensive Ability Attack Pushback Nyx Blast Damage"
 # VERTICALLY (forward + back), then 0.4 s later HORIZONTALLY (left + right),
 # so the two lines make a cross. Each direction is a copy of Beowulf's
 # spawner and the three values it hands the shockwave (lifetime 0.4 s, speed
-# 20, damage x5 of her attack power), turned by the spawner transform's yaw.
+# 20, damage x5 of her attack power), turned by the yaw in the spawner's
+# `position` block (literal 8). Its `transform` yaw is IGNORED for this spawn:
+# tried first, and all four went the way she faces (playtest 2026-09-26).
 
 # Shockwave N (forward).
 [[content.abilities]]
@@ -170,7 +172,7 @@ link = "Primary Ability Damage Coeff Spawner Value Cross S.value"
 to   = "Primary Ability Damage Multiplier Default Cross S"
 
 [[content.abilities]]
-set   = "Primary Ability Effect Spawner Cross S.transform[5]"
+set   = "Primary Ability Effect Spawner Cross S.position[8]"
 value = 3.1415927
 
 # Shockwave E (right).
@@ -184,7 +186,7 @@ link = "Primary Ability Damage Coeff Spawner Value Cross E.value"
 to   = "Primary Ability Damage Multiplier Default Cross E"
 
 [[content.abilities]]
-set   = "Primary Ability Effect Spawner Cross E.transform[5]"
+set   = "Primary Ability Effect Spawner Cross E.position[8]"
 value = 1.5707964
 
 # Shockwave W (left).
@@ -198,7 +200,7 @@ link = "Primary Ability Damage Coeff Spawner Value Cross W.value"
 to   = "Primary Ability Damage Multiplier Default Cross W"
 
 [[content.abilities]]
-set   = "Primary Ability Effect Spawner Cross W.transform[5]"
+set   = "Primary Ability Effect Spawner Cross W.position[8]"
 value = -1.5707964
 
 # Piper's zone no longer spawns: the special is the cross.
