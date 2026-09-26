@@ -3,8 +3,9 @@
 --
 -- Every run: 5000 XP (so her ultimates unlock at once) and her three reworked
 -- talents, so each change can be seen in one launch. Gretel shares Beowulf's
--- controller names and events, so the loader cannot tell the two apart: this
--- also fires when you play Beowulf. Turn it off in the mod's config.
+-- controller names and events; R.hero.entity() reads the live hero's entity
+-- name (Hero_Gretel_*), so on Beowulf nothing is granted. If that name cannot
+-- be read, it grants anyway and says so in the log.
 
 local R = require "rsmm"
 
@@ -41,8 +42,27 @@ end
 
 -- Skill controllers register as they activate, which can trail the hero
 -- capture, so poll until they are there and grant once per run.
+-- Gretel, Beowulf, or unknown (nil): the name is read once per run.
+local who, polls = nil, 0
+R.on("run:start", function() who, polls = nil, 0 end)
+local function is_gretel()
+    if who == nil and R.hero.entity then
+        local n = R.hero.entity()
+        polls = polls + 1
+        if n then
+            who = R.hero.entity_is("Hero_Gretel") and "gretel" or "other"
+            R.log(("[gretel] hero entity %s -> %s"):format(n, who))
+        elseif polls >= 6 then
+            who = "unknown"
+            R.log("[gretel] hero entity name unreadable; granting as before")
+        end
+    end
+    return who == "gretel" or who == "unknown"
+end
+
 R.schedule.every(5, function()
     if not enabled or not R.entity.ready() then return end
+    if not is_gretel() then return end
     try_xp()
     if not talents_done and #R.talent.controllers() > 0 then
         talents_done = true

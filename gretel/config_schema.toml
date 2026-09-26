@@ -1,5 +1,5 @@
 [fields.auto_grant]
-label   = "Testing: grant 5000 XP and her three new talents every run (also fires on Beowulf)"
+label   = "Testing: grant 5000 XP and her three new talents every run as Gretel"
 type    = "bool"
 default = true
 
