@@ -40,6 +40,13 @@ tint = "#8a5cff"
 source = "art/spin.glb"
 clip   = "a"
 
+# Her special (Cross Quake, below) plays the same janky spin in place of
+# Piper's zone-planting animation. 1.17 s, so the second beat at 0.4 s lands
+# inside it.
+[content.animations.Piper_Skill_Secondary_Static_Zone]
+source = "art/spin.glb"
+clip   = "a"
+
 # Outfits fill skin slots 1..9 in order. NINE IS THE LIMIT: Piper has Default
 # plus nine skins, and the engine's skin roster is a hard-coded nine - a tenth
 # outfit would have no slot to take.
@@ -134,3 +141,110 @@ value = 50
 [[content.abilities]]
 link = "Defensive Ability Attack Damage Enemies.value_28"
 to = "Defensive Ability Attack Pushback Nyx Blast Damage"
+
+# CROSS QUAKE: her special, entirely replacing Piper's zone. Beowulf's power
+# (his travelling shockwave, Hero_Beowulf_Shockwave) fired twice: first
+# VERTICALLY (forward + back), then 0.4 s later HORIZONTALLY (left + right),
+# so the two lines make a cross. Each direction is a copy of Beowulf's
+# spawner and the three values it hands the shockwave (lifetime 0.4 s, speed
+# 20, damage x5 of her attack power), turned by the spawner transform's yaw.
+
+# Shockwave N (forward).
+[[content.abilities]]
+from   = "Beowulf"
+clone  = ["Primary Ability Effect Spawner", "Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
+suffix = " Cross N"
+
+[[content.abilities]]
+link = "Primary Ability Damage Coeff Spawner Value Cross N.value"
+to   = "Primary Ability Damage Multiplier Default Cross N"
+
+# Shockwave S (back).
+[[content.abilities]]
+from   = "Beowulf"
+clone  = ["Primary Ability Effect Spawner", "Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
+suffix = " Cross S"
+
+[[content.abilities]]
+link = "Primary Ability Damage Coeff Spawner Value Cross S.value"
+to   = "Primary Ability Damage Multiplier Default Cross S"
+
+[[content.abilities]]
+set   = "Primary Ability Effect Spawner Cross S.transform[5]"
+value = 3.1415927
+
+# Shockwave E (right).
+[[content.abilities]]
+from   = "Beowulf"
+clone  = ["Primary Ability Effect Spawner", "Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
+suffix = " Cross E"
+
+[[content.abilities]]
+link = "Primary Ability Damage Coeff Spawner Value Cross E.value"
+to   = "Primary Ability Damage Multiplier Default Cross E"
+
+[[content.abilities]]
+set   = "Primary Ability Effect Spawner Cross E.transform[5]"
+value = 1.5707964
+
+# Shockwave W (left).
+[[content.abilities]]
+from   = "Beowulf"
+clone  = ["Primary Ability Effect Spawner", "Primary Ability Lifetime Spawner Value", "Primary Ability Move Speed Spawner Value", "Primary Ability Damage Coeff Spawner Value", "Primary Ability Lifetime", "Primary Ability Move Speed", "Primary Ability Damage Multiplier Default"]
+suffix = " Cross W"
+
+[[content.abilities]]
+link = "Primary Ability Damage Coeff Spawner Value Cross W.value"
+to   = "Primary Ability Damage Multiplier Default Cross W"
+
+[[content.abilities]]
+set   = "Primary Ability Effect Spawner Cross W.transform[5]"
+value = -1.5707964
+
+# Piper's zone no longer spawns: the special is the cross.
+[[content.abilities]]
+remove_link = "Event Secondary Ability Activate.activates[0]"
+
+# Beat 1, vertical: forward + back as the special starts.
+[[content.abilities]]
+add_link = "Event Secondary Ability Activate.activates"
+to = "Primary Ability Effect Spawner Cross N"
+
+[[content.abilities]]
+add_link = "Event Secondary Ability Activate.activates"
+to = "Primary Ability Effect Spawner Cross S"
+
+# Beat 2, horizontal: a state that fires left + right ...
+[[content.abilities]]
+clone  = ["Event Secondary Ability Destroy Zone"]
+suffix = " Cross Horizontal"
+
+[[content.abilities]]
+remove_link = "Event Secondary Ability Destroy Zone Cross Horizontal.activates[0]"
+
+[[content.abilities]]
+add_link = "Event Secondary Ability Destroy Zone Cross Horizontal.activates"
+to = "Primary Ability Effect Spawner Cross E"
+
+[[content.abilities]]
+add_link = "Event Secondary Ability Destroy Zone Cross Horizontal.activates"
+to = "Primary Ability Effect Spawner Cross W"
+
+# ... ticked once by a 0.4 s timer that runs inside the special's state.
+[[content.abilities]]
+clone  = ["Ability Secondary Active Timer"]
+suffix = " Cross"
+
+# Its delay is the forward shockwave's own lifetime (0.4 s): the second line
+# starts as the first one fades.
+[[content.abilities]]
+link = "Ability Secondary Active Timer Cross.duration"
+to   = "Primary Ability Lifetime Cross N"
+
+[[content.abilities]]
+link = "Ability Secondary Active Timer Cross.on_tick"
+to   = "Event Secondary Ability Destroy Zone Cross Horizontal"
+
+[[content.abilities]]
+add_link = "Event Secondary Ability Activate.activates"
+to = "Ability Secondary Active Timer Cross"

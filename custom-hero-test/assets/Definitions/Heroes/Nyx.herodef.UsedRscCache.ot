@@ -1,5 +1,81 @@
 3D|Characters\Character_Grey.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_ Skill_Battlecry.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_ Skill_FieryThrust.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_ Skill_Retaliation.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Attack_Day_Combo_1.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Attack_Day_Combo_2.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Attack_Day_Combo_Finisher_Default.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Attack_Night_Combo_1.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Attack_Night_Combo_2.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Attack_Night_Combo_Finisher_Default.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Dash_Default.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_Default_Death.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_Default_Death_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_Divine_Revive_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_Divine_Revive_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_Divine_Revive_Out.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_Out.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_Reviving_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Deathdoor_Special_Revive.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Defense_Block.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Defense_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Defense_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Defense_Out.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_FacingDanger_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_FacingDanger_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Flock_Teleportation_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Flock_Teleportation_Out.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Idle_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Interacting_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Power_Default.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Power_Double.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Run_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Skill_BladeFlurry.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Skill_Shield_Charge.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Skill_Third_Wind.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Spawning.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Special_Day_Out_Default.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Special_In_Default.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Special_Night_Out_Default.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Stun_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Stun_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Trait_Activation.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Ultimate_1_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Ultimate_2_FieryDodge_Dash.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Ultimate_2_RagingChain_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Ultimate_2_RagingChain_Out.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Beowulf_Walk_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Breath_Of_Fire.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Defense_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Defense_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Defense_Out.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Power_Default.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Power_Double.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Skill_FireWings.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Special_Default_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Special_Default_Out.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Trait_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Trait_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Trait_Out.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Ultimate_1_In.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Ultimate_1_In_alter.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Ultimate_1_Loop.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Ultimate_2_FieryDodge_Shot_Default.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Animations\Wyrm_Ultimate_2_FieryDodge_Trait_Shot.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Beowulf_GEO.fbx|oCGeometry
+3D|Characters\Heroes\Beowulf\Beowulf_Shield_GEO.fbx|oCGeometry
+3D|Characters\Heroes\Beowulf\Beowulf_Weapon_GEO.fbx|oCGeometry
+3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_InReady.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_InSelection.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_LoopDefeat.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_LoopReady.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_LoopSelection.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Textures\T_BeowulfAccAlt_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Wyrm_GEO.fbx|oCGeometry
 3D|Characters\Heroes\Piper\Animations\Nyx_Piper_Dash_Default.fbx|oCAnimation
+3D|Characters\Heroes\Piper\Animations\Nyx_Piper_Skill_Secondary_Static_Zone.fbx|oCAnimation
 3D|Characters\Heroes\Piper\Animations\PiperRatUltimate_In.fbx|oCAnimation
 3D|Characters\Heroes\Piper\Animations\PiperRatUltimate_In02.fbx|oCAnimation
 3D|Characters\Heroes\Piper\Animations\PiperRatUltimate_Out.fbx|oCAnimation
@@ -41,7 +117,6 @@
 3D|Characters\Heroes\Piper\Animations\Piper_Run_Flute_Attack_Left.fbx|oCAnimation
 3D|Characters\Heroes\Piper\Animations\Piper_Run_Flute_Attack_Right.fbx|oCAnimation
 3D|Characters\Heroes\Piper\Animations\Piper_Run_Flute_Lowered.fbx|oCAnimation
-3D|Characters\Heroes\Piper\Animations\Piper_Skill_Secondary_Static_Zone.fbx|oCAnimation
 3D|Characters\Heroes\Piper\Animations\Piper_Skill_Spinning_Solo_In.fbx|oCAnimation
 3D|Characters\Heroes\Piper\Animations\Piper_Skill_Spinning_Solo_Loop.fbx|oCAnimation
 3D|Characters\Heroes\Piper\Animations\Piper_Spawning.fbx|oCAnimation
@@ -151,9 +226,71 @@
 3D|LD_Basic\Common\Cube_1x1.fbx|oCGeometry
 3D|LD_Basic\Common\Cylinder_2x1.fbx|oCGeometry
 3D|Scenery\DarkHills\Loot_Money.fbx|oCGeometry
+3D|Scenery\DarkHills\T_Rock_Medium_ALB.tga|oCTexture
+3D|Scenery\DarkHills\T_Rock_Medium_MRA.tga|oCTexture
+3D|Scenery\DarkHills\T_Rock_Medium_NRM.tga|oCTexture
 3D|Scenery\DarkHills\T_Tree_Big_Roots_FX_ALB.tga|oCTexture
 3D|Scenery\DarkHills\T_Tree_Big_Roots_NRM.tga|oCTexture
+3D|Scenery\StormIsland\Rock_Medium_B.fbx|oCGeometry
 Definitions|Heroes\Nyx.herodef.ot|oCDtHeroDefinition
+EntitySettings/Enemies/NPC_Common/Ally_Model.entity.ot.EntitySettingsResource.gen
+EntitySettings/Enemies/NPC_Common/NPC_Common.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/All_Book_Pages/Hero_Display.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/Common_Ui/Life_Bar_Boss_Common.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/Common_Ui/Life_Bar_Hero_Romeo.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/Common_Ui/Life_Bar_Hero_SunWukong.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/Common_Ui/Life_Bar_NPC_Large.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/Common_Ui/Life_Bar_NPC_Small.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/Common_Ui/Panache_Token_Ui.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/HUD/Ability_Special_Reload_Flash_Model.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/Hero_Photo_Cabin/Hero_Photo_Cabin_Settings.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Ghost_Hero_Juliet.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Ghost_Hero_Model.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Attack_Rose_AOE.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_FX.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Projectile.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Ricochet_Projectile_Spawner.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Rose_Explosion.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Skill_Power_Attack_Backstep.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Skill_Power_Cone_Damage.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Spawned_Attack_Base.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Special_Projectile.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Ultimate_2_Dash_AOE_Flask.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Juliet_Ultimate_2_Poison_Flask.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Romeo_Juliet_Common.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Romeo_Juliet_Secondary_Dash_Model_Controller.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Romeo_Juliet_Secondary_Dash_Multi_Controller.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Hero_Romeo_Juliet_Secondary_Dash_Solo_Controller.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Juliet_Combo_Point_Ui.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Juliet/Life_Bar_Hero_Juliet.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Melusine/Hero_Melusine.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Melusine/Hero_Melusine_FX.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Melusine/Hero_Melusine_Power_Caster_Model.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Melusine/Hero_Melusine_Raw_Power_Caster.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Melusine/Hero_Melusine_Special.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Melusine/Hero_Melusine_Water_Core.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Melusine/Hero_Melusine_Wisp.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Melusine/Hero_Melusine_Wisp_Ultimate_2.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Melusine/Hero_Melusine_Wisp_Ultimate_2_Sing_Stance_Wisp.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Romeo/Ghost_Hero_Romeo.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Romeo/Hero_Romeo.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Romeo/Hero_Romeo_FX.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Romeo/Hero_Romeo_Rose.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Romeo/Hero_Romeo_Rose_Seed_AOE.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Romeo/Hero_Romeo_Thorn_FX.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Romeo/Hero_Romeo_Trail.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Romeo/Hero_Romeo_Ultimate_1_Projectile.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_Romeo/Hero_Romeo_Ultimate_2_Projectile.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_SunWukong/Hero_SunWukong.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_SunWukong/Hero_SunWukong_Beads.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_SunWukong/Hero_SunWukong_Beads_Explosion.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_SunWukong/Hero_SunWukong_FX.entity.ot.EntitySettingsResource.gen
+EntitySettings/Heroes/Hero_SunWukong/Hero_SunWukong_Ultimate_1_AI_Clone.entity.ot.EntitySettingsResource.gen
+EntitySettings/Objects/Baba_Yaga_Eye/Crows_Reveal_Effect.entity.ot.EntitySettingsResource.gen
+EntitySettings/Power_Ups_Common/Collectible_Health_Globe.entity.ot.EntitySettingsResource.gen
+EntitySettings/Power_Ups_Common/Collectible_Model.entity.ot.EntitySettingsResource.gen
+EntitySettings/Power_Ups_Common/Remote_Power_Up_FX_Model.entity.ot.EntitySettingsResource.gen
 EntitySettings|Baba_Yaga_Spells\Baba_Yaga_Bird.entity.ot|oCEntitySettingsResource
 EntitySettings|Baba_Yaga_Spells\Baba_Yaga_Flock.entity.ot|oCEntitySettingsResource
 EntitySettings|Baba_Yaga_Spells\Baba_Yaga_Hand.entity.ot|oCEntitySettingsResource
@@ -242,6 +379,15 @@ EntitySettings|GameUis\Modal\Modal_Social_Options_Menu.entity.ot|oCEntitySetting
 EntitySettings|GameUis\Modal\Modal_Social_Options_Menu_InGame.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\Modal\Modal_Warning.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\SkillsUi\Skill_Menu.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Beowulf\Hero_Beowulf.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Beowulf\Hero_Beowulf_FX.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Beowulf\Hero_Beowulf_Shockwave.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Beowulf\Hero_Beowulf_Shockwave_Scorched_Earth_FX.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Beowulf\Hero_Beowulf_Ultimate_2_Fireball.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Beowulf\Hero_Beowulf_Ultimate_2_Volcanic_Rock.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Beowulf\Hero_Beowulf_Wyrm.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Beowulf\Hero_Beowulf_Wyrm_Model.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Beowulf\Hero_Beowulf_Wyrm_Ultimate_1_v2.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Ability_GameUi.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_Common.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_Drop_Bag.entity.ot|oCEntitySettingsResource
@@ -280,8 +426,13 @@ EntitySettings|Power_Ups_Common\Collectible_Health_Globe.entity.ot|oCEntitySetti
 EntitySettings|Power_Ups_Common\Collectible_Model.entity.ot|oCEntitySettingsResource
 EntitySettings|Power_Ups_Common\Loot_Dropping_Animation_Model.entity.ot|oCEntitySettingsResource
 EntitySettings|Power_Ups_Common\Remote_Power_Up_FX_Model.entity.ot|oCEntitySettingsResource
+EntitySettings|Projectile_Model\Hero_Projectile_Lobbed_Model.entity.ot|oCEntitySettingsResource
 EntitySettings|Projectile_Model\Hero_Projectile_Model.entity.ot|oCEntitySettingsResource
+EntitySettings|Projectile_Model\Projectile_Lobbed_Model.entity.ot|oCEntitySettingsResource
 EntitySettings|Projectile_Model\Projectile_Model.entity.ot|oCEntitySettingsResource
+FX/Textures/Other/UI_Dash_Glow.png.Texture.dxt
+FX/Textures/Ramps/Juliet_Ignite_Bullets_UIFX_Mask~C.png.Texture.dxt
+FX/Textures/Shapes/Square_White.png.Texture.dxt
 FX|Anim\Roots_Anim_IN.fbx|oCAnimation
 FX|Anim\Roots_Anim_LOOP.fbx|oCAnimation
 FX|Anim\Roots_Anim_OUT.fbx|oCAnimation
@@ -298,7 +449,20 @@ FX|Materials\Baba_Yaga_revive_Shockwave.mat.ot|oCMaterial
 FX|Materials\Basic_Emissive_Opaque.mat.ot|oCMaterial
 FX|Materials\Basic_Healing_Decal_Zone_01.mat.ot|oCMaterial
 FX|Materials\Basic_Healing_Wind_Gust.mat.ot|oCMaterial
+FX|Materials\Basic_Warning_Zone.mat.ot|oCMaterial
 FX|Materials\Basic_Warning_Zone_Pulse.mat.ot|oCMaterial
+FX|Materials\Beowulf_Blademaster_Blade_Shine_01.mat.ot|oCMaterial
+FX|Materials\Beowulf_Blademaster_Hilt_Pattern_01.mat.ot|oCMaterial
+FX|Materials\Beowulf_Defense_Empowered_Shield_Fire_01.mat.ot|oCMaterial
+FX|Materials\Beowulf_Defense_Ring_01.mat.ot|oCMaterial
+FX|Materials\Beowulf_Defense_Ring_Empowered_01.mat.ot|oCMaterial
+FX|Materials\Beowulf_Shockwave_Front_01.mat.ot|oCMaterial
+FX|Materials\Beowulf_Shockwave_Front_02_Fire.mat.ot|oCMaterial
+FX|Materials\Beowulf_Skill_Immolation_Decal_01.mat.ot|oCMaterial
+FX|Materials\Beowulf_Ultimate_2_Fireball_Core.mat.ot|oCMaterial
+FX|Materials\Beowulf_Volcanic_Rock.mat.ot|oCMaterial
+FX|Materials\Beowulf_Warning_Bash_Zone_01.mat.ot|oCMaterial
+FX|Materials\Beowulf_Warning_Zone_Dash_01.mat.ot|oCMaterial
 FX|Materials\Berzerk_Warning_Lines_01.mat.ot|oCMaterial
 FX|Materials\Bits_Random_01.mat.ot|oCMaterial
 FX|Materials\Bits_Random_01_Opaque.mat.ot|oCMaterial
@@ -540,6 +704,7 @@ FX|Materials\Piper_Wind_Bubble_Whisps_01.mat.ot|oCMaterial
 FX|Materials\Piper_Wind_Channel_01.mat.ot|oCMaterial
 FX|Materials\Placeholder_Impact_Spark_Dissolve_01.mat.ot|oCMaterial
 FX|Materials\Placeholder_Ring_Dissolve_01.mat.ot|oCMaterial
+FX|Materials\Projectile_GlobeFIre.mat.ot|oCMaterial
 FX|Materials\Queen_Ice_Ground_Decal_01.mat.ot|oCMaterial
 FX|Materials\Queen_Special_Shattering_Sphere.mat.ot|oCMaterial
 FX|Materials\R&J_Brambles_01.mat.ot|oCMaterial
@@ -619,19 +784,27 @@ FX|Materials\Ultimate_Channeling_02.mat.ot|oCMaterial
 FX|Materials\Vulnerable_Impact_Spark_01.mat.ot|oCMaterial
 FX|Materials\Wind_Ring_Whisp_01.mat.ot|oCMaterial
 FX|Materials\XP_Gain_Whisps_01.mat.ot|oCMaterial
+FX|Meshes\Beowulf_Blade_Shell_01.fbx|oCGeometry
+FX|Meshes\Beowulf_Defense_Ring_01.fbx|oCGeometry
+FX|Meshes\Beowulf_Hilt_01.fbx|oCGeometry
+FX|Meshes\Beowulf_Shockwave_Front.fbx|oCGeometry
 FX|Meshes\Channeling_Ribbon_Spiral_01.fbx|oCGeometry
 FX|Meshes\Channeling_Ribbon_Spiral_02_B.fbx|oCGeometry
 FX|Meshes\Coiled_Ribbon_01.fbx|oCGeometry
 FX|Meshes\Coiled_Ribbon_Sphere_02.fbx|oCGeometry
 FX|Meshes\Cone_02_Bulged.fbx|oCGeometry
+FX|Meshes\Cone_02_Bulged_B.fbx|oCGeometry
 FX|Meshes\Crow_Diving_01.fbx|oCGeometry
 FX|Meshes\Cylinder_01.fbx|oCGeometry
 FX|Meshes\Cylinder_Flared_01_Down.fbx|oCGeometry
 FX|Meshes\Debug_XYZ.fbx|oCGeometry
 FX|Meshes\Disc_Radial_01.fbx|oCGeometry
 FX|Meshes\Disc_Warning_01.fbx|oCGeometry
+FX|Meshes\Drop_01.fbx|oCGeometry
+FX|Meshes\Fan_Flat_Large_90.fbx|oCGeometry
 FX|Meshes\Feather_01.fbx|oCGeometry
 FX|Meshes\Hemisphere_01_High_Poly.fbx|oCGeometry
+FX|Meshes\Hexagonal_Locators.fbx|oCGeometry
 FX|Meshes\Piper_Flute_FX_Mesh.fbx|oCGeometry
 FX|Meshes\Piper_Fortissimo_Ring_01.fbx|oCGeometry
 FX|Meshes\Piper_Wind_Channelling_01.fbx|oCGeometry
@@ -651,6 +824,7 @@ FX|Meshes\Ring_Flat_01_Large.fbx|oCGeometry
 FX|Meshes\Ring_Flat_01_Medium.fbx|oCGeometry
 FX|Meshes\Ring_Flat_01_Medium_Projection.fbx|oCGeometry
 FX|Meshes\Ring_Flat_01_Thin.fbx|oCGeometry
+FX|Meshes\Ring_Flat_01_Ultra_Slim.fbx|oCGeometry
 FX|Meshes\Ring_Half_Curved_Large_Coiled_01.fbx|oCGeometry
 FX|Meshes\Sphere_01_High.fbx|oCGeometry
 FX|Meshes\Sphere_01_Low.fbx|oCGeometry
@@ -679,11 +853,13 @@ FX|Settings\Enemies\Dullahan\Dullahan_Ghost_Skull_Impact_01.vfx.ot|oCScheduledVf
 FX|Settings\Enemies\Marsh_Ghouls\Ghoul_Rock_Dig.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Enemies\Mordred\Mordred_Corrupted_Wave_Zone_Impact_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Enemies\Spiders_Nightmares\Spider_Spiderweb_Impact_Splash.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Enemies\Undead_Hogs\Hog_Slash_360.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Explosion.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Impact_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Impact_Fail_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Poison_Impact_02.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Ring_Impulse_White.vfx.ot|oCScheduledVfxSettings
+FX|Settings\FX\Common_FX\Basic_Trail_Light.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Bleed_Burst.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Camera_Rumble_Loop_Heavy.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Camera_Rumble_Loop_Light.vfx.ot|oCScheduledVfxSettings
@@ -748,17 +924,113 @@ FX|Settings\FX\Common_FX\Lootable_Object_Trail_Epic.vfx.ot|oCScheduledVfxSetting
 FX|Settings\FX\Common_FX\Lootable_Object_Trail_Legendary.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Lootable_Object_Trail_Rare.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Marked_Glow.vfx.ot|oCScheduledVfxSettings
+FX|Settings\FX\Common_FX\Nightmare_Impact_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Nightmare_Tumor_Explosion.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Nightmare_Volutes_01_Small.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Object_Mad_Had_Warning_Glow.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Placeholder_Level_UP.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Shining_Burst.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Shining_Loop.vfx.ot|oCScheduledVfxSettings
+FX|Settings\FX\Common_FX\Slide_Dust_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Stagger_In.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Stun_Loop.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Vulnerable_Impact_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\XP_Gain_Feedback_Sparkles.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Battlecry_Scream_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Battlecry_Shockwave_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Defensive_Heal_Zone.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Defensive_Heal_Zone_Quest.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Furious_Empowered_Slash.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Furious_Flames_Zone.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Furious_Impact_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Furious_Slash_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Runes_Of_War_Aura_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Runes_Of_War_Aura_Dissolve_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Runes_Of_War_Swirl_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Runes_Of_War_Swirl_Dissolve_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Secondary_Tremor_Warning_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Blazing_Runes_Impact.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Fiery_Thrust_Activation.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Fire_Cone_Attack_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Fire_Cone_Wyrm_Buildup_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Immolation_Fire_Zone.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Immolation_Limbs.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Immolation_Main_Flame.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Power_AOE_Sparks.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Scorched_Earth_Fire.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Ultimate_Volcanic_Rock_Glow.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Skill_Ultimate_Volcanic_Rock_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Special_Finisher_Default.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Sword_Impact_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Sword_Impact_01_Fire.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Sword_Impact_02.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Sword_Impact_02_Fire.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Ultimate_2_Explosion.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Ultimate_2_Fireball.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Ultimate_2_Fireball_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Ultimate_2_Slam.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Ultimate_2_Slash_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Ultimate_2_Sprint.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Ultimate_2_Upslash_Ground.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Bladestorm_Sword_Special_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Base_Ring_Glow.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Bash_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Bash_Empowered_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Bash_Slash.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Bash_Slash_Empowered.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Block_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Empowered_Ring_Glow.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Empowered_Shield_Flames.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Skill_Better_Healing_Burst.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Giant_Swings_Finisher.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Heroes_Level_Up_Beowulf.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Power_Shockwave.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Power_Shockwave_Fire.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Power_Shockwave_Fire_Trail_Default.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Power_Shockwave_Fire_Trail_Skill_Scorched_Earth.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Power_Sword_Ground_Scrape.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Power_Sword_Swing.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Blademaster_Blade_Activation.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Blademaster_Blade_Particles.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Dash.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Dash_Attack_Slash.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Dash_Attack_Zone.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Dash_Front.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Dash_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Defense_Block_Damage.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Defense_Block_Damage_Area_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Defense_Block_Damage_Blocking_Aura.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Defense_Block_Damage_Blocking_Shield_Aura.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Enemies_Death_Explosion_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Fire_Wings_Dragon_Glow.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Fire_Wings_Wave.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Flurry_Dash_Front.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Flurry_Dash_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Power_Explosion_Empowered.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Power_Explosion_Regular.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Special_MultiShock_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Slash_Giant_Swing_Finisher.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Slash_Night.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Slash_Sword_Thrust_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Slash_Up_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Special_Night_Finisher.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Special_Wind_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Special_Wind_02.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Sword_Fire_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Sword_Fire_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Sword_Special_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Trait_Empowering_Dragon_Default.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Trait_Empowering_Dragon_Defense.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\UpSlash_Ground_Dust.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Wyrm_Defense_Fire_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Wyrm_Mouth_Fire_Glow.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Wyrm_Power_Fire_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Wyrm_Special_Fireball_Shot.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Wyrm_Ulti_1_Fire_Blast_Shockwave_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Wyrm_Ultimate_2_Buildup.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Wyrm_Ultimate_2_Shot.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Wyrm_Ultimate_Fire_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Beowulf_FX\Wyrm_Ultimate_Fire_Blast.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Injection_Ribbons_Aura_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Juliet_FX\Juliet_Basic_Bullet_Trail_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Merlin_FX\Merlin_Healing_Seed_Beam_01.vfx.ot|oCScheduledVfxSettings
@@ -924,6 +1196,7 @@ FX|Textures\Impacts\Impact_Ring_Pulse_01.png|oCTexture
 FX|Textures\Impacts\Impact_Ring_Warped_01.png|oCTexture
 FX|Textures\Impacts\Impact_Spark_01.png|oCTexture
 FX|Textures\Impacts\Impact_Spark_Random_01.png|oCTexture
+FX|Textures\Impacts\Impact_Spikes_Pattern_01.png|oCTexture
 FX|Textures\Impacts\Impact_Spikes_Random_01.png|oCTexture
 FX|Textures\Impacts\Impact_Spikes_Random_02.png|oCTexture
 FX|Textures\Impacts\Nyx_8a5cff_FX_Impact_Ring_00.png|oCTexture
@@ -948,6 +1221,8 @@ FX|Textures\Liquids\Blood_Drops_Random_01.png|oCTexture
 FX|Textures\Liquids\Nyx_8a5cff_Splashes_Liquid_Random_01.png|oCTexture
 FX|Textures\Liquids\Sphere_Liquid_Burst_Mask_01.png|oCTexture
 FX|Textures\Liquids\Splashes_Liquid_Random_01.png|oCTexture
+FX|Textures\Other\Beowulf_Defense_Algiz_01~C.png|oCTexture
+FX|Textures\Other\Beowulf_Hilt_Pattern_01.png|oCTexture
 FX|Textures\Other\Common_Shield_01.png|oCTexture
 FX|Textures\Other\Lightning_Arc_01_Random.png|oCTexture
 FX|Textures\Other\Nightmare_Spiderweb_Ground_Decal_01~C.png|oCTexture
@@ -1009,6 +1284,7 @@ FX|Textures\Patterns\Water_Flow_Pattern_01_50.png|oCTexture
 FX|Textures\Patterns\Wind_Gusts_Pattern_01.png|oCTexture
 FX|Textures\Patterns\Wind_Gusts_Pattern_01_50.png|oCTexture
 FX|Textures\Patterns\Wind_Gusts_Pattern_01_H_50.png|oCTexture
+FX|Textures\Projectiles\Beowulf_Shockwave_Front_Mask_01~C.png|oCTexture
 FX|Textures\Projectiles\Nyx_8a5cff_Piper_Note_01.png|oCTexture
 FX|Textures\Projectiles\Nyx_8a5cff_Piper_Note_02.png|oCTexture
 FX|Textures\Projectiles\Nyx_8a5cff_Piper_Note_03.png|oCTexture
@@ -1090,12 +1366,16 @@ FX|Textures\Trails\Stylized_Lens_Flare_01.png|oCTexture
 FX|Textures\Trails\Stylized_Trail_01.png|oCTexture
 FX|Textures\Trails\Wobbly_Trail_01_Thin.png|oCTexture
 FX|Textures\Warnings\Basic_Circle_Warning.png|oCTexture
+FX|Textures\Warnings\Beowulf_Charge_Warning_01~C.png|oCTexture
+FX|Textures\Warnings\Cone_Warning_01~C.png|oCTexture
 Fonts|Germania One\Germania_One_Outline_0~GAM.png|oCTexture
 Fonts|Germania One\Germania_One_Outline~GAM.fnt|oCFont
 Lights|Nyx_8a5cff_OmniLightToon.mat.ot|oCMaterial
 Lights|OmniLightFog.mat.ot|oCMaterial
 Lights|OmniLightToon.mat.ot|oCMaterial
 Lights|SpotLightToon.mat.ot|oCMaterial
+Text|Hero_Beowulf_Barks~GAM.xls|oCLocalText
+Text|Hero_Beowulf_Common~GAM.xls|oCLocalText
 Text|Hero_Piper_Barks~GAM.xls|oCLocalText
 Text|Hero_Piper_Common~GAM.xls|oCLocalText
 Text|Hero_Piper_Memoirs~GAM.xls|oCLocalText
@@ -1103,6 +1383,244 @@ Text|Hero_Piper_Skins~GAM.xls|oCLocalText
 Text|Hero_RED_Common~GAM.xls|oCLocalText
 Text|Hero_SunWukong_Common~GAM.xls|oCLocalText
 Text|Magical_Objects~GAM.xls|oCLocalText
+Ui/Abilities/HUD_Ability_Aura_Glow_Blue.png.Texture.dxt
+Ui/BookMenu/Animations/UI_SearchPlayer_Anim.png.Texture.dxt
+Ui/BookMenu/Hero_ActiveMarker.png.Texture.dxt
+Ui/BookMenu/Hero_Active_Bg.png.Texture.dxt
+Ui/BookMenu/LeaderPins.png.Texture.dxt
+Ui/BookMenu/Pages/UI_BookIllustration_CrowTree.png.Texture.dxt
+Ui/BookMenu/Pages/UI_BookIllustration_CrowTree_Eyes.png.Texture.dxt
+Ui/BookMenu/Pages/UI_BookIllustration_CrowTree_Off.png.Texture.dxt
+Ui/BookMenu/Pages/UI_BookIllustration_NameUnderLine.png.Texture.dxt
+Ui/BookMenu/UI_Button_Invite_Active.png.Texture.dxt
+Ui/BookMenu/UI_Button_Invite_Standard.png.Texture.dxt
+Ui/BookMenu/UI_CircleDraw.png.Texture.dxt
+Ui/BookMenu/UI_HeroLobby_SelectionBg.png.Texture.dxt
+Ui/BookMenu/UI_LoadingPlayer_Arrow.png.Texture.dxt
+Ui/BookMenu/UI_LoadingPlayer_bg.png.Texture.dxt
+Ui/BookMenu/UI_LockedPLayer_Bg.png.Texture.dxt
+Ui/BookMenu/UI_MainPlayerName_Bg_Active.png.Texture.dxt
+Ui/BookMenu/UI_MainPlayerName_Bg_Standard.png.Texture.dxt
+Ui/BookMenu/UI_OtherPlayerName_Bg_Active.png.Texture.dxt
+Ui/BookMenu/UI_OtherPlayerName_Bg_Standard.png.Texture.dxt
+Ui/BookMenu/UI_Player_Connected.png.Texture.dxt
+Ui/BookMenu/UI_Player_Connecting.png.Texture.dxt
+Ui/BookMenu/UI_ReadyCheck.PNG.Texture.dxt
+Ui/Common/Difficulty Icons/Icon_NewDifficulty_2.png.Texture.dxt
+Ui/Gauges/Bosses_HP_Gauge_Bleed.png.Texture.dxt
+Ui/Gauges/Bosses_HP_Gauge_Fill.png.Texture.dxt
+Ui/HUD/HUD_Checkbox_Check_FALSE.png.Texture.dxt
+Ui/HUD/Message_Banner_Title_Scroll_01.png.Texture.dxt
+Ui/Heroes/Aladdin/Aladdin_Energy_Gauge.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Attack.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Attack_Disabled.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Defensive.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Defensive_Disabled.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Power.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Power_Disabled.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Special.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Special_Alt.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Special_Alt_Disabled.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Special_Disabled.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Trait.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Trait_Disabled.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Trait_Solo.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Trait_Solo_Disabled.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Ultimate_1.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Ultimate_1_Disabled.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Ultimate_2.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Ultimate_2_Disabled.png.Texture.dxt
+Ui/Heroes/Juliet/Ability_Juliet_Ultimate_2_Shot.png.Texture.dxt
+Ui/Heroes/Juliet/HUD_Banner_Juliet.png.Texture.dxt
+Ui/Heroes/Juliet/HUD_Juliet_Combo.png.Texture.dxt
+Ui/Heroes/Juliet/Portrait_Juliet_01.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Attack Burst.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Attack Close Combat.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Attack Ignite.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Attack Power.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Attack Rose AOE.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Dash Shield.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Defense More Shots.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Defense Reload.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Defense Ricochet.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Passive Bonus Object.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Passive More Ammo.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Power Attack Backstep.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Power Cone Damage.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Power Double Shot.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Power More Range.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Power Quest Explode.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Power Vulnerable.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Special Heal.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Special Projectile.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Special Quest Dream Shard.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Trait AOE.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Trait Buff.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Ultimate 1 End AOE.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Ultimate 1 Heal.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Ultimate 2 Dash AOE.png.Texture.dxt
+Ui/Heroes/Juliet/Skill Ultimate 2 Marked.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Attack.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Attack_Disabled.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Defensive.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Defensive_Disabled.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Power.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Power_Disabled.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Special.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Special_Disabled.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Trait.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Trait_Alt_01.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Trait_Alt_01_Disabled.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Trait_Disabled.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Ultimate_1.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Ultimate_1_Disabled.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Ultimate_2.png.Texture.dxt
+Ui/Heroes/Melusine/Ability_Melusine_Ultimate_2_Disabled.png.Texture.dxt
+Ui/Heroes/Melusine/HUD_Banner_Melusine.png.Texture.dxt
+Ui/Heroes/Melusine/Portrait_Melusine_01.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Attack Amplifies.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Attack Beat.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Attack Shield.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Attack Speed.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Defense Block.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Defense Deals Damage.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Defense Hold.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Defense Improve Special.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Defense Power.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Passive Auto Wisp.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Passive Detonation.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Passive Heal In Combat.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Power Chill.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Power Core.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Power Geyser.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Special Backwards.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Special Final Wave.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Special Growth.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Special Heal.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Special Large Waves.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Special Ride.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Trait Armor.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Trait Dash.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Trait Teleport.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Trait Weakens.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Ultimate 1 Heal.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Ultimate 1 Vortex.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Ultimate 2 Sing Stance Wisp.png.Texture.dxt
+Ui/Heroes/Melusine/Skill Ultimate 2 Spawn More.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Attack.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Attack_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Attack_Multi_Hit.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Attack_Multi_Hit_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Defensive.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Defensive_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Power.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Power_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Special.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Special_Alt.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Special_Alt_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Special_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Trait.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Trait_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Trait_Solo.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Trait_Solo_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Ultimate_1.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Ultimate_1_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Ultimate_2.png.Texture.dxt
+Ui/Heroes/Romeo/Ability_Romeo_Ultimate_2_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Abitily_Romeo_Attack_Call.png.Texture.dxt
+Ui/Heroes/Romeo/HUD_Banner_Romeo.png.Texture.dxt
+Ui/Heroes/Romeo/Portrait_Romeo_01.png.Texture.dxt
+Ui/Heroes/Romeo/Romeo_Skill_Attack_Block_Icon_Feedback.png.Texture.dxt
+Ui/Heroes/Romeo/Romeo_Skill_Attack_Block_Icon_Feedback_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Romeo_Skill_Panache_Icon_Feedback.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Attack Block.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Attack Kick.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Attack Panache.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Attack Power Ripost.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Attack Rose Seed.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Dash AOE Attack.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Dash AOE Attack_Disabled.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Dash Attack Return.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Defense AOE.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Defense Power.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Defense Quest.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Defense Shield.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Power Burst.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Power Chilled.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Power Cone Attack.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Power Heal.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Power Trail.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Special Buff Attack.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Special Ignite.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Special Invulnerable.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Special Quest Dream Shard.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Trait AOE.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Trait Beam.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Ultimate 1 Ignite.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Ultimate 1 Projectile.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Ultimate 2 Attack Rose.png.Texture.dxt
+Ui/Heroes/Romeo/Skill Ultimate 2 Wide And AOE.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukongAttack_B.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukongPower_B.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukongSpecial_B.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukongTrait_B.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukongTrait_B_Disabled.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukongTrait_C.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Attack.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Attack_Disabled.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Defensive.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Defensive_Disabled.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Power.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Power_Disabled.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Special.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Special_Disabled.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Trait.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Trait_Disabled.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Ultimate_1.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Ultimate_1_B.png.Texture.dxt
+Ui/Heroes/SunWukong/Ability_SunWukong_Ultimate_1_Disabled.png.Texture.dxt
+Ui/Heroes/SunWukong/HUD_Banner_SunWukong.png.Texture.dxt
+Ui/Heroes/SunWukong/HUD_Banner_SunWukong_Highlight.png.Texture.dxt
+Ui/Heroes/SunWukong/Portrait_SunWukong_01_Highlight.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Attack Beam.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Attack Finisher.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Dash Attack.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Dash Attack2.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Dash Sprint.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Defense Perfect.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Defense Quest.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Defense Retaliate.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Defense Retaliate2.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Passive Objects Quest.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Passive Reveal.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Power Extra Targets.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Power Hold.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Power Lightning.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Special Attack AOE.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Special Beads Increase.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Special Debuff.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Special Explosion.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Special Triggers Stance.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Trait Awakened.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Trait Better Stances.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Trait Fire.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Trait Frost.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Trait Longer Effects.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Ultimate 1 More Monkeys.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Ultimate 1 Special Monkey.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Ultimate 2 Omnipotence.png.Texture.dxt
+Ui/Heroes/SunWukong/Skill Ultimate 2 Perfect Copy.png.Texture.dxt
+Ui/Heroes/SunWukong/Sun_Wukong_Defense_Icon_Feedback.png.Texture.dxt
+Ui/MiniMap/Icons/High/Minimap_IconHigh_Juliet.png.Texture.dxt
+Ui/MiniMap/Icons/High/Minimap_IconHigh_Mermaid.png.Texture.dxt
+Ui/MiniMap/Icons/High/Minimap_IconHigh_Romeo.png.Texture.dxt
+Ui/MiniMap/Icons/High/Minimap_IconHigh_SunWukong.png.Texture.dxt
+Ui/Platform/UI_Social_Icons_Ingame_Playstation.png.Texture.dxt
+Ui/Platform/UI_Social_Icons_PC.png.Texture.dxt
+Ui/Platform/UI_Social_Icons_Playstation.png.Texture.dxt
+Ui/Platform/UI_Social_Icons_Steam.png.Texture.dxt
+Ui/Primitives/CircleEmpty.png.Texture.dxt
+Ui/Primitives/CircleEmpty_Thick_02.png.Texture.dxt
 Ui|3DUI\Hero_Ground_Arrow.mat.ot|oCMaterial
 Ui|3DUI\Hero_Ground_Marker.mat.ot|oCMaterial
 Ui|3DUI\UI_Ground_Marker_Arrow~C.png|oCTexture
@@ -1329,6 +1847,57 @@ Ui|HUD\zoom_icon.png|oCTexture
 Ui|Heroes\Ability_Dash.png|oCTexture
 Ui|Heroes\Ability_Dash_Disabled.png|oCTexture
 Ui|Heroes\Aladdin\HUD_Aladdin_Abilities_Wish_Mode_02.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Attack.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Attack_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Defensive.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Defensive_Alt_01.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Defensive_Alt_01_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Defensive_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Power.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Power_Alt_01.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Power_Alt_01_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Power_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Special.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Special_Alt_01.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Special_Alt_01_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Special_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Trait.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Trait_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Ultimate_1.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Ultimate_1_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Ultimate_2.png|oCTexture
+Ui|Heroes\Beowulf\Ability_Beowulf_Ultimate_2_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\HUD_Banner_Beowulf.png|oCTexture
+Ui|Heroes\Beowulf\HUD_Beowulf_Dragon_Ability_Anim.png|oCTexture
+Ui|Heroes\Beowulf\Portrait_Beowulf_01.png|oCTexture
+Ui|Heroes\Beowulf\Skill Attack After Special.png|oCTexture
+Ui|Heroes\Beowulf\Skill Attack Fire Cone.png|oCTexture
+Ui|Heroes\Beowulf\Skill Attack Flurry.png|oCTexture
+Ui|Heroes\Beowulf\Skill Attack Special Crit.png|oCTexture
+Ui|Heroes\Beowulf\Skill Attack Speed.png|oCTexture
+Ui|Heroes\Beowulf\Skill Attack Wide.png|oCTexture
+Ui|Heroes\Beowulf\Skill Dash Attack.png|oCTexture
+Ui|Heroes\Beowulf\Skill Defense Better Healing.png|oCTexture
+Ui|Heroes\Beowulf\Skill Defense Block Deals Damage.png|oCTexture
+Ui|Heroes\Beowulf\Skill Defense Damage Aura.png|oCTexture
+Ui|Heroes\Beowulf\Skill Defense Dash.png|oCTexture
+Ui|Heroes\Beowulf\Skill Defense Quest.png|oCTexture
+Ui|Heroes\Beowulf\Skill Passive Better Ignite.png|oCTexture
+Ui|Heroes\Beowulf\Skill Power Double.png|oCTexture
+Ui|Heroes\Beowulf\Skill Power End AOE.png|oCTexture
+Ui|Heroes\Beowulf\Skill Power Trail.png|oCTexture
+Ui|Heroes\Beowulf\Skill Special Loop.png|oCTexture
+Ui|Heroes\Beowulf\Skill Special Multi Shock.png|oCTexture
+Ui|Heroes\Beowulf\Skill Special Sends Power.png|oCTexture
+Ui|Heroes\Beowulf\Skill Trait AOE.png|oCTexture
+Ui|Heroes\Beowulf\Skill Trait Battlecry.png|oCTexture
+Ui|Heroes\Beowulf\Skill Trait_Quest.png|oCTexture
+Ui|Heroes\Beowulf\Skill Ultimate 1 Big Wyrm.png|oCTexture
+Ui|Heroes\Beowulf\Skill Ultimate 1 Immolation.png|oCTexture
+Ui|Heroes\Beowulf\Skill Ultimate 2 Fireball Dash.png|oCTexture
+Ui|Heroes\Beowulf\Skill Ultimate 2 Volcanic.png|oCTexture
+Ui|Heroes\Beowulf\Skill_Crimson Fire.png|oCTexture
+Ui|Heroes\Beowulf\Skill_Purging Fire.png|oCTexture
 Ui|Heroes\Piper\Ability_Piper_Attack.png|oCTexture
 Ui|Heroes\Piper\Ability_Piper_Attack_Alt_01.png|oCTexture
 Ui|Heroes\Piper\Ability_Piper_Attack_Alt_01_Disabled.png|oCTexture
@@ -1399,6 +1968,7 @@ Ui|Materials\2dMinimap.mat.ot|oCMaterial
 Ui|Materials\2dUiColorFx.mat.ot|oCMaterial
 Ui|Materials\2dUiGauge.mat.ot|oCMaterial
 Ui|Melodies\UI_Icon_Sandman_Sherazade.png|oCTexture
+Ui|MiniMap\Icons\High\Minimap_IconHigh_Beowulf.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Object.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Piper.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Player.png|oCTexture
@@ -1439,6 +2009,7 @@ Ui|SandMan\Ui_SandMan_Close_Button_Normal.png|oCTexture
 Ui|SandMan\Ui_SandMan_Close_Button_Selected.png|oCTexture
 Ui|SandMan\Ui_SandMan_PriceBg.png|oCTexture
 Ui|Status\Shield.png|oCTexture
+samples/Textures/White.png.Texture.dxt
 samples|Dielectric_Rough.tga|oCTexture
 samples|Dt_GreyColor.mat.ot|oCMaterial
 samples|Dt_OrangeColor.mat.ot|oCMaterial
