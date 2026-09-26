@@ -1,0 +1,149 @@
+section,what,width,height,transparency,deliver_as,replaces
+1. Character (Default look),"body, colour (albedo)",1024,1024,no,Gretel_Body_ALB.png,Characters\Heroes\Beowulf\Textures\T_Beowulf_ALB.tga
+1. Character (Default look),"body, colour (albedo) — menu/low-res copy",256,256,no,Gretel_Body_ALB_LowRes.png,Characters\Heroes\Beowulf\Textures\T_Beowulf_ALB_LowRes.tga
+1. Character (Default look),"body, metal/rough/AO (MRA)",1024,1024,no,Gretel_Body_MRA.png,Characters\Heroes\Beowulf\Textures\T_Beowulf_MRA.tga
+1. Character (Default look),"body, metal/rough/AO (MRA) — menu/low-res copy",512,512,no,Gretel_Body_MRA_LowRes.png,Characters\Heroes\Beowulf\Textures\T_Beowulf_MRA_LowRes.tga
+1. Character (Default look),"body, normal map",2048,2048,no (normal map),Gretel_Body_NRM.png,Characters\Heroes\Beowulf\Textures\T_Beowulf_NRM.tga
+1. Character (Default look),"body, normal map — menu/low-res copy",256,256,no (normal map),Gretel_Body_NRM_LowRes.png,Characters\Heroes\Beowulf\Textures\T_Beowulf_NRM_LowRes.tga
+1. Character (Default look),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Gear_ALB.png,Characters\Heroes\Beowulf\Textures\T_BeowulfAcc_ALB.tga
+1. Character (Default look),"gear + companion, colour (albedo) — menu/low-res copy",256,256,no,Gretel_Gear_ALB_LowRes.png,Characters\Heroes\Beowulf\Textures\T_BeowulfAcc_ALB_LowRes.tga
+1. Character (Default look),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Gear_MRA.png,Characters\Heroes\Beowulf\Textures\T_BeowulfAcc_MRA.tga
+1. Character (Default look),"gear + companion, metal/rough/AO (MRA) — menu/low-res copy",512,512,no,Gretel_Gear_MRA_LowRes.png,Characters\Heroes\Beowulf\Textures\T_BeowulfAcc_MRA_LowRes.tga
+1. Character (Default look),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Gear_NRM.png,Characters\Heroes\Beowulf\Textures\T_BeowulfAcc_NRM.tga
+1. Character (Default look),"gear + companion, normal map — menu/low-res copy",256,256,no (normal map),Gretel_Gear_NRM_LowRes.png,Characters\Heroes\Beowulf\Textures\T_BeowulfAcc_NRM_LowRes.tga
+2. Ability icons,ability icon: Cinder Spin,192,192,no,Gretel_Ability_Cinder_Spin.png,Heroes\Beowulf\Ability_Beowulf_Special.png
+2. Ability icons,"ability icon: Cinder Spin (greyed out, on cooldown)",192,192,no,Gretel_Ability_Cinder_Spin_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Special_Disabled.png
+2. Ability icons,ability icon: Cinder Spin empowered by the wand,192,192,no,Gretel_Ability_Cinder_Spin_Empowered.png,Heroes\Beowulf\Ability_Beowulf_Special_Alt_01.png
+2. Ability icons,"ability icon: Cinder Spin empowered by the wand (greyed out, on cooldown)",192,192,no,Gretel_Ability_Cinder_Spin_Empowered_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Special_Alt_01_Disabled.png
+2. Ability icons,ability icon: Hunter's Blade,192,192,no,Gretel_Ability_Hunter_s_Blade.png,Heroes\Beowulf\Ability_Beowulf_Attack.png
+2. Ability icons,"ability icon: Hunter's Blade (greyed out, on cooldown)",192,192,no,Gretel_Ability_Hunter_s_Blade_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Attack_Disabled.png
+2. Ability icons,ability icon: Hunter's Fury,192,192,no,Gretel_Ability_Hunter_s_Fury.png,Heroes\Beowulf\Ability_Beowulf_Ultimate_2.png
+2. Ability icons,"ability icon: Hunter's Fury (greyed out, on cooldown)",192,192,no,Gretel_Ability_Hunter_s_Fury_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Ultimate_2_Disabled.png
+2. Ability icons,ability icon: Oven Door,192,192,no,Gretel_Ability_Oven_Door.png,Heroes\Beowulf\Ability_Beowulf_Defensive.png
+2. Ability icons,"ability icon: Oven Door (greyed out, on cooldown)",192,192,no,Gretel_Ability_Oven_Door_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Defensive_Disabled.png
+2. Ability icons,ability icon: Oven Door empowered by the wand,192,192,no,Gretel_Ability_Oven_Door_Empowered.png,Heroes\Beowulf\Ability_Beowulf_Defensive_Alt_01.png
+2. Ability icons,"ability icon: Oven Door empowered by the wand (greyed out, on cooldown)",192,192,no,Gretel_Ability_Oven_Door_Empowered_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Defensive_Alt_01_Disabled.png
+2. Ability icons,ability icon: Scorching Wave,192,192,no,Gretel_Ability_Scorching_Wave.png,Heroes\Beowulf\Ability_Beowulf_Power.png
+2. Ability icons,"ability icon: Scorching Wave (greyed out, on cooldown)",192,192,no,Gretel_Ability_Scorching_Wave_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Power_Disabled.png
+2. Ability icons,ability icon: Scorching Wave empowered by the wand,192,192,no,Gretel_Ability_Scorching_Wave_Empowered.png,Heroes\Beowulf\Ability_Beowulf_Power_Alt_01.png
+2. Ability icons,"ability icon: Scorching Wave empowered by the wand (greyed out, on cooldown)",192,192,no,Gretel_Ability_Scorching_Wave_Empowered_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Power_Alt_01_Disabled.png
+2. Ability icons,ability icon: The Oven's Wrath,192,192,no,Gretel_Ability_The_Oven_s_Wrath.png,Heroes\Beowulf\Ability_Beowulf_Ultimate_1.png
+2. Ability icons,"ability icon: The Oven's Wrath (greyed out, on cooldown)",192,192,no,Gretel_Ability_The_Oven_s_Wrath_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Ultimate_1_Disabled.png
+2. Ability icons,ability icon: The Witch's Wand,192,192,no,Gretel_Ability_The_Witch_s_Wand.png,Heroes\Beowulf\Ability_Beowulf_Trait.png
+2. Ability icons,"ability icon: The Witch's Wand (greyed out, on cooldown)",192,192,no,Gretel_Ability_The_Witch_s_Wand_Disabled.png,Heroes\Beowulf\Ability_Beowulf_Trait_Disabled.png
+3. Talent icons,"talent icon (Defense Better Healing, unused/cut talent)",128,128,yes,Gretel_Talent_Defense_Better_Healing.png,Heroes\Beowulf\Skill Defense Better Healing.png
+3. Talent icons,"talent icon (Heal On Ignited Kill, unused/cut talent)",128,128,no,Gretel_Talent_Heal_On_Ignited_Kill.png,Heroes\Beowulf\Skill_Purging Fire.png
+3. Talent icons,talent icon: Aftershock,128,128,no,Gretel_Talent_Aftershock.png,Heroes\Beowulf\Skill Special Sends Power.png
+3. Talent icons,talent icon: Battering Door,128,128,no,Gretel_Talent_Battering_Door.png,Heroes\Beowulf\Skill Defense Dash.png
+3. Talent icons,talent icon: Brawn over Brains,128,128,no,Gretel_Talent_Brawn_over_Brains.png,Heroes\Beowulf\Skill Attack Wide.png
+3. Talent icons,talent icon: Breadcrumb Trail,128,128,no,Gretel_Talent_Breadcrumb_Trail.png,Heroes\Beowulf\Skill Power Trail.png
+3. Talent icons,talent icon: Dizzy Waltz,128,128,no,Gretel_Talent_Dizzy_Waltz.png,Heroes\Beowulf\Skill Special Loop.png
+3. Talent icons,talent icon: Flare of the Wand,128,128,no,Gretel_Talent_Flare_of_the_Wand.png,Heroes\Beowulf\Skill Trait AOE.png
+3. Talent icons,talent icon: Gingerbread Crumble,128,128,no,Gretel_Talent_Gingerbread_Crumble.png,Heroes\Beowulf\Skill_Crimson Fire.png
+3. Talent icons,talent icon: Hot Coals,128,128,no,Gretel_Talent_Hot_Coals.png,Heroes\Beowulf\Skill Ultimate 2 Volcanic.png
+3. Talent icons,talent icon: Hot Iron,128,128,no,Gretel_Talent_Hot_Iron.png,Heroes\Beowulf\Skill Defense Block Deals Damage.png
+3. Talent icons,talent icon: Hunter's Eye,128,128,yes,Gretel_Talent_Hunter_s_Eye.png,Heroes\Beowulf\Skill Attack Special Crit.png
+3. Talent icons,talent icon: Hunter's Pursuit,128,128,no,Gretel_Talent_Hunter_s_Pursuit.png,Heroes\Beowulf\Skill Dash Attack.png
+3. Talent icons,talent icon: Iron Door,128,128,no,Gretel_Talent_Iron_Door.png,Heroes\Beowulf\Skill Defense Quest.png
+3. Talent icons,talent icon: Kindled,128,128,no,Gretel_Talent_Kindled.png,Heroes\Beowulf\Skill Ultimate 1 Immolation.png
+3. Talent icons,talent icon: Oven Breath,128,128,no,Gretel_Talent_Oven_Breath.png,Heroes\Beowulf\Skill Attack Fire Cone.png
+3. Talent icons,talent icon: Oven Burst,128,128,no,Gretel_Talent_Oven_Burst.png,Heroes\Beowulf\Skill Power End AOE.png
+3. Talent icons,talent icon: Oven Heat,128,128,no,Gretel_Talent_Oven_Heat.png,Heroes\Beowulf\Skill Passive Better Ignite.png
+3. Talent icons,talent icon: Pent-Up Anger,128,128,no,Gretel_Talent_Pent_Up_Anger.png,Heroes\Beowulf\Skill Attack After Special.png
+3. Talent icons,talent icon: Roaring Oven,128,128,no,Gretel_Talent_Roaring_Oven.png,Heroes\Beowulf\Skill Ultimate 1 Big Wyrm.png
+3. Talent icons,talent icon: Rolling Flames,128,128,no,Gretel_Talent_Rolling_Flames.png,Heroes\Beowulf\Skill Special Multi Shock.png
+3. Talent icons,talent icon: Seasoned Hunter,128,128,no,Gretel_Talent_Seasoned_Hunter.png,Heroes\Beowulf\Skill Attack Speed.png
+3. Talent icons,talent icon: Siblings' Oath,128,128,no,Gretel_Talent_Siblings_Oath.png,Heroes\Beowulf\Skill Trait Battlecry.png
+3. Talent icons,talent icon: Slam the Door,128,128,no,Gretel_Talent_Slam_the_Door.png,Heroes\Beowulf\Skill Attack Flurry.png
+3. Talent icons,talent icon: Twice Burned,128,128,no,Gretel_Talent_Twice_Burned.png,Heroes\Beowulf\Skill Power Double.png
+3. Talent icons,talent icon: Wand Bolt,128,128,no,Gretel_Talent_Wand_Bolt.png,Heroes\Beowulf\Skill Ultimate 2 Fireball Dash.png
+3. Talent icons,talent icon: Wand Mastery,128,128,no,Gretel_Talent_Wand_Mastery.png,Heroes\Beowulf\Skill Trait_Quest.png
+3. Talent icons,talent icon: Witch's Sigils,128,128,no,Gretel_Talent_Witch_s_Sigils.png,Heroes\Beowulf\Skill Defense Damage Aura.png
+4. HUD,HUD animation sheet for the wand/companion ability,1024,896,yes,Gretel_HUD_Wand_Ability_Anim.png,Heroes\Beowulf\HUD_Beowulf_Dragon_Ability_Anim.png
+4. HUD,abilities banner across the bottom of the HUD,1920,180,yes,Gretel_HUD_Banner.png,Heroes\Beowulf\HUD_Banner_Beowulf.png
+4. HUD,minimap marker,128,128,yes,Gretel_Minimap_Icon.png,MiniMap\Icons\High\Minimap_IconHigh_Beowulf.png
+5. Hero book & select screen,codex corner picture (left),156,156,yes,Gretel_Codex_Corner_L.png,BookMenu\Codex\Beowulf\Codex_CornerPic_BeowulfL.png
+5. Hero book & select screen,codex corner picture (right),156,156,yes,Gretel_Codex_Corner_R.png,BookMenu\Codex\Beowulf\Codex_CornerPic_BeowulfR.png
+5. Hero book & select screen,codex illustration 1 (story page),1240,1694,no,Gretel_Codex_Illustration_1.png,BookMenu\Codex\Beowulf\Codex_Illustration_Beowulf_1.png
+5. Hero book & select screen,codex illustration 2 (story page),1240,1694,no,Gretel_Codex_Illustration_2.png,BookMenu\Codex\Beowulf\Codex_Illustration_Beowulf_2.png
+5. Hero book & select screen,codex illustration 3 (story page),1240,1694,no,Gretel_Codex_Illustration_3.png,BookMenu\Codex\Beowulf\Codex_Illustration_Beowulf_3.png
+5. Hero book & select screen,codex illustration 4 (story page),1240,1694,no,Gretel_Codex_Illustration_4.png,BookMenu\Codex\Beowulf\Codex_Illustration_Beowulf_4.png
+5. Hero book & select screen,codex illustration 5 (story page),1240,1694,no,Gretel_Codex_Illustration_5.png,BookMenu\Codex\Beowulf\Codex_Illustration_Beowulf_5.png
+5. Hero book & select screen,codex memoir 1 footer (normal),768,227,no,Gretel_Codex_Footer_1_Normal.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_1_Normal.png
+5. Hero book & select screen,codex memoir 1 footer (selected),768,227,no,Gretel_Codex_Footer_1_Selected.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_1_Selected.png
+5. Hero book & select screen,codex memoir 2 footer (normal),768,227,no,Gretel_Codex_Footer_2_Normal.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_2_Normal.png
+5. Hero book & select screen,codex memoir 2 footer (selected),768,227,no,Gretel_Codex_Footer_2_Selected.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_2_Selected.png
+5. Hero book & select screen,codex memoir 3 footer (normal),768,227,no,Gretel_Codex_Footer_3_Normal.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_3_Normal.png
+5. Hero book & select screen,codex memoir 3 footer (selected),768,227,no,Gretel_Codex_Footer_3_Selected.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_3_Selected.png
+5. Hero book & select screen,codex memoir 4 footer (normal),768,227,no,Gretel_Codex_Footer_4_Normal.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_4_Normal.png
+5. Hero book & select screen,codex memoir 4 footer (selected),768,227,no,Gretel_Codex_Footer_4_Selected.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_4_Selected.png
+5. Hero book & select screen,codex memoir 5 footer (normal),768,227,no,Gretel_Codex_Footer_5_Normal.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_5_Normal.png
+5. Hero book & select screen,codex memoir 5 footer (selected),768,227,no,Gretel_Codex_Footer_5_Selected.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_5_Selected.png
+5. Hero book & select screen,codex memoir 6 footer (normal),768,227,no,Gretel_Codex_Footer_6_Normal.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_6_Normal.png
+5. Hero book & select screen,codex memoir 6 footer (selected),768,227,no,Gretel_Codex_Footer_6_Selected.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_6_Selected.png
+5. Hero book & select screen,codex memoir 7 footer (normal),768,227,no,Gretel_Codex_Footer_7_Normal.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_7_Normal.png
+5. Hero book & select screen,codex memoir 7 footer (selected),768,227,no,Gretel_Codex_Footer_7_Selected.png,BookMenu\Codex\Beowulf\Codex_FooterPic_Beowulf_7_Selected.png
+5. Hero book & select screen,"in-run portrait (HUD, dialogue barks)",256,256,yes,Gretel_Portrait_InRun.png,Heroes\Beowulf\Portrait_Beowulf_01.png
+5. Hero book & select screen,select-screen portrait,360,360,yes,Gretel_Select_Portrait_Standard.png,BookMenu\Heroes\UI_HeroPortrait_Beowulf_Standard.png
+5. Hero book & select screen,"select-screen portrait, highlighted",360,360,yes,Gretel_Select_Portrait_Active.png,BookMenu\Heroes\UI_HeroPortrait_Beowulf_Active.png
+5. Hero book & select screen,"select-screen portrait, locked",360,360,yes,Gretel_Select_Portrait_Unavailable.png,BookMenu\Heroes\UI_HeroPortrait_Beowulf_Unavailable.png
+5. Hero book & select screen,skin icon 01 (skin picker),128,128,yes,Gretel_Skin_Icon_01.png,BookMenu\Skins\Icon_Skin_Beowulf_01.png
+5. Hero book & select screen,skin icon 02Yggdrasil (skin picker),128,128,yes,Gretel_Skin_Icon_02Yggdrasil.png,BookMenu\Skins\Icon_Skin_Beowulf_02Yggdrasil.png
+5. Hero book & select screen,skin icon 03Monster Hunter (skin picker),128,128,yes,Gretel_Skin_Icon_03Monster_Hunter.png,BookMenu\Skins\Icon_Skin_Beowulf_03Monster Hunter.png
+5. Hero book & select screen,skin icon 04Ice and Fire (skin picker),128,128,yes,Gretel_Skin_Icon_04Ice_and_Fire.png,BookMenu\Skins\Icon_Skin_Beowulf_04Ice and Fire.png
+5. Hero book & select screen,skin icon 05 Dragon Pact (skin picker),128,128,yes,Gretel_Skin_Icon_05_Dragon_Pact.png,BookMenu\Skins\Icon_Skin_Beowulf_05 Dragon Pact.png
+5. Hero book & select screen,skin icon 06Fairytale (skin picker),128,128,yes,Gretel_Skin_Icon_06Fairytale.png,BookMenu\Skins\Icon_Skin_Beowulf_06Fairytale.png
+5. Hero book & select screen,skin icon 07Raven (skin picker),128,128,yes,Gretel_Skin_Icon_07Raven.png,BookMenu\Skins\Icon_Skin_Beowulf_07Raven.png
+5. Hero book & select screen,skin icon 08Nightmare (skin picker),128,128,yes,Gretel_Skin_Icon_08Nightmare.png,BookMenu\Skins\Icon_Skin_Beowulf_08Nightmare.png
+5. Hero book & select screen,skin icon 09Unleashed (skin picker),128,128,yes,Gretel_Skin_Icon_09Unleashed.png,BookMenu\Skins\Icon_Skin_Beowulf_09Unleashed.png
+6. Alternate skins (optional),"body, colour (albedo)",2048,2048,no,Gretel_Nightmare_skin_Body_ALB.png,Characters\Heroes\Beowulf\Textures\Dark\T_BeowulfDark_ALB.tga
+6. Alternate skins (optional),"body, colour (albedo)",1024,1024,no,Gretel_Fairytale_skin_Body_ALB.png,Characters\Heroes\Beowulf\Textures\Fairytale\T_Beowulf_Fairytale_ALB.tga
+6. Alternate skins (optional),"body, colour (albedo)",2048,2048,no,Gretel_Ice_and_Fire_skin_Body_ALB.png,Characters\Heroes\Beowulf\Textures\IceFire\T_BeowulfIceAndFire_ALB.tga
+6. Alternate skins (optional),"body, colour (albedo)",1024,1024,no,Gretel_Unleashed_skin_Body_ALB.png,Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeper_ALB.tga
+6. Alternate skins (optional),"body, colour (albedo)",1024,1024,no,Gretel_Monster_Hunter_skin_Body_ALB.png,Characters\Heroes\Beowulf\Textures\MonsterHunter\T_BeowulfMonsterHunter_ALB.tga
+6. Alternate skins (optional),"body, colour (albedo)",1024,1024,no,Gretel_Raven_skin_Body_ALB.png,Characters\Heroes\Beowulf\Textures\Raven\T_BeowulfRaven_ALB.tga
+6. Alternate skins (optional),"body, colour (albedo)",2048,2048,no,Gretel_Dragon_Pact_skin_Body_ALB.png,Characters\Heroes\Beowulf\Textures\Volcanic\T_BeowulfVolcanic_ALB.tga
+6. Alternate skins (optional),"body, colour (albedo)",1024,1024,no,Gretel_Yggdrasil_skin_Body_ALB.png,Characters\Heroes\Beowulf\Textures\YggdrasilSkin\T_BeowulfYggdrasil_ALB.tga
+6. Alternate skins (optional),"body, metal/rough/AO (MRA)",2048,2048,no,Gretel_Nightmare_skin_Body_MRA.png,Characters\Heroes\Beowulf\Textures\Dark\T_BeowulfDark_MRA.tga
+6. Alternate skins (optional),"body, metal/rough/AO (MRA)",1024,1024,no,Gretel_Fairytale_skin_Body_MRA.png,Characters\Heroes\Beowulf\Textures\Fairytale\T_Beowulf_Fairytale_MRA.tga
+6. Alternate skins (optional),"body, metal/rough/AO (MRA)",2048,2048,no,Gretel_Ice_and_Fire_skin_Body_MRA.png,Characters\Heroes\Beowulf\Textures\IceFire\T_BeowulfIceAndFire_MRA.tga
+6. Alternate skins (optional),"body, metal/rough/AO (MRA)",1024,1024,no,Gretel_Unleashed_skin_Body_MRA.png,Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeper_MRA.tga
+6. Alternate skins (optional),"body, metal/rough/AO (MRA)",1024,1024,no,Gretel_Monster_Hunter_skin_Body_MRA.png,Characters\Heroes\Beowulf\Textures\MonsterHunter\T_BeowulfMonsterHunter_MRA.tga
+6. Alternate skins (optional),"body, metal/rough/AO (MRA)",1024,1024,no,Gretel_Raven_skin_Body_MRA.png,Characters\Heroes\Beowulf\Textures\Raven\T_BeowulfRaven_MRA.tga
+6. Alternate skins (optional),"body, metal/rough/AO (MRA)",2048,2048,no,Gretel_Dragon_Pact_skin_Body_MRA.png,Characters\Heroes\Beowulf\Textures\Volcanic\T_BeowulfVolcanic_MRA.tga
+6. Alternate skins (optional),"body, metal/rough/AO (MRA)",1024,1024,no,Gretel_Yggdrasil_skin_Body_MRA.png,Characters\Heroes\Beowulf\Textures\YggdrasilSkin\T_BeowulfYggdrasil_MRA.tga
+6. Alternate skins (optional),"body, normal map",2048,2048,no (normal map),Gretel_Nightmare_skin_Body_NRM.png,Characters\Heroes\Beowulf\Textures\Dark\T_BeowulfDark_NRM.tga
+6. Alternate skins (optional),"body, normal map",1024,1024,no (normal map),Gretel_Fairytale_skin_Body_NRM.png,Characters\Heroes\Beowulf\Textures\Fairytale\T_Beowulf_Fairytale_NRM.tga
+6. Alternate skins (optional),"body, normal map",2048,2048,no (normal map),Gretel_Ice_and_Fire_skin_Body_NRM.png,Characters\Heroes\Beowulf\Textures\IceFire\T_BeowulfIceAndFire_NRM.tga
+6. Alternate skins (optional),"body, normal map",1024,1024,no (normal map),Gretel_Unleashed_skin_Body_NRM.png,Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeper_NRM.tga
+6. Alternate skins (optional),"body, normal map",1024,1024,no (normal map),Gretel_Monster_Hunter_skin_Body_NRM.png,Characters\Heroes\Beowulf\Textures\MonsterHunter\T_BeowulfMonsterHunter_NRM.tga
+6. Alternate skins (optional),"body, normal map",1024,1024,no (normal map),Gretel_Raven_skin_Body_NRM.png,Characters\Heroes\Beowulf\Textures\Raven\T_BeowulfRaven_NRM.tga
+6. Alternate skins (optional),"body, normal map",2048,2048,no (normal map),Gretel_Dragon_Pact_skin_Body_NRM.png,Characters\Heroes\Beowulf\Textures\Volcanic\T_BeowulfVolcanic_NRM.tga
+6. Alternate skins (optional),"body, normal map",1024,1024,no (normal map),Gretel_Yggdrasil_skin_Body_NRM.png,Characters\Heroes\Beowulf\Textures\YggdrasilSkin\T_BeowulfYggdrasil_NRM.tga
+6. Alternate skins (optional),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Nightmare_skin_Gear_ALB.png,Characters\Heroes\Beowulf\Textures\Dark\T_BeowulfDarkAcc_ALB.tga
+6. Alternate skins (optional),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Fairytale_skin_Gear_ALB.png,Characters\Heroes\Beowulf\Textures\Fairytale\T_BeowulfAcc_Fairytale_ALB.tga
+6. Alternate skins (optional),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Ice_and_Fire_skin_Gear_ALB.png,Characters\Heroes\Beowulf\Textures\IceFire\T_BeowulfIceAndFireAcc_ALB.tga
+6. Alternate skins (optional),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Unleashed_skin_Gear_ALB.png,Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeperAdd_ALB.tga
+6. Alternate skins (optional),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Unleashed_skin_Gear_ALB_2.png,Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeperAcc_ALB.tga
+6. Alternate skins (optional),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Monster_Hunter_skin_Gear_ALB.png,Characters\Heroes\Beowulf\Textures\MonsterHunter\T_BeowulfMonsterHunterAcc_ALB.tga
+6. Alternate skins (optional),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Raven_skin_Gear_ALB.png,Characters\Heroes\Beowulf\Textures\Raven\T_BeowulfAccRaven_ALB.tga
+6. Alternate skins (optional),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Dragon_Pact_skin_Gear_ALB.png,Characters\Heroes\Beowulf\Textures\Volcanic\T_BeowulfVolcanicAcc_ALB.tga
+6. Alternate skins (optional),"gear + companion, colour (albedo)",1024,1024,no,Gretel_Yggdrasil_skin_Gear_ALB.png,Characters\Heroes\Beowulf\Textures\YggdrasilSkin\T_BeowulfAccYggdrasil_ALB.tga
+6. Alternate skins (optional),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Nightmare_skin_Gear_MRA.png,Characters\Heroes\Beowulf\Textures\Dark\T_BeowulfDarkAcc_MRA.tga
+6. Alternate skins (optional),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Fairytale_skin_Gear_MRA.png,Characters\Heroes\Beowulf\Textures\Fairytale\T_BeowulfAcc_Fairytale_MRA.tga
+6. Alternate skins (optional),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Ice_and_Fire_skin_Gear_MRA.png,Characters\Heroes\Beowulf\Textures\IceFire\T_BeowulfIceAndFireAcc_MRA.tga
+6. Alternate skins (optional),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Unleashed_skin_Gear_MRA.png,Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeperAdd_MRA.tga
+6. Alternate skins (optional),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Unleashed_skin_Gear_MRA_2.png,Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeperAcc_MRA.tga
+6. Alternate skins (optional),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Monster_Hunter_skin_Gear_MRA.png,Characters\Heroes\Beowulf\Textures\MonsterHunter\T_BeowulfMonsterHunterAcc_MRA.tga
+6. Alternate skins (optional),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Raven_skin_Gear_MRA.png,Characters\Heroes\Beowulf\Textures\Raven\T_BeowulfAccRaven_MRA.tga
+6. Alternate skins (optional),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Dragon_Pact_skin_Gear_MRA.png,Characters\Heroes\Beowulf\Textures\Volcanic\T_BeowulfVolcanicAcc_MRA.tga
+6. Alternate skins (optional),"gear + companion, metal/rough/AO (MRA)",1024,1024,no,Gretel_Yggdrasil_skin_Gear_MRA.png,Characters\Heroes\Beowulf\Textures\YggdrasilSkin\T_BeowulfAccYggdrasil_MRA.tga
+6. Alternate skins (optional),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Nightmare_skin_Gear_NRM.png,Characters\Heroes\Beowulf\Textures\Dark\T_BeowulfDarkAcc_NRM.tga
+6. Alternate skins (optional),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Fairytale_skin_Gear_NRM.png,Characters\Heroes\Beowulf\Textures\Fairytale\T_BeowulfAcc_Fairytale_NRM.tga
+6. Alternate skins (optional),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Ice_and_Fire_skin_Gear_NRM.png,Characters\Heroes\Beowulf\Textures\IceFire\T_BeowulfIceAndFireAcc_NRM.tga
+6. Alternate skins (optional),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Unleashed_skin_Gear_NRM.png,Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeperAdd_NRM.tga
+6. Alternate skins (optional),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Unleashed_skin_Gear_NRM_2.png,Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeperAcc_NRM.tga
+6. Alternate skins (optional),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Monster_Hunter_skin_Gear_NRM.png,Characters\Heroes\Beowulf\Textures\MonsterHunter\T_BeowulfMonsterHunterAcc_NRM.tga
+6. Alternate skins (optional),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Raven_skin_Gear_NRM.png,Characters\Heroes\Beowulf\Textures\Raven\T_BeowulfAccRaven_NRM.tga
+6. Alternate skins (optional),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Dragon_Pact_skin_Gear_NRM.png,Characters\Heroes\Beowulf\Textures\Volcanic\T_BeowulfVolcanicAcc_NRM.tga
+6. Alternate skins (optional),"gear + companion, normal map",1024,1024,no (normal map),Gretel_Yggdrasil_skin_Gear_NRM.png,Characters\Heroes\Beowulf\Textures\YggdrasilSkin\T_BeowulfAccYggdrasil_NRM.tga
