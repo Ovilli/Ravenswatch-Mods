@@ -67,6 +67,7 @@
 3D|Characters\Heroes\Beowulf\Beowulf_GEO.fbx|oCGeometry
 3D|Characters\Heroes\Beowulf\Beowulf_Shield_GEO.fbx|oCGeometry
 3D|Characters\Heroes\Beowulf\Beowulf_Weapon_GEO.fbx|oCGeometry
+3D|Characters\Heroes\Beowulf\Gretel_Hidden1_GEO.fbx|oCGeometry
 3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_InReady.fbx|oCAnimation
 3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_InSelection.fbx|oCAnimation
 3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_LoopDefeat.fbx|oCAnimation
@@ -145,7 +146,6 @@
 3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_LowRes_ALB.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_MonsterHunter_ALB.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_Volcanic_ALB.tga|oCTexture
-3D|Characters\Heroes\Beowulf\Wyrm_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\RED_Human_GEO.fbx|oCGeometry
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_DeathGrasp.fbx|oCAnimation
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_Divine_Revive_In.fbx|oCAnimation

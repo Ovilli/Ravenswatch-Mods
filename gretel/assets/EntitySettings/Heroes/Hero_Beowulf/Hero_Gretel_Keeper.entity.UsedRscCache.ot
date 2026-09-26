@@ -18,6 +18,7 @@
 3D|Characters\Heroes\Beowulf\BeowulfKeeper_GEO.fbx|oCGeometry
 3D|Characters\Heroes\Beowulf\BeowulfKeeper_Shield_GEO.fbx|oCGeometry
 3D|Characters\Heroes\Beowulf\BeowulfKeeper_Weapon_GEO.fbx|oCGeometry
+3D|Characters\Heroes\Beowulf\Gretel_Hidden1_GEO.fbx|oCGeometry
 3D|Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeperAcc_ALB.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeperAcc_EMI.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\Keeper\T_BeowulfKeeperAcc_MRA.tga|oCTexture
@@ -94,7 +95,6 @@
 3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_LowRes_ALB.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_MonsterHunter_ALB.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_Volcanic_ALB.tga|oCTexture
-3D|Characters\Heroes\Beowulf\Wyrm_GEO.fbx|oCGeometry
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_DeathGrasp.fbx|oCAnimation
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_Divine_Revive_In.fbx|oCAnimation
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_Divine_Revive_Loop.fbx|oCAnimation

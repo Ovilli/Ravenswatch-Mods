@@ -15,6 +15,7 @@
 3D|Characters\Heroes\Beowulf\Animations\Wyrm_Ultimate_1_Loop.fbx|oCAnimation
 3D|Characters\Heroes\Beowulf\Animations\Wyrm_Ultimate_2_FieryDodge_Shot_Default.fbx|oCAnimation
 3D|Characters\Heroes\Beowulf\Animations\Wyrm_Ultimate_2_FieryDodge_Trait_Shot.fbx|oCAnimation
+3D|Characters\Heroes\Beowulf\Gretel_Hidden1_GEO.fbx|oCGeometry
 3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_Beowulf.mat.ot|oCMaterial
 3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAcc.mat.ot|oCMaterial
 3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAccRaven.mat.ot|oCMaterial
@@ -85,7 +86,6 @@
 3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_LowRes_ALB.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_MonsterHunter_ALB.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_Volcanic_ALB.tga|oCTexture
-3D|Characters\Heroes\Beowulf\Wyrm_GEO.fbx|oCGeometry
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_DeathGrasp.fbx|oCAnimation
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_Divine_Revive_In.fbx|oCAnimation
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_Divine_Revive_Loop.fbx|oCAnimation
