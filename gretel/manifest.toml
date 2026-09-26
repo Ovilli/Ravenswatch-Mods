@@ -3,7 +3,7 @@ id           = "gretel"
 name         = "Gretel, the Witch Hunter"
 version      = "0.1.0"
 author       = "RSMM"
-description  = "A new hero: Gretel, who pushed the witch into the oven, stole her wand and founded Ravens Watch. Built on Beowulf's kit (blade, shield, fire), re-cast as the oven's fire bound in the witch's wand. Her own name, story, ability names and talent cards. New in her kit: releasing her shield (Oven Door) sends out a shockwave; a Whirlwind kill (Cinder Spin) releases a shockwave. Talents: Slam the Door (Retaliation's first strike sends a shockwave), Hunter's Pursuit (the dash attack sends a shockwave), Siblings' Oath (Battle Cry also clears her other cooldowns). Beowulf keeps all of his. For testing, every run grants 5000 XP and her three new talents (turn off in the config; it also fires when you play Beowulf, the loader cannot tell the two apart). Enable unlock-heroes too. Her own look is still to come."
+description  = "A new hero: Gretel, who pushed the witch into the oven, stole her wand and founded Ravens Watch. Built on Beowulf's kit (blade, shield, fire), re-cast as the oven's fire bound in the witch's wand. Every ability and talent card is hers (names and text), with new effects: releasing her shield (Oven Door) and a Cinder Spin kill send out a shockwave; talents Slam the Door, Hunter's Pursuit (shockwaves) and Siblings' Oath (clears her other cooldowns). ALL ART STILL BORROWED FROM BEOWULF IS PINK (body, gear, companion, skins, icons, portraits, book pictures): whatever is pink is what the art team still has to make. Beowulf keeps all of his. For testing, every run grants 5000 XP and her three new talents (turn off in the config; it also fires when you play Beowulf, the loader cannot tell the two apart). Enable unlock-heroes too."
 enabled      = true
 load_order   = 95
 sdk_version  = ">=3.0,<4"
@@ -17,6 +17,9 @@ kind        = "hero"
 id          = "Gretel"
 base        = "Beowulf"
 name        = "Gretel"
+# Every piece of art still borrowed from Beowulf is painted pink: whatever is
+# pink in game is what the art team still has to make.
+placeholder = "art/pink.png"
 description = "Captured as a child, Gretel pushed the witch into her own oven, stole her wand and freed her brother Hansel. Years later the siblings founded Ravens Watch to hunt the monsters that prey on the helpless. At 55, the wand's magic keeps her as quick and hardy as ever, and the nightmare crisis calls her to defend Reverie once more."
 
 # -- New abilities (rsmm ability-editor builds these steps) -------------------
@@ -47,8 +50,11 @@ to = "Primary Ability Effect Spawner"
 add_link = "Event Skill Trait Battlecry Active.activates"
 to = "Event Trait Ability Clear Other Cooldowns"
 
-# -- Her cards (Beowulf keeps his). Keep the {N} and #...@ tokens: the numbers
-# come from each card's String Format, the tokens are the game's keywords. -----
+# -- Her cards: every ability and talent (Beowulf keeps his). Keep the {N}
+# and #...@ tokens in the same order: the numbers come from each card's
+# String Format, the tokens are the game's keywords and highlights. ---------
+
+# Abilities
 [content.skills."Ability Attack"]
 name        = "Hunter's Blade"
 description = "• Chain together a series of attacks with the blade. Last attack deals #+{0}%@ damage\n• Whole combo deals a total of &{1}~ damage"
@@ -77,6 +83,16 @@ description = "• The wand's fire takes wing and tracks enemies, breathing flam
 name        = "Hunter's Fury"
 description = "• Rush forward, then chain together a series of attacks with the blade and the wand's fire, dealing up to &{0}~ damage\n• {1} is #INTANGIBLE@ during the whole ability"
 
+# Ultimate choices
+[content.skills."Ultimate Power 1"]
+name        = "The Oven's Wrath"
+description = "• The wand's fire takes wing and flies around, continuously breathing flame\n• Deals damage and applies #IGNITE@ to all enemies hit. {0} can act at the same time"
+
+[content.skills."Ultimate Power 2"]
+name        = "Hunter's Fury"
+description = "• Rush forward, then chain together a series of attacks with the blade and the wand's fire"
+
+# Talents with a new effect (wired in [[content.abilities]] above)
 [content.skills."Attack Flurry"]
 name        = "Slam the Door"
 description = "• After using #DEFENSE@, the next #ATTACK@ within #{0}@ seconds triggers a two-strike retaliation, each strike dealing &{1}%~ damage\n• The first strike sends out a #POWER@ shockwave"
@@ -89,8 +105,95 @@ description = "• #ATTACK@ triggered right after #DASH@ deals &{0}%~ damage, ap
 name        = "Siblings' Oath"
 description = "• Activating #TRAIT@ clears #POWER@ cooldown for all Heroes in the area and gives them a &{0}~ #SHIELD@ for #{1}@ seconds\n• Also clears the cooldown of Gretel's other abilities"
 
+# Talents re-themed (Beowulf's effect, Gretel's card)
 [content.skills."Passive Better Ignite"]
 name        = "Oven Heat"
+description = "• #IGNITE@ from the witch's fire lasts #{0}@ more seconds and deals &+{1}%~ damage"
 
 [content.skills."Passive Ignite Explosion"]
 name        = "Gingerbread Crumble"
+description = "• #IGNITED@ enemies crumble like burnt gingerbread when they die, bursting for &{0}~ damage and applying #IGNITE@ to all nearby enemies"
+
+[content.skills."Trait Quest"]
+name        = "Wand Mastery"
+description = "• #Quest (x{0}):@ Hitting #{1}@ enemies with a single #Wand ability@ grants #+{2} DMG@\n• #Complete@: #TRAIT@ cooldown #-{3}%@, #Wand abilities@ deal &+{4}%~ damage"
+
+[content.skills."Trait AOE"]
+name        = "Flare of the Wand"
+description = "• Activating #TRAIT@ releases a flare that deals &{0}~ damage all around and applies #IGNITE@ to all enemies hit"
+
+[content.skills."Attack Speed"]
+name        = "Seasoned Hunter"
+description = "• After each #TRAIT@ activation, next #{0} ATTACKS@ gain #+{1}%@ Crit Chance\n• Permanently gain &+{2}%~ #ATTACK@ speed"
+
+[content.skills."Attack Wide"]
+name        = "Brawn over Brains"
+description = "• #ATTACK@ is slower but cleaves across a wide area and deals &+{0}%~ damage"
+
+[content.skills."Attack After Special"]
+name        = "Pent-Up Anger"
+description = "• After a #SPECIAL@, the next #ATTACK@ triggers a series of #{0}@ strikes dealing &{1}%~ damage each\n• If the #SPECIAL@ was empowered by the #Wand@, the strikes apply #IGNITE@ to enemies and inflict #+{2}%@ damage"
+
+[content.skills."Attack Fire Cone"]
+name        = "Oven Breath"
+description = "• The wand's fire bursts in a cone during the #ATTACK@ finisher, dealing &{0}%~ damage and applying #IGNITE@ to enemies hit"
+
+[content.skills."Attack Special Crit"]
+name        = "Hunter's Eye"
+description = "• #ATTACK@ and #SPECIAL@ gain &+{0}%~ Crit Chance against #IGNITED@ enemies"
+
+[content.skills."Power Double"]
+name        = "Twice Burned"
+description = "• #POWER@ sends out two successive scorching waves, each one dealing ${0}%* damage"
+
+[content.skills."Power Trail"]
+name        = "Breadcrumb Trail"
+description = "• #Wand POWER@ leaves a trail of burning crumbs that deals &{0}~ damage over time to enemies standing on it"
+
+[content.skills."Power End AOE"]
+name        = "Oven Burst"
+description = "• #POWER@'s waves burst at the end and deal &{0}%~ additional damage all around"
+
+[content.skills."Special Loop"]
+name        = "Dizzy Waltz"
+description = "• #SPECIAL@ spins &{0}~ more time(s) for #{1}%@ damage each"
+
+[content.skills."Special Multi Shock"]
+name        = "Rolling Flames"
+description = "• #Wand SPECIAL@'s finisher strikes #{0}@ times with a growing radius for &{1}%~ damage each"
+
+[content.skills."Special Sends Power"]
+name        = "Aftershock"
+description = "• #SPECIAL@ sends out a {0}, dealing &{1}%~ of #POWER@ damage"
+
+[content.skills."Defense Quest"]
+name        = "Iron Door"
+description = "• #Quest (x{0}):@ Blocking at least one attack during #DEFENSE@ grants #+{1} ARMOR@\n• #Complete@: #Wand DEFENSE@ heals &{2}%~ more in a larger radius"
+
+[content.skills."Defense Dash"]
+name        = "Battering Door"
+description = "• #DEFENSE@ makes {0} charge forward and deal &+{1}%~ damage along the path"
+
+[content.skills."Defense Block Deals Damage"]
+name        = "Hot Iron"
+description = "• Each attack blocked during #DEFENSE@ inflicts &{0}%~ of blocked damage to what is in front of {1}."
+
+[content.skills."Defense Damage Aura"]
+name        = "Witch's Sigils"
+description = "• After hitting an enemy with #DEFENSE@, burning sigils appear around {0}, dealing &{1}~ area damage per second for #{2}@ seconds"
+
+[content.skills."Utimate 1 Immolation"]
+name        = "Kindled"
+description = "• During #ULTIMATE@, {0} deals &{1}~ damage per second to nearby enemies, and all abilities function as if they were #Wand Empowered@\n"
+
+[content.skills."Ultimate 1 Upgrade 2"]
+name        = "Roaring Oven"
+description = "• During #ULTIMATE@, the wand's fire grows and breathes flame in a wider zone, dealing &+{0}%~ damage"
+
+[content.skills."Ultimate 2 Volcanic"]
+name        = "Hot Coals"
+description = "• Each #ULTIMATE@ fireball throws &{0}~ glowing coals into the surrounding area, dealing #{1}%@ damage each"
+
+[content.skills."Ultimate 2 Upgrade 2"]
+name        = "Wand Bolt"
+description = "• In Combat, #DASH@ makes the wand hurl a fireball towards a close enemy, dealing &{0}~ area damage"

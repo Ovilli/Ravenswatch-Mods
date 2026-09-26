@@ -72,9 +72,37 @@
 3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_LoopDefeat.fbx|oCAnimation
 3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_LoopReady.fbx|oCAnimation
 3D|Characters\Heroes\Beowulf\Narrative\BEOWULF_Book_LoopSelection.fbx|oCAnimation
-3D|Characters\Heroes\Beowulf\Textures\M_BeowulfAcc_LowRes.mat.ot|oCMaterial
-3D|Characters\Heroes\Beowulf\Textures\M_BeowulfWyrm_LowRes.mat.ot|oCMaterial
-3D|Characters\Heroes\Beowulf\Textures\M_Beowulf_LowRes.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_Beowulf.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAcc.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAccRaven.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAccRaven_Static.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAccYggdrasil.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAcc_Dark.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAcc_Fairytale.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAcc_Fairytale_Static.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAcc_IceFire.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAcc_LowRes.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAcc_MonsterHunter.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAcc_Volcanic.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfAddKeeper.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfKeeper.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfKeeperAcc.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfRaven.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfWyrm.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfWyrmYggdrasil.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfWyrm_Dark.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfWyrm_IceFire.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfWyrm_Keeper.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfWyrm_LowRes.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfWyrm_MonsterHunter.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfWyrm_Volcanic.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_BeowulfYggdrasil.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_Beowulf_Dark.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_Beowulf_Fairytale.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_Beowulf_IceFire.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_Beowulf_LowRes.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_Beowulf_MonsterHunter.mat.ot|oCMaterial
+3D|Characters\Heroes\Beowulf\Textures\M_Gretel_PH_M_Beowulf_Volcanic.mat.ot|oCMaterial
 3D|Characters\Heroes\Beowulf\Textures\T_BeowulfAccAlt_ALB.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_BeowulfAccAlt_ALB_LowRes.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_BeowulfAcc_ALB.tga|oCTexture
@@ -86,6 +114,37 @@
 3D|Characters\Heroes\Beowulf\Textures\T_Beowulf_ALB_LowRes.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_Beowulf_MRA_LowRes.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Textures\T_Beowulf_NRM_LowRes.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAccRaven_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAccRaven_Static_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAccYggdrasil_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAcc_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAcc_Dark_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAcc_Fairytale_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAcc_Fairytale_Static_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAcc_IceFire_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAcc_LowRes_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAcc_MonsterHunter_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAcc_Volcanic_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfAddKeeper_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfKeeperAcc_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfKeeper_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfRaven_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfWyrmYggdrasil_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfWyrm_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfWyrm_Dark_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfWyrm_IceFire_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfWyrm_Keeper_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfWyrm_LowRes_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfWyrm_MonsterHunter_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfWyrm_Volcanic_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_BeowulfYggdrasil_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_Dark_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_Fairytale_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_IceFire_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_LowRes_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_MonsterHunter_ALB.tga|oCTexture
+3D|Characters\Heroes\Beowulf\Textures\T_Gretel_PH_M_Beowulf_Volcanic_ALB.tga|oCTexture
 3D|Characters\Heroes\Beowulf\Wyrm_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\RED_Human_GEO.fbx|oCGeometry
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_DeathGrasp.fbx|oCAnimation
@@ -978,9 +1037,42 @@ Ui|BookMenu\Codex\Beowulf\Codex_Illustration_Beowulf_2.png|oCTexture
 Ui|BookMenu\Codex\Beowulf\Codex_Illustration_Beowulf_3.png|oCTexture
 Ui|BookMenu\Codex\Beowulf\Codex_Illustration_Beowulf_4.png|oCTexture
 Ui|BookMenu\Codex\Beowulf\Codex_Illustration_Beowulf_5.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_CornerPic_BeowulfL.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_CornerPic_BeowulfR.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_1_Normal.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_1_Selected.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_2_Normal.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_2_Selected.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_3_Normal.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_3_Selected.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_4_Normal.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_4_Selected.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_5_Normal.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_5_Selected.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_6_Normal.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_6_Selected.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_7_Normal.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_FooterPic_Beowulf_7_Selected.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_Illustration_Beowulf_1.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_Illustration_Beowulf_2.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_Illustration_Beowulf_3.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_Illustration_Beowulf_4.png|oCTexture
+Ui|BookMenu\Codex\Beowulf\Gretel_Codex_Illustration_Beowulf_5.png|oCTexture
+Ui|BookMenu\Heroes\Gretel_UI_HeroPortrait_Beowulf_Active.png|oCTexture
+Ui|BookMenu\Heroes\Gretel_UI_HeroPortrait_Beowulf_Standard.png|oCTexture
+Ui|BookMenu\Heroes\Gretel_UI_HeroPortrait_Beowulf_Unavailable.png|oCTexture
 Ui|BookMenu\Heroes\UI_HeroPortrait_Beowulf_Active.png|oCTexture
 Ui|BookMenu\Heroes\UI_HeroPortrait_Beowulf_Standard.png|oCTexture
 Ui|BookMenu\Heroes\UI_HeroPortrait_Beowulf_Unavailable.png|oCTexture
+Ui|BookMenu\Skins\Gretel_Icon_Skin_Beowulf_01.png|oCTexture
+Ui|BookMenu\Skins\Gretel_Icon_Skin_Beowulf_02Yggdrasil.png|oCTexture
+Ui|BookMenu\Skins\Gretel_Icon_Skin_Beowulf_03Monster Hunter.png|oCTexture
+Ui|BookMenu\Skins\Gretel_Icon_Skin_Beowulf_04Ice and Fire.png|oCTexture
+Ui|BookMenu\Skins\Gretel_Icon_Skin_Beowulf_05 Dragon Pact.png|oCTexture
+Ui|BookMenu\Skins\Gretel_Icon_Skin_Beowulf_06Fairytale.png|oCTexture
+Ui|BookMenu\Skins\Gretel_Icon_Skin_Beowulf_07Raven.png|oCTexture
+Ui|BookMenu\Skins\Gretel_Icon_Skin_Beowulf_08Nightmare.png|oCTexture
+Ui|BookMenu\Skins\Gretel_Icon_Skin_Beowulf_09Unleashed.png|oCTexture
 Ui|BookMenu\Skins\Icon_Skin_Beowulf_01.png|oCTexture
 Ui|BookMenu\Skins\Icon_Skin_Beowulf_02Yggdrasil.png|oCTexture
 Ui|BookMenu\Skins\Icon_Skin_Beowulf_03Monster Hunter.png|oCTexture
@@ -1153,57 +1245,57 @@ Ui|HUD\zoom_icon.png|oCTexture
 Ui|Heroes\Ability_Dash.png|oCTexture
 Ui|Heroes\Ability_Dash_Disabled.png|oCTexture
 Ui|Heroes\Aladdin\HUD_Aladdin_Abilities_Wish_Mode_02.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Attack.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Attack_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Defensive.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Defensive_Alt_01.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Defensive_Alt_01_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Defensive_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Power.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Power_Alt_01.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Power_Alt_01_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Power_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Special.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Special_Alt_01.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Special_Alt_01_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Special_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Trait.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Trait_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Ultimate_1.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Ultimate_1_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Ultimate_2.png|oCTexture
-Ui|Heroes\Beowulf\Ability_Beowulf_Ultimate_2_Disabled.png|oCTexture
-Ui|Heroes\Beowulf\HUD_Banner_Beowulf.png|oCTexture
-Ui|Heroes\Beowulf\HUD_Beowulf_Dragon_Ability_Anim.png|oCTexture
-Ui|Heroes\Beowulf\Portrait_Beowulf_01.png|oCTexture
-Ui|Heroes\Beowulf\Skill Attack After Special.png|oCTexture
-Ui|Heroes\Beowulf\Skill Attack Fire Cone.png|oCTexture
-Ui|Heroes\Beowulf\Skill Attack Flurry.png|oCTexture
-Ui|Heroes\Beowulf\Skill Attack Special Crit.png|oCTexture
-Ui|Heroes\Beowulf\Skill Attack Speed.png|oCTexture
-Ui|Heroes\Beowulf\Skill Attack Wide.png|oCTexture
-Ui|Heroes\Beowulf\Skill Dash Attack.png|oCTexture
-Ui|Heroes\Beowulf\Skill Defense Better Healing.png|oCTexture
-Ui|Heroes\Beowulf\Skill Defense Block Deals Damage.png|oCTexture
-Ui|Heroes\Beowulf\Skill Defense Damage Aura.png|oCTexture
-Ui|Heroes\Beowulf\Skill Defense Dash.png|oCTexture
-Ui|Heroes\Beowulf\Skill Defense Quest.png|oCTexture
-Ui|Heroes\Beowulf\Skill Passive Better Ignite.png|oCTexture
-Ui|Heroes\Beowulf\Skill Power Double.png|oCTexture
-Ui|Heroes\Beowulf\Skill Power End AOE.png|oCTexture
-Ui|Heroes\Beowulf\Skill Power Trail.png|oCTexture
-Ui|Heroes\Beowulf\Skill Special Loop.png|oCTexture
-Ui|Heroes\Beowulf\Skill Special Multi Shock.png|oCTexture
-Ui|Heroes\Beowulf\Skill Special Sends Power.png|oCTexture
-Ui|Heroes\Beowulf\Skill Trait AOE.png|oCTexture
-Ui|Heroes\Beowulf\Skill Trait Battlecry.png|oCTexture
-Ui|Heroes\Beowulf\Skill Trait_Quest.png|oCTexture
-Ui|Heroes\Beowulf\Skill Ultimate 1 Big Wyrm.png|oCTexture
-Ui|Heroes\Beowulf\Skill Ultimate 1 Immolation.png|oCTexture
-Ui|Heroes\Beowulf\Skill Ultimate 2 Fireball Dash.png|oCTexture
-Ui|Heroes\Beowulf\Skill Ultimate 2 Volcanic.png|oCTexture
-Ui|Heroes\Beowulf\Skill_Crimson Fire.png|oCTexture
-Ui|Heroes\Beowulf\Skill_Purging Fire.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Attack.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Attack_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Defensive.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Defensive_Alt_01.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Defensive_Alt_01_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Defensive_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Power.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Power_Alt_01.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Power_Alt_01_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Power_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Special.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Special_Alt_01.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Special_Alt_01_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Special_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Trait.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Trait_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Ultimate_1.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Ultimate_1_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Ultimate_2.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Ability_Beowulf_Ultimate_2_Disabled.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_HUD_Banner_Beowulf.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_HUD_Beowulf_Dragon_Ability_Anim.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Portrait_Beowulf_01.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Attack After Special.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Attack Fire Cone.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Attack Flurry.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Attack Special Crit.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Attack Speed.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Attack Wide.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Dash Attack.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Defense Better Healing.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Defense Block Deals Damage.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Defense Damage Aura.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Defense Dash.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Defense Quest.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Passive Better Ignite.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Power Double.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Power End AOE.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Power Trail.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Special Loop.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Special Multi Shock.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Special Sends Power.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Trait AOE.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Trait Battlecry.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Trait_Quest.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Ultimate 1 Big Wyrm.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Ultimate 1 Immolation.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Ultimate 2 Fireball Dash.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill Ultimate 2 Volcanic.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill_Crimson Fire.png|oCTexture
+Ui|Heroes\Beowulf\Gretel_Skill_Purging Fire.png|oCTexture
 Ui|Heroes\Quest_Marker_Completed.png|oCTexture
 Ui|Heroes\Quest_Marker_Increment_Scroll_Anim_01.png|oCTexture
 Ui|Heroes\Quest_Marker_Ongoing.png|oCTexture
@@ -1225,7 +1317,7 @@ Ui|Materials\2dMinimap.mat.ot|oCMaterial
 Ui|Materials\2dUiColorFx.mat.ot|oCMaterial
 Ui|Materials\2dUiGauge.mat.ot|oCMaterial
 Ui|Melodies\UI_Icon_Sandman_Sherazade.png|oCTexture
-Ui|MiniMap\Icons\High\Minimap_IconHigh_Beowulf.png|oCTexture
+Ui|MiniMap\Icons\High\Gretel_Minimap_IconHigh_Beowulf.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Object.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Player.png|oCTexture
 Ui|MiniMap\Icons\Map_Icons_Object.png|oCTexture

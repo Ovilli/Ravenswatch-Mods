@@ -14,25 +14,36 @@ local tier = RARITY[R.config.get("rarity", "legendary")] or 3
 
 -- Slam the Door, Hunter's Pursuit, Siblings' Oath (by controller name).
 local TALENTS = { "Attack Flurry", "Dash Attack", "Trait Battlecry" }
+local XP_TRIES = 5
 
+-- Arm the level capture now, before any run builds the level component.
 R.xp.arm()
 
-local talents_done, xp_done = false, false
-R.on("run:start", function() talents_done, xp_done = false, false end)
+local talents_done, xp_done, xp_tries = false, false, 0
+R.on("run:start", function() talents_done, xp_done, xp_tries = false, false, 0 end)
+
+-- XP: once at run start, then only once the level component is known (the
+-- game's first XP gain captures it), at most XP_TRIES times, one at a time.
+local xp_pending = false
+local function try_xp()
+    if xp_done or xp_pending or xp_tries >= XP_TRIES then return end
+    if xp_tries > 0 and not R.xp.level() then return end
+    xp_pending = true
+    R.schedule.next_main(function()
+        xp_pending = false
+        xp_tries = xp_tries + 1
+        R.stat.enable_writes()
+        xp_done = R.xp.grant(5000) and true or false
+        R.log(("[gretel] R.xp.grant(5000) try %d/%d: %s (level %s)"):format(
+            xp_tries, XP_TRIES, xp_done and "OK" or "failed", tostring(R.xp.level())))
+    end)
+end
 
 -- Skill controllers register as they activate, which can trail the hero
 -- capture, so poll until they are there and grant once per run.
-R.schedule.every(3, function()
+R.schedule.every(5, function()
     if not enabled or not R.entity.ready() then return end
-    if not xp_done then
-        R.schedule.next_main(function()
-            if xp_done then return end
-            R.stat.enable_writes()
-            xp_done = R.xp.grant(5000)
-            R.log(("[gretel] R.xp.grant(5000): %s (level %s)"):format(
-                xp_done and "OK" or "failed, retrying", tostring(R.xp.level())))
-        end)
-    end
+    try_xp()
     if not talents_done and #R.talent.controllers() > 0 then
         talents_done = true
         for _, name in ipairs(TALENTS) do
