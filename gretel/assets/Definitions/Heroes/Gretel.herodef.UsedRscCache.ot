@@ -189,6 +189,7 @@
 3D|DecalCube_1x1.fbx|oCGeometry
 3D|Dt_MinimapFogOfWarEraser.mat.ot|oCMaterial
 3D|LD_Basic\Common\Cube_1x1.fbx|oCGeometry
+3D|Scenery\DarkHills\Gretel_T_Rocks_Medium_Small_Atlas_ALB.tga|oCTexture
 3D|Scenery\DarkHills\Loot_Money.fbx|oCGeometry
 3D|Scenery\DarkHills\T_Rock_Medium_ALB.tga|oCTexture
 3D|Scenery\DarkHills\T_Rock_Medium_MRA.tga|oCTexture
@@ -953,8 +954,6 @@ FX|Textures\Fire\Beowulf_Fire_Trail_01.png|oCTexture
 FX|Textures\Fire\Fire_Cone_Mask.png|oCTexture
 FX|Textures\Fire\Flame_Mask_01.png|oCTexture
 FX|Textures\Fire\Gretel_Beowulf_Fire_Trail_01.png|oCTexture
-FX|Textures\Fire\Gretel_Fire_Cone_Mask.png|oCTexture
-FX|Textures\Fire\Gretel_Flame_Mask_01.png|oCTexture
 FX|Textures\Glows\Basic_Glow_Squared_Common.png|oCTexture
 FX|Textures\Glows\Basic_Glow_Squared_Epic.png|oCTexture
 FX|Textures\Glows\Basic_Glow_Squared_Legendary.png|oCTexture
@@ -973,12 +972,10 @@ FX|Textures\Glows\Glow_Rays_Loop_Gold_Anim_01.png|oCTexture
 FX|Textures\Glows\Glow_and_Rays_01~C.png|oCTexture
 FX|Textures\Glows\Gretel_Circle_Focus_Stylized_Glow_01.png|oCTexture
 FX|Textures\Glows\Gretel_Donut_Glow_01.png|oCTexture
-FX|Textures\Glows\Gretel_Donut_Glow_04.png|oCTexture
 FX|Textures\Glows\Gretel_Dot_Blurred_Warped_Alpha.png|oCTexture
 FX|Textures\Glows\Gretel_Glow_and_Rays_01~C.png|oCTexture
 FX|Textures\Glows\Gretel_Halo_Orange_01.png|oCTexture
 FX|Textures\Glows\Gretel_Impact_Glow_Focus_01.png|oCTexture
-FX|Textures\Glows\Gretel_Light_Ray~C.png|oCTexture
 FX|Textures\Glows\Gretel_Stylized_Dot_Glow_01.png|oCTexture
 FX|Textures\Glows\Gretel_Stylized_Glow_01.png|oCTexture
 FX|Textures\Glows\Halo_Blue_01.png|oCTexture
@@ -1002,21 +999,15 @@ FX|Textures\Impacts\Beowulf_Wyrm_Ultimate_Impact_Ground_01~C.png|oCTexture
 FX|Textures\Impacts\Concentric_Lines_01.png|oCTexture
 FX|Textures\Impacts\Concentric_Lines_Blurred_01.png|oCTexture
 FX|Textures\Impacts\FX_Impact_Ring_00.png|oCTexture
-FX|Textures\Impacts\Gretel_Beowulf_Impact_Ground_Angle_01~C.png|oCTexture
-FX|Textures\Impacts\Gretel_Beowulf_Impact_Ground_Disc_01~C.png|oCTexture
 FX|Textures\Impacts\Gretel_Beowulf_Impact_Ground_Power_01~C.png|oCTexture
 FX|Textures\Impacts\Gretel_Beowulf_Impact_Ground_Power_Fire_01~C.png|oCTexture
-FX|Textures\Impacts\Gretel_Beowulf_Wyrm_Ultimate_Impact_Ground_01~C.png|oCTexture
 FX|Textures\Impacts\Gretel_Concentric_Lines_01.png|oCTexture
 FX|Textures\Impacts\Gretel_Concentric_Lines_Blurred_01.png|oCTexture
-FX|Textures\Impacts\Gretel_Impact_Ground_Cone_90_Burst_Flash~C.png|oCTexture
 FX|Textures\Impacts\Gretel_Impact_Ground_Crater_01.png|oCTexture
-FX|Textures\Impacts\Gretel_Impact_Ground_Line_Burst_01_Directional_Cracks~C.png|oCTexture
 FX|Textures\Impacts\Gretel_Impact_Rays_01_01.png|oCTexture
 FX|Textures\Impacts\Gretel_Impact_Ring_01.png|oCTexture
 FX|Textures\Impacts\Gretel_Impact_Ring_02_random.png|oCTexture
 FX|Textures\Impacts\Gretel_Impact_Ring_Focus_02.png|oCTexture
-FX|Textures\Impacts\Gretel_Impact_Ring_Focus_03.png|oCTexture
 FX|Textures\Impacts\Gretel_Impact_Spark_01.png|oCTexture
 FX|Textures\Impacts\Gretel_Impact_Spikes_Pattern_01.png|oCTexture
 FX|Textures\Impacts\Gretel_Impact_Spikes_Random_01.png|oCTexture
@@ -1056,8 +1047,6 @@ FX|Textures\Other\Beowulf_Defense_Algiz_02.png|oCTexture
 FX|Textures\Other\Beowulf_Hilt_Pattern_01.png|oCTexture
 FX|Textures\Other\Beowulf_Shield_01.png|oCTexture
 FX|Textures\Other\Common_Shield_01.png|oCTexture
-FX|Textures\Other\Gretel_Beowulf_Defense_Algiz_02.png|oCTexture
-FX|Textures\Other\Gretel_Beowulf_Shield_01.png|oCTexture
 FX|Textures\Other\Lightning_Arc_01_Random.png|oCTexture
 FX|Textures\Other\Nightmare_Spiderweb_Ground_Decal_01~C.png|oCTexture
 FX|Textures\Other\Spiders_Web_01.png|oCTexture
@@ -1120,12 +1109,7 @@ FX|Textures\Ramps\Basic_Mask_Limits_LeftRight.png|oCTexture
 FX|Textures\Ramps\Basic_Mask_Limits_LeftRight~C.png|oCTexture
 FX|Textures\Ramps\Basic_Mask_Limits_TopBottom~C.png|oCTexture
 FX|Textures\Ramps\Basic_Trail_ramp_01_RIGHT.png|oCTexture
-FX|Textures\Ramps\Gretel_BW_rampSYM_V_02~C.png|oCTexture
-FX|Textures\Ramps\Gretel_BW_ramp_01_UP~C.png|oCTexture
 FX|Textures\Ramps\Gretel_BW_ramp_SYM_V_01.png|oCTexture
-FX|Textures\Ramps\Gretel_BW_ramp_UP_Smooth_Square.png|oCTexture
-FX|Textures\Ramps\Gretel_Basic_Mask_Limits_LeftRight~C.png|oCTexture
-FX|Textures\Ramps\Gretel_Basic_Mask_Limits_TopBottom~C.png|oCTexture
 FX|Textures\Ramps\Gretel_LineH_Thin_01.png|oCTexture
 FX|Textures\Ramps\Gretel_Rainbow_Ramp_V_01.png|oCTexture
 FX|Textures\Ramps\LineH_Thin_01.png|oCTexture
@@ -1173,8 +1157,6 @@ FX|Textures\Slashes\Speed_Lines_02.png|oCTexture
 FX|Textures\Slashes\WOLF_Speed_Lines01.png|oCTexture
 FX|Textures\Slashes\Wide_Slash_Sym_01_B.png|oCTexture
 FX|Textures\Slashes\Wide_Slash_Sym_02.png|oCTexture
-FX|Textures\Smoke\Gretel_Smoke_Blurry_Mask_Random_01.png|oCTexture
-FX|Textures\Smoke\Gretel_Smoke_Random_Burst_01.png|oCTexture
 FX|Textures\Smoke\Gretel_Smoke_Random_Volutes_01.png|oCTexture
 FX|Textures\Smoke\Smoke_Blurry_Mask_Random_01.png|oCTexture
 FX|Textures\Smoke\Smoke_Nightmare_Random_Volutes_01.png|oCTexture
@@ -1186,10 +1168,8 @@ FX|Textures\Trails\Basic_Trail_Mask.png|oCTexture
 FX|Textures\Trails\Beowulf_Dash_Trail_01.png|oCTexture
 FX|Textures\Trails\Electric_Trail_01.png|oCTexture
 FX|Textures\Trails\Gretel_Aladdin_Wish_Energy_Channeling_Ribbon_01~C.png|oCTexture
-FX|Textures\Trails\Gretel_Basic_Trail_Mask.png|oCTexture
 FX|Textures\Trails\Gretel_Beowulf_Dash_Trail_01.png|oCTexture
 FX|Textures\Trails\Gretel_Level-Up_Ribbon_Mask_01~C.png|oCTexture
-FX|Textures\Trails\Gretel_Smoke_Thick_Trail_Mask.png|oCTexture
 FX|Textures\Trails\Gretel_Stylized_Trail_01.png|oCTexture
 FX|Textures\Trails\Level-Up_Ribbon_Mask_01~C.png|oCTexture
 FX|Textures\Trails\Smoke_Thick_Trail_Mask.png|oCTexture
@@ -1201,6 +1181,7 @@ FX|Textures\Warnings\Beowulf_Charge_Warning_01~C.png|oCTexture
 FX|Textures\Warnings\Cone_Warning_01~C.png|oCTexture
 Fonts|Germania One\Germania_One_Outline_0~GAM.png|oCTexture
 Fonts|Germania One\Germania_One_Outline~GAM.fnt|oCFont
+Lights|Gretel_OmniLightToon.mat.ot|oCMaterial
 Lights|OmniLightFog.mat.ot|oCMaterial
 Lights|OmniLightToon.mat.ot|oCMaterial
 Lights|SpotLightToon.mat.ot|oCMaterial
