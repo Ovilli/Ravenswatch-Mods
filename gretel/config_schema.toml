@@ -1,0 +1,10 @@
+[fields.auto_grant]
+label   = "Testing: grant 5000 XP and her three new talents every run (also fires on Beowulf)"
+type    = "bool"
+default = true
+
+[fields.rarity]
+label   = "Rarity of the granted talents"
+type    = "enum"
+values  = ["common", "rare", "epic", "legendary"]
+default = "legendary"

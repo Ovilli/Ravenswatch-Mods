@@ -7152,7 +7152,7 @@ SingleObject80=C43
 {
 m_pSettings=MAIN
 // class oe::Vector<class AliasDesc>
-u|Vector.Length=16
+u|Vector.Length=15
 Vector[0]=C41
 {
 u|m_u32Val1=2838372363
@@ -7294,16 +7294,6 @@ s|m_sArchive=EntitySettings
 s|m_sStream=Heroes\\Hero_Kintaro\\Hero_Kintaro.entity.ot
 }
 Vector[14]=C41
-{
-u|m_u32Val1=2973255399
-u|m_u32Val2=508946216
-u|m_u32Val3=2176693691
-u|m_u32Val4=3000409637
-s|m_sName=Hero_Nyx
-s|m_sArchive=EntitySettings
-s|m_sStream=Heroes\\Hero_Piper\\Hero_Nyx.entity.ot
-}
-Vector[15]=C41
 {
 u|m_u32Val1=3763350575
 u|m_u32Val2=1834708171
