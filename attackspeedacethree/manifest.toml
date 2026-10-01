@@ -18,6 +18,8 @@ kind              = "item"
 id                = "Damage_Attack"
 base              = "Damage_Attack"
 mode              = "replace"
+# The main line follows the stat swap (vanilla: "#ATTACK@ deals &+{}%~ damage").
+description       = "• #ATTACK@ speed &+{}%~"
 value_patches     = [
     ["Attack Speed Value", 0.15, 0.75],
     ["Damage Value", 0.2, 0.75, true],
