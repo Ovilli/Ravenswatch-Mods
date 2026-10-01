@@ -3,7 +3,7 @@
 local R = require "rsmm"
 
 local ITEM = "Damage_Attack"   -- Ace of Spades Card
-local COPIES = 66              -- 4 turns the super effect on
+local COPIES = 15              -- 4 turns the super effect on
 
 local given = 0
 for _, boundary in ipairs({ "run:start", "run:end", "menu:enter" }) do

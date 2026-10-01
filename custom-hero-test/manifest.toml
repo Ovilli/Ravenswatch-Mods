@@ -4,7 +4,7 @@ name         = "TEST: custom hero (Nyx)"
 version      = "0.1.0"
 author       = "RSMM"
 description  = "Dev test for a hero of its own. HUGE DEFENSIVE: her blast is 6x Piper's size and deals damage (x50). NEW ABILITIES: dashing spawns a rat (Rat Dash); a kill with her flute solo (primary) summons a rat (Feast); her defensive blast also drops her secondary zone (Echo Zone). Piper must keep none of these. Each piece is visible: Nyx has her own painted art (midnight-violet starred cloak, silver hair, moon-pale skin), a SILVER flute, her own portrait and VIOLET effects; her DASH spins her spine (Piper's dash must stay normal); all nine skin slots are her outfits (Frost, Moss with the Poison body shape, Eclipse, Ember, Nebula, Bone, Abyss, Dusk, Aurora); her Rat King ultimate recharges in 5 s and she spawns 6 rats; her day notes look like Juliet's bullets. Earlier summary: Nyx, built on Piper, with her own gameplay entity family (Hero_Nyx*), her own alias, her own body mesh and a MAGENTA body texture, and her own name. Pass: a 13th hero named Nyx on the select screen; picking her shows a magenta Piper; a run plays with Piper's abilities (rats, notes) working. Enable unlock-heroes too."
-enabled      = true
+enabled      = false
 load_order   = 94
 sdk_version  = ">=3.0,<4"
 license      = "MIT"
