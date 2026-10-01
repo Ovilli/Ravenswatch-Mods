@@ -1,0 +1,12 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+[mod]
+id          = "attackspeedace-fieldtest"
+name        = "Ace of Spades: Attack Speed (field test)"
+version     = "0.0.1"
+author      = "Pam"
+description = "Throwaway A/B test of attackspeedacethree: the per-modifier field next to the amount follows the swapped stat (2 -> 0 on the attack-speed effect, 0 -> 2 on the damage effect). Enable only one of the two mods."
+enabled     = false
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
