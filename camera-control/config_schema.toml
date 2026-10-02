@@ -1,0 +1,31 @@
+# Defaults are the shipped game's values, so an untouched slider changes nothing.
+# Only yaw is proven; the other three are read off comparing the game's three
+# cameras (see R.camera.FIELDS) and the overlay is how they get confirmed.
+
+[fields.yaw]
+type    = "float"
+default = 45.0
+min     = 0.0
+max     = 360.0
+label   = "Rotation"
+
+[fields.pitch]
+type    = "float"
+default = 54.0
+min     = 15.0
+max     = 89.0
+label   = "Tilt"
+
+[fields.distance]
+type    = "float"
+default = 33.0
+min     = 10.0
+max     = 80.0
+label   = "Distance"
+
+[fields.height]
+type    = "float"
+default = 1.0
+min     = -3.0
+max     = 6.0
+label   = "Look height"

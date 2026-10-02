@@ -1,0 +1,29 @@
+# Camera control — rotate the in-run camera live from the desktop overlay.
+#
+# How it works: the gameplay view is Hero_Common's "Default Camera"
+# (oCEntityCpntTopDownCameraSettings); its value_7 is the yaw, 45 degrees in the
+# shipped game. R.camera writes that number while the game runs (the camera
+# re-reads it every update) and moves the zoom and ultimate cameras with it, so
+# zooming keeps the rotation.
+#
+# The overlay's slider is this mod's own `yaw` config field: moving it writes
+# config.toml live, the loader notices the file changed, and init.lua's
+# on_change handler turns the camera. Needs a loader with config_reload.
+
+[mod]
+id          = "camera-control"
+name        = "Camera control"
+version     = "0.1.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Rotate, tilt and zoom the in-run camera from a desktop overlay while you play. Your settings also apply at every run start."
+sdk_version = "3"
+enabled     = true
+tags        = ["camera", "qol"]
+
+multiplayer_scope = "local-only"
+
+[overlay]
+title    = "Camera"
+icon     = "gauge"
+controls = ["yaw", "pitch", "distance", "height"]
