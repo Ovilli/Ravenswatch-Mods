@@ -1,0 +1,19 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+[mod]
+id          = "test"
+name        = "test"
+version     = "0.1.0"
+author      = "ewew"
+description = ""
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
+
+[[content]]
+kind          = "item"
+id            = "Spawn_Consumables"
+mode          = "replace"
+base          = "Spawn_Consumables"
+value_patches = [["Spawn Count", 2.0, 200.0]]
