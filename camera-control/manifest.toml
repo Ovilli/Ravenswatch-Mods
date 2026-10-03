@@ -18,7 +18,7 @@ author      = "Ovilli"
 license     = "MIT"
 description = "Rotate, tilt and zoom the in-run camera from a desktop overlay while you play. Your settings also apply at every run start."
 sdk_version = "3"
-enabled     = true
+enabled     = false
 tags        = ["camera", "qol"]
 
 multiplayer_scope = "local-only"

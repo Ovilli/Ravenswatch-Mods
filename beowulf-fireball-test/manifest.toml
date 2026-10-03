@@ -1,0 +1,38 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+[mod]
+id          = "beowulf-fireball-test"
+name        = "Beowulf Fireball Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: Beowulf's Fireball (ultimate 2 talent) is huge, staggers 100x harder and stuns for 10 s."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
+experimental = true
+
+[[content]]
+kind = "ability"
+id = "BeowulfAbilities"
+hero = "Beowulf"
+
+[[content.abilities]]
+set = "Stagger Power Selector.entries[0][1]"
+value = 5000
+entity = "Hero_Beowulf_Ultimate_2_Fireball"
+
+[[content.abilities]]
+set = "Stun Duration Selector.entries[0][1]"
+value = 10
+entity = "Hero_Beowulf_Ultimate_2_Fireball"
+
+[[content.abilities]]
+set = "Spawner Scale Value.value"
+value = 6
+entity = "Hero_Beowulf_Ultimate_2_Fireball"
+
+[[content.abilities]]
+set = "Splash Radius Value.value"
+value = 20
+entity = "Hero_Beowulf_Ultimate_2_Fireball"
