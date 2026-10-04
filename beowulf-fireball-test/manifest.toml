@@ -6,7 +6,7 @@ name        = "Beowulf Fireball Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: Beowulf's Fireball (ultimate 2 talent) is huge, staggers 100x harder and stuns for 10 s."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""
