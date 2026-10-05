@@ -147,7 +147,7 @@ description = "• #ATTACK@ triggered after a #DASH@ unleashes the final blow of
 #     holding the new modifier; EVERY reference to `Skill Trait Fire` moves here,
 #     the controller's and the explosion check's alike.
 # The card gets a 2-slot format (Dash Sprint's: a percent slot and a plain one).
-# UNPROVEN in game.
+# PROVEN in game 2026-10-05 (user playtest): TRAIT cooldown drops with Fiery Dragon.
 # ---------------------------------------------------------------------------
 
 [[content]]
