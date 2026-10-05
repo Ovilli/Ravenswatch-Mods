@@ -8,8 +8,10 @@
 # WHAT TO CHECK IN GAME (play Aladdin; init.lua grants the talent at run start)
 #   1. The dive is GONE: ATTACK during DEFENSE's jump no longer dives.
 #      -> proves `rebuild` turns the talent's own effect off.
-#   2. ATTACK hits harder ONLY while DEFENSE is active (compare damage numbers
-#      with and without DEFENSE). -> proves the `during` condition.
+#   2. "Attack power basic" rises ONLY while DEFENSE is active. Aladdin can't
+#      ATTACK during DEFENSE once the dive is gone, so init.lua logs the stat:
+#      hold DEFENSE, then `rsmm log | grep talent-builder-test` should show it
+#      go up by the card's number and back down. -> proves `during`.
 #   3. The card reads "Counter Dive" / "During DEFENSE, ATTACK damage +50%".
 #
 # Remove init.lua + config_schema.toml before publishing (free-talent cheat).
