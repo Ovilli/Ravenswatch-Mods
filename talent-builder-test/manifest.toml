@@ -5,6 +5,9 @@
 #        dealing X% of ATTACK's damage all around
 #   NEW: During DEFENSE, ATTACK damage +20/30/40/50% (Common..Legendary)
 #
+# RESULT 2026-10-05: check 2 PROVEN (log: Attack power basic 0 -> 0.5 -> 0 on each
+#   DEFENSE, 4 times); check 3 fixed after the card showed +0% (slot accessor).
+#
 # WHAT TO CHECK IN GAME (play Aladdin; init.lua grants the talent at run start)
 #   1. The dive is GONE: ATTACK during DEFENSE's jump no longer dives.
 #      -> proves `rebuild` turns the talent's own effect off.
