@@ -1,0 +1,44 @@
+# TEST — talent builder (rebuild + a "during" stat), built by the editor.
+#
+# Aladdin's "Attack Dive" talent is rebuilt as "Counter Dive":
+#   OLD: Using ATTACK during DEFENSE's jump makes Aladdin dive to the ground,
+#        dealing X% of ATTACK's damage all around
+#   NEW: During DEFENSE, ATTACK damage +20/30/40/50% (Common..Legendary)
+#
+# WHAT TO CHECK IN GAME (play Aladdin; init.lua grants the talent at run start)
+#   1. The dive is GONE: ATTACK during DEFENSE's jump no longer dives.
+#      -> proves `rebuild` turns the talent's own effect off.
+#   2. ATTACK hits harder ONLY while DEFENSE is active (compare damage numbers
+#      with and without DEFENSE). -> proves the `during` condition.
+#   3. The card reads "Counter Dive" / "During DEFENSE, ATTACK damage +50%".
+#
+# Remove init.lua + config_schema.toml before publishing (free-talent cheat).
+
+[mod]
+id                = "talent-builder-test"
+name              = "TEST: Talent builder (Counter Dive)"
+version           = "0.1.0"
+author            = "Ovilli"
+license           = "MIT"
+description       = "Aladdin's Attack Dive rebuilt by the talent builder: During DEFENSE, ATTACK damage +20-50% by rarity. Testing mod."
+sdk_version       = "3"
+enabled           = true
+# `skill` (card text) is rated below confirmed as a kind.
+experimental      = true
+multiplayer_scope = "deterministic-shared"
+tags              = ["talents", "aladdin", "test"]
+
+[[content]]
+kind      = "talent"
+id        = "counter_dive_builder"
+hero      = "Aladdin"
+rebuild   = ["Attack Dive"]
+add_stats = [{ "talent" = "Attack Dive", "stat" = "Attack power basic", "values" = [0.2, 0.3, 0.4, 0.5], "during" = "DEFENSE" }]
+
+[[content]]
+kind        = "skill"
+id          = "counter_dive_Attack_Dive"
+hero        = "Aladdin"
+source      = "Attack Dive"
+name        = "Counter Dive"
+description = "• During #DEFENSE@, #ATTACK@ damage &+{0}%~"
