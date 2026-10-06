@@ -18,6 +18,8 @@
 #   3. The card reads "Counter Dive" / "During DEFENSE, ATTACK damage +50%".
 #   RESULT 2026-10-06 (0.2.0): "Attack power" never moved — the window was
 #   never switched on (a timer's `state` only ENDS a state). Fixed in 0.2.1.
+#   RESULT 2026-10-06 (0.2.1): check 4 PROVEN — Attack power 0 -> 0.25 (Legendary)
+#   on POWER, back to 0 after 3.0 s, four times; `during` re-confirmed same run.
 #   4. (0.2.1, `after`) "Attack power" rises by the card's {1} each time POWER
 #      is used and falls back 3 s later; using POWER again inside the 3 s
 #      restarts them. init.lua logs it too. -> proves `after`.
