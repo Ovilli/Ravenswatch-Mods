@@ -13,12 +13,16 @@
 [mod]
 id          = "camera-control"
 name        = "Camera control"
-version     = "0.1.0"
+version     = "0.1.1"
 author      = "Ovilli"
 license     = "MIT"
 description = "Rotate, tilt and zoom the in-run camera from a desktop overlay while you play. Your settings also apply at every run start."
 sdk_version = "3"
 enabled     = false
+# R.camera finds the cameras from the captured hero. Without this every slider
+# change was saved and never applied (Sky, 2026-10-06); `rsmm apply` switches
+# hero capture on while this mod is enabled.
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
 tags        = ["camera", "qol"]
 
 multiplayer_scope = "local-only"

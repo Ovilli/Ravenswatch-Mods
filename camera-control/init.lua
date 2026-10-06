@@ -26,8 +26,25 @@ local function apply(name)
     return n ~= nil
 end
 
+-- Hero capture switched off: the camera can never be found, so "applies when a
+-- run starts" would be a promise that never comes true. Say what to change.
+local told_off = false
+local function capture_off()
+    if R.entity.capture_enabled and not R.entity.capture_enabled() then
+        if not told_off then
+            told_off = true
+            R.log("[camera-control] hero capture is off, so the camera cannot be moved. "
+                .. "Update the app and apply again (this mod switches it on), or turn on "
+                .. "Hero capture under Loader features.")
+        end
+        return true
+    end
+    return false
+end
+
 for name in pairs(FIELDS) do
     R.config.on_change(name, function(v)
+        if capture_off() then return end
         if not R.entity.ready() then
             R.log("[camera-control] " .. name .. " " .. tostring(v) .. " saved; applies when a run starts")
         elseif apply(name) then
@@ -37,6 +54,7 @@ for name in pairs(FIELDS) do
 end
 
 R.schedule.every(2, function()
+    if capture_off() then return end
     local hero = R.entity.ready() and R.entity.hero()
     if not hero or hero == applied_to then return end
     local ok = true
