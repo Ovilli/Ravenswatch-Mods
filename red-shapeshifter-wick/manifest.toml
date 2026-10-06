@@ -14,6 +14,11 @@
 #      Common value, since its own card is not owned). `rsmm log | grep wick`
 #   4. The card shows the extra bomb line.
 #
+# RESULT 2026-10-06: PROVEN. Short Wick not owned; human-form SPECIAL's bomb
+#   exploded the moment it landed (1), TRAIT still switched human <-> wolf (2),
+#   SPECIAL cooldown multiplier 1.000 -> 0.800 on the grant = Short Wick's
+#   Common value through the include (3).
+#
 # Remove init.lua + config_schema.toml before publishing (free-talent cheat).
 
 [mod]
