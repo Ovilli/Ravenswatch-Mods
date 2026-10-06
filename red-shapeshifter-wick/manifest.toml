@@ -1,0 +1,44 @@
+# TEST — Shapeshifter keeps Short Wick's bomb (talent builder `include`).
+#
+# Pam (2026-10-06): an update folds Short Wick into a starter talent that
+# competes with Shapeshifter, which most Scarlet players take. This keeps the
+# instant bomb available to them: owning Shapeshifter also switches on Short
+# Wick's own state, which is what makes the bomb explode on landing
+# (`Skill Secondary Ignite Quick Bombs Value`, read by Hero_Red_Bomb).
+#
+# WHAT TO CHECK IN GAME (play Scarlet; init.lua grants Shapeshifter at run start)
+#   1. Human form: SPECIAL's bomb explodes as soon as it hits the ground, with
+#      Short Wick NOT owned. -> proves `include`.
+#   2. Shapeshifter itself still works (TRAIT active + heal, lower max health).
+#   3. init.lua logs SPECIAL's cooldown reduction; expected 0.2 (Short Wick's
+#      Common value, since its own card is not owned). `rsmm log | grep wick`
+#   4. The card shows the extra bomb line.
+#
+# Remove init.lua + config_schema.toml before publishing (free-talent cheat).
+
+[mod]
+id                = "red-shapeshifter-wick"
+name              = "TEST: Shapeshifter keeps the instant bomb"
+version           = "0.1.0"
+author            = "Ovilli"
+license           = "MIT"
+description       = "Scarlet's Shapeshifter also gives Short Wick's bomb that explodes as soon as it hits the ground. Testing mod."
+sdk_version       = "3"
+enabled           = true
+# `skill` (card text) is rated below confirmed as a kind.
+experimental      = true
+multiplayer_scope = "deterministic-shared"
+tags              = ["talents", "red", "test"]
+
+[[content]]
+kind    = "talent"
+id      = "shapeshifter_wick"
+hero    = "Red"
+include = [{ "talent" = "Trait Active", "from" = "Secondary Quick Bombs" }]
+
+[[content]]
+kind        = "skill"
+id          = "shapeshifter_wick_card"
+hero        = "Red"
+source      = "Trait Active"
+description = "• #TRAIT@ becomes active (with a &{0}~ seconds cooldown) and #heals@ #{1}%@ of Maximum Health when used\n• Maximum Health is reduced by ${2}%*\n• #Human@: #SPECIAL@'s bomb explodes as soon as it hits the ground"
