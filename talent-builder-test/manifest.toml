@@ -16,16 +16,19 @@
 #      hold DEFENSE, then `rsmm log | grep talent-builder-test` should show it
 #      go up by the card's number and back down. -> proves `during`.
 #   3. The card reads "Counter Dive" / "During DEFENSE, ATTACK damage +50%".
+#   4. (0.2.0, `after`) "Attack power" rises by the card's {1} each time POWER
+#      is used and falls back 3 s later; using POWER again inside the 3 s
+#      restarts them. init.lua logs it too. -> proves `after`.
 #
 # Remove init.lua + config_schema.toml before publishing (free-talent cheat).
 
 [mod]
 id                = "talent-builder-test"
 name              = "TEST: Talent builder (Counter Dive)"
-version           = "0.1.0"
+version           = "0.2.0"
 author            = "Ovilli"
 license           = "MIT"
-description       = "Aladdin's Attack Dive rebuilt by the talent builder: During DEFENSE, ATTACK damage +20-50% by rarity. Testing mod."
+description       = "Aladdin's Attack Dive rebuilt by the talent builder: During DEFENSE, ATTACK damage +20-50% by rarity; for 3 s after POWER, damage +10-25%. Testing mod."
 sdk_version       = "3"
 enabled           = true
 # `skill` (card text) is rated below confirmed as a kind.
@@ -38,7 +41,10 @@ kind      = "talent"
 id        = "counter_dive_builder"
 hero      = "Aladdin"
 rebuild   = ["Attack Dive"]
-add_stats = [{ "talent" = "Attack Dive", "stat" = "Attack power basic", "values" = [0.2, 0.3, 0.4, 0.5], "during" = "DEFENSE" }]
+add_stats = [
+  { "talent" = "Attack Dive", "stat" = "Attack power basic", "values" = [0.2, 0.3, 0.4, 0.5], "during" = "DEFENSE" },
+  { "talent" = "Attack Dive", "stat" = "Attack power", "values" = [0.1, 0.15, 0.2, 0.25], "after" = "POWER", "seconds" = 3 },
+]
 
 [[content]]
 kind        = "skill"
@@ -46,4 +52,4 @@ id          = "counter_dive_Attack_Dive"
 hero        = "Aladdin"
 source      = "Attack Dive"
 name        = "Counter Dive"
-description = "• During #DEFENSE@, #ATTACK@ damage &+{0}%~"
+description = "• During #DEFENSE@, #ATTACK@ damage &+{0}%~\n• For #3@ second(s) after using #POWER@, damage &+{1}%~"

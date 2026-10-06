@@ -34,13 +34,17 @@ R.schedule.every(3, try_grant)
 -- change of "Attack power basic" is logged; hold DEFENSE and it should rise by
 -- the card's number, then fall back when DEFENSE ends.
 --   rsmm log | grep talent-builder-test
-local last
+-- The `after` stat ("Attack power" for 3 s after POWER) is logged the same way.
+local last = {}
+local WATCH = { attack_power_basic = "Attack power basic", attack_power = "Attack power" }
 R.schedule.every(0.1, function()
     if not granted then return end
-    local v = R.stat.get("attack_power_basic")
-    if v ~= nil and v ~= last then
-        R.log(string.format("talent-builder-test: Attack power basic = %.3f%s", v,
-            last and string.format(" (was %.3f)", last) or ""))
-        last = v
+    for key, label in pairs(WATCH) do
+        local v = R.stat.get(key)
+        if v ~= nil and v ~= last[key] then
+            R.log(string.format("talent-builder-test: %s = %.3f%s", label, v,
+                last[key] and string.format(" (was %.3f)", last[key]) or ""))
+            last[key] = v
+        end
     end
 end)
