@@ -23,13 +23,25 @@
 #   4. (0.2.1, `after`) "Attack power" rises by the card's {1} each time POWER
 #      is used and falls back 3 s later; using POWER again inside the 3 s
 #      restarts them. init.lua logs it too. -> proves `after`.
+#   5. (0.3.0, `cooldown`) Same "Attack power" window, now `cooldown = 8`: use
+#      POWER, then again 1-2 s later -> the window is NOT restarted (it falls
+#      to 0 three seconds after the FIRST use). Wait 8 s from the first use,
+#      use POWER -> it rises again. -> proves the cooldown gate.
+#   6. (0.3.0, `next`) "Crit chance" rises by {2} when DEFENSE is used and
+#      lasts 6 s, OR until the next ATTACK finishes: use DEFENSE, then ATTACK
+#      once -> crit drops back as that attack ends (well before 6 s). Use
+#      DEFENSE and don't attack -> it drops after 6 s. -> proves `next`.
+#   RESULT 2026-10-08 (0.3.0): checks 5 + 6 PROVEN (user confirmed). Log: Attack
+#   power 0 -> 0.25 on POWER, back to 0 after 3.0 s; Crit chance 0 -> 0.25 on
+#   DEFENSE and back to 0 after 4.0 s twice, well inside its 6 s window (the
+#   next ATTACK ended it).
 #
 # Remove init.lua + config_schema.toml before publishing (free-talent cheat).
 
 [mod]
 id                = "talent-builder-test"
 name              = "TEST: Talent builder (Counter Dive)"
-version           = "0.2.1"
+version           = "0.3.0"
 author            = "Ovilli"
 license           = "MIT"
 description       = "Aladdin's Attack Dive rebuilt by the talent builder: During DEFENSE, ATTACK damage +20-50% by rarity; for 3 s after POWER, damage +10-25%. Testing mod."
@@ -47,7 +59,8 @@ hero      = "Aladdin"
 rebuild   = ["Attack Dive"]
 add_stats = [
   { "talent" = "Attack Dive", "stat" = "Attack power basic", "values" = [0.2, 0.3, 0.4, 0.5], "during" = "DEFENSE" },
-  { "talent" = "Attack Dive", "stat" = "Attack power", "values" = [0.1, 0.15, 0.2, 0.25], "after" = "POWER", "seconds" = 3 },
+  { "talent" = "Attack Dive", "stat" = "Attack power", "values" = [0.1, 0.15, 0.2, 0.25], "after" = "POWER", "seconds" = 3, "cooldown" = 8 },
+  { "talent" = "Attack Dive", "stat" = "Crit chance", "values" = [0.1, 0.15, 0.2, 0.25], "after" = "DEFENSE", "seconds" = 6, "next" = "ATTACK" },
 ]
 
 [[content]]
@@ -56,4 +69,4 @@ id          = "counter_dive_Attack_Dive"
 hero        = "Aladdin"
 source      = "Attack Dive"
 name        = "Counter Dive"
-description = "• During #DEFENSE@, #ATTACK@ damage &+{0}%~\n• For #3@ second(s) after using #POWER@, damage &+{1}%~"
+description = "• During #DEFENSE@, #ATTACK@ damage &+{0}%~\n• For #3@ second(s) after using #POWER@, damage &+{1}%~ (at most once every #8@ s)\n• Within #6@ second(s) after using #DEFENSE@, your next #ATTACK@ gets crit chance &+{2}%~"

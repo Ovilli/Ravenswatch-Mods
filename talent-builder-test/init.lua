@@ -34,9 +34,12 @@ R.schedule.every(3, try_grant)
 -- change of "Attack power basic" is logged; hold DEFENSE and it should rise by
 -- the card's number, then fall back when DEFENSE ends.
 --   rsmm log | grep talent-builder-test
--- The `after` stat ("Attack power" for 3 s after POWER) is logged the same way.
+-- The `after` stat ("Attack power" for 3 s after POWER, at most once every 8 s)
+-- and the `next` one ("Crit chance" after DEFENSE until the next ATTACK) are
+-- logged the same way.
 local last = {}
-local WATCH = { attack_power_basic = "Attack power basic", attack_power = "Attack power" }
+local WATCH = { attack_power_basic = "Attack power basic", attack_power = "Attack power",
+                crit_chance = "Crit chance" }
 R.schedule.every(0.1, function()
     if not granted then return end
     for key, label in pairs(WATCH) do
