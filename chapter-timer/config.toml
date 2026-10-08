@@ -1,0 +1,31 @@
+# Edited values for the `chapter-timer` mod. Types and ranges live in
+# config_schema.toml. A change applies from the NEXT chapter that loads;
+# the chapter you are in keeps the timer it started with.
+
+# Chapter 1
+ch1_day = 180.0
+ch1_night = 180.0
+ch1_half_cycles = 6
+ch1_overtime = 180.0
+
+# Chapter 2
+ch2_day = 180.0
+ch2_night = 180.0
+ch2_half_cycles = 6
+ch2_overtime = 180.0
+
+# Chapter 3
+ch3_day = 180.0
+ch3_night = 180.0
+ch3_half_cycles = 6
+ch3_overtime = 180.0
+
+# Chapter 4
+ch4_day = 180.0
+ch4_night = 180.0
+ch4_half_cycles = 6
+ch4_overtime = 180.0
+
+# Log, at every chapter start, the timer the engine is actually using next
+# to what this mod set. Leave on until you have seen it work once.
+verbose = true

@@ -1,0 +1,120 @@
+# Defaults are the game's own values (ApplicationSettings.ot), so an
+# untouched config changes nothing. Boss wakes after
+#   half-cycles x (day + night) / 2 + overtime   seconds (21 min shipped).
+
+[fields.ch1_day]
+type    = "float"
+default = 180.0
+min     = 10.0
+max     = 3600.0
+label   = "Chapter 1: Day length (seconds)"
+
+[fields.ch1_night]
+type    = "float"
+default = 180.0
+min     = 10.0
+max     = 3600.0
+label   = "Chapter 1: Night length (seconds)"
+
+[fields.ch1_half_cycles]
+type    = "int"
+default = 6
+min     = 0
+max     = 40
+label   = "Chapter 1: Half-cycles before the boss wakes"
+
+[fields.ch1_overtime]
+type    = "float"
+default = 180.0
+min     = 0.0
+max     = 3600.0
+label   = "Chapter 1: Overtime before the boss is forced (seconds)"
+
+[fields.ch2_day]
+type    = "float"
+default = 180.0
+min     = 10.0
+max     = 3600.0
+label   = "Chapter 2: Day length (seconds)"
+
+[fields.ch2_night]
+type    = "float"
+default = 180.0
+min     = 10.0
+max     = 3600.0
+label   = "Chapter 2: Night length (seconds)"
+
+[fields.ch2_half_cycles]
+type    = "int"
+default = 6
+min     = 0
+max     = 40
+label   = "Chapter 2: Half-cycles before the boss wakes"
+
+[fields.ch2_overtime]
+type    = "float"
+default = 180.0
+min     = 0.0
+max     = 3600.0
+label   = "Chapter 2: Overtime before the boss is forced (seconds)"
+
+[fields.ch3_day]
+type    = "float"
+default = 180.0
+min     = 10.0
+max     = 3600.0
+label   = "Chapter 3: Day length (seconds)"
+
+[fields.ch3_night]
+type    = "float"
+default = 180.0
+min     = 10.0
+max     = 3600.0
+label   = "Chapter 3: Night length (seconds)"
+
+[fields.ch3_half_cycles]
+type    = "int"
+default = 6
+min     = 0
+max     = 40
+label   = "Chapter 3: Half-cycles before the boss wakes"
+
+[fields.ch3_overtime]
+type    = "float"
+default = 180.0
+min     = 0.0
+max     = 3600.0
+label   = "Chapter 3: Overtime before the boss is forced (seconds)"
+
+[fields.ch4_day]
+type    = "float"
+default = 180.0
+min     = 10.0
+max     = 3600.0
+label   = "Chapter 4: Day length (seconds)"
+
+[fields.ch4_night]
+type    = "float"
+default = 180.0
+min     = 10.0
+max     = 3600.0
+label   = "Chapter 4: Night length (seconds)"
+
+[fields.ch4_half_cycles]
+type    = "int"
+default = 6
+min     = 0
+max     = 40
+label   = "Chapter 4: Half-cycles before the boss wakes"
+
+[fields.ch4_overtime]
+type    = "float"
+default = 180.0
+min     = 0.0
+max     = 3600.0
+label   = "Chapter 4: Overtime before the boss is forced (seconds)"
+
+[fields.verbose]
+type    = "bool"
+default = true
+label   = "Log what each chapter actually used (for checking it works)"

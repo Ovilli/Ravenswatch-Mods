@@ -1,0 +1,15 @@
+[mod]
+id          = "chapter-timer"
+name        = "Chapter Timer"
+version     = "0.1.0"
+author      = "Ovilli"
+license     = "MIT"
+summary     = "Set how long each chapter's days and nights last and when the boss wakes, chapter by chapter."
+description = "Choose the day length, night length, number of half-cycles before the boss awakens and the overtime for each of the four chapters. The game works out the clock, the boss warning and the run modifiers from your numbers, exactly as it does from its own."
+sdk_version = "3"
+enabled     = false
+tags        = ["timer", "day-night", "qol", "difficulty"]
+# Every player's machine runs its own day/night clock from its own settings,
+# so a co-op party should all run this mod with the same config. Unproven in
+# co-op; tested solo first.
+multiplayer_scope = "deterministic-shared"
