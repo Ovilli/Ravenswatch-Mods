@@ -13,7 +13,7 @@
 [mod]
 id          = "camera-control"
 name        = "Camera control"
-version     = "0.1.1"
+version     = "1.1.1"
 author      = "Ovilli"
 license     = "MIT"
 description = "Rotate, tilt and zoom the in-run camera from a desktop overlay while you play. Your settings also apply at every run start."
