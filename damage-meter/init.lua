@@ -245,10 +245,22 @@ exp.case("allies_tracked", "does the board carry ALL players, not just you?")
 exp.case("names_measured", "does an ally row get a MEASURED name rather than a guess?")
 
 local function record_experiments(rows)
+    -- More MEASURED rows than players connected is a duplicate, not success:
+    -- 2026-10-07 (Sky) logged "PASS 4 row(s)" for a three-player run whose
+    -- fourth row was one ally forked in two. Placeholder (`pending`) rows are
+    -- the roster, not measurements, so they do not count either way.
+    local real = 0
+    for _, row in ipairs(rows) do
+        if not row.pending then real = real + 1 end
+    end
+    local ok_p, peers = pcall(R.net.peers)
+    local players = ok_p and type(peers) == "table" and #peers > 0 and #peers + 1 or nil
     exp.observe("allies_tracked", "rows", #rows)
+    exp.observe("allies_tracked", "players", players or "?")
     exp.observe("allies_tracked", "hook", tostring(R.damage.tracks_allies()))
-    exp.verdict("allies_tracked", #rows > 1,
-                  #rows .. " row(s) on the final board")
+    exp.verdict("allies_tracked", #rows > 1 and (players == nil or real <= players),
+                  #rows .. " row(s) on the final board"
+                  .. (players and (", " .. players .. " player(s) connected") or ""))
 
     -- `label_guess` is the SDK saying "nobody's id matched; this name is the
     -- one left over". A guessed name on an ally row is exactly the failure the
@@ -265,7 +277,7 @@ local function record_experiments(rows)
     exp.observe("names_measured", "measured", measured)
     exp.observe("names_measured", "guessed", guessed)
     if #rows > 1 then
-        exp.verdict("names_measured", measured > 0,
+        exp.verdict("names_measured", measured > 0 and guessed == 0,
                       measured .. " measured, " .. guessed .. " guessed")
     end
     -- Solo: left open. One row proves nothing either way, and a FAIL here would
@@ -290,7 +302,7 @@ R.on("run:start", function()
 end)
 
 R.on("ready", function()
-    R.log(("armed — report every %ds, snapshot every %ds, %ds DPS window, "
+    R.log(("armed — report every %gs, snapshot every %gs, %gs DPS window, "
            .. "sources: %s, counting %s"):format(
               cfg.report, cfg.snapshot, cfg.window, R.damage.mode(),
               counts_enemies_only() and "enemy damage only"
@@ -300,9 +312,9 @@ R.on("ready", function()
     -- same line that shows their damage climbing, which reads as a broken
     -- column rather than a stale one.
     if cfg.report > 0 and cfg.window < cfg.report then
-        R.log(("note: the %ds DPS window is shorter than the %ds report "
+        R.log(("note: the %gs DPS window is shorter than the %gs report "
                .. "interval, so a report can show 0.0 dps for a player who was "
-               .. "fighting during it — set window_seconds = %d to close the gap")
+               .. "fighting during it — set window_seconds = %g to close the gap")
               :format(cfg.window, cfg.report, cfg.report))
     end
     if not R.damage.tracks_allies() then
