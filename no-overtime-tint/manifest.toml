@@ -8,8 +8,6 @@ summary     = "Removes the red screen tint before and during overtime. Everythin
 description = "Overtime keeps its banner, minimap ping, music, camera shake and ambient effects, and the boss still wakes on time — only the red screen tint (the slow build-up before overtime, the flash when it starts and the tint while it lasts) is gone."
 sdk_version = "3"
 enabled     = true
-# `entity` (in-place entity edit) is rated experimental until proven in game.
-experimental = true
 tags        = ["visual", "qol", "overtime"]
 # Visual only: each player's screen is their own, nothing is networked.
 multiplayer_scope = "local-only"
