@@ -1,0 +1,36 @@
+[mod]
+id          = "no-overtime-tint"
+name        = "No Overtime Tint"
+version     = "1.0.0"
+author      = "Ovilli"
+license     = "MIT"
+summary     = "Removes the red screen tint before and during overtime. Everything else about overtime stays."
+description = "Overtime keeps its banner, minimap ping, music, camera shake and ambient effects, and the boss still wakes on time — only the red screen tint (the slow build-up before overtime, the flash when it starts and the tint while it lasts) is gone."
+sdk_version = "3"
+enabled     = true
+# `entity` (in-place entity edit) is rated experimental until proven in game.
+experimental = true
+tags        = ["visual", "qol", "overtime"]
+# Visual only: each player's screen is their own, nothing is networked.
+multiplayer_scope = "local-only"
+
+# The boss spawner's warning graph (read 2026-10-08):
+#   State FX PreOvertime   while_active: [0] Pre Overtime Warning Curve,
+#                                        [1] Pre Overtime WARNING Render Settings  <- build-up tint
+#   Event FX Overtime Warning  activates: [0] Overtime Warning Render Settings Cinematic  <- flash
+#   State FX Overtime      while_active: [0] Fx Ambient Warning Overtime Step 1,
+#                                        [1] Overtime Step 2 Tester,
+#                                        [2] Overtime Warning Curve  <- drives the ACTIVATION WARNING tint
+[[content]]
+kind   = "entity"
+id     = "boss_spawner_no_tint"
+entity = "Objects/Map_Boss_Spawner/Map_Boss_Spawner_Graph_Model"
+
+[[content.steps]]
+remove_link = "State FX PreOvertime.while_active[1]"
+
+[[content.steps]]
+remove_link = "Event FX Overtime Warning.activates[0]"
+
+[[content.steps]]
+remove_link = "State FX Overtime.while_active[2]"
