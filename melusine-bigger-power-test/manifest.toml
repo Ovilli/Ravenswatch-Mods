@@ -1,0 +1,61 @@
+# TEST: "make an ability bigger" (talent `scale`).
+#
+# Melusine's "Trait Armor" talent is rebuilt as "Rising Tide":
+#   OLD: its armour bonus (turned off)
+#   NEW: POWER's area +50/100/150/200% (Common..Legendary). Exaggerated on
+#        purpose for the test: Legendary is 3x the radius, impossible to miss.
+# The number grown is "Primary Ability Radius Operation" in her POWER caster
+# entity (default radius 4 x ...). The caster reads the talent's factor from
+# her hero file, the same way the game's own Freezing Splash does.
+#
+# WHAT TO CHECK IN GAME (play Melusine; init.lua grants Rising Tide, Legendary)
+#   1. The game loads and POWER still works. -> the new nodes are valid.
+#   2. POWER's area is clearly bigger: 3x the radius at Legendary.
+#      Compare with the talent off (set auto_grant = false in the mod's settings).
+#      -> proves the factor reaches the caster and multiplies the radius.
+#   3. Set rarity to "common": a smaller increase (1.5x). -> follows the card.
+#   4. The card reads "Rising Tide" / "POWER area +200%" at Legendary.
+#   The log says "granted Rising Tide" and NO "grant refused" after it; if the
+#   talent never shows up, it logs the controller names it can see.
+#
+# 0.2.0 -> 0.3.0: moved off "Trait Dash" (Dance Step): its controller never
+# registered in the 2026-10-09 15:03 run (6 more of her 31 talents didn't
+# either, none touched by this mod; most likely not unlocked on the profile),
+# so it could not be granted.
+# 0.3.0 -> 0.4.0: granted fine, radius unchanged. The caster's new reader node
+# was never switched on: a spawned entity's nodes run only once its start-up
+# state activates them, in order. Now inserted just before the radius.
+# RESULT 2026-10-09 (0.4.0): PROVEN in game, POWER's area was bigger with
+# Rising Tide granted at Legendary (user confirmed).
+# Not tested: whether the water's visual grows with it (the geyser effect reads
+# the same radius, so it should).
+# Remove init.lua + config_schema.toml before publishing (free-talent cheat).
+
+[mod]
+id                = "melusine-bigger-power-test"
+name              = "TEST: Rising Tide (bigger POWER)"
+version           = "0.4.0"
+author            = "Ovilli"
+license           = "MIT"
+description       = "Melusine's Trait Armor talent rebuilt as Rising Tide: POWER's area grows 50-200% by rarity. Testing mod for the talent builder's bigger-ability block."
+sdk_version       = "3"
+enabled           = true
+multiplayer_scope = "deterministic-shared"
+tags              = ["talents", "melusine", "test"]
+
+[[content]]
+kind    = "talent"
+id      = "rising_tide_builder"
+hero    = "Melusine"
+rebuild = ["Trait Armor"]
+scale   = [
+  { talent = "Trait Armor", node = "Primary Ability Radius Operation", file = "Hero_Melusine_Power_Caster_Model", values = [0.5, 1.0, 1.5, 2.0] },
+]
+
+[[content]]
+kind        = "skill"
+id          = "rising_tide_card"
+hero        = "Melusine"
+source      = "Trait Armor"
+name        = "Rising Tide"
+description = "• #POWER@ area &+{0}%~"
