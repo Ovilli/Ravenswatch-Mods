@@ -54,7 +54,7 @@ scale   = [
 
 [[content]]
 kind        = "skill"
-id          = "rising_tide_card"
+id          = "rising_tide_Trait_Armor"
 hero        = "Melusine"
 source      = "Trait Armor"
 name        = "Rising Tide"
