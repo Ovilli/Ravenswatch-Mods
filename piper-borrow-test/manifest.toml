@@ -1,0 +1,37 @@
+# TEST: cross-hero `include`. Piper's Virtuoso also gets Wukong's Focused Strikes.
+#
+# Piper's "Virtuoso" (row "Attack Move Speed") keeps its own effect and ALSO
+# runs Sun Wukong's "Focused Strikes" (row "Power Hold"): a permanent bonus to
+# POWER damage ("Attack power primary"). Wukong's numbers are +12/16/20/24%
+# (Common..Legendary); the copy reads PIPER's card rarity, so a Legendary
+# Virtuoso should give +24%.
+#
+# WHAT TO CHECK IN GAME (play Piper; init.lua grants Virtuoso, Legendary, at run start)
+#   1. The game loads and the run starts. -> the copied nodes are valid.
+#   2. "Attack power primary" goes up by 0.24 once Virtuoso is granted:
+#        rsmm log | grep piper-borrow-test
+#      -> proves the borrowed effect runs on another hero.
+#   3. Set the rarity to "common" in the mod's settings: it should go up by
+#      0.12 instead. -> proves the numbers follow PIPER's card rarity.
+#   4. Virtuoso's own effect (move speed after attacks) still works.
+#
+# The card text is unchanged: it does not mention the borrowed bonus.
+# Remove init.lua + config_schema.toml before publishing (free-talent cheat).
+
+[mod]
+id                = "piper-borrow-test"
+name              = "TEST: Virtuoso borrows Focused Strikes"
+version           = "0.1.0"
+author            = "Ovilli"
+license           = "MIT"
+description       = "Piper's Virtuoso also gives Sun Wukong's Focused Strikes POWER damage bonus. Testing mod for cross-hero talent effects."
+sdk_version       = "3"
+enabled           = true
+multiplayer_scope = "deterministic-shared"
+tags              = ["talents", "piper", "test"]
+
+[[content]]
+kind    = "talent"
+id      = "virtuoso_focus"
+hero    = "Piper"
+include = [{ talent = "Attack Move Speed", from = "Power Hold", hero = "SunWukong" }]
