@@ -27,14 +27,19 @@
 # state activates them, in order. Now inserted just before the radius.
 # RESULT 2026-10-09 (0.4.0): PROVEN in game, POWER's area was bigger with
 # Rising Tide granted at Legendary (user confirmed).
-# Not tested: whether the water's visual grows with it (the geyser effect reads
+# 0.4.0 -> 0.5.0: the hit area grew but the water did not (user, 2026-10-09):
+# the effect has no size of its own. Now the caster's root node's ground scale
+# (X, Z) reads the same factor, so everything it draws grows with the radius.
+# CHECK: the water/geyser is ~3x wider at Legendary and still lines up with
+# where enemies get hit.
+# Not tested before: whether the water's visual grows with it (the geyser effect reads
 # the same radius, so it should).
 # Remove init.lua + config_schema.toml before publishing (free-talent cheat).
 
 [mod]
 id                = "melusine-bigger-power-test"
 name              = "TEST: Rising Tide (bigger POWER)"
-version           = "0.4.0"
+version           = "0.5.0"
 author            = "Ovilli"
 license           = "MIT"
 description       = "Melusine's Trait Armor talent rebuilt as Rising Tide: POWER's area grows 50-200% by rarity. Testing mod for the talent builder's bigger-ability block."

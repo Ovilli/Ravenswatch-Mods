@@ -1,0 +1,76 @@
+# TEST: three talent-builder stats nobody has tried in game yet (Pam's requests).
+#
+# Melusine's "Wisp Surge" (row "Attack Speed") keeps its own effect and also gives:
+#   {2} +1 SPECIAL charge   (stat Ability_Charge_Secondary, as shipped items use)
+#   {3} +1 Strength         (status stack, permanent while owned)
+#   {4} +1 Regeneration     (status stack, permanent while owned)
+#   POWER's hits set enemies on fire (Ignite), both the normal and the geyser
+#   hit (on_hit: a copied Ignite debuff on her POWER caster's two damages,
+#   switched by a flag read from her hero file).
+#
+# WHAT TO CHECK IN GAME (play Melusine; init.lua grants Wisp Surge, Legendary)
+#   1. SPECIAL holds one more charge than normal (watch its charge count on
+#      the HUD: use it twice in a row). -> "+1 ability charge" works.
+#   2. Melusine shows the Strength and Regeneration buffs, and health ticks up
+#      when hurt. The log prints both stacks:
+#        rsmm log | grep melusine-talent-stats-test
+#      -> "grant Strength / Regeneration from a talent" works.
+#   3. POWER sets the enemies it hits on fire (they burn, with the fire
+#      effect). Without the talent (auto_grant = false) they don't.
+#      -> "apply a status to enemies" works.
+#   4. The card lists all four lines.
+# If 1 works, try TRAIT next (Ability_Charge_Trait: no shipped modifier uses it).
+# Off while melusine-bigger-power-test is tested: both replace Melusine's files.
+# Remove init.lua + config_schema.toml before publishing (free-talent cheat).
+
+[mod]
+id                = "melusine-talent-stats-test"
+name              = "TEST: talent charges, Strength, Regeneration, Ignite"
+version           = "0.2.0"
+author            = "Ovilli"
+license           = "MIT"
+description       = "Melusine's Wisp Surge also gives +1 SPECIAL charge, Strength and Regeneration, and POWER sets enemies on fire. Testing mod for the talent builder."
+sdk_version       = "3"
+enabled           = false
+multiplayer_scope = "deterministic-shared"
+tags              = ["talents", "melusine", "test"]
+
+[[content]]
+kind = "talent"
+id   = "wisp_stats_builder"
+hero = "Melusine"
+
+[[content.add_stats]]
+talent  = "Attack Speed"
+stat    = "Ability_Charge_Secondary"
+values  = 1
+percent = false
+
+[[content.add_stats]]
+talent  = "Attack Speed"
+stat    = "Strength"
+values  = 1
+percent = false
+
+[[content.add_stats]]
+talent  = "Attack Speed"
+stat    = "Regeneration"
+values  = 1
+percent = false
+
+[[content.on_hit]]
+talent = "Attack Speed"
+damage = "Primary Ability Damage"
+status = "Ignite"
+
+[[content.on_hit]]
+talent = "Attack Speed"
+damage = "Primary Ability Damage Geyser"
+status = "Ignite"
+
+[[content]]
+kind        = "skill"
+id          = "wisp_stats_Attack_Speed"
+hero        = "Melusine"
+source      = "Attack Speed"
+description = "• After casting #SPECIAL@, gain &+{0}%~ #ATTACK SPEED@ for #{1}@ seconds\n• #SPECIAL@ charges &+{2}~\n• Gain &{3}~ #Strength@\n• Gain &{4}~ #Regeneration@\n• #POWER@ hits #Ignite@ enemies"
