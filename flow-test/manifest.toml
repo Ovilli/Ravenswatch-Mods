@@ -1,0 +1,23 @@
+# TEST — R.melody.choose/remove, R.control.lock, R.run.next_chapter/win
+# (EXPERIMENTAL SDK APIs, static RE 2026-10-10).
+#
+# init.lua walks through these, one per ability you use (at least 5 s apart):
+#   1. choose the Reveal_Map melody   -> the map reveals, the melody shows in the melody UI
+#   2. remove that melody             -> it leaves the melody UI
+#   3. lock controls for 3 seconds    -> you cannot move or attack, then you can again
+#   4. next chapter                   -> the chapter ends as a success, the next one loads
+#   5. win the run                    -> the run ends as a victory
+#
+# WHAT TO CHECK IN GAME (solo — the run events only act for the session host).
+# `rsmm log | grep -E "flow-test|rsmm\.(melody|control|run)"` shows each step;
+# step 4/5 need the line "[rsmm.run] world dispatcher 0x..." first.
+[mod]
+id          = "flow-test"
+name        = "Flow Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: melody choose/remove, a 3 s control lock, next chapter, then win — checks R.melody / R.control / R.run."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
