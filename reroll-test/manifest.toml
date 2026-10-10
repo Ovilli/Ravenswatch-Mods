@@ -1,0 +1,24 @@
+# TEST — R.reroll.add (EXPERIMENTAL SDK API, static RE 2026-10-10).
+#
+# init.lua grants 3 offer rerolls once per run, as soon as the hero has acted
+# (the grant goes through the hero's event dispatcher, which the SDK learns from
+# the hero's first ability/attack).
+#
+# WHAT TO CHECK IN GAME (any hero, solo first)
+#   1. Start a run and attack once. The reroll counter on the next offer screen
+#      (item/talent choice) shows 3 more rerolls than usual, and they work.
+#   2. `rsmm log | grep reroll` shows
+#        [rsmm.reroll] dispatched GAIN_REROLL +3 ... rerolls X -> X+3
+#      X -> X+3 proves R.reroll.get reads the same counter the game uses.
+#   3. Next run: it grants 3 again (one grant per run, not per session).
+#   Later, co-op: the grant should reach only YOUR hero.
+[mod]
+id          = "reroll-test"
+name        = "Reroll Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: grants 3 offer rerolls at the start of every run (checks R.reroll.add)."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
