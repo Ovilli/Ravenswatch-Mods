@@ -1,0 +1,24 @@
+# TEST — R.give.remove_random / duplicate_random / remove_all (EXPERIMENTAL SDK
+# APIs, static RE 2026-10-10). Each sends the game's own item event to the hero.
+#
+# init.lua walks through four steps, one per ability you use (at least 5 s
+# apart, so you can look at the item bar between them):
+#   1. gives 3 random items           (R.give.random, already proven)
+#   2. duplicates one of them         (DUPLICATE_RANDOM_MAGICAL_OBJECT)
+#   3. removes one at random          (REMOVE_RANDOM_MAGICAL_OBJECT)
+#   4. removes every item             (REMOVE_ALL_MAGICAL_OBJECT)
+#
+# WHAT TO CHECK IN GAME (solo): the item count goes +3, +1, -1, then to zero.
+# Duplicate only copies a common, rare or epic item (the game's own rule), so
+# if all three random items were legendary, step 2 does nothing.
+# `rsmm log | grep -E "items-test|rsmm\.give"` shows each step.
+[mod]
+id          = "items-test"
+name        = "Items Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: gives, duplicates and removes items step by step — checks R.give.remove_random / duplicate_random / remove_all."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
