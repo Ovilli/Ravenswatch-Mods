@@ -18,7 +18,7 @@ name        = "Items Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: gives, duplicates and removes items step by step — checks R.give.remove_random / duplicate_random / remove_all."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""

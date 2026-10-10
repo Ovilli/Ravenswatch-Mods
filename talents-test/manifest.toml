@@ -1,0 +1,31 @@
+# TEST — R.talent.upgrade / upgrade_random / upgrade_lowest / add_random_ultimate
+# / reset and R.status.clear (EXPERIMENTAL SDK APIs, static RE 2026-10-10).
+#
+# init.lua walks through the steps below, one per ability you use (at least
+# 5 s apart, so you can look between them). Pick talents from the offers that
+# step 1 opens before you move on — the upgrades need talents to work on.
+#   1. level up to 8 (R.xp.set_level) -> pick your talents
+#   2. +1 tier on your FIRST talent           (UPGRADE_SPECIFIC_SKILL)
+#   3. +1 tier on 2 random talents            (UPGRADE_RANDOM_SKILL)
+#   4. your lowest talent straight to legendary (UPGRADE_LOWER_SKILL_TO_LEGENDARY)
+#   5. a random ultimate talent               (ADD_RANDOM_ULTI_SKILL)
+#   6. clear status effects + stagger          (CLEAR_STATUS, CLEAR_STAGGER)
+#   7. remove every talent                     (RESET_SKILLS)
+#
+# WHAT TO CHECK IN GAME (solo): the talent tiers/colours change as listed,
+# step 5 adds an ultimate, step 7 empties the talent list. Step 6 is only
+# visible if you are slowed/poisoned/staggered at that moment.
+# `rsmm log | grep -E "talents-test|rsmm\.(talent|status)"` shows each step
+# with the talent count before and after.
+[mod]
+id          = "talents-test"
+name        = "Talents Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: upgrades, adds and resets talents step by step — checks R.talent event senders and R.status.clear."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
+# The upgrade(i) / add_random_ultimate guards read the hero (hero capture).
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]

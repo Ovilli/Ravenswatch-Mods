@@ -18,7 +18,7 @@ name        = "Reroll Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: grants 3 offer rerolls at the start of every run (checks R.reroll.add)."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""

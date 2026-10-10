@@ -24,7 +24,7 @@ name        = "Hero Events Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: no cooldowns + 50 shards + 2 keys per run — checks R.ability / R.shards.gain / R.ingredient."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""
