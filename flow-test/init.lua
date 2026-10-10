@@ -11,6 +11,13 @@ local STEPS = {
         return "melodies loaded: " .. table.concat(R.melody.names(), ", ")
             .. "; choose(" .. MELODY .. "): " .. tostring(R.melody.choose(MELODY))
     end,
+    -- choose() only starts COLLECTING the melody (state 1); its effect fires
+    -- when notes complete it. Notes are the "Note" ingredient.
+    function()
+        local got = 0
+        for _ = 1, 10 do if R.ingredient.add("Note", 1) then got = got + 1 end end
+        return "ingredient.add(Note) x10: " .. got .. " sent — the map should reveal once the melody completes"
+    end,
     function() return "remove(" .. MELODY .. "): " .. tostring(R.melody.remove(MELODY)) end,
     function()
         local ok = R.control.lock()
