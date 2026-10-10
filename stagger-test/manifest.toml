@@ -19,7 +19,7 @@ name        = "Stagger Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: logs the hero's stagger value and clears it whenever it rises — proves R.status.clear_stagger from the log."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""

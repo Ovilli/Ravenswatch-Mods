@@ -1,0 +1,22 @@
+# TEST — proves the analytics run events (hero_death, open_chest, sandman_buy,
+# object_selected, skill_selected, …) reach mods with their fields.
+#
+# The loader's analytics firehose republishes every analytics event the game
+# sends; this mod logs each one with all of its fields, and counts them.
+# Just PLAY a normal run and try to hit as many moments as you can:
+#   open a chest (and a locked one with a key), buy in the Sandman shop,
+#   take an item, pick a talent, level up, use a fountain / the hourglass /
+#   a teleporter, collect a melody note, fight a boss, die once.
+# A summary line every 60 s lists which event names have fired so far.
+#
+# `rsmm log | grep analytics-events-test`
+[mod]
+id          = "analytics-events-test"
+name        = "Analytics Events Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: logs every analytics event (hero death, chests, shop, items, talents, …) with its fields."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
