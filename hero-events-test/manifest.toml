@@ -5,7 +5,8 @@
 #   * resets EVERY cooldown right after the hero finishes an ability (CLEAR_CD)
 #   * once per run, after the hero first acts: +2 dash charges
 #     (ADD_DASH_CHARGE), +50 dream shards as a pickup (GAIN_DREAM_SHARDS),
-#     +2 keys (GAIN_INGREDIENT "Key")
+#     +2 keys (GAIN_INGREDIENT "Key"), and level 6 via R.xp.set_level (5000 XP if refused)
+#     so the ultimate unlocks
 #
 # WHAT TO CHECK IN GAME (any hero, solo first)
 #   1. Cooldowns: use your ULTIMATE, then try it again at once. Pass = it is
