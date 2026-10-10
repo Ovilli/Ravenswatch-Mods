@@ -1,0 +1,26 @@
+# TEST — confirms every SDK call that shipped as "sent" (static RE + spec,
+# effect not yet seen in game). Solo run; one step per ability use, >= 5 s apart:
+#   1. level 5 + 3 keys            -> pick talents, note your key count
+#   2. ingredient.remove(Key)      -> keys -1
+#   3. xp.set_xp(10)               -> XP bar near empty
+#   4. talent.upgrade_lowest()     -> one talent +1 tier (not straight to legendary)
+#   5. ability.reduce_cooldown     -> TRIGGER THIS STEP WITH YOUR ULTIMATE: it is ready again
+#   6. ability.remove_charge(dash) -> one dash charge gone (if your dash has charges)
+#   7. melody.choose(Fully_Heal)   -> shows as the melody being collected
+#   8. melody.remove(Fully_Heal)   -> no longer collected
+#   9. status.clear                -> slow/poison/burn ends (get one first if you can)
+#  10. revive.add_token(1)         -> the revive-token counter shows one more
+#  11. run.next_chapter + win      -> next chapter loads; the run must NOT end (win is refused)
+#  12. run.lose                    -> the run ends as a defeat
+# `rsmm log | grep verify-test` prints each step with what to look for.
+[mod]
+id          = "verify-test"
+name        = "Verify Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: walks through every unconfirmed SDK call, one per ability use."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]

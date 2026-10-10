@@ -18,7 +18,7 @@ name        = "Flow Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: melody choose/remove, a 3 s control lock, next chapter, then win — checks R.melody / R.control / R.run."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""
