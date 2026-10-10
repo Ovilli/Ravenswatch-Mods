@@ -1,7 +1,7 @@
 [mod]
 id          = "no-overtime-tint"
 name        = "No Overtime Tint"
-version     = "1.0.0"
+version     = "1.0.1"
 author      = "Ovilli"
 license     = "MIT"
 summary     = "Removes the red screen tint before and during overtime. Everything else about overtime stays."

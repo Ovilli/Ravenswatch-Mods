@@ -1,7 +1,7 @@
 [mod]
 id          = "bloodlust"
 name        = "Bloodlust"
-version     = "1.0.0"
+version     = "1.0.1"
 author      = "RSMM"
 description = "Chain kills to stack a temporary attack-power frenzy. Stop killing and it fades. Pure event logic — no assets touched."
 enabled     = false

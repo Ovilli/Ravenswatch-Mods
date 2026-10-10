@@ -1,7 +1,7 @@
 [mod]
 id          = "lucky-chests"
 name        = "Lucky Chests"
-version     = "1.0.0"
+version     = "1.0.1"
 author      = "RSMM"
 description = "Chests sometimes pay out twice. A configurable chance on every chest to duplicate one of the magical objects you already carry."
 enabled     = false

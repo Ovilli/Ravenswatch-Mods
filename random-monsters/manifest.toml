@@ -1,7 +1,7 @@
 [mod]
 id          = "random-monsters"
 name        = "Random Monsters"
-version     = "1.5.0"
+version     = "1.5.1"
 author      = "RSMM"
 description = "REQUIRES RSMM 5.4.3 OR NEWER, and 5.4.4+ if you use [content.casts] — on an older app this mod is skipped with an 'unknown field' error (repoint_pools, or casts) rather than planting a stale roll. Randomises which monster every enemy slot actually spawns, or lets you hand-pick the cast: uncomment the [content.casts] table in manifest.toml to say exactly which monsters each chapter spawns. A gnoll camp on Storm Island can come up all crabs; a Dark Hills patrol can be treants and ghouls in whatever mix the seed rolled. Camps, tiers and difficulty are untouched — only the creature each slot instantiates changes. Swap `mix` for `entity` to turn a whole biome into one monster instead. Co-op: every player must install this mod with the same seed — an unmodded peer cannot see the imported monsters at all."
 enabled     = false

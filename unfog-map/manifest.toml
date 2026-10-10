@@ -1,7 +1,7 @@
 [mod]
 id          = "unfog-map"
 name        = "Reveal Map"
-version     = "2.0.0"
+version     = "2.0.1"
 author      = "RSMM"
 description = "Diagnostic. Reveals every POI on the chapter map from the start of a run, so a missing mod marker reads as a real negative instead of an unexplored map."
 enabled     = false

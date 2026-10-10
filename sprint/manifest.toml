@@ -1,7 +1,7 @@
 [mod]
 id          = "sprint"
 name        = "Sprint"
-version     = "1.0.0"
+version     = "1.0.1"
 author      = "RSMM"
 description = "Multiplies hero move speed so crossing a generated map to inspect a mod takes seconds instead of a long walk. A testing tool, not a balance change."
 enabled     = false
