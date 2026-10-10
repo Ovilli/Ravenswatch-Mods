@@ -40,7 +40,7 @@ local STEPS = {
     end,
     function()
         return "melody.choose(Fully_Heal): " .. tostring(R.melody.choose("Fully_Heal"))
-            .. " — LOOK: Fully_Heal shows as the melody being collected"
+            .. " — known NOT to work: the game still picks a random melody"
     end,
     function()
         return "melody.remove(Fully_Heal): " .. tostring(R.melody.remove("Fully_Heal"))
