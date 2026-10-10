@@ -63,7 +63,7 @@ experimental = true
 
 # Gameplay change to the hero entity, plus an init.lua that grants the talent
 # for testing. Strip init.lua + config_schema.toml before publishing.
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 
 [[content]]
 kind = "talent"

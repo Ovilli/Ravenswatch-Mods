@@ -9,7 +9,7 @@ load_order   = 94
 sdk_version  = ">=3.0,<4"
 license      = "MIT"
 tags         = ["dev", "testing", "heroes"]
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 experimental = true
 
 [[content]]

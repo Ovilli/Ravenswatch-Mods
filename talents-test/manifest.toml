@@ -18,6 +18,7 @@
 # `rsmm log | grep -E "talents-test|rsmm\.(talent|status)"` shows each step
 # with the talent count before and after.
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "talents-test"
 name        = "Talents Test"
 version     = "0.1.0"

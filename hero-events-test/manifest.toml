@@ -19,6 +19,7 @@
 #   5. `rsmm log | grep -E "rsmm\.(ability|shards|ingredient)|hero-events"`
 #      shows each `dispatched ...` line and the `bus ...` echo for each event.
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "hero-events-test"
 name        = "Hero Events Test"
 version     = "0.1.0"

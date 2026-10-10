@@ -1,6 +1,7 @@
 #:schema https://docs.rsmm.me/manifest.schema.json
 
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "test"
 name        = "test"
 version     = "0.1.0"

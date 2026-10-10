@@ -10,6 +10,6 @@ sdk_version = ">=3.0,<4"
 # Reacts to the local hero going into death's door and heals that same hero.
 # Nothing is written to shared run state, but healing IS a gameplay effect, so
 # in co-op each peer running the mod rescues only themselves.
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 license     = "MIT"
 tags = ["survival", "events", "quality-of-life"]

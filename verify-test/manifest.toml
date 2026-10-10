@@ -14,6 +14,7 @@
 #  12. run.lose                    -> the run ends as a defeat
 # `rsmm log | grep verify-test` prints each step with what to look for.
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "verify-test"
 name        = "Verify Test"
 version     = "0.1.0"

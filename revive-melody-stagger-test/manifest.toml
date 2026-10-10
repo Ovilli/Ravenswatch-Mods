@@ -14,6 +14,7 @@
 # `rsmm log | grep -E "revive-melody-stagger-test|rsmm\.(melody|status)"`
 # shows each step.
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "revive-melody-stagger-test"
 name        = "Revive / Melody / Stagger Test"
 version     = "0.1.0"

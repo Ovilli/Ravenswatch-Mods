@@ -2,6 +2,7 @@
 # Official Dota Pudge on the Beowulf skeleton (canonical final model). Real FBX weights re-keyed to the core Beo bones; sickle in the right hand, meat hook in the left hand; Pudge textures baked onto the Beo material slots.
 
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "PudgeModel_A"
 name        = "Pudge A — canonical Beowulf rig"
 version     = "0.1.1"

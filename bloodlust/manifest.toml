@@ -11,6 +11,6 @@ sdk_version = ">=3.0,<4"
 # real engine modifier (it composes with item/talent modifiers and expires on
 # its own). Every peer computes its own streak from its own kills, so there is
 # nothing to desync.
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 license     = "MIT"
 tags = ["combat", "events", "buff"]

@@ -9,6 +9,6 @@ load_order  = 50
 sdk_version = ">=3.0,<4"
 # Duplicating an object changes the local hero's inventory, which in co-op is
 # owned by the host. Each peer running this affects only their own loadout.
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 license     = "MIT"
 tags = ["loot", "events", "fun"]

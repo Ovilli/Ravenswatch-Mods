@@ -46,7 +46,7 @@ experimental = true
 
 # Asset-only: text bank values plus GUIDs and f32s in one entity. No Lua, no
 # herodef.
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 
 # ---------------------------------------------------------------------------
 # 1. The name and description.

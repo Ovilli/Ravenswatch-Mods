@@ -16,7 +16,7 @@ experimental = true
 # Purely visual and purely LOCAL: this rewrites cooked art in your own install.
 # Map generation, the run seed and all gameplay state are untouched, so it does
 # not have to match across a lobby — everyone else sees their normal heroes.
-multiplayer_scope = "cosmetic"
+multiplayer_scope = "deterministic-shared"
 
 # ONE model, twelve targets. Each block writes the mod's cooked geometry over a
 # shipped mesh's OWN cooked path, so every entity, material, level, tile and

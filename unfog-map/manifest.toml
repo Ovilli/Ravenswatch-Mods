@@ -10,7 +10,7 @@ sdk_version = ">=3.0,<4"
 license     = "MIT"
 tags = ["dev", "testing", "minimap"]
 # Two display globals. Map generation is untouched, so peers do not need it.
-multiplayer_scope = "cosmetic"
+multiplayer_scope = "deterministic-shared"
 
 # ⚠ WHY THIS EXISTS. POI markers in Ravenswatch are not shown at run start —
 # not even shipped ones. `Common_Settings\Minimap_Marker_Reveal_Model` flips

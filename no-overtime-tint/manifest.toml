@@ -10,7 +10,7 @@ sdk_version = "3"
 enabled     = false
 tags        = ["visual", "qol", "overtime"]
 # Visual only: each player's screen is their own, nothing is networked.
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 
 # The boss spawner's warning graph (read 2026-10-08):
 #   State FX PreOvertime   while_active: [0] Pre Overtime Warning Curve,

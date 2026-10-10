@@ -74,7 +74,7 @@ experimental = true
 
 # Cloned nodes + rewires in the hero entity, plus text values. No Lua: the testing
 # auto-grant was removed before publishing (use the talent-grant dev mod).
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 
 # ---------------------------------------------------------------------------
 # 1. The behaviour: one cloned selector, and the dash entry pointed at it.

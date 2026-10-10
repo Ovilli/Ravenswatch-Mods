@@ -13,6 +13,7 @@
 # `rsmm log | grep -E "flow-test|rsmm\.(melody|control|run)"` shows each step;
 # steps 5/6 need the line "[rsmm.run] world dispatcher 0x..." first.
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "flow-test"
 name        = "Flow Test"
 version     = "0.1.0"

@@ -11,7 +11,7 @@ license     = "MIT"
 tags = ["dev", "testing"]
 # Move speed is a local stat write, not part of map generation or the run seed,
 # so it does not have to match across a lobby.
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 
 [config.multiplier]
 type        = "float"

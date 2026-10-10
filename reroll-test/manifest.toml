@@ -13,6 +13,7 @@
 #   3. Next run: it grants 3 again (one grant per run, not per session).
 #   Later, co-op: the grant should reach only YOUR hero.
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "reroll-test"
 name        = "Reroll Test"
 version     = "0.1.0"

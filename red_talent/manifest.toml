@@ -1,4 +1,5 @@
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "red_talent"
 name        = 'red_talent'
 version     = "0.1.0"

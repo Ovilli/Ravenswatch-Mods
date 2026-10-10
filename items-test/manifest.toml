@@ -13,6 +13,7 @@
 # if all three random items were legendary, step 2 does nothing.
 # `rsmm log | grep -E "items-test|rsmm\.give"` shows each step.
 [mod]
+multiplayer_scope = "deterministic-shared"
 id          = "items-test"
 name        = "Items Test"
 version     = "0.1.0"

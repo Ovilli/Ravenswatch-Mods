@@ -16,7 +16,7 @@ tags        = ["balance", "talents", "snow-queen"]
 
 # Asset-only: two f32s in cooked entities, no Lua, nothing a peer can
 # disagree with.
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
 
 # ---------------------------------------------------------------------------
 # 1. Ice Clone detonation: -20% damage
