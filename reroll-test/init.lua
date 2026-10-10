@@ -6,6 +6,19 @@ local GRANT = 3
 local TAG = "[reroll-test] "
 
 local granted, pending, waited = false, false, 0
+
+local function game_count()
+    return R.game and R.game.ready and R.game.ready() and R.game.get("reroll_count") or nil
+end
+
+-- Every GAIN_REROLL that goes through the bus, ours and the game's own: shows
+-- whether our event reached dispatch and what a genuine one looks like.
+R.on("gameplay:GAIN_REROLL", function(ev)
+    local parts = {}
+    for k, v in pairs(ev) do parts[#parts + 1] = k .. "=" .. tostring(v) end
+    table.sort(parts)
+    R.log(TAG .. "bus GAIN_REROLL " .. table.concat(parts, " ") .. " game reroll_count=" .. tostring(game_count()))
+end)
 R.on("run:start", function() granted, pending, waited = false, false, 0 end)
 
 -- The grant needs the hero's event dispatcher, which the SDK captures from the
@@ -20,10 +33,11 @@ R.schedule.every(2, function()
     pending = true
     R.schedule.next_main(function()
         pending = false
-        local before = R.reroll.get()
+        local before, gbefore = R.reroll.get(), game_count()
         local ok = R.reroll.add(GRANT)
         granted = ok and true or false
-        R.log(TAG .. ("R.reroll.add(%d): %s; rerolls %s -> %s"):format(
-            GRANT, ok and "dispatched" or "refused", tostring(before), tostring(R.reroll.get())))
+        R.log(TAG .. ("R.reroll.add(%d): %s; rerolls %s -> %s; game reroll_count %s -> %s"):format(
+            GRANT, ok and "dispatched" or "refused", tostring(before), tostring(R.reroll.get()),
+            tostring(gbefore), tostring(game_count())))
     end)
 end)

@@ -22,3 +22,5 @@ enabled     = true
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""
+# R.reroll.get reads the hero (hero capture); without it the log reads nil -> nil.
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
