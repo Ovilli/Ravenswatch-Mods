@@ -1,0 +1,23 @@
+# TEST — proves R.status.clear_stagger from the LOG, since the stagger bar is
+# impossible to watch in a fight.
+#
+# How it works: R.status.watch_stagger() hooks the game's CLEAR_STAGGER handler
+# read-only and logs the hero's stagger value before and after every clear.
+#   1. Use any ability once -> sends one clear_stagger, which captures the
+#      hero's controller (the log line shows "stagger 0 -> 0", that is fine).
+#   2. Then just play and get hit — elites and bosses stagger you. The mod logs
+#      every rise of the stagger value, and when it is above 0 it clears it
+#      (at most every 2 s).
+#
+# PASS: lines like "CLEAR_STAGGER on controller …: stagger 37.5 -> 0".
+# `rsmm log | grep -E "stagger-test|rsmm\.status"`
+[mod]
+id          = "stagger-test"
+name        = "Stagger Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: logs the hero's stagger value and clears it whenever it rises — proves R.status.clear_stagger from the log."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""

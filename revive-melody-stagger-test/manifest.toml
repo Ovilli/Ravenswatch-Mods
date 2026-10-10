@@ -19,7 +19,7 @@ name        = "Revive / Melody / Stagger Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: removes a melody while collecting and once active, then clears stagger — checks the remaining unproven SDK calls."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""
