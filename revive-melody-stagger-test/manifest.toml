@@ -1,0 +1,25 @@
+# TEST — R.melody.remove in both states its handler treats differently, and
+# R.status.clear_stagger / reset_stagger_resilience. (R.revive.add_token is
+# proven 2026-10-10 and no longer tested here.)
+#
+# init.lua walks through the steps below, one per ability you use (at least
+# 5 s apart, so you can look between them). Play solo.
+#   1. choose Reveal_Map + 3 notes             -> the note counter shows 3
+#   2. remove Reveal_Map while collecting      -> the counter drops back to 0
+#   3. choose Reveal_Map + 10 notes            -> the map reveals IF choose() can force a
+#                                                 melody; a different melody = the random pick won
+#   4. remove Reveal_Map once active           -> it leaves your melody list
+#   5. clear stagger + reset resilience        -> do it while being staggered
+#
+# `rsmm log | grep -E "revive-melody-stagger-test|rsmm\.(melody|status)"`
+# shows each step.
+[mod]
+id          = "revive-melody-stagger-test"
+name        = "Revive / Melody / Stagger Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: removes a melody while collecting and once active, then clears stagger — checks the remaining unproven SDK calls."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""

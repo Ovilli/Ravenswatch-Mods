@@ -19,7 +19,7 @@ name        = "Verify Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: walks through every unconfirmed SDK call, one per ability use."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""
