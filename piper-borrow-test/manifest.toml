@@ -26,7 +26,7 @@ author            = "Ovilli"
 license           = "MIT"
 description       = "Piper's Virtuoso also gives Sun Wukong's Focused Strikes POWER damage bonus. Testing mod for cross-hero talent effects."
 sdk_version       = "3"
-enabled           = true
+enabled           = false
 multiplayer_scope = "deterministic-shared"
 tags              = ["talents", "piper", "test"]
 

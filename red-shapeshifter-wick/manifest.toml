@@ -29,7 +29,7 @@ author            = "Ovilli"
 license           = "MIT"
 description       = "Scarlet's Shapeshifter also gives Short Wick's bomb that explodes as soon as it hits the ground. Testing mod."
 sdk_version       = "3"
-enabled           = true
+enabled           = false
 # `skill` (card text) is rated below confirmed as a kind.
 experimental      = true
 multiplayer_scope = "deterministic-shared"

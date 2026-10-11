@@ -46,7 +46,7 @@ author            = "Ovilli"
 license           = "MIT"
 description       = "Aladdin's Attack Dive rebuilt by the talent builder: During DEFENSE, ATTACK damage +20-50% by rarity; for 3 s after POWER, damage +10-25%. Testing mod."
 sdk_version       = "3"
-enabled           = true
+enabled           = false
 # `skill` (card text) is rated below confirmed as a kind.
 experimental      = true
 multiplayer_scope = "deterministic-shared"
