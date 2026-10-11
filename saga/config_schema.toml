@@ -39,7 +39,7 @@ label   = "Challenge tier"
 type    = "enum"
 values  = ["off", "flavor", "light", "standard", "hard", "brutal",
            "impossible", "weekly_a", "weekly_b", "random"]
-default = "on"
+default = "off"
 
 [fields.challenge_seed]
 label   = "Challenge seed (blank = today's date, or the ISO week for a weekly)"

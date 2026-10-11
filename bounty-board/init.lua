@@ -324,31 +324,42 @@ end
 -- ---------------------------------------------------------------------------
 -- The board tick (background thread: timers + overlay only, no engine calls)
 -- ---------------------------------------------------------------------------
+-- The game's own pause (the Escape menu, solo). Read with R.game.cached, which
+-- does no engine call and so is safe on this background tick — and it has to
+-- be, because main-thread callbacks are driven by gameplay events, which stop
+-- while the game is paused. The main pump below re-finds the value each
+-- second so cached() has something to read. Co-op never pauses, so the board
+-- keeps running there, like the game does.
+local function game_paused()
+    return R.game and R.game.cached and R.game.cached("is_in_pause") == 1
+end
+
 local function clock(s)
     if not s then return "" end
     return ("%d:%02d"):format(s // 60, s % 60)
 end
 
-local function row_for(b)
+local function row_for(b, frozen)
     if b.result then
         return { bounty = (b.ok and "✔ " or "✘ ") .. b.title, progress = b.ok and 1 or 0,
                  count = "", time = "", reward = b.result, done = b.ok and true or false }
     end
     return { bounty = b.title, progress = b.progress / b.goal,
-             count = ("%d/%d"):format(b.progress, b.goal), time = clock(b.left),
+             count = ("%d/%d"):format(b.progress, b.goal),
+             time = (frozen and b.left) and "paused" or clock(b.left),
              reward = b.reward_text, done = false }
 end
 
-local function publish()
+local function publish(frozen)
     if not (R.overlay and R.overlay.publish) then return end
     local rows = {}
     if boss then
-        local r = row_for(boss)
+        local r = row_for(boss, frozen)
         if not boss.result then r.bounty, r.time = "★ " .. r.bounty, "boss" end
         rows[#rows + 1] = r
     end
     for slot = 1, cfg.slots do
-        if board[slot] then rows[#rows + 1] = row_for(board[slot]) end
+        if board[slot] then rows[#rows + 1] = row_for(board[slot], frozen) end
     end
     if cfg.streak_bonus then
         local s = streak % STREAK_FOR_BONUS
@@ -369,6 +380,8 @@ end
 
 R.schedule.every(1, function()
     if not active then return end
+    -- Paused (Escape menu) = nothing moves: timers, result rows, refills.
+    if game_paused() then publish(true); return end
     for slot = 1, cfg.slots do
         local b = board[slot]
         if not b then
@@ -385,10 +398,14 @@ R.schedule.every(1, function()
         boss.ttl = boss.ttl - 1
         if boss.ttl <= 0 then boss = nil end
     end
-    publish()
+    publish(paused)
 end)
 
 R.schedule.every_main(0.5, drain)
+-- Keeps R.game.cached("is_in_pause") current (see game_paused).
+R.schedule.every_main(1, function()
+    if active and R.game and R.game.get then R.game.get("is_in_pause") end
+end)
 
 R.on("ready", function()
     math.randomseed(os.time())
