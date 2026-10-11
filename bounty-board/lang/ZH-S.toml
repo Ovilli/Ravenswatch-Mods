@@ -1,0 +1,80 @@
+# 悬赏榜 — 简体中文
+#
+# Game terms follow the game's own Simplified Chinese text banks, so a player
+# reads the same words here as in the game: 梦之碎片 (Dream Shards), 重掷
+# (reroll), 天赋 (talent), 魔法物品 (magical object), 首领 (boss), 宝箱 (chest),
+# 活动 (the game's word for world events), 暂停 (pause).
+#
+# [strings] is read in game (R.i18n.t); the other sections are what the
+# desktop app and `rsmm overlay` show when they run in Chinese.
+
+[strings]
+pay_shards   = "{n} 个梦之碎片"
+pay_reroll   = "1 次重掷"
+pay_rerolls  = "{n} 次重掷"
+pay_talent   = "天赋升级"
+pay_revive   = "1 次复活机会"
+pay_item     = "神秘魔法物品"
+
+title_slay     = "击杀 {n} 个敌人"
+title_rampage  = "8 秒内击杀 {n} 个敌人"
+title_flawless = "不受伤击杀 {n} 个敌人"
+title_chest    = "打开 1 个宝箱"
+title_chests   = "打开 {n} 个宝箱"
+title_level    = "提升 1 级"
+title_levels   = "提升 {n} 级"
+title_event    = "完成一次活动"
+title_boss     = "不倒下击败首领"
+
+paid        = "已发放：{reward}"
+timeout     = "时间到"
+fell        = "你倒下了"
+paused      = "暂停"
+boss        = "首领"
+streak      = "连胜 {s}/{n}"
+streak_done = "{n} 连胜"
+
+log_posted   = "[悬赏] 新悬赏：{title} — {reward}"
+log_complete = "[悬赏] 完成：{title} — {reward}"
+log_failed   = "[悬赏] 失败：{title}（{why}）"
+log_paid     = "[悬赏] 已发放 {reward}（{why}）"
+log_streak   = "[悬赏] {n} 连胜 — 神秘魔法物品即将发放"
+log_boss     = "[悬赏] 首领悬赏：{title} — {reward}"
+log_hit      = "[悬赏] 受到攻击！{title} 已重置（失去 {p}/{g}）"
+log_open     = "[悬赏] 悬赏榜已开放（{why}）— 难度：{difficulty}"
+log_closed   = "[悬赏] 悬赏榜已关闭（{why}）"
+
+[manifest]
+name        = "悬赏榜"
+summary     = "整局不断刷新的战斗悬赏：击杀、连杀、无伤、开箱——奖励梦之碎片、重掷、天赋升级和神秘魔法物品。"
+description = "一局中始终开放的悬赏榜，同时有三个悬赏：限时击杀 20 个敌人、8 秒内连杀 6 个、不受伤击杀 10 个、打开宝箱、提升等级、完成活动。完成后立即发放奖励（梦之碎片、重掷、天赋升级），连续完成三个可额外获得一件神秘魔法物品；每场首领战还会发布特殊悬赏：不倒下击败首领即可获得天赋升级和一次复活机会。可在悬浮窗中选择轻松、标准或残酷难度。"
+
+[overlay]
+title = "悬赏"
+empty = "开始一局后悬赏榜才会开放。"
+
+[overlay.columns]
+bounty   = "悬赏"
+progress = "进度"
+time     = "时间"
+reward   = "奖励"
+
+[config.difficulty]
+label = "悬赏难度（目标、时限与奖励一同调整）"
+
+[config.difficulty.choices]
+relaxed  = "轻松"
+standard = "标准"
+brutal   = "残酷"
+
+[config.slots]
+label = "同时显示的悬赏数量"
+
+[config.streak_bonus]
+label = "每连续完成 3 个悬赏额外获得一件神秘魔法物品"
+
+[config.boss_bounty]
+label = "每场首领战发布特殊悬赏"
+
+[config.announce]
+label = "在日志中记录每个新悬赏、完成情况和奖励"
