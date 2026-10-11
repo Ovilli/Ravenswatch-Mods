@@ -15,7 +15,7 @@ sdk_version = ">=3.0,<4"
 multiplayer_scope = "deterministic-shared"
 license     = "MIT"
 tags = ["combat", "events", "rewards", "hud"]
-
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
 # The board. Shape is declared here; rows come from R.overlay.publish.
 [overlay]
 title     = "Bounties"
