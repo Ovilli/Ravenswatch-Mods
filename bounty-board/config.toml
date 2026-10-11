@@ -1,0 +1,24 @@
+# Edited values for the `bounty-board` mod. The schema lives in
+# config_schema.toml; the loader reads THIS file.
+
+# relaxed  = fewer kills, longer timers, smaller payouts
+# standard = the intended pace
+# brutal   = more kills, tighter timers, payouts about 1.6x
+# Also switchable live from the overlay; a change applies to the NEXT bounty
+# posted, never to one already running.
+difficulty = "standard"
+
+# How many bounties are open at once (1-4).
+slots = 3
+
+# Every third bounty completed in a row (no expiry in between) also pays a
+# mystery item: a random magical object from the run's pool. It can be
+# anything — including a cursed one. That is the gamble.
+streak_bonus = true
+
+# When a boss fight starts, post "Defeat the boss without falling". Pays a
+# talent upgrade and a revive token; going down once during the fight fails it.
+boss_bounty = true
+
+# Log each new bounty, completion and payout (`rsmm log -f --grep bounty`).
+announce = true

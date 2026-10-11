@@ -1,0 +1,27 @@
+[fields.difficulty]
+label   = "Bounty difficulty (targets, time limits and rewards scale together)"
+type    = "enum"
+values  = ["relaxed", "standard", "brutal"]
+default = "standard"
+
+[fields.slots]
+label   = "Bounties on the board at once"
+type    = "int"
+min     = 1
+max     = 4
+default = 3
+
+[fields.streak_bonus]
+label   = "Pay a mystery item for every 3 bounties completed in a row"
+type    = "bool"
+default = true
+
+[fields.boss_bounty]
+label   = "Post a special bounty for every boss fight"
+type    = "bool"
+default = true
+
+[fields.announce]
+label   = "Log each new bounty, completion and payout"
+type    = "bool"
+default = true
