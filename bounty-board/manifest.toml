@@ -1,7 +1,7 @@
 [mod]
 id          = "bounty-board"
 name        = "Bounty Board"
-version     = "1.0.0"
+version     = "1.1.0"
 author      = "RSMM"
 summary     = "Rotating combat bounties during a run — slay, rampage, go untouched, loot — paid in shards, rerolls, talent upgrades and mystery items."
 description = "A live board of three bounties that refreshes all run long: kill 20 before the clock runs out, chain 6 kills in 8 seconds, kill 10 without taking a hit, open chests, level up, win a world event. Each pays out on the spot (dream shards, offer rerolls, a talent upgrade), a streak of three earns a mystery item, and every boss fight posts a special bounty: beat it without falling for a talent upgrade and a revive token. Pick Relaxed, Standard or Brutal from the overlay."

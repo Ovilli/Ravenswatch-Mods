@@ -155,7 +155,10 @@ local TEMPLATES = {
                      or T("title_chests", { n = n }, "Open {n} chests"),
                  goal = n, left = round(300 * d.time) }
     end },
-    { kind = "ascend", weight = 2, tier = 1, on = "level", make = function(d)
+    -- `once`: at most one per run. Levels get slower to earn as a run goes on,
+    -- so a second "gain 2 levels" late in the run could not be won (playtest
+    -- feedback, 2026-10-11); a world event depends on the map having one.
+    { kind = "ascend", weight = 2, tier = 1, on = "level", once = true, make = function(d)
         local n = math.max(1, round(2 * d.goal))
         return { title = n == 1 and T("title_level", nil, "Gain a level")
                      or T("title_levels", { n = n }, "Gain {n} levels"),
@@ -163,7 +166,7 @@ local TEMPLATES = {
     end },
     -- World-event success has not been watched firing in a playtest yet; a
     -- bounty that never completes just expires, so it is kept rare.
-    { kind = "champion", weight = 1, tier = 2, on = "activity", make = function(d)
+    { kind = "champion", weight = 1, tier = 2, on = "activity", once = true, make = function(d)
         return { title = T("title_event", nil, "Win a world event"), goal = 1,
                  left = round(420 * d.time) }
     end },
@@ -175,6 +178,13 @@ local TEMPLATES = {
 local board = {}          -- slot -> bounty | { result = text, ttl = n, ... }
 local boss = nil          -- the special boss bounty, outside the slots
 local active, paused = false, false
+-- The clocks wait for the game's own: the chapter timer starts when the hero
+-- leaves the spawn area, not when the level loads, and a bounty that counted
+-- down through the loading screen was half gone before play began. Started by
+-- GAME_CHRONO_START, or by the first kill, hit or chest, whichever comes first
+-- (each means play has begun); cleared again at every chapter end.
+local started = false
+local used = {}           -- kind -> true for `once` templates posted this run
 local streak, completed, failed = 0, 0, 0
 
 local function on_board(kind)
@@ -187,7 +197,7 @@ end
 local function pick_template(avoid)
     local pool, total = {}, 0
     for _, t in ipairs(TEMPLATES) do
-        if t.kind ~= avoid and not on_board(t.kind) then
+        if t.kind ~= avoid and not on_board(t.kind) and not (t.once and used[t.kind]) then
             pool[#pool + 1] = t
             total = total + t.weight
         end
@@ -207,6 +217,7 @@ local function post(slot, avoid)
     local d = difficulty()
     local b = t.make(d)
     b.kind, b.on, b.tier, b.progress = t.kind, t.on, t.tier, 0
+    if t.once then used[t.kind] = true end
     b.reward = TIERS[t.tier](d.pay)
     b.reward_text = reward_label(b.reward)
     board[slot] = b
@@ -239,8 +250,8 @@ local function advance(b, slot, amount)
 end
 
 local function reset(why)
-    board, boss, payouts = {}, nil, {}
-    active, paused, streak = false, false, 0
+    board, boss, payouts, used = {}, nil, {}, {}
+    active, paused, started, streak = false, false, false, 0
     if R.overlay and R.overlay.clear then R.overlay.clear() end
     if why then say("log_closed", { why = why }, "[Bounty] board closed ({why})") end
 end
@@ -265,7 +276,7 @@ end
 
 local function on_kill()
     if not active then open("first kill") end
-    paused = false
+    paused, started = false, true
     local now = os.time()
     each_live("kill", function(b, slot)
         if b.window then
@@ -281,6 +292,7 @@ local function on_kill()
 end
 
 local function on_hit()
+    started = true
     each_live("kill", function(b)
         if b.kind == "flawless" and b.progress > 0 then
             say("log_hit", { title = b.title, p = b.progress, g = b.goal },
@@ -291,7 +303,10 @@ local function on_hit()
 end
 
 R.on("gameplay:ENEMY_KILLED", on_kill)
-R.on("gameplay:OPEN_CHEST", function() each_live("chest", function(b, s) advance(b, s, 1) end) end)
+R.on("gameplay:OPEN_CHEST", function()
+    started = true
+    each_live("chest", function(b, s) advance(b, s, 1) end)
+end)
 R.on("level_up", function() each_live("level", function(b, s) advance(b, s, 1) end) end)
 for _, name in ipairs({ "ACTIVITY_SUCCESS", "SOLO_ACTIVITY_SUCCESS" }) do
     R.on("gameplay:" .. name, function() each_live("activity", function(b, s) advance(b, s, 1) end) end)
@@ -340,11 +355,14 @@ end
 for _, ev in ipairs({ "run:end", "menu:enter", "gameplay:GAME_END_FAILED" }) do
     R.on(ev, function() reset(ev) end)
 end
--- Between chapters and during cinematics the clocks stop.
-for _, ev in ipairs({ "gameplay:GAME_END_NEXT_CHAPTER", "gameplay:GAME_END_SUCCESS",
-                      "gameplay:CINE_START" }) do
-    R.on(ev, function() paused = true end)
+R.on("gameplay:GAME_CHRONO_START", function() started = true end)
+-- Between chapters the clocks stop until the next chapter's own clock starts
+-- (the load fires GAME_START again, which un-pauses but does not start them).
+for _, ev in ipairs({ "gameplay:GAME_END_NEXT_CHAPTER", "gameplay:GAME_END_SUCCESS" }) do
+    R.on(ev, function() paused, started = true, false end)
 end
+-- During cinematics too.
+R.on("gameplay:CINE_START", function() paused = true end)
 for _, ev in ipairs({ "gameplay:CINE_STOP", "gameplay:CINE_END" }) do
     R.on(ev, function() paused = false end)
 end
@@ -374,7 +392,8 @@ local function row_for(b, frozen)
     end
     return { bounty = b.title, progress = b.progress / b.goal,
              count = ("%d/%d"):format(b.progress, b.goal),
-             time = (frozen and b.left) and T("paused", nil, "paused") or clock(b.left),
+             time = (b.left and not started) and T("waiting", nil, "waiting")
+                 or (frozen and b.left) and T("paused", nil, "paused") or clock(b.left),
              reward = b.reward_text, done = false }
 end
 
@@ -419,7 +438,7 @@ R.schedule.every(1, function()
         elseif b.result then
             b.ttl = b.ttl - 1
             if b.ttl <= 0 then post(slot, b.kind) end
-        elseif not paused and b.left then
+        elseif started and not paused and b.left then
             b.left = b.left - 1
             if b.left <= 0 then finish(slot, b, false, T("timeout", nil, "Time ran out")) end
         end
