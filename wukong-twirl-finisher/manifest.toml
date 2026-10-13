@@ -61,10 +61,10 @@
 [mod]
 id          = "wukong-twirl-finisher"
 name        = "Wukong: Talent Tweaks"
-version     = "0.3.0"
+version     = "0.4.0"
 author      = "Ovilli"
 license     = "MIT"
-description = "Stick Twirl's dash attack becomes the end of Wukong's combo (Celestial Pillar's slam if owned, else the 4th hit), and Fiery Dragon / Frost Tiger also reduce TRAIT cooldown by 10-25% by rarity."
+description = "Stick Twirl's dash attack becomes the end of Wukong's combo (Celestial Pillar's slam if owned, else the 4th hit), and Fiery Dragon / Frost Tiger / Supreme Polarity also reduce TRAIT cooldown by 10-25% by rarity."
 sdk_version = "3"
 enabled     = false
 tags        = ["talents", "wukong", "animation"]
@@ -266,3 +266,32 @@ source = "Skill_Trait_Frost"
 
 # {0} = TRAIT cooldown reduction (grows with rarity), {1} = explosion damage.
 description = "• Adds an explosion of frost to the activation effects of \\YIN STANCE§, dealing &{1}~ area damage and inflicting enemies with #CHILLED@\n• #TRAIT@ cooldown &-{0}%~"
+
+# ---------------------------------------------------------------------------
+# Supreme Polarity also reduces TRAIT cooldown.
+#
+# Built with `add_stats` (the editor's "add a stat"), not hand-wired like Fire /
+# Frost above: it copies the talent's own rarity selector, gives the copy the
+# numbers below and hangs a self modifier with that stat on the owned state.
+# The card's existing slots are {0}-{2}, so the new number is {3}.
+# UNPROVEN in game.
+# ---------------------------------------------------------------------------
+
+[[content]]
+kind = "talent"
+id   = "trait_polarity_cooldown_wiring"
+hero = "SunWukong"
+
+add_stats = [
+  { talent = "Trait Better Stances", stat = "CD reduce trait", values = [0.10, 0.15, 0.20, 0.25] },
+]
+
+[[content]]
+kind   = "skill"
+id     = "trait_polarity_cooldown_text"
+hero   = "Sun_Wukong"
+mode   = "relabel"
+source = "Skill_Trait_Better_Stances"
+
+# {0} = duration, {1} = YIN life on hit, {2} = YANG damage, {3} = TRAIT cooldown reduction.
+description = "• Switching #STANCE@ increases the power of the new #STANCE@ for #{0}@ seconds:\n• \\YIN:§ &+{1}%~ #LIFE ON HIT@\n• $YANG:* deals &+{2}%~ damage\n• #TRAIT@ cooldown &-{3}%~"
