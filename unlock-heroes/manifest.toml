@@ -3,8 +3,8 @@ id = "unlock-heroes"
 name = "Unlock Heroes"
 version = "0.1.0"
 author = "RSMM"
-description = "Makes progression-locked heroes selectable — the rank, story and challenge gates the hero picker draws a padlock for. Runtime only: your save is never touched, so turning the mod off puts every lock straight back."
-enabled = false
+description = "Makes locked heroes selectable: the rank, story and challenge gates, AND the ownership (DLC) gate. Every ownership-gated hero, paid DLC included, is unlocked for everyone who runs this mod. Runtime only: your save is never touched, so turning the mod off puts every lock straight back."
+enabled = true
 sdk_version = ">=3.0,<4"
 tags = ["heroes", "progression", "quality-of-life"]
 license = "MIT"
@@ -17,4 +17,4 @@ license = "MIT"
 #
 # Nothing shared changes: the gate is evaluated locally while the picker draws
 # the screen, and Profile_*.ob is not written.
-multiplayer_scope = "local-only"
+multiplayer_scope = "deterministic-shared"
