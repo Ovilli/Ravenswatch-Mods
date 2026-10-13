@@ -4,7 +4,7 @@ name        = "Steamroller"
 version     = "1.3.0"
 author      = "RSMM"
 description = "A TEST HARNESS, not a content mod. Pins attack power, crit and move speed high and tops your health back up, so a chapter can be cleared in a couple of minutes. It exists to reach a chapter transition quickly when reproducing a load-time crash — delete it once you are done."
-enabled     = false
+enabled     = true
 load_order  = 90
 sdk_version = ">=3.0,<4"
 license     = "MIT"

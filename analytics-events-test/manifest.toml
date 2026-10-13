@@ -16,7 +16,7 @@ name        = "Analytics Events Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: logs every analytics event (hero death, chests, shop, items, talents, …) with its fields."
-enabled     = false
+enabled     = true
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""

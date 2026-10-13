@@ -24,7 +24,7 @@ name        = "Talents Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: upgrades, adds and resets talents step by step — checks R.talent event senders and R.status.clear."
-enabled     = false
+enabled     = true
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""

@@ -18,7 +18,7 @@ author      = "Ovilli"
 license     = "MIT"
 description = "Rotate, tilt and zoom the in-run camera from a desktop overlay while you play. Your settings also apply at every run start."
 sdk_version = "3"
-enabled     = false
+enabled     = true
 # R.camera finds the cameras from the captured hero. Without this every slider
 # change was saved and never applied (Sky, 2026-10-06); `rsmm apply` switches
 # hero capture on while this mod is enabled.

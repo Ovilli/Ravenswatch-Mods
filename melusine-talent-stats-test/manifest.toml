@@ -31,7 +31,7 @@ author            = "Ovilli"
 license           = "MIT"
 description       = "Melusine's Wisp Surge also gives +1 SPECIAL charge, Strength and Regeneration, and POWER sets enemies on fire. Testing mod for the talent builder."
 sdk_version       = "3"
-enabled           = false
+enabled           = true
 multiplayer_scope = "deterministic-shared"
 tags              = ["talents", "melusine", "test"]
 
