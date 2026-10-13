@@ -1,10 +1,21 @@
 -- TESTING ONLY. Validates the typed `level_up` hook by logging it next to the
 -- two other level-up signals. PASS = each level-up logs exactly one
 -- `typed level_up level=N` whose N matches the HUD and the analytics value.
+--
+-- It also LEVELS YOU UP ITSELF: once the hero is captured in a run it grants
+-- XP through the engine's own gain-experience routine (R.xp.grant), the same
+-- path a kill takes, so the level-up loop and its events fire for real.
 local R = require "rsmm"
 
 local TAG = "[level-up-test] "
+local GRANT_XP    = 1000   -- per grant; enough for at least one level early on
+local GRANTS      = 3      -- how many self level-ups to attempt
+local GRANT_EVERY = 15     -- seconds between grants
+
 local count = { typed = 0, analytics = 0, gameplay = 0 }
+
+R.stat.enable_writes()     -- R.xp.grant is gated behind this opt-in
+R.xp.arm()                 -- capture must be live before the run builds it
 
 R.on("level_up", function(ev)
     count.typed = count.typed + 1
@@ -12,7 +23,7 @@ R.on("level_up", function(ev)
           .. " seq=" .. tostring(ev and ev.seq))
 end)
 
-R.on("levelup_run", function(ev)c
+R.on("levelup_run", function(ev)
     count.analytics = count.analytics + 1
     R.log(TAG .. "analytics levelup_run level_up_reach="
           .. tostring(ev and ev.level_up_reach))
@@ -24,7 +35,25 @@ R.on("gameplay:HERO_XP_LEVEL_UP", function()
 end)
 
 R.on("ready", function()
-    R.log(TAG .. "armed; level up in a run and compare the three lines")
+    R.log(TAG .. "armed; will grant " .. GRANT_XP .. " XP x" .. GRANTS
+          .. " once a run starts")
+end)
+
+-- Self level-up. Engine-mutating, so the grant itself runs on the MAIN thread.
+local granted, waiting = 0, false
+R.schedule.every(GRANT_EVERY, function()
+    if granted >= GRANTS or waiting then return end
+    if not R.entity.hero() then return end          -- not in a run yet
+    waiting = true
+    R.schedule.next_main(function()
+        waiting = false
+        local before = R.xp.level()
+        local ok = R.xp.grant(GRANT_XP)
+        granted = granted + 1
+        R.log(string.format("%sgrant #%d: %d XP -> %s (level %s -> %s)",
+              TAG, granted, GRANT_XP, ok and "ok" or "REFUSED",
+              tostring(before), tostring(R.xp.level())))
+    end)
 end)
 
 R.schedule.every(60, function()
