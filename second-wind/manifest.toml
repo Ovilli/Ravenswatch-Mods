@@ -4,7 +4,7 @@ name        = "Second Wind"
 version     = "1.2.0"
 author      = "RSMM"
 description = "Go down once per run and you get back up swinging: a burst heal and a short surge of attack power. After that you are on your own."
-enabled     = true
+enabled     = false
 load_order  = 50
 sdk_version = ">=3.0,<4"
 # Reacts to the local hero going into death's door and heals that same hero.

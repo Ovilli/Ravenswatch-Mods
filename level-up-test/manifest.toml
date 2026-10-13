@@ -12,7 +12,7 @@ name        = "Level Up Test"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: checks the typed level_up event against the analytics and gameplay level-up signals."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""

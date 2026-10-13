@@ -4,7 +4,7 @@ name        = "Bloodlust"
 version     = "1.0.1"
 author      = "RSMM"
 description = "Chain kills to stack a temporary attack-power frenzy. Stop killing and it fades. Pure event logic — no assets touched."
-enabled     = true
+enabled     = false
 load_order  = 50
 sdk_version = ">=3.0,<4"
 # Runs entirely off the gameplay event bus and R.stat.modify, which inserts a

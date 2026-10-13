@@ -11,7 +11,7 @@ author      = "RSMM"
 license     = "MIT"
 description = "Ice Clone detonation -20% damage, and Defense costs a 2s cooldown instead of 8s when held to full duration."
 sdk_version = "3"
-enabled     = true
+enabled     = false
 tags        = ["balance", "talents", "snow-queen"]
 
 # Asset-only: two f32s in cooked entities, no Lua, nothing a peer can

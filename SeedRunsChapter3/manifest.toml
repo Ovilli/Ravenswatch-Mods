@@ -5,7 +5,7 @@ name        = "Seed Runs: Chapter 3 Start"
 version     = "0.1.1"
 author      = "Ovilli"
 description = "Seeded-run race mod: every install plays the identical run starting at chapter 3. Re-sequences the run's chapter list (game_mode kind, overrides All_Chapters) and pins the world-generation seed via the game's own Forced-seed option (R.options + Dev flag). Configure the seed per-event in the mod config; share the mod instead of a savefile."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 # game_mode is an 'experimental' kind: the chapter vector is
 # deserializer-verified, but the engine honouring a re-sequenced order in a

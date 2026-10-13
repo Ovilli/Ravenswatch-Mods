@@ -44,7 +44,7 @@ author            = "Ovilli"
 license           = "MIT"
 description       = "Melusine's Trait Armor talent rebuilt as Rising Tide: POWER's area grows 50-200% by rarity. Testing mod for the talent builder's bigger-ability block."
 sdk_version       = "3"
-enabled           = true
+enabled           = false
 multiplayer_scope = "deterministic-shared"
 tags              = ["talents", "melusine", "test"]
 
