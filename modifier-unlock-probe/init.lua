@@ -44,18 +44,34 @@ local function interesting(name)
     return false
 end
 
+-- Events that also get a modifier snapshot. MAP_GENERATION_DONE fires at the
+-- start of every chapter, so each run is labelled even if it never ends.
+-- run_start / run_end are matched by name: run_end arrives through the typed
+-- Event_RunEnd hook, not the analytics firehose, so the source test misses it.
+local SNAPSHOT = {
+    run_start = true, run_end = true, chapter_end = true,
+    ["gameplay:MAP_GENERATION_DONE"] = true,
+}
+
+-- Gates are polled by menu UI, so their answers only mean something after a
+-- run has ended: (re)armed on run_end, see part 2.
+local gate_window_open = false
+local seen, lines = {}, 0
+
 R.on("*", function(ev, name)
     local analytics = type(ev) == "table" and ev.source == "analytics"
-    if not (analytics or interesting(name)) then return end
-    local extra = ""
-    if name == "run_start" or name == "run_end" or name == "chapter_end" then
-        extra = " modifiers: " .. modifier_snapshot()
-    end
+    local snap = SNAPSHOT[name]
+    if not (analytics or snap or interesting(name)) then return end
+    local extra = snap and (" modifiers: " .. modifier_snapshot()) or ""
     R.log(TAG .. tostring(name) .. " {" .. fields(ev) .. "}" .. extra)
+    if name == "run_end" then
+        seen, lines, gate_window_open = {}, 0, true
+        R.log(TAG .. "gate window open: logging gate answers until the cap")
+    end
 end)
 
--- 2. Gate answers. Logged once per (gate, instance, answer) so a per-frame UI
--- poll cannot flood the log; hard cap as a backstop.
+-- 2. Gate answers, only after a run_end. Logged once per (gate, instance,
+-- answer) so a per-frame UI poll cannot flood the log; hard cap per window.
 -- AdditionalContentGate (ownership) is observed, never forced.
 local GATES = {
     "ChallengeUnlock_IsUnlocked",
@@ -65,16 +81,22 @@ local GATES = {
     "AdditionalContentGate_IsUnlocked",
 }
 local MAX_GATE_LINES = 400
-local seen, lines, hooked = {}, 0, {}
+local hooked = {}
 
 for _, name in ipairs(GATES) do
     local ok = R.debug.observe(name, "up", function(r, this)
+        if not gate_window_open then return end
+        -- bool lives in AL only; the rest of the register is garbage.
+        r = (r or 0) & 0xff
         local key = name .. ":" .. tostring(this) .. ":" .. tostring(r)
         if seen[key] or lines >= MAX_GATE_LINES then return end
         seen[key] = true
         lines = lines + 1
         R.log(("%s%s this=0x%x -> %s"):format(TAG, name, this or 0, tostring(r)))
-        if lines == MAX_GATE_LINES then R.log(TAG .. "gate log cap reached") end
+        if lines == MAX_GATE_LINES then
+            gate_window_open = false
+            R.log(TAG .. "gate log cap reached")
+        end
     end)
     hooked[#hooked + 1] = name .. (ok and "" or " UNAVAILABLE")
 end
