@@ -1,0 +1,22 @@
+# Lets achievements, outfits and difficulties keep unlocking while run
+# modifiers are on (GitHub issue #54).
+#
+# The game stops tracking unlock progress for the whole run when any modifier
+# is selected. This keeps the trackers running, exactly as in an unmodded run.
+# Nothing is granted: you still have to earn every unlock, and paid DLC stays
+# locked.
+#
+# Arms at game start; turn the mod on before starting the run.
+[mod]
+id          = "unlocks-with-modifiers"
+name        = "Unlocks With Modifiers"
+version     = "0.1.0"
+author      = "RSMM"
+description = "Achievements, outfits and difficulties keep unlocking while run modifiers are on."
+enabled     = false
+load_order  = 50
+sdk_version = ">=3.0,<4"
+# Only touches this player's own unlock tracking; no shared run state.
+multiplayer_scope = "deterministic-shared"
+license     = "MIT"
+tags        = ["progression", "modifiers", "achievements"]
