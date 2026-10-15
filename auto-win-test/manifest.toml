@@ -1,0 +1,24 @@
+# TEST — finishes every chapter automatically, so a whole run is won in a few
+# minutes. Built to test GitHub issue #54 (unlocks under modifiers) without
+# grinding: win a run with modifiers on, then check whether the next difficulty
+# unlocked.
+#
+# Each chapter is completed through the game's own end-of-chapter event
+# (R.run.next_chapter), DELAY seconds after the map is generated; after the
+# last chapter the run counts as won.
+#
+# ⚠ This is a REAL win on YOUR profile: whatever a victory unlocks stays
+# unlocked. Back up _Save/Profile_*.ob first if you may want it undone.
+# Off by default; turn it on only for the test and off again afterwards.
+[mod]
+id          = "auto-win-test"
+name        = "Auto Win (test)"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: completes every chapter a few seconds after it starts, so the run is won automatically."
+enabled     = false
+load_order  = 60
+sdk_version = ">=3.0,<4"
+multiplayer_scope = "host-authoritative"
+license     = "MIT"
+tags        = ["test", "debug"]
