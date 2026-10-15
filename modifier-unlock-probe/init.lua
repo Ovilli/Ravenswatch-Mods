@@ -102,12 +102,12 @@ for _, name in ipairs(GATES) do
 end
 R.log(TAG .. "gate observers: " .. table.concat(hooked, ", "))
 
--- 3. The modifier lock itself (GameModifierLock_OnStateChange): state 1 =
--- entering the has-modifiers state (unlock trackers detached), 0 = leaving it.
+-- 3. The modifier lock itself (GameModifierLock_OnStateChange): state 0 =
+-- entering the has-modifiers state (unlock trackers detached), 1 = leaving it.
 -- UNAVAILABLE when unlocks-with-modifiers is also enabled: it owns the hook.
 local lock_ok = R.debug.observe("GameModifierLock_OnStateChange", "vpi", function(_, _, state)
     R.log(TAG .. "modifier lock state=" .. tostring(state)
-        .. (state == 1 and " (enter: unlock trackers detached)" or " (exit: re-attached)")
+        .. (state == 0 and " (enter: unlock trackers detached)" or " (exit: re-attached)")
         .. " modifiers: " .. modifier_snapshot())
 end)
 R.log(TAG .. "modifier lock observer: " .. (lock_ok and "armed" or "UNAVAILABLE"))
