@@ -8,6 +8,11 @@
 --   player = "*"         everyone (only with a `hero`)
 local R = require "rsmm"
 
+-- Pick ANY hero in the normal hero select: clicking a portrait someone else
+-- has no longer says "already selected"; you play that hero when the run
+-- starts (the lobby keeps your previous pick so READY still goes through).
+R.hero.allow_taken_pick()
+
 local hero   = R.config.get("hero", "none")
 local player = R.config.get("player", "")
 local who    = player ~= "" and player or nil

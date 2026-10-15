@@ -1,8 +1,8 @@
 [fields.hero]
 label   = "Hero to play (none = everyone plays the player's lobby hero)"
 type    = "enum"
-values  = ["none", "Aladdin", "Beowulf", "Carmilla", "Geppetto", "Juliet", "Melusine",
-           "Merlin", "Piper", "Red", "Romeo", "Snow_Queen", "Sun_Wukong"]
+values  = ["none", "Aladdin", "Beowulf", "Carmilla", "Geppetto", "Juliet", "Kintaro", "Melusine",
+           "Merlin", "Piper", "Red", "Romeo", "SnowQueen", "SunWukong"]
 default = "none"
 
 [fields.player]

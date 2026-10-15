@@ -10,7 +10,7 @@ name        = "Roster Probe (test)"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: logs each run-start roster entry (key, hero, skin) to map it to players."
-enabled     = true
+enabled     = false
 load_order  = 50
 sdk_version = ">=3.0,<4"
 multiplayer_scope = "deterministic-shared"

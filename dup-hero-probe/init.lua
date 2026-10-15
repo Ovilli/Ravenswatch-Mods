@@ -7,6 +7,9 @@ local R = require "rsmm"
 
 local TAG = "[dup-hero-probe] "
 
+-- The real lock: the portrait's "taken" bit in HeroSelect_PortraitPicked.
+R.log(TAG .. "portrait lock bypass: " .. (R.hero.allow_taken_pick() and "armed" or "UNAVAILABLE"))
+-- Later gates (confirm), kept forced so the test also shows what comes after.
 R.log(TAG .. "hero-select gates forced: " .. R.hero.unlock_hero_select())
 
 -- The confirm handler. One line per press (capped) proves the click arrives.
@@ -27,3 +30,15 @@ end)
 
 R.log(TAG .. ("observers: confirm handler %s, button state %s"):format(
     ok_press and "armed" or "UNAVAILABLE", ok_enable and "armed" or "UNAVAILABLE"))
+
+-- READY-bounce hunt: every change of each member's pick / LobbyState, and every
+-- time anything sets YOUR RequestedHero (a re-pick after READY shows up here).
+R.lobby.trace(true)
+local sets = 0
+local ok_set = R.debug.observe("Lobby_SetRequestedHero", "vpii", function(_, _, hero, skin)
+    sets = sets + 1
+    if sets <= 40 then
+        R.log(TAG .. ("SetRequestedHero(hero=%s, skin=%s) #%d"):format(tostring(hero), tostring(skin), sets))
+    end
+end)
+R.log(TAG .. "SetRequestedHero observer: " .. (ok_set and "armed" or "UNAVAILABLE"))
