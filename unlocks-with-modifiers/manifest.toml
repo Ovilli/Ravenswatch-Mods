@@ -13,7 +13,7 @@ name        = "Unlocks With Modifiers"
 version     = "0.1.0"
 author      = "RSMM"
 description = "Achievements, outfits and difficulties keep unlocking while run modifiers are on."
-enabled     = true
+enabled     = false
 load_order  = 50
 sdk_version = ">=3.0,<4"
 # Only touches this player's own unlock tracking; no shared run state.

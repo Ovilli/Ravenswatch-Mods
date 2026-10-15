@@ -1,0 +1,18 @@
+# TEST — logs the run's hero roster as the game builds it at run start, to
+# confirm its layout before building "play the same hero as a friend".
+#
+# Read-only. Works SOLO (the solo path builds a roster too) and on an online
+# HOST; a co-op client never builds one. Start one run, then:
+#   rsmm log | grep roster-probe
+[mod]
+id          = "roster-probe"
+name        = "Roster Probe (test)"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: logs each run-start roster entry (key, hero, skin) to map it to players."
+enabled     = true
+load_order  = 50
+sdk_version = ">=3.0,<4"
+multiplayer_scope = "deterministic-shared"
+license     = "MIT"
+tags        = ["test", "debug"]
