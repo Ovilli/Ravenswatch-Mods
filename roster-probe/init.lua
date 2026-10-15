@@ -16,8 +16,8 @@ end
 local ok = R.hero.on_roster(function(entries)
     R.log(TAG .. ("roster built: %d entr%s"):format(#entries, #entries == 1 and "y" or "ies"))
     for i, e in ipairs(entries) do
-        R.log(TAG .. ("  #%d key=0x%x (%d) hero=0x%x skin=%d  %s"):format(
-            i, e.key or 0, e.key or 0, e.hero or 0, e.skin or -1, hero_label(e.hero)))
+        R.log(TAG .. ("  #%d key=0x%x member=%q hero=0x%x skin=%d  %s"):format(
+            i, e.key or 0, tostring(e.member), e.hero or 0, e.skin or -1, hero_label(e.hero)))
     end
 end)
 R.log(TAG .. "roster observer: " .. (ok and "armed" or "UNAVAILABLE"))

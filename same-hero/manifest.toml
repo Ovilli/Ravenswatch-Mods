@@ -1,0 +1,23 @@
+# Play the hero you want, even one a friend is already on.
+#
+# Pick DIFFERENT heroes in the lobby as usual (so nothing is refused). When the
+# run starts, heroes are switched by this mod's settings (see init.lua):
+#   hero = "Carmilla"              -> you play Carmilla
+#   hero = "Carmilla", player="*"  -> everyone plays Carmilla
+#   hero = ""                      -> everyone plays your (or `player`'s) hero
+# A switched player uses the default skin.
+#
+# Only the HOST needs this mod. Everyone else joins normally.
+[mod]
+id          = "same-hero"
+name        = "Same Hero"
+version     = "0.1.0"
+author      = "RSMM"
+description = "Co-op: everyone plays the host's hero (or a chosen player's). Pick different heroes in the lobby; the swap happens when the run starts."
+enabled     = true
+load_order  = 50
+sdk_version = ">=3.0,<4"
+# The host rewrites the run roster before it is sent; clients just receive it.
+multiplayer_scope = "host-authoritative"
+license     = "MIT"
+tags        = ["co-op", "heroes"]

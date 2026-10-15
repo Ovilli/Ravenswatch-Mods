@@ -1,0 +1,21 @@
+# TEST — finds why you cannot confirm a hero someone else has.
+#
+# 1. Join or host a lobby where someone is on the hero you want.
+# 2. Pick that hero (this mod unlocks it in your hero-select screen) and press
+#    confirm a few times.
+# 3. rsmm log | grep dup-hero-probe
+#    "confirm handler reached" = the click arrives and is refused later on;
+#    only "button set DISABLED" = the button never takes the click.
+# No loader flags needed.
+[mod]
+id          = "dup-hero-probe"
+name        = "Duplicate Hero Probe (test)"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: unlocks taken heroes in hero select and watches your lobby state to catch what reverts READY."
+enabled     = false
+load_order  = 50
+sdk_version = ">=3.0,<4"
+multiplayer_scope = "local-only"
+license     = "MIT"
+tags        = ["test", "debug"]
