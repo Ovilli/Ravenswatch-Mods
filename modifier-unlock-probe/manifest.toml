@@ -16,7 +16,9 @@ version     = "0.1.0"
 author      = "test"
 description = "TEST: logs unlock-gate answers and run end, with the active modifiers, to find what blocks unlocks under Modifiers."
 enabled     = true
-load_order  = 50
+# After unlocks-with-modifiers (50): when both are on, the bypass must own the
+# lock hook; this probe then reports its lock observer as UNAVAILABLE.
+load_order  = 90
 sdk_version = ">=3.0,<4"
 multiplayer_scope = "deterministic-shared"
 license     = "MIT"
