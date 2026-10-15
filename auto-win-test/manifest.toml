@@ -16,7 +16,7 @@ name        = "Auto Win (test)"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: completes every chapter a few seconds after it starts, so the run is won automatically."
-enabled     = false
+enabled     = true
 load_order  = 60
 sdk_version = ">=3.0,<4"
 multiplayer_scope = "host-authoritative"
