@@ -1,0 +1,23 @@
+# TEST — probe for GitHub issue #54 ("unlocks blocked while Modifiers are on").
+#
+# Observe-only. Logs unlock / achievement / run-end events (analytics firehose
+# + gameplay bus) and what the unlock gates answer, with the run modifiers in
+# force. Gate observers call the original and return its result unchanged:
+# nothing is forced.
+#
+# Play two runs:
+#   A) with at least one modifier enabled
+#   B) with no modifiers
+# then compare:  rsmm log | grep modifier-unlock-probe
+[mod]
+id          = "modifier-unlock-probe"
+name        = "Modifier Unlock Probe"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: logs unlock-gate answers and run end, with the active modifiers, to find what blocks unlocks under Modifiers."
+enabled     = false
+load_order  = 50
+sdk_version = ">=3.0,<4"
+multiplayer_scope = "deterministic-shared"
+license     = "MIT"
+tags        = ["test", "debug"]
