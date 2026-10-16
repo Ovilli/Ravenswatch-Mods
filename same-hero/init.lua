@@ -1,28 +1,26 @@
 -- Same Hero — see manifest.toml.
 --
--- Settings:
---   hero   = "none"      everyone plays `player`'s hero (default)
+-- Normal use: just click the hero you want in hero select, even one another
+-- player already has. You become that hero when the run starts; nobody else
+-- is changed.
+--
+-- Optional settings (leave hero = "none" for click-only):
 --   hero   = "Carmilla"  `player` plays Carmilla, even if someone else is on her
---   player = ""          you (the host)
---   player = "Name"      that player
---   player = "*"         everyone (only with a `hero`)
+--   player = ""          you
+--   player = "Name"      that player (only applied when YOUR game hosts)
+--   player = "*"         everyone     (only applied when YOUR game hosts)
 local R = require "rsmm"
 
--- Pick ANY hero in the normal hero select: clicking a portrait someone else
--- has no longer says "already selected"; you play that hero when the run
--- starts (the lobby keeps your previous pick so READY still goes through).
-R.hero.allow_taken_pick()
+-- Click a portrait someone else has -> you play that hero at run start
+-- (the lobby keeps your previous pick so READY still goes through).
+if not R.hero.allow_taken_pick() then
+    R.log("[same-hero] not available on this game build; heroes stay as picked")
+end
 
 local hero   = R.config.get("hero", "none")
 local player = R.config.get("player", "")
-local who    = player ~= "" and player or nil
 
-local ok
+-- "none" means change NOBODY: only your own clicks count.
 if hero ~= "" and hero ~= "none" then
-    ok = R.hero.play_as(hero, who)
-else
-    ok = R.hero.share_hero(who)
-end
-if not ok then
-    R.log("[same-hero] not available on this game build; heroes stay as picked")
+    R.hero.play_as(hero, player ~= "" and player or nil)
 end

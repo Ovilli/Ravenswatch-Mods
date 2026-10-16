@@ -8,7 +8,6 @@
 # run starts, heroes are switched by this mod's settings (see init.lua):
 #   hero = "Carmilla"              -> you play Carmilla
 #   hero = "Carmilla", player="*"  -> everyone plays Carmilla
-#   hero = ""                      -> everyone plays your (or `player`'s) hero
 # A switched player uses the default skin.
 #
 # Works whoever hosts: your game swaps YOUR hero when the roster arrives.
@@ -19,7 +18,7 @@ id          = "same-hero"
 name        = "Same Hero"
 version     = "0.1.0"
 author      = "RSMM"
-description = "Co-op: everyone plays the host's hero (or a chosen player's). Pick different heroes in the lobby; the swap happens when the run starts."
+description = "Co-op: click any hero in hero select, even one a friend already has; you play it when the run starts. Nobody else is changed."
 enabled     = false
 load_order  = 50
 sdk_version = ">=3.0,<4"

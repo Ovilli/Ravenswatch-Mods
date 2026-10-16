@@ -1,5 +1,5 @@
 [fields.hero]
-label   = "Hero to play (none = everyone plays the player's lobby hero)"
+label   = "Force a hero (none = only your clicks in hero select count)"
 type    = "enum"
 values  = ["none", "Aladdin", "Beowulf", "Carmilla", "Geppetto", "Juliet", "Kintaro", "Melusine",
            "Merlin", "Piper", "Red", "Romeo", "SnowQueen", "SunWukong"]
