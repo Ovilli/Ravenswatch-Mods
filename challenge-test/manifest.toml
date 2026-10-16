@@ -1,5 +1,5 @@
 [mod]
-enabled = false
+enabled = true
 id           = "challenge-test"
 name         = "Challenge Test"
 version      = "0.1.0"
