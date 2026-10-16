@@ -1,0 +1,90 @@
+# 更强的敌人 — 简体中文
+# [manifest] is the store text: the desktop library and the registry show it
+# to players running in Chinese. Game terms follow the game's own text banks:
+# 首领 (boss), 精英 (elite), 腐化 (tainted).
+
+[manifest]
+name        = "更强的敌人"
+summary     = "所有怪物和首领都更强：更多生命值、更高伤害，所有可被腐化的敌人都会被腐化。"
+description = "提高游戏自带的章节难度曲线，适用于所有难度下的所有敌人等级（普通、精英、首领），倍率可在模组设置中调整（默认：生命值 ×1.5，伤害 +25%）；还可以让所有可被腐化的敌人强制变为腐化形态：体型更大、带有腐化特效、生命值 +50%、伤害 +75%。英雄不受影响。修改将在下次启动游戏时生效。"
+
+[config.health]
+label = "敌人生命值倍率（1.0 = 不变）"
+
+[config.damage_bonus]
+label = "敌人和首领伤害加成（0.25 = +25%；0 = 游戏默认）"
+
+[config.corrupt_all]
+label = "所有可被腐化的敌人都会被腐化（体型更大，生命值 +50%，伤害 +75%）"
+
+[config.stagger]
+label = "硬直抗性倍率——敌人有多难被打出硬直（1.0 = 不变）"
+
+[config.overtime_health]
+label = "加时——敌人生命值加成峰值（1.0 = +100%，游戏默认）"
+
+[config.overtime_damage]
+label = "加时——敌人伤害加成峰值（1.0 = +100%，游戏默认）"
+
+[config.corrupt_health]
+label = "腐化——腐化敌人的额外生命值（0.5 = +50%，游戏默认）"
+
+[config.corrupt_damage]
+label = "腐化——腐化敌人的额外伤害（0.75 = +75%，游戏默认）"
+
+[config.corrupt_stagger]
+label = "腐化——额外硬直抗性（0.25 = +25%，游戏默认）"
+
+[config.corrupt_size]
+label = "腐化——腐化敌人的体型（1.1 = 游戏默认）"
+
+[config.xp]
+label = "击杀经验倍率（1.0 = 不变）"
+
+[config.pack_size]
+label = "敌群规模倍率——每个营地生成多少敌人（1.0 = 不变）"
+
+[config.level_health]
+label = "敌人每级生命值成长，复利计算（0.2 = 每级 +20%，游戏默认）"
+
+[config.boss_level_health]
+label = "首领每级生命值成长，复利计算（0.2 = 每级 +20%，游戏默认）"
+
+[config.level_damage]
+label = "敌人和首领每级伤害成长，复利计算（0.2 = 每级 +20%，游戏默认）"
+
+[config.hero_health]
+label = "多人——每多一名英雄，敌人额外生命值（0 = 无，游戏默认；0.5 = 每名 +50%）"
+
+[config.boss_hero_health]
+label = "多人——每多一名英雄，首领额外生命值（0 = 无，游戏默认；0.5 = 每名 +50%）"
+
+[config.boss_health]
+label = "首领基础生命值倍率——仅章节首领和任务首领（1.0 = 不变）"
+
+[config.final_boss_health]
+label = "最终首领基础生命值倍率——梦魇首领（1.0 = 不变）"
+
+[config.always_heal_on_death]
+label = "始终开启：敌人死亡时治疗周围的敌人（通常仅在选择该局内修改器时生效）"
+
+[config.heal_on_death_amount]
+label = "死亡治疗——恢复的生命值比例（0.25 = 25%，游戏默认）"
+
+[config.heal_on_death_radius]
+label = "死亡治疗——半径（米）（7.5 = 游戏默认）"
+
+[config.always_low_health_rage]
+label = "始终开启：受伤的敌人攻击更强（通常仅在选择该局内修改器时生效）"
+
+[config.low_health_rage_bonus]
+label = "受伤敌人——额外攻击力（0.5 = +50%，游戏默认）"
+
+[config.boss_minion_health]
+label = "首领召唤物生命值倍率——首领召唤的触手（1.0 = 不变）"
+
+[config.stagger_level]
+label = "每级硬直抗性成长，复利计算（0.3 = 每级 +30%，游戏默认）"
+
+[config.stagger_per_hero]
+label = "多人——每多一名英雄增加的硬直抗性，按游戏默认值的倍率（1.0 = 不变）"

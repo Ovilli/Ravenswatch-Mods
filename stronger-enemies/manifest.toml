@@ -1,0 +1,505 @@
+[mod]
+id          = "stronger-enemies"
+name        = "Stronger Enemies"
+version     = "1.7.0"
+author      = "Ovilli"
+license     = "MIT"
+summary     = "Tougher monsters and bosses: set enemy health and damage multipliers, and force the corrupted variant on every enemy that supports it."
+description = """Raises the game's own chapter scaling for every enemy tier (common, elite, boss) on every difficulty by multipliers you choose in the mod's settings (default: health x1.5, damage +25%), and can force the corrupted (tainted) variant on every enemy that supports it: bigger, glowing, +50% health, +75% damage. Heroes are untouched. Changes apply the next time you launch the game."""
+sdk_version = "3"
+enabled     = false
+tags        = ["difficulty", "enemies", "bosses"]
+# Enemy health and damage are simulated by the host; everyone in the party
+# should run the same version so the numbers agree.
+multiplayer_scope = "host-authoritative"
+
+# EntitySettings/Common_Settings/Group_Scaling (read 2026-10-16):
+#   Chapter N Max Health / Damage Multiplier Selector, entries obj_4..obj_7 =
+#   difficulty 0..3, each (int key, f32 value) -> [1] is the value.
+#   They feed only Common / Elite / Boss Enemy Group (value_10 / value_11);
+#   Hero Group does not read them. Each step multiplies the shipped value (`times`) by the
+#   player's config multiplier.
+[[content]]
+kind   = "entity"
+id     = "group_scaling"
+entity = "Common_Settings/Group_Scaling"
+
+[[content.steps]]
+set    = "Chapter 1 Max Health Multiplier Selector.obj_4[1]"
+config = "health"
+times  = 1   # shipped value
+
+[[content.steps]]
+set    = "Chapter 1 Max Health Multiplier Selector.obj_5[1]"
+config = "health"
+times  = 1   # shipped value
+
+[[content.steps]]
+set    = "Chapter 1 Max Health Multiplier Selector.obj_6[1]"
+config = "health"
+times  = 1   # shipped value
+
+[[content.steps]]
+set    = "Chapter 1 Max Health Multiplier Selector.obj_7[1]"
+config = "health"
+times  = 1   # shipped value
+
+[[content.steps]]
+set    = "Chapter 2 Max Health Multiplier Selector.obj_4[1]"
+config = "health"
+times  = 2   # shipped value
+
+[[content.steps]]
+set    = "Chapter 2 Max Health Multiplier Selector.obj_5[1]"
+config = "health"
+times  = 2.2   # shipped value
+
+[[content.steps]]
+set    = "Chapter 2 Max Health Multiplier Selector.obj_6[1]"
+config = "health"
+times  = 2.4   # shipped value
+
+[[content.steps]]
+set    = "Chapter 2 Max Health Multiplier Selector.obj_7[1]"
+config = "health"
+times  = 2.5   # shipped value
+
+[[content.steps]]
+set    = "Chapter 3 Max Health Multiplier Selector.obj_4[1]"
+config = "health"
+times  = 4   # shipped value
+
+[[content.steps]]
+set    = "Chapter 3 Max Health Multiplier Selector.obj_5[1]"
+config = "health"
+times  = 4.5   # shipped value
+
+[[content.steps]]
+set    = "Chapter 3 Max Health Multiplier Selector.obj_6[1]"
+config = "health"
+times  = 5   # shipped value
+
+[[content.steps]]
+set    = "Chapter 3 Max Health Multiplier Selector.obj_7[1]"
+config = "health"
+times  = 5.2   # shipped value
+
+[[content.steps]]
+set    = "Chapter 4 Max Health Multiplier Selector.obj_4[1]"
+config = "health"
+times  = 4.2   # shipped value
+
+[[content.steps]]
+set    = "Chapter 4 Max Health Multiplier Selector.obj_5[1]"
+config = "health"
+times  = 4.7   # shipped value
+
+[[content.steps]]
+set    = "Chapter 4 Max Health Multiplier Selector.obj_6[1]"
+config = "health"
+times  = 5.2   # shipped value
+
+[[content.steps]]
+set    = "Chapter 4 Max Health Multiplier Selector.obj_7[1]"
+config = "health"
+times  = 5.4   # shipped value
+
+[[content.steps]]
+set    = "Chapter Stagger Multiplier Selector.obj_4[1]"
+config = "stagger"
+times  = 1   # shipped value
+
+[[content.steps]]
+set    = "Chapter Stagger Multiplier Selector.obj_5[1]"
+config = "stagger"
+times  = 1.2   # shipped value
+
+[[content.steps]]
+set    = "Chapter Stagger Multiplier Selector.obj_6[1]"
+config = "stagger"
+times  = 1.5   # shipped value
+
+[[content.steps]]
+set    = "Chapter Stagger Multiplier Selector.obj_7[1]"
+config = "stagger"
+times  = 1.75   # shipped value
+
+[[content.steps]]
+set    = "Chapter XP Factor Selector.obj_4[1]"
+config = "xp"
+times  = 1   # shipped value
+
+[[content.steps]]
+set    = "Chapter XP Factor Selector.obj_5[1]"
+config = "xp"
+times  = 3   # shipped value
+
+[[content.steps]]
+set    = "Chapter XP Factor Selector.obj_6[1]"
+config = "xp"
+times  = 10   # shipped value
+
+# Per-group level and co-op scaling. Ravenswatch.exe FUN_1403c0a60 / FUN_1403c0ca0
+# (Ghidra, 2026-10-16) compute, per enemy:
+#   maxHP  = baseHP  * (1 + value_3)^(level-1) * chapterHealth(value_10)
+#                    * (1 + (HeroCount-1) * value_7)     HeroCount = global 0x1599ae4c
+#   damage = baseDmg * (1 + value_4)^(level-1)
+# value_3/value_4 ship 0.2 and value_7 ships 0 on Common, Elite and Boss.
+[[content.steps]]
+set    = "Common Enemy Group.value_3"
+config = "level_health"
+
+[[content.steps]]
+set    = "Common Enemy Group.value_4"
+config = "level_damage"
+
+[[content.steps]]
+set    = "Common Enemy Group.value_7"
+config = "hero_health"
+
+[[content.steps]]
+set    = "Elite Enemy Group.value_3"
+config = "level_health"
+
+[[content.steps]]
+set    = "Elite Enemy Group.value_4"
+config = "level_damage"
+
+[[content.steps]]
+set    = "Elite Enemy Group.value_7"
+config = "hero_health"
+
+[[content.steps]]
+set    = "Boss Enemy Group.value_3"
+config = "boss_level_health"
+
+[[content.steps]]
+set    = "Boss Enemy Group.value_4"
+config = "level_damage"
+
+[[content.steps]]
+set    = "Boss Enemy Group.value_7"
+config = "boss_hero_health"
+
+# Stagger. FUN_1403bf2b0 (Ghidra 2026-10-16), per enemy:
+#   staggerMax = base * (1 + value_5)^(level-1) * (1 + (HeroCount-1) * value_6) * value_9 * (modifiers)
+# value_5 ships 0.3 everywhere; value_6 ships Common 0.3 / Elite 0.6 / Boss 1.1.
+[[content.steps]]
+set    = "Common Enemy Group.value_5"
+config = "stagger_level"
+
+[[content.steps]]
+set    = "Common Enemy Group.value_6"
+config = "stagger_per_hero"
+times  = 0.3   # shipped value
+
+[[content.steps]]
+set    = "Elite Enemy Group.value_5"
+config = "stagger_level"
+
+[[content.steps]]
+set    = "Elite Enemy Group.value_6"
+config = "stagger_per_hero"
+times  = 0.6   # shipped value
+
+[[content.steps]]
+set    = "Boss Enemy Group.value_5"
+config = "stagger_level"
+
+[[content.steps]]
+set    = "Boss Enemy Group.value_6"
+config = "stagger_per_hero"
+times  = 1.1   # shipped value
+
+
+# Every enemy inherits Enemy_Model's corruption ("tainted") mode: Event
+# Initialize Tainted activates Can Be Tainted / Force Tainted / Force Not
+# Tainted / Tainted Random, then Tainted Tester enters State Tainted
+# (+50% HP, +75% damage, +25% stagger, mesh x1.1, corruption FX). Shipped,
+# Force Tainted is false, so taint is a roll; forcing it makes every enemy
+# that CAN be tainted (Can Be Tainted Value, overridable per enemy) corrupted.
+[[content]]
+kind   = "entity"
+id     = "always_tainted"
+entity = "Enemies/NPC_Common/Enemy_Model"
+
+[[content.steps]]   # shipped false
+set    = "Force Tainted Value.value"
+config = "corrupt_all"
+
+# Enemy_Model value parts read 2026-10-16; each holds the game's own number,
+# which is also the config field's default.
+[[content.steps]]   # shipped 0.5
+set    = "Tainted HP Increase Ratio.value"
+config = "corrupt_health"
+
+[[content.steps]]   # shipped 0.75
+set    = "Tainted Damage Increase Ratio.value"
+config = "corrupt_damage"
+
+[[content.steps]]   # shipped 0.25
+set    = "Tainted Stagger Increase Ratio.value"
+config = "corrupt_stagger"
+
+[[content.steps]]   # entries[0] = (State Tainted, 1.1); entries[1] = (else, 1.0)
+set    = "Tainted Mesh Scale Multiplier Operand.entries[0][1]"
+config = "corrupt_size"
+
+# Overtime ramps the bonus up to these peaks along its own curves.
+[[content.steps]]   # shipped 1.0
+set    = "Overtime Max Bonus Health Value.value"
+config = "overtime_health"
+
+[[content.steps]]   # shipped 1.0
+set    = "Overtime Max Bonus Damage Value.value"
+config = "overtime_damage"
+
+# Enemy damage. Enemy_ComputeDamage (FUN_1403c0ca0) never reads the chapter
+# damage table — that table only feeds traps/objects (global
+# Chapter_Scaling_Enemies_Damage_Factor) and a co-op stagger term — so damage is
+# raised here instead: every enemy activates "NGP Damage Modifier" at spawn
+# (Event Initialize Starting Modifiers), an Attack power (0x15a486c4) modifier
+# whose amount ships 0. Attack power is a percent: 0.25 = +25%.
+[[content.steps]]   # shipped 0
+set    = "NGP Damage Modifier.amount"
+config = "damage_bonus"
+
+# Run-modifier behaviours every enemy carries, normally gated on the modifier
+# being picked: each "Has <X> GameModifier Value Tester" enters its state on
+# true and does nothing on false. Pointing on_false at the same state makes the
+# behaviour unconditional. Only applied while the switch is on (`when`).
+[[content.steps]]
+link = "Has EnemiesHealAtDeath GameModifier Value Tester.on_false"
+to   = "Enemies Heal At Death Event"
+when = "always_heal_on_death"
+
+[[content.steps]]   # operations = (0, 0.25 of Hit Points)
+set    = "Enemies Heal At Death Heal Value operations.operations[1]"
+config = "heal_on_death_amount"
+
+[[content.steps]]   # shipped 7.5
+set    = "Enemies Heal At Death Radius Value.value"
+config = "heal_on_death_radius"
+
+[[content.steps]]
+link = "Has StrongerLowLifeEnemies GameModifier Value Tester.on_false"
+to   = "State StrongerLowLifeEnemies GameModifier"
+when = "always_low_health_rage"
+
+[[content.steps]]   # operations = (0.5, 0) -> modifier amount
+set    = "StrongerLowLifeEnemies attack power operations.operations[0]"
+config = "low_health_rage_bonus"
+
+# Camp power budgets (Definitions/EnemyCampDifficulties, read 2026-10-16): a camp
+# spends its budget (min..max) on enemies, each costing its def's power, so a
+# bigger budget means more enemies per camp. Shipped values as `times`.
+[[patch]]
+kind = "stat"
+name = "Very_Easy"
+min  = { config = "pack_size", times = 10 }
+max  = { config = "pack_size", times = 15 }
+
+[[patch]]
+kind = "stat"
+name = "Easy"
+min  = { config = "pack_size", times = 15 }
+max  = { config = "pack_size", times = 20 }
+
+[[patch]]
+kind = "stat"
+name = "Medium"
+min  = { config = "pack_size", times = 25 }
+max  = { config = "pack_size", times = 30 }
+
+[[patch]]
+kind = "stat"
+name = "Advanced"
+min  = { config = "pack_size", times = 30 }
+max  = { config = "pack_size", times = 35 }
+
+[[patch]]
+kind = "stat"
+name = "Hard"
+min  = { config = "pack_size", times = 40 }
+max  = { config = "pack_size", times = 45 }
+
+[[patch]]
+kind = "stat"
+name = "Very_Hard"
+min  = { config = "pack_size", times = 45 }
+max  = { config = "pack_size", times = 50 }
+
+# Boss base health: each boss entity's own `Raw Max Health` override (the
+# `base` in Enemy_ComputeMaxHealth), read 2026-10-16. Hands_Nightmares_Hand_Model
+# is inherited by both Hands Nightmare hands. Shipped values as `times`.
+[[content]]
+kind   = "entity"
+id     = "hp_boss_crab"
+entity = "Enemies/Crabs/Boss_Crab"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 180
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_jinn"
+entity = "Enemies/Jinns/Boss_Jinn"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 200
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_marsh_ghoul"
+entity = "Enemies/Marsh_Ghouls/Boss_Marsh_Ghoul"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 200
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_white_lady"
+entity = "Enemies/White_Ladies/Boss_White_Lady"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 200
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_wolf"
+entity = "Enemies/Wolves/Boss_Wolf"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 200
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_witch_crone"
+entity = "Enemies/Witches/Boss_Witch_Crone"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 150
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_witch_stake"
+entity = "Enemies/Witches/Boss_Witch_Stake"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 150
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_witch_young"
+entity = "Enemies/Witches/Boss_Witch_Young"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 150
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_dullahan_arthur_tree_quest"
+entity = "Enemies/Dullahan/Boss_Dullahan_Arthur_Tree_Quest"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 300
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_roc_bird"
+entity = "Enemies/Roc_Birds/Boss_Roc_Bird"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_health"
+times  = 300
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_faceless_nightmare"
+entity = "Enemies/Faceless_Nightmares/Boss_Faceless_Nightmare"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "final_boss_health"
+times  = 350
+
+[[content]]
+kind   = "entity"
+id     = "hp_boss_tentacle_master_nightmare"
+entity = "Enemies/Tentacle_Nightmares/Boss_Tentacle_Master_Nightmare"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "final_boss_health"
+times  = 250
+
+[[content]]
+kind   = "entity"
+id     = "hp_hands_nightmares_hand_model"
+entity = "Enemies/Hands_Nightmares/Hands_Nightmares_Hand_Model"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "final_boss_health"
+times  = 300
+
+[[content]]
+kind   = "entity"
+id     = "hp_baba_yaga_boss"
+entity = "Enemies/Baba_Yaga_Boss/Baba_Yaga_Boss"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "final_boss_health"
+times  = 1000
+
+[[content]]
+kind   = "entity"
+id     = "hp_knight_boss"
+entity = "Enemies/Knights/Knight_Boss"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "final_boss_health"
+times  = 300
+
+# Boss summons (read 2026-10-16): own Raw Max Health overrides.
+[[content]]
+kind   = "entity"
+id     = "hp_baba_yaga_boss_summoned_tentacle"
+entity = "Enemies/Baba_Yaga_Boss/Baba_Yaga_Boss_Summoned_Tentacle"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_minion_health"
+times  = 100
+
+[[content]]
+kind   = "entity"
+id     = "hp_summon_tentacle"
+entity = "Enemies/Tentacle_Nightmares/Summon_Tentacle"
+
+[[content.steps]]
+set    = "Raw Max Health.value"
+config = "boss_minion_health"
+times  = 150
+

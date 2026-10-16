@@ -1,0 +1,182 @@
+[fields.health]
+label   = "Enemy health multiplier (1.0 = unchanged)"
+type    = "float"
+min     = 0.5
+max     = 5.0
+default = 1.5
+
+[fields.damage_bonus]
+label   = "Enemy and boss damage bonus (0.25 = +25%; 0 = the game's own)"
+type    = "float"
+min     = 0.0
+max     = 4.0
+default = 0.25
+
+[fields.corrupt_all]
+label   = "Every enemy that can be corrupted is (bigger, +50% health, +75% damage)"
+type    = "bool"
+default = true
+
+[fields.stagger]
+label   = "Stagger resistance multiplier — how hard enemies are to stagger (1.0 = unchanged)"
+type    = "float"
+min     = 0.25
+max     = 5.0
+default = 1.0
+
+[fields.overtime_health]
+label   = "Overtime — extra enemy health at its peak (1.0 = +100%, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 10.0
+default = 1.0
+
+[fields.overtime_damage]
+label   = "Overtime — extra enemy damage at its peak (1.0 = +100%, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 10.0
+default = 1.0
+
+[fields.corrupt_health]
+label   = "Corruption — extra health of a corrupted enemy (0.5 = +50%, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 10.0
+default = 0.5
+
+[fields.corrupt_damage]
+label   = "Corruption — extra damage of a corrupted enemy (0.75 = +75%, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 10.0
+default = 0.75
+
+[fields.corrupt_stagger]
+label   = "Corruption — extra stagger resistance (0.25 = +25%, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 10.0
+default = 0.25
+
+[fields.corrupt_size]
+label   = "Corruption — size of a corrupted enemy (1.1 = the game's own)"
+type    = "float"
+min     = 0.5
+max     = 3.0
+default = 1.1
+
+[fields.xp]
+label   = "XP from kills multiplier (1.0 = unchanged)"
+type    = "float"
+min     = 0.0
+max     = 10.0
+default = 1.0
+
+[fields.pack_size]
+label   = "Pack size multiplier — how many enemies a camp spawns (1.0 = unchanged)"
+type    = "float"
+min     = 0.5
+max     = 4.0
+default = 1.0
+
+[fields.level_health]
+label   = "Enemy health gained per party level, compounding (0.2 = +20%/level, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 0.4
+default = 0.2
+
+[fields.boss_level_health]
+label   = "Boss health gained per party level, compounding (0.2 = +20%/level, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 0.4
+default = 0.2
+
+[fields.level_damage]
+label   = "Enemy and boss damage gained per party level, compounding (0.2 = +20%/level, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 0.4
+default = 0.2
+
+[fields.hero_health]
+label   = "Co-op — extra enemy health per additional hero (0 = none, the game's own; 0.5 = +50% each)"
+type    = "float"
+min     = 0.0
+max     = 3.0
+default = 0.0
+
+[fields.boss_hero_health]
+label   = "Co-op — extra boss health per additional hero (0 = none, the game's own; 0.5 = +50% each)"
+type    = "float"
+min     = 0.0
+max     = 3.0
+default = 0.0
+
+[fields.boss_health]
+label   = "Boss base health multiplier — chapter and quest bosses only (1.0 = unchanged)"
+type    = "float"
+min     = 0.25
+max     = 10.0
+default = 1.0
+
+[fields.final_boss_health]
+label   = "Final boss base health multiplier — the nightmare bosses (1.0 = unchanged)"
+type    = "float"
+min     = 0.25
+max     = 10.0
+default = 1.0
+
+[fields.always_heal_on_death]
+label   = "Always on: dying enemies heal the enemies around them (normally only with that run modifier)"
+type    = "bool"
+default = false
+
+[fields.heal_on_death_amount]
+label   = "Heal on death — share of health restored (0.25 = 25%, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 1.0
+default = 0.25
+
+[fields.heal_on_death_radius]
+label   = "Heal on death — radius in metres (7.5 = the game's own)"
+type    = "float"
+min     = 1.0
+max     = 30.0
+default = 7.5
+
+[fields.always_low_health_rage]
+label   = "Always on: wounded enemies hit harder (normally only with that run modifier)"
+type    = "bool"
+default = false
+
+[fields.low_health_rage_bonus]
+label   = "Wounded enemies — extra attack power (0.5 = +50%, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 3.0
+default = 0.5
+
+[fields.boss_minion_health]
+label   = "Boss minion health multiplier — tentacles summoned by bosses (1.0 = unchanged)"
+type    = "float"
+min     = 0.25
+max     = 10.0
+default = 1.0
+
+[fields.stagger_level]
+label   = "Stagger resistance gained per party level, compounding (0.3 = +30%/level, the game's own)"
+type    = "float"
+min     = 0.0
+max     = 0.6
+default = 0.3
+
+[fields.stagger_per_hero]
+label   = "Co-op — stagger resistance added per extra hero, as a multiplier of the game's own (1.0 = unchanged)"
+type    = "float"
+min     = 0.0
+max     = 5.0
+default = 1.0
