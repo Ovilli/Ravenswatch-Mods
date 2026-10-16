@@ -1,0 +1,8 @@
+Definitions|Challenges\NightOwl.challengedef.ot|ChallengeDefinition
+Definitions|GameModifiers\NightOnly.gamemodifierdef.ot|GameModifierDefinition
+Definitions|GameModifiers\NoBossTimer.gamemodifierdef.ot|GameModifierDefinition
+Definitions|GameModifiers\NoMinimap.gamemodifierdef.ot|GameModifierDefinition
+Text|ChallengesAndGameModifiers~GAM.xls|oCLocalText
+Ui|Challenges\UI_Icon_Modifier_Explorer.png|oCTexture
+Ui|Challenges\UI_Icon_Modifier_LongNight.png|oCTexture
+Ui|Challenges\UI_Icon_Modifier_ShadowyFog.png|oCTexture
