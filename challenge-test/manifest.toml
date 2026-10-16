@@ -1,10 +1,12 @@
 [mod]
+enabled = false
 id           = "challenge-test"
 name         = "Challenge Test"
 version      = "0.1.0"
 author       = "Ovilli"
 description  = "Playtest for the challenge kind: one new challenge and one restored cut one."
 experimental = true
+sdk_version  = 3
 
 [[content]]
 kind      = "challenge"

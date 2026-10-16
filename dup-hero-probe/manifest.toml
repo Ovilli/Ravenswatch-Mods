@@ -13,7 +13,7 @@ name        = "Duplicate Hero Probe (test)"
 version     = "0.1.0"
 author      = "test"
 description = "TEST: unlocks taken heroes in hero select and watches your lobby state to catch what reverts READY."
-enabled     = true
+enabled     = false
 load_order  = 50
 sdk_version = ">=3.0,<4"
 multiplayer_scope = "local-only"
