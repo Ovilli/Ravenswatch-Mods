@@ -1,0 +1,67 @@
+# Damage Meter — 한국어
+#
+# What the desktop app and `rsmm overlay` show in this language. The
+# in-game log board stays English (it is a debugging view).
+
+[manifest]
+name        = "피해량 측정기"
+summary     = "협동 플레이에서 플레이어별 피해량, 비율, DPS를 항상 위에 표시되는 실시간 창으로 보여 줍니다."
+description = "협동 플레이용 플레이어별 피해량 측정기. 누가 런을 이끌고 있는지 알 수 있습니다. 내 공격과 네트워크로 전달되는 피해를 읽어 모든 영웅을 기록하고 피해량, 비율, 최근 DPS를 표시합니다."
+
+[overlay]
+title = "피해량"
+empty = "런을 기다리는 중입니다."
+
+[overlay.columns]
+label = "플레이어"
+dealt = "피해량"
+share = "비율"
+dps   = "DPS"
+act_1 = "1막"
+act_2 = "2막"
+act_3 = "3막"
+
+[config.report_seconds]
+label = "점수판 보고 간격(초, 0 = 요청할 때만)"
+
+[config.snapshot_seconds]
+label = "오버레이 갱신 간격(초, 0 = 끔)"
+
+[config.window_seconds]
+label = "DPS 계산에 쓰는 시간 범위"
+
+[config.quiet_when_idle]
+label = "지난 보고 이후 변화가 없으면 보고 생략"
+
+[config.ignore_scenery]
+label = "적에게 준 피해만 집계(울타리, 항아리, 소품 제외)"
+
+[config.probe_victims]
+label = "처음 맞힌 대상을 로그에 기록(적 판정 디버그용)"
+
+[config.log_hits]
+label = "모든 타격을 로그에 기록(매우 많음, 디버그 전용)"
+
+[config.guess_names]
+label = "식별되지 않은 행에 로비의 남은 이름을 입장 순서대로 지정(? 표시)"
+
+[config.roster_rows]
+label = "피해를 주기 전이라도 로비의 모든 플레이어 표시"
+
+[config.identity_scan]
+label = "메모리를 검색해 아군의 실제 이름 표시(끄면 이름은 추정으로 남음)"
+
+[config.split_by_act]
+label = "막별로 피해량 나누기(1~3막 열과 막별 요약)"
+
+[config.player_1]
+label = "첫 번째 플레이어 이름(비우면 자동)"
+
+[config.player_2]
+label = "두 번째 플레이어 이름(비우면 자동)"
+
+[config.player_3]
+label = "세 번째 플레이어 이름(비우면 자동)"
+
+[config.player_4]
+label = "네 번째 플레이어 이름(비우면 자동)"

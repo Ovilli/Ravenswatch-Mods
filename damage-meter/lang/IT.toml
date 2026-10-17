@@ -1,0 +1,67 @@
+# Damage Meter — Italiano
+#
+# What the desktop app and `rsmm overlay` show in this language. The
+# in-game log board stays English (it is a debugging view).
+
+[manifest]
+name        = "Misuratore di danni"
+summary     = "Danni, quota e DPS di ogni giocatore nelle partite cooperative, con una finestra dal vivo sempre in primo piano."
+description = "Monitoraggio dei danni per giocatore in cooperativa: chi sta trascinando la partita? Legge i tuoi attacchi e i danni ricevuti dalla rete, segue ogni eroe e mostra danni, quota e DPS recente."
+
+[overlay]
+title = "Danni"
+empty = "In attesa di una partita."
+
+[overlay.columns]
+label = "Giocatore"
+dealt = "Danni"
+share = "Quota"
+dps   = "DPS"
+act_1 = "Atto 1"
+act_2 = "Atto 2"
+act_3 = "Atto 3"
+
+[config.report_seconds]
+label = "Secondi tra un resoconto della classifica e l'altro (0 = solo su richiesta)"
+
+[config.snapshot_seconds]
+label = "Secondi tra un aggiornamento della finestra e l'altro (0 = disattivato)"
+
+[config.window_seconds]
+label = "Intervallo di tempo usato per il DPS"
+
+[config.quiet_when_idle]
+label = "Salta un resoconto se nulla è cambiato dal precedente"
+
+[config.ignore_scenery]
+label = "Conta solo i danni ai nemici (ignora recinzioni, vasi, oggetti di scena)"
+
+[config.probe_victims]
+label = "Registra i primi bersagli colpiti (debug del riconoscimento dei nemici)"
+
+[config.log_hits]
+label = "Registra ogni singolo colpo (molto prolisso, solo per il debug)"
+
+[config.guess_names]
+label = "Assegna alle righe non identificate i nomi rimasti della lobby, in ordine di ingresso (segnati con ?)"
+
+[config.roster_rows]
+label = "Mostra tutti i giocatori della lobby, anche prima che infliggano danni"
+
+[config.identity_scan]
+label = "Analizza la memoria per mostrare i veri nomi degli alleati (disattivato = nomi stimati)"
+
+[config.split_by_act]
+label = "Dividi i danni per atto (colonne Atto 1–3 e riepilogo per atto)"
+
+[config.player_1]
+label = "Nome del primo giocatore (vuoto = automatico)"
+
+[config.player_2]
+label = "Nome del secondo giocatore (vuoto = automatico)"
+
+[config.player_3]
+label = "Nome del terzo giocatore (vuoto = automatico)"
+
+[config.player_4]
+label = "Nome del quarto giocatore (vuoto = automatico)"

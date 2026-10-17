@@ -1,0 +1,67 @@
+# Damage Meter — 繁體中文
+#
+# What the desktop app and `rsmm overlay` show in this language. The
+# in-game log board stays English (it is a debugging view).
+
+[manifest]
+name        = "傷害統計"
+summary     = "合作模式中每位玩家的傷害、佔比和 DPS，並提供永遠置頂的即時浮動視窗。"
+description = "合作模式的逐玩家傷害統計——看看誰在帶飛。讀取你的攻擊和透過網路同步的傷害，記錄每位英雄，顯示傷害、佔比和近期 DPS。"
+
+[overlay]
+title = "傷害"
+empty = "等待一局開始。"
+
+[overlay.columns]
+label = "玩家"
+dealt = "傷害"
+share = "佔比"
+dps   = "DPS"
+act_1 = "第1幕"
+act_2 = "第2幕"
+act_3 = "第3幕"
+
+[config.report_seconds]
+label = "記分板報告間隔（秒，0 = 僅在要求時）"
+
+[config.snapshot_seconds]
+label = "浮動視窗更新間隔（秒，0 = 關閉）"
+
+[config.window_seconds]
+label = "計算 DPS 的時間範圍"
+
+[config.quiet_when_idle]
+label = "與上次相比沒有變化時略過報告"
+
+[config.ignore_scenery]
+label = "只統計對敵人造成的傷害（忽略柵欄、罐子和道具）"
+
+[config.probe_victims]
+label = "記錄最先命中的幾個目標（用於除錯敵人判定）"
+
+[config.log_hits]
+label = "記錄每一次命中（非常多，僅用於除錯）"
+
+[config.guess_names]
+label = "依加入順序把大廳中剩餘的名字分配給未識別的列（標記為 ?）"
+
+[config.roster_rows]
+label = "即使尚未造成傷害，也顯示大廳中的所有玩家"
+
+[config.identity_scan]
+label = "掃描記憶體以顯示隊友的真實名字（關閉 = 名字仍為推測）"
+
+[config.split_by_act]
+label = "依幕拆分傷害（增加第1–3幕欄位和每幕總結）"
+
+[config.player_1]
+label = "第一位玩家的名字（留空 = 自動）"
+
+[config.player_2]
+label = "第二位玩家的名字（留空 = 自動）"
+
+[config.player_3]
+label = "第三位玩家的名字（留空 = 自動）"
+
+[config.player_4]
+label = "第四位玩家的名字（留空 = 自動）"

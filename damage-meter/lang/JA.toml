@@ -1,0 +1,67 @@
+# Damage Meter — 日本語
+#
+# What the desktop app and `rsmm overlay` show in this language. The
+# in-game log board stays English (it is a debugging view).
+
+[manifest]
+name        = "ダメージメーター"
+summary     = "協力プレイ中のプレイヤーごとのダメージ、割合、DPS を、常に前面に表示されるライブウィンドウで確認できます。"
+description = "協力プレイ向けのプレイヤー別ダメージ計測。誰がランを引っ張っているかが分かります。自分の攻撃とネットワークで届くダメージを読み取り、すべてのヒーローを記録して、ダメージ、割合、直近の DPS を表示します。"
+
+[overlay]
+title = "ダメージ"
+empty = "ランの開始を待っています。"
+
+[overlay.columns]
+label = "プレイヤー"
+dealt = "ダメージ"
+share = "割合"
+dps   = "DPS"
+act_1 = "第1幕"
+act_2 = "第2幕"
+act_3 = "第3幕"
+
+[config.report_seconds]
+label = "スコアボードを報告する間隔（秒、0 = 要求時のみ）"
+
+[config.snapshot_seconds]
+label = "オーバーレイを更新する間隔（秒、0 = オフ）"
+
+[config.window_seconds]
+label = "DPS の計算に使う時間枠"
+
+[config.quiet_when_idle]
+label = "前回から変化がなければ報告を省略する"
+
+[config.ignore_scenery]
+label = "敵へのダメージのみ数える（柵、壺、小物を除外）"
+
+[config.probe_victims]
+label = "最初に攻撃した対象をログに記録（敵判定のデバッグ用）"
+
+[config.log_hits]
+label = "すべてのヒットをログに記録（非常に多い、デバッグ専用）"
+
+[config.guess_names]
+label = "特定できない行に、ロビーの残りの名前を参加順で割り当てる（? 付き）"
+
+[config.roster_rows]
+label = "ダメージを与える前でも、ロビーの全プレイヤーを表示する"
+
+[config.identity_scan]
+label = "メモリを検索して味方の本名を表示する（オフ = 名前は推測のまま）"
+
+[config.split_by_act]
+label = "ダメージを幕ごとに分ける（第1〜3幕の列と幕ごとの集計）"
+
+[config.player_1]
+label = "最初のプレイヤーの名前（空欄 = 自動）"
+
+[config.player_2]
+label = "2人目のプレイヤーの名前（空欄 = 自動）"
+
+[config.player_3]
+label = "3人目のプレイヤーの名前（空欄 = 自動）"
+
+[config.player_4]
+label = "4人目のプレイヤーの名前（空欄 = 自動）"

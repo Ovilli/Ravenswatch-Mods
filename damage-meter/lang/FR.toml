@@ -1,0 +1,67 @@
+# Damage Meter — Français
+#
+# What the desktop app and `rsmm overlay` show in this language. The
+# in-game log board stays English (it is a debugging view).
+
+[manifest]
+name        = "Compteur de dégâts"
+summary     = "Dégâts, part et DPS de chaque joueur en coop, avec une fenêtre en direct au premier plan."
+description = "Suivi des dégâts par joueur en coop : qui porte la partie ? Lit vos attaques et les dégâts transmis par le réseau, suit chaque héros et affiche dégâts, part et DPS glissant."
+
+[overlay]
+title = "Dégâts"
+empty = "En attente d'une partie."
+
+[overlay.columns]
+label = "Joueur"
+dealt = "Dégâts"
+share = "Part"
+dps   = "DPS"
+act_1 = "Acte 1"
+act_2 = "Acte 2"
+act_3 = "Acte 3"
+
+[config.report_seconds]
+label = "Secondes entre deux rapports du classement (0 = sur demande uniquement)"
+
+[config.snapshot_seconds]
+label = "Secondes entre deux mises à jour de la fenêtre (0 = désactivé)"
+
+[config.window_seconds]
+label = "Fenêtre de temps utilisée pour le DPS"
+
+[config.quiet_when_idle]
+label = "Ne pas répéter un rapport si rien n'a changé"
+
+[config.ignore_scenery]
+label = "Ne compter que les dégâts infligés aux ennemis (ignorer clôtures, jarres, décors)"
+
+[config.probe_victims]
+label = "Journaliser les premières cibles touchées (débogage de la détection des ennemis)"
+
+[config.log_hits]
+label = "Journaliser chaque coup (très verbeux – débogage uniquement)"
+
+[config.guess_names]
+label = "Donner aux lignes non identifiées les noms restants du salon, par ordre d'arrivée (marqués ?)"
+
+[config.roster_rows]
+label = "Afficher tous les joueurs du salon, même avant leurs premiers dégâts"
+
+[config.identity_scan]
+label = "Analyser la mémoire pour afficher les vrais noms des alliés (désactivé = noms supposés)"
+
+[config.split_by_act]
+label = "Répartir les dégâts par acte (colonnes Acte 1–3 et bilan par acte)"
+
+[config.player_1]
+label = "Nom du premier joueur (vide = automatique)"
+
+[config.player_2]
+label = "Nom du deuxième joueur (vide = automatique)"
+
+[config.player_3]
+label = "Nom du troisième joueur (vide = automatique)"
+
+[config.player_4]
+label = "Nom du quatrième joueur (vide = automatique)"

@@ -24,6 +24,11 @@ is not tracked in git, so there is no commit history to read them out of.
   the same figure the end screen keeps. Blocked, like taken, is only visible
   for your own hero. Needs the updated loader SDK.
 
+- **Translations** for all of the game's languages (German, French, Spanish,
+  Italian, Brazilian Portuguese, Polish, Russian, Japanese, Korean, Simplified
+  and Traditional Chinese): the mod's name and description, the overlay title
+  and columns, and every setting label. The in-game log board stays English.
+
 ### Fixed
 
 - The per-ability split read a field Update 6 moved, so hits landed under

@@ -1,0 +1,67 @@
+# Damage Meter — Español
+#
+# What the desktop app and `rsmm overlay` show in this language. The
+# in-game log board stays English (it is a debugging view).
+
+[manifest]
+name        = "Medidor de daño"
+summary     = "Daño, porcentaje y DPS por jugador en partidas cooperativas, con una ventana en directo siempre visible."
+description = "Registro del daño de cada jugador en cooperativo: ¿quién lleva la partida? Lee tus ataques y el daño recibido por la red, sigue a cada héroe y muestra daño, porcentaje y DPS reciente."
+
+[overlay]
+title = "Daño"
+empty = "Esperando una partida."
+
+[overlay.columns]
+label = "Jugador"
+dealt = "Daño"
+share = "Parte"
+dps   = "DPS"
+act_1 = "Acto 1"
+act_2 = "Acto 2"
+act_3 = "Acto 3"
+
+[config.report_seconds]
+label = "Segundos entre informes de la clasificación (0 = solo a petición)"
+
+[config.snapshot_seconds]
+label = "Segundos entre actualizaciones de la ventana (0 = desactivado)"
+
+[config.window_seconds]
+label = "Intervalo de tiempo usado para el DPS"
+
+[config.quiet_when_idle]
+label = "Omitir un informe si nada cambió desde el anterior"
+
+[config.ignore_scenery]
+label = "Contar solo el daño a enemigos (ignorar vallas, jarrones y decorado)"
+
+[config.probe_victims]
+label = "Registrar los primeros objetivos (depuración de la detección de enemigos)"
+
+[config.log_hits]
+label = "Registrar cada golpe (muy extenso; solo para depurar)"
+
+[config.guess_names]
+label = "Dar a las filas sin identificar los nombres restantes de la sala por orden de entrada (marcados con ?)"
+
+[config.roster_rows]
+label = "Mostrar a todos los jugadores de la sala, incluso antes de que hagan daño"
+
+[config.identity_scan]
+label = "Analizar la memoria para mostrar los nombres reales de los aliados (desactivado = nombres supuestos)"
+
+[config.split_by_act]
+label = "Dividir el daño por acto (columnas Acto 1–3 y resumen por acto)"
+
+[config.player_1]
+label = "Nombre del primer jugador (vacío = automático)"
+
+[config.player_2]
+label = "Nombre del segundo jugador (vacío = automático)"
+
+[config.player_3]
+label = "Nombre del tercer jugador (vacío = automático)"
+
+[config.player_4]
+label = "Nombre del cuarto jugador (vacío = automático)"
