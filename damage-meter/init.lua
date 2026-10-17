@@ -146,6 +146,39 @@ if cfg.hits then
     end)
 end
 
+-- The hero each row plays, by its lobby pick (R.lobby.hero_name follows the
+-- Update 6 hero order, checked in game). Looked up by the player the row is
+-- matched to, so this never decides WHO a row is, only what they play: a row
+-- whose name is a guess gets a hero marked the same way, and a row with no
+-- name yet gets none. Older loader without hero_name: no hero, same board.
+local function lobby_by_name()
+    local ok, members = pcall(R.lobby.members)
+    local out = {}
+    if ok and type(members) == "table" then
+        for _, m in ipairs(members) do
+            if m.name then out[m.name] = m end
+        end
+    end
+    return out
+end
+
+local function hero_of(row, by_name)
+    if not R.lobby.hero_name then return nil end
+    local m = by_name[row.player or row.label]
+    local id = (m and m.hero_id) or row.hero_id
+    local name = id and R.lobby.hero_name(id)
+    return name and (name:gsub("_", " "))
+end
+
+-- "Ada (Juliet)", "Player 2 ?" or "Ada (Juliet) ?" — the trailing "?" marks a
+-- guessed name, and the hero then inherits that guess.
+local function row_label(row, by_name)
+    local hero = hero_of(row, by_name)
+    local label = tostring(row.label)
+    if hero then label = ("%s (%s)"):format(label, hero) end
+    return row.label_guess and (label .. " ?") or label
+end
+
 -- The scoreboard, as a single line per player. Damage is rounded: the engine's
 -- values are floats and nobody reads three decimal places of a damage total.
 --
@@ -162,6 +195,7 @@ end
 local function board_lines()
     local rows = R.damage.board()
     if #rows == 0 then return nil end
+    local by_name = lobby_by_name()
     local out = {}
     for i, row in ipairs(rows) do
         -- Prop damage is reported, never silently dropped: a player who spent
@@ -174,15 +208,19 @@ local function board_lines()
             and ("  ?%d unclassified"):format(row.unknown_hits) or ""
         local taken = row.taken_known == false and "        -"
             or ("%9.0f"):format(row.taken)
+        -- Damage this player blocked (the end screen's own stat). Like taken,
+        -- only this machine's player is observable, so an ally prints nothing.
+        local blocked = (row.blocked or 0) > 0
+            and ("  (blocked %.0f in %d)"):format(row.blocked, row.blocked_hits or 0) or ""
         -- A name the SDK INFERRED (nobody's hero id matched, but only one row
         -- and one lobby name were left over) says so. The board used to print
         -- guessed names exactly like measured ones, which is how a co-op run
         -- reported every ally's damage under the wrong player.
-        local label = row.label_guess and (row.label .. " ?") or row.label
-        out[#out + 1] = ("%d. %-12s %9.0f dmg  %5.1f%%  %7.1f dps  "
-                         .. "%5d hits  %s taken%s%s%s"):format(
+        local label = row_label(row, by_name)
+        out[#out + 1] = ("%d. %-24s %9.0f dmg  %5.1f%%  %7.1f dps  "
+                         .. "%5d hits %4d crit  %s taken%s%s%s%s"):format(
             i, label, row.dealt, row.share * 100, row.dps,
-            row.hits, taken, props, unclassified,
+            row.hits, row.crits or 0, taken, blocked, props, unclassified,
             row.is_local and "  <- you" or "")
     end
     return out
@@ -204,15 +242,17 @@ end
 
 local function publish(rows, total)
     local out = {}
+    local by_name = lobby_by_name()
     for _, row in ipairs(rows) do
         out[#out + 1] = {
-            -- Same "?" as the text board: the overlay client renders columns
-            -- generically, so an inferred name has to carry its own mark.
-            label    = row.label_guess and (tostring(row.label) .. " ?")
-                        or tostring(row.label),
+            -- Same label as the text board: the overlay client renders columns
+            -- generically, so the hero and an inferred name's "?" ride in it.
+            label    = row_label(row, by_name),
             dealt    = row.dealt,
             taken    = row.taken,
             hits     = row.hits,
+            crits    = row.crits,
+            blocked  = row.blocked,
             dps      = row.dps,
             share    = row.share,
             pct      = row.share,
@@ -246,6 +286,16 @@ end
 
 local last_total = -1
 local last_snapshot = -1
+-- Most players connected at once this run. The experiment verdict is judged
+-- at run:end, and by then anyone who left (or a host who abandoned) is gone
+-- from the peer table: 2026-10-17 logged "4 rows, 2 players connected" as a
+-- FAIL for a four-player run where two had just left.
+local peak_players = 0
+local function note_players()
+    local ok, peers = pcall(R.net.peers)
+    local n = ok and type(peers) == "table" and #peers + 1 or 0
+    if n > peak_players then peak_players = n end
+end
 
 -- The board is a LIVE ranking: the snapshot is refreshed every second (cheap —
 -- a few hundred bytes through a temp-file rename) so the overlay and
@@ -255,6 +305,7 @@ local function snapshot()
     local total = R.damage.total()
     if total == last_snapshot then return end
     last_snapshot = total
+    note_players()
     publish(R.damage.board(), total)
 end
 
@@ -262,6 +313,9 @@ local function report(force)
     local rows = R.damage.board()
     local total = R.damage.total()
     if #rows == 0 then return end
+    -- Between runs the board is only lobby placeholders at 0; printing it
+    -- right after run:end reads as a second, empty run.
+    if total == 0 and not force then return end
     -- Nothing happened since the last report: in a lull (menus, walking
     -- between fights) repeating the same board every 15s just buries the rest
     -- of the log.
@@ -294,14 +348,14 @@ local function record_experiments(rows)
     for _, row in ipairs(rows) do
         if not row.pending then real = real + 1 end
     end
-    local ok_p, peers = pcall(R.net.peers)
-    local players = ok_p and type(peers) == "table" and #peers > 0 and #peers + 1 or nil
+    note_players()
+    local players = peak_players > 1 and peak_players or nil
     exp.observe("allies_tracked", "rows", #rows)
     exp.observe("allies_tracked", "players", players or "?")
     exp.observe("allies_tracked", "hook", tostring(R.damage.tracks_allies()))
     exp.verdict("allies_tracked", #rows > 1 and (players == nil or real <= players),
                   #rows .. " row(s) on the final board"
-                  .. (players and (", " .. players .. " player(s) connected") or ""))
+                  .. (players and (", " .. players .. " player(s) in the run") or ""))
 
     -- `label_guess` is the SDK saying "nobody's id matched; this name is the
     -- one left over". A guessed name on an ally row is exactly the failure the
@@ -329,13 +383,13 @@ end
 -- damage in (the boundary event can land just before run:end) is skipped.
 local function report_acts()
     local rows = R.damage.board()
+    local by_name = lobby_by_name()
     for col = 1, act_col(act) do
         local parts, sum = {}, 0
         for _, row in ipairs(rows) do
             local v = act_value(row, col)
             sum = sum + v
-            parts[#parts + 1] = ("%s %.0f"):format(
-                row.label_guess and (row.label .. " ?") or row.label, v)
+            parts[#parts + 1] = ("%s %.0f"):format(row_label(row, by_name), v)
         end
         if sum > 0 then
             R.log(("act %d%s: %s"):format(col,
@@ -373,6 +427,7 @@ local function finish_and_reset()
     report(true)
     if by_act then report_acts() end
     record_experiments(R.damage.board())
+    peak_players = 0
     R.damage.reset()
     act_reset()
     last_total, last_snapshot = -1, -1
@@ -383,6 +438,7 @@ R.on("run:end", finish_and_reset)
 R.on("run:start", function()
     R.damage.reset()
     act_reset()
+    peak_players = 0
     last_total, last_snapshot = -1, -1
     R.overlay.clear()
 end)

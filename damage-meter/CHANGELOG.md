@@ -14,6 +14,30 @@ is not tracked in git, so there is no commit history to read them out of.
   run-end report prints one line per act. Off by default; with it off the
   board looks exactly as before. Needs a desktop app that hides empty overlay
   columns; an older one shows the three act columns blank.
+- **Each player's hero beside their name** — "Ada (Juliet)" — on the overlay,
+  the log board and the per-act lines. Taken from the lobby pick of the player
+  the row is matched to, using the loader's Update 6 hero order; a guessed name
+  keeps its "?" and the hero shares that guess.
+
+- **Crits and blocked damage** on the log board and the run-end report:
+  "N crit" per player, and "(blocked X in N)" — the damage your hero blocked,
+  the same figure the end screen keeps. Blocked, like taken, is only visible
+  for your own hero. Needs the updated loader SDK.
+
+### Fixed
+
+- The per-ability split read a field Update 6 moved, so hits landed under
+  "other" or the wrong ability. Damage taken now uses the amount the game
+  itself counts. (Both live in the loader SDK.)
+
+- A run where players left (or the host abandoned) no longer reports the
+  "all players tracked" check as failed: it compares against the most players
+  seen during the run, not the few still connected at the end.
+- No empty board is printed right after a run ends.
+
+### Removed
+
+- The "sources" entry in the overlay footer.
 
 ## 1.2.4 — 2026-08-24
 
