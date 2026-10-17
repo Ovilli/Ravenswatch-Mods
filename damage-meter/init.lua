@@ -239,7 +239,6 @@ local function publish(rows, total)
     R.overlay.publish{
         rows = out,
         meta = { total = math.floor(total + 0.5), window = cfg.window,
-                 sources = R.damage.mode(),
                  enemies_only = counts_enemies_only(),
                  scenery = math.floor(scenery_total() + 0.5) },
     }
