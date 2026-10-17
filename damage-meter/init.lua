@@ -72,6 +72,41 @@ local cfg = {
     probe    = R.config.get("probe_victims", false),
 }
 
+-- Per-act split, OFF by default. A run is three chapters ("acts"); with this on
+-- the overlay gains Act 1..3 columns and the run-end report prints each act.
+-- The overlay hides a column no row publishes, so leaving it off costs nothing.
+--
+-- Counted HERE, not in the SDK, from the running totals the board already
+-- carries: at each chapter boundary every row's damage-so-far is banked and
+-- the next act counts from it. Keyed by join slot, which survives the chapter
+-- rebuild that re-adopts every hero controller.
+local by_act = R.config.get("split_by_act", false)
+-- The manifest declares act_1..act_3. A longer run (a game_mode mod that
+-- repeats chapters) folds act 4 onward into the last column rather than
+-- dropping it; the log labels that column "3+".
+local ACT_COLUMNS = 3
+local acts     = {}   -- acts[col][slot] = damage banked for that act column
+local act_base = {}   -- slot -> row.dealt when the current act began
+local act      = 1
+local act_mark = -1   -- team total at the last boundary (dedupes a doubled event)
+
+local function act_key(row) return row.slot or row.label end
+local function act_col(n) return math.min(n, ACT_COLUMNS) end
+
+-- Damage `row` dealt in act column `col`: what is banked, plus the act in
+-- progress when that act lands in this column.
+local function act_value(row, col)
+    local v = acts[col] and acts[col][act_key(row)] or 0
+    if col == act_col(act) then
+        v = v + (row.dealt or 0) - (act_base[act_key(row)] or 0)
+    end
+    return v
+end
+
+local function act_reset()
+    acts, act_base, act, act_mark = {}, {}, 1, -1
+end
+
 -- Fixed names by join order, for people who would rather read "Ada" than
 -- "Player 2". Blank means "leave it automatic".
 local names = {}
@@ -193,6 +228,13 @@ local function publish(rows, total)
             pending  = row.pending,
             is_local = row.is_local,
         }
+        -- Acts not reached yet stay absent, so their column fills in as the
+        -- run gets there instead of showing a row of zeros up front.
+        if by_act then
+            for col = 1, act_col(act) do
+                out[#out]["act_" .. col] = act_value(row, col)
+            end
+        end
     end
     R.overlay.publish{
         rows = out,
@@ -284,12 +326,56 @@ local function record_experiments(rows)
     -- read as "the join is broken" when nothing was ever tested.
 end
 
+-- One line per act: "act 2: Ada 12034, Player 2 8811". An act nobody dealt
+-- damage in (the boundary event can land just before run:end) is skipped.
+local function report_acts()
+    local rows = R.damage.board()
+    for col = 1, act_col(act) do
+        local parts, sum = {}, 0
+        for _, row in ipairs(rows) do
+            local v = act_value(row, col)
+            sum = sum + v
+            parts[#parts + 1] = ("%s %.0f"):format(
+                row.label_guess and (row.label .. " ?") or row.label, v)
+        end
+        if sum > 0 then
+            R.log(("act %d%s: %s"):format(col,
+                  (col == ACT_COLUMNS and act > ACT_COLUMNS) and "+" or "",
+                  table.concat(parts, ", ")))
+        end
+    end
+end
+
+if by_act then
+    -- GAME_END_NEXT_CHAPTER only: it fires once as a chapter tears down.
+    -- MAP_GENERATION_DONE also fires for the FIRST chapter, which would open a
+    -- phantom act before any fighting; GAME_END_SUCCESS fires at every chapter
+    -- change too but is no better a boundary.
+    R.on("gameplay:GAME_END_NEXT_CHAPTER", function()
+        local total = R.damage.total()
+        if total == act_mark then return end
+        act_mark = total
+        local col = act_col(act)
+        acts[col] = acts[col] or {}
+        for _, row in ipairs(R.damage.board()) do
+            local k = act_key(row)
+            acts[col][k] = act_value(row, col)
+            act_base[k] = row.dealt or 0
+        end
+        act = act + 1
+        last_snapshot = -1   -- republish: the new act's column starts now
+        R.log(("act %d begins"):format(act))
+    end)
+end
+
 -- Per-run scores. Report the final board FIRST, then clear — a run's last
 -- fight is the one people argue about.
 local function finish_and_reset()
     report(true)
+    if by_act then report_acts() end
     record_experiments(R.damage.board())
     R.damage.reset()
+    act_reset()
     last_total, last_snapshot = -1, -1
     R.overlay.clear()
 end
@@ -297,6 +383,7 @@ end
 R.on("run:end", finish_and_reset)
 R.on("run:start", function()
     R.damage.reset()
+    act_reset()
     last_total, last_snapshot = -1, -1
     R.overlay.clear()
 end)

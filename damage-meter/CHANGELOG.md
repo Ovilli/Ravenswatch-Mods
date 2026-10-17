@@ -5,6 +5,16 @@ All notable changes to **Damage Meter**.
 Entries before 1.2.0 are reconstructed from the code and its comments — `mods/`
 is not tracked in git, so there is no commit history to read them out of.
 
+## 1.3.0 — 2026-10-17
+
+### Added
+
+- **Damage by act.** Turn on `split_by_act` and the overlay gains Act 1, Act 2
+  and Act 3 columns, each filling in once the run reaches that chapter, and the
+  run-end report prints one line per act. Off by default; with it off the
+  board looks exactly as before. Needs a desktop app that hides empty overlay
+  columns; an older one shows the three act columns blank.
+
 ## 1.2.4 — 2026-08-24
 
 Needs game-loader v8 (`rsmm update-loader`). Every fix below lives in the SDK,

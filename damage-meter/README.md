@@ -126,6 +126,7 @@ you delete falls back to the mod's built-in default, not to the schema's.
 | `ignore_scenery` | true | count only damage dealt to enemies (skip fences, jars, props) |
 | `probe_victims` | false | log what the first 12 distinct targets were — for debugging the enemy test after a game patch |
 | `log_hits` | false | log every individual hit (very noisy; debugging only) |
+| `split_by_act` | false | add Act 1-3 columns to the overlay and a per-act summary to the run-end report |
 | `player_1..4` | "" | fixed names by join order, e.g. `player_2 = "Ada"` |
 
 ## Requirements

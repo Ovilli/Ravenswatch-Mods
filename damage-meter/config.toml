@@ -69,6 +69,12 @@ log_hits = false
 # Set player_1..player_4 below to label a run by hand. Those always win.
 identity_hunt = false
 
+# Split the board by act. On: the overlay gains Act 1, Act 2 and Act 3 columns
+# (each fills in once the run reaches that chapter) and the run-end report adds
+# one line per act. Off: the board is the whole run, as it always was. A run
+# longer than three chapters folds the extra ones into the Act 3 column.
+split_by_act = false
+
 # ---------------------------------------------------------------------------
 # Names
 # ---------------------------------------------------------------------------

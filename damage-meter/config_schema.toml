@@ -54,6 +54,11 @@ label   = "Scan memory to put real names on ally rows (off = names stay guesses)
 type    = "bool"
 default = true
 
+[fields.split_by_act]
+label   = "Split damage by act (adds Act 1-3 columns and a per-act run summary)"
+type    = "bool"
+default = false
+
 [fields.player_1]
 label   = "Name for the first player seen (blank = auto)"
 type    = "string"

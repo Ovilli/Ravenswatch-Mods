@@ -1,7 +1,7 @@
 [mod]
 id          = "damage-meter"
 name        = "Damage Meter"
-version     = "1.2.5"
+version     = "1.3.0"
 author      = "RSMM"
 summary     = "Per-player damage, share and DPS for co-op runs, with a live on-top overlay."
 description = "Per-player damage tracking for co-op — who is carrying the run. Reads the local attack resolver and the replicated damage event, boards every hero it sees, and reports damage, share and rolling DPS."
@@ -53,3 +53,23 @@ label = "DPS"
 type = "number"
 format = "compact"
 suffix = "/s"
+
+# Filled only when `split_by_act` is on; the client hides a column no row
+# publishes, so these stay out of the HUD while it is off.
+[[overlay.columns]]
+key = "act_1"
+label = "Act 1"
+type = "number"
+format = "compact"
+
+[[overlay.columns]]
+key = "act_2"
+label = "Act 2"
+type = "number"
+format = "compact"
+
+[[overlay.columns]]
+key = "act_3"
+label = "Act 3"
+type = "number"
+format = "compact"
