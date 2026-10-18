@@ -1,0 +1,36 @@
+# TEST — item tier. A copy keeps its BASE's rarity; the `rarity` field only
+# has to match it (anything else is refused at apply).
+#
+# Two copies, one per tier:
+#   Rarity_Test_Comm  base Common/Armor_Per_Object  rarity = "Common" (matches, applies)
+#   Rarity_Test_Rar   base Increase_Shield (Rare)   no rarity field
+#
+# WHAT TO CHECK IN GAME: both items appear under their own tier's colour and
+# frame. Neither should change tier. Do NOT set rarity on Rarity_Test_Rar to a
+# different tier; that now fails `rsmm apply` on purpose.
+[mod]
+multiplayer_scope = "deterministic-shared"
+id          = "rarity-test"
+name        = "Rarity Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: two copied items, one Common and one Rare, to check a copy keeps its base's tier."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
+
+[[content]]
+kind        = "item"
+id          = "Rarity_Test_Comm"
+base        = "Common/Armor_Per_Object"
+name        = "Rarity Test Common"
+description = "Test item. Copied from a Common base."
+rarity      = "Common"
+
+[[content]]
+kind        = "item"
+id          = "Rarity_Test_Rar"
+base        = "Increase_Shield"
+name        = "Rarity Test Rare"
+description = "Test item. Copied from a Rare base."
