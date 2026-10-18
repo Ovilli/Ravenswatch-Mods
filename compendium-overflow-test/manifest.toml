@@ -1,0 +1,319 @@
+# TEST — the book's Objects tab with many added items. Before the
+# compendium fix every tier past its vanilla count drew over the next frame.
+# `rsmm apply` should print "[compendium] widening item grids ...".
+#
+#   Common    10 -> 25 items, 20 columns
+#   Rare      10 -> 20 items, 20 columns
+#   Epic      10 -> 15 items, 15 columns
+#   Legendary 14 -> 26 items, 13 columns
+#   Cursed    14 -> 14 items, 10 columns
+#   (Cursed gets nothing: the control row, it must look exactly like vanilla.)
+#
+# WHAT TO CHECK IN GAME: Book -> Objects. Every row stays inside its own frame,
+# the icons shrink to fit, and nothing overlaps the next tier. The items show
+# up in the book on sight; you do not need to find them in a run.
+[mod]
+multiplayer_scope = "deterministic-shared"
+id          = "compendium-overflow-test"
+name        = "Compendium Overflow Test"
+version     = "0.1.0"
+author      = "test"
+description = "TEST: 42 copied items across four tiers, to check the book's Objects tab fits them."
+enabled     = false
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
+
+[[content]]
+kind        = "item"
+id          = "Armor_Per_Obj_01"
+base        = "Common/Armor_Per_Object"
+name        = "Overflow Common 01"
+description = "Test copy of Armor_Per_Object, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Damage_Per_Vital_02"
+base        = "Common/Damage_Per_Vitality"
+name        = "Overflow Common 02"
+description = "Test copy of Damage_Per_Vitality, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Dash_Crit_Cha_03"
+base        = "Common/Dash_Crit_Chance"
+name        = "Overflow Common 03"
+description = "Test copy of Dash_Crit_Chance, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Defense_To_Dam_04"
+base        = "Common/Defense_To_Damage"
+name        = "Overflow Common 04"
+description = "Test copy of Defense_To_Damage, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Gain_Shield_From_O_05"
+base        = "Common/Gain_Shield_From_Orbs"
+name        = "Overflow Common 05"
+description = "Test copy of Gain_Shield_From_Orbs, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Healing_Eff_06"
+base        = "Common/Healing_Effect"
+name        = "Overflow Common 06"
+description = "Test copy of Healing_Effect, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Increase_Damage_To_Boss_And_Ignore_Resista_07"
+base        = "Common/Increase_Damage_To_Boss_And_Ignore_Resistance"
+name        = "Overflow Common 07"
+description = "Test copy of Increase_Damage_To_Boss_And_Ignore_Resistance, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Reduce_All_DS_Pr_08"
+base        = "Common/Reduce_All_DS_Price"
+name        = "Overflow Common 08"
+description = "Test copy of Reduce_All_DS_Price, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Reroll_To_Dream_Sha_09"
+base        = "Common/Reroll_To_Dream_Shards"
+name        = "Overflow Common 09"
+description = "Test copy of Reroll_To_Dream_Shards, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Spawn_Consumab_10"
+base        = "Common/Spawn_Consumables"
+name        = "Overflow Common 10"
+description = "Test copy of Spawn_Consumables, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Armor_Per_Obj_11"
+base        = "Common/Armor_Per_Object"
+name        = "Overflow Common 11"
+description = "Test copy of Armor_Per_Object, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Damage_Per_Vital_12"
+base        = "Common/Damage_Per_Vitality"
+name        = "Overflow Common 12"
+description = "Test copy of Damage_Per_Vitality, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Dash_Crit_Cha_13"
+base        = "Common/Dash_Crit_Chance"
+name        = "Overflow Common 13"
+description = "Test copy of Dash_Crit_Chance, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Defense_To_Dam_14"
+base        = "Common/Defense_To_Damage"
+name        = "Overflow Common 14"
+description = "Test copy of Defense_To_Damage, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "Gain_Shield_From_O_15"
+base        = "Common/Gain_Shield_From_Orbs"
+name        = "Overflow Common 15"
+description = "Test copy of Gain_Shield_From_Orbs, to fill the book's Common row."
+
+[[content]]
+kind        = "item"
+id          = "AP_For_Dream_Shards_St_01"
+base        = "Rare/AP_For_Dream_Shards_Stack"
+name        = "Overflow Rare 01"
+description = "Test copy of AP_For_Dream_Shards_Stack, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Collection_To_Dam_02"
+base        = "Rare/Collection_To_Damage"
+name        = "Overflow Rare 02"
+description = "Test copy of Collection_To_Damage, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Damage_Att_03"
+base        = "Rare/Damage_Attack"
+name        = "Overflow Rare 03"
+description = "Test copy of Damage_Attack, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Damage_Po_04"
+base        = "Rare/Damage_Power"
+name        = "Overflow Rare 04"
+description = "Test copy of Damage_Power, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Damage_Spec_05"
+base        = "Rare/Damage_Special"
+name        = "Overflow Rare 05"
+description = "Test copy of Damage_Special, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Dash_Deal_Dam_06"
+base        = "Rare/Dash_Deal_Damage"
+name        = "Overflow Rare 06"
+description = "Test copy of Dash_Deal_Damage, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Gain_Armor_From_Talents_Rar_07"
+base        = "Rare/Gain_Armor_From_Talents_Rarity"
+name        = "Overflow Rare 07"
+description = "Test copy of Gain_Armor_From_Talents_Rarity, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Gain_Passive_H_08"
+base        = "Rare/Gain_Passive_Heal"
+name        = "Overflow Rare 08"
+description = "Test copy of Gain_Passive_Heal, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Gain_Regeneration_On_Low_L_09"
+base        = "Rare/Gain_Regeneration_On_Low_Life"
+name        = "Overflow Rare 09"
+description = "Test copy of Gain_Regeneration_On_Low_Life, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Increase_Shi_10"
+base        = "Rare/Increase_Shield"
+name        = "Overflow Rare 10"
+description = "Test copy of Increase_Shield, to fill the book's Rare row."
+
+[[content]]
+kind        = "item"
+id          = "Copy_C_01"
+base        = "Epic/Copy_Card"
+name        = "Overflow Epic 01"
+description = "Test copy of Copy_Card, to fill the book's Epic row."
+
+[[content]]
+kind        = "item"
+id          = "Dash_Gain_Cha_02"
+base        = "Epic/Dash_Gain_Charge"
+name        = "Overflow Epic 02"
+description = "Test copy of Dash_Gain_Charge, to fill the book's Epic row."
+
+[[content]]
+kind        = "item"
+id          = "Defensive_Gain_Cha_03"
+base        = "Epic/Defensive_Gain_Charge"
+name        = "Overflow Epic 03"
+description = "Test copy of Defensive_Gain_Charge, to fill the book's Epic row."
+
+[[content]]
+kind        = "item"
+id          = "Primary_Gain_Cha_04"
+base        = "Epic/Primary_Gain_Charge"
+name        = "Overflow Epic 04"
+description = "Test copy of Primary_Gain_Charge, to fill the book's Epic row."
+
+[[content]]
+kind        = "item"
+id          = "Reduce_CD_And_Buff_Ultim_05"
+base        = "Epic/Reduce_CD_And_Buff_Ultimate"
+name        = "Overflow Epic 05"
+description = "Test copy of Reduce_CD_And_Buff_Ultimate, to fill the book's Epic row."
+
+[[content]]
+kind        = "item"
+id          = "Avoid_Death_Once_Per_Chap_01"
+base        = "Legendary/Avoid_Death_Once_Per_Chapter"
+name        = "Overflow Legendary 01"
+description = "Test copy of Avoid_Death_Once_Per_Chapter, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Clamp_High_Dam_02"
+base        = "Legendary/Clamp_High_Damage"
+name        = "Overflow Legendary 02"
+description = "Test copy of Clamp_High_Damage, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Clear_Dash_Cooldown_On_Defe_03"
+base        = "Legendary/Clear_Dash_Cooldown_On_Defense"
+name        = "Overflow Legendary 03"
+description = "Test copy of Clear_Dash_Cooldown_On_Defense, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Damage_Per_Legendary_Sk_04"
+base        = "Legendary/Damage_Per_Legendary_Skill"
+name        = "Overflow Legendary 04"
+description = "Test copy of Damage_Per_Legendary_Skill, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Dash_Apply_Vulnera_05"
+base        = "Legendary/Dash_Apply_Vulnerable"
+name        = "Overflow Legendary 05"
+description = "Test copy of Dash_Apply_Vulnerable, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Dash_Heal_For_Damage_Ta_06"
+base        = "Legendary/Dash_Heal_For_Damage_Taken"
+name        = "Overflow Legendary 06"
+description = "Test copy of Dash_Heal_For_Damage_Taken, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Defense_H_07"
+base        = "Legendary/Defense_Heal"
+name        = "Overflow Legendary 07"
+description = "Test copy of Defense_Heal, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Extra_MO_Cho_08"
+base        = "Legendary/Extra_MO_Choice"
+name        = "Overflow Legendary 08"
+description = "Test copy of Extra_MO_Choice, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Kill_Low_Life_Enem_09"
+base        = "Legendary/Kill_Low_Life_Enemies"
+name        = "Overflow Legendary 09"
+description = "Test copy of Kill_Low_Life_Enemies, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Reduce_All_Abilities_10"
+base        = "Legendary/Reduce_All_Abilities_CD"
+name        = "Overflow Legendary 10"
+description = "Test copy of Reduce_All_Abilities_CD, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Upgrade_All_Talents_O_11"
+base        = "Legendary/Upgrade_All_Talents_Once"
+name        = "Overflow Legendary 11"
+description = "Test copy of Upgrade_All_Talents_Once, to fill the book's Legendary row."
+
+[[content]]
+kind        = "item"
+id          = "Vitality_Per_Health_Gl_12"
+base        = "Legendary/Vitality_Per_Health_Globe"
+name        = "Overflow Legendary 12"
+description = "Test copy of Vitality_Per_Health_Globe, to fill the book's Legendary row."
