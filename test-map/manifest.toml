@@ -1,0 +1,3978 @@
+# Written by rsmm map-editor. Hand edits are fine; the editor reads this file back.
+
+[mod]
+id          = "test-map"
+name        = "test-map"
+version     = "0.1.0"
+author      = "RSMM map editor"
+description = "A new map from Storm Island."
+sdk_version = ">=3.0,<4"
+license     = "MIT"
+tags        = ["maps", "generation"]
+enable      = true
+# The host generates the map, so only the host's copy decides the layout.
+multiplayer_scope = "host-authoritative"
+experimental = true
+
+[[content]]
+kind    = "map"
+id      = "testmap"
+base    = "Storm_Island"
+chapter = 1
+
+
+[[content.terrain]]
+x = -51.5
+z = 31
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -44.5
+z = 22.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -36.2
+z = 15.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -27.9
+z = 12.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -26.7
+z = 14.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -33.9
+z = 21.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -41.3
+z = 31.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -36.6
+z = 49.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -24.4
+z = 41.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -19.4
+z = 32.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -14
+z = 24.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -8
+z = 17.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -16.1
+z = 27.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -28.6
+z = 39.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -38
+z = 48.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -45.2
+z = 56.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -50.3
+z = 69.2
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -49.7
+z = 80.4
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -42.6
+z = 74.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -34
+z = 63.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -23.2
+z = 49.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -17.4
+z = 42.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -8
+z = 32.2
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -1
+z = 24.4
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 7.7
+z = 14.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -6.7
+z = 38.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -17.1
+z = 50.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -27.3
+z = 61.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -36.2
+z = 72.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -9.3
+z = 60.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 1.9
+z = 42.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 5
+z = 34.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 7.4
+z = 25.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 9.2
+z = 16.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 3.3
+z = 6.2
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -5.4
+z = 8.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -22.8
+z = 20.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -29.5
+z = 28
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -33.2
+z = 41.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -24.7
+z = 55.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -6.9
+z = 60.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 1.5
+z = 56.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 5.5
+z = 45.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 1.8
+z = 28.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -8.1
+z = 17
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -18.1
+z = 13.2
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -48.8
+z = 18.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -56.3
+z = 30.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -54.7
+z = 39.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -42.3
+z = 56.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -17.6
+z = 64.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -6.7
+z = 47.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -12.9
+z = 19.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -32.6
+z = 6.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -47.3
+z = 13.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -51.6
+z = 24.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -39.1
+z = 56.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -11.7
+z = 61.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -4.8
+z = 40.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -16.1
+z = 24.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -28.1
+z = 17.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -54.2
+z = 13.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -60.5
+z = 28.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -47.3
+z = 39
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -45.6
+z = 48.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -27.9
+z = 44.4
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -18.3
+z = 42.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -9.8
+z = 44.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -25.3
+z = 61.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -0.6
+z = 54.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 12.3
+z = 58.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -23.9
+z = 72.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -18.9
+z = 63.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 5.5
+z = 62.3
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 7.5
+z = 71.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -14.8
+z = 84
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -30.7
+z = 87
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -38
+z = 83
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -28
+z = 75.2
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -17.1
+z = 72.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -4.4
+z = 72.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -9.2
+z = 81.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -19.5
+z = 82.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -28.7
+z = 81.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -29.9
+z = 73.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -22.5
+z = 67.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -13.7
+z = 65.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -4.9
+z = 66.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = 4.9
+z = 70.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -3.4
+z = 78.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -15.8
+z = 81
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -24.9
+z = 78.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -32.8
+z = 70.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -37.3
+z = 57.6
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -35.8
+z = 45
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -30.2
+z = 32.9
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -24.3
+z = 20.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -7.6
+z = 41.4
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -17.9
+z = 54.1
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -27.9
+z = 55.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -40.3
+z = 52.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -37.1
+z = 28.5
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -15.3
+z = 26.7
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -6.2
+z = 47.8
+radius = 24
+falloff = "smooth"
+op = "raise"
+layer = "Base R"
+amount = 0.5
+
+[[content.terrain]]
+x = -22.4
+z = 28.6
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -65.6
+z = 26.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -94.6
+z = 31.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -99
+z = -13.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -52.1
+z = 8.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -112.7
+z = -37
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -65.6
+z = 0.8
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -43.9
+z = 37.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -92
+z = 24.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -115
+z = -37
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -63.7
+z = 0.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -23.9
+z = 27.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -52.5
+z = -4.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -9.2
+z = 37
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -63.2
+z = 41.6
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -44.3
+z = 0.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -2.2
+z = 25.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 43.2
+z = -77
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -69.1
+z = -115.2
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -79.7
+z = -171.3
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -5.4
+z = -128
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 45.9
+z = -47.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -33.1
+z = -5.9
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -211
+z = -98.1
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -148.5
+z = -166.1
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 23.6
+z = -91.6
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 112.7
+z = -2.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 68.5
+z = 58.3
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -107.2
+z = -12.1
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -114.5
+z = -104.1
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 50
+z = -62.1
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 157.9
+z = 39.1
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 90.5
+z = 97.8
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -55.9
+z = 38
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -64.4
+z = -79.3
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 57.2
+z = -104.8
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 154.3
+z = -12.8
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 146.7
+z = 88.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -13.3
+z = 98.3
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -80.3
+z = -152.1
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 110.5
+z = -221.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 176.1
+z = -103.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 217.1
+z = 59.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 118.5
+z = 179.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -67.6
+z = 94.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -145.4
+z = 16.8
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -28.1
+z = -23.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 195.2
+z = 123
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 174.2
+z = 209
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -212.9
+z = -33.6
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 21.9
+z = 69.2
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 55.7
+z = 218.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -189.9
+z = -86.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -28.6
+z = -34.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 167.7
+z = 131.8
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 93.7
+z = 175.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -212.5
+z = 5.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -205.5
+z = -246.9
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 20
+z = -156.2
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -34.1
+z = 114.6
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -254.8
+z = -25.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -34.4
+z = -160.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 229.6
+z = -107.8
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 83.5
+z = -103.2
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -13.3
+z = -195.9
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 89.8
+z = -97.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 206.4
+z = 35
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 187.1
+z = 93.9
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 44.8
+z = -5.1
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 61.9
+z = -222
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 199.5
+z = 0.8
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 186.6
+z = 138.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -3.5
+z = 125
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -240.8
+z = -14.2
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -149.6
+z = 53
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 67.3
+z = 194.6
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -242.5
+z = 172.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -46.9
+z = 206.4
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -162.1
+z = 232.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -208.9
+z = 206.7
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -38.5
+z = 223.3
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 105
+z = 235.9
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 15.9
+z = 211.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -149.5
+z = 32.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = 40.6
+z = 133
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -19.2
+z = 83.5
+radius = 120
+falloff = "smooth"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#0d15e7"
+amount = 0.5
+
+[[content.terrain]]
+x = -6.4
+z = -36.9
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 45.8
+z = 31.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 39.3
+z = 76
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -64.4
+z = 16.9
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -91.9
+z = -45
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 47
+z = 33.4
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 171
+z = 132.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 143.3
+z = 180.4
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 61.9
+z = 202.9
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -80.5
+z = 101.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 30.6
+z = 82
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 166.5
+z = 141.1
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 205.7
+z = 184
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 166.1
+z = 212.5
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -214.9
+z = 249.1
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -213.7
+z = 183.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -83.2
+z = 207
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -14.1
+z = 196.4
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -110
+z = 207.6
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -157.5
+z = 201.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -114
+z = 208.3
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 17.1
+z = 210
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -62.6
+z = 170.6
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -120.3
+z = 152.5
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -254
+z = 28.1
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -163.3
+z = 37
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -1.7
+z = 5.7
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 136.1
+z = -10.1
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 201.1
+z = -0.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 134.8
+z = -15
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 94.5
+z = -102
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 106.6
+z = -159.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 144.2
+z = -224.7
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 242.4
+z = -141.9
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 253.6
+z = -30.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 204.7
+z = -45
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 109.3
+z = -235.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 171
+z = -181.1
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 234.1
+z = -77.8
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 204.5
+z = -133.8
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 211.1
+z = -59
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 200.4
+z = 57
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 170.4
+z = 135
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 120.8
+z = 174.4
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 18.3
+z = 178.1
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -140.5
+z = 118.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -251.4
+z = -65
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -111.8
+z = -44.4
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 5
+z = 89.6
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -34.9
+z = 115.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -92.2
+z = 124.9
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 80.9
+z = -243.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 133.9
+z = -116
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 138.8
+z = -4.6
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 33.8
+z = 80
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -137.6
+z = 30
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -223.6
+z = -61
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -207.4
+z = -250.1
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -79.4
+z = -198.9
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -107.6
+z = -234.5
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -226.1
+z = -153.5
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -63.5
+z = -160.7
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -4.8
+z = -102.5
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 132
+z = 108.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 73.3
+z = 158.9
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -66.7
+z = 189.3
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -128.9
+z = 187.5
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -210.9
+z = 163
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -167.9
+z = 180.9
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = 9.7
+z = 173.2
+radius = 120
+falloff = "constant"
+op = "tint"
+layer = "Base Terrain Vertex Color"
+color = "#ff004c"
+amount = 1
+
+[[content.terrain]]
+x = -54.6
+z = 23.8
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -18.9
+z = 48.9
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -44.2
+z = -0.3
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -21.1
+z = 44.7
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -56.2
+z = -77.4
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -23.3
+z = -145.3
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = 29.1
+z = 0.5
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = 31.8
+z = 71.6
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -18.3
+z = 79.3
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -47.8
+z = -106.3
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -10.7
+z = -52.5
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = 1.2
+z = 43.6
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -27.8
+z = 77.5
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -38.3
+z = 6.2
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -0.3
+z = -14.3
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = 29.3
+z = 32.5
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = 30.5
+z = 82.2
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -19.3
+z = 80.4
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -35.4
+z = 14.3
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = 8.3
+z = -12.1
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = 34.3
+z = 33.4
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = 1.5
+z = 60
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base R"
+amount = 1
+
+[[content.terrain]]
+x = -1.8
+z = -18
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 67.2
+z = 18.4
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 29.1
+z = 48.8
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 2.7
+z = 12.3
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 41
+z = -23.1
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 106.1
+z = -14
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 123.5
+z = 39.7
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 92.2
+z = -11.8
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 93.8
+z = -54
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 144.9
+z = -174.7
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 154.6
+z = -117
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 180.7
+z = -77.4
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 191.8
+z = -12.1
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 181.8
+z = 42.1
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 155.1
+z = 76.1
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 78.6
+z = 106.3
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -26
+z = 122.5
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -72.1
+z = 152.5
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -113.4
+z = 166
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -154.2
+z = 149.2
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -203.1
+z = -0.6
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -162.2
+z = -72.5
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -150.6
+z = -118.2
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -124.7
+z = -152.4
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -41.5
+z = -172.9
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 21.2
+z = -174.2
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 98.6
+z = -239.2
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 158.5
+z = -239.5
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 235.8
+z = -206.1
+radius = 120
+falloff = "constant"
+op = "raise"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 43.4
+z = -80.1
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 90.1
+z = -50.7
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 122.6
+z = -2.9
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 134.8
+z = 37.9
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 127.8
+z = 81
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 59.4
+z = 136.6
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -28
+z = 164.3
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -74.7
+z = 171.1
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -145.3
+z = 110
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = -201.1
+z = 12.8
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Base B"
+amount = 1
+
+[[content.terrain]]
+x = 22.4
+z = -34.7
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 53.3
+z = 25.1
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 52.4
+z = 68.1
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 6.9
+z = 121.3
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -35.4
+z = 116.8
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -76.4
+z = 107.5
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -93.8
+z = 64
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -92
+z = 6.6
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -36.2
+z = 18
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 25.5
+z = 51
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 53.2
+z = 82.8
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 49.2
+z = 31.4
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 8.1
+z = -42.6
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -50.3
+z = -78.7
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -103.8
+z = -86.3
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -153.8
+z = -89.4
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -63.6
+z = -65.9
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -35
+z = -115
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 27.7
+z = -173
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 89.2
+z = -248.6
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = 13.4
+z = -132
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -91
+z = -70.5
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -152.6
+z = -43
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -210.8
+z = -33.4
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -224.8
+z = 14.3
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -209.2
+z = 53.8
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -169.9
+z = 90.4
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "LD Block"
+amount = 1
+
+[[content.terrain]]
+x = -30.5
+z = -13.6
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Enemy Camp Difficulty 01"
+amount = 1
+
+[[content.terrain]]
+x = -9.4
+z = 33.8
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Enemy Camp Difficulty 01"
+amount = 1
+
+[[content.terrain]]
+x = -90.6
+z = -0.1
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Enemy Camp Difficulty 01"
+amount = 1
+
+[[content.terrain]]
+x = -110.2
+z = -48.7
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Enemy Camp Difficulty 01"
+amount = 1
+
+[[content.terrain]]
+x = -114.3
+z = -95.1
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Enemy Camp Difficulty 01"
+amount = 1
+
+[[content.terrain]]
+x = -18.4
+z = -13.7
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = 5.5
+z = 28.4
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = 54.8
+z = -5.6
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = 96.6
+z = -49.8
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = 140.6
+z = -56.5
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = 173.3
+z = -89.5
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = 225.8
+z = -196.8
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = 215.5
+z = -238.7
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = 103.3
+z = -247.2
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = -13.6
+z = -142.8
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = -201.1
+z = -103.1
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = -250.9
+z = 32.6
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = -224
+z = 69.6
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = -172.7
+z = 105.9
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = -123.5
+z = 134.2
+radius = 120
+falloff = "constant"
+op = "lower"
+layer = "Rock_Bridges_Hgt"
+amount = 1
+
+[[content.terrain]]
+x = -227.7
+z = -21.7
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -208
+z = 19.5
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -239.6
+z = -36.3
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -146.8
+z = -1.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -103.6
+z = 43.8
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -146.8
+z = 9.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -116.6
+z = 52.3
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -63.9
+z = 55.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -17.4
+z = 47
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 4.1
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 29.7
+z = 59
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 30
+z = 60.3
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 32.9
+z = 63.6
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 32.6
+z = 65.5
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 32.2
+z = 67.3
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 32
+z = 68.5
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 31.6
+z = 70
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 31.3
+z = 71.4
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -17
+z = 118.5
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -16.2
+z = 119
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -16.2
+z = 119
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -16.7
+z = 120
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -16.7
+z = 120
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -16.7
+z = 120
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -16.7
+z = 120
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -71.1
+z = 199.3
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -70.7
+z = 200
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -70.7
+z = 200
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -70.7
+z = 200
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -80
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -80
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -80
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -80
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -80
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -80
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -80
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -80
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -80
+z = 47.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -79.1
+z = 47.9
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -79
+z = 48
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -77.6
+z = 49.3
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -44.1
+z = -79.1
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -39
+z = -100.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -7.7
+z = -128.8
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 19.8
+z = -174
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 59.3
+z = -143.6
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 96.3
+z = -120.8
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 129.6
+z = -89.9
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 151.1
+z = -50.5
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 151.5
+z = 5.2
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 131.8
+z = 46.5
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 98.5
+z = 78
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 14.8
+z = 96
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -77.4
+z = -4.6
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -40.6
+z = -77
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -3
+z = -114.7
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -67
+z = -25.7
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -100.2
+z = -85.5
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = -63.4
+z = -121
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 16.4
+z = -134
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
+
+[[content.terrain]]
+x = 70.7
+z = -114.3
+radius = 120
+falloff = "constant"
+op = "raise"
+amount = 3
