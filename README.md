@@ -1,5 +1,3 @@
-# Ravenswatch Mods
-
 A collection of mods for **Ravenswatch**, built with
 [Ravenswatch Mod Manager (RSMM)](https://github.com/Ovilli/RavenswatchModManager).
 Some are finished gameplay mods, some are experiments, and some are tools used
@@ -57,8 +55,6 @@ to start:
 
 - [Modding guide](https://docs.rsmm.me/guides/modding/)
 - [SDK reference](https://docs.rsmm.me/guides/sdk/)
-- [`bloodlust`](bloodlust/) and [`second-wind`](second-wind/): short,
-  self-contained Lua mods with no game files.
 
 Two rules keep mods working across game updates: mods ship **data, not code**
 (no Python beyond `on_disable.py`), and Lua uses only the high-level `R.*` API,
