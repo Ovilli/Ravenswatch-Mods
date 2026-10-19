@@ -11,6 +11,7 @@ license      = "MIT"
 tags         = ["dev", "testing", "heroes"]
 multiplayer_scope = "deterministic-shared"
 experimental = true
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
 
 [[content]]
 kind        = "hero"

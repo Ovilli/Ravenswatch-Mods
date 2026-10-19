@@ -34,6 +34,7 @@ enabled           = false
 experimental      = true
 multiplayer_scope = "deterministic-shared"
 tags              = ["talents", "red", "test"]
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
 
 [[content]]
 kind    = "talent"

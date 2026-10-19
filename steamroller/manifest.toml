@@ -16,3 +16,4 @@ multiplayer_scope = "deterministic-shared"
 # R.stat writes land in the store's override cache; `stick` re-asserts them
 # after every recompute. Proven in-game for attack_power, not for every key.
 experimental = true
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]

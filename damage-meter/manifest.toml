@@ -8,6 +8,7 @@ description = "Per-player damage tracking for co-op — who is carrying the run.
 enabled     = true
 load_order  = 60
 sdk_version = ">=3.0,<4"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
 # Pure observation: the meter replays the attack resolver with the exact
 # arguments it received and returns the engine's own result, so no damage
 # number, target list or event is altered. Nothing is networked, and each peer

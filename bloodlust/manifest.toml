@@ -14,3 +14,4 @@ sdk_version = ">=3.0,<4"
 multiplayer_scope = "deterministic-shared"
 license     = "MIT"
 tags = ["combat", "events", "buff"]
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]

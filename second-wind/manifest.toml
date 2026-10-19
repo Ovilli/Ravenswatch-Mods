@@ -13,3 +13,4 @@ sdk_version = ">=3.0,<4"
 multiplayer_scope = "deterministic-shared"
 license     = "MIT"
 tags = ["survival", "events", "quality-of-life"]
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]

@@ -9,3 +9,4 @@ enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []              # e.g. ["items", "balance"] — how players find it
 license     = ""              # e.g. "MIT" — omit and nobody may fork it
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
