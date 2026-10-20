@@ -1,0 +1,20 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+[mod]
+id          = "my-first-mod"
+name        = "My First Mod"
+version     = "0.1.0"
+author      = "YourName"
+description = ""
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
+
+[[content]]
+kind          = "item"
+id            = "Defense_To_Damage"
+mode          = "replace"
+base          = "Defense_To_Damage"
+name          = "My Very First Item"
+value_patches = [["Damage Value", 0.02, 0.05]]
