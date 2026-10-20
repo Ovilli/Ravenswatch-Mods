@@ -1,0 +1,61 @@
+name: Publish mod ZIPs
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Check out RSMM packer
+        uses: actions/checkout@v5
+        with:
+          repository: Ovilli/RavenswatchModManager
+          ref: main
+          path: rsmm-manager
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install RSMM
+        run: python -m pip install -e ./rsmm-manager
+
+      - name: Package mods
+        shell: bash
+        env:
+          RSMM_REPO_ROOT: ${{ github.workspace }}/rsmm-manager
+          RSMM_MODS_DIR: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+
+          while IFS= read -r -d '' manifest; do
+            mod_dir="${manifest%/manifest.toml}"
+            mod_name="${mod_dir#./}"
+            rsmm pack "$mod_name"
+            cp "rsmm-manager/dist/${mod_name}.zip" "dist/${mod_name}.zip"
+          done < <(find . -mindepth 2 -maxdepth 2 -type f -name manifest.toml -print0 | sort -z)
+
+          test -n "$(find dist -maxdepth 1 -type f -name '*.zip' -print -quit)"
+
+      - name: Publish latest ZIPs
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: mod-downloads
+          name: Mod downloads (latest)
+          target_commitish: ${{ github.sha }}
+          make_latest: true
+          files: dist/*.zip
+          overwrite_files: true
+          fail_on_unmatched_files: true

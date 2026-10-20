@@ -30,6 +30,15 @@ while developing RSMM itself; each mod's `manifest.toml` describes it.
      ```
 4. Launch the game.
 
+### Downloading a ZIP
+
+The [latest mod downloads](https://github.com/Ovilli/Ravenswatch-Mods/releases/tag/mod-downloads)
+release contains one ZIP per mod. These files are rebuilt automatically when
+the `master` branch is updated using `rsmm pack`, including its distribution
+safety checks and local-file filtering. Download a mod's ZIP and extract it
+into RSMM's `mods/` folder; the archive contains the named mod folder with its
+`manifest.toml`. Per-user config and RSMM-generated state files are excluded.
+
 To remove every mod and put the game back the way it was, run
 `rsmm restore --all`. Mods with settings have a `config_schema.toml`, which the
 desktop app shows as a settings panel.
