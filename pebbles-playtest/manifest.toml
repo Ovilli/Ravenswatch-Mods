@@ -28,27 +28,37 @@ value_patches     = [
     ["Shield Value", 1.0, 0.3],
     ["Shield Reload Delay", 30.0, 5.0],
 ]
-stats             = { "Modifier" = "Crit chance" }
 # The original item had no super effect; drop the base's healing bonus.
 super_effect      = false
 
-# The base's on-hit modifier is permanent (duration -1, fine for a shield that
-# damage uses up). Scope it to the hit state, and let the reload timer end it.
+# How the crit lasts 5 s: copied from the shipped Dash_Crit_Chance, the proven
+# "+X crit for N seconds" item. Its tester (kept running by State Picked Up)
+# holds the crit modifier on while its timer has time left; the hit restarts
+# that timer. Two earlier attempts hung the bonus on a STATE, and it lasted
+# ~1.5 s either way (playtest 2026-10-20).
+[[content.steps]]
+clone  = ["Crit Chance Modifier Active Tester", "Crit Chance Modifier Timer", "Crit Chance Modifier"]
+from   = "Objects/Magical_Objects/Common/Dash_Crit_Chance"
+suffix = " Pebbles"
+[[content.steps]]
+add_link = "State Picked Up.while_active"
+to       = "Crit Chance Modifier Active Tester Pebbles"
+# The hit restarts the timer (off then on, as On Dash Event does) instead of
+# granting the shield's permanent modifier.
 [[content.steps]]
 remove_link = "On Damage Received.activates[1]"
 [[content.steps]]
-add_link = "On Damage Received.while_active"
-to       = "Modifier"
+add_link = "On Damage Received.deactivates?"
+to       = "Crit Chance Modifier Timer Pebbles"
 [[content.steps]]
-set   = "Modifier.duration"
-value = 0.0
+add_link = "On Damage Received.activates"
+to       = "Crit Chance Modifier Timer Pebbles"
+# 5 s and +30%, from the item's own numbers (the card reads the same two).
 [[content.steps]]
-link = "Shield Reload Timer.state"
-to   = "On Damage Received"
-# Read the bonus straight from Shield Value: the base multiplies it by the
-# hero's level healing (fallback 10), which turned 0.3 into ~+300% crit.
+link = "Crit Chance Modifier Timer Pebbles.duration"
+to   = "Shield Reload Delay"
 [[content.steps]]
-link = "Modifier.amount"
+link = "Crit Chance Modifier Pebbles.amount"
 to   = "Shield Value"
 [[content.steps]]
 link = "Descripton Format.obj_4[0]"
