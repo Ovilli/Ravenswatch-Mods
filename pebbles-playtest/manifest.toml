@@ -47,6 +47,11 @@ to       = "Crit Chance Modifier Active Tester Pebbles"
 # granting the shield's permanent modifier.
 [[content.steps]]
 remove_link = "On Damage Received.activates[1]"
+# Keep the hit listener armed: the shield switched it off until its reload timer
+# ran out, so a hit inside the 5 s did not restart the bonus (Boris, 2026-10-20;
+# Eternal Rose restarts on every dash).
+[[content.steps]]
+remove_link = "On Damage Received.deactivates?[0]"
 [[content.steps]]
 add_link = "On Damage Received.deactivates?"
 to       = "Crit Chance Modifier Timer Pebbles"
