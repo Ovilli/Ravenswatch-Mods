@@ -10,7 +10,7 @@
 [mod]
 id          = "effect-triggers-test"
 name        = "Effect triggers test"
-version     = "0.3.0"
+version     = "0.4.0"
 author      = "RSMM"
 summary     = "Playtest for every item effect trigger"
 description = "14 test items, one per effect trigger, granted at run start. init.lua logs each trigger as it fires and ends."

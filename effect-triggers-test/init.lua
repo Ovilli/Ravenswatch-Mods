@@ -1,14 +1,12 @@
 -- TESTING ONLY. Grants the 14 trigger test items at run start and logs every
 -- trigger as it switches on and off. Trigger k (0-based, in this order) gives
--- 2^k x UNIT life on hit; each change of it is decoded: +2^k units means
--- trigger k switched on, -2^k units that it switched off. A change that is not a
--- whole number of units is something else moving it (a talent, an item) and is
--- reported as such. The raw value is logged every 5 s too, so a capped or frozen
+-- 2^k x UNIT life on hit; the value itself says which are active (it is 0
+-- without them), so each poll compares the active set with the last one. The raw value is logged every 5 s too, so a capped or frozen
 -- one shows.
 --
 -- What a pass looks like, per trigger: "[Trig] ON  <name>" when you do the
--- thing (take damage, dash, use your ultimate, ...), then "[Trig] OFF <name>
--- after 5.0 s" -- or later, if the same trigger fired again meanwhile.
+-- thing (take damage, dash, use your ultimate, ...), then "[Trig] OFF <name>"
+-- 5 s later by the log timestamps -- or later, if it fired again meanwhile.
 -- A trigger that never logs ON did not fire; one that logs ON but never OFF
 -- is stuck (the bug Pebbles had).
 local R = require "rsmm"
@@ -37,17 +35,15 @@ local granted, since, last, polls = 0, {}, nil, 0
 local function reset() granted, since, last, polls = 0, {}, nil, 0 end
 for _, b in ipairs({ "run:start", "run:end", "menu:enter" }) do R.on(b, reset) end
 
-local function decode(delta)
-    local units = delta / UNIT
-    local n = math.floor(math.abs(units) + 0.5)
-    if n == 0 or n >= (1 << #TRIGGERS) or math.abs(math.abs(units) - n) > 0.02 then
-        return nil
-    end
-    local names = {}
-    for k, name in ipairs(TRIGGERS) do
-        if (n >> (k - 1)) & 1 == 1 then names[#names + 1] = name end
-    end
-    return names, units > 0
+-- The bits active right now, from the value itself: life on hit is 0 without
+-- the test items (measured), so value * 1024 is exactly the sum of the active
+-- triggers' bits. Decoding CHANGES instead misread one trigger switching on and
+-- another off in the same poll as unrelated triggers (2026-10-20).
+local function active_bits(v)
+    local units = v / UNIT
+    local n = math.floor(units + 0.5)
+    if n < 0 or n >= (1 << #TRIGGERS) or math.abs(units - n) > 0.02 then return nil end
+    return n
 end
 
 -- Grants build entities: main thread only.
@@ -69,26 +65,29 @@ R.schedule.every_main(POLL, function()
     end
     if polls % 20 == 0 then R.log(("[Trig] life on hit now %.6f"):format(crit)) end
     if last == nil then
-        last = crit
+        last = 0
         R.log(("[Trig] life on hit at start %.6f"):format(crit))
+    end
+    local bits = active_bits(crit)
+    if bits == nil then
+        R.log(("[Trig] life on hit %.6f is not a sum of test bits (another source?)"):format(crit))
+        last = crit
         return
     end
-    local delta = crit - last
-    if math.abs(delta) < UNIT / 4 then return end
+    local was = active_bits(last) or 0
     last = crit
-    local names, on = decode(delta)
-    if not names then
-        R.log(("[Trig] life on hit changed by %+.6f, not a test item: now %.6f")
-            :format(delta, crit))
-        return
-    end
+    if bits == was then return end
     local now = polls * POLL
-    for _, name in ipairs(names) do
-        if on then
+    for k, name in ipairs(TRIGGERS) do
+        local on, before = (bits >> (k - 1)) & 1 == 1, (was >> (k - 1)) & 1 == 1
+        if on and not before then
             since[name] = now
             R.log(("[Trig] ON  %s"):format(name))
-        else
-            R.log(("[Trig] OFF %s after %.1f s"):format(name, now - (since[name] or now)))
+        elseif before and not on then
+            -- No duration here: every_main ticks slower than POLL, so a poll
+            -- count undercounts (2.2 s printed for a 4.4 s window, 2026-10-20).
+            -- The log line's own timestamp is the clock: OFF minus ON.
+            R.log(("[Trig] OFF %s"):format(name))
             since[name] = nil
         end
     end
