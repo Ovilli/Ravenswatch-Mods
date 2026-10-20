@@ -28,8 +28,9 @@ value_patches     = [
     ["Shield Value", 1.0, 0.3],
     ["Shield Reload Delay", 30.0, 5.0],
 ]
-stats             = { "Modifier" = "Crit chance", "Super Effect Modifier" = "Healing effect" }
-super_description = "&+{0}%~ to any healing effect provided or received"
+stats             = { "Modifier" = "Crit chance" }
+# The original item had no super effect; drop the base's healing bonus.
+super_effect      = false
 
 # The base's on-hit modifier is permanent (duration -1, fine for a shield that
 # damage uses up). Scope it to the hit state, and let the reload timer end it.
