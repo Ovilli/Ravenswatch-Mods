@@ -53,3 +53,8 @@ to   = "Shield Value"
 [[content.steps]]
 link = "Descripton Format.obj_4[0]"
 to   = "Shield Value"
+# Increase_Shield's card shows its number plain (a shield amount); 0.3 printed
+# as "+0%". Show this slot x100 as a percentage instead.
+[[content.steps]]
+percent = "Descripton Format.obj_4"
+value   = true
