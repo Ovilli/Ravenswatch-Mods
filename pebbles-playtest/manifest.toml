@@ -21,6 +21,9 @@ base              = "Increase_Shield"
 name              = "Little Thumb Pebbles"
 description       = "After taking damage, gain #+{0}%@ #Crit Chance@ for #5@ seconds"
 rarity            = "Common"
+# Without this the copy keeps Increase_Shield's identity GUID, and a grant by
+# GUID (R.give, the engine's own owned-set) hands out the vanilla shield.
+unique_identity   = true
 value_patches     = [
     ["Shield Value", 1.0, 0.3],
     ["Shield Reload Delay", 30.0, 5.0],
