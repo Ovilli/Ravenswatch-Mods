@@ -1,0 +1,161 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+# TESTING ONLY. One item per `effect` trigger, all on an Increase_Shield base.
+# Trigger k gives 2^k crit chance (whole numbers) for 5 s, so init.lua decodes
+# which triggers are active from the whole part of the crit value; the hero's
+# own crit (a fraction, 0.05 base) cannot leak in. 1/1000 steps could (2026-10-20). Generated from
+# rsmm.engine.item_effect.TRIGGERS (2026-10-20); regenerate if that list changes.
+
+[mod]
+id          = "effect-triggers-test"
+name        = "Effect triggers test"
+version     = "0.2.0"
+author      = "RSMM"
+summary     = "Playtest for every item effect trigger"
+description = "14 test items, one per effect trigger, granted at run start. init.lua logs each trigger as it fires and ends."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = ["item", "test"]
+license     = "MIT"
+multiplayer_scope = "deterministic-shared"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_damage_taken"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 0: damage_taken"
+description  = "After taking damage, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 1, seconds = 5, on = "damage_taken" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_hit"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 1: hit"
+description  = "When hit, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 2, seconds = 5, on = "hit" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_dash"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 2: dash"
+description  = "After dashing, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 4, seconds = 5, on = "dash" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_special"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 3: special"
+description  = "After using your special, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 8, seconds = 5, on = "special" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_defense"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 4: defense"
+description  = "After using your defense, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 16, seconds = 5, on = "defense" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_ultimate"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 5: ultimate"
+description  = "After using your ultimate, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 32, seconds = 5, on = "ultimate" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_power"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 6: power"
+description  = "After using your power, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 64, seconds = 5, on = "power" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_day_start"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 7: day_start"
+description  = "When day begins, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 128, seconds = 5, on = "day_start" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_night_start"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 8: night_start"
+description  = "When night begins, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 256, seconds = 5, on = "night_start" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_talent_picked"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 9: talent_picked"
+description  = "After picking a talent, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 512, seconds = 5, on = "talent_picked" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_item_picked_up"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 10: item_picked_up"
+description  = "After picking up a magical object, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 1024, seconds = 5, on = "item_picked_up" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_dream_shards_gained"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 11: dream_shards_gained"
+description  = "After gaining dream shards, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 2048, seconds = 5, on = "dream_shards_gained" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_sandman_purchase"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 12: sandman_purchase"
+description  = "After buying from the Sandman, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 4096, seconds = 5, on = "sandman_purchase" }
+
+[[content]]
+kind         = "item"
+id           = "Test_Trigger_reroll"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST 13: reroll"
+description  = "After a reroll, gain #+{0}%@ #Crit Chance@ for #{1}@ seconds"
+super_effect = false
+effect       = { stat = "Crit chance", amount = 8192, seconds = 5, on = "reroll" }

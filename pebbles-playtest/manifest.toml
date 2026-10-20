@@ -7,7 +7,7 @@ version     = "0.1.0"
 author      = "RSMM"
 summary     = "Playtest for the item [[content.steps]] fix: crit on hit for 5 s, not forever"
 description = "Boris's Little Thumb Pebbles rebuilt with graph steps so the crit bonus lasts 5 seconds after a hit instead of stacking for the whole run. init.lua grants the item at run start and logs crit chance."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = ["gameplay", "item"]
 license     = "MIT"
