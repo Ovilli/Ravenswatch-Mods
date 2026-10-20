@@ -1,4 +1,4 @@
--- TESTING ONLY. Grants the 14 trigger test items at run start and logs every
+-- TESTING ONLY. Grants the 13 trigger test items at run start and logs every
 -- trigger as it switches on and off. Trigger k (0-based, in this order) gives
 -- 2^k x UNIT life on hit; the value itself says which are active (it is 0
 -- without them), so each poll compares the active set with the last one. The raw value is logged every 5 s too, so a capped or frozen
@@ -13,7 +13,6 @@ local R = require "rsmm"
 
 local TRIGGERS = {
     "damage_taken",
-    "hit",
     "dash",
     "special",
     "defense",
