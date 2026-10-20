@@ -1,7 +1,10 @@
 -- TESTING ONLY. Grants the 14 trigger test items at run start and logs every
 -- trigger as it switches on and off. Trigger k (0-based, in this order) gives
--- 2^k crit chance (a whole number), so the whole part of the crit value says
--- exactly which are active; the hero's own crit is a fraction and drops out.
+-- 2^k x UNIT life on hit; each change of it is decoded: +2^k units means
+-- trigger k switched on, -2^k units that it switched off. A change that is not a
+-- whole number of units is something else moving it (a talent, an item) and is
+-- reported as such. The raw value is logged every 5 s too, so a capped or frozen
+-- one shows.
 --
 -- What a pass looks like, per trigger: "[Trig] ON  <name>" when you do the
 -- thing (take damage, dash, use your ultimate, ...), then "[Trig] OFF <name>
@@ -26,12 +29,26 @@ local TRIGGERS = {
     "sandman_purchase",
     "reroll"
 }
+local UNIT = 1 / 1024     -- binary: sums of these are exact in f32
 
 -- Time is counted in polls (0.25 s each): mods have no wall clock.
 local POLL = 0.25
-local granted, active, since, last, polls = 0, {}, {}, nil, 0
-local function reset() granted, active, since, last, polls = 0, {}, {}, nil, 0 end
+local granted, since, last, polls = 0, {}, nil, 0
+local function reset() granted, since, last, polls = 0, {}, nil, 0 end
 for _, b in ipairs({ "run:start", "run:end", "menu:enter" }) do R.on(b, reset) end
+
+local function decode(delta)
+    local units = delta / UNIT
+    local n = math.floor(math.abs(units) + 0.5)
+    if n == 0 or n >= (1 << #TRIGGERS) or math.abs(math.abs(units) - n) > 0.02 then
+        return nil
+    end
+    local names = {}
+    for k, name in ipairs(TRIGGERS) do
+        if (n >> (k - 1)) & 1 == 1 then names[#names + 1] = name end
+    end
+    return names, units > 0
+end
 
 -- Grants build entities: main thread only.
 R.schedule.every_main(POLL, function()
@@ -45,20 +62,34 @@ R.schedule.every_main(POLL, function()
         end
     end
     if granted < #TRIGGERS then return end
-    local crit = R.stat.get("crit_chance")
-    if not crit then return end
-    local bits = math.floor(crit + 1e-6)
-    if bits == last then return end
-    last = bits
+    local crit = R.stat.get("life_on_hit")
+    if not crit then
+        if polls % 20 == 0 then R.log("[Trig] life_on_hit unreadable") end
+        return
+    end
+    if polls % 20 == 0 then R.log(("[Trig] life on hit now %.6f"):format(crit)) end
+    if last == nil then
+        last = crit
+        R.log(("[Trig] life on hit at start %.6f"):format(crit))
+        return
+    end
+    local delta = crit - last
+    if math.abs(delta) < UNIT / 4 then return end
+    last = crit
+    local names, on = decode(delta)
+    if not names then
+        R.log(("[Trig] life on hit changed by %+.6f, not a test item: now %.6f")
+            :format(delta, crit))
+        return
+    end
     local now = polls * POLL
-    for k, name in ipairs(TRIGGERS) do
-        local on = (bits >> (k - 1)) & 1 == 1
-        if on and not active[name] then
-            active[name], since[name] = true, now
+    for _, name in ipairs(names) do
+        if on then
+            since[name] = now
             R.log(("[Trig] ON  %s"):format(name))
-        elseif not on and active[name] then
-            active[name] = nil
+        else
             R.log(("[Trig] OFF %s after %.1f s"):format(name, now - (since[name] or now)))
+            since[name] = nil
         end
     end
 end)
