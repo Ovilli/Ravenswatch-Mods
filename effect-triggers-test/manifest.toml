@@ -14,7 +14,7 @@ version     = "0.5.0"
 author      = "RSMM"
 summary     = "Playtest for every item effect trigger"
 description = "13 test items, one per effect trigger, granted at run start. init.lua logs each trigger as it fires and ends."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = ["item", "test"]
 license     = "MIT"

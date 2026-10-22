@@ -6,7 +6,7 @@ name        = "My First Mod"
 version     = "0.1.0"
 author      = "YourName"
 description = ""
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = []
 license     = ""
