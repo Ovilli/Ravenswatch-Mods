@@ -1,2 +1,2 @@
 [config]
-banned = []
+banned = ["AP_For_Dream_Shards_Stack", "All_Abilities_Gain_Charge", "Convert_Vitality_Into_AP", "Copy_Card", "Curse_Life_On_Hit", "Curse_Stack_Shard_Quest", "Damage_Power", "Dash_Crit_Chance", "Dash_Deal_Damage", "Dash_Heal_For_Damage_Taken", "Extra_MO_Choice", "Gain_Passive_Heal", "Gain_Regeneration_On_Low_Life", "Increase_Vitality_Reduce_Crit_Chance", "Move_Speed_Reduced_Armor", "Power_Up_Astral_Reroll_Low", "Power_Up_Sandman_Medium_Duplicate_Object", "Reduce_All_DS_Price", "Reduce_Primary_CD", "Reduce_Secondary_CD", "Upgrade_All_Talents_Once"]
