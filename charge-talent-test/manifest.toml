@@ -1,0 +1,40 @@
+[mod]
+id          = "charge-talent-test"
+name        = "Charge Talent Test"
+version     = "0.1.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Test: Wukong's Trait Awakened adds POWER charges, Beowulf's Defense Dash adds DEFENSE charges."
+sdk_version = ">=3.0,<4"
+enabled     = true
+tags        = ["talents", "test"]
+
+experimental = true
+multiplayer_scope = "deterministic-shared"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind      = "talent"
+id        = "wukong_charge_builder"
+hero      = "SunWukong"
+add_stats = [{ talent = "Trait Awakened", stat = "Ability_Charge_Primary", values = [1, 1, 1, 2], percent = false }]
+
+[[content]]
+kind        = "skill"
+id          = "wukong_charge_text"
+hero        = "Sun_Wukong"
+source      = "Trait Awakened"
+description = "• After #{0}@ successful #DEFENSE@ actions, the next #TRAIT@ activates #AWAKENED STANCE@ for &{1}~ seconds\n• #AWAKENED STANCE@ grants both \\YIN§ and $YANG* effects, without taking any additional damage\n• #POWER@ charges &+{2}~"
+
+[[content]]
+kind      = "talent"
+id        = "beowulf_charge_builder"
+hero      = "Beowulf"
+add_stats = [{ talent = "Defense Dash", stat = "Ability_Charge_Defensive", values = [1, 1, 1, 2], percent = false }]
+
+[[content]]
+kind        = "skill"
+id          = "beowulf_charge_text"
+hero        = "Beowulf"
+source      = "Defense Dash"
+description = "• #DEFENSE@ makes {0} dash forward and deal &+{1}%~ damage along the path\n• #DEFENSE@ charges &+{2}~"
