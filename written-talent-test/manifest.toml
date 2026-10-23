@@ -1,10 +1,10 @@
 [mod]
 id          = "written-talent-test"
 name        = "Written Talent Test"
-version     = "0.3.0"
+version     = "0.4.0"
 author      = "Ovilli"
 license     = "MIT"
-description = "Test: five Sun Wukong talents rebuilt from scratch with written parts (no other hero's files): always-on, during, after + cooldown + next, game-event triggers, invulnerable, scale and on-hit."
+description = "Test: six Sun Wukong talents rebuilt from scratch with written parts (no other hero's files): always-on, during, after + cooldown + next, game-event triggers, invulnerable/intangible/concealed, scale and on-hit."
 sdk_version = ">=3.0,<4"
 enabled     = true
 tags        = ["talents", "test"]
@@ -103,3 +103,21 @@ id          = "switch_text"
 hero        = "Sun_Wukong"
 source      = "Trait Switch Timing"
 description = "• For #{0}@ second(s) after using #DEFENSE@, become #INVULNERABLE@\n• For #{1}@ second(s) after taking damage, become #INVULNERABLE@ (at most once every #20@ s)"
+
+# 6. Trait Better Stances -> intangible 1 s after DASH, concealed 3 s after DEFENSE.
+[[content]]
+kind      = "talent"
+id        = "stances_intangible_concealed"
+hero      = "SunWukong"
+rebuild   = ["Trait Better Stances"]
+add_stats = [
+  { talent = "Trait Better Stances", stat = "Intangible", after = "DASH", seconds = 1 },
+  { talent = "Trait Better Stances", stat = "Concealed", after = "DEFENSE", seconds = 3 },
+]
+
+[[content]]
+kind        = "skill"
+id          = "stances_text"
+hero        = "Sun_Wukong"
+source      = "Trait Better Stances"
+description = "• For #{0}@ second(s) after using #DASH@, become #INTANGIBLE@\n• For #{1}@ second(s) after using #DEFENSE@, become #CONCEALED@"
