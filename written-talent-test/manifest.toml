@@ -6,7 +6,7 @@ author      = "Ovilli"
 license     = "MIT"
 description = "Test: six Sun Wukong talents rebuilt from scratch with written parts (no other hero's files): always-on, during, after + cooldown + next, game-event triggers, invulnerable/intangible/concealed, scale and on-hit."
 sdk_version = ">=3.0,<4"
-enabled     = true
+enabled     = false
 tags        = ["talents", "test"]
 
 experimental = true
