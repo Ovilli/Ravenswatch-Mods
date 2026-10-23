@@ -1,14 +1,14 @@
 [mod]
 id           = "gretel"
-name         = "Gretel, the Witch Hunter"
+name         = "gretel"
 version      = "0.1.0"
-author       = "RSMM"
-description  = "A new hero: Gretel, who pushed the witch into the oven, stole her wand and founded Ravens Watch. Built on Beowulf's kit (blade, shield, fire), re-cast as the oven's fire bound in the witch's wand. She has no companion: Beowulf's dragon is invisible, its fire comes from her wand. Every ability and talent card is hers (names and text), with new effects: releasing her shield (Oven Door) and a Cinder Spin kill send out a shockwave; talents Slam the Door, Hunter's Pursuit (shockwaves) and Siblings' Oath (clears her other cooldowns). ALL ART STILL BORROWED FROM BEOWULF IS PINK (body, gear, companion, skins, icons, portraits, book pictures), and her story pages and skin names read as placeholders: whatever is pink is what the art team still has to make. Beowulf keeps all of his. For testing, every run grants 5000 XP and her three new talents (turn off in the config; only when playing Gretel). Enable unlock-heroes too."
-enabled      = false
-load_order   = 95
+author       = "Indiano_Jones"
+description  = "Gretel, a hero built by Indiano_Jones: Hansel's moves, her own look."
+enabled      = true
+load_order   = 94
 sdk_version  = ">=3.0,<4"
 license      = "MIT"
-tags         = ["heroes"]
+tags         = ["dev", "testing", "heroes"]
 multiplayer_scope = "deterministic-shared"
 experimental = true
 loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
@@ -16,189 +16,141 @@ loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
 [[content]]
 kind        = "hero"
 id          = "Gretel"
-base        = "Beowulf"
+base        = "Geppetto"
 name        = "Gretel"
-# Every piece of art still borrowed from Beowulf is painted pink: whatever is
-# pink in game is what the art team still has to make.
-placeholder = "art/pink.png"
+description = "Gretel, a hero built by Indiano_Jones: Hansel's moves, her own look."
+model       = "art/_Gretel_Model.glb"
+# Her art, painted from Piper's own maps (region recolour, shading kept):
+# midnight-violet starred cloak, silver hair, plum leather, moon-pale skin.
+albedo      = "art/Gretel_Diffuse.png"
+# One PNG for the select-screen portraits and the in-run portrait.
+portrait    = "art/portrait.png"
 
-# Gretel has no companion: Beowulf's dragon is replaced by an invisible copy
-# (same skeleton), so its fire attacks still come - from her wand's magic.
-hide = ["Wyrm_GEO"]
-description = "Captured as a child, Gretel pushed the witch into her own oven, stole her wand and freed her brother Hansel. Years later the siblings founded Ravens Watch to hunt the monsters that prey on the helpless. At 55, the wand's magic keeps her as quick and hardy as ever, and the nightmare crisis calls her to defend Reverie once more."
+# A weapon of her own (label = the base's graphic object, see export-character).
+[content.weapons."Weapon In Left Hand Mesh"]
+model  = "art/flute.glb"
+albedo = "art/flute_silver.png"
 
-# -- New abilities (rsmm ability-editor builds these steps) -------------------
-# Oven Door: releasing the shield slams it shut and sends out a shockwave.
-[[content.abilities]]
-add_link = "Event Defensive Ability Attack Active.activates"
-to = "Primary Ability Effect Spawner"
+# Her effects, violet. Every effect in Piper's own FX folder is copied under
+# Nyx_<name> and recoloured; Piper keeps hers.
+[content.effects."*"]
+tint = "#8a5cff"    
 
-# Cinder Spin: a kill with the Whirlwind releases a shockwave. Beowulf's
-# whirlwind-kill event fires and triggers nothing; Gretel's does.
-[[content.abilities]]
-add_link = "Event On Secondary Ability Character Killed.activates"
-to = "Primary Ability Effect Spawner"
+# Her own dash: only Nyx plays it, Piper keeps hers.
+# [content.animations.Piper_Dash_Default]
+# source = "art/spin.glb"
+# clip   = "a"
 
-# -- New talent effects (each keeps its original effect) ----------------------
-# Slam the Door (Retaliation): the first retaliation strike sends a shockwave.
-[[content.abilities]]
-add_link = "Event Skill Attack Flurry Active 1.activates"
-to = "Primary Ability Effect Spawner"
+# # Outfits fill skin slots 1..9 in order. NINE IS THE LIMIT: Piper has Default
+# plus nine skins, and the engine's skin roster is a hard-coded nine - a tenth
+# outfit would have no slot to take.
+    # [[content.outfits]]
+    # name   = "Frost"
+    # albedo = "art/outfit_frost.png"
 
-# Hunter's Pursuit (Fiery Slash): the attack after a dash sends a shockwave.
-[[content.abilities]]
-add_link = "Event Skill Dash Attack Active.activates"
-to = "Primary Ability Effect Spawner"
+    # [[content.outfits]]
+    # name   = "Moss"
+    # model  = "art/moss_body.glb"     # a body of its own (Piper's Poison skin shape)
+    # albedo = "art/outfit_moss.png"
 
-# Siblings' Oath (Battle Cry): also clears her other cooldowns.
-[[content.abilities]]
-add_link = "Event Skill Trait Battlecry Active.activates"
-to = "Event Trait Ability Clear Other Cooldowns"
+    # [[content.outfits]]
+    # name   = "Eclipse"
+    # albedo = "art/outfit_eclipse.png"
 
-# -- Her cards: every ability and talent (Beowulf keeps his). Keep the {N}
-# and #...@ tokens in the same order: the numbers come from each card's
-# String Format, the tokens are the game's keywords and highlights. ---------
+    # [[content.outfits]]
+    # name   = "Ember"
+    # albedo = "art/outfit_ember.png"
 
-# Abilities
-[content.skills."Ability Attack"]
-name        = "Hunter's Blade"
-description = "• Chain together a series of attacks with the blade. Last attack deals #+{0}%@ damage\n• Whole combo deals a total of &{1}~ damage"
+    # [[content.outfits]]
+    # name   = "Nebula"
+    # albedo = "art/outfit_nebula.png"
 
-[content.skills."Ability Power"]
-name        = "Scorching Wave"
-description = "• Drag the blade across the floor to send a scorching wave that deals &{0}~ damage along its path\n• #+WYRM@: Deals #+{1}%@ damage and applies #IGNITE@ to all enemies hit"
+    # [[content.outfits]]
+    # name   = "Bone"
+    # albedo = "art/outfit_bone.png"
 
-[content.skills."Ability Special"]
-name        = "Cinder Spin"
-description = "• Spin with the blade, briefly becoming #INTANGIBLE@ and dealing &{0}~ damage all around, then finish with a swing that deals &{1}~ damage all around\n• #+WYRM@: Deals #+{2}%@ damage and the finisher applies #IGNITE@ to all enemies hit\n• Killing an enemy with it releases a #POWER@ shockwave"
+    # [[content.outfits]]
+    # name   = "Abyss"
+    # albedo = "art/outfit_abyss.png"
 
-[content.skills."Ability Defense"]
-name        = "Oven Door"
-description = "• Hold to raise the oven door and block all incoming damage. Release to slam it shut, dealing &{0}~ damage and sending out a #POWER@ shockwave\n• #+WYRM@: Deals #+{1}%@ damage. Each attack blocked heals all nearby Heroes by #{2}%@ of damage blocked"
+    # [[content.outfits]]
+    # name   = "Dusk"
+    # albedo = "art/outfit_dusk.png"
 
-[content.skills."Ability Trait"]
-name        = "The Witch's Wand"
-description = "• Call the fire bound in the witch's wand to empower the next #POWER@, #SPECIAL@ or #DEFENSE@"
+    # [[content.outfits]]
+    # name   = "Aurora"
+    # albedo = "art/outfit_aurora.png"
 
-[content.skills."Ability Ultimate 1"]
-name        = "The Oven's Wrath"
-description = "• The wand's fire takes wing and tracks enemies, breathing flame all along its flight, dealing &{0}~ damage per second and applying #IGNITE@ to all enemies hit\n• #TRAIT@ is disabled during this time"
+# Her numbers (rsmm export-character Piper --list-values): a 5 s Rat King
+# # cooldown and 6 rats per spawn instead of 2.
+# [content.values]
+# "Ultimate Power 2 Cooldown Max" = 5
+# "Trait Ability Pets Per Spawn Default Amount" = 6
 
-[content.skills."Ability Ultimate 2"]
-name        = "Hunter's Fury"
-description = "• Rush forward, then chain together a series of attacks with the blade and the wand's fire, dealing up to &{0}~ damage\n• {1} is #INTANGIBLE@ during the whole ability"
+# # Her day notes fly as Juliet's bullet trail.
+# [content.references]
+# "Settings\\Heroes\\Hero_Geppetto_FX\\Piper_Note_Day_01.vfx.ot" = "Settings\\Heroes\\Hero_Juliet_FX\\Juliet_Basic_Bullet_Trail_01.vfx.ot"
 
-# Ultimate choices
-[content.skills."Ultimate Power 1"]
-name        = "The Oven's Wrath"
-description = "• The wand's fire takes wing and flies around, continuously breathing flame\n• Deals damage and applies #IGNITE@ to all enemies hit. {0} can act at the same time"
+# # New abilities (rsmm ability-editor builds these steps). Each one is visible:
+# # Rat Dash: dashing spawns a rat.
+# [[content.abilities]]
+# add_link = "Child State Dash Ability.activates"
+# to = "Event Trait Ability Spawn One Pet"
 
-[content.skills."Ultimate Power 2"]
-name        = "Hunter's Fury"
-description = "• Rush forward, then chain together a series of attacks with the blade and the wand's fire"
+# # Feast: a kill with her primary (the flute solo) summons a rat. Piper's
+# # kill event fires and triggers nothing; Nyx's triggers the one-rat spawn.
+# [[content.abilities]]
+# add_link = "Event On Primary Ability Character Killed.activates"
+# to = "Event Trait Ability Spawn One Pet"
 
-# Talents with a new effect (wired in [[content.abilities]] above)
-[content.skills."Attack Flurry"]
-name        = "Slam the Door"
-description = "• After using #DEFENSE@, the next #ATTACK@ within #{0}@ seconds triggers a two-strike retaliation, each strike dealing &{1}%~ damage\n• The first strike sends out a #POWER@ shockwave"
+# # Echo Zone: her defensive blast also drops a copy of her secondary zone, from
+# # a cloned ability of her own ("Echo") so her real secondary is untouched.
+# # DISABLED 2026-09-26: suspect for a crash 2 s into a Nyx run (NamedEvent_Dispatch
+# # reading -1 during the level-up burst of the XP grant). The copy includes a
+# # cloned MASTER_DESTROY named-event SENDER. Re-enable once cleared.
+# # [[content.abilities]]
+# # clone = "Ability Secondary"
+# # as = "Echo"
+# #
+# # [[content.abilities]]
+# # add_link = "Event Defensive Ability Active.activates"
+# # to = "Event Secondary Ability Activate Echo"
 
-[content.skills."Dash Attack"]
-name        = "Hunter's Pursuit"
-description = "• #ATTACK@ triggered right after #DASH@ deals &{0}%~ damage, applies #IGNITE@ to enemies and sends out a #POWER@ shockwave"
+# # Huge defensive: Piper's blast (radius 5) goes to 30 - six times the size,
+# # its effect scales with it - and it DEALS DAMAGE. Piper's blast only pushes
+# # (its damage multiplier is 0 unless the Defensive Deals Damage talent is
+# # taken, which gives 4..7); Nyx's reads a multiplier of 50 of her own.
+# [[content.abilities]]
+# set = "Defensive Ability Attack Radius.value"
+# value = 30
 
-[content.skills."Trait Battlecry"]
-name        = "Siblings' Oath"
-description = "• Activating #TRAIT@ clears #POWER@ cooldown for all Heroes in the area and gives them a &{0}~ #SHIELD@ for #{1}@ seconds\n• Also clears the cooldown of Gretel's other abilities"
+# [[content.abilities]]
+# clone = ["Defensive Ability Attack Pushback"]
+# suffix = " Nyx Blast Damage"
 
-# Talents re-themed (Beowulf's effect, Gretel's card)
-[content.skills."Passive Better Ignite"]
-name        = "Oven Heat"
-description = "• #IGNITE@ from the witch's fire lasts #{0}@ more seconds and deals &+{1}%~ damage"
+# [[content.abilities]]
+# set = "Defensive Ability Attack Pushback Nyx Blast Damage.value"
+# value = 50
 
-[content.skills."Passive Ignite Explosion"]
-name        = "Gingerbread Crumble"
-description = "• #IGNITED@ enemies crumble like burnt gingerbread when they die, bursting for &{0}~ damage and applying #IGNITE@ to all nearby enemies"
+# [[content.abilities]]
+# link = "Defensive Ability Attack Damage Enemies.value_28"
+# to = "Defensive Ability Attack Pushback Nyx Blast Damage"
 
-[content.skills."Trait Quest"]
-name        = "Wand Mastery"
-description = "• #Quest (x{0}):@ Hitting #{1}@ enemies with a single #Wand ability@ grants #+{2} DMG@\n• #Complete@: #TRAIT@ cooldown #-{3}%@, #Wand abilities@ deal &+{4}%~ damage"
-
-[content.skills."Trait AOE"]
-name        = "Flare of the Wand"
-description = "• Activating #TRAIT@ releases a flare that deals &{0}~ damage all around and applies #IGNITE@ to all enemies hit"
-
-[content.skills."Attack Speed"]
-name        = "Seasoned Hunter"
-description = "• After each #TRAIT@ activation, next #{0} ATTACKS@ gain #+{1}%@ Crit Chance\n• Permanently gain &+{2}%~ #ATTACK@ speed"
-
-[content.skills."Attack Wide"]
-name        = "Brawn over Brains"
-description = "• #ATTACK@ is slower but cleaves across a wide area and deals &+{0}%~ damage"
-
-[content.skills."Attack After Special"]
-name        = "Pent-Up Anger"
-description = "• After a #SPECIAL@, the next #ATTACK@ triggers a series of #{0}@ strikes dealing &{1}%~ damage each\n• If the #SPECIAL@ was empowered by the #Wand@, the strikes apply #IGNITE@ to enemies and inflict #+{2}%@ damage"
-
-[content.skills."Attack Fire Cone"]
-name        = "Oven Breath"
-description = "• The wand's fire bursts in a cone during the #ATTACK@ finisher, dealing &{0}%~ damage and applying #IGNITE@ to enemies hit"
-
-[content.skills."Attack Special Crit"]
-name        = "Hunter's Eye"
-description = "• #ATTACK@ and #SPECIAL@ gain &+{0}%~ Crit Chance against #IGNITED@ enemies"
-
-[content.skills."Power Double"]
-name        = "Twice Burned"
-description = "• #POWER@ sends out two successive scorching waves, each one dealing ${0}%* damage"
-
-[content.skills."Power Trail"]
-name        = "Breadcrumb Trail"
-description = "• #Wand POWER@ leaves a trail of burning crumbs that deals &{0}~ damage over time to enemies standing on it"
-
-[content.skills."Power End AOE"]
-name        = "Oven Burst"
-description = "• #POWER@'s waves burst at the end and deal &{0}%~ additional damage all around"
-
-[content.skills."Special Loop"]
-name        = "Dizzy Waltz"
-description = "• #SPECIAL@ spins &{0}~ more time(s) for #{1}%@ damage each"
-
-[content.skills."Special Multi Shock"]
-name        = "Rolling Flames"
-description = "• #Wand SPECIAL@'s finisher strikes #{0}@ times with a growing radius for &{1}%~ damage each"
-
-[content.skills."Special Sends Power"]
-name        = "Aftershock"
-description = "• #SPECIAL@ sends out a {0}, dealing &{1}%~ of #POWER@ damage"
-
-[content.skills."Defense Quest"]
-name        = "Iron Door"
-description = "• #Quest (x{0}):@ Blocking at least one attack during #DEFENSE@ grants #+{1} ARMOR@\n• #Complete@: #Wand DEFENSE@ heals &{2}%~ more in a larger radius"
-
-[content.skills."Defense Dash"]
-name        = "Battering Door"
-description = "• #DEFENSE@ makes {0} charge forward and deal &+{1}%~ damage along the path"
-
-[content.skills."Defense Block Deals Damage"]
-name        = "Hot Iron"
-description = "• Each attack blocked during #DEFENSE@ inflicts &{0}%~ of blocked damage to what is in front of {1}."
-
-[content.skills."Defense Damage Aura"]
-name        = "Witch's Sigils"
-description = "• After hitting an enemy with #DEFENSE@, burning sigils appear around {0}, dealing &{1}~ area damage per second for #{2}@ seconds"
-
-[content.skills."Utimate 1 Immolation"]
-name        = "Kindled"
-description = "• During #ULTIMATE@, {0} deals &{1}~ damage per second to nearby enemies, and all abilities function as if they were #Wand Empowered@\n"
-
-[content.skills."Ultimate 1 Upgrade 2"]
-name        = "Roaring Oven"
-description = "• During #ULTIMATE@, the wand's fire grows and breathes flame in a wider zone, dealing &+{0}%~ damage"
-
-[content.skills."Ultimate 2 Volcanic"]
-name        = "Hot Coals"
-description = "• Each #ULTIMATE@ fireball throws &{0}~ glowing coals into the surrounding area, dealing #{1}%@ damage each"
-
-[content.skills."Ultimate 2 Upgrade 2"]
-name        = "Wand Bolt"
-description = "• In Combat, #DASH@ makes the wand hurl a fireball towards a close enemy, dealing &{0}~ area damage"
+# # CRESCENT CROSS: her special, entirely her own. She chops, then sweeps; her
+# # own crescent-moon blades fly out forward and back, then left and right, in
+# # a cross. The blade is an entity of hers (Hero_Nyx_Crescent) on the engine's
+# # generic hero projectile, with her own mesh, maps, trail and impact (her
+# # violet effects) and her own cast animation. Piper's zone is gone.
+# [[content.attacks]]
+# id        = "Crescent"
+# slot      = "special"
+# model     = "art/crescent.glb"
+# albedo    = "art/crescent_alb.png"
+# mra       = "art/crescent_mra.png"
+# normal    = "art/crescent_nrm.png"
+# speed     = 16
+# lifetime  = 0.9
+# beats     = [[0, 180], [90, -90]]
+# delay     = 0.4
+# animation = "art/cast.glb"
+# clip      = "cast"
