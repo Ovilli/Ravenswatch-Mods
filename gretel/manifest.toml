@@ -26,6 +26,29 @@ albedo      = "art/Gretel_Diffuse.png"
 # One PNG for the select-screen portraits and the in-run portrait.
 portrait    = "art/portrait.png"
 
+# Her mesh is weighted to Geppetto's full export skeleton, but his body only
+# skins to a subset (the arms bend on the .SCALE bones, not TopArm/BotArm).
+# Each stray bone goes to the body bone that moves with it.
+[content.transform]
+skin      = "gltf"
+submeshes = "map"
+
+[content.transform.bones]
+"DEF.TopArm.L"        = "DEF.TopArm.SCALE.L"
+"DEF.TopArm.R"        = "DEF.TopArm.SCALE.R"
+"DEF.TWIST.TopArm.R"  = "DEF.TopArm.SCALE.R"
+"DEF.BotArm.L"        = "DEF.BotArm.SCALE.L"
+"DEF.BotArm.R"        = "DEF.BotArm.SCALE.R"
+"DEF.SpineMiddle"     = "DEF.SpineMiddle.SCALE"
+"DEF.SpineIsolateTop" = "DEF.SpineMiddle.SCALE"
+"DEF.Pelvis"          = "DEF.SpineHips"
+"DEF.RootMotion"      = "DEF.SpineHips"
+"DEF.HealthBarAttach" = "DEF.SpineHips"
+"DEF.Index03.R"       = "DEF.Index02.R"
+"DEF.Middle03.R"      = "DEF.Middle02.R"
+"DEF.Little03.R"      = "DEF.Little02.R"
+"DEF.PuppetHead"      = "DEF.PHY.PuppetHead"
+
 # A weapon of her own (label = the base's graphic object, see export-character).
 [content.weapons."Weapon In Left Hand Mesh"]
 model  = "art/flute.glb"
