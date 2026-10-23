@@ -1,0 +1,29 @@
+# Throwaway bisect for "right stick aim lost with piper-horde-rats" (2026-10-23).
+# Enable ONE piper-aim-bisect-* at a time (and not piper-horde-rats), play Piper
+# on a controller, and check whether the right stick still aims basic attacks.
+
+[mod]
+id          = "piper-aim-bisect-d"
+name        = "Piper aim bisect D"
+version     = "0.1.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "ONLY the card text of the Horde rats mod (skill block): Piper's text banks."
+sdk_version = "3"
+enabled     = false
+tags        = ["piper", "test"]
+experimental = true
+multiplayer_scope = "deterministic-shared"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind   = "skill"
+id     = "horde_rats_text"
+hero   = "Piper"
+mode   = "relabel"
+source = "Skill_Trait_More_Controllable_Pets"
+
+# Written like the shipped cards: every number is a placeholder (see the
+# `Skill String Desc Horde Rats` note above), `&..~` for values that grow with
+# rarity, `#..@` for fixed ones and ability keywords.
+description = "• For every &{1}~ notes played with #ATTACK@, summon &{0}~ rats that immediately attack nearby enemies\n• Rats spawn in groups of #{2}@ (instead of {3})\n• Increase maximum controllable rats by &{4}~"
