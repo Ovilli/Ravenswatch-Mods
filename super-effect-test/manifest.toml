@@ -1,12 +1,12 @@
 #:schema https://docs.rsmm.me/manifest.schema.json
 
 # TESTING ONLY. One Epic item built from scratch with a super effect
-# (`super_effects`). Epic because its collection completes at 3 Epic items, the
-# fewest: init.lua grants this item, then 2 shipped Epic items 10 s later.
+# (`super_effects`). Epic because its super effect switches on at 3 copies of
+# the item, the fewest (Common 5, Rare 4): init.lua grants it 3 times.
 # Every number is Life on hit in binary units (1/1024), a stat the hero never
 # moves, so the value says exactly which part is on:
 #   1 unit  = always-on effect (item held)
-#   +2      = always-on super effect (collection complete)
+#   +2      = always-on super effect (3 copies held)
 #   +4      = timed super effect, 5 s after a dash (super active only)
 
 [mod]
@@ -15,7 +15,7 @@ name        = "Super effect test"
 version     = "0.1.0"
 author      = "RSMM"
 summary     = "Playtest for item super_effects"
-description = "A blank Epic item with an always-on and a dash-triggered super effect. init.lua grants it plus 2 Epic items to complete the collection and logs Life on hit."
+description = "A blank Epic item with an always-on and a dash-triggered super effect. init.lua grants it 3 times (an Epic's super needs 3 copies) and logs Life on hit."
 enabled     = true
 sdk_version = ">=3.0,<4"
 tags        = ["item", "test"]
