@@ -1,0 +1,37 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+# TESTING ONLY. One Epic item built from scratch with a super effect
+# (`super_effects`). Epic because its collection completes at 3 Epic items, the
+# fewest: init.lua grants this item, then 2 shipped Epic items 10 s later.
+# Every number is Life on hit in binary units (1/1024), a stat the hero never
+# moves, so the value says exactly which part is on:
+#   1 unit  = always-on effect (item held)
+#   +2      = always-on super effect (collection complete)
+#   +4      = timed super effect, 5 s after a dash (super active only)
+
+[mod]
+id          = "super-effect-test"
+name        = "Super effect test"
+version     = "0.1.0"
+author      = "RSMM"
+summary     = "Playtest for item super_effects"
+description = "A blank Epic item with an always-on and a dash-triggered super effect. init.lua grants it plus 2 Epic items to complete the collection and logs Life on hit."
+enabled     = false
+sdk_version = ">=3.0,<4"
+tags        = ["item", "test"]
+license     = "MIT"
+multiplayer_scope = "deterministic-shared"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind          = "item"
+id            = "Test_Super_Effect"
+name          = "TEST: super effect"
+rarity        = "Epic"
+effects       = [
+    { stat = "Life on hit", amount = 0.0009765625, percent = false },
+]
+super_effects = [
+    { stat = "Life on hit", amount = 0.001953125, percent = false },
+    { stat = "Life on hit", amount = 0.00390625, seconds = 5, on = "dash", percent = false },
+]
