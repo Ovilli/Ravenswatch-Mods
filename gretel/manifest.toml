@@ -20,11 +20,11 @@ base        = "Geppetto"
 name        = "Gretel"
 description = "Gretel, a hero built by Indiano_Jones: Hansel's moves, her own look."
 model       = "art/_Gretel_Model.glb"
-# Her art, painted from Piper's own maps (region recolour, shading kept):
-# midnight-violet starred cloak, silver hair, plum leather, moon-pale skin.
 albedo      = "art/Gretel_Diffuse.png"
-# One PNG for the select-screen portraits and the in-run portrait.
-portrait    = "art/portrait.png"
+mra         = "art/Gretell_Metal_Rough_AO.png"
+normal      = "art/Gretel_Normals.png"
+# One PNG for the select-screen portraits and the in-run portrait (none yet).
+# portrait    = "art/portrait.png"
 
 # Her mesh is weighted to Geppetto's full export skeleton, but his body only
 # skins to a subset (the arms bend on the .SCALE bones, not TopArm/BotArm).
@@ -48,11 +48,6 @@ submeshes = "map"
 "DEF.Middle03.R"      = "DEF.Middle02.R"
 "DEF.Little03.R"      = "DEF.Little02.R"
 "DEF.PuppetHead"      = "DEF.PHY.PuppetHead"
-
-# A weapon of her own (label = the base's graphic object, see export-character).
-[content.weapons."Weapon In Left Hand Mesh"]
-model  = "art/flute.glb"
-albedo = "art/flute_silver.png"
 
 # Her effects, violet. Every effect in Piper's own FX folder is copied under
 # Nyx_<name> and recoloured; Piper keeps hers.
