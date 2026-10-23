@@ -1,8 +1,9 @@
 -- Written Talent Test — TESTING auto-grant.
 --
--- Hands Sun Wukong the four rebuilt talents at the start of every run:
+-- Hands Sun Wukong the five rebuilt talents at the start of every run:
 -- Fiery Dragon (Trait Fire), Frost Tiger (Trait Frost), the beads card
--- (Special Beads Increase) and Trait Longer Effects (game-event triggers).
+-- (Special Beads Increase), Trait Longer Effects (game-event triggers) and
+-- Trait Switch Timing (invulnerable for a moment).
 -- On any other hero the grants are refused and nothing happens. Strip this
 -- file before publishing.
 
@@ -13,7 +14,8 @@ local RARITY = { common = 0, rare = 1, epic = 2, legendary = 3 }
 local enabled = R.config.get("auto_grant", true)
 local tier = RARITY[R.config.get("rarity", "legendary")] or 3
 
-local TALENTS = { "Trait Fire", "Trait Frost", "Special Beads Increase", "Trait Longer Effects" }
+local TALENTS = { "Trait Fire", "Trait Frost", "Special Beads Increase", "Trait Longer Effects",
+                  "Trait Switch Timing" }
 
 local granted = false
 

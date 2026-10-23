@@ -1,10 +1,10 @@
 [mod]
 id          = "written-talent-test"
 name        = "Written Talent Test"
-version     = "0.2.0"
+version     = "0.3.0"
 author      = "Ovilli"
 license     = "MIT"
-description = "Test: four Sun Wukong talents rebuilt from scratch with written parts (no other hero's files): always-on, during, after + cooldown + next, game-event triggers, scale and on-hit."
+description = "Test: five Sun Wukong talents rebuilt from scratch with written parts (no other hero's files): always-on, during, after + cooldown + next, game-event triggers, invulnerable, scale and on-hit."
 sdk_version = ">=3.0,<4"
 enabled     = true
 tags        = ["talents", "test"]
@@ -85,3 +85,21 @@ id          = "longer_text"
 hero        = "Sun_Wukong"
 source      = "Trait Longer Effects"
 description = "• For #4@ second(s) after taking damage, damage &+{0}%~ (at most once every #8@ s)\n• For #15@ second(s) when night begins, Crit Chance &+{1}%~"
+
+# 5. Trait Switch Timing -> invulnerable 1.5 s after DEFENSE, and 1 s after taking damage (once every 20 s).
+[[content]]
+kind      = "talent"
+id        = "switch_invulnerable"
+hero      = "SunWukong"
+rebuild   = ["Trait Switch Timing"]
+add_stats = [
+  { talent = "Trait Switch Timing", stat = "Invulnerable", after = "DEFENSE", seconds = 1.5 },
+  { talent = "Trait Switch Timing", stat = "Invulnerable", on = "damage_taken", seconds = 1, cooldown = 20 },
+]
+
+[[content]]
+kind        = "skill"
+id          = "switch_text"
+hero        = "Sun_Wukong"
+source      = "Trait Switch Timing"
+description = "• For #{0}@ second(s) after using #DEFENSE@, become #INVULNERABLE@\n• For #{1}@ second(s) after taking damage, become #INVULNERABLE@ (at most once every #20@ s)"
