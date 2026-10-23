@@ -16,7 +16,7 @@ version     = "0.1.0"
 author      = "RSMM"
 summary     = "Playtest for item super_effects"
 description = "A blank Epic item with an always-on and a dash-triggered super effect. init.lua grants it plus 2 Epic items to complete the collection and logs Life on hit."
-enabled     = false
+enabled     = true
 sdk_version = ">=3.0,<4"
 tags        = ["item", "test"]
 license     = "MIT"
