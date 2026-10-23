@@ -13,5 +13,5 @@ description = "Logs the live hero's component list (position, engine index, clas
 sdk_version = "3"
 enabled     = false
 tags        = ["test", "debug"]
-multiplayer_scope = "client-only"
+multiplayer_scope = "local-only"
 loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
