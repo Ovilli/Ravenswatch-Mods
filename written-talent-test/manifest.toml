@@ -1,0 +1,87 @@
+[mod]
+id          = "written-talent-test"
+name        = "Written Talent Test"
+version     = "0.2.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Test: four Sun Wukong talents rebuilt from scratch with written parts (no other hero's files): always-on, during, after + cooldown + next, game-event triggers, scale and on-hit."
+sdk_version = ">=3.0,<4"
+enabled     = true
+tags        = ["talents", "test"]
+
+experimental = true
+multiplayer_scope = "deterministic-shared"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+# 1. Fiery Dragon -> always-on crit chance + attack power while DEFENSE is in use.
+[[content]]
+kind      = "talent"
+id        = "fire_always_and_during"
+hero      = "SunWukong"
+rebuild   = ["Trait Fire"]
+add_stats = [
+  { talent = "Trait Fire", stat = "Crit chance", values = [0.10, 0.15, 0.20, 0.25] },
+  { talent = "Trait Fire", stat = "Attack power", values = [0.20, 0.30, 0.40, 0.50], during = "DEFENSE" },
+]
+
+[[content]]
+kind        = "skill"
+id          = "fire_text"
+hero        = "Sun_Wukong"
+source      = "Trait Fire"
+description = "• Crit chance &+{0}%~\n• While using #DEFENSE@, damage &+{1}%~"
+
+# 2. Frost Tiger -> attack power for 4 s after DEFENSE, at most every 8 s, used up by the next ATTACK.
+[[content]]
+kind      = "talent"
+id        = "frost_after_cooldown_next"
+hero      = "SunWukong"
+rebuild   = ["Trait Frost"]
+add_stats = [
+  { talent = "Trait Frost", stat = "Attack power", values = [0.50, 0.75, 1.00, 1.25], after = "DEFENSE", seconds = 4, cooldown = 8, next = "ATTACK" },
+]
+
+[[content]]
+kind        = "skill"
+id          = "frost_text"
+hero        = "Sun_Wukong"
+source      = "Trait Frost"
+description = "• After #DEFENSE@, your next #ATTACK@ within #4@ seconds deals &+{0}%~ damage\n• Once every #8@ seconds"
+
+# 3. Beads card -> bigger SPECIAL beads (scale) that Ignite what they hit (on_hit).
+[[content]]
+kind    = "talent"
+id      = "beads_scale_and_ignite"
+hero    = "SunWukong"
+rebuild = ["Special Beads Increase"]
+scale   = [
+  { talent = "Special Beads Increase", node = "Default Radius", file = "Hero_SunWukong_Beads.entity", values = [0.30, 0.45, 0.60, 0.75] },
+]
+on_hit  = [
+  { talent = "Special Beads Increase", damage = "Attack Damage", status = "Ignite", file = "Hero_SunWukong_Beads.entity" },
+]
+
+[[content]]
+kind        = "skill"
+id          = "beads_text"
+hero        = "Sun_Wukong"
+source      = "Special Beads Increase"
+description = "• #SPECIAL@ beads radius &+{0}%~\n• #SPECIAL@ beads apply #IGNITE@"
+
+# 4. Trait Longer Effects -> damage for 4 s after taking damage (every 8 s at most), crit for 15 s when night falls.
+[[content]]
+kind      = "talent"
+id        = "longer_on_events"
+hero      = "SunWukong"
+rebuild   = ["Trait Longer Effects"]
+add_stats = [
+  { talent = "Trait Longer Effects", stat = "Attack power", values = [0.30, 0.45, 0.60, 0.75], on = "damage_taken", seconds = 4, cooldown = 8 },
+  { talent = "Trait Longer Effects", stat = "Crit chance", values = [0.20, 0.30, 0.40, 0.50], on = "night_start", seconds = 15 },
+]
+
+[[content]]
+kind        = "skill"
+id          = "longer_text"
+hero        = "Sun_Wukong"
+source      = "Trait Longer Effects"
+description = "• For #4@ second(s) after taking damage, damage &+{0}%~ (at most once every #8@ s)\n• For #15@ second(s) when night begins, Crit Chance &+{1}%~"

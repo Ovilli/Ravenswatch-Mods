@@ -1,0 +1,10 @@
+[fields.auto_grant]
+label   = "Grant the three test talents at the start of every run (testing)"
+type    = "bool"
+default = true
+
+[fields.rarity]
+label   = "Rarity of the granted talents"
+type    = "enum"
+values  = ["common", "rare", "epic", "legendary"]
+default = "legendary"

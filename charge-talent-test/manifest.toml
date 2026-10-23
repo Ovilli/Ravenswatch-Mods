@@ -6,7 +6,7 @@ author      = "Ovilli"
 license     = "MIT"
 description = "Test: Wukong's Trait Awakened adds POWER charges, Beowulf's Defense Dash adds DEFENSE charges."
 sdk_version = ">=3.0,<4"
-enabled     = true
+enabled     = false
 tags        = ["talents", "test"]
 
 experimental = true
