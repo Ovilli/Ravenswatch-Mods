@@ -1,0 +1,17 @@
+# Diagnostic: dump the live hero's components to the loader log, once per run.
+# Compare a run with it alone against a run with it + a mod that adds components
+# (piper-aim-bisect-a1), to see what the added components shift.
+#   rsmm log | grep "rsmm.debug] components"
+
+[mod]
+id          = "piper-component-dump"
+name        = "Hero component dump (diagnostic)"
+version     = "0.1.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Logs the live hero's component list (position, engine index, class, name) once per run."
+sdk_version = "3"
+enabled     = false
+tags        = ["test", "debug"]
+multiplayer_scope = "client-only"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
