@@ -59,3 +59,19 @@ jobs:
           files: dist/*.zip
           overwrite_files: true
           fail_on_unmatched_files: true
+
+      # action-gh-release only uploads/overwrites, so a deleted mod's ZIP would
+      # stay on the release forever. Drop every ZIP this run didn't build.
+      - name: Remove ZIPs of deleted mods
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release view mod-downloads --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' |
+            while IFS= read -r asset; do
+              if [[ "$asset" == *.zip && ! -f "dist/$asset" ]]; then
+                echo "Removing stale $asset"
+                gh release delete-asset mod-downloads "$asset" --repo "$GITHUB_REPOSITORY" --yes
+              fi
+            done
