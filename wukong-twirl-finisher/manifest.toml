@@ -61,7 +61,7 @@
 [mod]
 id          = "wukong-twirl-finisher"
 name        = "Wukong: Talent Tweaks"
-version     = "0.4.0"
+version     = "0.4.1"
 author      = "Ovilli"
 license     = "MIT"
 description = "Stick Twirl's dash attack becomes the end of Wukong's combo (Celestial Pillar's slam if owned, else the 4th hit), and Fiery Dragon / Frost Tiger / Supreme Polarity also reduce TRAIT cooldown by 10-25% by rarity."
@@ -109,6 +109,24 @@ clone_nodes = [
 
 rewires = [
   { trigger = '[Anim Clip] Hero_SunWukong\Skill Dash Attack\Skill Dash Attack Clip', action = "Skill Dash Attack Finisher Clip Selector", exact = true, within = "Basic Attack Clip Selector Step 1", within_span = 600 },
+]
+
+[[content]]
+kind = "talent"
+id   = "twirl_finisher_wiring_u6"
+hero = "SunWukong"
+file = "Hero_SunWukong_Update6.entity"
+
+# Update 6 (2026-10-12) rewires `State Basic Attack Step 1` in
+# `Hero_SunWukong_Update6.entity` directly to `Basic Attack Clip 1` and moves
+# Stick Twirl into a 3rd entry on `Basic Attack Combo Selector` ->
+# `State Basic Attack Step Dash Attack` -> `Skill Dash Attack Clip`.
+# Repointing `State Basic Attack Step Dash Attack` to the cloned selector
+# inherited from `Hero_SunWukong.entity` makes the Update 6 dash attack state
+# play `Skill Attack Finisher Clip` (if Celestial Pillar is owned) or
+# `Basic Attack Clip 4` (otherwise).
+rewires = [
+  { trigger = '[Anim Clip] Hero_SunWukong\Skill Dash Attack\Skill Dash Attack Clip', action = "Skill Dash Attack Finisher Clip Selector", exact = true, within = "State Basic Attack Step Dash Attack", within_span = 600 },
 ]
 
 # ---------------------------------------------------------------------------
