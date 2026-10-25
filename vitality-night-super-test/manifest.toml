@@ -8,7 +8,7 @@ version     = "0.1.0"
 author      = "RSMM"
 summary     = "Playtest for Vitality scaling in a night-triggered super effect"
 description = "An Epic item granted three times at run start. Its super effect should add 15 Vitality for 5 seconds when night begins."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = ["item", "test"]
 license     = "MIT"

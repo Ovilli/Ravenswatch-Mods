@@ -1,0 +1,49 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+[mod]
+id          = "testorerolloscript"
+name        = "testorerolloscript"
+version     = "0.1.0"
+author      = ""
+description = ""
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind          = "item"
+id            = "Damage_Attack"
+mode          = "replace"
+base          = "Damage_Attack"
+effects       = [{ "stat" = "Free Reroll", "amount" = 2, "percent" = false }]
+super_effects = [{ "stat" = "Free Reroll", "amount" = 2, "seconds" = 60, "on" = "night_start", "percent" = false }]
+
+[[content]]
+kind    = "talent"
+id      = "snow_queen_talents_builder"
+hero    = "Snow_Queen"
+rebuild = ["Attack Dual"]
+scale   = [{ "talent" = "Attack Dual", "node" = "Circular attack range", "values" = [1.0, 2.0, 3.0, 4.0], "file" = "Hero_Snow_Queen" }]
+
+[[content]]
+kind        = "skill"
+id          = "snow_queen_talents_Attack_Dual"
+hero        = "Snow_Queen"
+source      = "Attack Dual"
+description = "• #DEFENSE@ circular attack range &+{0}%~"
+
+[[content]]
+kind    = "talent"
+id      = "beowulf_talents_builder"
+hero    = "Beowulf"
+rebuild = ["Defense Quest"]
+scale   = [{ "talent" = "Defense Quest", "node" = "Circular attack range", "values" = [0.5, 1.0, 1.5, 2.0], "file" = "Hero_Beowulf" }]
+
+[[content]]
+kind        = "skill"
+id          = "beowulf_talents_Defense_Quest"
+hero        = "Beowulf"
+source      = "Defense Quest"
+description = "• #SPECIAL@ circular attack range &+{0}%~"
