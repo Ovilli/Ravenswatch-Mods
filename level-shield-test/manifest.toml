@@ -1,0 +1,24 @@
+# TESTING ONLY. Grants a Rare whose shield grows with hero level (per_level),
+# the way Fairy Dust's does. Card should read "+10 Shield" at level 1; take a
+# hit and the hero gains that shield; level up and the number grows.
+
+[mod]
+id          = "level-shield-test"
+name        = "Level shield test"
+version     = "0.1.0"
+author      = "RSMM"
+summary     = "Playtest for per_level shield scaling"
+description = "A Rare item granted at run start: +10 Shield at level 1, scaled by hero level like Fairy Dust."
+enabled     = false
+sdk_version = ">=3.0,<4"
+tags        = ["item", "test"]
+license     = "MIT"
+multiplayer_scope = "deterministic-shared"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind    = "item"
+id      = "Test_Level_Shield"
+name    = "TEST: Level Shield"
+rarity  = "Rare"
+effects = [{ stat = "Shield", amount = 10, seconds = 5, on = "damage_taken", per_level = true }]
