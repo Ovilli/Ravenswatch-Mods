@@ -1,0 +1,26 @@
+# TESTING ONLY. Grants this Epic three times at run start so its super effect
+# is active. At nightfall, the hero should gain 15 displayed Vitality for 5 s.
+
+[mod]
+id          = "vitality-night-super-test"
+name        = "Vitality night super test"
+version     = "0.1.0"
+author      = "RSMM"
+summary     = "Playtest for Vitality scaling in a night-triggered super effect"
+description = "An Epic item granted three times at run start. Its super effect should add 15 Vitality for 5 seconds when night begins."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = ["item", "test"]
+license     = "MIT"
+multiplayer_scope = "deterministic-shared"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind          = "item"
+id            = "Test_Vitality_Night_Super"
+name          = "TEST: Night Vitality"
+rarity        = "Epic"
+effects       = [{ stat = "Armour", amount = 0, percent = false }]
+super_effects = [
+  { stat = "Vitality", amount = 15, seconds = 5, on = "night_start" },
+]
