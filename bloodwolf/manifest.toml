@@ -18,6 +18,11 @@ id          = "Bloodwolf"
 base        = "Red"
 name        = "Bloodwolf"
 description = "Red's wolf, with a bite of its own."
+# The wolf the special summons is shipped by this mod (tools/build_summoned_wolf.py),
+# so nothing in the game's preload caches lists it: its line is added to the
+# hero's cache and its own preloads are borrowed from the chapter-3 elite wolf
+# it was cut from.
+assets = { "Heroes\\Hero_Red\\Hero_Bloodwolf_SummonedWolf.entity.ot" = "Enemies\\Wolves\\Elite_Wolf_Alpha.entity.ot" }
 
 # ---- DEFENCE: only the leap's landing -------------------------------------------------
 # The shipped wolf defence is a howl that grants armour and life-on-hit for a
@@ -119,3 +124,27 @@ modifier   = "Skill Power Special Bomb Modifier"
 record     = "Secondary Ability Attack Damage"
 switch     = "State Wolf Primary Ability"
 refs       = { "Skill Power Special Bomb Modifier" = "Bloodwolf Blood Bomb Modifier" }
+
+# ---- SPECIAL: summon a chapter-3 wolf ------------------------------------------------
+# The special already runs in State Wolf Secondary Ability (the leap); the
+# spawner is added to that state's activates, so the wolf appears as the leap
+# begins. It is a copy of the bomb spawner with its launch velocity at 0: the
+# bomb is thrown from the hero's firing position, the wolf simply stands there.
+# The summon itself is assets/.../Hero_Bloodwolf_SummonedWolf (see
+# tools/build_summoned_wolf.py): an Elite_Wolf_Alpha with Wukong's lifetime, the
+# enemy flag off, and no attack cooldown.
+[[content.abilities]]
+clone = "Secondary Ability Entity Spawner"
+name  = "Bloodwolf Summon Spawner"
+
+[[content.abilities]]
+set   = "Bloodwolf Summon Spawner.template[1]"
+value = "Heroes\\Hero_Red\\Hero_Bloodwolf_SummonedWolf.entity.ot"
+
+[[content.abilities]]
+set   = "Bloodwolf Summon Spawner.speed"
+value = 0
+
+[[content.abilities]]
+add_link = "State Wolf Secondary Ability.activates"
+to       = "Bloodwolf Summon Spawner"
