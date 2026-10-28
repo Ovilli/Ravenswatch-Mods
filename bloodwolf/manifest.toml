@@ -30,7 +30,7 @@ assets = { "Heroes\\Hero_Red\\Hero_Bloodwolf_SummonedWolf.entity.ot" = "Enemies\
 # Wolf Secondary Attack (its zone attack, radius and damage) plus the
 # aggressive-defence FX and impact sound -- and grants no buff at all.
 [[content.abilities]]
-add_link = "State Wolf Defensive Ability.activates"
+add_link = "Event Wolf Defensive Ability Clip End.activates"
 to       = "Event Wolf Secondary Ability Active"
 
 [[content.abilities]]
