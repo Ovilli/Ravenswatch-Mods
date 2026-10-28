@@ -1,0 +1,121 @@
+[mod]
+id           = "bloodwolf"
+name         = "Bloodwolf"
+version      = "0.1.0"
+author       = "RSMM"
+description  = "A wolf of its own, built on Red. A real three-hit combo that ends in the double strike and opens a bleed; a defensive howl that is only the leap's landing stomp. Every hit of the finisher stacks Carmilla's bleed."
+enabled      = true
+load_order   = 60
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["heroes", "combat"]
+multiplayer_scope = "deterministic-shared"
+experimental = true
+
+[[content]]
+kind        = "hero"
+id          = "Bloodwolf"
+base        = "Red"
+name        = "Bloodwolf"
+description = "Red's wolf, with a bite of its own."
+
+# ---- DEFENCE: only the leap's landing -------------------------------------------------
+# The shipped wolf defence is a howl that grants armour and life-on-hit for a
+# few seconds. Here the howl instead fires the special's landing package --
+# Wolf Secondary Attack (its zone attack, radius and damage) plus the
+# aggressive-defence FX and impact sound -- and grants no buff at all.
+[[content.abilities]]
+add_link = "State Wolf Defensive Ability.activates"
+to       = "Event Wolf Secondary Ability Active"
+
+[[content.abilities]]
+remove_link = "State Wolf Defensive Ability Effect.while_active"
+to          = "Wolf Defensive Modifier Armour"
+
+[[content.abilities]]
+remove_link = "State Wolf Defensive Ability Effect.while_active"
+to          = "Wolf Defensive Modifier Life On Hit Basic"
+
+[[content.abilities]]
+remove_link = "State Wolf Defensive Ability Effect.while_active"
+to          = "Wolf Defensive Modifier Life On Hit Primary"
+
+# ---- BASIC ATTACK: a real 1-2-3 ------------------------------------------------------
+# Red's wolf combo is two steps (`Wolf Basic Attack Combo` lists two
+# oCDtAttackComboStepSettings). The third step is a copy of the second whose
+# state plays the DOUBLE STRIKE clip (RED_Wolf_Skill_DoubleStrike.fbx, already
+# the animatic of Wolf Skill Dash Attack Clip, whose event keys land the hit
+# through Wolf Event Skill Dash Attack Active). The combo list gains the copy,
+# and the clip ends by holding the third step -- do NOT point it at
+# Wolf State Skill Dash Attack, which resets to step 1.
+[[content.abilities]]
+clone = "State Wolf Basic Attack Step 2"
+name  = "State Wolf Basic Attack Step 3"
+
+[[content.abilities]]
+clone = "Wolf Skill Dash Attack Clip"
+name  = "Wolf Basic Attack Clip 3"
+
+[[content.abilities]]
+link = "Wolf Basic Attack Clip 3.ref_11"
+to   = "State Wolf Basic Attack Step 3"
+
+[[content.abilities]]
+remove_link = "State Wolf Basic Attack Step 3.activates"
+to          = "Wolf Basic Attack Clip Selector 2"
+
+[[content.abilities]]
+add_link = "State Wolf Basic Attack Step 3.activates"
+to       = "Wolf Basic Attack Clip 3"
+
+[[content.abilities]]
+remove_link = "State Wolf Basic Attack Step 3.on_enter"
+to          = "Wolf Basic Attack Clip Selector 2"
+
+[[content.abilities]]
+add_link = "State Wolf Basic Attack Step 3.on_enter"
+to       = "Wolf Basic Attack Clip 3"
+
+[[content.abilities]]
+add_entry = "Wolf Basic Attack Combo.bytes_4"
+index     = 1
+refs      = { "State Wolf Basic Attack Step 2" = "State Wolf Basic Attack Step 3" }
+
+# ---- BLEED ON THE FINISHER -----------------------------------------------------------
+# Carmilla's bleed (modifier 390057388) is what Red's own wolf bite applies; the
+# finisher puts the same status on whoever it hits, through a copy of the bite's
+# debuff record, switched by the third step's own state. The double strike has
+# two strike keys, so one press can apply it twice.
+[[content.abilities]]
+add_debuff = "Wolf Basic Attack Damage.bytes_36"
+modifier   = "Skill Primary Bleed Modifier"
+donor      = "Wolf Primary Ability Damage"
+switch     = "State Wolf Basic Attack Step 3"
+
+# ---- POWER: the bite plants a blood bomb ---------------------------------------------
+# The bite's own damage record gains Carmilla's "Blood bomb" debuff (modifier
+# 462382549, the one her Power puts on whoever it hits): Character_Common's
+# Debuff Blood Bomb listener sees the status on the victim and runs the blood
+# explosion there, corpse included. The bomb/moder delay and the modifier that
+# carries it are Carmilla's, cloned here so the timer is this hero's own.
+[[content.abilities]]
+clone = "Skill Power Special Bomb Modifier"
+from  = "Carmilla"
+name  = "Bloodwolf Blood Bomb Modifier"
+
+[[content.abilities]]
+clone = "Skill Power Special Bomb Time Before Explosion Value"
+from  = "Carmilla"
+name  = "Bloodwolf Blood Bomb Delay"
+
+[[content.abilities]]
+link = "Bloodwolf Blood Bomb Modifier.duration"
+to   = "Bloodwolf Blood Bomb Delay"
+
+[[content.abilities]]
+add_debuff = "Wolf Primary Ability Damage.bytes_36"
+from       = "Carmilla"
+modifier   = "Skill Power Special Bomb Modifier"
+record     = "Secondary Ability Attack Damage"
+switch     = "State Wolf Primary Ability"
+refs       = { "Skill Power Special Bomb Modifier" = "Bloodwolf Blood Bomb Modifier" }
