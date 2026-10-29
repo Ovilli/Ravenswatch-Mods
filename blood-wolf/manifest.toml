@@ -1,0 +1,50 @@
+[mod]
+id                = "blood-wolf"
+name              = "Blood Wolf"
+version           = "0.1.0"
+author            = "Local"
+description       = "Clone of Scarlet (Red) named Blood Wolf, locked into Wolf form."
+license           = "MIT"
+sdk_version       = ">=3.0,<4"
+enabled           = false
+multiplayer_scope = "deterministic-shared"
+tags              = ["hero", "red"]
+experimental      = true
+loader_flags      = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind        = "hero"
+id          = "BloodWolf"
+base        = "Red"
+name        = "Blood Wolf"
+description = "A clone of Scarlet, permanently in Wolf form."
+own_entity  = true
+abilities   = [
+    { remove_link = "Child Event Initialize.activates", to = "Passive Transform Tester" },
+    { add_link = "Child Event Initialize.activates", to = "Event Trait Ability Transform" },
+    { link = "Passive Transform Tester.on_true", to = "" },
+    { clone = ["State Wolf Basic Attack Step 2", "Wolf Basic Attack Clip 2"], rename = { "State Wolf Basic Attack Step 2" = "State Wolf Basic Attack Step 3", "Wolf Basic Attack Clip 2" = "Wolf Basic Attack Clip 3" } },
+    { link = "Wolf Basic Attack Clip 3.ref_3", to = "Wolf Skill Dash Attack Anim" },
+    { link = "Wolf Basic Attack Clip 3.ref_11", to = "State Wolf Basic Attack Step 3" },
+    { remove_link = "State Wolf Basic Attack Step 3.activates", to = "Wolf Basic Attack Clip Selector 2" },
+    { add_link = "State Wolf Basic Attack Step 3.activates", to = "Wolf Basic Attack Clip 3" },
+    { remove_link = "State Wolf Basic Attack Step 3.on_enter?", to = "Wolf Basic Attack Clip Selector 2" },
+    { add_link = "State Wolf Basic Attack Step 3.on_enter?", to = "Wolf Basic Attack Clip 3" },
+    { add_subobject = "Wolf Basic Attack Combo.bytes_4", donor_index = 1, replace_ref = { "State Wolf Basic Attack Step 2" = "State Wolf Basic Attack Step 3" } },
+
+    # No dash, and no way back to human (the trait button transforms).
+    { remove_link = "State Alt Form Abilities Enabled.while_active", to = "Dash Controller Selector" },
+    { remove_link = "State Alt Form Abilities Enabled.activates", to = "Trait Ability Controller" },
+
+    # Power: the bite also fires the squid's (Tentacle Nightmare) laser shot.
+    # Scarlet's own projectile spawner, copied and pointed at the enemy entity.
+    # OPEN QUESTION for the playtest: does it hit enemies (owner's side) or you?
+    { clone = ["Skill Dash Projectiles Spawner"], rename = { "Skill Dash Projectiles Spawner" = "Squid Shot Spawner" } },
+    { set = "Squid Shot Spawner.template[1]", value = "Enemies\\Tentacle_Nightmares\\Projectile_Tentacle_Nightmare_Laser_Shot.entity.ot" },
+    { add_link = "Event Wolf Primary Ability Active.activates", to = "Squid Shot Spawner" },
+
+    # Ultimate: the squid's rain missile, fired as the wolf ultimate starts.
+    { clone = ["Skill Dash Projectiles Spawner"], rename = { "Skill Dash Projectiles Spawner" = "Squid Rain Spawner" } },
+    { set = "Squid Rain Spawner.template[1]", value = "Enemies\\Tentacle_Nightmares\\Attack_Tentacle_Nightmare_Rain_Missile.entity.ot" },
+    { add_link = "State Wolf Ultimate Power 1 Active.activates", to = "Squid Rain Spawner" },
+]

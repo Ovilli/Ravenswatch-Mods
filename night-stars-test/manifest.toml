@@ -1,0 +1,27 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+# TESTING ONLY. One item: +1 Star of Fate (reroll) every time night begins.
+# init.lua grants it at run start and logs the reroll count at each change.
+
+[mod]
+id          = "night-stars-test"
+name        = "Night stars test"
+version     = "0.1.0"
+author      = "RSMM"
+summary     = "+1 Star of Fate each night"
+description = "A test item granted at run start: +1 Star of Fate every time night begins."
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = ["item", "test"]
+license     = "MIT"
+multiplayer_scope = "deterministic-shared"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind         = "item"
+id           = "Test_Night_Stars"
+base         = "Increase_Shield"
+rarity       = "Common"
+name         = "TEST: night stars"
+super_effect = false
+effect       = { stat = "Stars of Fate", amount = 1, on = "night_start" }
