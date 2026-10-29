@@ -1,0 +1,53 @@
+# TESTING ONLY. Every Hero-tab block on one Scarlet clone, to see which work
+# in game. Form is the default (switches at night). What to watch per button
+# is in the comments.
+
+[mod]
+id           = "hero-builder-test"
+name         = "Hero builder test"
+version      = "0.2.0"
+author       = "RSMM"
+description  = "A Scarlet clone whose buttons use every Hero tab block."
+enabled      = true
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["heroes", "test"]
+multiplayer_scope = "deterministic-shared"
+experimental = true
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind        = "hero"
+id          = "Howler"
+base        = "Red"
+name        = "Howler (test)"
+description = "Hero builder test: every block on one hero."
+
+[content.kit]
+dash = "none"
+# POWER: 3 homing ghost notes side by side that burn and explode (do they hurt
+# enemies? burn? explode?), then a 6 m hit area at 200%.
+power = { replace = true, steps = [
+    { fire = "Heroes/Hero_Piper/Hero_Piper_Ghost_Note_Projectile", offsets = [-1, 0, 1], damage = 150, burn = 4, explode = 3 },
+    { wait = 0.3 },
+    { hit = { radius = 6, damage = 200 } },
+] }
+# SPECIAL: heal 30, then the squid laser fanned, poisoning and cursing.
+special = { replace = true, steps = [
+    { heal = 30 },
+    { fire = "Enemies/Tentacle_Nightmares/Projectile_Tentacle_Nightmare_Laser_Shot", angles = [-25, 0, 25], poison = 3, curse = true },
+] }
+# DEFENSE: RETURN. Kintaro's axe as Howler's own copy: does it bounce 4 times
+# between enemies and come back?
+defense = { steps = [
+    { fire = "Heroes/Hero_Kintaro/Hero_Kintaro_Thrown_Axe", reads = { "Max Rebound" = 4 } },
+] }
+# ULTIMATE: REFRESH + RICOCHET. The Snow Queen's shard with seeking on (each hit
+# refreshes its lifetime, up to 3 hits), then Juliet's bullets bouncing 3 times.
+ultimate = { replace = true, steps = [
+    { fire = "Heroes/Hero_Snow_Queen/Hero_Snow_Queen_Projectile", angles = [-15, 0, 15], reads = { "Skill Seeking Available" = true } },
+    { wait = 0.3 },
+    { repeat = 3, every = 0.15, steps = [
+        { fire = "Heroes/Hero_Juliet/Hero_Juliet_Projectile", ricochet = 3, ricochet_damage = 70 },
+    ] },
+] }

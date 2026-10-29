@@ -10,7 +10,7 @@ version     = "0.1.0"
 author      = "RSMM"
 summary     = "+1 Star of Fate each night"
 description = "A test item granted at run start: +1 Star of Fate every time night begins."
-enabled     = true
+enabled     = false
 sdk_version = ">=3.0,<4"
 tags        = ["item", "test"]
 license     = "MIT"
