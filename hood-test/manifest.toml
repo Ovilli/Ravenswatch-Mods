@@ -11,7 +11,7 @@ name         = "Hood test"
 version      = "0.1.0"
 author       = "RSMM"
 description  = "Scarlet clone that never turns into the wolf (test)."
-enabled      = true
+enabled      = false
 sdk_version  = ">=3.0,<4"
 license      = "MIT"
 tags         = ["heroes", "test"]
