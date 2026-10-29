@@ -25,10 +25,21 @@ id    = "Kuma"
 base  = "Elite_Wolf_Alpha"
 tribe = "Undead_Hogs"
 
-# Kuma's attacks, best first. The bite is the timber wolf's (the Alpha has none
-# of its own); the howl and the summon are left out.
+# Kuma's attacks, best first: each fires when its own condition passes
+# (range, cooldown), the first that does wins, and a shared cooldown spaces
+# them out. Four are the wolf family's own (the bite is the timber wolf's, the
+# Alpha has none; the howl is the Alpha's, here a roar that summons nothing);
+# three are new, copied from a wolf attack below with Kuma's own moves.
 [content.ai]
-attacks     = ["Attack Giant Leap", "Attack Double Slash", "Attack Bite"]
+attacks = [
+    "Attack Giant Leap",     # leap slam
+    "Attack Belly Slam",     # new: fish slam, a short hop with a wide landing
+    "Attack Howl",           # roar
+    "Attack Sumo Stomp",     # new: dohyo stomp
+    "Attack Double Slash",   # claw flurry
+    "Attack Clap",           # new: nekodamashi clap
+    "Attack Bite",           # grab and hold
+]
 attack_best = 2.5
 attack_max  = 4.0
 leash       = 50
@@ -40,6 +51,25 @@ leash       = 50
 "Attack Giant Leap Max Jump Distance Value" = 12
 "Attack Bite Damage Multiplier Value"  = 0.6   # 0.4
 "Move Locomotion Max Speed"            = 3.5   # 4: heavier, a little slower
+
+# New attacks: a copy of a wolf attack (its own state, condition, cooldown and
+# hit) with Kuma's animation. `animations` and `values` name the SOURCE's parts.
+[[content.ai.new_attacks]]
+name = "Attack Belly Slam"
+from = "Attack Giant Leap"
+animations = { "Attack Giant Leap Anim" = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Bear_FishSlam_Ultimate1_In.fbx" }
+values = { "Attack Giant Leap Radius Value" = 6, "Attack Giant Leap Min Jump Distance Value" = 2, "Attack Giant Leap Max Jump Distance Value" = 6, "Attack Giant Leap Jumping Distance Nominal Value" = 4 }
+
+[[content.ai.new_attacks]]
+name = "Attack Sumo Stomp"
+from = "Attack Double Slash"
+animations = { "Attack Double Combo Anim" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Dohyo.fbx", "Attack Simple Slash First Attack Anim" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_BasicAttack02.fbx" }
+values = { "Attack Double Slash Traverser Base Radius Value" = 4.5 }
+
+[[content.ai.new_attacks]]
+name = "Attack Clap"
+from = "Attack Double Slash"
+animations = { "Attack Double Combo Anim" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Nekodamashi.fbx", "Attack Simple Slash First Attack Anim" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_BasicAttack02.fbx" }
 
 # Kuma's body and animations in place of the wolf's. Hit timings stay the
 # wolf's (they are data on each animation component, not in the FBX), so a
