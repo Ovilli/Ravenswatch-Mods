@@ -21,7 +21,13 @@ description = "A clone of Scarlet, permanently in Wolf form."
 own_entity  = true
 abilities   = [
     { remove_link = "Child Event Initialize.activates", to = "Passive Transform Tester" },
-    { add_link = "Child Event Initialize.activates", to = "Event Trait Ability Transform" },
+    # Transform at spawn, but only in a run: the select screen runs this init
+    # too, and a transformation there left the preview empty (playtest
+    # 2026-10-29). Hero_Common's own "not in preview" check (it is what switches
+    # the hero controller on only in a run), copied and pointed at the transform.
+    { clone = ["Activate Hero Controller Tester"], from = "Hero_Common", rename = { "Activate Hero Controller Tester" = "Wolf Lock In Run Tester" } },
+    { link = "Wolf Lock In Run Tester.on_true", to = "Event Trait Ability Transform" },
+    { add_link = "Child Event Initialize.activates", to = "Wolf Lock In Run Tester" },
     { link = "Passive Transform Tester.on_true", to = "" },
     { clone = ["State Wolf Basic Attack Step 2", "Wolf Basic Attack Clip 2"], rename = { "State Wolf Basic Attack Step 2" = "State Wolf Basic Attack Step 3", "Wolf Basic Attack Clip 2" = "Wolf Basic Attack Clip 3" } },
     { link = "Wolf Basic Attack Clip 3.ref_3", to = "Wolf Skill Dash Attack Anim" },
