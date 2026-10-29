@@ -1,0 +1,74 @@
+[mod]
+id                = "kuma-bear"
+name              = "Kuma the Bear"
+version           = "0.1.0"
+author            = "Local"
+description       = "Kintaro's bear Kuma turns up in the Dark Hills as an elite enemy: Kuma's body and animations, a leap slam, a claw flurry and a bite, and more health than an Alpha."
+license           = "MIT"
+sdk_version       = ">=3.0,<4"
+enabled           = true
+multiplayer_scope = "deterministic-shared"
+tags              = ["enemy", "kintaro"]
+# `ai` and `reskin` build the enemy an entity of its own; not proven in game yet.
+experimental      = true
+# init.lua spawns Kuma beside the hero as each chapter starts (testing).
+loader_flags      = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+# An Alpha wolf's def, entity and AI, copied. The wolf family is the base because
+# it is a four-legged melee rig with a leap, a slash combo and a bite, which line
+# up with Kuma's own moves. A def loads only on maps that list its tribe, and the
+# wolves fight only in Avalon (chapter 2), so Kuma joins the Undead Hogs: he loads
+# from the first chapter, Dark Hills, and its hog camps may pick him too.
+[[content]]
+kind  = "enemy"
+id    = "Kuma"
+base  = "Elite_Wolf_Alpha"
+tribe = "Undead_Hogs"
+
+# Kuma's attacks, best first. The bite is the timber wolf's (the Alpha has none
+# of its own); the howl and the summon are left out.
+[content.ai]
+attacks     = ["Attack Giant Leap", "Attack Double Slash", "Attack Bite"]
+attack_best = 2.5
+attack_max  = 4.0
+leash       = 50
+
+[content.ai.values]
+"Raw Max Health"                       = 250   # the wolf model's 100
+"Collision Radius"                     = 1.6   # 1.2: Kuma is bigger
+"Attack Giant Leap Radius Value"       = 4.5   # 3.5: a heavier slam
+"Attack Giant Leap Max Jump Distance Value" = 12
+"Attack Bite Damage Multiplier Value"  = 0.6   # 0.4
+"Move Locomotion Max Speed"            = 3.5   # 4: heavier, a little slower
+
+# Kuma's body and animations in place of the wolf's. Hit timings stay the
+# wolf's (they are data on each animation component, not in the FBX), so a
+# bear move stands in for the wolf move of the same role.
+[content.reskin]
+"Characters\\Enemies\\Wolves\\Wolf_Alpha_GEO.fbx"                    = "Characters\\Heroes\\Kintaro\\Kintaro_Bear_GEO.fbx"
+"Characters\\Enemies\\Wolves\\Textures\\M_WolfAlpha.mat.ot"          = "Characters\\Heroes\\Kintaro\\Textures\\M_KintaroBear.mat.ot"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Alpha_GiantLeap.fbx"   = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Leap.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Alpha_Howl.fbx"        = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Facing_Danger_In.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Alpha_DeathFromStagger.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Deathdoor_In.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Alpha_Stagger_In.fbx"  = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Hit_Stun_In.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Alpha_Stagger_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Hit_Stun_Loop.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Alpha_Stagger_Out.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Deathdoor_Out.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_Bite.fbx"   = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Aimed_Bite_01.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_Bite_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Aimed_Bite_02.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_Bite_Out.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_BasicAttack03.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_Death.fbx"  = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Deathdoor_In.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_Death02.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Deathdoor_In.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_DoubleSlash.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Rushed_Strikes.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_SimpleSlash.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_BasicAttack01.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_FightingIdle_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_FightingIdle_Loop.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_WanderingIdle_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Facing_Danger_Loop.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_Spawning.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Spawning.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Dash.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTmber_HitStun_In.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Hit_Stun_In.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTmber_HitStun_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Hit_Stun_Loop.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Shared_Run_Loop.fbx"   = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Run_Loop.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Shared_Trot_F_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Walk_Loop.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Shared_WalkStrafe_F_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Walk_Loop.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Shared_WalkStrafe_B_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Walk_Loop.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Shared_WalkStrafe_L_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Walk_Side_L_Loop.fbx"
+"Characters\\Enemies\\Wolves\\Animations\\Wolf_Shared_WalkStrafe_R_Loop.fbx" = "Characters\\Heroes\\Kintaro\\Animations\\Bear_Kintaro_Walk_Side_R_Loop.fbx"
