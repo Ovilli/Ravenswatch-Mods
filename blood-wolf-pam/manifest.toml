@@ -190,9 +190,10 @@ abilities   = [
     { entity = "Bomb", add_subobject = "Fx_Explosion.bytes_1", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[1]", replace_ref = { "Mesh" = "Mesh" } },
 ]
 
-# Pets, Piper's way: one dire wolf follows Blood Wolf from the start (the
-# select screen too). The TRAIT button (no cooldown) sends it to attack; it
-# comes back when the fight ends. The special is removed. Prototype.
+# Special: summon a dire wolf (an ally copy of the chapter-3 enemy). Pam's
+# special starter talent will turn it into Piper-style followers with an
+# attack/recall button. The trait is off until blood shower is designed: left
+# in, it would turn Blood Wolf human. Prototype.
 [content.kit]
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "trait" }
-special = "none"
+special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ summon = "Enemies/Wolves/Standard_Wolf_Dire" }] }
+trait = "none"
