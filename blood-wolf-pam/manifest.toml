@@ -6,7 +6,7 @@ author            = "Local"
 description       = "Clone of Scarlet (Red) named Blood Wolf, locked into Wolf form."
 license           = "MIT"
 sdk_version       = ">=3.0,<4"
-enabled           = true
+enabled           = false
 multiplayer_scope = "deterministic-shared"
 tags              = ["hero", "red"]
 
@@ -26,7 +26,8 @@ abilities   = [
     { link = "Wolf Lock In Run Tester.on_true", to = "Event Trait Ability Transform" },
     { add_link = "Child Event Initialize.activates", to = "Wolf Lock In Run Tester" },
     { link = "Passive Transform Tester.on_true", to = "" },
-    { remove_link = "State Alt Form Abilities Enabled.activates", to = "Trait Ability Controller" },
+    # (The trait button stays connected: the kit's pets block below makes it the
+    # wolves' attack order, so it no longer turns Blood Wolf human.)
     # Initial form. Hero_Alt_Form_Common's "Initialize Set Starting Form
     # Tester" reads "Initialize In Default Form Value" and turns State Default
     # Form (the human) on when it is true, State Alt Form (the wolf) when it is
@@ -189,9 +190,9 @@ abilities   = [
     { entity = "Bomb", add_subobject = "Fx_Explosion.bytes_1", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[1]", replace_ref = { "Mesh" = "Mesh" } },
 ]
 
-# Special: summon a chapter 3 wolf that fights for Blood Wolf (prototype). The
-# hero builder's summon block, on the WOLF special's start state (Blood Wolf
-# never leaves wolf form). Variants: Standard_Wolf_Timber, Standard_Wolf_Dire,
-# Elite_Wolf_Alpha.
+# Pets, Piper's way: one dire wolf follows Blood Wolf from the start (the
+# select screen too). The TRAIT button (no cooldown) sends it to attack; it
+# comes back when the fight ends. The special is removed. Prototype.
 [content.kit]
-special = { when = "Event Wolf Secondary Ability Active", steps = [ { summon = "Enemies/Wolves/Standard_Wolf_Timber" } ] }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "trait" }
+special = "none"
