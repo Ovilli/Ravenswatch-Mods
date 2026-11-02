@@ -190,14 +190,10 @@ abilities   = [
     { entity = "Bomb", add_subobject = "Fx_Explosion.bytes_1", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[1]", replace_ref = { "Mesh" = "Mesh" } },
 ]
 
-# Special: summon a dire wolf (an ally copy of the chapter-3 enemy). Pam's
-# special starter talent will turn it into Piper-style followers with an
-# attack/recall button. The trait is off until blood shower is designed: left
-# in, it would turn Blood Wolf human. Prototype.
+# Special: summon a dire wolf (an ally copy of the chapter-3 enemy). It lives
+# 8 s and, however it dies (run out or killed), bursts into Blood Wolf's own
+# bleed bomb. The trait is off until blood shower is designed: left in, it
+# would turn Blood Wolf human. Prototype.
 [content.kit]
-special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ summon = "Enemies/Wolves/Standard_Wolf_Dire" }] }
+special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 8, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb" }] }
 trait = "none"
-# The special's starter talent (Scarlet's Ignite, taken over): a dire wolf
-# follows Blood Wolf from the pick; the special then orders it to attack
-# instead of summoning, and it comes back when the fight ends.
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "Event Wolf Secondary Ability Active", talent = "Skill Secondary Ignite" }
