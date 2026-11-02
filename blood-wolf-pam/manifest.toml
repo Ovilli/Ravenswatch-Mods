@@ -198,4 +198,4 @@ abilities   = [
 # counter over the trait shows alive / max. Prototype.
 [content.kit]
 special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ anim = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx" }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 8, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb" }] }
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "trait" }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "trait", counter = "special" }
