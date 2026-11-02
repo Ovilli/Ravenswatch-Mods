@@ -197,3 +197,7 @@ abilities   = [
 [content.kit]
 special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ summon = "Enemies/Wolves/Standard_Wolf_Dire" }] }
 trait = "none"
+# The special's starter talent (Scarlet's Ignite, taken over): a dire wolf
+# follows Blood Wolf from the pick; the special then orders it to attack
+# instead of summoning, and it comes back when the fight ends.
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "Event Wolf Secondary Ability Active", talent = "Skill Secondary Ignite" }
