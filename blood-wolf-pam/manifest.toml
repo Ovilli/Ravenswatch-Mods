@@ -188,3 +188,10 @@ abilities   = [
     { entity = "Bomb", replace_subobject = "Fx_Explosion.bytes_1[2]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[2]", replace_ref = { "Owner Explosion Radius Get Value" = "Explosion Radius" } },
     { entity = "Bomb", add_subobject = "Fx_Explosion.bytes_1", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[1]", replace_ref = { "Mesh" = "Mesh" } },
 ]
+
+# Special: summon a chapter 3 wolf that fights for Blood Wolf (prototype). The
+# hero builder's summon block, on the WOLF special's start state (Blood Wolf
+# never leaves wolf form). Variants: Standard_Wolf_Timber, Standard_Wolf_Dire,
+# Elite_Wolf_Alpha.
+[content.kit]
+special = { when = "Event Wolf Secondary Ability Active", steps = [ { summon = "Enemies/Wolves/Standard_Wolf_Timber" } ] }
