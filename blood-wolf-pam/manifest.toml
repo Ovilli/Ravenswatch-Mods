@@ -1,0 +1,190 @@
+[mod]
+id                = "blood-wolf-pam"
+name              = "Blood Wolf"
+version           = "0.1.0"
+author            = "Local"
+description       = "Clone of Scarlet (Red) named Blood Wolf, locked into Wolf form."
+license           = "MIT"
+sdk_version       = ">=3.0,<4"
+enabled           = true
+multiplayer_scope = "deterministic-shared"
+tags              = ["hero", "red"]
+
+[[content]]
+kind        = "hero"
+id          = "BloodWolf"
+base        = "Red"
+name        = "Blood Wolf"
+description = "A clone of Scarlet, permanently in Wolf form."
+own_entity  = true
+abilities   = [
+    # Form: a wolf in a run, and the wolf's own preview in the select screen.
+    # Scarlet's init transforms through Hero_Common's "in a run" gate, never in
+    # the preview; both ways back out (the passive and the trait button) are cut.
+    { remove_link = "Child Event Initialize.activates", to = "Passive Transform Tester" },
+    { clone = ["Activate Hero Controller Tester"], from = "Hero_Common", rename = { "Activate Hero Controller Tester" = "Wolf Lock In Run Tester" } },
+    { link = "Wolf Lock In Run Tester.on_true", to = "Event Trait Ability Transform" },
+    { add_link = "Child Event Initialize.activates", to = "Wolf Lock In Run Tester" },
+    { link = "Passive Transform Tester.on_true", to = "" },
+    { remove_link = "State Alt Form Abilities Enabled.activates", to = "Trait Ability Controller" },
+    # Initial form. Hero_Alt_Form_Common's "Initialize Set Starting Form
+    # Tester" reads "Initialize In Default Form Value" and turns State Default
+    # Form (the human) on when it is true, State Alt Form (the wolf) when it is
+    # false. It defaults to true and runs at the entity's own Initialize, before
+    # a spawner value pushed onto a spawned copy lands, so Scarlet's
+    # "Wolf Initialize Default Form Spawner Value" never decided it: the hero
+    # (and the copy the select screen spawns) always started human. This hero is
+    # permanently in the wolf form, so its own override of that value says so
+    # from the first frame, in a run and in the book alike. "override" is what
+    # makes it a REPLACEMENT of the ancestor's part: a clone would add a second
+    # value the engine also instantiates next to it.
+    { override = "Initialize In Default Form Value", from = "Heroes/Hero_Common/Hero_Alt_Form_Common" },
+    { set = "Initialize In Default Form Value.value", value = false },
+    # The book's "wrong form" guards. Scarlet's select screen keeps its hero in
+    # the default (human) form and draws the wolf as a copy it spawns on the
+    # first page; two testers in "Child Behaviour Preview" punish the other way
+    # round. "Preview Spawn Wolf Tester" is AND(State Default Form, page = 0), so
+    # a hero already in the alt form fires its on_false: despawn the hero. And
+    # "Preview Is Owner Alive Value Tester" is AND(not in a preview copy's scene,
+    # State Alt Form), which is exactly this hero, and despawns it too. Both
+    # guards are what emptied the slot once the form override took effect; this
+    # hero is permanently the wolf, so neither can ever be satisfied. Both live
+    # only in the preview ("Child Behaviour Preview" is a state of
+    # Character_Common's Behaviour Preview, never entered in a run), and the run's
+    # own transform is untouched.
+    { remove_link = "Child Behaviour Preview.activates", to = "Preview Spawn Wolf Tester" },
+    { remove_link = "Child Behaviour Preview.activates", to = "Preview Is Owner Alive Value Tester" },
+    # 3-Hit Combo: Slash 1 -> Slash 2 -> Finisher (Double Strike animatic) -> Reset
+    { clone = ["State Wolf Basic Attack Step 2", "Wolf Basic Attack Clip 2"], rename = { "State Wolf Basic Attack Step 2" = "State Wolf Basic Attack Step 3", "Wolf Basic Attack Clip 2" = "Wolf Basic Attack Clip 3" } },
+    { link = "Wolf Basic Attack Clip 3.ref_3", to = "Wolf Skill Dash Attack Anim" },
+    { link = "Wolf Basic Attack Clip 3.ref_11", to = "State Wolf Basic Attack Step 3" },
+    { remove_link = "State Wolf Basic Attack Step 3.activates", to = "Wolf Basic Attack Clip Selector 2" },
+    { add_link = "State Wolf Basic Attack Step 3.activates", to = "Wolf Basic Attack Clip 3" },
+    { remove_link = "State Wolf Basic Attack Step 3.on_enter?", to = "Wolf Basic Attack Clip Selector 2" },
+    { add_link = "State Wolf Basic Attack Step 3.on_enter?", to = "Wolf Basic Attack Clip 3" },
+    { add_subobject = "Wolf Basic Attack Combo.bytes_4", donor_index = 1, replace_ref = { "State Wolf Basic Attack Step 2" = "State Wolf Basic Attack Step 3" } },
+    # Hit 3 Custom Damage (10 base hit damage, preserves stagger) and Zone Attack
+    { clone = ["Wolf Basic Attack", "Wolf Basic Attack Damage"], rename = { "Wolf Basic Attack" = "Wolf Basic Attack Step 3", "Wolf Basic Attack Damage" = "Wolf Basic Attack Step 3 Damage" } },
+    { set = "Wolf Basic Attack Step 3 Damage.value_28", value = 1.0 },
+    { set = "Wolf Basic Attack Step 3 Damage.value_31", value = 12.0 },
+    # Step 3 Bleed: 5.0 multiplier * Level Damage * Basic AP (50 total bleed at level 1)
+    { clone = ["Wolf Basic Attack Damage Multiplier"], rename = { "Wolf Basic Attack Damage Multiplier" = "Wolf Basic Attack Step 3 Bleed Multiplier" } },
+    { set = "Wolf Basic Attack Step 3 Bleed Multiplier.value", value = 5.0 },
+    { clone = ["Wolf Basic Attack Supposed Damage Operation"], rename = { "Wolf Basic Attack Supposed Damage Operation" = "Wolf Basic Attack Step 3 Bleed Value Operation" } },
+    { link = "Wolf Basic Attack Step 3 Bleed Value Operation.operations[1]", to = "Wolf Basic Attack Step 3 Bleed Multiplier" },
+    { clone = ["Skill Primary Bleed Modifier"], rename = { "Skill Primary Bleed Modifier" = "Wolf Basic Attack Step 3 Bleed Modifier" } },
+    { link = "Wolf Basic Attack Step 3 Bleed Modifier.amount", to = "Wolf Basic Attack Step 3 Bleed Value Operation" },
+    # Attach Carmilla's unconditional Bleed debuff sub-object to Wolf Basic Attack Step 3 Damage
+    { add_subobject = "Wolf Basic Attack Step 3 Damage.bytes_36", from = "Carmilla", donor = "Skill Defense Aoe Bleed Damage.bytes_36[0]", replace_ref = { "Skill Defense Aoe Bleed Modifier" = "Wolf Basic Attack Step 3 Bleed Modifier" } },
+    # Route Wolf Event Skill Dash Attack Active to trigger Wolf Basic Attack Step 3 instead of generic Wolf Basic Attack
+    { remove_link = "Wolf Event Skill Dash Attack Active.activates", to = "Wolf Basic Attack" },
+    { add_link = "Wolf Event Skill Dash Attack Active.activates", to = "Wolf Basic Attack Step 3" },
+    # The dual-strike impact effect took its position from "Wolf Basic Attack"
+    # (+ its damage), so on the 3rd hit (its own copy) it played where hits 1-2
+    # landed. Its two setups now read the 3rd hit's attack instead.
+    { replace_subobject = "Fx Wolf Basic Attack Impact Dash Attack.bytes_1[0]", donor = "Fx Wolf Basic Attack Impact Dash Attack.bytes_1[0]", replace_ref = { "Wolf Basic Attack" = "Wolf Basic Attack Step 3", "Wolf Basic Attack Damage" = "Wolf Basic Attack Step 3 Damage" } },
+    { replace_subobject = "Fx Wolf Basic Attack Impact Dash Attack.bytes_1[1]", donor = "Fx Wolf Basic Attack Impact Dash Attack.bytes_1[1]", replace_ref = { "Wolf Basic Attack" = "Wolf Basic Attack Step 3", "Wolf Basic Attack Damage" = "Wolf Basic Attack Step 3 Damage" } },
+    # Power Ability Tuning: Base hit reduced to 10 (multiplier 1.0), intangibility frames preserved
+    { set = "Wolf Primary Ability Damage Multiplier Default.value", value = 1.0 },
+    # Clone Carmilla's Blood Seed (Injection) Modifier (ID 462382549, duration 1.5s)
+    { clone = ["Skill Power Special Bomb Modifier", "Skill Power Special Bomb Time Before Explosion Value"], from = "Carmilla", rename = { "Skill Power Special Bomb Modifier" = "Wolf Power Blood Seed Modifier", "Skill Power Special Bomb Time Before Explosion Value" = "Wolf Power Blood Seed Time Before Explosion Value" } },
+    # The seed's lifetime is the delay before the burst: it bursts when the seed
+    # runs out, or at once if the seeded enemy dies first (Character_Common "Bhv
+    # Dying" -> "Explode Blood Bomb Methods" -> BLOOD_BOMB_EXPLODE to the seed's
+    # source). Carmilla waits 1.5 s; Blood Wolf bursts after 0.5 s.
+    # Set on the seed itself: its duration READ that value, which nothing in
+    # Blood Wolf switches on (Carmilla's talent state holds hers active), so the
+    # seed fell back to its inline 3 s: the burst came ~2 s after the build-up.
+    { set = "Wolf Power Blood Seed Modifier.duration", value = 1.5 },
+    # Clone Carmilla's Blood Bomb Explode Listener & Spawner
+    { clone = ["Blood Bomb Explode Listener", "Skill Power Special Bomb Spawner"], from = "Carmilla", rename = { "Blood Bomb Explode Listener" = "Wolf Blood Bomb Explode Listener", "Skill Power Special Bomb Spawner" = "Wolf Blood Bomb Spawner" } },
+    { remove_link = "Wolf Blood Bomb Spawner.spawner_values[0]" },
+    { add_link = "Child Event Initialize.activates", to = "Wolf Blood Bomb Explode Listener" },
+    { set = "Wolf Blood Bomb Spawner.template[1]", value = "Heroes\\Hero_Red\\Hero_Red_Bomb.entity.ot" },
+    # Attach unconditional Blood Seed debuff sub-object to Wolf Primary Ability Damage
+    { add_subobject = "Wolf Primary Ability Damage.bytes_36", from = "Carmilla", donor = "Skill Defense Aoe Bleed Damage.bytes_36[0]", replace_ref = { "Skill Defense Aoe Bleed Modifier" = "Wolf Power Blood Seed Modifier" } },
+    # Configure Blood Seed Burst Entity (Hero_Red_Bomb -> Hero_BloodWolf_Bomb)
+    { entity = "Bomb", remove_link = "Event Initialize.activates", to = "Mesh" },
+    # Start on the ground with a near-zero fuse, not in State Exploding: a bomb
+    # that starts exploding fires its hit on its first frame, before it stands
+    # where it spawned, and hits nothing. On Ground's own Explosion Timer is
+    # what moves Scarlet's bomb to State Exploding.
+    { entity = "Bomb", link = "Default State Machine.ref_2", to = "State On Ground" },
+    { entity = "Bomb", set = "Explosion Timer.duration", value = 0.1 },
+    # No warning circle or warm-up glow for a 0.1 s fuse.
+    { entity = "Bomb", remove_link = "State On Ground.while_active", to = "Warning_Zone_Mesh" },
+    { entity = "Bomb", remove_link = "State On Ground.while_active", to = "Warning_Zone_Growing_Color_Anim" },
+    { entity = "Bomb", remove_link = "State On Ground.while_active", to = "Bomb_Explosion_Warmup_Emissive_Anim" },
+    # Burst tuning. Scarlet's bomb also fires a second attack at HEROES
+    # ("Explosion Attack Heroes", what staggered the wolf): not started here.
+    { entity = "Bomb", remove_link = "State Exploding.activates", to = "Explosion Attack Heroes Tester" },
+    # Hit damage: the record multiplies by "Explosion Damage Multiplier" (4);
+    # 1 is the same 10 at level 1 as the 3rd combo hit.
+    { entity = "Bomb", set = "Explosion Damage Multiplier.value", value = 1.0 },
+    # Stagger: value_31 (wolf basic 8, wolf power 25, Scarlet's bomb 50).
+    { entity = "Bomb", set = "Explosion Damage.value_31", value = 30.0 },
+    # A bleed only deals damage through a "Remote Damage Owner" on the entity
+    # that APPLIED it: every 0.5 s the target finds that component on the
+    # modifier's source, writes the tick into it, and the owner's own "Bleed
+    # Damage" deals the hit. Characters carry one (Character_Common); Scarlet's
+    # bomb does not, so its bleed ticked for 0. Give the bomb the owner and the
+    # bleed half of its machinery (Ghidra b9c3, 2026-11-01: FUN_1403d6120 ->
+    # FUN_1403fbe30 -> FUN_1403d1cc0).
+    # The owner and its bleed-amount read come from Character_Common. Its "Bleed
+    # Damage" can NOT: Character_Common's damage records are class version 1.23,
+    # the bomb's 1.21, and a 1.23 record in a 1.21 file is read with the wrong
+    # layout (the bomb never loaded). So the bomb's own bleed damage is a copy of
+    # its own "Explosion Damage Heroes" (1.21, no debuffs, 0 damage, 0 stagger),
+    # set to Character_Common's Bleed Damage values.
+    { entity = "Bomb", clone = ["Remote Damage Owner", "UGLY Fix Bleed Double AP Damage Operation"], from = "Character_Common/Character_Common", rename = { "Remote Damage Owner" = "Remote Damage Owner", "UGLY Fix Bleed Double AP Damage Operation" = "UGLY Fix Bleed Double AP Damage Operation" } },
+    { entity = "Bomb", clone = ["Explosion Damage Heroes"], rename = { "Explosion Damage Heroes" = "Bleed Damage" } },
+    { entity = "Bomb", link = "Bleed Damage.value_2", to = "UGLY Fix Bleed Double AP Damage Operation" },
+    { entity = "Bomb", link = "Remote Damage Owner.ref_3", to = "Bleed Damage" },
+    { entity = "Bomb", set = "Bleed Damage.value_4", value = 0.0 },
+    { entity = "Bomb", set = "Bleed Damage.value_9", value = 5.0 },
+    { entity = "Bomb", set = "Bleed Damage.value_10", value = 10.0 },
+    { entity = "Bomb", set = "Bleed Damage.value_11", value = 10.0 },
+    { entity = "Bomb", set = "Bleed Damage.value_16", value = false },
+    { entity = "Bomb", set = "Bleed Damage.value_27", value = 0.0 },
+    { entity = "Bomb", set = "Bleed Damage.value_28", value = 1.0 },
+    { entity = "Bomb", set = "Bleed Damage.value_35", value = -1 },
+    # The last field that differed: 1 on every bomb damage record, 0 on the
+    # character's DoT damage. Left at 1, the bleed ignored the enemy's damage
+    # reduction (armour plates) in game; most likely the "ignore resistance" flag.
+    { entity = "Bomb", set = "Bleed Damage.bytes_30", value = 0 },
+    # Only the bleed slot (ref_3); the other eight DoTs stay unowned here.
+    { entity = "Bomb", link = "Remote Damage Owner.ref_2", to = "" },
+    { entity = "Bomb", link = "Remote Damage Owner.ref_4", to = "" },
+    { entity = "Bomb", link = "Remote Damage Owner.ref_5", to = "" },
+    { entity = "Bomb", link = "Remote Damage Owner.ref_6", to = "" },
+    { entity = "Bomb", link = "Remote Damage Owner.ref_7", to = "" },
+    { entity = "Bomb", link = "Remote Damage Owner.ref_8", to = "" },
+    { entity = "Bomb", link = "Remote Damage Owner.ref_9", to = "" },
+    { entity = "Bomb", link = "Remote Damage Owner.ref_10", to = "" },
+    # The owner must outlive the bleed (5 s); the bomb was gone 0.5 s after the
+    # burst. Its model is already hidden (State Exploding deactivates Mesh).
+    { entity = "Bomb", set = "Despawn Timer.duration", value = 6.0 },
+    # Sound: Carmilla's burst ("Carm_BloodRage") instead of Scarlet's bomb blast
+    # ("Red_Skil_Pyromania"), and no fuse sound for the 0.1 s on the ground.
+    { entity = "Bomb", clone = ["Explosion FMod Event Active"], from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", rename = { "Explosion FMod Event Active" = "Blood Burst FMod Event" } },
+    { entity = "Bomb", remove_link = "State Exploding.activates", to = "Explosion Default FMod Event" },
+    { entity = "Bomb", add_link = "State Exploding.activates", to = "Blood Burst FMod Event" },
+    { entity = "Bomb", remove_link = "State On Ground.while_active", to = "On Ground FMod Event" },
+    # Bleed on the burst: a flat 100 over 5 s, through a copy of Carmilla's debuff.
+    { entity = "Bomb", clone = ["Skill Primary Bleed Modifier"], from = "Red", rename = { "Skill Primary Bleed Modifier" = "Wolf Blood Seed Explosion Bleed Modifier" } },
+    { entity = "Bomb", set = "Wolf Blood Seed Explosion Bleed Modifier.amount", value = 100.0 },
+    { entity = "Bomb", add_subobject = "Explosion Damage.bytes_36", from = "Carmilla", donor = "Skill Defense Aoe Bleed Damage.bytes_36[0]", replace_ref = { "Skill Defense Aoe Bleed Modifier" = "Wolf Blood Seed Explosion Bleed Modifier" } },
+    # Burst VFX: the injection's own, not Scarlet's bomb. This entity is Scarlet's
+    # bomb, so its explosion played RED_Bomb_Explosion_5m + the ground impact;
+    # Carmilla's burst is three setups on her Power Orb's "Explosion Fx Active":
+    # the orb's explosion, its core flash, and a ground decal, plus the same
+    # camera shake the bomb already had. Slots 0 and 2 are REPLACED in place (the
+    # slot id stays, so the Fx the Explosion Fx Selector activates is still the
+    # one that plays), and the core flash is appended after them. Each setup
+    # carries the parameter slots its vfx declares; they are re-pointed at this
+    # entity: the orb's Mesh (the FX's anchor) at this bomb's Mesh, and its two
+    # radius reads at this bomb's Explosion Radius.
+    { entity = "Bomb", replace_subobject = "Fx_Explosion.bytes_1[0]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[0]", replace_ref = { "Mesh" = "Mesh", "Owner Explosion Radius Get Value" = "Explosion Radius", "Owner Current Radius Get Value" = "Explosion Radius" } },
+    { entity = "Bomb", replace_subobject = "Fx_Explosion.bytes_1[2]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[2]", replace_ref = { "Owner Explosion Radius Get Value" = "Explosion Radius" } },
+    { entity = "Bomb", add_subobject = "Fx_Explosion.bytes_1", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[1]", replace_ref = { "Mesh" = "Mesh" } },
+]

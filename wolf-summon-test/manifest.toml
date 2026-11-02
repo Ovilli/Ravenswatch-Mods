@@ -8,7 +8,7 @@ sdk_version = ">=3.0,<4"
 multiplayer_scope = "deterministic-shared"
 tags = ["hero"]
 license = "MIT"
-enabled = true
+enabled = false
 
 [[content]]
 kind = "hero"
