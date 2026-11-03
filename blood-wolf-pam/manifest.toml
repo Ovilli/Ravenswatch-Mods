@@ -201,9 +201,10 @@ abilities   = [
 # Special: Blood Wolf howls (no leap) and summons a dire wolf (an ally copy
 # of the chapter-3 enemy). It lives 8 s and, however it dies (run out or
 # killed), bursts into Blood Wolf's own bleed bomb.
-# Pets, Piper's way: a dire wolf follows Blood Wolf from the start; the trait
+# Pets, Piper's way, with Piper's own rat (her logic as shipped, a wolf look
+# to come): one follows Blood Wolf from the start; the trait
 # (no cooldown) sends it to attack, it comes back when the fight ends, and the
 # counter over the trait shows alive / max. Prototype.
 [content.kit]
 special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ anim = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx" }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 8, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }] }
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "trait", counter = "special", appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
+pets = { entity = "Heroes/Hero_Piper/Hero_Piper_Rat_Pet_Update6", count = 1, button = "trait", counter = "special" }
