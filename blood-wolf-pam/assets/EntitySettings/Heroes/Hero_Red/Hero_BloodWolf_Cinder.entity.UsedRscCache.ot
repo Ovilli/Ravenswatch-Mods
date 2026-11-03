@@ -76,7 +76,6 @@
 3D|Characters\Heroes\Piper\Textures\T_PiperRat_EMI.tga|oCTexture
 3D|Characters\Heroes\Piper\Textures\T_PiperRat_MRA.tga|oCTexture
 3D|Characters\Heroes\Piper\Textures\T_PiperRat_NRM.tga|oCTexture
-3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Defensive_Howl.fbx|oCAnimation
 3D|Characters\Heroes\RED\RED_Human_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\Textures\Cinder\M_RED_Cinder.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\Cinder\M_RED_Wolf_Cinder.mat.ot|oCMaterial
@@ -148,6 +147,7 @@ EntitySettings/GameUis/Common_Ui/Life_Bar_Hero_Romeo.entity.ot.EntitySettingsRes
 EntitySettings/GameUis/Common_Ui/Life_Bar_Hero_SunWukong.entity.ot.EntitySettingsResource.gen
 EntitySettings/GameUis/Common_Ui/Life_Bar_IceClone.entity.ot.EntitySettingsResource.gen
 EntitySettings/GameUis/Common_Ui/Panache_Token_Ui.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/HUD/Ability_Special_Reload_Flash_Model.entity.ot.EntitySettingsResource.gen
 EntitySettings/GameUis/Hero_Photo_Cabin/Hero_Photo_Cabin_Settings.entity.ot.EntitySettingsResource.gen
 EntitySettings/Heroes/Hero_Juliet/Ghost_Hero_Juliet.entity.ot.EntitySettingsResource.gen
 EntitySettings/Heroes/Hero_Juliet/Ghost_Hero_Model.entity.ot.EntitySettingsResource.gen
@@ -415,7 +415,6 @@ FX|Materials\UIFX_SuperEffect_Count_Glow_01.mat.ot|oCMaterial
 FX|Meshes\Crow_Diving_01.fbx|oCGeometry
 FX|Meshes\Cylinder_01.fbx|oCGeometry
 FX|Meshes\Debug_XYZ.fbx|oCGeometry
-FX|Meshes\Disc_01.fbx|oCGeometry
 FX|Meshes\Disc_Warning_01.fbx|oCGeometry
 FX|Meshes\Piper_Flute_FX_Mesh.fbx|oCGeometry
 FX|Meshes\Piper_Fortissimo_Ring_01.fbx|oCGeometry
@@ -625,7 +624,6 @@ FX|Settings\Heroes\Hero_Red_FX\RED_Bomb_Explosion_Skill_Ignite_5m.vfx.ot|oCSched
 FX|Settings\Heroes\Hero_Red_FX\RED_Bomb_Explosion_Skill_Vulnerable_5m.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Bomb_Short_Wick.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Bomb_Wick.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Red_FX\RED_Dash_Shine_LV01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Skill Primary Triggers Special Bomb Shine.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Dash_Projectile_Trail_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Special_Ignite_Wick_Flames.vfx.ot|oCScheduledVfxSettings
@@ -633,7 +631,6 @@ FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Ash_Cloud_01.vfx.ot|oCScheduledVfxSe
 FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Ash_Cloud_Damage.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Ash_Cloud_Damage_Impact.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Ash_Cloud_Heal_02.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Red_FX\Skill_Red_Move_Speed_Trail_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Romeo_FX\Romeo_Rose_Seed_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Romeo_FX\Romeo_Rose_Seed_Tick_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Sun_Wukong_FX\Sun_Wukong_Skill_Ultimate_2_Omnipotence_Ground_Lightnings.vfx.ot|oCScheduledVfxSettings
@@ -1015,6 +1012,7 @@ Ui/Platform/UI_Social_Icons_PC.png.Texture.dxt
 Ui/Platform/UI_Social_Icons_Playstation.png.Texture.dxt
 Ui/Platform/UI_Social_Icons_Steam.png.Texture.dxt
 Ui/Primitives/CircleEmpty.png.Texture.dxt
+Ui/Primitives/CircleEmpty_Thick_02.png.Texture.dxt
 Ui|3DUI\Hero_Ground_Arrow.mat.ot|oCMaterial
 Ui|3DUI\Hero_Ground_Marker.mat.ot|oCMaterial
 Ui|3DUI\UI_Ground_Marker_Arrow~C.png|oCTexture

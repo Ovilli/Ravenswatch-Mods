@@ -163,6 +163,7 @@
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Pimary_Bite_In.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Pimary_Bite_Out.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Primary_RushFinisher.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Secondary_Leap_Default.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Secondary_Leap_In.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Secondary_Leap_Loop.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Secondary_Leap_Out.fbx|oCAnimation
@@ -264,6 +265,7 @@ EntitySettings/GameUis/Common_Ui/Life_Bar_Hero_Romeo.entity.ot.EntitySettingsRes
 EntitySettings/GameUis/Common_Ui/Life_Bar_Hero_SunWukong.entity.ot.EntitySettingsResource.gen
 EntitySettings/GameUis/Common_Ui/Life_Bar_IceClone.entity.ot.EntitySettingsResource.gen
 EntitySettings/GameUis/Common_Ui/Panache_Token_Ui.entity.ot.EntitySettingsResource.gen
+EntitySettings/GameUis/HUD/Ability_Special_Reload_Flash_Model.entity.ot.EntitySettingsResource.gen
 EntitySettings/GameUis/Hero_Photo_Cabin/Hero_Photo_Cabin_Settings.entity.ot.EntitySettingsResource.gen
 EntitySettings/Heroes/Hero_Juliet/Ghost_Hero_Juliet.entity.ot.EntitySettingsResource.gen
 EntitySettings/Heroes/Hero_Juliet/Ghost_Hero_Model.entity.ot.EntitySettingsResource.gen
@@ -1591,6 +1593,7 @@ Ui/Platform/UI_Social_Icons_PC.png.Texture.dxt
 Ui/Platform/UI_Social_Icons_Playstation.png.Texture.dxt
 Ui/Platform/UI_Social_Icons_Steam.png.Texture.dxt
 Ui/Primitives/CircleEmpty.png.Texture.dxt
+Ui/Primitives/CircleEmpty_Thick_02.png.Texture.dxt
 Ui|3DUI\Hero_Ground_Arrow.mat.ot|oCMaterial
 Ui|3DUI\Hero_Ground_Marker.mat.ot|oCMaterial
 Ui|3DUI\UI_Ground_Marker_Arrow~C.png|oCTexture
