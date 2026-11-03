@@ -21,18 +21,41 @@ local function log(fmt, ...)
 end
 
 local before = {}
-local ok1 = R.debug.observe("EntitySpawner_SpawnOne", "vp", function(_, self)
+-- Not in the loader's symbol table (observe() said "unknown symbol"), so by
+-- address: module base + the RVA on build b9c3642884a8 (Ghidra).
+local BASE = I.module_base()
+local function observe_at(rva, sig, after)
+    if not BASE or BASE == 0 then return false end
+    local ok, slot = pcall(R.hook, BASE + rva, sig, function(...)
+        local n = select("#", ...)
+        local nxt = select(n, ...)
+        local args = { ... }
+        args[n] = nil
+        local r = nxt(table.unpack(args, 1, n - 1))
+        local ran, err = pcall(after, r, table.unpack(args, 1, n - 1))
+        if not ran then R.log(TAG .. "handler error: " .. tostring(err)) end
+        return r or 0
+    end)
+    return ok and slot ~= nil
+end
+
+local any = 0
+local ok1 = observe_at(0x72e920, "vp", function(_, self)        -- EntitySpawner_SpawnOne
     local nm = settings_name(self)
+    any = any + 1
+    if any <= 60 then log("any SpawnOne #%d: %s", any, nm) end
     if not nm:find("Kit Pet", 1, true) then return end
     local recs = I.read_u32(self + 0x1c8) or -1
     local n = I.read_u32(self + 0x218) or 0
     local arr = I.read_u64(self + 0x210)
     local e = (n > 0 and ok_ptr(arr)) and I.read_u64(arr + (n - 1) * 8) or 0
-    log("%s: SpawnOne done, records=%d spawned=%d last=0x%x class=%s",
-        nm, recs, n, e or 0, tostring(ok_ptr(e) and R.rtti.name(e)))
+    local s = I.read_u64(self + 0x10)
+    local tmpl = ok_ptr(s) and I.read_u64(s + 0x1a8) or 0
+    log("%s: SpawnOne done, template resource=0x%x records=%d spawned=%d last=0x%x class=%s",
+        nm, tmpl or 0, recs, n, e or 0, tostring(ok_ptr(e) and R.rtti.name(e)))
     if ok_ptr(e) and not watch[e] then watch[e] = { nm = nm, age = 0 } end
 end)
-local ok2 = R.debug.observe("EntitySpawner_InstantiateRecord", "vpp", function(_, self, rec)
+local ok2 = observe_at(0x72f750, "vpp", function(_, self, rec)  -- EntitySpawner_InstantiateRecord
     local nm = settings_name(self)
     if nm:find("Kit Pet", 1, true) then log("%s: InstantiateRecord rec=0x%x", nm, rec or 0) end
 end)
