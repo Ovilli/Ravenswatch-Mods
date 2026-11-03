@@ -1,0 +1,16 @@
+# Diagnostic: does Blood Wolf's pet spawner spawn anything, and does it live?
+# Observe-only: logs each "Kit Pet" spawner call, the entity it made, and
+# re-checks that entity every 2 s.
+#   rsmm log | grep pet-spawn-probe
+
+[mod]
+id          = "pet-spawn-probe"
+name        = "Pet spawn probe (diagnostic)"
+version     = "0.1.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Logs Kit Pet spawner calls, the spawned entity, and whether it stays alive."
+sdk_version = "3"
+enabled     = true
+tags        = ["test", "debug"]
+multiplayer_scope = "local-only"
