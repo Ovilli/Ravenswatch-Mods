@@ -71,3 +71,29 @@ R.schedule.every(2, function()
         if cls ~= "oCEntity" or w.age >= 20 then watch[e] = nil end
     end
 end)
+
+-- Which kit parts exist on the live hero? Its components are at entity+0x190
+-- (count +0x198); each instance's settings at +0x10, name pointer at +0xe8
+-- (R.debug.components' layout). Logged once per run, 8 s after capture.
+local listed = false
+local function list_kit_parts()
+    if listed or not R.entity.ready() then return end
+    local ctrl = R.entity.hero()
+    local e = ok_ptr(ctrl) and I.read_u64(ctrl + 0x08) or nil
+    if not ok_ptr(e) then return end
+    local arr, n = I.read_u64(e + 0x190), I.read_u32(e + 0x198)
+    if not ok_ptr(arr) or not n or n == 0 or n > 8192 then return end
+    listed = true
+    local hits = 0
+    for pos = 0, n - 1 do
+        local nm = settings_name(I.read_u64(arr + pos * 8))
+        if nm:find("Kit ", 1, true) or nm:find("Wolf Lock", 1, true) then
+            hits = hits + 1
+            log("hero part %d: %s", pos, nm)
+        end
+    end
+    log("hero has %d components, %d kit/lock parts (name: %s)", n, hits,
+        tostring(R.interact and R.interact.name and R.interact.name(e)))
+end
+R.on("run:start", function() listed = false end)
+R.schedule.every(8, list_kit_parts)

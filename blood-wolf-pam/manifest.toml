@@ -195,12 +195,12 @@ abilities   = [
 [content.skills]
 "Ability Wolf Attack" = { name = "Blood Fangs", description = "A three-hit combo. The third hit makes enemies bleed." }
 "Ability Wolf Power" = { name = "Blood Seed", description = "Plant a blood seed in an enemy. It bursts into a bleeding explosion shortly after, or as soon as the enemy dies." }
-"Ability Trait" = { name = "Call of the Pack", description = "Send your rats into the fight. They come back to you when it is over." }
+"Ability Trait" = { name = "Call of the Pack", description = "Send your wolves into the fight. They come back to you when it is over." }
 
-# Pets, Piper's way: a copy of Piper's own rat (her logic; its reads of Piper
-# read Blood Wolf) follows Blood Wolf from the start of a run. The TRAIT, as
+# Pets, Piper's way: an ally copy of the chapter-3 dire wolf on Piper's pet
+# base follows Blood Wolf from the start of a run. The TRAIT, as
 # Piper's, sends the rats to attack (no cooldown); they come back when the
 # fight is over. The counter over the trait shows alive / max. The trait's
 # transform is gone, so Blood Wolf stays the wolf.
 [content.kit]
-pets = { entity = "Heroes/Hero_Piper/Hero_Piper_Rat_Pet", count = 1, button = "trait" }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "trait", appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
