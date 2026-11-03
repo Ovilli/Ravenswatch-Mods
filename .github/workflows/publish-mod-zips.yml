@@ -43,6 +43,8 @@ jobs:
           while IFS= read -r -d '' manifest; do
             mod_dir="${manifest%/manifest.toml}"
             mod_name="${mod_dir#./}"
+            # `_merged` (and any `_*`) is apply's generated output, not a mod.
+            [[ "$mod_name" == _* ]] && continue
             rsmm pack "$mod_name"
             cp "rsmm-manager/dist/${mod_name}.zip" "dist/${mod_name}.zip"
           done < <(find . -mindepth 2 -maxdepth 2 -type f -name manifest.toml -print0 | sort -z)
