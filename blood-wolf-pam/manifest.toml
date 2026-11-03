@@ -195,16 +195,14 @@ abilities   = [
 [content.skills]
 "Ability Wolf Attack" = { name = "Blood Fangs", description = "A three-hit combo. The third hit makes enemies bleed." }
 "Ability Wolf Power" = { name = "Blood Seed", description = "Plant a blood seed in an enemy. It bursts into a bleeding explosion shortly after, or as soon as the enemy dies." }
-"Ability Wolf Special" = { name = "Dire Howl", description = "Howl to call a dire wolf to your side. It bursts into a bleed bomb on its first bite, or when its time runs out." }
-"Ability Trait" = { name = "Pack Leader", description = "A dire wolf follows you. Use it to send the pack into the fight; it comes back when the fight is over." }
+"Ability Wolf Special" = { name = "Call of the Pack", description = "Howl to send your rats into the fight. They come back to you when it is over." }
 
-# Special: Blood Wolf howls (no leap) and summons a dire wolf (an ally copy
-# of the chapter-3 enemy). It lives 8 s and, however it dies (run out or
-# killed), bursts into Blood Wolf's own bleed bomb.
-# Pets, Piper's way, with Piper's own rat (her logic as shipped, a wolf look
-# to come): one follows Blood Wolf from the start; the trait
-# (no cooldown) sends it to attack, it comes back when the fight ends, and the
-# counter over the trait shows alive / max. Prototype.
+# Pets, Piper's way, with Piper's own rat (her logic as shipped): one follows
+# Blood Wolf from the start of a run. The special is a howl (no leap) that
+# sends the rats into the fight, and they come back when it is over; the
+# counter over it shows alive / max. The trait is off until blood shower is
+# designed (left in, it would turn Blood Wolf human).
 [content.kit]
-special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ anim = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx" }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 8, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }] }
-pets = { entity = "Heroes/Hero_Piper/Hero_Piper_Rat_Pet_Update6", count = 1, button = "trait", counter = "special" }
+special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ anim = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx" }] }
+pets = { entity = "Heroes/Hero_Piper/Hero_Piper_Rat_Pet_Update6", count = 1, button = "special", when = "Event Wolf Secondary Ability Active" }
+trait = "none"
