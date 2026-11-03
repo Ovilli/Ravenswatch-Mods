@@ -97,3 +97,43 @@ local function list_kit_parts()
 end
 R.on("run:start", function() listed = false end)
 R.schedule.every(8, list_kit_parts)
+
+-- Is the pet registered with the hero? Character_Common's "Registered entities
+-- holder" keeps its entries at instance+0x68 (count +0x70); each entry is a
+-- pet's "Register Alive in owners" component (its entity at +0x08). The alive
+-- listener's count output sits at +0x180, its reader count at +0x188
+-- (Ghidra b9c3: FUN_140739450, FUN_140752830).
+local function find_part(e, want)
+    local arr, n = I.read_u64(e + 0x190), I.read_u32(e + 0x198)
+    if not ok_ptr(arr) or not n or n > 8192 then return nil end
+    for pos = 0, n - 1 do
+        local inst = I.read_u64(arr + pos * 8)
+        if settings_name(inst) == want then return inst end
+    end
+end
+R.schedule.every(5, function()
+    if not R.entity.ready() then return end
+    local ctrl = R.entity.hero()
+    local e = ok_ptr(ctrl) and I.read_u64(ctrl + 0x08) or nil
+    if not ok_ptr(e) then return end
+    local h = find_part(e, "Registered entities holder")
+    if h then
+        local vec, cnt = I.read_u64(h + 0x68), I.read_u32(h + 0x70) or -1
+        local names = {}
+        for k = 0, math.min(cnt, 8) - 1 do
+            local entry = ok_ptr(vec) and I.read_u64(vec + k * 8)
+            local pe = ok_ptr(entry) and I.read_u64(entry + 0x08)
+            names[#names + 1] = tostring(ok_ptr(pe) and R.interact and R.interact.name and R.interact.name(pe))
+        end
+        log("holder: %d registered [%s]", cnt, table.concat(names, ", "))
+    else
+        log("holder: none on the hero")
+    end
+    local l = find_part(e, "Kit Pet Alive Listener")
+    if l then
+        log("alive listener: count=%s readers=%s", tostring(I.read_u32(l + 0x180)),
+            tostring(I.read_u32(l + 0x188)))
+    else
+        log("alive listener: not on the hero")
+    end
+end)
