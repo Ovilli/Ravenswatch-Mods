@@ -195,12 +195,11 @@ abilities   = [
 [content.skills]
 "Ability Wolf Attack" = { name = "Blood Fangs", description = "A three-hit combo. The third hit makes enemies bleed." }
 "Ability Wolf Power" = { name = "Blood Seed", description = "Plant a blood seed in an enemy. It bursts into a bleeding explosion shortly after, or as soon as the enemy dies." }
-"Ability Trait" = { name = "Bomber Wolf", description = "Call a dire wolf that hunts nearby enemies. When it dies, it bursts into a bleeding explosion." }
+"Ability Trait" = { name = "Bomber Wolf", description = "Call a dire wolf that follows you and goes for your enemies. When it dies, it bursts into a bleeding explosion." }
 
-# The trait summons a bomber wolf: an ally copy of the chapter-3 dire wolf
-# that hunts nearby enemies on its own, can be attacked (it stands on the hero
-# layer, as Sun Wukong's clone does) and, however it dies, bursts into Blood
-# Wolf's bleed bomb. A 20 s life caps how many stand at once; running out
-# bursts it too. The trait keeps Scarlet's cooldown; her transform is gone.
+# The trait calls a bomber wolf: a pet on Piper's pet base (an ally copy of
+# the chapter-3 dire wolf) that follows Blood Wolf, goes for the enemies as
+# soon as a fight starts, can be attacked, and when it dies bursts into Blood
+# Wolf's bleed bomb. One per press, on Scarlet's trait cooldown; no counter.
 [content.kit]
-trait = { replace = true, steps = [{ summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }] }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "trait", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
