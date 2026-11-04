@@ -188,6 +188,15 @@ abilities   = [
     { entity = "Bomb", replace_subobject = "Fx_Explosion.bytes_1[0]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[0]", replace_ref = { "Mesh" = "Mesh", "Owner Explosion Radius Get Value" = "Explosion Radius", "Owner Current Radius Get Value" = "Explosion Radius" } },
     { entity = "Bomb", replace_subobject = "Fx_Explosion.bytes_1[2]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[2]", replace_ref = { "Owner Explosion Radius Get Value" = "Explosion Radius" } },
     { entity = "Bomb", add_subobject = "Fx_Explosion.bytes_1", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[1]", replace_ref = { "Mesh" = "Mesh" } },
+    # Walk while howling, as Scarlet's wolf defensive lets her: the special's
+    # state holds Hero_Alt_Form_Common's upper/lower body split (the pets block
+    # keeps that state on for the howl, hold = 1.5).
+    { add_link = "State Wolf Secondary Ability.while_active", to = "State Anim Split Alt Form Enable", from = "Heroes/Hero_Common/Hero_Alt_Form_Common" },
+    # No ignite from the bomb (Pam): Scarlet's bomb carries her Ignite talent's
+    # debuff (entry 1 of its explosion's debuffs); a 0 s ignite still burned.
+    # It becomes a copy of entry 0 (her Reduce Armour talent's, which applies
+    # only with that talent), so the list keeps its shape and no ignite is left.
+    { entity = "Bomb", replace_subobject = "Explosion Damage.bytes_36[1]", donor = "Explosion Damage.bytes_36[0]" },
 ]
 
 # The cards for what Blood Wolf's abilities now do (defense and ultimate keep
@@ -206,5 +215,5 @@ abilities   = [
 # in, it would turn Blood Wolf human).
 [content.kit]
 special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ anim = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx" }] }
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", hold = 1.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
 trait = "none"
