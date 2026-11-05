@@ -217,7 +217,7 @@ abilities   = [
 [content.skills]
 "Ability Wolf Attack" = { name = "Blood Fangs", description = "A three-hit combo. The third hit makes enemies bleed." }
 "Ability Wolf Power" = { name = "Blood Seed", description = "Plant a blood seed in an enemy. It bursts into a bleeding explosion shortly after, or as soon as the enemy dies." }
-"Ability Wolf Special" = { name = "Bomber Wolf", description = "Call a dire wolf that follows you and charges your enemies. Its first bite blows it up in a bleeding explosion." }
+"Ability Wolf Special" = { name = "Bomber Wolf", description = "Call #{0}@ dire wolf(s) that follow you and charge your enemies. Each one's first bite blows it up in a bleeding explosion." }
 
 # The special calls a bomber wolf, with no animation (see the controller link
 # above): a pet on Piper's pet base (an ally copy of the chapter-3 dire wolf) appears,
@@ -229,11 +229,14 @@ abilities   = [
 # The bite is tuned for a moving target (Pam): its cone twice as wide (30 ->
 # 60 degrees) and twice as long (4.6 -> 9.2 m; it starts 2.5 m behind the
 # wolf, so it now ends ~6.7 m ahead instead of ~2 m; x4 reached behind the
-# target, x1 landed nothing), the distance it decides to bite from unchanged,
+# target, x1 landed nothing), it commits to a bite from 3 m instead of 4.5 m
+# (a moving enemy got out of reach during the wind-up and the bite fell short),
 # its clips 35% faster, no root on what it bites,
 # and it tries again 0.5 s after a bite (a treant still rising out of the
 # ground cannot be hit yet; enemy wolves wait 2-4 s). Every summon also loses
 # the enemy wind-up glow.
+# Wolves per press: `count`, plus what talents add (`count_talents = {
+# "<talent state>" = n }`, they stack); the card's {0} shows the total.
 [content.kit]
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 2.0, attack_reach = 2.0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, count_card = "Wolf Secondary Ability Desc Format", button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 2.0, attack_reach = 2.0, attack_range = 3.0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
 trait = "none"
