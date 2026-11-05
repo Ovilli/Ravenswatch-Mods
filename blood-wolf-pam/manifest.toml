@@ -239,8 +239,9 @@ abilities   = [
 # the enemy wind-up glow.
 # Wolves per press: `count`, plus what talents add (`count_talents = {
 # "<talent state>" = n }`, they stack); the card's {0} shows the total.
-# The bomber wolf's own look: Pam's blood dire wolf (art/Dire_Blood_Geo.fbx.glb;
-# its two maps are the GLB's own, saved as PNGs). Only this wolf wears it.
+# The bomber wolf's own look: Pam's blood-red dire wolf texture (the albedo
+# from art/Dire_Blood_Geo.fbx.glb, saved as a PNG) on the dire wolf's own mesh
+# and rig. Only this wolf wears it; the rest of its material is the dire wolf's.
 [content.kit]
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", look = { model = "art/Dire_Blood_Geo.fbx.glb", albedo = "art/Dire_Blood_ALB.png", normal = "art/Dire_Blood_NRM.png" }, count = 1, count_card = "Wolf Secondary Ability Desc Format", button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", look = { albedo = "art/Dire_Blood_ALB.png" }, count = 1, count_card = "Wolf Secondary Ability Desc Format", button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
 trait = "none"
