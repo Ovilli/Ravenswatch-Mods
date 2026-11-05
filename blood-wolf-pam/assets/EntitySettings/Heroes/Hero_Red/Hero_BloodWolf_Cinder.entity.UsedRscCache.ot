@@ -44,6 +44,7 @@
 3D|Characters\Enemies\Wolves\Textures\T_Wolf_Timber_NRM.tga|oCTexture
 3D|Characters\Enemies\Wolves\Wolf_Alpha_GEO.fbx|oCGeometry
 3D|Characters\Enemies\Wolves\Wolf_Dire_Timber_GEO.fbx|oCGeometry
+3D|Characters\Heroes\RED\BloodWolf_Summon1_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\RED_Human_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\Textures\Cinder\M_RED_Cinder.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\Cinder\M_RED_Wolf_Cinder.mat.ot|oCMaterial
@@ -55,7 +56,10 @@
 3D|Characters\Heroes\RED\Textures\Cinder\T_ScarletWolfCinder_EMI.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\Cinder\T_ScarletWolfCinder_MRA.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\Cinder\T_ScarletWolfCinder_NRM.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\M_BloodWolf_Summon1.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\M_Red_Dagger_Projectile.mat.ot|oCMaterial
+3D|Characters\Heroes\RED\Textures\T_BloodWolf_Summon1_ALB.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_BloodWolf_Summon1_NRM.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RedBlood_ALB.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RedWolf_Blood_ALB.tga|oCTexture
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_DeathGrasp.fbx|oCAnimation

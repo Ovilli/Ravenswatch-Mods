@@ -1,4 +1,8 @@
 [
+  "3D/Characters/Heroes/RED/BloodWolf_Summon1_GEO.fbx.Geometry.gen",
+  "3D/Characters/Heroes/RED/Textures/M_BloodWolf_Summon1.mat.ot.Material.gen",
+  "3D/Characters/Heroes/RED/Textures/T_BloodWolf_Summon1_ALB.tga.Texture.dxt",
+  "3D/Characters/Heroes/RED/Textures/T_BloodWolf_Summon1_NRM.tga.Texture.dxt",
   "Definitions/Heroes/BloodWolf.herodef.UsedRscCache.ot",
   "Definitions/Heroes/BloodWolf.herodef.ot.DtHeroDefinition.gen",
   "EntitySettings/GameUis/Common_Ui/Life_Bar_Hero_Red_BloodWolf.entity.ot.EntitySettingsResource.gen",

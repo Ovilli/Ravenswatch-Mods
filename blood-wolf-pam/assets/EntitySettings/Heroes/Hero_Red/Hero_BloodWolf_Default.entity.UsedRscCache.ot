@@ -44,10 +44,14 @@
 3D|Characters\Enemies\Wolves\Textures\T_Wolf_Timber_NRM.tga|oCTexture
 3D|Characters\Enemies\Wolves\Wolf_Alpha_GEO.fbx|oCGeometry
 3D|Characters\Enemies\Wolves\Wolf_Dire_Timber_GEO.fbx|oCGeometry
+3D|Characters\Heroes\RED\BloodWolf_Summon1_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\RED_Human_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\Textures\H_RED.mat.ot|oCMaterial
+3D|Characters\Heroes\RED\Textures\M_BloodWolf_Summon1.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\M_RED_Wolf.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\M_Red_Dagger_Projectile.mat.ot|oCMaterial
+3D|Characters\Heroes\RED\Textures\T_BloodWolf_Summon1_ALB.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_BloodWolf_Summon1_NRM.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RED_ALB.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RED_EMI.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RED_MRA.tga|oCTexture
