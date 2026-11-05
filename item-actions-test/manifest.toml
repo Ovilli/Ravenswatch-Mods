@@ -1,0 +1,54 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+# TESTING ONLY. One item per effect `action`, granted at run start (init.lua).
+# What a pass looks like:
+#   Dash Reset    - use DEFENSE right after a dash: the dash is ready again at once.
+#   All Reset     - use your ULTIMATE: POWER, SPECIAL, DEFENSE and DASH are all ready.
+#   Upgrade       - on grant: one random talent goes up a rarity.
+#   Consumables   - on grant: 3 consumables drop next to you.
+#   Duplicate     - at nightfall: one random magical object you hold gets a copy
+#                   (the item bar count goes up by one).
+
+[mod]
+id          = "item-actions-test"
+name        = "Item actions test"
+version     = "0.1.0"
+author      = "RSMM"
+summary     = "Playtest for item effect actions"
+description = "5 test items, one per effect action (cooldown resets, talent upgrade, consumables, duplicate), granted at run start."
+enabled     = false
+sdk_version = ">=3.0,<4"
+tags        = ["item", "test"]
+license     = "MIT"
+multiplayer_scope = "deterministic-shared"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
+
+[[content]]
+kind    = "item"
+id      = "Test_Action_Dash_Reset"
+name    = "TEST: dash reset"
+effects = [{ action = "reset_cooldown", ability = "dash", on = "defense" }]
+
+[[content]]
+kind    = "item"
+id      = "Test_Action_All_Reset"
+name    = "TEST: reset all"
+effects = [{ action = "reset_cooldown", ability = "all", on = "ultimate" }]
+
+[[content]]
+kind    = "item"
+id      = "Test_Action_Upgrade"
+name    = "TEST: upgrade talent"
+effects = [{ action = "upgrade_talents", amount = 1 }]
+
+[[content]]
+kind    = "item"
+id      = "Test_Action_Consumables"
+name    = "TEST: consumables"
+effects = [{ action = "spawn_consumables", amount = 3 }]
+
+[[content]]
+kind    = "item"
+id      = "Test_Action_Duplicate"
+name    = "TEST: duplicate"
+effects = [{ action = "duplicate_item", on = "night_start" }]
