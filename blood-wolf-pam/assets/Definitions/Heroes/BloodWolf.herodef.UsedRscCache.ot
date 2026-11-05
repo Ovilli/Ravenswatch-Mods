@@ -146,7 +146,6 @@
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Ultimate01_Loop.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Ultimate01_Out.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Ultimate2_Bite_Out.fbx|oCAnimation
-3D|Characters\Heroes\RED\BloodWolf_Summon1_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\GEO_RedGun.fbx|oCGeometry
 3D|Characters\Heroes\RED\RED_Human_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\RED_wolf_GEO.fbx|oCGeometry
@@ -160,7 +159,6 @@
 3D|Characters\Heroes\RED\Textures\M_Red_Dagger.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\M_Red_Dagger_Projectile.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\T_BloodWolf_Summon1_ALB.tga|oCTexture
-3D|Characters\Heroes\RED\Textures\T_BloodWolf_Summon1_NRM.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_Bomb_Red_ALB.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_Bomb_Red_MRA.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RED_ALB_LowRes.tga|oCTexture
