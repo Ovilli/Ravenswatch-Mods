@@ -201,6 +201,15 @@ abilities   = [
     # It becomes a copy of entry 0 (her Reduce Armour talent's, which applies
     # only with that talent), so the list keeps its shape and no ignite is left.
     { entity = "Bomb", replace_subobject = "Explosion Damage.bytes_36[1]", donor = "Explosion Damage.bytes_36[0]" },
+    # No Vulnerable from the burst (Pam: the wolf's bite "applied" it). Both
+    # entries are Scarlet's Reduce Armour talent debuff (Vulnerable 0.5, 3 s),
+    # switched on by a read of that talent on whatever SPAWNED the bomb. From
+    # Blood Wolf that is false without the talent; from the bomber wolf (its
+    # burst spawner) the read lands on the wolf, which has no such talent, and
+    # came out true, so every bite burst applied it. Both are off now, so the
+    # talent no longer adds Vulnerable to Blood Seed's burst either.
+    { entity = "Bomb", switch_off = "Explosion Damage.bytes_36[0]" },
+    { entity = "Bomb", switch_off = "Explosion Damage.bytes_36[1]" },
 ]
 
 # The cards for what Blood Wolf's abilities now do (defense and ultimate keep
@@ -217,9 +226,12 @@ abilities   = [
 # it also bursts if killed, or after 20 s. One per press, on the special's
 # cooldown; no counter. The trait is off until blood shower is designed (left
 # in, it would turn Blood Wolf human).
-# The bite is tuned for a moving target (Pam): its hit area x2 (the distance
-# it decides to bite from is unchanged), its clips 35% faster, and no root /
-# vulnerable on what it bites. Every summon also loses the enemy wind-up glow.
+# The bite is tuned for a moving target (Pam): its hit area x2 (its cone
+# twice as WIDE, 60 -> 120 degrees; the reach and the distance it decides to
+# bite from are unchanged), its clips 35% faster, no root on what it bites,
+# and it tries again 0.5 s after a bite (a treant still rising out of the
+# ground cannot be hit yet; enemy wolves wait 2-4 s). Every summon also loses
+# the enemy wind-up glow.
 [content.kit]
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 2.0, attack_speed = 1.35, attack_debuffs = false, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 2.0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
 trait = "none"
