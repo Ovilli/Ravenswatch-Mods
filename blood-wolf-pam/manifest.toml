@@ -226,12 +226,14 @@ abilities   = [
 # it also bursts if killed, or after 20 s. One per press, on the special's
 # cooldown; no counter. The trait is off until blood shower is designed (left
 # in, it would turn Blood Wolf human).
-# The bite is tuned for a moving target (Pam): its hit area x2 (its cone
-# twice as WIDE, 60 -> 120 degrees; the reach and the distance it decides to
-# bite from are unchanged), its clips 35% faster, no root on what it bites,
+# The bite is tuned for a moving target (Pam): its cone twice as wide (30 ->
+# 60 degrees) and twice as long (4.6 -> 9.2 m; it starts 2.5 m behind the
+# wolf, so it now ends ~6.7 m ahead instead of ~2 m; x4 reached behind the
+# target, x1 landed nothing), the distance it decides to bite from unchanged,
+# its clips 35% faster, no root on what it bites,
 # and it tries again 0.5 s after a bite (a treant still rising out of the
 # ground cannot be hit yet; enemy wolves wait 2-4 s). Every summon also loses
 # the enemy wind-up glow.
 [content.kit]
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 2.0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 2.0, attack_reach = 2.0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
 trait = "none"
