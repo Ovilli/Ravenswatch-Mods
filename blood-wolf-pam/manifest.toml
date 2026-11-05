@@ -226,6 +226,8 @@ abilities   = [
 # it also bursts if killed, or after 20 s. One per press, on the special's
 # cooldown; no counter. The trait is off until blood shower is designed (left
 # in, it would turn Blood Wolf human).
+# The bite hits every enemy in its cone (attack_targets = 0), not the one its
+# distance score picks (a wider cone picked another enemy than the bitten one).
 # The bite is tuned for a moving target (Pam): its cone twice as wide (30 ->
 # 60 degrees) and twice as long (4.6 -> 9.2 m; it starts 2.5 m behind the
 # wolf, so it now ends ~6.7 m ahead instead of ~2 m; x4 reached behind the
@@ -238,5 +240,5 @@ abilities   = [
 # Wolves per press: `count`, plus what talents add (`count_talents = {
 # "<talent state>" = n }`, they stack); the card's {0} shows the total.
 [content.kit]
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, count_card = "Wolf Secondary Ability Desc Format", button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 2.0, attack_reach = 2.0, attack_range = 3.0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, count_card = "Wolf Secondary Ability Desc Format", button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
 trait = "none"
