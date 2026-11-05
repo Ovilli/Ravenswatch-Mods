@@ -188,10 +188,14 @@ abilities   = [
     { entity = "Bomb", replace_subobject = "Fx_Explosion.bytes_1[0]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[0]", replace_ref = { "Mesh" = "Mesh", "Owner Explosion Radius Get Value" = "Explosion Radius", "Owner Current Radius Get Value" = "Explosion Radius" } },
     { entity = "Bomb", replace_subobject = "Fx_Explosion.bytes_1[2]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[2]", replace_ref = { "Owner Explosion Radius Get Value" = "Explosion Radius" } },
     { entity = "Bomb", add_subobject = "Fx_Explosion.bytes_1", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[1]", replace_ref = { "Mesh" = "Mesh" } },
-    # Walk while howling, as Scarlet's wolf defensive lets her: the special's
-    # state holds Hero_Alt_Form_Common's upper/lower body split (the pets block
-    # keeps that state on for the howl, hold = 1.5).
-    { add_link = "State Wolf Secondary Ability.while_active", to = "State Anim Split Alt Form Enable", from = "Heroes/Hero_Common/Hero_Alt_Form_Common" },
+    # No animation on the special, and no standing still while the wolf
+    # spawns. The button's controller started a clip selector, and the clip it
+    # played (the leap, then the howl) is an ability clip that holds the hero
+    # in place; the upper/lower body split did not free the legs. It now
+    # starts the special's state directly, as 123 of the game's ability
+    # controllers do; the pets block ends that state after its short hold.
+    # With no clip, its timeline (the leap's hit) never plays either.
+    { link = "Alt Secondary Ability Controller.ref_2", to = "State Wolf Secondary Ability" },
     # No ignite from the bomb (Pam): Scarlet's bomb carries her Ignite talent's
     # debuff (entry 1 of its explosion's debuffs); a 0 s ignite still burned.
     # It becomes a copy of entry 0 (her Reduce Armour talent's, which applies
@@ -204,16 +208,18 @@ abilities   = [
 [content.skills]
 "Ability Wolf Attack" = { name = "Blood Fangs", description = "A three-hit combo. The third hit makes enemies bleed." }
 "Ability Wolf Power" = { name = "Blood Seed", description = "Plant a blood seed in an enemy. It bursts into a bleeding explosion shortly after, or as soon as the enemy dies." }
-"Ability Wolf Special" = { name = "Bomber Wolf", description = "Howl to call a dire wolf that follows you and charges your enemies. Its first bite blows it up in a bleeding explosion." }
+"Ability Wolf Special" = { name = "Bomber Wolf", description = "Call a dire wolf that follows you and charges your enemies. Its first bite blows it up in a bleeding explosion." }
 
-# The special calls a bomber wolf: Blood Wolf howls (no leap, its hit cut) and
-# a pet on Piper's pet base (an ally copy of the chapter-3 dire wolf) appears,
+# The special calls a bomber wolf, with no animation (see the controller link
+# above): a pet on Piper's pet base (an ally copy of the chapter-3 dire wolf) appears,
 # follows Blood Wolf and goes for the enemies as soon as a fight starts. Its
 # first bite blows it up into Blood Wolf's bleed bomb (Pam's suicide wolves);
 # it also bursts if killed, or after 20 s. One per press, on the special's
 # cooldown; no counter. The trait is off until blood shower is designed (left
 # in, it would turn Blood Wolf human).
+# The bite is tuned for a moving target (Pam): its hit area x2 (the distance
+# it decides to bite from is unchanged), its clips 35% faster, and no root /
+# vulnerable on what it bites. Every summon also loses the enemy wind-up glow.
 [content.kit]
-special = { replace = true, when = "Event Wolf Secondary Ability Active", steps = [{ anim = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx" }] }
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", hold = 1.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
+pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", count = 1, button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 2.0, attack_speed = 1.35, attack_debuffs = false, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
 trait = "none"
