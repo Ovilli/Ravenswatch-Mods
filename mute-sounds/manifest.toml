@@ -1,0 +1,25 @@
+# Mute sounds — pick which in-game sounds you want silenced.
+#
+# Open this mod's config in the app and tick what to mute: a mixer category
+# (all music, menu sounds, voices, one hero's effects, ...), a folder of
+# sounds (Heroes > Scarlet, NPC > Boss, Environment > Ambience, ...), or
+# "Every sound". The list is read from the game's own FMOD sound bank, so it
+# always matches the installed version.
+#
+# How it works: R.audio mutes through FMOD's exported API (bus mute for a
+# category, volume 0 for events in a picked folder), never through a game
+# address, so a game patch does not break it. Nothing on disk is changed:
+# untick a row and that sound is back.
+
+[mod]
+id          = "mute-sounds"
+name        = "Mute sounds"
+version     = "1.0.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Choose exactly which in-game sounds to silence (music, menus, voices, a hero's effects, enemies, ambience...) from the mod's config."
+sdk_version = "3"
+enabled     = true
+tags        = ["audio", "qol"]
+
+multiplayer_scope = "local-only"

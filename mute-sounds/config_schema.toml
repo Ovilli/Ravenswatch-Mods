@@ -1,0 +1,7 @@
+# Ids are FMOD paths ("bus:/Music", "event:/Heroes/Red"), listed from the
+# installed game's strings bank by the fmod-sounds option source.
+[fields.muted]
+type    = "multiselect"
+source  = "fmod-sounds"
+label   = "Sounds to mute"
+default = []
