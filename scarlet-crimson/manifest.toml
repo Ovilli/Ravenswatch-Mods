@@ -1,0 +1,29 @@
+# Scarlet Crimson — two NEW skins for Scarlet, added after her shipped ones.
+#
+# Test mod for the `skin` kind: no art, both skins are an existing skin of
+# hers recoloured with `tint`. Look for them at the end of her skin list in
+# the hero book and on the hero-select page.
+
+[mod]
+id           = "scarlet-crimson"
+name         = "Scarlet: Crimson & Frost skins"
+version      = "0.1.0"
+author       = "Ovilli"
+license      = "MIT"
+summary      = "Two new skins for Scarlet, after her shipped ones."
+description  = "Adds Crimson and Frost: new, always-unlocked skins for Scarlet."
+sdk_version  = "3"
+enabled      = true
+experimental = true
+tags         = ["skins", "cosmetic"]
+
+multiplayer_scope = "deterministic-shared"
+
+[[content]]
+kind = "skin"
+id   = "scarlet_skins"
+hero = "Scarlet"
+skins = [
+  { name = "Crimson", description = "Red as the hood, all the way down.", tint = "#c41e1e" },
+  { name = "Frost", from = "Raven", description = "The Raven coat, iced over.", tint = "#7ad0ff" },
+]
