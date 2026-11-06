@@ -33,7 +33,7 @@ kind        = "hero"
 id          = "JackSelf"
 base        = "Kintaro"
 name        = "Jack (from scratch)"
-description = "Boot test: Jack written from scratch. He can stand, walk, run and dash; nothing else yet."
+description = "Jack written from scratch: his own body, buttons and talent cards. Still borrowed from Kintaro: the roster record, preload lists, text bank and folder (being replaced), and the skeleton and clips (until Jack has his own)."
 
 [content.materials.M_Kintaro]
 albedo = "art/jack_kintaro_alb.png"
