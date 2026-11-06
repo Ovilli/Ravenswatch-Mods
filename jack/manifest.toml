@@ -1,0 +1,246 @@
+# Jack, the Giant-Slayer: Jack and the Beanstalk as a playable hero.
+#
+# Built on Beowulf (base game). Beowulf's dragon becomes the Golden Hen, the
+# giant's treasure Jack stole from the castle above the clouds: she still
+# empowers his next move, breathes (golden) fire and flies. His shockwave is
+# a line of beanstalks tearing out of the ground; his shield is the giant's
+# copper pot lid that Jack hid under.
+#
+# v0.1 = identity: name, story, every ability and talent card, body/gear/hen
+# textures, effects (gold fire, green beanstalks). Gameplay is Beowulf's.
+# The 3D model (Jack's body + an axe + the hen) is handed off: MODEL_BRIEF.md.
+
+[mod]
+id           = "jack"
+name         = "Jack, the Giant-Slayer"
+version      = "0.1.0"
+author       = "Ovilli"
+description  = "Jack and the Beanstalk as a playable hero: a woodcutter with a stolen golden hen, built on Beowulf."
+enabled      = false
+load_order   = 95
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["heroes"]
+multiplayer_scope = "deterministic-shared"
+experimental = true
+
+[[content]]
+kind        = "hero"
+id          = "Jack"
+base        = "Beowulf"
+name        = "Jack"
+description = "Jack traded the family cow for a handful of beans, and by morning a beanstalk reached the clouds. He climbed it, found a giant's castle, and stole its treasures: a bag of gold, a singing harp, and a hen that lays golden eggs and breathes golden fire. Now the hen is his only friend and the woodcutter's axe his only trade.\nFee-fi-fo-fum: the Nightmares can smell him coming."
+
+# --- Look --------------------------------------------------------------------
+# Beowulf's own maps, recoloured: moss-green tunic, brown wool, ochre sash.
+albedo = "art/jack_body_alb.png"
+
+# Sword, shield and the Wyrm share one map: steel kept, the shield turned
+# copper (the pot lid) and the Wyrm gold with brown wings (the Golden Hen).
+# The shield's label shares the sword's material, so one entry covers both.
+[content.weapons."Weapon In Right Hand Mesh"]
+albedo = "art/jack_acc_alb.png"
+
+[content.weapons."Chatacter Mesh Wyrm"]
+albedo = "art/jack_acc_alb.png"
+
+# Golden fire everywhere; the shockwave family is beanstalk green.
+[content.effects."*"]
+tint = "#e8b23a"
+
+[content.effects.Power_Shockwave]
+tint = "#6fbf3a"
+
+[content.effects.Power_Sword_Ground_Scrape]
+tint = "#6fbf3a"
+
+[content.effects.Beowulf_Secondary_Tremor_Warning_01]
+tint = "#6fbf3a"
+
+[content.effects.Skill_Special_MultiShock_01]
+tint = "#6fbf3a"
+
+[content.effects.Skill_Power_Explosion_Regular]
+tint = "#6fbf3a"
+
+[content.effects.Beowulf_Runes_Of_War_Aura_01]
+tint = "#6fbf3a"
+
+[content.effects.Beowulf_Runes_Of_War_Swirl_01]
+tint = "#6fbf3a"
+
+# --- Ability cards ------------------------------------------------------------
+[content.skills."Ability Trait"]
+name        = "The Golden Hen"
+description = "• Call the #Golden Hen@ to empower your next #POWER@, #SPECIAL@ or #DEFENSE@"
+
+[content.skills."Ability Attack"]
+name        = "Woodcutter's Axe"
+description = "• Chain together a series of chops. Last chop deals #+{0}%@ damage\n• Whole combo deals a total of &{1}~ damage"
+
+[content.skills."Ability Power"]
+name        = "Timber!"
+description = "• Drive the axe into the ground and a line of beanstalks tears up in front of you, dealing &{0}~ damage along its path\n• #+HEN@: Deals #+{1}%@ damage and applies #IGNITE@ to all enemies hit"
+
+[content.skills."Ability Special"]
+name        = "Woodcutter's Whirl"
+description = "• Spin with the axe, briefly becoming #INTANGIBLE@ and dealing &{0}~ damage all around, then finish with a felling swing that deals &{1}~ damage all around\n• #+HEN@: Deals #+{2}%@ damage and the finisher applies #IGNITE@ to all enemies hit"
+
+[content.skills."Ability Defense"]
+name        = "The Copper Pot"
+description = "• Hold to duck behind the giant's copper pot lid and block all incoming damage. Release to bash with it, dealing &{0}~ damage\n• #+HEN@: Deals #+{1}%@ damage. Each attack blocked heals all nearby Heroes by #{2}%@ of damage blocked"
+
+[content.skills."Ability Ultimate 1"]
+name        = "Flight of the Golden Hen"
+description = "• The Golden Hen takes off and hunts enemies, breathing golden fire as she flies, dealing &{0}~ damage per second and applying #IGNITE@ to all enemies hit\n• #TRAIT@ is disabled during this time"
+
+[content.skills."Ability Ultimate 2"]
+name        = "Giant-Slayer"
+description = "• Rush forward, then chain together a flurry of axe blows with the Golden Hen, dealing up to &{0}~ damage\n• {1} is #INTANGIBLE@ during the whole ability"
+
+# --- Talents (same effects as Beowulf's; numbers come from each card's format) ---
+[content.skills."Passive Better Ignite"]
+name        = "The Giant's Oven"
+description = "• #IGNITE@ effects last #{0}@ more seconds and deal &+{1}%~ damage"
+
+[content.skills."Passive Ignite Explosion"]
+name        = "Cracked Golden Eggs"
+description = "• #IGNITED@ enemies burst like golden eggs when they die, dealing &{0}~ damage and applying #IGNITE@ to all nearby enemies"
+
+[content.skills."Dash Attack"]
+name        = "Kindling Chop"
+description = "• #ATTACK@ triggered right after #DASH@ deals &{0}%~ damage and applies #IGNITE@ to enemies"
+
+[content.skills."Trait Quest"]
+name        = "The Hen's Trust"
+description = "• #Quest (x{0}):@ Hitting #{1}@ enemies with a single #Hen ability@ grants #+{2} DMG@\n• #Complete@: #TRAIT@ cooldown #-{3}%@, #Hen abilities@ deal &+{4}%~ damage"
+
+[content.skills."Trait AOE"]
+name        = "Flap of Golden Wings"
+description = "• Calling the Hen with #TRAIT@ deals &{0}~ damage all around and applies #IGNITE@ to all enemies hit"
+
+[content.skills."Trait Battlecry"]
+name        = "Fee-Fi-Fo-Fum!"
+description = "• #TRAIT@ increases Move Speed by #{2}%@ and grants &{0}~ #SHIELD@ to all Heroes in the area for #{1}@ seconds"
+
+[content.skills."Attack Speed"]
+name        = "Whetstone"
+description = "• After each #TRAIT@ activation, next #{0} ATTACKS@ gain #+{1}%@ Crit Chance\n• Permanently gain &+{2}%~ #ATTACK@ speed"
+
+[content.skills."Attack Wide"]
+name        = "Felling Blows"
+description = "• #ATTACK@ is slower but cleaves across a wide area and deals &+{0}%~ damage"
+
+[content.skills."Attack Flurry"]
+name        = "Out of the Pot"
+description = "• After using #DEFENSE@, the next #ATTACK@ within #{0}@ seconds springs out in a two-strike ambush, with each one dealing &{1}%~ damage"
+
+[content.skills."Attack After Special"]
+name        = "Chop, Chop, Chop"
+description = "• After a #SPECIAL@, the next #ATTACK@ triggers a series of #{0}@ chops dealing &{1}%~ damage each\n• If the #SPECIAL@ was reinforced by the #Hen@, the chops apply #IGNITE@ to enemies and inflict #+{2}%@ damage"
+
+[content.skills."Attack Fire Cone"]
+name        = "Hen's Breath"
+description = "• The Hen breathes a cone of golden fire during the #ATTACK@ finisher, dealing &{0}%~ damage and applying #IGNITE@ to enemies hit"
+
+[content.skills."Attack Special Crit"]
+name        = "Glint of Gold"
+description = "• #ATTACK@ and #SPECIAL@ gain &+{0}%~ Crit Chance against #IGNITED@ enemies"
+
+[content.skills."Power Double"]
+name        = "Twin Beanstalks"
+description = "• #POWER@ sends out two lines of beanstalks one after the other, each one dealing ${0}%* damage"
+
+[content.skills."Power Trail"]
+name        = "Burning Vines"
+description = "• #Hen POWER@ leaves a trail of burning vines that deals &{0}~ damage over time to enemies standing on it"
+
+[content.skills."Power End AOE"]
+name        = "Seed Pods"
+description = "• #POWER@'s beanstalks burst into seed pods at the end, dealing &{0}%~ additional damage all around"
+
+[content.skills."Special Loop"]
+name        = "Whirligig"
+description = "• #SPECIAL@ spins &{0}~ more time(s) for #{1}%@ damage each\n• {2} remains #INTANGIBLE@ throughout additional spins"
+
+[content.skills."Special Multi Shock"]
+name        = "Giant's Footsteps"
+description = "• #Hen SPECIAL@'s finisher shakes the ground #{0}@ times with a growing radius for &{1}%~ damage each, like a giant coming down the beanstalk"
+
+[content.skills."Special Sends Power"]
+name        = "Runner Bean"
+description = "• #SPECIAL@ sends out a {0}, dealing &{1}%~ of #POWER@ damage"
+
+[content.skills."Special Finisher More Damage"]
+name        = "Harvest Season"
+description = "• #SPECIAL@'s final hit deals &+{0}%~ damage for each different enemy already hit (up to #+{1}%@)"
+
+[content.skills."Defense Quest"]
+name        = "Hiding in the Pot"
+description = "• #Quest (x{0}):@ Blocking at least one attack during #DEFENSE@ grants #+{1} ARMOR@\n• #Complete@: #Hen DEFENSE@ heals &{2}%~ more in a larger radius"
+
+[content.skills."Defense Dash"]
+name        = "Lid Charge"
+description = "• #DEFENSE@ makes {0} charge forward behind the pot lid and deal &+{1}%~ damage along the path"
+
+[content.skills."Defense Block Deals Damage"]
+name        = "Ringing Copper"
+description = "• Each attack blocked during #DEFENSE@ rings off the copper and inflicts &{0}%~ of blocked damage to what is in front of {1}."
+
+[content.skills."Defense Damage Aura"]
+name        = "Magic Beans"
+description = "• After hitting an enemy with #DEFENSE@, magic beans sprout around {0}, dealing &{1}~ area damage per second for #{2}@ seconds"
+
+[content.skills."Ultimate Power 1"]
+name        = "Flight of the Golden Hen"
+description = "• The #Golden Hen@ takes off and flies around, breathing golden fire\n• Deals damage and applies #IGNITE@ to all enemies hit. {0} can act at the same time"
+
+[content.skills."Ultimate Power 2"]
+name        = "Giant-Slayer"
+description = "• Rush forward, then chain together a flurry of axe blows with the Golden Hen"
+
+# (the game's own spelling)
+[content.skills."Utimate 1 Immolation"]
+name        = "Golden Glow"
+description = "• During #ULTIMATE@, {0} deals &{1}~ damage per second to nearby enemies, and all abilities work as if #Hen Empowered@\n"
+
+[content.skills."Ultimate 1 Upgrade 2"]
+name        = "Grown Overnight"
+description = "• During #ULTIMATE@, the Hen grows huge and breathes fire in a wider zone, dealing &+{0}%~ damage"
+
+[content.skills."Ultimate 2 Volcanic"]
+name        = "Shower of Golden Eggs"
+description = "• Each #ULTIMATE@ fireball scatters &{0}~ burning golden eggs into the surrounding area, dealing #{1}%@ damage each"
+
+[content.skills."Ultimate 2 Upgrade 2"]
+name        = "Egg Toss"
+description = "• In Combat, #DASH@ makes the Hen hurl a burning golden egg at a close enemy, dealing &{0}~ area damage"
+
+# --- The book: Jack's story (Beowulf has 7 pages) -----------------------------
+[[content.memoirs]]
+title = "Milky-White"
+text  = "There was a widow's boy named Jack, and a cow named Milky-White who gave no more milk. \"Take her to market,\" said his mother, \"and bring back money, or we starve.\" Jack walked the long road with the rope in his hand, and he did not come back with money."
+
+[[content.memoirs]]
+title = "Five Beans"
+text  = "On the road he met a stranger with a crooked smile and five beans in his palm, speckled like eggs. \"Magic,\" said the stranger. \"Plant them at night, and by morning they'll reach the sky.\" Jack traded the cow. His mother wept and threw the beans out of the window."
+
+[[content.memoirs]]
+title = "Overnight"
+text  = "In the night the beans woke. The stalk tore up the garden, split the well, and climbed past the clouds, thick as a tower and green as poison. In the morning Jack looked up at it for a long time. Then he took his father's axe, and he climbed."
+
+[[content.memoirs]]
+title = "Fee-Fi-Fo-Fum"
+text  = "At the top stood a castle, and in the castle a giant who ground bones to make his bread. Jack hid in the oven, then in the great copper pot, while the giant sniffed the air. He waited until the snoring shook the walls. Then he took the gold, and the harp, and the hen."
+
+[[content.memoirs]]
+title = "Timber"
+text  = "The giant woke to the harp's screaming and came down the beanstalk after him, each step a thunderclap. Jack reached the ground first. He swung the axe until his hands bled, and the stalk groaned, and leaned, and fell, and the giant fell with it, all the way down."
+
+[[content.memoirs]]
+title = "The Golden Hen"
+text  = "The gold was spent. The harp would not stop weeping, so they sold it. But the hen stayed. She laid her golden eggs and slept on Jack's shoulder, and when the first Nightmares came out of the woods, she opened her beak and breathed a fire the colour of the sun."
+
+[[content.memoirs]]
+title = "Giant-Slayer"
+text  = "The Nightmares grew bigger every night, and Jack found he did not mind. He had climbed higher than any of them, and he had felled a giant with a woodcutter's axe. \"The bigger they are,\" he tells the hen, sharpening the blade, \"the further they fall.\""
