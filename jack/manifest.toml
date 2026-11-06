@@ -69,6 +69,70 @@ tint = "#6fbf3a"
 [content.effects.Beowulf_Runes_Of_War_Swirl_01]
 tint = "#6fbf3a"
 
+# --- Jack's kit: abilities + talents that feed each other ---------------------
+# Every button KEEPS Beowulf's base move, so every talent that modifies it
+# (Twin Beanstalks, Seed Pods, Burning Vines, Whirligig, Lid Charge, ...) still
+# applies, and gains a Jack effect on top. The synergy axis is IGNITE: the
+# Hen's golden eggs burn, which is what The Giant's Oven, Cracked Golden Eggs
+# and Glint of Gold all build on; Hen-empowered moves throw the most eggs, so
+# the trait talents (The Hen's Trust, Whetstone) pay off too.
+# hit = delayed ground burst (radius m, damage % of a hit, delay s).
+# egg = the Hen's fireball (Beowulf's Raging Chain fireball), burn = IGNITE s.
+[content.kit]
+# Woodcutter's Axe: the combo finisher fells a beanstalk that bursts in front.
+attack  = { when = "Event Basic Attack Active Finisher", steps = [
+    { hit = { radius = 3, damage = 120, delay = 0.3 } },
+] }
+# Timber! (Hen-empowered): the Hen flings three burning golden eggs along it.
+power   = { when = "Event Primary Ability Empowered", steps = [
+    { fire = "Heroes/Hero_Beowulf/Hero_Beowulf_Ultimate_2_Fireball", angles = [-20, 0, 20], burn = 3 },
+] }
+# Woodcutter's Whirl: the Hen drops golden eggs all around as Jack spins.
+special = { steps = [
+    { wait = 0.2 },
+    { fire = "Heroes/Hero_Beowulf/Hero_Beowulf_Ultimate_2_Fireball", angles = [0, 120, 240], burn = 2 },
+] }
+# The Copper Pot: the bash rings out, magic beans burst around the lid.
+defense = { when = "Event Defensive Ability Attack Active", steps = [
+    { hit = { radius = 3.5, damage = 100, delay = 0.2 } },
+] }
+# Giant-Slayer: the slam is the giant hitting the ground.
+ultimate2 = { when = "Event Ultimate Power 2 Active Slam", steps = [
+    { hit = { radius = 7, damage = 400, delay = 0.5 } },
+] }
+
+# Talents: each hangs on the talent's own event, so it only happens once owned.
+talents = [
+    # Bean Vault (Dash Attack): a beanstalk bursts where the dash attack lands.
+    { when = "Event Skill Dash Attack Active", steps = [
+        { hit = { radius = 3.5, damage = 150, delay = 0.35 } } ] },
+    # Fee-Fi-Fo-Fum! (Trait Battlecry): the giant's foot stamps down.
+    { when = "Event Skill Trait Battlecry Active", steps = [
+        { hit = { radius = 7, damage = 300, delay = 0.8 } } ] },
+    # Magic Beans (Defense Damage Aura): beans burst around Jack three times.
+    { when = "Event On Skill Defense Damage Aura Proc", steps = [
+        { repeat = 3, every = 0.5, steps = [ { hit = { radius = 4, damage = 100, delay = 0.3 } } ] } ] },
+    # Runner Bean (Special Sends Power): two more beanstalk lines fan out
+    # (the shockwave hits as hard as its POWER line; Nyx's proven Cross Quake).
+    { when = "Event Skill Special Sends Power Active", steps = [
+        { fire = "Heroes/Hero_Beowulf/Hero_Beowulf_Shockwave", angles = [-40, 40] } ] },
+    # Golden Egg (Trait AOE): calling the Hen also heals Jack.
+    { when = "Event Skill Trait AOE Active", steps = [ { heal = 40 } ] },
+    # Hen's Breath (Attack Fire Cone): the cone ends in a golden egg.
+    { when = "Event Skill Attack Fire Cone Active", steps = [
+        { wait = 0.3 },
+        { fire = "Heroes/Hero_Beowulf/Hero_Beowulf_Ultimate_2_Fireball", angles = [0], burn = 3 } ] },
+]
+
+# --- Size: Jack is a boy -------------------------------------------------------
+# Beowulf's own entity overrides Character_Common's "Character Mesh Scale"
+# (1.0); shipped skins tune it the same way. 0.8 makes Jack a head shorter
+# than Beowulf/Romeo, about Piper's height; skeleton, animations, axe, lid
+# and Hen scale together. Hit areas and ranges do NOT scale (gameplay kept).
+[[content.abilities]]
+set   = "Character Mesh Scale.value"
+value = 0.8
+
 # --- Ability cards ------------------------------------------------------------
 [content.skills."Ability Trait"]
 name        = "The Golden Hen"
@@ -76,19 +140,19 @@ description = "• Call the #Golden Hen@ to empower your next #POWER@, #SPECIAL@
 
 [content.skills."Ability Attack"]
 name        = "Woodcutter's Axe"
-description = "• Chain together a series of chops. Last chop deals #+{0}%@ damage\n• Whole combo deals a total of &{1}~ damage"
+description = "• Chain together a series of chops. Last chop deals #+{0}%@ damage\n• The last chop fells a beanstalk that bursts in front of you for #120%@ area damage\n• Whole combo deals a total of &{1}~ damage"
 
 [content.skills."Ability Power"]
 name        = "Timber!"
-description = "• Drive the axe into the ground and a line of beanstalks tears up in front of you, dealing &{0}~ damage along its path\n• #+HEN@: Deals #+{1}%@ damage and applies #IGNITE@ to all enemies hit"
+description = "• Drive the axe into the ground and a line of beanstalks tears up in front of you, dealing &{0}~ damage along its path\n• #+HEN@: Deals #+{1}%@ damage, applies #IGNITE@ to all enemies hit, and the Hen flings #3@ burning golden eggs along the line"
 
 [content.skills."Ability Special"]
 name        = "Woodcutter's Whirl"
-description = "• Spin with the axe, briefly becoming #INTANGIBLE@ and dealing &{0}~ damage all around, then finish with a felling swing that deals &{1}~ damage all around\n• #+HEN@: Deals #+{2}%@ damage and the finisher applies #IGNITE@ to all enemies hit"
+description = "• Spin with the axe, briefly becoming #INTANGIBLE@ and dealing &{0}~ damage all around, then finish with a felling swing that deals &{1}~ damage all around\n• The Hen drops #3@ golden eggs around you that apply #IGNITE@\n• #+HEN@: Deals #+{2}%@ damage and the finisher applies #IGNITE@ to all enemies hit"
 
 [content.skills."Ability Defense"]
 name        = "The Copper Pot"
-description = "• Hold to duck behind the giant's copper pot lid and block all incoming damage. Release to bash with it, dealing &{0}~ damage\n• #+HEN@: Deals #+{1}%@ damage. Each attack blocked heals all nearby Heroes by #{2}%@ of damage blocked"
+description = "• Hold to duck behind the giant's copper pot lid and block all incoming damage. Release to bash with it, dealing &{0}~ damage, and magic beans burst around the lid for #100%@ area damage\n• #+HEN@: Deals #+{1}%@ damage. Each attack blocked heals all nearby Heroes by #{2}%@ of damage blocked"
 
 [content.skills."Ability Ultimate 1"]
 name        = "Flight of the Golden Hen"
@@ -96,7 +160,7 @@ description = "• The Golden Hen takes off and hunts enemies, breathing golden 
 
 [content.skills."Ability Ultimate 2"]
 name        = "Giant-Slayer"
-description = "• Rush forward, then chain together a flurry of axe blows with the Golden Hen, dealing up to &{0}~ damage\n• {1} is #INTANGIBLE@ during the whole ability"
+description = "• Rush forward, then chain together a flurry of axe blows with the Golden Hen, dealing up to &{0}~ damage\n• The final slam brings a giant down with it: #400%@ damage in a wide area\n• {1} is #INTANGIBLE@ during the whole ability"
 
 # --- Talents (same effects as Beowulf's; numbers come from each card's format) ---
 [content.skills."Passive Better Ignite"]
@@ -108,20 +172,20 @@ name        = "Cracked Golden Eggs"
 description = "• #IGNITED@ enemies burst like golden eggs when they die, dealing &{0}~ damage and applying #IGNITE@ to all nearby enemies"
 
 [content.skills."Dash Attack"]
-name        = "Kindling Chop"
-description = "• #ATTACK@ triggered right after #DASH@ deals &{0}%~ damage and applies #IGNITE@ to enemies"
+name        = "Bean Vault"
+description = "• #ATTACK@ triggered right after #DASH@ deals &{0}%~ damage and applies #IGNITE@ to enemies\n• A beanstalk bursts where you land, dealing #150%@ area damage"
 
 [content.skills."Trait Quest"]
 name        = "The Hen's Trust"
 description = "• #Quest (x{0}):@ Hitting #{1}@ enemies with a single #Hen ability@ grants #+{2} DMG@\n• #Complete@: #TRAIT@ cooldown #-{3}%@, #Hen abilities@ deal &+{4}%~ damage"
 
 [content.skills."Trait AOE"]
-name        = "Flap of Golden Wings"
-description = "• Calling the Hen with #TRAIT@ deals &{0}~ damage all around and applies #IGNITE@ to all enemies hit"
+name        = "Golden Egg"
+description = "• Calling the Hen with #TRAIT@ deals &{0}~ damage all around and applies #IGNITE@ to all enemies hit\n• She lays a golden egg that restores #40@ health"
 
 [content.skills."Trait Battlecry"]
 name        = "Fee-Fi-Fo-Fum!"
-description = "• #TRAIT@ increases Move Speed by #{2}%@ and grants &{0}~ #SHIELD@ to all Heroes in the area for #{1}@ seconds"
+description = "• #TRAIT@ increases Move Speed by #{2}%@ and grants &{0}~ #SHIELD@ to all Heroes in the area for #{1}@ seconds\n• A moment later the giant's foot stamps down around you, dealing #300%@ damage in a wide area"
 
 [content.skills."Attack Speed"]
 name        = "Whetstone"
@@ -141,7 +205,7 @@ description = "• After a #SPECIAL@, the next #ATTACK@ triggers a series of #{0
 
 [content.skills."Attack Fire Cone"]
 name        = "Hen's Breath"
-description = "• The Hen breathes a cone of golden fire during the #ATTACK@ finisher, dealing &{0}%~ damage and applying #IGNITE@ to enemies hit"
+description = "• The Hen breathes a cone of golden fire during the #ATTACK@ finisher, dealing &{0}%~ damage and applying #IGNITE@ to enemies hit\n• The cone ends with a burning golden egg"
 
 [content.skills."Attack Special Crit"]
 name        = "Glint of Gold"
@@ -169,7 +233,7 @@ description = "• #Hen SPECIAL@'s finisher shakes the ground #{0}@ times with a
 
 [content.skills."Special Sends Power"]
 name        = "Runner Bean"
-description = "• #SPECIAL@ sends out a {0}, dealing &{1}%~ of #POWER@ damage"
+description = "• #SPECIAL@ sends out a {0}, dealing &{1}%~ of #POWER@ damage\n• Two more beanstalk lines fan out to the sides"
 
 [content.skills."Special Finisher More Damage"]
 name        = "Harvest Season"
@@ -189,7 +253,7 @@ description = "• Each attack blocked during #DEFENSE@ rings off the copper and
 
 [content.skills."Defense Damage Aura"]
 name        = "Magic Beans"
-description = "• After hitting an enemy with #DEFENSE@, magic beans sprout around {0}, dealing &{1}~ area damage per second for #{2}@ seconds"
+description = "• After hitting an enemy with #DEFENSE@, magic beans sprout around {0}, dealing &{1}~ area damage per second for #{2}@ seconds\n• The beans burst #3@ times, each dealing #100%@ area damage"
 
 [content.skills."Ultimate Power 1"]
 name        = "Flight of the Golden Hen"
