@@ -14,7 +14,6 @@ summary      = "Two new skins for Scarlet, after her shipped ones."
 description  = "Adds Crimson and Frost: new, always-unlocked skins for Scarlet."
 sdk_version  = "3"
 enabled      = true
-experimental = true
 tags         = ["skins", "cosmetic"]
 
 multiplayer_scope = "deterministic-shared"
