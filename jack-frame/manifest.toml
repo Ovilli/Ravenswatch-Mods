@@ -7,16 +7,17 @@
 # animations of his own; the roster record, alias and preload lists come from
 # the hero kind's pipeline.
 #
-# What to check in game (nothing else exists yet):
-#   * JackSelf is on the hero-select screen and plays his select poses;
+# What to check in game:
+#   * JackSelf is on the hero-select screen WITH his body and plays his poses;
 #   * a run starts: he stands, walks, runs, dashes, gets hit, dies/revives;
-#   * he has NO attacks or abilities yet (step B) and talents are empty cards.
+#   * every button (step B) plays its animation, hits around him at the times
+#     below and ends (he never gets stuck in a move); talents are empty cards.
 # If the run does not start or the game crashes, send the log.
 
 [mod]
 id           = "jack-frame"
 name         = "Jack (from scratch, boot test)"
-version      = "0.1.0"
+version      = "0.2.0"
 author       = "Ovilli"
 description  = "First boot test of a hero written from scratch: Jack's own files, no other hero inside."
 enabled      = true
@@ -41,3 +42,63 @@ albedo = "art/jack_kintaro_alb.png"
 rig      = "Hero_Kintaro"
 mesh     = "Characters\\Heroes\\Kintaro\\Kintaro_GEO.fbx"
 material = "Characters\\Heroes\\Kintaro\\Textures\\M_Kintaro.mat.ot"
+
+# --- Buttons, written from data (engine/hero_ability.py) ----------------------
+# Each: the clip it plays (Kintaro's on-foot motion until Jack has his own),
+# how long it holds the hero (duration), its cooldown, and its hits: a burst
+# of `radius` m around him for `damage` % of a hit, `at` s after the press.
+[content.frame.abilities.attack]
+name        = "Woodcutter's Chop"
+description = "• A quick chop of the axe in front of you"
+clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_BasicAttack01.fbx"
+duration    = 0.6
+cooldown    = 0.1
+hits        = [ { at = 0.3, radius = 2.5, damage = 100 } ]
+
+[content.frame.abilities.power]
+name        = "Timber!"
+description = "• Bring the axe down hard: a beanstalk bursts where it lands"
+clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Power_Out.fbx"
+duration    = 0.9
+cooldown    = 6
+hits        = [ { at = 0.35, radius = 3.5, damage = 200 } ]
+
+[content.frame.abilities.special]
+name        = "Woodcutter's Whirl"
+description = "• Sweep the axe around you twice"
+clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Woodcutter_Swipe.fbx"
+duration    = 1.0
+cooldown    = 8
+hits        = [ { at = 0.4, radius = 4, damage = 150 }, { at = 0.7, radius = 4, damage = 150 } ]
+
+[content.frame.abilities.defense]
+name        = "Fee-Fi-Fo-Fum!"
+description = "• Shout so loud the beans in your pockets pop around you"
+clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Defense.fbx"
+duration    = 1.0
+cooldown    = 8
+hits        = [ { at = 0.3, radius = 3, damage = 80 } ]
+
+[content.frame.abilities.trait]
+name        = "Magic Bean"
+description = "• Plant a magic bean: a moment later a beanstalk bursts from the ground"
+clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Raijin_Axe.fbx"
+duration    = 1.2
+cooldown    = 12
+hits        = [ { at = 0.9, radius = 5, damage = 300 } ]
+
+[content.frame.abilities.ultimate]
+name        = "The Giant Falls"
+description = "• Fell the beanstalk: the giant comes crashing down around you"
+clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Ultimate1_Out.fbx"
+duration    = 1.6
+cooldown    = 40
+hits        = [ { at = 0.5, radius = 6, damage = 300 }, { at = 1.1, radius = 8, damage = 500 } ]
+
+[content.frame.abilities.ultimate2]
+name        = "Giant-Slayer"
+description = "• Clap the giant's own thunder at everything around you"
+clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Nekodamashi.fbx"
+duration    = 1.0
+cooldown    = 40
+hits        = [ { at = 0.4, radius = 6, damage = 400 } ]
