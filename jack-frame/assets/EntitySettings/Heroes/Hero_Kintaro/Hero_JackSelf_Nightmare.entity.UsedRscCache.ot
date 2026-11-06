@@ -8,6 +8,7 @@
 3D|Characters\Heroes\Kintaro\Animations\Bear_Rush_IsMounting.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_FishProjectile_Ultimate1.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Skins\Kintaro_Nightmare_SKIN_GEO.fbx|oCGeometry
+3D|Characters\Heroes\Kintaro\Textures\M_JackSelf_Mat1.mat.ot|oCMaterial
 3D|Characters\Heroes\Kintaro\Textures\M_Kintaro_Carp_Ulti1.mat.ot|oCMaterial
 3D|Characters\Heroes\Kintaro\Textures\Nightmare\M_KintaroAxe_Nightmare.mat.ot|oCMaterial
 3D|Characters\Heroes\Kintaro\Textures\Nightmare\M_KintaroBear_Nightmare.mat.ot|oCMaterial
@@ -27,6 +28,7 @@
 3D|Characters\Heroes\Kintaro\Textures\T_Carp_Ulti1_EMI.tga|oCTexture
 3D|Characters\Heroes\Kintaro\Textures\T_Carp_Ulti1_MRA.tga|oCTexture
 3D|Characters\Heroes\Kintaro\Textures\T_Carp_Ulti1_NRM.tga|oCTexture
+3D|Characters\Heroes\Kintaro\Textures\T_JackSelf_Mat1_ALB.tga|oCTexture
 3D|Characters\Heroes\Kintaro\Textures\T_KintaroBear_NRM.tga|oCTexture
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_DeathGrasp.fbx|oCAnimation
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_Divine_Revive_In.fbx|oCAnimation
@@ -77,8 +79,6 @@
 3D|Scenery\DarkHills\T_Fish_A_NRM.tga|oCTexture
 3D|Scenery\DarkHills\T_Tree_Big_Roots_FX_ALB.tga|oCTexture
 3D|Scenery\DarkHills\T_Tree_Big_Roots_NRM.tga|oCTexture
-3D|\Textures\M_JackSelf_Mat1.mat.ot|oCMaterial
-3D|\Textures\T_JackSelf_Mat1_ALB.tga|oCTexture
 EntitySettings|Baba_Yaga_Spells\Baba_Yaga_Bird.entity.ot|oCEntitySettingsResource
 EntitySettings|Baba_Yaga_Spells\Baba_Yaga_Flock.entity.ot|oCEntitySettingsResource
 EntitySettings|Baba_Yaga_Spells\Baba_Yaga_Hand.entity.ot|oCEntitySettingsResource
