@@ -1,7 +1,88 @@
-# Ids are FMOD paths ("bus:/Music", "event:/Heroes/Red"), listed from the
-# installed game's strings bank by the fmod-sounds option source.
+# Ids are FMOD paths ("bus:/Music", "event:/Heroes/Red/Human/Skills/..."),
+# listed from the installed game's strings bank by the fmod-sounds source.
+# `muted` is the coarse list (categories, mixer buses, folders); each hero
+# field lists that hero's sounds one by one ("fmod-sounds:<folder>").
+
 [fields.muted]
 type    = "multiselect"
 source  = "fmod-sounds"
-label   = "Sounds to mute"
+label   = "Music, menus, enemies & more"
+default = []
+
+[fields.hero_scarlet]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Red"
+label   = "Scarlet sounds"
+default = []
+
+[fields.hero_piper]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Piper"
+label   = "Piper sounds"
+default = []
+
+[fields.hero_beowulf]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Beowulf"
+label   = "Beowulf sounds"
+default = []
+
+[fields.hero_snow_queen]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/SnowQueen"
+label   = "Snow Queen sounds"
+default = []
+
+[fields.hero_aladdin]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Aladdin"
+label   = "Aladdin sounds"
+default = []
+
+[fields.hero_melusine]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Melusine"
+label   = "Melusine sounds"
+default = []
+
+[fields.hero_geppetto]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Geppetto"
+label   = "Geppetto sounds"
+default = []
+
+[fields.hero_sun_wukong]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/SunWukong"
+label   = "Sun Wukong sounds"
+default = []
+
+[fields.hero_carmilla]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Carmilla"
+label   = "Carmilla sounds"
+default = []
+
+[fields.hero_romeo]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Romeo"
+label   = "Romeo sounds"
+default = []
+
+[fields.hero_juliet]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Juliet"
+label   = "Juliet sounds"
+default = []
+
+[fields.hero_merlin]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Merlin"
+label   = "Merlin sounds"
+default = []
+
+[fields.hero_kintaro]
+type    = "multiselect"
+source  = "fmod-sounds:event:/Heroes/Kintaro"
+label   = "Kintaro sounds"
 default = []

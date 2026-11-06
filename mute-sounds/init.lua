@@ -1,18 +1,42 @@
 -- Mute sounds: silence exactly the sounds picked in this mod's config.
 --
--- `muted` holds FMOD paths from the config panel ("bus:/Music",
--- "event:/Heroes/Red", "all"); R.audio.select does the rest, and a change
--- saved while the game runs is picked up live.
+-- Every field in config_schema.toml is a list of FMOD paths: `muted` holds
+-- categories ("bus:/Music", "event:/GUI", "all"), each `hero_*` field holds
+-- single sounds or folders of that hero. They are merged into one selection
+-- for R.audio.select, re-sent whenever any of them changes.
 
 local R = require "rsmm"
+
+local FIELDS = {
+    "muted",
+    "hero_scarlet", "hero_piper", "hero_beowulf", "hero_snow_queen", "hero_aladdin",
+    "hero_melusine", "hero_geppetto", "hero_sun_wukong", "hero_carmilla",
+    "hero_romeo", "hero_juliet", "hero_merlin", "hero_kintaro",
+}
 
 if not (R.audio and R.audio.select) then
     R.log("[mute-sounds] this SDK has no R.audio; update the loader (rsmm update-loader)")
     return
 end
 
-local function apply(list)
-    if type(list) ~= "table" then list = {} end
+local function selection()
+    local out, seen = {}, {}
+    for _, key in ipairs(FIELDS) do
+        local list = R.config.get(key, {})
+        if type(list) == "table" then
+            for _, p in ipairs(list) do
+                if type(p) == "string" and not seen[p] then
+                    seen[p] = true
+                    out[#out + 1] = p
+                end
+            end
+        end
+    end
+    return out
+end
+
+local function apply()
+    local list = selection()
     if not R.audio.select(list) then
         R.log("[mute-sounds] the running loader cannot mute by sound; update it (rsmm update-loader)")
         return
@@ -20,8 +44,8 @@ local function apply(list)
     R.log("[mute-sounds] muting " .. #list .. " selection(s)")
 end
 
-apply(R.config.get("muted", {}))
-R.config.on_change("muted", apply)
+apply()
+for _, key in ipairs(FIELDS) do R.config.on_change(key, apply) end
 
 -- One report once FMOD is running, so the log answers "did it arm?".
 R.schedule.after(15, function()
