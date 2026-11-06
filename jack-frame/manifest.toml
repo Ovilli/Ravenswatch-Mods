@@ -1,0 +1,43 @@
+# FIRST BOOT TEST of a hero written from scratch (roadmap "Hero from scratch A").
+#
+# JackSelf's gameplay files are NOT a copy of any hero: his main and FX
+# entities are written by engine/hero_frame.py on the shared hero base only
+# (Hero_Common through its alias, Character_Common), his skins likewise.
+# Kintaro lends ONLY a skeleton and his on-foot clips (motion), until Jack has
+# animations of his own; the roster record, alias and preload lists come from
+# the hero kind's pipeline.
+#
+# What to check in game (nothing else exists yet):
+#   * JackSelf is on the hero-select screen and plays his select poses;
+#   * a run starts: he stands, walks, runs, dashes, gets hit, dies/revives;
+#   * he has NO attacks or abilities yet (step B) and talents are empty cards.
+# If the run does not start or the game crashes, send the log.
+
+[mod]
+id           = "jack-frame"
+name         = "Jack (from scratch, boot test)"
+version      = "0.1.0"
+author       = "Ovilli"
+description  = "First boot test of a hero written from scratch: Jack's own files, no other hero inside."
+enabled      = true
+load_order   = 96
+sdk_version  = ">=3.0,<4"
+license      = "MIT"
+tags         = ["heroes", "test"]
+multiplayer_scope = "deterministic-shared"
+experimental = true
+
+[[content]]
+kind        = "hero"
+id          = "JackSelf"
+base        = "Kintaro"
+name        = "Jack (from scratch)"
+description = "Boot test: Jack written from scratch. He can stand, walk, run and dash; nothing else yet."
+
+[content.materials.M_Kintaro]
+albedo = "art/jack_kintaro_alb.png"
+
+[content.frame]
+rig      = "Hero_Kintaro"
+mesh     = "Characters\\Heroes\\Kintaro\\Kintaro_GEO.fbx"
+material = "Characters\\Heroes\\Kintaro\\Textures\\M_Kintaro.mat.ot"
