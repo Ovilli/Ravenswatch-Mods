@@ -1,6 +1,6 @@
 [
-  "3D/Textures/M_JackSelf_Mat1.mat.ot.Material.gen",
-  "3D/Textures/T_JackSelf_Mat1_ALB.tga.Texture.dxt",
+  "3D/Characters/Heroes/Kintaro/Textures/M_JackSelf_Mat1.mat.ot.Material.gen",
+  "3D/Characters/Heroes/Kintaro/Textures/T_JackSelf_Mat1_ALB.tga.Texture.dxt",
   "Definitions/Heroes/JackSelf.herodef.UsedRscCache.ot",
   "Definitions/Heroes/JackSelf.herodef.ot.DtHeroDefinition.gen",
   "EntitySettings/GameUis/Common_Ui/Life_Bar_Hero_Kintaro_JackSelf.entity.ot.EntitySettingsResource.gen",
