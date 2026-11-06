@@ -1,5 +1,6 @@
 3D|Characters\Heroes\RED\Textures\M_Red_Dagger_Projectile.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\M_Red_Frost.mat.ot|oCMaterial
+3D|Characters\Heroes\RED\Textures\M_Red_Frost_1.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\Raven\M_RedRavenSkin.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\Raven\M_Red_Wolf_RavenSkin.mat.ot|oCMaterial
 3D|Characters\Heroes\RED\Textures\Raven\T_RedRaven_ALB.tga|oCTexture
@@ -12,6 +13,7 @@
 3D|Characters\Heroes\RED\Textures\Raven\T_RedWolfRaven_NRM.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RedBlood_ALB.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RedWolf_Blood_ALB.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_Red_Frost_1_ALB.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_Red_Frost_ALB.tga|oCTexture
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_DeathGrasp.fbx|oCAnimation
 3D|Characters\NPC\BabaYaga\Animations\BabaYagHand_Divine_Revive_In.fbx|oCAnimation

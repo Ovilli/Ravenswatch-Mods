@@ -1,7 +1,11 @@
 [
   "3D/Characters/Heroes/RED/Textures/M_Red_Crimson.mat.ot.Material.gen",
+  "3D/Characters/Heroes/RED/Textures/M_Red_Crimson_1.mat.ot.Material.gen",
   "3D/Characters/Heroes/RED/Textures/M_Red_Frost.mat.ot.Material.gen",
+  "3D/Characters/Heroes/RED/Textures/M_Red_Frost_1.mat.ot.Material.gen",
+  "3D/Characters/Heroes/RED/Textures/T_Red_Crimson_1_ALB.tga.Texture.dxt",
   "3D/Characters/Heroes/RED/Textures/T_Red_Crimson_ALB.tga.Texture.dxt",
+  "3D/Characters/Heroes/RED/Textures/T_Red_Frost_1_ALB.tga.Texture.dxt",
   "3D/Characters/Heroes/RED/Textures/T_Red_Frost_ALB.tga.Texture.dxt",
   "Definitions/Heroes/Red_Update6.herodef.UsedRscCache.ot",
   "Definitions/Heroes/Red_Update6.herodef.ot.DtHeroDefinition.gen",
