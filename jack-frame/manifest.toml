@@ -303,6 +303,9 @@ clip = "anim:BookDefeat"
 # Effects are written on each talent (talent factory): add_stats = numbers per
 # rarity ({0} on the card), actions = area hits each time `on` fires while the
 # talent is owned (dash, power, special, defense, ultimate, damage_taken ...).
+# Hits can also stun (s), knockback, stagger and apply a status (Rooted, Weak,
+# Vulnerable, Bleed, Chilled, Ignite): Jack's beans set enemies up, and the
+# "for each status" talents pay it off.
 [[content.frame.talents]]
 name        = "Attack Sharp Axe"
 title       = "Sharp Axe"
@@ -311,15 +314,15 @@ add_stats   = [ { stat = "Crit chance basic", values = [0.08, 0.12, 0.16, 0.20] 
 
 [[content.frame.talents]]
 name        = "Attack Rhythm"
-title       = "Woodcutter's Rhythm"
-description = "• #ATTACK@ deals &+{0}%~ damage"
-add_stats   = [ { stat = "Attack power basic", values = [0.15, 0.22, 0.30, 0.40] } ]
+title       = "Tangled Up"
+description = "• #ATTACK@ deals &+{0}%~ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase basic damage for each debuff", values = [0.08, 0.12, 0.16, 0.20] } ]
 
 [[content.frame.talents]]
 name        = "Attack Splinters"
 title       = "Splinters"
-description = "• Critical hits deal &+{0}%~ damage"
-add_stats   = [ { stat = "Crit damage", values = [0.15, 0.20, 0.25, 0.30] } ]
+description = "• Critical hits make enemies #Bleed@"
+add_stats   = [ { stat = "Apply bleed on critical", values = [1, 1, 1, 1], percent = false } ]
 
 [[content.frame.talents]]
 name        = "Power Twin Beanstalks"
@@ -329,9 +332,9 @@ actions     = [ { on = "power", hits = [ { at = 0.6, radius = 3.5, damage = 120 
 
 [[content.frame.talents]]
 name        = "Power Seed Pods"
-title       = "Seed Pods"
-description = "• Timber! leaves seed pods that burst a moment later for #100%@ area damage"
-actions     = [ { on = "power", hits = [ { at = 1.2, radius = 4, damage = 100 } ] } ]
+title       = "Thorny Pods"
+description = "• Timber! leaves thorny pods that burst a moment later for #100%@ area damage and #Bleed@"
+actions     = [ { on = "power", hits = [ { at = 1.2, radius = 4, damage = 100, status = "Bleed" } ] } ]
 
 [[content.frame.talents]]
 name        = "Power Deep Roots"
@@ -348,14 +351,14 @@ actions     = [ { on = "special", hits = [ { at = 1.0, radius = 4, damage = 150 
 [[content.frame.talents]]
 name        = "Special Harvest"
 title       = "Harvest Season"
-description = "• #SPECIAL@ deals &+{0}%~ damage"
-add_stats   = [ { stat = "Attack power secondary", values = [0.20, 0.30, 0.40, 0.50] } ]
+description = "• #SPECIAL@ deals &+{0}%~ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase secondary damage for each debuff", values = [0.10, 0.15, 0.20, 0.25] } ]
 
 [[content.frame.talents]]
 name        = "Special Runner Bean"
 title       = "Runner Bean"
-description = "• Woodcutter's Whirl sends out beanstalks in a wide ring for #80%@ damage"
-actions     = [ { on = "special", hits = [ { at = 0.3, radius = 6, damage = 80 } ] } ]
+description = "• Woodcutter's Whirl sends out runner beans in a wide ring for #80%@ damage that #Root@"
+actions     = [ { on = "special", hits = [ { at = 0.3, radius = 6, damage = 80, status = "Rooted" } ] } ]
 
 [[content.frame.talents]]
 name        = "Defense Hide In The Pot"
@@ -366,20 +369,20 @@ add_stats   = [ { stat = "Invulnerable", during = "DEFENSE" } ]
 [[content.frame.talents]]
 name        = "Defense Ringing Copper"
 title       = "Ringing Copper"
-description = "• Your shout rings like copper, dealing #120%@ area damage"
-actions     = [ { on = "defense", hits = [ { at = 0.1, radius = 4, damage = 120 } ] } ]
+description = "• Your shout rings like copper: #DEFENSE@ also leaves enemies #Vulnerable@ and deals #120%@ area damage"
+actions     = [ { on = "defense", hits = [ { at = 0.1, radius = 4, damage = 120, status = "Vulnerable" } ] } ]
 
 [[content.frame.talents]]
 name        = "Defense Magic Beans"
 title       = "Magic Beans"
-description = "• Shouting scatters magic beans that burst #3@ times for #80%@ area damage"
-actions     = [ { on = "defense", hits = [ { at = 0.5, radius = 3, damage = 80 }, { at = 1.0, radius = 3, damage = 80 }, { at = 1.5, radius = 3, damage = 80 } ] } ]
+description = "• Shouting scatters magic beans that burst #3@ times for #80%@ area damage, #Rooting@ enemies"
+actions     = [ { on = "defense", hits = [ { at = 0.5, radius = 3, damage = 80, status = "Rooted" }, { at = 1.0, radius = 3, damage = 80 }, { at = 1.5, radius = 3, damage = 80 } ] } ]
 
 [[content.frame.talents]]
 name        = "Trait Bigger Bean"
 title       = "Bigger Bean"
-description = "• #TRAIT@ deals &+{0}%~ damage"
-add_stats   = [ { stat = "Attack power trait", values = [0.20, 0.30, 0.40, 0.50] } ]
+description = "• #TRAIT@ deals &+{0}%~ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase trait damage for each debuff", values = [0.15, 0.20, 0.25, 0.30] } ]
 
 [[content.frame.talents]]
 name        = "Trait Bean Pouch"
@@ -396,8 +399,8 @@ add_stats   = [ { stat = "Vitality", values = [10, 15, 20, 25], percent = false 
 [[content.frame.talents]]
 name        = "Dash Bean Vault"
 title       = "Bean Vault"
-description = "• A beanstalk bursts where you land, dealing #120%@ area damage"
-actions     = [ { on = "dash", hits = [ { at = 0.2, radius = 3, damage = 120 } ] } ]
+description = "• A beanstalk bursts where you land, dealing #120%@ area damage and throwing enemies back"
+actions     = [ { on = "dash", hits = [ { at = 0.2, radius = 3, damage = 120, knockback = 50 } ] } ]
 
 [[content.frame.talents]]
 name        = "Dash Light Feet"
@@ -469,56 +472,56 @@ text  = "\"The bigger they are,\" Jack tells the Nightmares, sharpening the blad
 # of `radius` m around him for `damage` % of a hit, `at` s after the press.
 [content.frame.abilities.attack]
 name        = "Woodcutter's Chop"
-description = "• A quick chop of the axe in front of you"
+description = "• A quick chop of the axe that staggers what it hits"
 clip        = "anim:Chop"
 duration    = 0.6
 cooldown    = 0.1
-hits        = [ { at = 0.3, radius = 2.5, damage = 100 } ]
+hits        = [ { at = 0.3, radius = 2.5, damage = 100, stagger = 5 } ]
 
 [content.frame.abilities.power]
 name        = "Timber!"
-description = "• Bring the axe down hard: a beanstalk bursts where it lands"
+description = "• Bring the axe down hard: a beanstalk bursts where it lands, #stunning@ and throwing back everything around you"
 clip        = "anim:Timber"
 duration    = 1.0
 cooldown    = 6
-hits        = [ { at = 0.45, radius = 3.5, damage = 200 } ]
+hits        = [ { at = 0.45, radius = 3.5, damage = 200, stun = 1.0, knockback = 60, stagger = 20 } ]
 
 [content.frame.abilities.special]
 name        = "Woodcutter's Whirl"
-description = "• Sweep the axe around you twice"
+description = "• Sweep the axe around you twice, knocking enemies away"
 clip        = "anim:Whirl"
 duration    = 1.3
 cooldown    = 8
-hits        = [ { at = 0.45, radius = 4, damage = 150 }, { at = 0.85, radius = 4, damage = 150 } ]
+hits        = [ { at = 0.45, radius = 4, damage = 150, knockback = 30 }, { at = 0.85, radius = 4, damage = 150, knockback = 30 } ]
 
 [content.frame.abilities.defense]
 name        = "Fee-Fi-Fo-Fum!"
-description = "• Shout so loud the beans in your pockets pop around you"
+description = "• Fee-Fi-Fo-Fum! A giant's roar that #stuns@ and #Weakens@ enemies around you"
 clip        = "anim:Shout"
 duration    = 1.05
 cooldown    = 8
-hits        = [ { at = 0.35, radius = 3, damage = 80 } ]
+hits        = [ { at = 0.3, radius = 3.5, damage = 80, stun = 0.8, status = "Weak" } ]
 
 [content.frame.abilities.trait]
 name        = "Magic Bean"
-description = "• Plant a magic bean: a moment later a beanstalk bursts from the ground"
+description = "• Plant a magic bean: a moment later a beanstalk bursts from the ground and #Roots@ every enemy around you"
 clip        = "anim:Bean"
 duration    = 1.2
 cooldown    = 12
-hits        = [ { at = 0.9, radius = 5, damage = 300 } ]
+hits        = [ { at = 0.9, radius = 5, damage = 300, status = "Rooted" } ]
 
 [content.frame.abilities.ultimate]
 name        = "The Giant Falls"
-description = "• Fell the beanstalk: the giant comes crashing down around you"
+description = "• Fell the beanstalk: the giant comes crashing down, #stunning@ everything and leaving it #Vulnerable@"
 clip        = "anim:GiantFalls"
 duration    = 1.1
 cooldown    = 40
-hits        = [ { at = 0.45, radius = 6, damage = 300 }, { at = 0.9, radius = 8, damage = 500 } ]
+hits        = [ { at = 0.45, radius = 6, damage = 300, knockback = 80 }, { at = 0.9, radius = 8, damage = 500, stun = 2.0, status = "Vulnerable" } ]
 
 [content.frame.abilities.ultimate2]
 name        = "Giant-Slayer"
-description = "• Clap the giant's own thunder at everything around you"
+description = "• Strike like a giant-slayer: one huge blow that #Bleeds@ and #stuns@ everything around you"
 clip        = "anim:GiantSlayer"
 duration    = 2.4
 cooldown    = 40
-hits        = [ { at = 1.2, radius = 6, damage = 400 } ]
+hits        = [ { at = 1.2, radius = 6, damage = 400, stun = 1.5, status = "Bleed" } ]
