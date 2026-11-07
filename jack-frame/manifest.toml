@@ -27,6 +27,9 @@ license      = "MIT"
 tags         = ["heroes", "test"]
 multiplayer_scope = "deterministic-shared"
 experimental = true
+# Talent probe (temporary): with the loader's [talent-guard], dumps every
+# hero's talent rows the first time a talent card has no controller.
+loader_flags = ["RSMM_ENABLE_SKILL_HOOK"]
 
 [[content]]
 kind        = "hero"
@@ -513,6 +516,7 @@ duration    = 1.0
 cooldown    = 6
 hits        = [ { at = 0.45, radius = 3.5, damage = 120, stun = 1.0, knockback = 60, stagger = 20, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Power_Monted_groundShock_01.vfx.ot" } ]
 steps       = [ { wait = 0.45 }, { hit = { radius = 3, damage = 120 }, forward = 2.5 } ]
+indicator   = { radius = 3, forward = 2.5, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.special]
 name        = "Woodcutter's Whirl"
@@ -521,6 +525,7 @@ clip        = "anim:Whirl"
 duration    = 1.3
 cooldown    = 8
 hits        = [ { at = 0.45, radius = 4, damage = 150, knockback = 30, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Dash_Attack_Axe_Slash_01.vfx.ot" }, { at = 0.85, radius = 4, damage = 150, knockback = 30, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Dash_Attack_Axe_Slash_01.vfx.ot" } ]
+indicator   = { radius = 4, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.defense]
 name        = "Fee-Fi-Fo-Fum!"
@@ -529,6 +534,7 @@ clip        = "anim:Shout"
 duration    = 1.05
 cooldown    = 8
 hits        = [ { at = 0.3, radius = 3.5, damage = 80, stun = 0.8, status = "Weak", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Ulti02_EnergyImpact_01.vfx.ot" } ]
+indicator   = { radius = 3.5, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.trait]
 name        = "Magic Bean"
@@ -538,6 +544,7 @@ duration    = 1.2
 cooldown    = 12
 hits        = [ { at = 0.9, radius = 5, damage = 300, status = "Rooted", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Forest_Spirit_Impact.vfx.ot" } ]
 steps       = [ { wait = 0.2 }, { fire = "own:Bean", speed = 10, lifetime = 0.3, damage = 40, forward = 0.5 }, { hit = { radius = 3.5, damage = 150, delay = 0.7 }, forward = 3 } ]
+indicator   = { radius = 3.5, forward = 3, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.ultimate]
 name        = "The Giant Falls"
@@ -547,6 +554,7 @@ duration    = 1.1
 cooldown    = 40
 hits        = [ { at = 0.45, radius = 6, damage = 300, knockback = 80, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Ulti_CarpeSlam_Impact.vfx.ot" }, { at = 0.9, radius = 8, damage = 500, stun = 2.0, status = "Vulnerable", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Ulti_CarpeSlam_Impact.vfx.ot" } ]
 steps       = [ { wait = 0.9 }, { hit = { radius = 4, damage = 300 }, forward = 4 } ]
+indicator   = { radius = 4, forward = 4, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.ultimate2]
 name        = "Giant-Slayer"
@@ -556,3 +564,4 @@ duration    = 2.4
 cooldown    = 40
 hits        = [ { at = 1.2, radius = 4, damage = 150, stun = 1.5, status = "Bleed", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Ulti_PunchImpact_01.vfx.ot" } ]
 steps       = [ { wait = 1.0 }, { fire = "own:Axe", angles = [-15, 0, 15], speed = 25, damage = 250, explode = 2, forward = 1 } ]
+indicator   = { radius = 4, color = [0.55, 0.9, 0.3, 1] }
