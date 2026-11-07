@@ -7386,7 +7386,7 @@ u|m_u32Val3=3766063524
 u|m_u32Val4=1594507083
 s|m_sName=Hero_JackSelf
 s|m_sArchive=EntitySettings
-s|m_sStream=Heroes\\Hero_Kintaro\\Hero_JackSelf.entity.ot
+s|m_sStream=Heroes\\Hero_Common\\Hero_JackSelf.entity.ot
 }
 }
 Object=C4

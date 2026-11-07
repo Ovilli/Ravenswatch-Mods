@@ -1,11 +1,11 @@
 # FIRST BOOT TEST of a hero written from scratch (roadmap "Hero from scratch A").
 #
-# JackSelf's gameplay files are NOT a copy of any hero: his main and FX
-# entities are written by engine/hero_frame.py on the shared hero base only
-# (Hero_Common through its alias, Character_Common), his skins likewise.
-# Kintaro lends ONLY a skeleton and his on-foot clips (motion), until Jack has
-# animations of his own; the roster record, alias and preload lists come from
-# the hero kind's pipeline.
+# NO base hero: nothing of any hero is copied. JackSelf's entities
+# (engine/hero_frame.py), buttons (engine/hero_ability.py) and roster record
+# (engine/herodef_frame.py) are written from data on the shared hero base;
+# his alias, text and preload lists are his own. The rig (Kintaro) lends
+# ASSETS only: a skeleton, on-foot clips, his mesh and UI art, until Jack has
+# a model and animations of his own.
 #
 # What to check in game:
 #   * JackSelf is on the hero-select screen WITH his body and plays his poses;
@@ -17,7 +17,7 @@
 [mod]
 id           = "jack-frame"
 name         = "Jack (from scratch, boot test)"
-version      = "0.2.0"
+version      = "0.3.0"
 author       = "Ovilli"
 description  = "First boot test of a hero written from scratch: Jack's own files, no other hero inside."
 enabled      = true
@@ -31,17 +31,69 @@ experimental = true
 [[content]]
 kind        = "hero"
 id          = "JackSelf"
-base        = "Kintaro"
-name        = "Jack (from scratch)"
-description = "Jack written from scratch: his own body, buttons and talent cards. Still borrowed from Kintaro: the roster record, preload lists, text bank and folder (being replaced), and the skeleton and clips (until Jack has his own)."
-
-[content.materials.M_Kintaro]
-albedo = "art/jack_kintaro_alb.png"
+name        = "Jack"
+description = "Jack traded the family cow for a handful of beans, and by morning a beanstalk reached the clouds. Now every pocket is full of magic beans, and every bean is a beanstalk waiting to happen."
 
 [content.frame]
 rig      = "Hero_Kintaro"
 mesh     = "Characters\\Heroes\\Kintaro\\Kintaro_GEO.fbx"
 material = "Characters\\Heroes\\Kintaro\\Textures\\M_Kintaro.mat.ot"
+albedo   = "art/jack_kintaro_alb.png"
+
+# His talents: his own list (the name's first word is its column in the book).
+# Cards only for now; their effects come with the talent factory on top.
+talents = [
+    { name = "Attack Sharp Axe",        title = "Sharp Axe",          description = "• Your chops cut deeper" },
+    { name = "Attack Rhythm",           title = "Woodcutter's Rhythm", description = "• Chop faster with every hit" },
+    { name = "Attack Splinters",        title = "Splinters",          description = "• Chops send splinters flying" },
+    { name = "Power Twin Beanstalks",   title = "Twin Beanstalks",    description = "• Timber! bursts twice" },
+    { name = "Power Seed Pods",         title = "Seed Pods",          description = "• Timber! leaves seed pods behind" },
+    { name = "Power Deep Roots",        title = "Deep Roots",         description = "• Timber! roots enemies" },
+    { name = "Special Whirligig",       title = "Whirligig",          description = "• Whirl one more time" },
+    { name = "Special Harvest",         title = "Harvest Season",     description = "• Whirl hits harder for each enemy hit" },
+    { name = "Special Runner Bean",     title = "Runner Bean",        description = "• Whirl sends out a line of beanstalks" },
+    { name = "Defense Hide In The Pot", title = "Hide in the Pot",    description = "• You cannot be hurt while shouting" },
+    { name = "Defense Ringing Copper",  title = "Ringing Copper",      description = "• Shouting pushes enemies away" },
+    { name = "Defense Magic Beans",     title = "Magic Beans",        description = "• Shouting scatters magic beans" },
+    { name = "Trait Bigger Bean",       title = "Bigger Bean",        description = "• Magic Bean bursts wider" },
+    { name = "Trait Bean Pouch",        title = "Bean Pouch",         description = "• Magic Bean recharges faster" },
+    { name = "Trait Golden Bean",       title = "Golden Bean",        description = "• Magic Bean heals you" },
+    { name = "Dash Bean Vault",         title = "Bean Vault",         description = "• A beanstalk bursts where you land" },
+    { name = "Dash Light Feet",         title = "Light Feet",         description = "• Dash recharges faster" },
+    { name = "Passive Thick Wool",      title = "Thick Wool",         description = "• Gain armour" },
+    { name = "Passive Mothers Broth",   title = "Mother's Broth",     description = "• Healing is stronger" },
+    { name = "Passive Giant Slayer",    title = "Giant-Slayer",       description = "• Deal more damage to bosses" },
+    { name = "Passive Run Jack Run",    title = "Run, Jack, Run",     description = "• Run faster after taking damage" },
+    { name = "Passive Milky White",     title = "Milky-White",        description = "• The old cow's luck is with you" },
+]
+
+[[content.memoirs]]
+title = "Milky-White"
+text  = "There was a widow's boy named Jack, and a cow named Milky-White who gave no more milk. \"Take her to market,\" said his mother, \"and bring back money, or we starve.\""
+
+[[content.memoirs]]
+title = "Five Beans"
+text  = "On the road he met a stranger with five beans in his palm, speckled like eggs. \"Magic,\" said the stranger. Jack traded the cow, and his mother threw the beans out of the window."
+
+[[content.memoirs]]
+title = "Overnight"
+text  = "In the night the beans woke. By morning the stalk was thick as a tower and green as poison. Jack took his father's axe, and he climbed."
+
+[[content.memoirs]]
+title = "Fee-Fi-Fo-Fum"
+text  = "At the top stood a castle, and in it a giant who ground bones to make his bread. Jack hid in the copper pot until the snoring shook the walls."
+
+[[content.memoirs]]
+title = "Timber"
+text  = "The giant came down the beanstalk after him, each step a thunderclap. Jack swung the axe until the stalk groaned, and leaned, and fell."
+
+[[content.memoirs]]
+title = "Pockets Full"
+text  = "He kept the last beans. Every one he plants is a beanstalk, and every beanstalk is a weapon."
+
+[[content.memoirs]]
+title = "Giant-Slayer"
+text  = "\"The bigger they are,\" Jack tells the Nightmares, sharpening the blade, \"the further they fall.\""
 
 # --- Buttons, written from data (engine/hero_ability.py) ----------------------
 # Each: the clip it plays (Kintaro's on-foot motion until Jack has his own),
