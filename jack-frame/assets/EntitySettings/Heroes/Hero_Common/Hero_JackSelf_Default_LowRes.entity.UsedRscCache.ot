@@ -77,7 +77,8 @@
 3D|Characters\Heroes\Juliet\Textures\T_JulietGhost_NRM.tga|oCTexture
 3D|Characters\Heroes\Juliet\Textures\T_Juliet_Flask_ALB.tga|oCTexture
 3D|Characters\Heroes\Juliet\Textures\T_Juliet_Flask_MRA.tga|oCTexture
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_BasicAttack01.fbx|oCAnimation
+3D|Characters\Heroes\Kintaro\Animations\Hero_JackSelf_Chop.fbx|oCAnimation
+3D|Characters\Heroes\Kintaro\Animations\Hero_JackSelf_Idle.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_Dash.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_Deathdoor_Divine_Revive_In.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_Deathdoor_Divine_Revive_Loop.fbx|oCAnimation
@@ -88,7 +89,6 @@
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_Default_Death.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_Default_Death_Loop.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_Defense.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_FightingIdle_Loop.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_Flock_Teleportation_Out.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_Hit_Stun_In.fbx|oCAnimation
 3D|Characters\Heroes\Kintaro\Animations\Kintaro_Hit_Stun_Loop.fbx|oCAnimation

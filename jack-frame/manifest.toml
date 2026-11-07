@@ -17,7 +17,7 @@
 [mod]
 id           = "jack-frame"
 name         = "Jack (from scratch, boot test)"
-version      = "0.4.0"
+version      = "0.5.0"
 author       = "Ovilli"
 description  = "First boot test of a hero written from scratch: Jack's own files, no other hero inside."
 enabled      = true
@@ -39,6 +39,26 @@ rig      = "Hero_Kintaro"
 mesh     = "Characters\\Heroes\\Kintaro\\Kintaro_GEO.fbx"
 material = "Characters\\Heroes\\Kintaro\\Textures\\M_Kintaro.mat.ot"
 albedo   = "art/jack_kintaro_alb.png"
+
+# --- His own animations (step E) -----------------------------------------------
+# Blender clips on the rig's skeleton, cooked into NEW clip files of his own
+# (Hero_JackSelf_<name>.fbx); `template` = a rig clip lending only bone order
+# and format fields. Use them anywhere with clip = "anim:<name>".
+# Authoring starter: art/anims/jack_rig_kintaro_clips.glb (rig + 40 on-foot
+# clips, bone names as the cooker expects). These two are first proofs
+# (retimed); real moves come from an animator or a retargeted clip.
+[content.frame.animations.Chop]
+source   = "art/anims/jack_chop.glb"
+clip     = "Jack_Chop"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.Idle]
+source   = "art/anims/jack_idle.glb"
+clip     = "Jack_Idle"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.slots."Default Idle Anim"]
+clip = "anim:Idle"
 
 # His talents: his own list (the name's first word is its column in the book).
 # Effects are written on each talent (talent factory): add_stats = numbers per
@@ -211,8 +231,8 @@ text  = "\"The bigger they are,\" Jack tells the Nightmares, sharpening the blad
 [content.frame.abilities.attack]
 name        = "Woodcutter's Chop"
 description = "• A quick chop of the axe in front of you"
-clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_BasicAttack01.fbx"
-duration    = 0.6
+clip        = "anim:Chop"
+duration    = 0.5
 cooldown    = 0.1
 hits        = [ { at = 0.3, radius = 2.5, damage = 100 } ]
 
