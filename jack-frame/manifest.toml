@@ -47,6 +47,43 @@ albedo   = "art/jack_alb.png"
 # proportions pass on the rig). Its skeleton is written from this armature.
 model    = "art/jack_body.glb"
 
+# --- His ultimate cards ---------------------------------------------------------
+# Hero_Common's six ultimate controllers, as his own cards (left alone they are
+# blank). The upgrades' effects hang off a state of their own.
+[content.frame.ultimates."Ultimate Power 1"]
+title       = "The Giant Falls"
+description = "• Fell the beanstalk: the giant comes crashing down ahead of you, #stunning@ everything and leaving it #VULNERABLE@"
+icon        = "Heroes\\Kintaro\\Ability_Kintaro_Ultimate_1.png"
+
+[content.frame.ultimates."Ultimate 1 Upgrade 1"]
+title       = "Bigger They Are"
+description = "• #ULTIMATE@ deals #+30%@ damage"
+add_stats   = [ { stat = "Attack power ultimate", values = [0.3, 0.3, 0.3, 0.3] } ]
+
+[content.frame.ultimates."Ultimate 1 Upgrade 2"]
+title       = "Harder They Fall"
+description = "• #ULTIMATE@ deals #+15%@ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase ultimate damage for each debuff", values = [0.15, 0.15, 0.15, 0.15] } ]
+
+[content.frame.ultimates."Ultimate Power 2"]
+title       = "Giant-Slayer"
+description = "• Hurl three spinning axes ahead that burst on impact, and #stun@ and #BLEED@ everything close"
+icon        = "Heroes\\Kintaro\\Ability_Kintaro_Ultimate_2.png"
+
+[content.frame.ultimates."Ultimate 2 Upgrade 1"]
+title       = "Keen Edges"
+description = "• #ULTIMATE@ gains #+25%@ Crit Chance"
+add_stats   = [ { stat = "Crit chance ultimate", values = [0.25, 0.25, 0.25, 0.25] } ]
+
+[content.frame.ultimates."Ultimate 2 Upgrade 2"]
+title       = "Fee-Fi-Fo-Fast"
+description = "• #ULTIMATE@ cooldown is reduced by #25%@"
+add_stats   = [ { stat = "CD reduce ultimate", values = [0.25, 0.25, 0.25, 0.25] } ]
+
+# --- His axe, in his hand -------------------------------------------------------
+[content.frame.weapon]
+from = "Kintaro"
+
 # --- His own projectiles ------------------------------------------------------
 # Each an entity of his own on the engine's generic hero projectile, wearing
 # his own mesh and map; fired by `steps` with fire = "own:<id>" (speed,
