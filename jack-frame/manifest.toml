@@ -44,6 +44,26 @@ albedo   = "art/jack_alb.png"
 # proportions pass on the rig). Its skeleton is written from this armature.
 model    = "art/jack_body.glb"
 
+# --- His own projectiles ------------------------------------------------------
+# Each an entity of his own on the engine's generic hero projectile, wearing
+# his own mesh and map; fired by `steps` with fire = "own:<id>" (speed,
+# damage, size, explode, knockback, root ... set per shot there).
+[content.frame.projectiles.Axe]
+model    = "art/projectiles/jack_axe.glb"
+albedo   = "art/projectiles/jack_projectiles_alb.png"
+scale    = 1.6
+lifetime = 0.8
+trail    = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Thrown_Axe_Trail_01.vfx.ot"
+impact   = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Thrown_Axe_Impact_01.vfx.ot"
+
+[content.frame.projectiles.Bean]
+model    = "art/projectiles/jack_bean.glb"
+albedo   = "art/projectiles/jack_projectiles_alb.png"
+scale    = 1.4
+lifetime = 0.6
+trail    = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Forest_Spirit_Trail.vfx.ot"
+impact   = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Forest_Spirit_Impact.vfx.ot"
+
 # --- His own animations (step E) -----------------------------------------------
 # Blender clips on the rig's skeleton, cooked into NEW clip files of his own
 # (Hero_JackSelf_<name>.fbx); `template` = a rig clip lending only bone order
@@ -360,7 +380,7 @@ add_stats   = [ { stat = "Increase secondary damage for each debuff", values = [
 name        = "Special Runner Bean"
 title       = "Runner Bean"
 description = "• Woodcutter's Whirl shoots runner beans in every direction that #Root@ what they hit"
-actions     = [ { on = "special", hits = [ { at = 0.3, radius = 4, damage = 60, status = "Rooted" } ], steps = [ { wait = 0.3 }, { fire = "Heroes/Hero_Kintaro/Hero_Kintaro_Ultimate_2_Projectile", angles = [0, 45, 90, 135, 180, 225, 270, 315], speed = 15, damage = 60, lifetime = 0.6, root = 2 } ] } ]
+actions     = [ { on = "special", hits = [ { at = 0.3, radius = 4, damage = 60, status = "Rooted" } ], steps = [ { wait = 0.3 }, { fire = "own:Bean", angles = [0, 45, 90, 135, 180, 225, 270, 315], speed = 14, damage = 60, lifetime = 0.6, root = 2 } ] } ]
 
 [[content.frame.talents]]
 name        = "Defense Hide In The Pot"
@@ -512,7 +532,7 @@ clip        = "anim:Bean"
 duration    = 1.2
 cooldown    = 12
 hits        = [ { at = 0.9, radius = 5, damage = 300, status = "Rooted" } ]
-steps       = [ { wait = 0.2 }, { hit = { radius = 3.5, damage = 150, delay = 0.7 }, forward = 3 } ]
+steps       = [ { wait = 0.2 }, { fire = "own:Bean", speed = 10, lifetime = 0.3, damage = 40, forward = 0.5 }, { hit = { radius = 3.5, damage = 150, delay = 0.7 }, forward = 3 } ]
 
 [content.frame.abilities.ultimate]
 name        = "The Giant Falls"
@@ -530,4 +550,4 @@ clip        = "anim:GiantSlayer"
 duration    = 2.4
 cooldown    = 40
 hits        = [ { at = 1.2, radius = 4, damage = 150, stun = 1.5, status = "Bleed" } ]
-steps       = [ { wait = 1.0 }, { fire = "Heroes/Hero_Kintaro/Hero_Kintaro_Ultimate_2_Projectile", angles = [-15, 0, 15], speed = 25, damage = 250, explode = 2, forward = 1 } ]
+steps       = [ { wait = 1.0 }, { fire = "own:Axe", angles = [-15, 0, 15], speed = 25, damage = 250, explode = 2, forward = 1 } ]
