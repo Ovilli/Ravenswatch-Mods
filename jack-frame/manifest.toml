@@ -38,27 +38,266 @@ description = "Jack traded the family cow for a handful of beans, and by morning
 rig      = "Hero_Kintaro"
 mesh     = "Characters\\Heroes\\Kintaro\\Kintaro_GEO.fbx"
 material = "Characters\\Heroes\\Kintaro\\Textures\\M_Kintaro.mat.ot"
-albedo   = "art/jack_kintaro_alb.png"
+albedo   = "art/jack_alb.png"
+# His own body and proportions (step D): longer legs and arms, a longer
+# spine, the same head (art/jack_proportions.json, made by a Blender
+# proportions pass on the rig). Its skeleton is written from this armature.
+model    = "art/jack_body.glb"
 
 # --- His own animations (step E) -----------------------------------------------
 # Blender clips on the rig's skeleton, cooked into NEW clip files of his own
 # (Hero_JackSelf_<name>.fbx); `template` = a rig clip lending only bone order
 # and format fields. Use them anywhere with clip = "anim:<name>".
-# Authoring starter: art/anims/jack_rig_kintaro_clips.glb (rig + 40 on-foot
-# clips, bone names as the cooker expects). These two are first proofs
-# (retimed); real moves come from an animator or a retargeted clip.
-[content.frame.animations.Chop]
-source   = "art/anims/jack_chop.glb"
-clip     = "Jack_Chop"
-template = "Kintaro_BasicAttack01"
-
+# Every clip is Jack's own: retargeted from Romeo (a lighter, quicker mover
+# than Kintaro) onto Jack's own skeleton, so it keeps his proportions.
 [content.frame.animations.Idle]
-source   = "art/anims/jack_idle.glb"
+source   = "art/anims/jack_Idle.glb"
 clip     = "Jack_Idle"
 template = "Kintaro_FightingIdle_Loop"
 
+[content.frame.animations.Walk]
+source   = "art/anims/jack_Walk.glb"
+clip     = "Jack_Walk"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.Run]
+source   = "art/anims/jack_Run.glb"
+clip     = "Jack_Run"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.Dash]
+source   = "art/anims/jack_Dash.glb"
+clip     = "Jack_Dash"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.DeathdoorIn]
+source   = "art/anims/jack_DeathdoorIn.glb"
+clip     = "Jack_DeathdoorIn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.DeathdoorLoop]
+source   = "art/anims/jack_DeathdoorLoop.glb"
+clip     = "Jack_DeathdoorLoop"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.ReviveLoop]
+source   = "art/anims/jack_ReviveLoop.glb"
+clip     = "Jack_ReviveLoop"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.ReviveOut]
+source   = "art/anims/jack_ReviveOut.glb"
+clip     = "Jack_ReviveOut"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.DivineIn]
+source   = "art/anims/jack_DivineIn.glb"
+clip     = "Jack_DivineIn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.DivineLoop]
+source   = "art/anims/jack_DivineLoop.glb"
+clip     = "Jack_DivineLoop"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.DivineOut]
+source   = "art/anims/jack_DivineOut.glb"
+clip     = "Jack_DivineOut"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.SpecialRevive]
+source   = "art/anims/jack_SpecialRevive.glb"
+clip     = "Jack_SpecialRevive"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.DeathIn]
+source   = "art/anims/jack_DeathIn.glb"
+clip     = "Jack_DeathIn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.DeathLoop]
+source   = "art/anims/jack_DeathLoop.glb"
+clip     = "Jack_DeathLoop"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.HitIn]
+source   = "art/anims/jack_HitIn.glb"
+clip     = "Jack_HitIn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.HitLoop]
+source   = "art/anims/jack_HitLoop.glb"
+clip     = "Jack_HitLoop"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.InteractIn]
+source   = "art/anims/jack_InteractIn.glb"
+clip     = "Jack_InteractIn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.InteractLoop]
+source   = "art/anims/jack_InteractLoop.glb"
+clip     = "Jack_InteractLoop"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.TeleportIn]
+source   = "art/anims/jack_TeleportIn.glb"
+clip     = "Jack_TeleportIn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.TeleportOut]
+source   = "art/anims/jack_TeleportOut.glb"
+clip     = "Jack_TeleportOut"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.Spawn]
+source   = "art/anims/jack_Spawn.glb"
+clip     = "Jack_Spawn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.DangerIn]
+source   = "art/anims/jack_DangerIn.glb"
+clip     = "Jack_DangerIn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.DangerLoop]
+source   = "art/anims/jack_DangerLoop.glb"
+clip     = "Jack_DangerLoop"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.BookReadyIn]
+source   = "art/anims/jack_BookReadyIn.glb"
+clip     = "Jack_BookReadyIn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.BookReady]
+source   = "art/anims/jack_BookReady.glb"
+clip     = "Jack_BookReady"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.BookSelectIn]
+source   = "art/anims/jack_BookSelectIn.glb"
+clip     = "Jack_BookSelectIn"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.BookSelect]
+source   = "art/anims/jack_BookSelect.glb"
+clip     = "Jack_BookSelect"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.BookVictory]
+source   = "art/anims/jack_BookVictory.glb"
+clip     = "Jack_BookVictory"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.BookDefeat]
+source   = "art/anims/jack_BookDefeat.glb"
+clip     = "Jack_BookDefeat"
+template = "Kintaro_FightingIdle_Loop"
+
+[content.frame.animations.Chop]
+source   = "art/anims/jack_Chop.glb"
+clip     = "Jack_Chop"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.Timber]
+source   = "art/anims/jack_Timber.glb"
+clip     = "Jack_Timber"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.Whirl]
+source   = "art/anims/jack_Whirl.glb"
+clip     = "Jack_Whirl"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.Shout]
+source   = "art/anims/jack_Shout.glb"
+clip     = "Jack_Shout"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.Bean]
+source   = "art/anims/jack_Bean.glb"
+clip     = "Jack_Bean"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.GiantFalls]
+source   = "art/anims/jack_GiantFalls.glb"
+clip     = "Jack_GiantFalls"
+template = "Kintaro_BasicAttack01"
+
+[content.frame.animations.GiantSlayer]
+source   = "art/anims/jack_GiantSlayer.glb"
+clip     = "Jack_GiantSlayer"
+template = "Kintaro_BasicAttack01"
+
 [content.frame.slots."Default Idle Anim"]
 clip = "anim:Idle"
+
+[content.frame.slots."Default Move Anim"]
+clip = ["anim:Walk", "anim:Run"]
+
+[content.frame.slots."Dash Ability Anim"]
+clip = "anim:Dash"
+
+[content.frame.slots."Deathdoor Anim In"]
+clip = "anim:DeathdoorIn"
+
+[content.frame.slots."Deathdoor Anim Idle"]
+clip = "anim:DeathdoorLoop"
+
+[content.frame.slots."Deathdoor Anim Ally Revive Loop"]
+clip = "anim:ReviveLoop"
+
+[content.frame.slots."Deathdoor Anim Divine Revive In"]
+clip = "anim:DivineIn"
+
+[content.frame.slots."Deathdoor Anim Divine Revive Loop"]
+clip = "anim:DivineLoop"
+
+[content.frame.slots."Deathdoor Anim Divine Revive Out"]
+clip = "anim:DivineOut"
+
+[content.frame.slots."Dying Death Anim Default In"]
+clip = "anim:DeathIn"
+
+[content.frame.slots."Dying Death Anim Default"]
+clip = "anim:DeathLoop"
+
+[content.frame.slots."Hit Stunned Anim In"]
+clip = "anim:HitIn"
+
+[content.frame.slots."Hit Stunned Anim Loop"]
+clip = "anim:HitLoop"
+
+[content.frame.slots."Interacting Anim In"]
+clip = "anim:InteractIn"
+
+[content.frame.slots."Interacting Anim Loop"]
+clip = "anim:InteractLoop"
+
+[content.frame.slots."Teleporting Out Anim"]
+clip = "anim:TeleportOut"
+
+[content.frame.slots."Teleporting Out End Cine Anim"]
+clip = "anim:TeleportOut"
+
+[content.frame.slots."Preview Default In Animatic"]
+clip = "anim:BookReadyIn"
+
+[content.frame.slots."Preview Default Idle Animatic"]
+clip = "anim:BookReady"
+
+[content.frame.slots."Preview Select Hero In Animatic"]
+clip = "anim:BookSelectIn"
+
+[content.frame.slots."Preview Select Hero Idle Animatic"]
+clip = "anim:BookSelect"
+
+[content.frame.slots."Preview Victory Animatic"]
+clip = "anim:BookVictory"
+
+[content.frame.slots."Preview Defeat Animatic"]
+clip = "anim:BookDefeat"
 
 # His talents: his own list (the name's first word is its column in the book).
 # Effects are written on each talent (talent factory): add_stats = numbers per
@@ -225,45 +464,45 @@ title = "Giant-Slayer"
 text  = "\"The bigger they are,\" Jack tells the Nightmares, sharpening the blade, \"the further they fall.\""
 
 # --- Buttons, written from data (engine/hero_ability.py) ----------------------
-# Each: the clip it plays (Kintaro's on-foot motion until Jack has his own),
+# Each: the clip it plays (his own, retargeted),
 # how long it holds the hero (duration), its cooldown, and its hits: a burst
 # of `radius` m around him for `damage` % of a hit, `at` s after the press.
 [content.frame.abilities.attack]
 name        = "Woodcutter's Chop"
 description = "• A quick chop of the axe in front of you"
 clip        = "anim:Chop"
-duration    = 0.5
+duration    = 0.6
 cooldown    = 0.1
 hits        = [ { at = 0.3, radius = 2.5, damage = 100 } ]
 
 [content.frame.abilities.power]
 name        = "Timber!"
 description = "• Bring the axe down hard: a beanstalk bursts where it lands"
-clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Power_Out.fbx"
-duration    = 0.9
+clip        = "anim:Timber"
+duration    = 1.0
 cooldown    = 6
-hits        = [ { at = 0.35, radius = 3.5, damage = 200 } ]
+hits        = [ { at = 0.45, radius = 3.5, damage = 200 } ]
 
 [content.frame.abilities.special]
 name        = "Woodcutter's Whirl"
 description = "• Sweep the axe around you twice"
-clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Woodcutter_Swipe.fbx"
-duration    = 1.0
+clip        = "anim:Whirl"
+duration    = 1.3
 cooldown    = 8
-hits        = [ { at = 0.4, radius = 4, damage = 150 }, { at = 0.7, radius = 4, damage = 150 } ]
+hits        = [ { at = 0.45, radius = 4, damage = 150 }, { at = 0.85, radius = 4, damage = 150 } ]
 
 [content.frame.abilities.defense]
 name        = "Fee-Fi-Fo-Fum!"
 description = "• Shout so loud the beans in your pockets pop around you"
-clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Defense.fbx"
-duration    = 1.0
+clip        = "anim:Shout"
+duration    = 1.05
 cooldown    = 8
-hits        = [ { at = 0.3, radius = 3, damage = 80 } ]
+hits        = [ { at = 0.35, radius = 3, damage = 80 } ]
 
 [content.frame.abilities.trait]
 name        = "Magic Bean"
 description = "• Plant a magic bean: a moment later a beanstalk bursts from the ground"
-clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Raijin_Axe.fbx"
+clip        = "anim:Bean"
 duration    = 1.2
 cooldown    = 12
 hits        = [ { at = 0.9, radius = 5, damage = 300 } ]
@@ -271,15 +510,15 @@ hits        = [ { at = 0.9, radius = 5, damage = 300 } ]
 [content.frame.abilities.ultimate]
 name        = "The Giant Falls"
 description = "• Fell the beanstalk: the giant comes crashing down around you"
-clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Ultimate1_Out.fbx"
-duration    = 1.6
+clip        = "anim:GiantFalls"
+duration    = 1.1
 cooldown    = 40
-hits        = [ { at = 0.5, radius = 6, damage = 300 }, { at = 1.1, radius = 8, damage = 500 } ]
+hits        = [ { at = 0.45, radius = 6, damage = 300 }, { at = 0.9, radius = 8, damage = 500 } ]
 
 [content.frame.abilities.ultimate2]
 name        = "Giant-Slayer"
 description = "• Clap the giant's own thunder at everything around you"
-clip        = "Characters\\Heroes\\Kintaro\\Animations\\Kintaro_Nekodamashi.fbx"
-duration    = 1.0
+clip        = "anim:GiantSlayer"
+duration    = 2.4
 cooldown    = 40
-hits        = [ { at = 0.4, radius = 6, damage = 400 } ]
+hits        = [ { at = 1.2, radius = 6, damage = 400 } ]
