@@ -303,6 +303,8 @@ clip = "anim:BookDefeat"
 # Effects are written on each talent (talent factory): add_stats = numbers per
 # rarity ({0} on the card), actions = area hits each time `on` fires while the
 # talent is owned (dash, power, special, defense, ultimate, damage_taken ...).
+# `steps` (engine/hero_kit.py): projectiles (fire), hit areas placed `forward`
+# metres ahead, heals, summons, waits and repeats, on the button or the action.
 # Hits can also stun (s), knockback, stagger and apply a status (Rooted, Weak,
 # Vulnerable, Bleed, Chilled, Ignite): Jack's beans set enemies up, and the
 # "for each status" talents pay it off.
@@ -327,8 +329,8 @@ add_stats   = [ { stat = "Apply bleed on critical", values = [1, 1, 1, 1], perce
 [[content.frame.talents]]
 name        = "Power Twin Beanstalks"
 title       = "Twin Beanstalks"
-description = "• Timber! bursts a second time, dealing #120%@ area damage"
-actions     = [ { on = "power", hits = [ { at = 0.6, radius = 3.5, damage = 120 } ] } ]
+description = "• Timber! makes a second beanstalk burst further ahead, dealing #120%@ area damage"
+actions     = [ { on = "power", steps = [ { wait = 0.7 }, { hit = { radius = 3.5, damage = 120 }, forward = 5 } ] } ]
 
 [[content.frame.talents]]
 name        = "Power Seed Pods"
@@ -357,8 +359,8 @@ add_stats   = [ { stat = "Increase secondary damage for each debuff", values = [
 [[content.frame.talents]]
 name        = "Special Runner Bean"
 title       = "Runner Bean"
-description = "• Woodcutter's Whirl sends out runner beans in a wide ring for #80%@ damage that #Root@"
-actions     = [ { on = "special", hits = [ { at = 0.3, radius = 6, damage = 80, status = "Rooted" } ] } ]
+description = "• Woodcutter's Whirl shoots runner beans in every direction that #Root@ what they hit"
+actions     = [ { on = "special", hits = [ { at = 0.3, radius = 4, damage = 60, status = "Rooted" } ], steps = [ { wait = 0.3 }, { fire = "Heroes/Hero_Kintaro/Hero_Kintaro_Ultimate_2_Projectile", angles = [0, 45, 90, 135, 180, 225, 270, 315], speed = 15, damage = 60, lifetime = 0.6, root = 2 } ] } ]
 
 [[content.frame.talents]]
 name        = "Defense Hide In The Pot"
@@ -484,7 +486,8 @@ description = "• Bring the axe down hard: a beanstalk bursts where it lands, #
 clip        = "anim:Timber"
 duration    = 1.0
 cooldown    = 6
-hits        = [ { at = 0.45, radius = 3.5, damage = 200, stun = 1.0, knockback = 60, stagger = 20 } ]
+hits        = [ { at = 0.45, radius = 3.5, damage = 120, stun = 1.0, knockback = 60, stagger = 20 } ]
+steps       = [ { wait = 0.45 }, { hit = { radius = 3, damage = 120 }, forward = 2.5 } ]
 
 [content.frame.abilities.special]
 name        = "Woodcutter's Whirl"
@@ -504,11 +507,12 @@ hits        = [ { at = 0.3, radius = 3.5, damage = 80, stun = 0.8, status = "Wea
 
 [content.frame.abilities.trait]
 name        = "Magic Bean"
-description = "• Plant a magic bean: a moment later a beanstalk bursts from the ground and #Roots@ every enemy around you"
+description = "• Plant a magic bean ahead of you: a beanstalk erupts from it and #Roots@ every enemy around"
 clip        = "anim:Bean"
 duration    = 1.2
 cooldown    = 12
 hits        = [ { at = 0.9, radius = 5, damage = 300, status = "Rooted" } ]
+steps       = [ { wait = 0.2 }, { hit = { radius = 3.5, damage = 150, delay = 0.7 }, forward = 3 } ]
 
 [content.frame.abilities.ultimate]
 name        = "The Giant Falls"
@@ -517,11 +521,13 @@ clip        = "anim:GiantFalls"
 duration    = 1.1
 cooldown    = 40
 hits        = [ { at = 0.45, radius = 6, damage = 300, knockback = 80 }, { at = 0.9, radius = 8, damage = 500, stun = 2.0, status = "Vulnerable" } ]
+steps       = [ { wait = 0.9 }, { hit = { radius = 4, damage = 300 }, forward = 4 } ]
 
 [content.frame.abilities.ultimate2]
 name        = "Giant-Slayer"
-description = "• Strike like a giant-slayer: one huge blow that #Bleeds@ and #stuns@ everything around you"
+description = "• Hurl three spinning axes ahead that burst on impact, and #stun@ and #Bleed@ everything close"
 clip        = "anim:GiantSlayer"
 duration    = 2.4
 cooldown    = 40
-hits        = [ { at = 1.2, radius = 6, damage = 400, stun = 1.5, status = "Bleed" } ]
+hits        = [ { at = 1.2, radius = 4, damage = 150, stun = 1.5, status = "Bleed" } ]
+steps       = [ { wait = 1.0 }, { fire = "Heroes/Hero_Kintaro/Hero_Kintaro_Ultimate_2_Projectile", angles = [-15, 0, 15], speed = 25, damage = 250, explode = 2, forward = 1 } ]
