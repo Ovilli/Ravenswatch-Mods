@@ -323,6 +323,7 @@ clip = "anim:BookDefeat"
 # Effects are written on each talent (talent factory): add_stats = numbers per
 # rarity ({0} on the card), actions = area hits each time `on` fires while the
 # talent is owned (dash, power, special, defense, ultimate, damage_taken ...).
+# `starter = true`: in the pick at the start of a run. A hit's `fx` is its look.
 # `steps` (engine/hero_kit.py): projectiles (fire), hit areas placed `forward`
 # metres ahead, heals, summons, waits and repeats, on the button or the action.
 # Hits can also stun (s), knockback, stagger and apply a status (Rooted, Weak,
@@ -333,6 +334,7 @@ name        = "Attack Sharp Axe"
 title       = "Sharp Axe"
 description = "• #ATTACK@ gains &+{0}%~ #Crit Chance@"
 add_stats   = [ { stat = "Crit chance basic", values = [0.08, 0.12, 0.16, 0.20] } ]
+starter     = true
 
 [[content.frame.talents]]
 name        = "Attack Rhythm"
@@ -351,12 +353,13 @@ name        = "Power Twin Beanstalks"
 title       = "Twin Beanstalks"
 description = "• Timber! makes a second beanstalk burst further ahead, dealing #120%@ area damage"
 actions     = [ { on = "power", steps = [ { wait = 0.7 }, { hit = { radius = 3.5, damage = 120 }, forward = 5 } ] } ]
+starter     = true
 
 [[content.frame.talents]]
 name        = "Power Seed Pods"
 title       = "Thorny Pods"
 description = "• Timber! leaves thorny pods that burst a moment later for #100%@ area damage and #Bleed@"
-actions     = [ { on = "power", hits = [ { at = 1.2, radius = 4, damage = 100, status = "Bleed" } ] } ]
+actions     = [ { on = "power", hits = [ { at = 1.2, radius = 4, damage = 100, status = "Bleed", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Forest_Spirit_Impact.vfx.ot" } ] } ]
 
 [[content.frame.talents]]
 name        = "Power Deep Roots"
@@ -368,7 +371,7 @@ add_stats   = [ { stat = "CD reduce primary", values = [0.10, 0.15, 0.20, 0.25] 
 name        = "Special Whirligig"
 title       = "Whirligig"
 description = "• Woodcutter's Whirl spins once more for #150%@ area damage"
-actions     = [ { on = "special", hits = [ { at = 1.0, radius = 4, damage = 150 } ] } ]
+actions     = [ { on = "special", hits = [ { at = 1.0, radius = 4, damage = 150, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Dash_Attack_Axe_Slash_01.vfx.ot" } ] } ]
 
 [[content.frame.talents]]
 name        = "Special Harvest"
@@ -380,7 +383,8 @@ add_stats   = [ { stat = "Increase secondary damage for each debuff", values = [
 name        = "Special Runner Bean"
 title       = "Runner Bean"
 description = "• Woodcutter's Whirl shoots runner beans in every direction that #Root@ what they hit"
-actions     = [ { on = "special", hits = [ { at = 0.3, radius = 4, damage = 60, status = "Rooted" } ], steps = [ { wait = 0.3 }, { fire = "own:Bean", angles = [0, 45, 90, 135, 180, 225, 270, 315], speed = 14, damage = 60, lifetime = 0.6, root = 2 } ] } ]
+actions     = [ { on = "special", hits = [ { at = 0.3, radius = 4, damage = 60, status = "Rooted", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Forest_Spirit_Impact.vfx.ot" } ], steps = [ { wait = 0.3 }, { fire = "own:Bean", angles = [0, 45, 90, 135, 180, 225, 270, 315], speed = 14, damage = 60, lifetime = 0.6, root = 2 } ] } ]
+starter     = true
 
 [[content.frame.talents]]
 name        = "Defense Hide In The Pot"
@@ -392,13 +396,13 @@ add_stats   = [ { stat = "Invulnerable", during = "DEFENSE" } ]
 name        = "Defense Ringing Copper"
 title       = "Ringing Copper"
 description = "• Your shout rings like copper: #DEFENSE@ also leaves enemies #Vulnerable@ and deals #120%@ area damage"
-actions     = [ { on = "defense", hits = [ { at = 0.1, radius = 4, damage = 120, status = "Vulnerable" } ] } ]
+actions     = [ { on = "defense", hits = [ { at = 0.1, radius = 4, damage = 120, status = "Vulnerable", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Defense_Deals_Damage_Vulnerable_Impact_01.vfx.ot" } ] } ]
 
 [[content.frame.talents]]
 name        = "Defense Magic Beans"
 title       = "Magic Beans"
 description = "• Shouting scatters magic beans that burst #3@ times for #80%@ area damage, #Rooting@ enemies"
-actions     = [ { on = "defense", hits = [ { at = 0.5, radius = 3, damage = 80, status = "Rooted" }, { at = 1.0, radius = 3, damage = 80 }, { at = 1.5, radius = 3, damage = 80 } ] } ]
+actions     = [ { on = "defense", hits = [ { at = 0.5, radius = 3, damage = 80, status = "Rooted", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Forest_Spirit_Impact.vfx.ot" }, { at = 1.0, radius = 3, damage = 80, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Forest_Spirit_Impact.vfx.ot" }, { at = 1.5, radius = 3, damage = 80, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Forest_Spirit_Impact.vfx.ot" } ] } ]
 
 [[content.frame.talents]]
 name        = "Trait Bigger Bean"
@@ -422,7 +426,7 @@ add_stats   = [ { stat = "Vitality", values = [10, 15, 20, 25], percent = false 
 name        = "Dash Bean Vault"
 title       = "Bean Vault"
 description = "• A beanstalk bursts where you land, dealing #120%@ area damage and throwing enemies back"
-actions     = [ { on = "dash", hits = [ { at = 0.2, radius = 3, damage = 120, knockback = 50 } ] } ]
+actions     = [ { on = "dash", hits = [ { at = 0.2, radius = 3, damage = 120, knockback = 50, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Power_Monted_groundShock_01.vfx.ot" } ] } ]
 
 [[content.frame.talents]]
 name        = "Dash Light Feet"
@@ -453,6 +457,7 @@ name        = "Passive Run Jack Run"
 title       = "Run, Jack, Run"
 description = "• After taking damage, gain &+{0}%~ #MOVE SPEED@ for #3@ seconds"
 add_stats   = [ { stat = "Move Speed Ratio", values = [0.20, 0.28, 0.36, 0.45], on = "damage_taken", seconds = 3 } ]
+starter     = true
 
 [[content.frame.talents]]
 name        = "Passive Milky White"
@@ -498,7 +503,7 @@ description = "• A quick chop of the axe that staggers what it hits"
 clip        = "anim:Chop"
 duration    = 0.6
 cooldown    = 0.1
-hits        = [ { at = 0.3, radius = 2.5, damage = 100, stagger = 5 } ]
+hits        = [ { at = 0.3, radius = 2.5, damage = 100, stagger = 5, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Axe_impact_01.vfx.ot" } ]
 
 [content.frame.abilities.power]
 name        = "Timber!"
@@ -506,7 +511,7 @@ description = "• Bring the axe down hard: a beanstalk bursts where it lands, #
 clip        = "anim:Timber"
 duration    = 1.0
 cooldown    = 6
-hits        = [ { at = 0.45, radius = 3.5, damage = 120, stun = 1.0, knockback = 60, stagger = 20 } ]
+hits        = [ { at = 0.45, radius = 3.5, damage = 120, stun = 1.0, knockback = 60, stagger = 20, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Power_Monted_groundShock_01.vfx.ot" } ]
 steps       = [ { wait = 0.45 }, { hit = { radius = 3, damage = 120 }, forward = 2.5 } ]
 
 [content.frame.abilities.special]
@@ -515,7 +520,7 @@ description = "• Sweep the axe around you twice, knocking enemies away"
 clip        = "anim:Whirl"
 duration    = 1.3
 cooldown    = 8
-hits        = [ { at = 0.45, radius = 4, damage = 150, knockback = 30 }, { at = 0.85, radius = 4, damage = 150, knockback = 30 } ]
+hits        = [ { at = 0.45, radius = 4, damage = 150, knockback = 30, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Dash_Attack_Axe_Slash_01.vfx.ot" }, { at = 0.85, radius = 4, damage = 150, knockback = 30, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Dash_Attack_Axe_Slash_01.vfx.ot" } ]
 
 [content.frame.abilities.defense]
 name        = "Fee-Fi-Fo-Fum!"
@@ -523,7 +528,7 @@ description = "• Fee-Fi-Fo-Fum! A giant's roar that #stuns@ and #Weakens@ enem
 clip        = "anim:Shout"
 duration    = 1.05
 cooldown    = 8
-hits        = [ { at = 0.3, radius = 3.5, damage = 80, stun = 0.8, status = "Weak" } ]
+hits        = [ { at = 0.3, radius = 3.5, damage = 80, stun = 0.8, status = "Weak", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Ulti02_EnergyImpact_01.vfx.ot" } ]
 
 [content.frame.abilities.trait]
 name        = "Magic Bean"
@@ -531,7 +536,7 @@ description = "• Plant a magic bean ahead of you: a beanstalk erupts from it a
 clip        = "anim:Bean"
 duration    = 1.2
 cooldown    = 12
-hits        = [ { at = 0.9, radius = 5, damage = 300, status = "Rooted" } ]
+hits        = [ { at = 0.9, radius = 5, damage = 300, status = "Rooted", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Skill_Forest_Spirit_Impact.vfx.ot" } ]
 steps       = [ { wait = 0.2 }, { fire = "own:Bean", speed = 10, lifetime = 0.3, damage = 40, forward = 0.5 }, { hit = { radius = 3.5, damage = 150, delay = 0.7 }, forward = 3 } ]
 
 [content.frame.abilities.ultimate]
@@ -540,7 +545,7 @@ description = "• Fell the beanstalk: the giant comes crashing down, #stunning@
 clip        = "anim:GiantFalls"
 duration    = 1.1
 cooldown    = 40
-hits        = [ { at = 0.45, radius = 6, damage = 300, knockback = 80 }, { at = 0.9, radius = 8, damage = 500, stun = 2.0, status = "Vulnerable" } ]
+hits        = [ { at = 0.45, radius = 6, damage = 300, knockback = 80, fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Ulti_CarpeSlam_Impact.vfx.ot" }, { at = 0.9, radius = 8, damage = 500, stun = 2.0, status = "Vulnerable", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Ulti_CarpeSlam_Impact.vfx.ot" } ]
 steps       = [ { wait = 0.9 }, { hit = { radius = 4, damage = 300 }, forward = 4 } ]
 
 [content.frame.abilities.ultimate2]
@@ -549,5 +554,5 @@ description = "• Hurl three spinning axes ahead that burst on impact, and #stu
 clip        = "anim:GiantSlayer"
 duration    = 2.4
 cooldown    = 40
-hits        = [ { at = 1.2, radius = 4, damage = 150, stun = 1.5, status = "Bleed" } ]
+hits        = [ { at = 1.2, radius = 4, damage = 150, stun = 1.5, status = "Bleed", fx = "Settings\\Heroes\\Hero_Kintaro_FX\\Kintaro_Ulti_PunchImpact_01.vfx.ot" } ]
 steps       = [ { wait = 1.0 }, { fire = "own:Axe", angles = [-15, 0, 15], speed = 25, damage = 250, explode = 2, forward = 1 } ]
