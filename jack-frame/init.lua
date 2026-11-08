@@ -44,8 +44,12 @@ R.schedule.every(1.0, function()
     -- 0x80 bytes. Watch every clip and animatic wide, the ones that DO play
     -- (dash, hit reaction, idle, move) as the reference.
     local function w(pat, label) R.debug.watch_components(pat, { label = label, seconds = 180, len = 0x140, baseline = 0x140 }) end
-    w("Clip$", "jack-clip")
-    w("Anim$", "jack-anim")
+    -- Round 4: the basic attack is now a combo (combo -> step states -> clips
+    -- -> animatics). Watch every piece of it, the dash as the reference.
+    w("^Attack Ability Combo$", "jack-combo")
+    w("^State Attack Ability", "jack-attack")       -- the state and its steps
+    w("^Attack Ability Clip Step", "jack-clip")
+    w("^Attack Ability Anim Step", "jack-anim")
+    w("^Dash Ability A?n?i?m?$", "jack-dash")
     w("Anim Player", "jack-player")
-    w("^State .* Ability$", "jack")
 end)
