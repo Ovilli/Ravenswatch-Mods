@@ -1,0 +1,11 @@
+{
+ "DEF.BotLeg.L": 1.18, "DEF.BotLeg.R": 1.18,
+ "DEF.BotLeg02.L": 1.18, "DEF.BotLeg02.R": 1.18,
+ "DEF.Feet.L": 1.15, "DEF.Feet.R": 1.15,
+ "DEF.TopLeg02.L": 1.18, "DEF.TopLeg02.R": 1.18,
+ "DEF.BotArm.L": 1.12, "DEF.BotArm.R": 1.12,
+ "DEF.Wrist.L": 1.10, "DEF.Wrist.R": 1.10,
+ "DEF.BotArm02.L": 1.12, "DEF.BotArm02.R": 1.12,
+ "DEF.Spine02": 1.10, "DEF.Chest": 1.08,
+ "DEF.Hips.NoRot": 1.14
+}
