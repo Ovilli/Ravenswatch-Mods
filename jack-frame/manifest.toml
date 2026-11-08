@@ -82,7 +82,11 @@ add_stats   = [ { stat = "CD reduce ultimate", values = [0.25, 0.25, 0.25, 0.25]
 
 # --- His axe, in his hand -------------------------------------------------------
 [content.frame.weapon]
-from = "Kintaro"
+# His own axe (handle along +Y, grip at the origin); Aladdin's right-hand
+# sword lends only the hand-weapon layout (DEF.Weapon.R, always shown).
+from   = "Aladdin"
+model  = "art/jack_axe_hand.glb"
+albedo = "art/projectiles/jack_projectiles_alb.png"
 
 # --- His own projectiles ------------------------------------------------------
 # Each an entity of his own on the engine's generic hero projectile, wearing
