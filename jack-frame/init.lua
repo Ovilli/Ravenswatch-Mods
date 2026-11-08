@@ -40,9 +40,12 @@ R.schedule.every(1.0, function()
     end
     started, t0 = true, os.clock()
     R.log(TAG, "hero live: probing for 180 s -- press each button once, a few seconds apart")
-    local o = { label = "jack", seconds = 180, len = 0x80, baseline = 0x40 }
-    R.debug.watch_components("^State .* Ability$", o)
-    R.debug.watch_components("Clip Selector$", { label = "jack-sel", seconds = 180, len = 0x80, baseline = 0x40 })
-    R.debug.watch_components("Ability Anim$", { label = "jack-anim", seconds = 180, len = 0x80, baseline = 0x40 })
-    R.debug.watch_components("Inertia", { label = "jack-move", seconds = 180, len = 0x80, baseline = 0x40 })
+    -- Round 3: the selectors fire on a press; the animatic never changed in
+    -- 0x80 bytes. Watch every clip and animatic wide, the ones that DO play
+    -- (dash, hit reaction, idle, move) as the reference.
+    local function w(pat, label) R.debug.watch_components(pat, { label = label, seconds = 180, len = 0x140, baseline = 0x140 }) end
+    w("Clip$", "jack-clip")
+    w("Anim$", "jack-anim")
+    w("Anim Player", "jack-player")
+    w("^State .* Ability$", "jack")
 end)
