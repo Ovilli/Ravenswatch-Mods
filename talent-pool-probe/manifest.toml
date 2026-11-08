@@ -1,0 +1,17 @@
+# Diagnostic: why does the talent pick window close at once for a custom hero?
+# Logs every talent controller on the live hero, per offer pool, whether its
+# roster row was linked (+0x70), and which slot/pool the next pick deals from.
+#   rsmm log | grep "rsmm.talent"
+
+[mod]
+id          = "talent-pool-probe"
+name        = "Talent pool probe (diagnostic)"
+version     = "0.1.0"
+author      = "Ovilli"
+license     = "MIT"
+description = "Logs the hero's talent offer pools a few seconds into each run and after each pick."
+sdk_version = "3"
+enabled     = true
+tags        = ["test", "debug"]
+multiplayer_scope = "local-only"
+loader_flags = ["RSMM_ENABLE_HERO_CAPTURE"]
