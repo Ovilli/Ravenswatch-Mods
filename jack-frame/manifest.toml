@@ -634,7 +634,6 @@ hits     = [ { radius = 3.0, damage = 140, stagger = 10, fx = "Settings\\FX\\Com
 name        = "Timber!"
 description = "• Hurl the axe down ahead of you: a beanstalk bursts where it lands, #stunning@ and throwing back everything around you"
 clip        = "anim:Timber"
-variant     = "dash_state"   # TEMPORARY playtest bisection: the button runs the DASH's state
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Beanstalk ShakeImpact FMod Event"
 duration    = 1.0
 cooldown    = 6
@@ -646,7 +645,6 @@ indicator   = { radius = 3, forward = 2.5, color = [0.55, 0.9, 0.3, 1] }
 name        = "Woodcutter's Whirl"
 description = "• Sweep the axe around you twice, knocking enemies away and flinging magic beans in every direction"
 clip        = "anim:Whirl"
-variant     = "released"   # TEMPORARY playtest bisection: + the input-released flag and tester
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Seed Bean Jump FMod Event"
 duration    = 1.3
 cooldown    = 8

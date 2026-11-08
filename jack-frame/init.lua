@@ -39,17 +39,13 @@ R.schedule.every(1.0, function()
         return
     end
     started, t0 = true, os.clock()
-    R.log(TAG, "hero live: probing for 180 s -- press each button once, a few seconds apart")
+    R.log(TAG, "hero live: probing for 60 s -- DASH, wait 3 s, ATTACK, wait 3 s, SPECIAL")
     -- Round 3: the selectors fire on a press; the animatic never changed in
     -- 0x80 bytes. Watch every clip and animatic wide, the ones that DO play
     -- (dash, hit reaction, idle, move) as the reference.
     local function w(pat, label) R.debug.watch_components(pat, { label = label, seconds = 180, len = 0x140, baseline = 0x140 }) end
-    -- Round 4: the basic attack is now a combo (combo -> step states -> clips
-    -- -> animatics). Watch every piece of it, the dash as the reference.
-    w("^Attack Ability Combo$", "jack-combo")
-    w("^State Attack Ability", "jack-attack")       -- the state and its steps
-    w("^Attack Ability Clip Step", "jack-clip")
-    w("^Attack Ability Anim Step", "jack-anim")
-    w("^Dash Ability A?n?i?m?$", "jack-dash")
-    w("Anim Player", "jack-player")
+    -- Round 5: every Jack-built state flips on for an instant and is switched
+    -- off; the dash's (Hero_Common's) stays on. Watch EVERY part of the hero
+    -- for 60 s: what reacts to the dash but not to Jack's buttons is the link.
+    R.debug.watch_components(".", { label = "all", seconds = 60, from = 0x60, len = 0x28, every = 0.1 })
 end)
