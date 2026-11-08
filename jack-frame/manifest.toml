@@ -605,12 +605,30 @@ text  = "\"The bigger they are,\" Jack tells the Nightmares, sharpening the blad
 # of `radius` m around him for `damage` % of a hit, `at` s after the press.
 [content.frame.abilities.attack]
 name        = "Woodcutter's Chop"
-description = "• A quick chop of the axe that staggers what it hits"
-clip        = "anim:Chop"
-sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Dodge FMod Event"
-duration    = 0.6
+description = "• Two quick chops of the axe; each staggers what it hits"
 cooldown    = 0.1
-hits        = [ { at = 0.3, radius = 2.5, damage = 100, stagger = 5, fx = "Settings\\FX\\Common_FX\\Impact_Wood.vfx.ot", shake = "light" } ]
+# A combo as shipped heroes build it: each step its own clip, whose timeline
+# lands the hit (hit_at), opens the next press (link_at) and lets him move
+# (exit_at); his grunt at 0 s, the axe's whoosh at swing_at.
+[[content.frame.abilities.attack.combo]]
+clip     = "anim:Chop"
+hit_at   = 0.32
+link_at  = 0.42
+exit_at  = 0.55
+swing_at = 0.22
+sound    = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Dodge FMod Event"
+swing    = "Enemies\\Knights\\Knight_Skeleton.entity.ot | Attack Swing Active FMod Event"
+hits     = [ { radius = 2.5, damage = 100, stagger = 5, fx = "Settings\\FX\\Common_FX\\Impact_Wood.vfx.ot", shake = "light" } ]
+
+[[content.frame.abilities.attack.combo]]
+clip     = "anim:Timber"
+hit_at   = 0.45
+link_at  = 0.55
+exit_at  = 0.70
+swing_at = 0.32
+sound    = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Seed Bean Jump FMod Event"
+swing    = "Enemies\\Knights\\Knight_Boss.entity.ot | Attack Quick Slash Sword Woosh FMod Event"
+hits     = [ { radius = 3.0, damage = 140, stagger = 10, fx = "Settings\\FX\\Common_FX\\Wood_Hit_01.vfx.ot", shake = "light" } ]
 
 [content.frame.abilities.power]
 name        = "Timber!"
