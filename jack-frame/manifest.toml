@@ -41,7 +41,7 @@ description = "Jack traded the family cow for a handful of beans, and by morning
 rig      = "Hero_Kintaro"
 mesh     = "Characters\\Heroes\\Kintaro\\Kintaro_GEO.fbx"
 material = "Characters\\Heroes\\Kintaro\\Textures\\M_Kintaro.mat.ot"
-albedo   = "art/jack_alb.png"
+albedo   = "art/jack_body_alb.png"
 # His own body and proportions (step D): longer legs and arms, a longer
 # spine, the same head (art/jack_proportions.json, made by a Blender
 # proportions pass on the rig). Its skeleton is written from this armature.
