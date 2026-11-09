@@ -3,8 +3,9 @@
 # How it works: the gameplay view is Hero_Common's "Default Camera"
 # (oCEntityCpntTopDownCameraSettings); its value_7 is the yaw, 45 degrees in the
 # shipped game. R.camera writes that number while the game runs (the camera
-# re-reads it every update) and moves the zoom and ultimate cameras with it, so
-# zooming keeps the rotation.
+# re-reads it every update) and carries every field to the hero's other cameras
+# (zoom, ultimate, Kintaro on foot, Melusine's Sing Stance), so a camera switch
+# keeps the view. Boss cameras that belong to the map (Baba Yaga) are not reached.
 #
 # The overlay's slider is this mod's own `yaw` config field: moving it writes
 # config.toml live, the loader notices the file changed, and init.lua's
@@ -13,7 +14,7 @@
 [mod]
 id          = "camera-control"
 name        = "Camera control"
-version     = "1.1.1"
+version     = "1.1.2"
 author      = "Ovilli"
 license     = "MIT"
 description = "Rotate, tilt and zoom the in-run camera from a desktop overlay while you play. Your settings also apply at every run start."
