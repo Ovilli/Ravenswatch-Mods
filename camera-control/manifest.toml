@@ -14,10 +14,10 @@
 [mod]
 id          = "camera-control"
 name        = "Camera control"
-version     = "1.1.2"
+version     = "1.2.0"
 author      = "Ovilli"
 license     = "MIT"
-description = "Rotate, tilt and zoom the in-run camera from a desktop overlay while you play. Your settings also apply at every run start."
+description = "Rotate, tilt and zoom the in-run camera from a desktop overlay while you play, and zoom smoothly with the mouse wheel. Your settings also apply at every run start."
 sdk_version = "3"
 enabled     = false
 # R.camera finds the cameras from the captured hero. Without this every slider
