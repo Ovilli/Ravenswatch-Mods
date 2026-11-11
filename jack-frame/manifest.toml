@@ -20,7 +20,7 @@ name         = "Jack (from scratch, boot test)"
 version      = "0.5.0"
 author       = "Ovilli"
 description  = "First boot test of a hero written from scratch: Jack's own files, no other hero inside."
-enabled      = true
+enabled      = false
 load_order   = 96
 sdk_version  = ">=3.0,<4"
 license      = "MIT"
