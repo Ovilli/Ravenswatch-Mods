@@ -29,3 +29,18 @@ default = 1.0
 min     = -3.0
 max     = 6.0
 label   = "Look height"
+
+# Mouse wheel zoom eases the camera in and out through the game's own camera
+# blend, on top of Distance (which stays the base). It steps aside while a menu
+# is open, and when the player has bound an in-run action to the wheel.
+[fields.wheel_zoom]
+type    = "bool"
+default = true
+label   = "Wheel zoom"
+
+[fields.wheel_step]
+type    = "int"
+default = 10
+min     = 2
+max     = 25
+label   = "Zoom step (%)"

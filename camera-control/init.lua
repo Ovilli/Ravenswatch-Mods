@@ -102,3 +102,51 @@ R.schedule.every(0.5, function()
         end
     end
 end)
+
+-- Mouse wheel zoom. The loader counts wheel notches on the frame they happen
+-- (R.input) and R.camera.zoom eases the camera through the game's own camera
+-- blend, so the zoom is smooth where a Distance change snaps. Distance stays the
+-- base; the wheel multiplies on top of it, kept so base x factor stays within the
+-- Distance slider's 10-80. Wheel up moves closer. The game's menus read the
+-- wheel too, so nothing happens while one is open, and the mod steps aside if
+-- the player has bound an in-run action to the wheel in the Controls menu.
+-- This runs on the game thread inside the input poll: it only reads values and
+-- queues a zoom.
+local MIN_DISTANCE, MAX_DISTANCE = 10, 80
+local told_wheel = {}
+
+local function tell_once(key, msg)
+    if told_wheel[key] then return end
+    told_wheel[key] = true
+    R.log("[camera-control] " .. msg)
+end
+
+if R.input and R.input.on_wheel and R.camera.zoom then
+    R.input.on_wheel(function(steps, ev)
+        if steps == 0 or not R.config.get("wheel_zoom", true) then return end
+        if ev.blocked then return end
+        if R.game.flag("is_game_menu_open") or R.game.flag("is_menu_open") then return end
+        local free, holder = R.input.wheel_free()
+        if free == false then
+            tell_once("bound:" .. tostring(holder), "wheel zoom off: the wheel is bound to "
+                .. tostring(holder) .. " in the Controls menu")
+            return
+        elseif free == nil then
+            -- The binding read failed (the options layout moved in a game
+            -- patch). The wheel is unbound by default, so zoom anyway.
+            tell_once("unknown", "cannot read the key bindings (" .. tostring(holder)
+                .. "); wheel zoom stays on")
+        end
+        local base = R.camera.get("distance")
+        if not base or base <= 0 then return end
+        local step = math.max(2, math.min(25, tonumber(R.config.get("wheel_step", 10)) or 10))
+        local now = R.camera.zoom_factor()
+        local want = now * (1 - step / 100) ^ steps
+        want = math.max(MIN_DISTANCE / base, math.min(MAX_DISTANCE / base, want))
+        if math.abs(want - now) < 1e-4 then return end
+        local ok, why = R.camera.zoom(want / now)
+        if not ok then tell_once("zoom", "wheel zoom unavailable: " .. tostring(why)) end
+    end)
+else
+    R.log("[camera-control] wheel zoom needs a newer loader (no R.input / R.camera.zoom)")
+end
