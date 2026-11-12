@@ -2,7 +2,7 @@
 --
 -- Each field below is this mod's config value. yaw, pitch and distance are also
 -- R.camera fields; look_height is derived from R.camera's look offset ("height")
--- and distance (see view()). The desktop overlay's sliders write them live,
+-- and distance (see view()). The pause menu's Mods page writes them,
 -- R.config.on_change fires here on the loader's tick, and a new run builds new
 -- cameras, so everything is re-applied when the hero changes. R.camera carries
 -- every write to all of the hero's cameras, so the view holds when the game
@@ -111,7 +111,8 @@ end
 local pending = false
 
 -- Set further down, with the turning helpers: an outside change to yaw or pitch
--- (the overlay) restarts any turn in progress from the new value.
+-- (the Mods page, or the file edited by hand) restarts any turn in progress
+-- from the new value.
 local turn_resync
 
 for name in pairs(FIELDS) do
@@ -281,7 +282,7 @@ end
 -- cursor at the window centre (R.input.mouse_look) and every mouse move turns
 -- the camera with no button held. The loader pauses the lock itself while a
 -- menu is open or the game is in the background. Yaw and tilt are saved when the
--- mode turns off and at most every 2 s while it is on, so the overlay follows
+-- mode turns off and at most every 2 s while it is on, so the settings follow
 -- without writing the file every frame. Needs a loader with R.input.mouse_look;
 -- on an older one the row is not declared.
 --
