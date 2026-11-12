@@ -1,4 +1,4 @@
-# Camera control — rotate the in-run camera live from the desktop overlay.
+# Camera control — rotate, tilt, raise and zoom the in-run camera live.
 #
 # How it works: the gameplay view is Hero_Common's "Default Camera"
 # (oCEntityCpntTopDownCameraSettings); its value_7 is the yaw, 45 degrees in the
@@ -7,17 +7,22 @@
 # (zoom, ultimate, Kintaro on foot, Melusine's Sing Stance), so a camera switch
 # keeps the view. Boss cameras that belong to the map (Baba Yaga) are not reached.
 #
-# The overlay's slider is this mod's own `yaw` config field: moving it writes
-# config.toml live, the loader notices the file changed, and init.lua's
-# on_change handler turns the camera. Needs a loader with config_reload.
+# The overlay's sliders (Rotation, Tilt, Distance, Look height) are this mod's own
+# config fields: moving one writes config.toml live, the loader notices the file
+# changed, and init.lua's on_change handler moves the camera. Needs a loader with
+# config_reload. Look height is derived from R.camera's look offset and distance.
+#
+# By hand: Zoom in / Zoom out, Rotate camera (middle-mouse drag) and Action camera
+# (mouse-look) are rows in Settings > Controls. Drag and the action camera need
+# R.input.on_drag / R.input.mouse_look; on an older loader those rows are absent.
 
 [mod]
 id          = "camera-control"
 name        = "Camera control"
-version     = "1.3.0"
-author      = "Ovilli"
+version     = "1.4.0"
+author      = "Ovilli, Skigim"
 license     = "MIT"
-description = "Rotate, tilt and zoom the in-run camera from a desktop overlay while you play, and zoom smoothly with the Zoom in / Zoom out keys (the mouse wheel by default, rebindable in Settings > Controls). Your settings also apply at every run start."
+description = "Take control of the in-run camera. The desktop overlay has sliders for Rotation, Tilt (2 to 89 degrees), Distance and Look height, and they change the view live while you play. Look height raises the point the camera aims at above the hero, which with a low Tilt gives an over-the-shoulder view. Zoom in and Zoom out are rows in Settings > Controls (the mouse wheel by default) and zoom in steps you can size; while Look height is above 0 the zoom steps the distance instead of easing. Rotate camera is another Controls row, on the middle mouse button by default: hold it and drag, sideways turns the camera and up or down tilts it. Action camera is a third row, unbound by default. Press it to toggle mouse-look: the cursor is held at the screen centre and moving the mouse turns and tilts the camera, with the visible centred cursor as your aim point (an option hides it). It releases on menus and the talent and shop screens, and turns off when a run ends. Invert options flip the horizontal and vertical direction for both the drag and the action camera. Settings changed in the pause menu apply when play resumes, and your settings also apply at every run start. Drag and the action camera need a loader with R.input.on_drag and R.input.mouse_look. On an older loader those rows do not appear and everything else works. Known issues: enemies and objectives can pop in at long distances or low tilts, audio levels can behave oddly at some zoom levels, and walls can block the view because there is no occlusion fade."
 sdk_version = "3"
 enabled     = false
 # R.camera finds the cameras from the captured hero. Without this every slider
@@ -31,4 +36,4 @@ multiplayer_scope = "local-only"
 [overlay]
 title    = "Camera"
 icon     = "gauge"
-controls = ["yaw", "pitch", "distance", "height"]
+controls = ["yaw", "pitch", "distance", "look_height"]
