@@ -1,6 +1,6 @@
 # Defaults are the shipped game's values, so an untouched slider changes nothing.
-# Only yaw is proven; the other three are read off comparing the game's three
-# cameras (see R.camera.FIELDS) and the overlay is how they get confirmed.
+# Yaw, tilt and distance are proven in game (see R.camera.FIELDS). Look height is
+# derived from the proven look offset and distance.
 
 [fields.yaw]
 type    = "float"
@@ -12,7 +12,7 @@ label   = "Rotation"
 [fields.pitch]
 type    = "float"
 default = 54.0
-min     = 15.0
+min     = 2.0
 max     = 89.0
 label   = "Tilt"
 
@@ -23,17 +23,22 @@ min     = 10.0
 max     = 80.0
 label   = "Distance"
 
-[fields.height]
+# Raises the point the camera aims at above the hero. Paired with a low Tilt it
+# gives an over-the-shoulder view: the hero sinks in frame and the view looks
+# ahead of them. Distance and the game's own look offset are adjusted behind the
+# scenes so the camera sits where Tilt and Distance say.
+[fields.look_height]
 type    = "float"
-default = 1.0
-min     = -3.0
-max     = 6.0
+default = 0.0
+min     = 0.0
+max     = 10.0
 label   = "Look height"
 
 # Zoom eases the camera in and out through the game's own camera blend, on top
 # of Distance (which stays the base). Its keys are the "Zoom in" / "Zoom out"
 # rows in the game's Controls menu, the mouse wheel by default. Nothing happens
-# while a menu is open. (The field keeps its old name so saved settings carry.)
+# while a menu is open. While Look height is above 0, zoom steps the distance
+# instead of using the game's blend. (The field keeps its old name so saved settings carry.)
 [fields.wheel_zoom]
 type    = "bool"
 default = true
@@ -45,3 +50,24 @@ default = 10
 min     = 2
 max     = 25
 label   = "Zoom step (%)"
+
+# Drag to rotate and tilt: hold the "Rotate camera" key (middle mouse by
+# default) and drag. These flip which way each axis turns the camera.
+[fields.drag_invert_x]
+type    = "bool"
+default = false
+label   = "Invert drag horizontal"
+
+[fields.drag_invert_y]
+type    = "bool"
+default = false
+label   = "Invert drag vertical"
+
+# Action camera: bind the "Action camera" key in Settings > Controls (unbound by
+# default); each press toggles mouse-look, where the cursor is held at the window
+# centre and moving the mouse turns the camera. Off by default: the cursor stays
+# visible at the centre, which is where attacks aim, so it works as a crosshair.
+[fields.action_hide_cursor]
+type    = "bool"
+default = false
+label   = "Hide cursor in action camera"

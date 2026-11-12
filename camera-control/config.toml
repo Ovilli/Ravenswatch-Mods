@@ -1,5 +1,5 @@
 [config]
-distance = 10.0
-height = 2.85
-pitch = 35.72
-yaw = 0.0
+distance = 33.0
+look_height = 0.0
+pitch = 54.0
+yaw = 45.0
