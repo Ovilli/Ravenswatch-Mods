@@ -17,7 +17,7 @@
 [mod]
 id           = "jack-frame"
 name         = "Jack (from scratch, boot test)"
-version      = "0.5.1"
+version      = "0.6.0"
 author       = "Ovilli"
 description  = "First boot test of a hero written from scratch: Jack's own files, no other hero inside."
 enabled      = true
@@ -619,7 +619,6 @@ hits        = [ { at = 0.3, radius = 2.5, damage = 160, stagger = 5, fx = "Setti
 
 [content.frame.abilities.power]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Power.png"   # HUD picture (borrowed until Jack has his own)
-variant     = "released+look_enter+no_end_state"   # TEMPORARY freeze bisection, see init.lua
 name        = "Timber!"
 description = "• Hurl the axe down ahead of you: a beanstalk bursts where it lands, #stunning@ and throwing back everything around you"
 clip        = "anim:Timber"
@@ -632,7 +631,6 @@ indicator   = { radius = 3, forward = 2.5, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.special]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Special.png"   # HUD picture (borrowed until Jack has his own)
-variant     = "released"   # TEMPORARY freeze bisection, see init.lua
 name        = "Woodcutter's Whirl"
 description = "• Sweep the axe around you twice, knocking enemies away and flinging magic beans in every direction"
 clip        = "anim:Whirl"
@@ -645,7 +643,6 @@ steps       = [ { wait = 0.45 }, { fire = "own:Bean", angles = [0, 60, 120, 180,
 
 [content.frame.abilities.defense]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Defensive.png"   # HUD picture (borrowed until Jack has his own)
-variant     = "look_enter"   # TEMPORARY freeze bisection, see init.lua
 name        = "Fee-Fi-Fo-Fum!"
 description = "• Fee-Fi-Fo-Fum! A giant's roar that #stuns@ and #Weakens@ enemies around you"
 clip        = "anim:Shout"
@@ -657,7 +654,6 @@ indicator   = { radius = 3.5, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.trait]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Trait.png"   # HUD picture (borrowed until Jack has his own)
-variant     = "no_end_state"   # TEMPORARY freeze bisection, see init.lua
 name        = "Magic Bean"
 description = "• Plant a magic bean ahead of you: a beanstalk erupts from it and #Roots@ every enemy around"
 clip        = "anim:Bean"
@@ -671,7 +667,6 @@ indicator   = { radius = 3.5, forward = 3, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.ultimate]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Ultimate_1.png"   # HUD picture (borrowed until Jack has his own)
-variant     = "no_inertia"   # TEMPORARY freeze bisection, see init.lua
 name        = "The Giant Falls"
 description = "• Fell the beanstalk: the giant comes crashing down, #stunning@ everything and leaving it #Vulnerable@"
 clip        = "anim:GiantFalls"
@@ -684,7 +679,6 @@ indicator   = { radius = 4, forward = 4, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.ultimate2]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Ultimate_2.png"   # HUD picture (borrowed until Jack has his own)
-variant     = "dash_state"   # TEMPORARY freeze bisection, see init.lua
 name        = "Giant-Slayer"
 description = "• Hurl three spinning axes ahead that burst on impact, and #stun@ and #Bleed@ everything close"
 clip        = "anim:GiantSlayer"

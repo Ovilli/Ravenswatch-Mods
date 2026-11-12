@@ -1,20 +1,11 @@
--- Jack (from scratch): button freeze bisection, TEMPORARY (v0.5.1).
+-- Jack (from scratch): button probe, TEMPORARY (v0.6.0).
 --
--- His ability states switch off in the frame they start (2026-11-08 probe),
--- so his clips never play and his timers stall. Each button is built a
--- different way this time (manifest `variant`):
---   ATTACK   (left click)  as before -- the control
---   POWER                  Geppetto's shape: released flag, aim on entry, no end-timer switch
---   SPECIAL                + the input-released flag and tester
---   DEFENSE                aim on entry only
---   TRAIT                  the end timer does not switch the state off
---   ULTIMATE 1             no move-inertia hand-over
---   ULTIMATE 2             Hero_Common's own dash state (button-side check)
---
--- Once his hero is live this logs, for three minutes, every on/off of each
--- ability state (byte +0x64, bit 0x08 = on), sampled every frame. Press each
--- button once, a few seconds apart, then quit and send the log. Remove this
--- file once the buttons work.
+-- v0.5.1 showed every one of his ability states switching off within a frame
+-- whatever its shape, while the dash's lived. v0.6.0 writes his files with one
+-- run per component class (as every shipped entity) and his fans through a
+-- yaw value. This logs, for three minutes, every on/off of each ability state
+-- (byte +0x64, bit 0x08 = on). Press DASH, ATTACK, POWER, SPECIAL, DEFENSE and
+-- TRAIT a few seconds apart, then quit. Remove once the buttons work.
 
 local R = require "rsmm"
 
