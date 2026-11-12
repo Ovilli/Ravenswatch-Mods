@@ -457,15 +457,15 @@ add_stats   = [ { stat = "Apply bleed on critical", values = [1, 1, 1, 1], perce
 [[content.frame.talents]]
 name        = "Power Twin Beanstalks"
 title       = "Twin Beanstalks"
-description = "• Timber! also flings a magic bean further ahead that bursts for #120%@ area damage"
-actions     = [ { on = "power", steps = [ { wait = 0.5 }, { fire = "own:Bean", speed = 14, lifetime = 0.4, damage = 120, size = 1.8, explode = 3.5, forward = 0.5 } ] } ]
+description = "• Timber! also flings a magic bean further ahead that bursts for #250%@ area damage"
+actions     = [ { on = "power", steps = [ { wait = 0.5 }, { fire = "own:Bean", speed = 14, lifetime = 0.4, damage = 250, size = 1.8, explode = 3.5, forward = 0.5 } ] } ]
 starter     = true
 
 [[content.frame.talents]]
 name        = "Power Seed Pods"
 title       = "Thorny Pods"
-description = "• Timber! leaves thorny pods that burst a moment later for #100%@ area damage and #Bleed@"
-actions     = [ { on = "power", hits = [ { at = 1.2, radius = 4, damage = 100, status = "Bleed", fx = "fx:BeanBloom" } ] } ]
+description = "• Timber! leaves thorny pods that burst a moment later for #200%@ area damage and #Bleed@"
+actions     = [ { on = "power", hits = [ { at = 1.2, radius = 4, damage = 200, status = "Bleed", fx = "fx:BeanBloom" } ] } ]
 
 [[content.frame.talents]]
 name        = "Power Deep Roots"
@@ -476,8 +476,8 @@ add_stats   = [ { stat = "CD reduce primary", values = [0.10, 0.15, 0.20, 0.25] 
 [[content.frame.talents]]
 name        = "Special Whirligig"
 title       = "Whirligig"
-description = "• Woodcutter's Whirl spins once more for #150%@ area damage"
-actions     = [ { on = "special", hits = [ { at = 1.0, radius = 4, damage = 150, fx = "fx:LeafSwirl" } ] } ]
+description = "• Woodcutter's Whirl spins once more for #250%@ area damage"
+actions     = [ { on = "special", hits = [ { at = 1.0, radius = 4, damage = 250, fx = "fx:LeafSwirl" } ] } ]
 
 [[content.frame.talents]]
 name        = "Special Harvest"
@@ -489,7 +489,7 @@ add_stats   = [ { stat = "Increase secondary damage for each debuff", values = [
 name        = "Special Runner Bean"
 title       = "Runner Bean"
 description = "• Woodcutter's Whirl shoots runner beans in every direction that #Root@ what they hit"
-actions     = [ { on = "special", hits = [ { at = 0.3, radius = 4, damage = 60, status = "Rooted", fx = "fx:BeanBloom" } ], steps = [ { wait = 0.3 }, { fire = "own:Bean", angles = [0, 45, 90, 135, 180, 225, 270, 315], speed = 14, damage = 60, lifetime = 0.6, root = 2 } ] } ]
+actions     = [ { on = "special", hits = [ { at = 0.3, radius = 4, damage = 100, status = "Rooted", fx = "fx:BeanBloom" } ], steps = [ { wait = 0.3 }, { fire = "own:Bean", angles = [0, 45, 90, 135, 180, 225, 270, 315], speed = 14, damage = 100, lifetime = 0.6, root = 2 } ] } ]
 starter     = true
 
 [[content.frame.talents]]
@@ -501,14 +501,14 @@ add_stats   = [ { stat = "Invulnerable", during = "DEFENSE" } ]
 [[content.frame.talents]]
 name        = "Defense Ringing Copper"
 title       = "Ringing Copper"
-description = "• Your shout rings like copper: #DEFENSE@ also leaves enemies #Vulnerable@ and deals #120%@ area damage"
-actions     = [ { on = "defense", hits = [ { at = 0.1, radius = 4, damage = 120, status = "Vulnerable", fx = "fx:Roar" } ] } ]
+description = "• Your shout rings like copper: #DEFENSE@ also leaves enemies #Vulnerable@ and deals #200%@ area damage"
+actions     = [ { on = "defense", hits = [ { at = 0.1, radius = 4, damage = 200, status = "Vulnerable", fx = "fx:Roar" } ] } ]
 
 [[content.frame.talents]]
 name        = "Defense Magic Beans"
 title       = "Magic Beans"
-description = "• Shouting scatters magic beans that burst #3@ times for #80%@ area damage, #Rooting@ enemies"
-actions     = [ { on = "defense", hits = [ { at = 0.5, radius = 3, damage = 80, status = "Rooted", fx = "fx:BeanBloom" }, { at = 1.0, radius = 3, damage = 80, fx = "fx:BeanBloom" }, { at = 1.5, radius = 3, damage = 80, fx = "fx:BeanBloom" } ] } ]
+description = "• Shouting scatters magic beans that burst #3@ times for #120%@ area damage, #Rooting@ enemies"
+actions     = [ { on = "defense", hits = [ { at = 0.5, radius = 3, damage = 120, status = "Rooted", fx = "fx:BeanBloom" }, { at = 1.0, radius = 3, damage = 120, fx = "fx:BeanBloom" }, { at = 1.5, radius = 3, damage = 120, fx = "fx:BeanBloom" } ] } ]
 
 [[content.frame.talents]]
 name        = "Trait Bigger Bean"
@@ -531,8 +531,8 @@ add_stats   = [ { stat = "Vitality", values = [10, 15, 20, 25], percent = false 
 [[content.frame.talents]]
 name        = "Dash Bean Vault"
 title       = "Bean Vault"
-description = "• A beanstalk bursts where you land, dealing #120%@ area damage and throwing enemies back"
-actions     = [ { on = "dash", hits = [ { at = 0.2, radius = 3, damage = 120, knockback = 50, fx = "fx:GroundBurst" } ] } ]
+description = "• A beanstalk bursts where you land, dealing #200%@ area damage and throwing enemies back"
+actions     = [ { on = "dash", hits = [ { at = 0.2, radius = 3, damage = 200, knockback = 50, fx = "fx:GroundBurst" } ] } ]
 
 [[content.frame.talents]]
 name        = "Dash Light Feet"
@@ -611,7 +611,7 @@ clip        = "anim:Chop"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Dodge FMod Event"
 duration    = 0.6
 cooldown    = 0.35
-hits        = [ { at = 0.3, radius = 2.5, damage = 100, stagger = 5, fx = "Settings\\FX\\Common_FX\\Impact_Wood.vfx.ot", shake = "light" } ]
+hits        = [ { at = 0.3, radius = 2.5, damage = 160, stagger = 5, fx = "Settings\\FX\\Common_FX\\Impact_Wood.vfx.ot", shake = "light" } ]
 # The two-step combo (each step's timeline lands its hit) is kept in
 # ~/.cache/rsmm/jack-kit/attack_combo_v1.toml: it comes back once Jack's own
 # states stay active in game (they switch off in the frame they start, so a
@@ -626,8 +626,8 @@ clip        = "anim:Timber"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Beanstalk ShakeImpact FMod Event"
 duration    = 1.0
 cooldown    = 6
-hits        = [ { at = 0.45, radius = 3.5, damage = 120, stun = 1.0, knockback = 60, stagger = 20, fx = "Settings\\FX\\Common_FX\\Bean_Grows_Out_02.vfx.ot", shake = "medium" } ]
-steps       = [ { wait = 0.3 }, { fire = "own:Axe", speed = 18, lifetime = 0.5, damage = 120, size = 1.3, explode = 3, forward = 0.5 } ]
+hits        = [ { at = 0.45, radius = 3.5, damage = 350, stun = 1.0, knockback = 60, stagger = 20, fx = "Settings\\FX\\Common_FX\\Bean_Grows_Out_02.vfx.ot", shake = "medium" } ]
+steps       = [ { wait = 0.3 }, { fire = "own:Axe", speed = 18, lifetime = 0.5, damage = 250, size = 1.3, explode = 3, forward = 0.5 } ]
 indicator   = { radius = 3, forward = 2.5, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.special]
@@ -639,9 +639,9 @@ clip        = "anim:Whirl"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Seed Bean Jump FMod Event"
 duration    = 1.3
 cooldown    = 8
-hits        = [ { at = 0.45, radius = 4, damage = 150, knockback = 30, fx = "Settings\\FX\\Common_FX\\Basic_Slash_360.vfx.ot", shake = "light" }, { at = 0.85, radius = 4, damage = 150, knockback = 30, fx = "Settings\\FX\\Common_FX\\Basic_Slash_360.vfx.ot", shake = "light" } ]
+hits        = [ { at = 0.45, radius = 4, damage = 180, knockback = 30, fx = "Settings\\FX\\Common_FX\\Basic_Slash_360.vfx.ot", shake = "light" }, { at = 0.85, radius = 4, damage = 250, knockback = 30, fx = "Settings\\FX\\Common_FX\\Basic_Slash_360.vfx.ot", shake = "light" } ]
 indicator   = { radius = 4, color = [0.55, 0.9, 0.3, 1] }
-steps       = [ { wait = 0.45 }, { fire = "own:Bean", angles = [0, 60, 120, 180, 240, 300], speed = 12, lifetime = 0.7, damage = 50, size = 1.5 } ]
+steps       = [ { wait = 0.45 }, { fire = "own:Bean", angles = [0, 60, 120, 180, 240, 300], speed = 12, lifetime = 0.7, damage = 80, size = 1.5 } ]
 
 [content.frame.abilities.defense]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Defensive.png"   # HUD picture (borrowed until Jack has his own)
@@ -652,7 +652,7 @@ clip        = "anim:Shout"
 sound       = "Enemies\\Ogres\\Ogre_Cyclop_Sinbad_Quest.entity.ot | Cine Scream FMod Event"
 duration    = 1.05
 cooldown    = 8
-hits        = [ { at = 0.3, radius = 3.5, damage = 80, stun = 0.8, status = "Weak", fx = "Settings\\FX\\Common_FX\\Raven_Eye_Reveal_Shockwave.vfx.ot", shake = "medium" } ]
+hits        = [ { at = 0.3, radius = 3.5, damage = 150, stun = 0.8, status = "Weak", fx = "Settings\\FX\\Common_FX\\Raven_Eye_Reveal_Shockwave.vfx.ot", shake = "medium" } ]
 indicator   = { radius = 3.5, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.trait]
@@ -677,9 +677,9 @@ description = "• Fell the beanstalk: the giant comes crashing down, #stunning@
 clip        = "anim:GiantFalls"
 sound       = "DarkHills\\Jack\\Ogre_Fight_Intro_Cinematic.entity.ot | Cine Beanstalk Top Shake FMod Event"
 duration    = 1.1
-cooldown    = 40
-hits        = [ { at = 0.45, radius = 6, damage = 300, knockback = 80, fx = "Settings\\FX\\Common_FX\\Destructible_Explosion_Big.vfx.ot", shake = "medium" }, { at = 0.9, radius = 8, damage = 500, stun = 2.0, status = "Vulnerable", fx = "Settings\\FX\\Common_FX\\Destructible_Explosion_Very_Big.vfx.ot", shake = "heavy" } ]
-steps       = [ { wait = 0.8 }, { fire = "own:Axe", speed = 14, lifetime = 0.6, damage = 300, size = 2.5, explode = 4, forward = 1 } ]
+cooldown    = 60
+hits        = [ { at = 0.45, radius = 6, damage = 800, knockback = 80, fx = "Settings\\FX\\Common_FX\\Destructible_Explosion_Big.vfx.ot", shake = "medium" }, { at = 0.9, radius = 8, damage = 2000, stun = 2.0, status = "Vulnerable", fx = "Settings\\FX\\Common_FX\\Destructible_Explosion_Very_Big.vfx.ot", shake = "heavy" } ]
+steps       = [ { wait = 0.8 }, { fire = "own:Axe", speed = 14, lifetime = 0.6, damage = 800, size = 2.5, explode = 4, forward = 1 } ]
 indicator   = { radius = 4, forward = 4, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.ultimate2]
@@ -690,7 +690,7 @@ description = "• Hurl three spinning axes ahead that burst on impact, and #stu
 clip        = "anim:GiantSlayer"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Shake Beanstalk FMod Event"
 duration    = 2.4
-cooldown    = 40
-hits        = [ { at = 1.2, radius = 4, damage = 150, stun = 1.5, status = "Bleed", fx = "Settings\\FX\\Common_FX\\Destructible_Explosion_Medium.vfx.ot", shake = "medium" } ]
-steps       = [ { wait = 1.0 }, { fire = "own:Axe", angles = [-15, 0, 15], speed = 25, damage = 250, explode = 2, forward = 1 } ]
+cooldown    = 60
+hits        = [ { at = 1.2, radius = 4, damage = 500, stun = 1.5, status = "Bleed", fx = "Settings\\FX\\Common_FX\\Destructible_Explosion_Medium.vfx.ot", shake = "medium" } ]
+steps       = [ { wait = 1.0 }, { fire = "own:Axe", angles = [-15, 0, 15], speed = 25, damage = 800, explode = 2, forward = 1 } ]
 indicator   = { radius = 4, color = [0.55, 0.9, 0.3, 1] }
