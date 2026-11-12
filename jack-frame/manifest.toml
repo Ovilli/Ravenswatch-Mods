@@ -17,10 +17,10 @@
 [mod]
 id           = "jack-frame"
 name         = "Jack (from scratch, boot test)"
-version      = "0.5.0"
+version      = "0.5.1"
 author       = "Ovilli"
 description  = "First boot test of a hero written from scratch: Jack's own files, no other hero inside."
-enabled      = false
+enabled      = true
 load_order   = 96
 sdk_version  = ">=3.0,<4"
 license      = "MIT"
@@ -29,7 +29,7 @@ multiplayer_scope = "deterministic-shared"
 experimental = true
 # Talent probe (temporary): with the loader's [talent-guard], dumps every
 # hero's talent rows the first time a talent card has no controller.
-loader_flags = ["RSMM_ENABLE_SKILL_HOOK"]
+loader_flags = ["RSMM_ENABLE_SKILL_HOOK", "RSMM_ENABLE_HERO_CAPTURE"]
 
 [[content]]
 kind        = "hero"
@@ -604,6 +604,7 @@ text  = "\"The bigger they are,\" Jack tells the Nightmares, sharpening the blad
 # how long it holds the hero (duration), its cooldown, and its hits: a burst
 # of `radius` m around him for `damage` % of a hit, `at` s after the press.
 [content.frame.abilities.attack]
+icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Attack.png"   # HUD picture (borrowed until Jack has his own)
 name        = "Woodcutter's Chop"
 description = "• A quick chop of the axe that staggers what it hits"
 clip        = "anim:Chop"
@@ -617,6 +618,8 @@ hits        = [ { at = 0.3, radius = 2.5, damage = 100, stagger = 5, fx = "Setti
 # timeline-driven hit never lands -- playtest 2026-11-08).
 
 [content.frame.abilities.power]
+icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Power.png"   # HUD picture (borrowed until Jack has his own)
+variant     = "released+look_enter+no_end_state"   # TEMPORARY freeze bisection, see init.lua
 name        = "Timber!"
 description = "• Hurl the axe down ahead of you: a beanstalk bursts where it lands, #stunning@ and throwing back everything around you"
 clip        = "anim:Timber"
@@ -628,6 +631,8 @@ steps       = [ { wait = 0.3 }, { fire = "own:Axe", speed = 18, lifetime = 0.5, 
 indicator   = { radius = 3, forward = 2.5, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.special]
+icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Special.png"   # HUD picture (borrowed until Jack has his own)
+variant     = "released"   # TEMPORARY freeze bisection, see init.lua
 name        = "Woodcutter's Whirl"
 description = "• Sweep the axe around you twice, knocking enemies away and flinging magic beans in every direction"
 clip        = "anim:Whirl"
@@ -639,6 +644,8 @@ indicator   = { radius = 4, color = [0.55, 0.9, 0.3, 1] }
 steps       = [ { wait = 0.45 }, { fire = "own:Bean", angles = [0, 60, 120, 180, 240, 300], speed = 12, lifetime = 0.7, damage = 50, size = 1.5 } ]
 
 [content.frame.abilities.defense]
+icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Defensive.png"   # HUD picture (borrowed until Jack has his own)
+variant     = "look_enter"   # TEMPORARY freeze bisection, see init.lua
 name        = "Fee-Fi-Fo-Fum!"
 description = "• Fee-Fi-Fo-Fum! A giant's roar that #stuns@ and #Weakens@ enemies around you"
 clip        = "anim:Shout"
@@ -649,6 +656,8 @@ hits        = [ { at = 0.3, radius = 3.5, damage = 80, stun = 0.8, status = "Wea
 indicator   = { radius = 3.5, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.trait]
+icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Trait.png"   # HUD picture (borrowed until Jack has his own)
+variant     = "no_end_state"   # TEMPORARY freeze bisection, see init.lua
 name        = "Magic Bean"
 description = "• Plant a magic bean ahead of you: a beanstalk erupts from it and #Roots@ every enemy around"
 clip        = "anim:Bean"
@@ -661,6 +670,8 @@ steps       = [ { wait = 0.2 }, { fire = "own:Bean", speed = 9, lifetime = 0.7, 
 indicator   = { radius = 3.5, forward = 3, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.ultimate]
+icon        = "Heroes\\Kintaro\\Ability_Kintaro_Ultimate_1.png"   # HUD picture (borrowed until Jack has his own)
+variant     = "no_inertia"   # TEMPORARY freeze bisection, see init.lua
 name        = "The Giant Falls"
 description = "• Fell the beanstalk: the giant comes crashing down, #stunning@ everything and leaving it #Vulnerable@"
 clip        = "anim:GiantFalls"
@@ -672,6 +683,8 @@ steps       = [ { wait = 0.8 }, { fire = "own:Axe", speed = 14, lifetime = 0.6, 
 indicator   = { radius = 4, forward = 4, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.ultimate2]
+icon        = "Heroes\\Kintaro\\Ability_Kintaro_Ultimate_2.png"   # HUD picture (borrowed until Jack has his own)
+variant     = "dash_state"   # TEMPORARY freeze bisection, see init.lua
 name        = "Giant-Slayer"
 description = "• Hurl three spinning axes ahead that burst on impact, and #stun@ and #Bleed@ everything close"
 clip        = "anim:GiantSlayer"

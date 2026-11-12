@@ -1,51 +1,42 @@
--- Jack (from scratch): button probe, TEMPORARY.
+-- Jack (from scratch): button freeze bisection, TEMPORARY (v0.5.1).
 --
--- His buttons froze in one pose in the 2026-11-08 playtests. Once his hero is
--- live this logs, for three minutes:
---   * the starting bytes of his ability states, clip selectors and animatics,
---     then every byte that flips while you play (R.debug.watch_components);
---   * every ability / attack / animation event on the gameplay bus, with the
---     time, so each button press is visible (an ability whose timeline runs
---     sends its ABILITY_EXIT there).
--- Press each button once, a few seconds apart, then quit. Remove this file
--- once the buttons work.
+-- His ability states switch off in the frame they start (2026-11-08 probe),
+-- so his clips never play and his timers stall. Each button is built a
+-- different way this time (manifest `variant`):
+--   ATTACK   (left click)  as before -- the control
+--   POWER                  Geppetto's shape: released flag, aim on entry, no end-timer switch
+--   SPECIAL                + the input-released flag and tester
+--   DEFENSE                aim on entry only
+--   TRAIT                  the end timer does not switch the state off
+--   ULTIMATE 1             no move-inertia hand-over
+--   ULTIMATE 2             Hero_Common's own dash state (button-side check)
+--
+-- Once his hero is live this logs, for three minutes, every on/off of each
+-- ability state (byte +0x64, bit 0x08 = on), sampled every frame. Press each
+-- button once, a few seconds apart, then quit and send the log. Remove this
+-- file once the buttons work.
 
 local R = require "rsmm"
 
 local TAG = "[jack-probe]"
-local started, t0 = false, nil
-local seen = {}
-
-local function now() return t0 and (os.clock() - t0) or 0 end
+local started = false
 
 R.on_match("^gameplay:", function(_, name)
-    if not started or now() > 180 then return end
+    if not started then return end
     local ev = name:sub(10)
-    if not (ev:find("ABILIT") or ev:find("ATTACK") or ev:find("ANIM") or ev:find("SKILL")
-            or ev:find("DASH") or ev:find("ULTI") or ev:find("EXIT") or ev:find("CAST")) then
-        return
+    if ev:find("ABILIT") or ev:find("ATTACK") or ev:find("EXIT") then
+        R.log(TAG, "event " .. ev)
     end
-    local t = now()
-    if seen[ev] and t - seen[ev] < 0.25 then return end   -- one line per burst
-    seen[ev] = t
-    R.log(TAG, string.format("t=%.2f event %s", t, ev))
 end)
 
 R.schedule.every(1.0, function()
     if started or not (R.entity and R.entity.ready and R.entity.ready()) then return end
+    started = true
     if not (R.debug and R.debug.watch_components) then
         R.log(TAG, "this loader has no R.debug.watch_components -- run `rsmm install-loader`")
-        started = true
         return
     end
-    started, t0 = true, os.clock()
-    R.log(TAG, "hero live: probing for 60 s -- DASH, wait 3 s, ATTACK, wait 3 s, SPECIAL")
-    -- Round 3: the selectors fire on a press; the animatic never changed in
-    -- 0x80 bytes. Watch every clip and animatic wide, the ones that DO play
-    -- (dash, hit reaction, idle, move) as the reference.
-    local function w(pat, label) R.debug.watch_components(pat, { label = label, seconds = 180, len = 0x140, baseline = 0x140 }) end
-    -- Round 5: every Jack-built state flips on for an instant and is switched
-    -- off; the dash's (Hero_Common's) stays on. Watch EVERY part of the hero
-    -- for 60 s: what reacts to the dash but not to Jack's buttons is the link.
-    R.debug.watch_components(".", { label = "all", seconds = 60, from = 0x60, len = 0x28, every = 0.1 })
+    R.log(TAG, "hero live: press DASH, ATTACK, POWER, SPECIAL, DEFENSE, TRAIT, a few s apart")
+    R.debug.watch_components("^State %a+%d? Ability$",
+        { label = "states", seconds = 180, from = 0x64, len = 1, every = 0.001, baseline = 1 })
 end)
