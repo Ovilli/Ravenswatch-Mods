@@ -110,9 +110,14 @@ end
 -- runs) is applied by the tick below as soon as the hero is back.
 local pending = false
 
+-- Set further down, with the turning helpers: an outside change to yaw or pitch
+-- (the overlay) restarts any turn in progress from the new value.
+local turn_resync
+
 for name in pairs(FIELDS) do
     R.config.on_change(name, function(v)
         if name == "pitch" then live_pitch = nil end
+        if name == "yaw" or name == "pitch" then turn_resync(name, v) end
         if capture_off() then return end
         if not R.entity.ready() then
             pending = true
@@ -288,7 +293,30 @@ local DEG_PER_PX = 0.2
 local MIN_PITCH, MAX_PITCH = 2, 89
 
 -- One turning state per style: yaw/pitch are nil while it is not turning.
-local function new_turn() return { sx = 1, sy = 1 } end
+local turns = {}
+local function new_turn()
+    local t = { sx = 1, sy = 1 }
+    turns[#turns + 1] = t
+    return t
+end
+
+-- A config change to yaw or pitch that is not this mod's own save (a save sets
+-- saved_yaw / saved_pitch first, so it matches) moves every active turn there,
+-- so the next move or save starts from the new value, not the old one.
+function turn_resync(name, v)
+    v = tonumber(v)
+    if not v then return end
+    for _, t in ipairs(turns) do
+        if t.yaw and math.abs(v - t["saved_" .. name]) > 1e-6 then
+            if name == "yaw" then
+                t.yaw = v % 360
+            else
+                t.pitch = math.max(MIN_PITCH, math.min(MAX_PITCH, v))
+            end
+            t["saved_" .. name] = t[name]
+        end
+    end
+end
 
 -- Start from the config values and read the invert options.
 local function turn_begin(t)
@@ -323,8 +351,25 @@ local function turn_save(t)
     t.saved_yaw, t.saved_pitch = t.yaw, t.pitch
 end
 
+-- The SDK declares R.input.on_drag / mouse_look even when the loader DLL lacks
+-- the native side. Only a definite "loader too old" skips a row: while the input
+-- hook is still pending they report another reason, and the row is kept.
+local function native_missing(available)
+    if not available then return false end
+    local ok, why = available()
+    return not ok and tostring(why):find("loader too old", 1, true) ~= nil
+end
+
+-- Checked on every move, not only at the start: a menu or blocked input that
+-- appears mid-drag ends the drag.
+local function turn_ok(ev)
+    if ev.blocked then return false end
+    if R.game.flag("is_game_menu_open") or R.game.flag("is_menu_open") then return false end
+    return R.entity.ready()
+end
+
 local rotate
-if K and R.input.on_drag then
+if K and R.input.on_drag and not native_missing(R.input.drag_available) then
     rotate = K.add{ id = "RotateCamera", label = "Rotate camera", key = MIDDLE }
 end
 
@@ -334,12 +379,18 @@ if rotate then
         if phase == "start" then
             drag.yaw, drag.pitch = nil, nil
             live_pitch = nil
-            if ev.blocked or K.keys(rotate) ~= MIDDLE then return end
-            if R.game.flag("is_game_menu_open") or R.game.flag("is_menu_open") then return end
-            if not R.entity.ready() then return end
+            if K.keys(rotate) ~= MIDDLE or not turn_ok(ev) then return end
             turn_begin(drag)
         elseif drag.yaw and phase == "move" then
-            turn_by(drag, dx, dy)
+            if turn_ok(ev) then
+                turn_by(drag, dx, dy)
+            else
+                -- Keep what was applied, save it once, ignore the rest until
+                -- the next start.
+                turn_save(drag)
+                drag.yaw, drag.pitch = nil, nil
+                live_pitch = nil
+            end
         elseif drag.yaw and phase == "end" then
             turn_save(drag)
             drag.yaw, drag.pitch = nil, nil
@@ -357,7 +408,8 @@ if rotate then
 end
 
 local action
-if K and R.input.mouse_look and R.input.on_mouse_move then
+if K and R.input.mouse_look and R.input.on_mouse_move
+    and not native_missing(R.input.mouse_look_available) then
     action = K.add{ id = "ActionCamera", label = "Action camera", key = 0 }   -- unbound
 end
 
@@ -389,8 +441,19 @@ if action then
     R.on("run:end", function() if on then set_mode(false) end end)
 
     R.input.on_mouse_move(function(dx, dy, ev)
-        if not on or not ev.locked or ev.blocked then return end
-        if not R.entity.ready() then return end
+        if not on then return end
+        -- With game events off run:end never arrives. A finished run lands in the
+        -- main menu, where the lock is paused and moves still arrive unlocked, so
+        -- the mode ends there instead. (A new captured hero is not a new run:
+        -- every transform, death and respawn captures one.) Game thread, so the
+        -- live flag read is safe.
+        if R.game.flag("is_in_main_menu") == true then
+            set_mode(false)
+            return
+        end
+        if not ev.locked or ev.blocked then return end
+        -- Not ready while a menu is open: that alone does not end the mode.
+        if not R.entity.hero() then return end
         turn_by(look, dx, dy)
     end)
 
