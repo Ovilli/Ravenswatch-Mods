@@ -103,27 +103,50 @@ R.schedule.every(0.5, function()
     end
 end)
 
--- Mouse wheel zoom. The loader counts wheel notches on the frame they happen
--- (R.input) and R.camera.zoom eases the camera through the game's own camera
--- blend, so the zoom is smooth where a Distance change snaps. Distance stays the
--- base; the wheel multiplies on top of it, kept so base x factor stays within the
--- Distance slider's 10-80. Wheel up moves closer. The game's menus read the
--- wheel too, so nothing happens while one is open, and the mod steps aside if
--- the player has bound an in-run action to the wheel in the Controls menu.
--- This runs on the game thread inside the input poll: it only reads values and
--- queues a zoom.
+-- Zoom keys. "Zoom in" and "Zoom out" are rows in the game's Settings >
+-- Controls menu (R.input.keybinds), on the mouse wheel by default and bindable
+-- to any key there; the game saves them with the other keys and clears one when
+-- another action takes its key. R.camera.zoom eases the camera through the
+-- game's own camera blend, so the zoom is smooth where a Distance change snaps.
+-- Distance stays the base; each press multiplies on top of it, kept so base x
+-- factor stays within the Distance slider's 10-80. Presses only arrive in play.
+-- On a loader without keybinds the wheel zooms instead (R.input.on_wheel).
+-- Both run on the game thread inside the input poll: they only read values and
+-- queue a zoom.
 local MIN_DISTANCE, MAX_DISTANCE = 10, 80
-local told_wheel = {}
+local told = {}
 
 local function tell_once(key, msg)
-    if told_wheel[key] then return end
-    told_wheel[key] = true
+    if told[key] then return end
+    told[key] = true
     R.log("[camera-control] " .. msg)
 end
 
-if R.input and R.input.on_wheel and R.camera.zoom then
+-- steps > 0 moves closer.
+local function zoom(steps)
+    if steps == 0 or not R.config.get("wheel_zoom", true) then return end
+    local base = R.camera.get("distance")
+    if not base or base <= 0 then
+        tell_once("distance", "zoom key pressed but no camera distance to zoom from "
+            .. "(is hero capture on?)")
+        return
+    end
+    local step = math.max(2, math.min(25, tonumber(R.config.get("wheel_step", 10)) or 10))
+    local now = R.camera.zoom_factor()
+    local want = now * (1 - step / 100) ^ steps
+    want = math.max(MIN_DISTANCE / base, math.min(MAX_DISTANCE / base, want))
+    if math.abs(want - now) < 1e-4 then return end
+    local ok, why = R.camera.zoom(want / now)
+    if not ok then tell_once("zoom", "zoom unavailable: " .. tostring(why)) end
+end
+
+local function wheel_zoom(why)
+    if not (R.input and R.input.on_wheel and R.camera.zoom) then
+        R.log("[camera-control] zoom needs a newer loader (no R.input / R.camera.zoom)")
+        return
+    end
+    R.log("[camera-control] no zoom keys (" .. tostring(why) .. "); the wheel zooms instead")
     R.input.on_wheel(function(steps, ev)
-        if steps == 0 or not R.config.get("wheel_zoom", true) then return end
         if ev.blocked then return end
         if R.game.flag("is_game_menu_open") or R.game.flag("is_menu_open") then return end
         local free, holder = R.input.wheel_free()
@@ -131,22 +154,28 @@ if R.input and R.input.on_wheel and R.camera.zoom then
             tell_once("bound:" .. tostring(holder), "wheel zoom off: the wheel is bound to "
                 .. tostring(holder) .. " in the Controls menu")
             return
-        elseif free == nil then
-            -- The binding read failed (the options layout moved in a game
-            -- patch). The wheel is unbound by default, so zoom anyway.
-            tell_once("unknown", "cannot read the key bindings (" .. tostring(holder)
-                .. "); wheel zoom stays on")
         end
-        local base = R.camera.get("distance")
-        if not base or base <= 0 then return end
-        local step = math.max(2, math.min(25, tonumber(R.config.get("wheel_step", 10)) or 10))
-        local now = R.camera.zoom_factor()
-        local want = now * (1 - step / 100) ^ steps
-        want = math.max(MIN_DISTANCE / base, math.min(MAX_DISTANCE / base, want))
-        if math.abs(want - now) < 1e-4 then return end
-        local ok, why = R.camera.zoom(want / now)
-        if not ok then tell_once("zoom", "wheel zoom unavailable: " .. tostring(why)) end
+        zoom(steps)
+    end)
+end
+
+local K = R.input and R.input.keybinds
+local zoom_in, why = nil, "this loader has no R.input.keybinds"
+if K and R.camera.zoom then
+    zoom_in, why = K.add{ id = "ZoomIn", label = "Zoom in", key = 92 }   -- wheel up
+end
+
+if zoom_in then
+    local zoom_out = K.add{ id = "ZoomOut", label = "Zoom out", key = 93 }  -- wheel down
+    K.on_press(zoom_in, function(n) zoom(n) end)
+    if zoom_out then K.on_press(zoom_out, function(n) zoom(-n) end) end
+    K.on_ready(function(ok, why2)
+        if ok then
+            R.log("[camera-control] zoom keys live (Settings > Controls: Zoom in / Zoom out)")
+        else
+            wheel_zoom(why2)
+        end
     end)
 else
-    R.log("[camera-control] wheel zoom needs a newer loader (no R.input / R.camera.zoom)")
+    wheel_zoom(why)
 end
