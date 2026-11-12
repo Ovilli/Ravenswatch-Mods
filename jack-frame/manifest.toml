@@ -566,10 +566,10 @@ add_stats   = [ { stat = "Move Speed Ratio", values = [0.20, 0.28, 0.36, 0.45], 
 starter     = true
 
 [[content.frame.talents]]
-name        = "Passive Milky White"
-title       = "Milky-White"
-description = "• Gain &+{0}%~ more Dream Shards"
-add_stats   = [ { stat = "Dream shard collect ratio", values = [0.10, 0.15, 0.20, 0.25] } ]
+name        = "Passive Beanstalk Snare"
+title       = "Beanstalk Snare"
+description = "• Deal &+{0}%~ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase damage for each debuff", values = ["+6%", "+9%", "+12%", "+15%"] } ]
 
 [[content.memoirs]]
 title = "Milky-White"
