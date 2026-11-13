@@ -9,9 +9,8 @@
 # The clone manifest is kept at ~/.cache/rsmm/blood-wolf-kit/manifest.clone.toml.
 #
 # What the clone had that this file cannot say yet (see the notes at each
-# button): the blood seed riding on the bitten enemy, the bomber wolf's own
-# bleed bomb, and Scarlet's defense/ultimate behaviour and
-# talents (Blood Wolf now has buttons and talents of its own).
+# button): the blood seed riding on the bitten enemy, and Scarlet's
+# defense/ultimate behaviour and talents (Blood Wolf now has buttons and talents of its own).
 
 [mod]
 id                = "blood-wolf-pam"
@@ -62,6 +61,113 @@ clip = "Characters\\Heroes\\RED\\Animations\\Communs\\RED_Wolf_DeathDoor_Loop.fb
 [content.frame.slots."Teleporting Out End Cine Anim"]
 clip = "Characters\\Heroes\\RED\\Animations\\Communs\\RED_Wolf_Flock_Teleportation_Out.fbx"
 
+# --- Its bleed bomb -------------------------------------------------------------
+# What a bomber wolf bursts into: Scarlet's bomb as an entity of Blood Wolf's
+# own, with the edits Pam's playtests settled on in the clone (0.1.0), step
+# for step. Named "own:Bomb" by the summons' `burst`.
+[content.frame.entities.Bomb]
+from  = "Heroes/Hero_Red/Hero_Red_Bomb"
+edits = [
+    # Configure Blood Seed Burst Entity (Hero_Red_Bomb -> Hero_BloodWolf_Bomb)
+    { remove_link = "Event Initialize.activates", to = "Mesh" },
+    # Start on the ground with a near-zero fuse, not in State Exploding: a bomb
+    # that starts exploding fires its hit on its first frame, before it stands
+    # where it spawned, and hits nothing. On Ground's own Explosion Timer is
+    # what moves Scarlet's bomb to State Exploding.
+    { link = "Default State Machine.ref_2", to = "State On Ground" },
+    { set = "Explosion Timer.duration", value = 0.1 },
+    # No warning circle or warm-up glow for a 0.1 s fuse.
+    { remove_link = "State On Ground.while_active", to = "Warning_Zone_Mesh" },
+    { remove_link = "State On Ground.while_active", to = "Warning_Zone_Growing_Color_Anim" },
+    { remove_link = "State On Ground.while_active", to = "Bomb_Explosion_Warmup_Emissive_Anim" },
+    # Burst tuning. Scarlet's bomb also fires a second attack at HEROES
+    # ("Explosion Attack Heroes", what staggered the wolf): not started here.
+    { remove_link = "State Exploding.activates", to = "Explosion Attack Heroes Tester" },
+    # Hit damage: the record multiplies by "Explosion Damage Multiplier" (4);
+    # 1 is the same 10 at level 1 as the 3rd combo hit.
+    { set = "Explosion Damage Multiplier.value", value = 1.0 },
+    # Stagger: value_31 (wolf basic 8, wolf power 25, Scarlet's bomb 50).
+    { set = "Explosion Damage.value_31", value = 30.0 },
+    # A bleed only deals damage through a "Remote Damage Owner" on the entity
+    # that APPLIED it: every 0.5 s the target finds that component on the
+    # modifier's source, writes the tick into it, and the owner's own "Bleed
+    # Damage" deals the hit. Characters carry one (Character_Common); Scarlet's
+    # bomb does not, so its bleed ticked for 0. Give the bomb the owner and the
+    # bleed half of its machinery (Ghidra b9c3, 2026-11-01: FUN_1403d6120 ->
+    # FUN_1403fbe30 -> FUN_1403d1cc0).
+    # The owner and its bleed-amount read come from Character_Common. Its "Bleed
+    # Damage" can NOT: Character_Common's damage records are class version 1.23,
+    # the bomb's 1.21, and a 1.23 record in a 1.21 file is read with the wrong
+    # layout (the bomb never loaded). So the bomb's own bleed damage is a copy of
+    # its own "Explosion Damage Heroes" (1.21, no debuffs, 0 damage, 0 stagger),
+    # set to Character_Common's Bleed Damage values.
+    { clone = ["Remote Damage Owner", "UGLY Fix Bleed Double AP Damage Operation"], from = "Character_Common/Character_Common", rename = { "Remote Damage Owner" = "Remote Damage Owner", "UGLY Fix Bleed Double AP Damage Operation" = "UGLY Fix Bleed Double AP Damage Operation" } },
+    { clone = ["Explosion Damage Heroes"], rename = { "Explosion Damage Heroes" = "Bleed Damage" } },
+    { link = "Bleed Damage.value_2", to = "UGLY Fix Bleed Double AP Damage Operation" },
+    { link = "Remote Damage Owner.ref_3", to = "Bleed Damage" },
+    { set = "Bleed Damage.value_4", value = 0.0 },
+    { set = "Bleed Damage.value_9", value = 5.0 },
+    { set = "Bleed Damage.value_10", value = 10.0 },
+    { set = "Bleed Damage.value_11", value = 10.0 },
+    { set = "Bleed Damage.value_16", value = false },
+    { set = "Bleed Damage.value_27", value = 0.0 },
+    { set = "Bleed Damage.value_28", value = 1.0 },
+    { set = "Bleed Damage.value_35", value = -1 },
+    # The last field that differed: 1 on every bomb damage record, 0 on the
+    # character's DoT damage. Left at 1, the bleed ignored the enemy's damage
+    # reduction (armour plates) in game; most likely the "ignore resistance" flag.
+    { set = "Bleed Damage.bytes_30", value = 0 },
+    # Only the bleed slot (ref_3); the other eight DoTs stay unowned here.
+    { link = "Remote Damage Owner.ref_2", to = "" },
+    { link = "Remote Damage Owner.ref_4", to = "" },
+    { link = "Remote Damage Owner.ref_5", to = "" },
+    { link = "Remote Damage Owner.ref_6", to = "" },
+    { link = "Remote Damage Owner.ref_7", to = "" },
+    { link = "Remote Damage Owner.ref_8", to = "" },
+    { link = "Remote Damage Owner.ref_9", to = "" },
+    { link = "Remote Damage Owner.ref_10", to = "" },
+    # The owner must outlive the bleed (5 s); the bomb was gone 0.5 s after the
+    # burst. Its model is already hidden (State Exploding deactivates Mesh).
+    { set = "Despawn Timer.duration", value = 6.0 },
+    # Sound: Carmilla's burst ("Carm_BloodRage") instead of Scarlet's bomb blast
+    # ("Red_Skil_Pyromania"), and no fuse sound for the 0.1 s on the ground.
+    { clone = ["Explosion FMod Event Active"], from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", rename = { "Explosion FMod Event Active" = "Blood Burst FMod Event" } },
+    { remove_link = "State Exploding.activates", to = "Explosion Default FMod Event" },
+    { add_link = "State Exploding.activates", to = "Blood Burst FMod Event" },
+    { remove_link = "State On Ground.while_active", to = "On Ground FMod Event" },
+    # Bleed on the burst: a flat 100 over 5 s, through a copy of Carmilla's debuff.
+    { clone = ["Skill Primary Bleed Modifier"], from = "Red", rename = { "Skill Primary Bleed Modifier" = "Wolf Blood Seed Explosion Bleed Modifier" } },
+    { set = "Wolf Blood Seed Explosion Bleed Modifier.amount", value = 100.0 },
+    { add_subobject = "Explosion Damage.bytes_36", from = "Carmilla", donor = "Skill Defense Aoe Bleed Damage.bytes_36[0]", replace_ref = { "Skill Defense Aoe Bleed Modifier" = "Wolf Blood Seed Explosion Bleed Modifier" } },
+    # Burst VFX: the injection's own, not Scarlet's bomb. This entity is Scarlet's
+    # bomb, so its explosion played RED_Bomb_Explosion_5m + the ground impact;
+    # Carmilla's burst is three setups on her Power Orb's "Explosion Fx Active":
+    # the orb's explosion, its core flash, and a ground decal, plus the same
+    # camera shake the bomb already had. Slots 0 and 2 are REPLACED in place (the
+    # slot id stays, so the Fx the Explosion Fx Selector activates is still the
+    # one that plays), and the core flash is appended after them. Each setup
+    # carries the parameter slots its vfx declares; they are re-pointed at this
+    # entity: the orb's Mesh (the FX's anchor) at this bomb's Mesh, and its two
+    # radius reads at this bomb's Explosion Radius.
+    { replace_subobject = "Fx_Explosion.bytes_1[0]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[0]", replace_ref = { "Mesh" = "Mesh", "Owner Explosion Radius Get Value" = "Explosion Radius", "Owner Current Radius Get Value" = "Explosion Radius" } },
+    { replace_subobject = "Fx_Explosion.bytes_1[2]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[2]", replace_ref = { "Owner Explosion Radius Get Value" = "Explosion Radius" } },
+    { add_subobject = "Fx_Explosion.bytes_1", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[1]", replace_ref = { "Mesh" = "Mesh" } },
+    # No ignite from the bomb (Pam): Scarlet's bomb carries her Ignite talent's
+    # debuff (entry 1 of its explosion's debuffs); a 0 s ignite still burned.
+    # It becomes a copy of entry 0 (her Reduce Armour talent's, which applies
+    # only with that talent), so the list keeps its shape and no ignite is left.
+    { replace_subobject = "Explosion Damage.bytes_36[1]", donor = "Explosion Damage.bytes_36[0]" },
+    # No Vulnerable from the burst (Pam: the wolf's bite "applied" it). Both
+    # entries are Scarlet's Reduce Armour talent debuff (Vulnerable 0.5, 3 s),
+    # switched on by a read of that talent on whatever SPAWNED the bomb. From
+    # Blood Wolf that is false without the talent; from the bomber wolf (its
+    # burst spawner) the read lands on the wolf, which has no such talent, and
+    # came out true, so every bite burst applied it. Both are off now, so the
+    # talent no longer adds Vulnerable to Blood Seed's burst either.
+    { switch_off = "Explosion Damage.bytes_36[0]" },
+    { switch_off = "Explosion Damage.bytes_36[1]" },
+]
+
 # --- Buttons ---------------------------------------------------------------------
 # (The game spells four of the wolf's button pictures "Ability_Wolf_" and their
 # greyed twins "Ability_WOLF_": both are named as shipped.)
@@ -99,18 +205,17 @@ indicator   = { radius = 4, forward = 1.5, color = [0.85, 0.1, 0.1, 1] }
 # Its bite is the clone's tuning for a moving target: every enemy in a cone
 # twice as wide and long, committed from closer, 35% faster, retried 0.5 s
 # after a miss, no debuffs of the enemy wolf's own.
-# Not yet: the clone's wolf blew up into Blood Wolf's own bleed bomb on its
-# first bite. That bomb was an edited copy of Scarlet's; a from-scratch hero
-# has no entity of that kind to name as `burst` yet.
+# Its first bite blows it up into Blood Wolf's bleed bomb (entities.Bomb); it
+# also bursts if killed, or when its 20 s run out.
 [content.frame.abilities.special]
 icon        = "Heroes\\Red\\Ability_Wolf_Special.png"
 icon_disabled = "Heroes\\Red\\Ability_WOLF_Special_Disabled.png"
 name        = "Bomber Wolf"
-description = "• Howl, and a dire wolf answers: it follows you and charges your enemies for #20@ seconds"
+description = "• Howl, and a dire wolf answers: it follows you and charges your enemies. Its first bite blows it up in a bleeding explosion"
 clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx"
 duration    = 0.6
 cooldown    = 8
-steps       = [ { wait = 0.3 }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ]
+steps       = [ { wait = 0.3 }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, burst = "own:Bomb", burst_on_hit = true, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ]
 
 # Defense and the ultimates: wolf moves of its own (the clone kept Scarlet's).
 [content.frame.abilities.defense]
@@ -159,7 +264,7 @@ cooldown    = 75
 hits        = [ { at = 0.4, radius = 5, damage = 800, stun = 1.5, fx = "Settings\\Enemies\\Wolves\\Elite_Wolf_Howl_01.vfx.ot", shake = "medium" } ]
 steps       = [
     { wait = 0.4 },
-    { repeat = 3, every = 0.2, steps = [ { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ] },
+    { repeat = 3, every = 0.2, steps = [ { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, burst = "own:Bomb", burst_on_hit = true, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ] },
 ]
 indicator   = { radius = 5, color = [0.85, 0.1, 0.1, 1] }
 
@@ -241,7 +346,7 @@ add_stats   = [ { stat = "Increase primary damage for each debuff", values = [0.
 name        = "Special Pack Hunter"
 title       = "Pack Hunter"
 description = "• Bomber Wolf calls a second dire wolf"
-actions     = [ { on = "special", steps = [ { wait = 0.5 }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ] } ]
+actions     = [ { on = "special", steps = [ { wait = 0.5 }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, burst = "own:Bomb", burst_on_hit = true, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ] } ]
 starter     = true
 
 [[content.frame.talents]]
