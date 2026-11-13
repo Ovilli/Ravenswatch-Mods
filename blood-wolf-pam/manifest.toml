@@ -1,247 +1,311 @@
+# Blood Wolf, written from scratch (no base hero).
+#
+# Until 0.1.0 Blood Wolf was a clone of Scarlet locked into her wolf form: a
+# copy of her whole family with ~90 graph edits on top. From 0.2.0 nothing of
+# Scarlet's is copied. Its entities (engine/hero_frame.py), buttons
+# (engine/hero_ability.py) and roster record (engine/herodef_frame.py) are
+# written from this file on the shared hero base; Scarlet (the rig) lends
+# ASSETS only: the wolf's mesh, skeleton, clips, effects and button pictures.
+# The clone manifest is kept at ~/.cache/rsmm/blood-wolf-kit/manifest.clone.toml.
+#
+# What the clone had that this file cannot say yet (see the notes at each
+# button): a third combo step, the blood seed riding on the bitten enemy, the
+# bomber wolf's own bleed bomb, and Scarlet's defense/ultimate behaviour and
+# talents (Blood Wolf now has buttons and talents of its own).
+
 [mod]
 id                = "blood-wolf-pam"
 name              = "Blood Wolf"
-version           = "0.1.0"
+version           = "0.2.0"
 author            = "Local"
-description       = "Clone of Scarlet (Red) named Blood Wolf, locked into Wolf form."
+description       = "Blood Wolf: a wolf hero of its own, written from scratch on Scarlet's wolf assets."
 license           = "MIT"
 sdk_version       = ">=3.0,<4"
 enabled           = false
 multiplayer_scope = "deterministic-shared"
+experimental      = true
 tags              = ["hero", "red"]
 
 [[content]]
 kind        = "hero"
 id          = "BloodWolf"
-base        = "Red"
 name        = "Blood Wolf"
-description = "A clone of Scarlet, permanently in Wolf form."
-own_entity  = true
-abilities   = [
-    # Form: a wolf in a run, and the wolf's own preview in the select screen.
-    # Scarlet's init transforms through Hero_Common's "in a run" gate, never in
-    # the preview; both ways back out (the passive and the trait button) are cut.
-    { remove_link = "Child Event Initialize.activates", to = "Passive Transform Tester" },
-    { clone = ["Activate Hero Controller Tester"], from = "Hero_Common", rename = { "Activate Hero Controller Tester" = "Wolf Lock In Run Tester" } },
-    { link = "Wolf Lock In Run Tester.on_true", to = "Event Trait Ability Transform" },
-    { add_link = "Child Event Initialize.activates", to = "Wolf Lock In Run Tester" },
-    { link = "Passive Transform Tester.on_true", to = "" },
-    # (The trait button stays connected: the kit's pets block below makes it the
-    # wolves' attack order, so it no longer turns Blood Wolf human.)
-    # Initial form. Hero_Alt_Form_Common's "Initialize Set Starting Form
-    # Tester" reads "Initialize In Default Form Value" and turns State Default
-    # Form (the human) on when it is true, State Alt Form (the wolf) when it is
-    # false. It defaults to true and runs at the entity's own Initialize, before
-    # a spawner value pushed onto a spawned copy lands, so Scarlet's
-    # "Wolf Initialize Default Form Spawner Value" never decided it: the hero
-    # (and the copy the select screen spawns) always started human. This hero is
-    # permanently in the wolf form, so its own override of that value says so
-    # from the first frame, in a run and in the book alike. "override" is what
-    # makes it a REPLACEMENT of the ancestor's part: a clone would add a second
-    # value the engine also instantiates next to it.
-    { override = "Initialize In Default Form Value", from = "Heroes/Hero_Common/Hero_Alt_Form_Common" },
-    { set = "Initialize In Default Form Value.value", value = false },
-    # The book's "wrong form" guards. Scarlet's select screen keeps its hero in
-    # the default (human) form and draws the wolf as a copy it spawns on the
-    # first page; two testers in "Child Behaviour Preview" punish the other way
-    # round. "Preview Spawn Wolf Tester" is AND(State Default Form, page = 0), so
-    # a hero already in the alt form fires its on_false: despawn the hero. And
-    # "Preview Is Owner Alive Value Tester" is AND(not in a preview copy's scene,
-    # State Alt Form), which is exactly this hero, and despawns it too. Both
-    # guards are what emptied the slot once the form override took effect; this
-    # hero is permanently the wolf, so neither can ever be satisfied. Both live
-    # only in the preview ("Child Behaviour Preview" is a state of
-    # Character_Common's Behaviour Preview, never entered in a run), and the run's
-    # own transform is untouched.
-    { remove_link = "Child Behaviour Preview.activates", to = "Preview Spawn Wolf Tester" },
-    { remove_link = "Child Behaviour Preview.activates", to = "Preview Is Owner Alive Value Tester" },
-    # 3-Hit Combo: Slash 1 -> Slash 2 -> Finisher (Double Strike animatic) -> Reset
-    { clone = ["State Wolf Basic Attack Step 2", "Wolf Basic Attack Clip 2"], rename = { "State Wolf Basic Attack Step 2" = "State Wolf Basic Attack Step 3", "Wolf Basic Attack Clip 2" = "Wolf Basic Attack Clip 3" } },
-    { link = "Wolf Basic Attack Clip 3.ref_3", to = "Wolf Skill Dash Attack Anim" },
-    { link = "Wolf Basic Attack Clip 3.ref_11", to = "State Wolf Basic Attack Step 3" },
-    { remove_link = "State Wolf Basic Attack Step 3.activates", to = "Wolf Basic Attack Clip Selector 2" },
-    { add_link = "State Wolf Basic Attack Step 3.activates", to = "Wolf Basic Attack Clip 3" },
-    { remove_link = "State Wolf Basic Attack Step 3.on_enter?", to = "Wolf Basic Attack Clip Selector 2" },
-    { add_link = "State Wolf Basic Attack Step 3.on_enter?", to = "Wolf Basic Attack Clip 3" },
-    { add_subobject = "Wolf Basic Attack Combo.bytes_4", donor_index = 1, replace_ref = { "State Wolf Basic Attack Step 2" = "State Wolf Basic Attack Step 3" } },
-    # Hit 3 Custom Damage (10 base hit damage, preserves stagger) and Zone Attack
-    { clone = ["Wolf Basic Attack", "Wolf Basic Attack Damage"], rename = { "Wolf Basic Attack" = "Wolf Basic Attack Step 3", "Wolf Basic Attack Damage" = "Wolf Basic Attack Step 3 Damage" } },
-    { set = "Wolf Basic Attack Step 3 Damage.value_28", value = 1.0 },
-    { set = "Wolf Basic Attack Step 3 Damage.value_31", value = 12.0 },
-    # Step 3 Bleed: 5.0 multiplier * Level Damage * Basic AP (50 total bleed at level 1)
-    { clone = ["Wolf Basic Attack Damage Multiplier"], rename = { "Wolf Basic Attack Damage Multiplier" = "Wolf Basic Attack Step 3 Bleed Multiplier" } },
-    { set = "Wolf Basic Attack Step 3 Bleed Multiplier.value", value = 5.0 },
-    { clone = ["Wolf Basic Attack Supposed Damage Operation"], rename = { "Wolf Basic Attack Supposed Damage Operation" = "Wolf Basic Attack Step 3 Bleed Value Operation" } },
-    { link = "Wolf Basic Attack Step 3 Bleed Value Operation.operations[1]", to = "Wolf Basic Attack Step 3 Bleed Multiplier" },
-    { clone = ["Skill Primary Bleed Modifier"], rename = { "Skill Primary Bleed Modifier" = "Wolf Basic Attack Step 3 Bleed Modifier" } },
-    { link = "Wolf Basic Attack Step 3 Bleed Modifier.amount", to = "Wolf Basic Attack Step 3 Bleed Value Operation" },
-    # Attach Carmilla's unconditional Bleed debuff sub-object to Wolf Basic Attack Step 3 Damage
-    { add_subobject = "Wolf Basic Attack Step 3 Damage.bytes_36", from = "Carmilla", donor = "Skill Defense Aoe Bleed Damage.bytes_36[0]", replace_ref = { "Skill Defense Aoe Bleed Modifier" = "Wolf Basic Attack Step 3 Bleed Modifier" } },
-    # Route Wolf Event Skill Dash Attack Active to trigger Wolf Basic Attack Step 3 instead of generic Wolf Basic Attack
-    { remove_link = "Wolf Event Skill Dash Attack Active.activates", to = "Wolf Basic Attack" },
-    { add_link = "Wolf Event Skill Dash Attack Active.activates", to = "Wolf Basic Attack Step 3" },
-    # The dual-strike impact effect took its position from "Wolf Basic Attack"
-    # (+ its damage), so on the 3rd hit (its own copy) it played where hits 1-2
-    # landed. Its two setups now read the 3rd hit's attack instead.
-    { replace_subobject = "Fx Wolf Basic Attack Impact Dash Attack.bytes_1[0]", donor = "Fx Wolf Basic Attack Impact Dash Attack.bytes_1[0]", replace_ref = { "Wolf Basic Attack" = "Wolf Basic Attack Step 3", "Wolf Basic Attack Damage" = "Wolf Basic Attack Step 3 Damage" } },
-    { replace_subobject = "Fx Wolf Basic Attack Impact Dash Attack.bytes_1[1]", donor = "Fx Wolf Basic Attack Impact Dash Attack.bytes_1[1]", replace_ref = { "Wolf Basic Attack" = "Wolf Basic Attack Step 3", "Wolf Basic Attack Damage" = "Wolf Basic Attack Step 3 Damage" } },
-    # Power Ability Tuning: Base hit reduced to 10 (multiplier 1.0), intangibility frames preserved
-    { set = "Wolf Primary Ability Damage Multiplier Default.value", value = 1.0 },
-    # Clone Carmilla's Blood Seed (Injection) Modifier (ID 462382549, duration 1.5s)
-    { clone = ["Skill Power Special Bomb Modifier", "Skill Power Special Bomb Time Before Explosion Value"], from = "Carmilla", rename = { "Skill Power Special Bomb Modifier" = "Wolf Power Blood Seed Modifier", "Skill Power Special Bomb Time Before Explosion Value" = "Wolf Power Blood Seed Time Before Explosion Value" } },
-    # The seed's lifetime is the delay before the burst: it bursts when the seed
-    # runs out, or at once if the seeded enemy dies first (Character_Common "Bhv
-    # Dying" -> "Explode Blood Bomb Methods" -> BLOOD_BOMB_EXPLODE to the seed's
-    # source). Carmilla waits 1.5 s; Blood Wolf bursts after 0.5 s.
-    # Set on the seed itself: its duration READ that value, which nothing in
-    # Blood Wolf switches on (Carmilla's talent state holds hers active), so the
-    # seed fell back to its inline 3 s: the burst came ~2 s after the build-up.
-    { set = "Wolf Power Blood Seed Modifier.duration", value = 1.5 },
-    # Clone Carmilla's Blood Bomb Explode Listener & Spawner
-    { clone = ["Blood Bomb Explode Listener", "Skill Power Special Bomb Spawner"], from = "Carmilla", rename = { "Blood Bomb Explode Listener" = "Wolf Blood Bomb Explode Listener", "Skill Power Special Bomb Spawner" = "Wolf Blood Bomb Spawner" } },
-    { remove_link = "Wolf Blood Bomb Spawner.spawner_values[0]" },
-    { add_link = "Child Event Initialize.activates", to = "Wolf Blood Bomb Explode Listener" },
-    { set = "Wolf Blood Bomb Spawner.template[1]", value = "Heroes\\Hero_Red\\Hero_Red_Bomb.entity.ot" },
-    # Attach unconditional Blood Seed debuff sub-object to Wolf Primary Ability Damage
-    { add_subobject = "Wolf Primary Ability Damage.bytes_36", from = "Carmilla", donor = "Skill Defense Aoe Bleed Damage.bytes_36[0]", replace_ref = { "Skill Defense Aoe Bleed Modifier" = "Wolf Power Blood Seed Modifier" } },
-    # Configure Blood Seed Burst Entity (Hero_Red_Bomb -> Hero_BloodWolf_Bomb)
-    { entity = "Bomb", remove_link = "Event Initialize.activates", to = "Mesh" },
-    # Start on the ground with a near-zero fuse, not in State Exploding: a bomb
-    # that starts exploding fires its hit on its first frame, before it stands
-    # where it spawned, and hits nothing. On Ground's own Explosion Timer is
-    # what moves Scarlet's bomb to State Exploding.
-    { entity = "Bomb", link = "Default State Machine.ref_2", to = "State On Ground" },
-    { entity = "Bomb", set = "Explosion Timer.duration", value = 0.1 },
-    # No warning circle or warm-up glow for a 0.1 s fuse.
-    { entity = "Bomb", remove_link = "State On Ground.while_active", to = "Warning_Zone_Mesh" },
-    { entity = "Bomb", remove_link = "State On Ground.while_active", to = "Warning_Zone_Growing_Color_Anim" },
-    { entity = "Bomb", remove_link = "State On Ground.while_active", to = "Bomb_Explosion_Warmup_Emissive_Anim" },
-    # Burst tuning. Scarlet's bomb also fires a second attack at HEROES
-    # ("Explosion Attack Heroes", what staggered the wolf): not started here.
-    { entity = "Bomb", remove_link = "State Exploding.activates", to = "Explosion Attack Heroes Tester" },
-    # Hit damage: the record multiplies by "Explosion Damage Multiplier" (4);
-    # 1 is the same 10 at level 1 as the 3rd combo hit.
-    { entity = "Bomb", set = "Explosion Damage Multiplier.value", value = 1.0 },
-    # Stagger: value_31 (wolf basic 8, wolf power 25, Scarlet's bomb 50).
-    { entity = "Bomb", set = "Explosion Damage.value_31", value = 30.0 },
-    # A bleed only deals damage through a "Remote Damage Owner" on the entity
-    # that APPLIED it: every 0.5 s the target finds that component on the
-    # modifier's source, writes the tick into it, and the owner's own "Bleed
-    # Damage" deals the hit. Characters carry one (Character_Common); Scarlet's
-    # bomb does not, so its bleed ticked for 0. Give the bomb the owner and the
-    # bleed half of its machinery (Ghidra b9c3, 2026-11-01: FUN_1403d6120 ->
-    # FUN_1403fbe30 -> FUN_1403d1cc0).
-    # The owner and its bleed-amount read come from Character_Common. Its "Bleed
-    # Damage" can NOT: Character_Common's damage records are class version 1.23,
-    # the bomb's 1.21, and a 1.23 record in a 1.21 file is read with the wrong
-    # layout (the bomb never loaded). So the bomb's own bleed damage is a copy of
-    # its own "Explosion Damage Heroes" (1.21, no debuffs, 0 damage, 0 stagger),
-    # set to Character_Common's Bleed Damage values.
-    { entity = "Bomb", clone = ["Remote Damage Owner", "UGLY Fix Bleed Double AP Damage Operation"], from = "Character_Common/Character_Common", rename = { "Remote Damage Owner" = "Remote Damage Owner", "UGLY Fix Bleed Double AP Damage Operation" = "UGLY Fix Bleed Double AP Damage Operation" } },
-    { entity = "Bomb", clone = ["Explosion Damage Heroes"], rename = { "Explosion Damage Heroes" = "Bleed Damage" } },
-    { entity = "Bomb", link = "Bleed Damage.value_2", to = "UGLY Fix Bleed Double AP Damage Operation" },
-    { entity = "Bomb", link = "Remote Damage Owner.ref_3", to = "Bleed Damage" },
-    { entity = "Bomb", set = "Bleed Damage.value_4", value = 0.0 },
-    { entity = "Bomb", set = "Bleed Damage.value_9", value = 5.0 },
-    { entity = "Bomb", set = "Bleed Damage.value_10", value = 10.0 },
-    { entity = "Bomb", set = "Bleed Damage.value_11", value = 10.0 },
-    { entity = "Bomb", set = "Bleed Damage.value_16", value = false },
-    { entity = "Bomb", set = "Bleed Damage.value_27", value = 0.0 },
-    { entity = "Bomb", set = "Bleed Damage.value_28", value = 1.0 },
-    { entity = "Bomb", set = "Bleed Damage.value_35", value = -1 },
-    # The last field that differed: 1 on every bomb damage record, 0 on the
-    # character's DoT damage. Left at 1, the bleed ignored the enemy's damage
-    # reduction (armour plates) in game; most likely the "ignore resistance" flag.
-    { entity = "Bomb", set = "Bleed Damage.bytes_30", value = 0 },
-    # Only the bleed slot (ref_3); the other eight DoTs stay unowned here.
-    { entity = "Bomb", link = "Remote Damage Owner.ref_2", to = "" },
-    { entity = "Bomb", link = "Remote Damage Owner.ref_4", to = "" },
-    { entity = "Bomb", link = "Remote Damage Owner.ref_5", to = "" },
-    { entity = "Bomb", link = "Remote Damage Owner.ref_6", to = "" },
-    { entity = "Bomb", link = "Remote Damage Owner.ref_7", to = "" },
-    { entity = "Bomb", link = "Remote Damage Owner.ref_8", to = "" },
-    { entity = "Bomb", link = "Remote Damage Owner.ref_9", to = "" },
-    { entity = "Bomb", link = "Remote Damage Owner.ref_10", to = "" },
-    # The owner must outlive the bleed (5 s); the bomb was gone 0.5 s after the
-    # burst. Its model is already hidden (State Exploding deactivates Mesh).
-    { entity = "Bomb", set = "Despawn Timer.duration", value = 6.0 },
-    # Sound: Carmilla's burst ("Carm_BloodRage") instead of Scarlet's bomb blast
-    # ("Red_Skil_Pyromania"), and no fuse sound for the 0.1 s on the ground.
-    { entity = "Bomb", clone = ["Explosion FMod Event Active"], from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", rename = { "Explosion FMod Event Active" = "Blood Burst FMod Event" } },
-    { entity = "Bomb", remove_link = "State Exploding.activates", to = "Explosion Default FMod Event" },
-    { entity = "Bomb", add_link = "State Exploding.activates", to = "Blood Burst FMod Event" },
-    { entity = "Bomb", remove_link = "State On Ground.while_active", to = "On Ground FMod Event" },
-    # Bleed on the burst: a flat 100 over 5 s, through a copy of Carmilla's debuff.
-    { entity = "Bomb", clone = ["Skill Primary Bleed Modifier"], from = "Red", rename = { "Skill Primary Bleed Modifier" = "Wolf Blood Seed Explosion Bleed Modifier" } },
-    { entity = "Bomb", set = "Wolf Blood Seed Explosion Bleed Modifier.amount", value = 100.0 },
-    { entity = "Bomb", add_subobject = "Explosion Damage.bytes_36", from = "Carmilla", donor = "Skill Defense Aoe Bleed Damage.bytes_36[0]", replace_ref = { "Skill Defense Aoe Bleed Modifier" = "Wolf Blood Seed Explosion Bleed Modifier" } },
-    # Burst VFX: the injection's own, not Scarlet's bomb. This entity is Scarlet's
-    # bomb, so its explosion played RED_Bomb_Explosion_5m + the ground impact;
-    # Carmilla's burst is three setups on her Power Orb's "Explosion Fx Active":
-    # the orb's explosion, its core flash, and a ground decal, plus the same
-    # camera shake the bomb already had. Slots 0 and 2 are REPLACED in place (the
-    # slot id stays, so the Fx the Explosion Fx Selector activates is still the
-    # one that plays), and the core flash is appended after them. Each setup
-    # carries the parameter slots its vfx declares; they are re-pointed at this
-    # entity: the orb's Mesh (the FX's anchor) at this bomb's Mesh, and its two
-    # radius reads at this bomb's Explosion Radius.
-    { entity = "Bomb", replace_subobject = "Fx_Explosion.bytes_1[0]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[0]", replace_ref = { "Mesh" = "Mesh", "Owner Explosion Radius Get Value" = "Explosion Radius", "Owner Current Radius Get Value" = "Explosion Radius" } },
-    { entity = "Bomb", replace_subobject = "Fx_Explosion.bytes_1[2]", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[2]", replace_ref = { "Owner Explosion Radius Get Value" = "Explosion Radius" } },
-    { entity = "Bomb", add_subobject = "Fx_Explosion.bytes_1", from = "Heroes/Hero_Carmilla/Hero_Carmilla_Power_Orb", donor = "Explosion Fx Active.bytes_1[1]", replace_ref = { "Mesh" = "Mesh" } },
-    # No animation on the special, and no standing still while the wolf
-    # spawns. The button's controller started a clip selector, and the clip it
-    # played (the leap, then the howl) is an ability clip that holds the hero
-    # in place; the upper/lower body split did not free the legs. It now
-    # starts the special's state directly, as 123 of the game's ability
-    # controllers do; the pets block ends that state after its short hold.
-    # With no clip, its timeline (the leap's hit) never plays either.
-    { link = "Alt Secondary Ability Controller.ref_2", to = "State Wolf Secondary Ability" },
-    # No ignite from the bomb (Pam): Scarlet's bomb carries her Ignite talent's
-    # debuff (entry 1 of its explosion's debuffs); a 0 s ignite still burned.
-    # It becomes a copy of entry 0 (her Reduce Armour talent's, which applies
-    # only with that talent), so the list keeps its shape and no ignite is left.
-    { entity = "Bomb", replace_subobject = "Explosion Damage.bytes_36[1]", donor = "Explosion Damage.bytes_36[0]" },
-    # No Vulnerable from the burst (Pam: the wolf's bite "applied" it). Both
-    # entries are Scarlet's Reduce Armour talent debuff (Vulnerable 0.5, 3 s),
-    # switched on by a read of that talent on whatever SPAWNED the bomb. From
-    # Blood Wolf that is false without the talent; from the bomber wolf (its
-    # burst spawner) the read lands on the wolf, which has no such talent, and
-    # came out true, so every bite burst applied it. Both are off now, so the
-    # talent no longer adds Vulnerable to Blood Seed's burst either.
-    { entity = "Bomb", switch_off = "Explosion Damage.bytes_36[0]" },
-    { entity = "Bomb", switch_off = "Explosion Damage.bytes_36[1]" },
+description = "The wolf that never turned back. It hunts in a pack of its own making, and everything it bites bleeds."
+
+[content.frame]
+rig      = "Hero_Red"
+mesh     = "Characters\\Heroes\\RED\\RED_wolf_GEO.fbx"
+material = "Characters\\Heroes\\RED\\Textures\\M_RED_Wolf.mat.ot"
+# The wolf's own HUD portrait (the rig's default is Scarlet, human).
+portrait = "Heroes\\Red\\Portrait_RED_WOLF_01.png"
+
+# The rig lends the wolf's clip for every slot Scarlet has in two forms. The
+# book and the end of a teleport are human-only on her; the wolf's own here.
+[content.frame.slots."Preview Default In Animatic"]
+clip = "Characters\\Heroes\\RED\\Animations\\Narrative\\RED_Wolf_Book_InSelection.fbx"
+
+[content.frame.slots."Preview Default Idle Animatic"]
+clip = "Characters\\Heroes\\RED\\Animations\\Narrative\\RED_Wolf_Book_LoopSelection.fbx"
+
+[content.frame.slots."Preview Select Hero In Animatic"]
+clip = "Characters\\Heroes\\RED\\Animations\\Narrative\\RED_Wolf_Book_InSelection.fbx"
+
+[content.frame.slots."Preview Select Hero Idle Animatic"]
+clip = "Characters\\Heroes\\RED\\Animations\\Narrative\\RED_Wolf_Book_LoopSelection.fbx"
+
+[content.frame.slots."Preview Victory Animatic"]
+clip = "Characters\\Heroes\\RED\\Animations\\Narrative\\RED_Wolf_Book_LoopSelection.fbx"
+
+[content.frame.slots."Preview Defeat Animatic"]
+clip = "Characters\\Heroes\\RED\\Animations\\Communs\\RED_Wolf_DeathDoor_Loop.fbx"
+
+[content.frame.slots."Teleporting Out End Cine Anim"]
+clip = "Characters\\Heroes\\RED\\Animations\\Communs\\RED_Wolf_Flock_Teleportation_Out.fbx"
+
+# --- Buttons ---------------------------------------------------------------------
+# (The game spells four of the wolf's button pictures "Ability_Wolf_" and their
+# greyed twins "Ability_WOLF_": both are named as shipped.)
+# Blood Fangs. The clone's three-hit combo (claw, claw, bleeding double strike)
+# as the two steps a from-scratch combo has: a claw, then the double strike,
+# which is the hit that bleeds.
+[content.frame.abilities.attack]
+icon        = "Heroes\\Red\\Ability_Wolf_Attack.png"
+icon_disabled = "Heroes\\Red\\Ability_WOLF_Attack_Disabled.png"
+name        = "Blood Fangs"
+description = "• A two-hit combo. The second hit makes enemies #Bleed@"
+cooldown    = 0.3
+combo       = [
+    { clip = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_BasicAttack_Claws_1.fbx", duration = 0.55, hit_at = 0.2, link_at = 0.3, exit_at = 0.45, hits = [ { radius = 2.8, damage = 150, stagger = 8, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Basic_Attack_Slash_01_L.vfx.ot" } ] },
+    { clip = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Skill_DoubleStrike.fbx", duration = 0.7, hit_at = 0.3, link_at = 0.45, exit_at = 0.6, hits = [ { radius = 3.2, damage = 180, stagger = 12, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Dash_Attack_Slash_01.vfx.ot", shake = "light" } ] },
 ]
 
-# The cards for what Blood Wolf's abilities now do (defense and ultimate keep
-# Scarlet's until they are designed).
-[content.skills]
-"Ability Wolf Attack" = { name = "Blood Fangs", description = "A three-hit combo. The third hit makes enemies bleed." }
-"Ability Wolf Power" = { name = "Blood Seed", description = "Plant a blood seed in an enemy. It bursts into a bleeding explosion shortly after, or as soon as the enemy dies." }
-"Ability Wolf Special" = { name = "Bomber Wolf", description = "Call #{0}@ dire wolf(s) that follow you and charge your enemies. Each one's first bite blows it up in a bleeding explosion." }
+# Blood Seed. The clone planted a seed on the bitten enemy that burst 1.5 s
+# later (or when it died). From scratch a hit is an area at a moment: the bite,
+# then the bleeding burst 1.5 s after it, where the bite landed.
+[content.frame.abilities.power]
+icon        = "Heroes\\Red\\Ability_Wolf_Power.png"
+icon_disabled = "Heroes\\Red\\Ability_WOLF_Power_Disabled.png"
+name        = "Blood Seed"
+description = "• Bite ahead of you and plant a blood seed: it bursts shortly after in an explosion that makes enemies #Bleed@"
+clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_Out.fbx"
+duration    = 0.8
+cooldown    = 6
+hits        = [ { at = 0.25, radius = 3, damage = 100, stagger = 25, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" } ]
+steps       = [ { wait = 1.75 }, { hit = { radius = 4, damage = 250 }, forward = 1.5 } ]
+indicator   = { radius = 4, forward = 1.5, color = [0.85, 0.1, 0.1, 1] }
 
-# The special calls a bomber wolf, with no animation (see the controller link
-# above): a pet on Piper's pet base (an ally copy of the chapter-3 dire wolf) appears,
-# follows Blood Wolf and goes for the enemies as soon as a fight starts. Its
-# first bite blows it up into Blood Wolf's bleed bomb (Pam's suicide wolves);
-# it also bursts if killed, or after 20 s. One per press, on the special's
-# cooldown; no counter. The trait is off until blood shower is designed (left
-# in, it would turn Blood Wolf human).
-# The bite hits every enemy in its cone (attack_targets = 0), not the one its
-# distance score picks (a wider cone picked another enemy than the bitten one).
-# The bite is tuned for a moving target (Pam): its cone twice as wide (30 ->
-# 60 degrees) and twice as long (4.6 -> 9.2 m; it starts 2.5 m behind the
-# wolf, so it now ends ~6.7 m ahead instead of ~2 m; x4 reached behind the
-# target, x1 landed nothing), it commits to a bite from 3 m instead of 4.5 m
-# (a moving enemy got out of reach during the wind-up and the bite fell short),
-# its clips 35% faster, no root on what it bites,
-# and it tries again 0.5 s after a bite (a treant still rising out of the
-# ground cannot be hit yet; enemy wolves wait 2-4 s). Every summon also loses
-# the enemy wind-up glow.
-# Wolves per press: `count`, plus what talents add (`count_talents = {
-# "<talent state>" = n }`, they stack); the card's {0} shows the total.
-# The bomber wolf's own look: Pam's blood-red dire wolf texture (the albedo
-# from art/Dire_Blood_Geo.fbx.glb, saved as a PNG) on the dire wolf's own mesh
-# and rig. Only this wolf wears it; the rest of its material is the dire wolf's.
-[content.kit]
-pets = { entity = "Enemies/Wolves/Standard_Wolf_Dire", look = { albedo = "art/Dire_Blood_ALB.png" }, count = 1, count_card = "Wolf Secondary Ability Desc Format", button = "special", when = "State Wolf Secondary Ability", spawn = "button", counter = "none", aggro = true, burst = "Heroes/Hero_Red/Hero_BloodWolf_Bomb", burst_on_hit = true, lifetime = 20, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" }
-trait = "none"
+# Bomber Wolf. A dire wolf as an ally (Pam's blood-red albedo on the dire
+# wolf's own mesh and rig) that goes for the enemies and is gone after 20 s.
+# Its bite is the clone's tuning for a moving target: every enemy in a cone
+# twice as wide and long, committed from closer, 35% faster, retried 0.5 s
+# after a miss, no debuffs of the enemy wolf's own.
+# Not yet: the clone's wolf blew up into Blood Wolf's own bleed bomb on its
+# first bite. That bomb was an edited copy of Scarlet's; a from-scratch hero
+# has no entity of that kind to name as `burst` yet.
+[content.frame.abilities.special]
+icon        = "Heroes\\Red\\Ability_Wolf_Special.png"
+icon_disabled = "Heroes\\Red\\Ability_WOLF_Special_Disabled.png"
+name        = "Bomber Wolf"
+description = "• Howl, and a dire wolf answers: it follows you and charges your enemies for #20@ seconds"
+clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx"
+duration    = 0.6
+cooldown    = 8
+steps       = [ { wait = 0.3 }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ]
+
+# Defense and the ultimates: wolf moves of its own (the clone kept Scarlet's).
+[content.frame.abilities.defense]
+icon        = "Heroes\\Red\\Ability_WOLF_Defensive.png"
+name        = "Blood Howl"
+description = "• A howl that #stuns@ enemies around you and leaves them #Vulnerable@"
+clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Aggressive_Defense_Howl.fbx"
+duration    = 1.0
+cooldown    = 10
+hits        = [ { at = 0.35, radius = 4.5, damage = 100, stun = 1.0, status = "Vulnerable", fx = "Settings\\Enemies\\Wolves\\Elite_Wolf_Howl_01.vfx.ot", shake = "medium" } ]
+indicator   = { radius = 4.5, color = [0.85, 0.1, 0.1, 1] }
+
+[content.frame.abilities.trait]
+icon        = "Heroes\\Red\\Ability_WOLF_Trait.png"
+name        = "Blood Scent"
+description = "• Lunge at what is ahead of you: a bite that makes enemies #Bleed@ and leaves them #Weak@"
+clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_In.fbx"
+duration    = 0.6
+cooldown    = 12
+hits        = [ { at = 0.25, radius = 3, damage = 200, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" }, { at = 0.3, radius = 3, damage = 50, status = "Weak" } ]
+
+[content.frame.abilities.ultimate]
+icon        = "Heroes\\Red\\Ability_Wolf_Ultimate_1.png"
+icon_disabled = "Heroes\\Red\\Ability_WOLF_Ultimate_1_Disabled.png"
+name        = "Blood Frenzy"
+description = "• A flurry of claws around you, each hit making enemies #Bleed@, ended by a blow that throws them back"
+clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Attack_Flurry.fbx"
+duration    = 2.2
+cooldown    = 60
+hits        = [
+    { at = 0.3, radius = 4.5, damage = 500, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\Cleave_Slash_Wolf_Claw.vfx.ot", shake = "light" },
+    { at = 0.7, radius = 4.5, damage = 500, fx = "Settings\\Heroes\\Hero_Red_FX\\Cleave_Slash_Wolf_Claw.vfx.ot", shake = "light" },
+    { at = 1.1, radius = 4.5, damage = 500, fx = "Settings\\Heroes\\Hero_Red_FX\\Cleave_Slash_Wolf_Claw.vfx.ot", shake = "light" },
+    { at = 1.5, radius = 4.5, damage = 500, fx = "Settings\\Heroes\\Hero_Red_FX\\Cleave_Slash_Wolf_Claw.vfx.ot", shake = "light" },
+    { at = 1.9, radius = 6, damage = 1500, knockback = 60, stun = 1.0, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Leap_Impact.vfx.ot", shake = "heavy" },
+]
+indicator   = { radius = 4.5, color = [0.85, 0.1, 0.1, 1] }
+
+[content.frame.abilities.ultimate2]
+icon        = "Heroes\\Red\\Ability_WOLF_Ultimate_2.png"
+name        = "Pack Howl"
+description = "• Call #3@ dire wolves at once, and #stun@ everything close"
+clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx"
+duration    = 1.2
+cooldown    = 75
+hits        = [ { at = 0.4, radius = 5, damage = 800, stun = 1.5, fx = "Settings\\Enemies\\Wolves\\Elite_Wolf_Howl_01.vfx.ot", shake = "medium" } ]
+steps       = [
+    { wait = 0.4 },
+    { repeat = 3, every = 0.2, steps = [ { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ] },
+]
+indicator   = { radius = 5, color = [0.85, 0.1, 0.1, 1] }
+
+# --- Ultimate cards --------------------------------------------------------------
+[content.frame.ultimates."Ultimate Power 1"]
+title       = "Blood Frenzy"
+description = "• A flurry of claws around you that makes enemies #Bleed@, ended by a blow that throws them back"
+icon        = "Heroes\\Red\\Ability_Wolf_Ultimate_1.png"
+
+[content.frame.ultimates."Ultimate 1 Upgrade 1"]
+title       = "Red In Tooth"
+description = "• #ULTIMATE@ deals #+30%@ damage"
+add_stats   = [ { stat = "Attack power ultimate", values = [0.3, 0.3, 0.3, 0.3] } ]
+
+[content.frame.ultimates."Ultimate 1 Upgrade 2"]
+title       = "Open Wounds"
+description = "• #ULTIMATE@ deals #+15%@ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase ultimate damage for each debuff", values = [0.15, 0.15, 0.15, 0.15] } ]
+
+[content.frame.ultimates."Ultimate Power 2"]
+title       = "Pack Howl"
+description = "• Call #3@ dire wolves at once, and #stun@ everything close"
+icon        = "Heroes\\Red\\Ability_WOLF_Ultimate_2.png"
+
+[content.frame.ultimates."Ultimate 2 Upgrade 1"]
+title       = "Sharpened Pack"
+description = "• #ULTIMATE@ gains #+25%@ Crit Chance"
+add_stats   = [ { stat = "Crit chance ultimate", values = [0.25, 0.25, 0.25, 0.25] } ]
+
+[content.frame.ultimates."Ultimate 2 Upgrade 2"]
+title       = "Restless Pack"
+description = "• #ULTIMATE@ cooldown is reduced by #25%@"
+add_stats   = [ { stat = "CD reduce ultimate", values = [0.25, 0.25, 0.25, 0.25] } ]
+
+# --- Talents ---------------------------------------------------------------------
+# The clone dealt Scarlet's talents. A hero written from scratch has its own
+# list (the name's first word is its column in the book); this is a first set
+# around bleeding and the pack, to be tuned with Pam.
+[[content.frame.talents]]
+name        = "Attack Keen Fangs"
+title       = "Keen Fangs"
+description = "• #ATTACK@ gains &+{0}%~ #Crit Chance@"
+add_stats   = [ { stat = "Crit chance basic", values = [0.08, 0.12, 0.16, 0.20] } ]
+starter     = true
+
+[[content.frame.talents]]
+name        = "Attack Open Wounds"
+title       = "Open Wounds"
+description = "• #ATTACK@ deals &+{0}%~ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase basic damage for each debuff", values = [0.08, 0.12, 0.16, 0.20] } ]
+
+[[content.frame.talents]]
+name        = "Attack Rending Claws"
+title       = "Rending Claws"
+description = "• Critical hits make enemies #Bleed@"
+add_stats   = [ { stat = "Apply bleed on critical", values = [1, 1, 1, 1], percent = false } ]
+starter     = true
+
+[[content.frame.talents]]
+name        = "Power Second Seed"
+title       = "Second Seed"
+description = "• Blood Seed bursts a second time for #200%@ area damage and #Bleed@"
+actions     = [ { on = "power", hits = [ { at = 2.6, radius = 4, damage = 200, status = "Bleed", fx = "Settings\\FX\\Common_FX\\Impact_Blood_Splash.vfx.ot" } ] } ]
+starter     = true
+
+[[content.frame.talents]]
+name        = "Power Deep Bite"
+title       = "Deep Bite"
+description = "• #POWER@ cooldown is reduced by &{0}%~"
+add_stats   = [ { stat = "CD reduce primary", values = [0.10, 0.15, 0.20, 0.25] } ]
+
+[[content.frame.talents]]
+name        = "Power Blood Rush"
+title       = "Blood Rush"
+description = "• #POWER@ deals &+{0}%~ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase primary damage for each debuff", values = [0.10, 0.15, 0.20, 0.25] } ]
+
+[[content.frame.talents]]
+name        = "Special Pack Hunter"
+title       = "Pack Hunter"
+description = "• Bomber Wolf calls a second dire wolf"
+actions     = [ { on = "special", steps = [ { wait = 0.5 }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ] } ]
+starter     = true
+
+[[content.frame.talents]]
+name        = "Special Quick Call"
+title       = "Quick Call"
+description = "• #SPECIAL@ cooldown is reduced by &{0}%~"
+add_stats   = [ { stat = "CD reduce secondary", values = [0.10, 0.15, 0.20, 0.25] } ]
+
+[[content.frame.talents]]
+name        = "Defense Chilling Howl"
+title       = "Chilling Howl"
+description = "• Blood Howl also deals #200%@ area damage and leaves enemies #Weak@"
+actions     = [ { on = "defense", hits = [ { at = 0.4, radius = 4.5, damage = 200, status = "Weak", fx = "Settings\\Enemies\\Wolves\\Elite_Wolf_Howl_01.vfx.ot" } ] } ]
+
+[[content.frame.talents]]
+name        = "Defense Thick Hide"
+title       = "Thick Hide"
+description = "• While using #DEFENSE@ you are #INVULNERABLE@"
+add_stats   = [ { stat = "Invulnerable", during = "DEFENSE" } ]
+
+[[content.frame.talents]]
+name        = "Trait Blood Scent"
+title       = "Blood Scent"
+description = "• #TRAIT@ deals &+{0}%~ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase trait damage for each debuff", values = [0.15, 0.20, 0.25, 0.30] } ]
+
+[[content.frame.talents]]
+name        = "Trait Restless"
+title       = "Restless"
+description = "• #TRAIT@ cooldown is reduced by &{0}%~"
+add_stats   = [ { stat = "CD reduce trait", values = [0.10, 0.15, 0.20, 0.25] } ]
+
+[[content.frame.talents]]
+name        = "Dash Pounce"
+title       = "Pounce"
+description = "• Landing a dash deals #200%@ area damage and makes enemies #Bleed@"
+actions     = [ { on = "dash", hits = [ { at = 0.2, radius = 3, damage = 200, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Leap_Impact.vfx.ot" } ] } ]
+
+[[content.frame.talents]]
+name        = "Dash Loping Stride"
+title       = "Loping Stride"
+description = "• #DASH@ cooldown is reduced by &{0}%~"
+add_stats   = [ { stat = "CD reduce dash", values = [0.10, 0.15, 0.20, 0.25] } ]
+
+[[content.frame.talents]]
+name        = "Passive Thick Pelt"
+title       = "Thick Pelt"
+description = "• Gain &+{0}~ #ARMOR@"
+add_stats   = [ { stat = "Armour", values = [5, 8, 11, 15], percent = false } ]
+
+[[content.frame.talents]]
+name        = "Passive Blood Hunger"
+title       = "Blood Hunger"
+description = "• Deal &+{0}%~ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase damage for each debuff", values = [0.06, 0.09, 0.12, 0.15] } ]
+
+[[content.frame.talents]]
+name        = "Passive Cornered Beast"
+title       = "Cornered Beast"
+description = "• After taking damage, gain &+{0}%~ #MOVE SPEED@ for #3@ seconds"
+add_stats   = [ { stat = "Move Speed Ratio", values = [0.20, 0.28, 0.36, 0.45], on = "damage_taken", seconds = 3 } ]
+
+[[content.frame.talents]]
+name        = "Passive Alpha"
+title       = "Alpha"
+description = "• Deal &+{0}%~ damage to bosses"
+add_stats   = [ { stat = "Increase damage to boss", values = [0.10, 0.15, 0.20, 0.25] } ]
