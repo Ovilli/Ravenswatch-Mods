@@ -31,11 +31,11 @@
 3D|Characters\Enemies\Wolves\Animations\Wolf_Shared_WalkStrafe_F_Loop.fbx|oCAnimation
 3D|Characters\Enemies\Wolves\Animations\Wolf_Shared_WalkStrafe_L_Loop.fbx|oCAnimation
 3D|Characters\Enemies\Wolves\Animations\Wolf_Shared_WalkStrafe_R_Loop.fbx|oCAnimation
-3D|Characters\Enemies\Wolves\Textures\M_BloodWolf_Summon1.mat.ot|oCMaterial
+3D|Characters\Enemies\Wolves\Textures\M_BloodWolf_Summon3.mat.ot|oCMaterial
 3D|Characters\Enemies\Wolves\Textures\M_WolfAlpha.mat.ot|oCMaterial
 3D|Characters\Enemies\Wolves\Textures\M_WolfDire.mat.ot|oCMaterial
 3D|Characters\Enemies\Wolves\Textures\M_WolfTimber.mat.ot|oCMaterial
-3D|Characters\Enemies\Wolves\Textures\T_BloodWolf_Summon1_ALB.tga|oCTexture
+3D|Characters\Enemies\Wolves\Textures\T_BloodWolf_Summon3_ALB.tga|oCTexture
 3D|Characters\Enemies\Wolves\Textures\T_Wolf_Alpha_ALB.tga|oCTexture
 3D|Characters\Enemies\Wolves\Textures\T_Wolf_Alpha_MRA.tga|oCTexture
 3D|Characters\Enemies\Wolves\Textures\T_Wolf_Alpha_NRM.tga|oCTexture
@@ -653,9 +653,11 @@ EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Bomb.entity.ot|oCEntitySettings
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Default.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Default_LowRes.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_FX.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Kit3.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon1.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon1_Model.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Kit1.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Kit2.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Seed.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon3.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon3_Model.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_Common.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_Common_Update5.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_Drop_Bag.entity.ot|oCEntitySettingsResource
@@ -690,6 +692,7 @@ EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_Water_Core.entity.ot|oCEntityS
 EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_Wisp.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_Wisp_Ultimate_2.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_Wisp_Ultimate_2_Sing_Stance_Wisp.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Pets\Hero_Pet_Model.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Red\Hero_Red.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Red\Hero_Red_Ash_Cloud.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Red\Hero_Red_Bomb.entity.ot|oCEntitySettingsResource
@@ -756,7 +759,6 @@ FX|Materials\Juliet_Special_Projectile_01.mat.ot|oCMaterial
 FX|Materials\Juliet_Visor_02.mat.ot|oCMaterial
 FX|Materials\Juliet_Visor_Center_01.mat.ot|oCMaterial
 FX|Materials\Juliet_Visor_Side_01.mat.ot|oCMaterial
-FX|Materials\Kintaro_Ulti_Line_Limit.mat.ot|oCMaterial
 FX|Materials\Melusine_Decal_Skill_Aftershock_01.mat.ot|oCMaterial
 FX|Materials\Melusine_Decal_Water_Stream_01.mat.ot|oCMaterial
 FX|Materials\Melusine_Decal_Water_Stream_Idle_01.mat.ot|oCMaterial
@@ -1493,7 +1495,6 @@ FX|Textures\Glows\Stylized_Dot_Glow_01.png|oCTexture
 FX|Textures\Glows\UI_FX_Status_Glow.png|oCTexture
 FX|Textures\Glows\UI_Stylized_Glow_01_Orange.png|oCTexture
 FX|Textures\Impacts\Brambles_Ground_Decal_01~C.png|oCTexture
-FX|Textures\Impacts\Impact_Ring_02.png|oCTexture
 FX|Textures\Impacts\Impact_Spark_Random_01.png|oCTexture
 FX|Textures\Liquids\Melusine_Decal_Water_Stream_Mask_01.png|oCTexture
 FX|Textures\Other\Juliet_Visor_01_B~C.png|oCTexture
