@@ -38,6 +38,20 @@ material = "Characters\\Heroes\\RED\\Textures\\M_RED_Wolf.mat.ot"
 # The wolf's own HUD portrait (the rig's default is Scarlet, human).
 portrait = "Heroes\\Red\\Portrait_RED_WOLF_01.png"
 
+# Pam's seed, step for step from the clone, on the bite's own damage record
+# ("Power Ability Hit 1 Damage"; the clone's was Scarlet's "Wolf Primary
+# Ability Damage"). Carmilla's seed debuff and its burst listener + spawner.
+edits = [
+    { clone = ["Skill Power Special Bomb Modifier", "Skill Power Special Bomb Time Before Explosion Value"], from = "Carmilla", rename = { "Skill Power Special Bomb Modifier" = "Wolf Power Blood Seed Modifier", "Skill Power Special Bomb Time Before Explosion Value" = "Wolf Power Blood Seed Time Before Explosion Value" } },
+    { set = "Wolf Power Blood Seed Modifier.duration", value = 1.5 },
+    { clone = ["Blood Bomb Explode Listener", "Skill Power Special Bomb Spawner"], from = "Carmilla", rename = { "Blood Bomb Explode Listener" = "Wolf Blood Bomb Explode Listener", "Skill Power Special Bomb Spawner" = "Wolf Blood Bomb Spawner" } },
+    { remove_link = "Wolf Blood Bomb Spawner.spawner_values[0]" },
+    { set = "Wolf Blood Bomb Spawner.template[1]", value = "own:Bomb" },
+    { override = "Child Event Initialize", from = "Character_Common/Character_Common" },
+    { add_link = "Child Event Initialize.activates", to = "Wolf Blood Bomb Explode Listener" },
+    { add_subobject = "Power Ability Hit 1 Damage.bytes_36", from = "Carmilla", donor = "Skill Defense Aoe Bleed Damage.bytes_36[0]", replace_ref = { "Skill Defense Aoe Bleed Modifier" = "Wolf Power Blood Seed Modifier" } },
+]
+
 # The rig lends the wolf's clip for every slot Scarlet has in two forms. The
 # book and the end of a teleport are human-only on her; the wolf's own here.
 [content.frame.slots."Preview Default In Animatic"]
@@ -168,13 +182,6 @@ edits = [
     { switch_off = "Explosion Damage.bytes_36[1]" },
 ]
 
-# Blood Seed's bomb: Blood Wolf's bleed bomb with a fuse of its own. The bite
-# plants it and the bomb waits by itself (a button's own timers stop when the
-# button ends, so the delay cannot live on the bite).
-[content.frame.entities.Seed]
-from  = "own:Bomb"
-edits = [ { set = "Explosion Timer.duration", value = 1.5 } ]
-
 # --- Buttons ---------------------------------------------------------------------
 # (The game spells four of the wolf's button pictures "Ability_Wolf_" and their
 # greyed twins "Ability_WOLF_": both are named as shipped.)
@@ -195,19 +202,20 @@ combo       = [
     { clip = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Skill_DoubleStrike.fbx", hit_at = 0.23, link_at = 0.6, exit_at = 0.8, hits = [ { radius = 3.2, damage = 180, stagger = 12, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Dash_Attack_Slash_01.vfx.ot", shake = "light" } ] },
 ]
 
-# Blood Seed. The clone planted a seed on the bitten enemy that burst 1.5 s
-# later (or when it died). Here the bite plants Blood Wolf's bleed bomb where
-# it lands, on a 1.5 s fuse (entities.Seed). It does not ride on the enemy.
+# Blood Seed, as Pam made it in the clone (0.1): a rushing bite (the wolf's
+# lunge clip carries it ~10 m) that plants a blood seed IN the bitten enemy:
+# Carmilla's blood-seed debuff on the bite's damage (frame.edits below). The
+# seed bursts into Blood Wolf's bleed bomb when it runs out (1.5 s), or at once
+# if the enemy dies first.
 [content.frame.abilities.power]
 icon        = "Heroes\\Red\\Ability_Wolf_Power.png"
 icon_disabled = "Heroes\\Red\\Ability_WOLF_Power_Disabled.png"
 name        = "Blood Seed"
-description = "• Bite ahead of you and plant a blood seed: it bursts shortly after in an explosion that makes enemies #Bleed@"
-clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_Out.fbx"
-duration    = 0.8
+description = "• Rush in and bite, planting a blood seed in what you bite. It bursts into a bleeding explosion shortly after, or as soon as the enemy dies"
+clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_In.fbx"
+duration    = 0.9
 cooldown    = 6
-hits        = [ { at = 0.25, radius = 3, damage = 250, stagger = 25, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" } ]
-steps       = [ { wait = 0.25 }, { fire = "own:Seed", forward = 1.5 } ]
+hits        = [ { at = 0.45, radius = 3, damage = 250, stagger = 25, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" } ]
 
 # Bomber Wolf. The special's howl calls a pet (`frame.pets` below): Pam's
 # blood-red dire wolf on the pet base, so it follows Blood Wolf and goes for
@@ -263,9 +271,9 @@ hits        = [ { at = 0.35, radius = 4.5, damage = 100, stun = 1.0, status = "V
 [content.frame.abilities.trait]
 icon        = "Heroes\\Red\\Ability_WOLF_Trait.png"
 name        = "Blood Scent"
-description = "• Lunge at what is ahead of you: a bite that makes enemies #Bleed@ and leaves them #Weak@"
-clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_In.fbx"
-duration    = 0.6
+description = "• Dart forward and slash: enemies around you #Bleed@ and are left #Weak@"
+clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Dash_Fan_Spikes.fbx"
+duration    = 0.7
 cooldown    = 12
 hits        = [ { at = 0.25, radius = 3, damage = 200, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" }, { at = 0.3, radius = 3, damage = 50, status = "Weak" } ]
 
