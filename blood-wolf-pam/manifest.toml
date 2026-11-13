@@ -225,12 +225,11 @@ moving      = true        # howled on the move, as the clone's special was
 # bite blows it up into Blood Wolf's bleed bomb, it also bursts if killed or
 # after 20 s. The bite: every enemy in a cone twice as wide and long, from
 # closer, 35% faster, retried 0.5 s after a miss, none of the enemy wolf's
-# own debuffs. Pack Hunter adds a second wolf per press.
+# own debuffs.
 [content.frame.pets]
 entity         = "Enemies/Wolves/Standard_Wolf_Dire"
 look           = { albedo = "art/Dire_Blood_ALB.png" }
 count          = 1
-count_talents  = { "Skill Special Pack Hunter" = 1 }
 button         = "special"
 spawn          = "button"
 counter        = "none"
@@ -370,7 +369,8 @@ add_stats   = [ { stat = "Increase primary damage for each debuff", values = [0.
 [[content.frame.talents]]
 name        = "Special Pack Hunter"
 title       = "Pack Hunter"
-description = "• Bomber Wolf calls a second dire wolf"
+description = "• #SPECIAL@ gains &+{0}%~ #Crit Chance@"
+add_stats   = [ { stat = "Crit chance secondary", values = [0.10, 0.15, 0.20, 0.25] } ]
 starter     = true
 
 [[content.frame.talents]]
