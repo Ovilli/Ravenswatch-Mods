@@ -168,6 +168,13 @@ edits = [
     { switch_off = "Explosion Damage.bytes_36[1]" },
 ]
 
+# Blood Seed's bomb: Blood Wolf's bleed bomb with a fuse of its own. The bite
+# plants it and the bomb waits by itself (a button's own timers stop when the
+# button ends, so the delay cannot live on the bite).
+[content.frame.entities.Seed]
+from  = "own:Bomb"
+edits = [ { set = "Explosion Timer.duration", value = 1.5 } ]
+
 # --- Buttons ---------------------------------------------------------------------
 # (The game spells four of the wolf's button pictures "Ability_Wolf_" and their
 # greyed twins "Ability_WOLF_": both are named as shipped.)
@@ -186,9 +193,8 @@ combo       = [
 ]
 
 # Blood Seed. The clone planted a seed on the bitten enemy that burst 1.5 s
-# later (or when it died). Here the bite plants it where it lands: 1.5 s later
-# Blood Wolf's bleed bomb (entities.Bomb) bursts there. It does not ride on
-# the enemy, and does not burst early when the enemy dies.
+# later (or when it died). Here the bite plants Blood Wolf's bleed bomb where
+# it lands, on a 1.5 s fuse (entities.Seed). It does not ride on the enemy.
 [content.frame.abilities.power]
 icon        = "Heroes\\Red\\Ability_Wolf_Power.png"
 icon_disabled = "Heroes\\Red\\Ability_WOLF_Power_Disabled.png"
@@ -198,16 +204,11 @@ clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite
 duration    = 0.8
 cooldown    = 6
 hits        = [ { at = 0.25, radius = 3, damage = 100, stagger = 25, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" } ]
-steps       = [ { wait = 1.75 }, { fire = "own:Bomb", forward = 1.5 } ]
-indicator   = { radius = 4, forward = 1.5, color = [0.85, 0.1, 0.1, 1] }
+steps       = [ { wait = 0.25 }, { fire = "own:Seed", forward = 1.5 } ]
 
-# Bomber Wolf. A dire wolf as an ally (Pam's blood-red albedo on the dire
-# wolf's own mesh and rig) that goes for the enemies and is gone after 20 s.
-# Its bite is the clone's tuning for a moving target: every enemy in a cone
-# twice as wide and long, committed from closer, 35% faster, retried 0.5 s
-# after a miss, no debuffs of the enemy wolf's own.
-# Its first bite blows it up into Blood Wolf's bleed bomb (entities.Bomb); it
-# also bursts if killed, or when its 20 s run out.
+# Bomber Wolf. The special's howl calls a pet (`frame.pets` below): Pam's
+# blood-red dire wolf on the pet base, so it follows Blood Wolf and goes for
+# the enemies.
 [content.frame.abilities.special]
 icon        = "Heroes\\Red\\Ability_Wolf_Special.png"
 icon_disabled = "Heroes\\Red\\Ability_WOLF_Special_Disabled.png"
@@ -217,7 +218,35 @@ clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_H
 duration    = 0.6
 cooldown    = 8
 moving      = true        # howled on the move, as the clone's special was
-steps       = [ { wait = 0.3 }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, burst = "own:Bomb", burst_on_hit = true, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ]
+
+
+# The bomber wolf, as Pam tuned it in the clone (0.1): one per press of the
+# special, a pet that follows Blood Wolf and charges the enemies; its first
+# bite blows it up into Blood Wolf's bleed bomb, it also bursts if killed or
+# after 20 s. The bite: every enemy in a cone twice as wide and long, from
+# closer, 35% faster, retried 0.5 s after a miss, none of the enemy wolf's
+# own debuffs. Pack Hunter adds a second wolf per press.
+[content.frame.pets]
+entity         = "Enemies/Wolves/Standard_Wolf_Dire"
+look           = { albedo = "art/Dire_Blood_ALB.png" }
+count          = 1
+count_talents  = { "Skill Special Pack Hunter" = 1 }
+button         = "special"
+spawn          = "button"
+counter        = "none"
+aggro          = true
+burst          = "own:Bomb"
+burst_on_hit   = true
+lifetime       = 20
+attack         = "Bite"
+attack_area    = 1.2
+attack_reach   = 2.0
+attack_range   = 1.0
+attack_targets = 0
+attack_speed   = 1.35
+attack_debuffs = false
+attack_cooldown = 0.5
+appear         = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx"
 
 # Defense and the ultimates: wolf moves of its own (the clone kept Scarlet's).
 [content.frame.abilities.defense]
@@ -228,7 +257,6 @@ clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Aggressive_
 duration    = 1.0
 cooldown    = 10
 hits        = [ { at = 0.35, radius = 4.5, damage = 100, stun = 1.0, status = "Vulnerable", fx = "Settings\\Enemies\\Wolves\\Elite_Wolf_Howl_01.vfx.ot", shake = "medium" } ]
-indicator   = { radius = 4.5, color = [0.85, 0.1, 0.1, 1] }
 
 [content.frame.abilities.trait]
 icon        = "Heroes\\Red\\Ability_WOLF_Trait.png"
@@ -254,21 +282,16 @@ hits        = [
     { at = 1.5, radius = 4.5, damage = 500, fx = "Settings\\Heroes\\Hero_Red_FX\\Cleave_Slash_Wolf_Claw.vfx.ot", shake = "light" },
     { at = 1.9, radius = 6, damage = 1500, knockback = 60, stun = 1.0, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Leap_Impact.vfx.ot", shake = "heavy" },
 ]
-indicator   = { radius = 4.5, color = [0.85, 0.1, 0.1, 1] }
 
 [content.frame.abilities.ultimate2]
 icon        = "Heroes\\Red\\Ability_WOLF_Ultimate_2.png"
 name        = "Pack Howl"
-description = "• Call #3@ dire wolves at once, and #stun@ everything close"
+description = "• A howl that #stuns@ everything close and flings three bleed bombs around you"
 clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx"
 duration    = 1.2
 cooldown    = 75
 hits        = [ { at = 0.4, radius = 5, damage = 800, stun = 1.5, fx = "Settings\\Enemies\\Wolves\\Elite_Wolf_Howl_01.vfx.ot", shake = "medium" } ]
-steps       = [
-    { wait = 0.4 },
-    { repeat = 3, every = 0.2, steps = [ { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, burst = "own:Bomb", burst_on_hit = true, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ] },
-]
-indicator   = { radius = 5, color = [0.85, 0.1, 0.1, 1] }
+steps       = [ { wait = 0.4 }, { fire = "own:Bomb", angles = [0, 120, 240], forward = 3 } ]
 
 # --- Ultimate cards --------------------------------------------------------------
 [content.frame.ultimates."Ultimate Power 1"]
@@ -288,7 +311,7 @@ add_stats   = [ { stat = "Increase ultimate damage for each debuff", values = [0
 
 [content.frame.ultimates."Ultimate Power 2"]
 title       = "Pack Howl"
-description = "• Call #3@ dire wolves at once, and #stun@ everything close"
+description = "• A howl that #stuns@ everything close and flings three bleed bombs around you"
 icon        = "Heroes\\Red\\Ability_WOLF_Ultimate_2.png"
 
 [content.frame.ultimates."Ultimate 2 Upgrade 1"]
@@ -348,7 +371,6 @@ add_stats   = [ { stat = "Increase primary damage for each debuff", values = [0.
 name        = "Special Pack Hunter"
 title       = "Pack Hunter"
 description = "• Bomber Wolf calls a second dire wolf"
-actions     = [ { on = "special", steps = [ { wait = 0.5 }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, burst = "own:Bomb", burst_on_hit = true, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ] } ]
 starter     = true
 
 [[content.frame.talents]]
