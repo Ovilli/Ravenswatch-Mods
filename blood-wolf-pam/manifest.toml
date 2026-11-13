@@ -186,8 +186,9 @@ combo       = [
 ]
 
 # Blood Seed. The clone planted a seed on the bitten enemy that burst 1.5 s
-# later (or when it died). From scratch a hit is an area at a moment: the bite,
-# then the bleeding burst 1.5 s after it, where the bite landed.
+# later (or when it died). Here the bite plants it where it lands: 1.5 s later
+# Blood Wolf's bleed bomb (entities.Bomb) bursts there. It does not ride on
+# the enemy, and does not burst early when the enemy dies.
 [content.frame.abilities.power]
 icon        = "Heroes\\Red\\Ability_Wolf_Power.png"
 icon_disabled = "Heroes\\Red\\Ability_WOLF_Power_Disabled.png"
@@ -197,7 +198,7 @@ clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite
 duration    = 0.8
 cooldown    = 6
 hits        = [ { at = 0.25, radius = 3, damage = 100, stagger = 25, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" } ]
-steps       = [ { wait = 1.75 }, { hit = { radius = 4, damage = 250 }, forward = 1.5 } ]
+steps       = [ { wait = 1.75 }, { fire = "own:Bomb", forward = 1.5 } ]
 indicator   = { radius = 4, forward = 1.5, color = [0.85, 0.1, 0.1, 1] }
 
 # Bomber Wolf. A dire wolf as an ally (Pam's blood-red albedo on the dire
