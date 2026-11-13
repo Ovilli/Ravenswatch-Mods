@@ -124,117 +124,6 @@
 3D|Characters\Heroes\Juliet\Textures\T_JulietGhost_NRM.tga|oCTexture
 3D|Characters\Heroes\Juliet\Textures\T_Juliet_Flask_ALB.tga|oCTexture
 3D|Characters\Heroes\Juliet\Textures\T_Juliet_Flask_MRA.tga|oCTexture
-3D|Characters\Heroes\Kintaro\Animations\Bear_IsDismounting.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Aimed_Bite_01.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Aimed_Bite_02.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_AttackBlock.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_BasicAttack01.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_BasicAttack02.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_BasicAttack03.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Boomerang_Axe_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Boomerang_Axe_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Boomerang_Axe_PowerHold_Charged_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Dash.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Deathdoor_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Deathdoor_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Deathdoor_Special_Revive.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Defense.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Dohyo.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Facing_Danger_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Facing_Danger_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_FightingIdle_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Flock_Teleportation_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Flock_Teleportation_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Hit_Stun_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Hit_Stun_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Interacting_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Interacting_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_IsDismounting.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_IsMounting.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Leap.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Nekodamashi.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_PowerHold_Power_Charged_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Power_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Power_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Raijin_Axe.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Run_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Run_Side_L_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Run_Side_R_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Rushed_Strikes.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Spawning.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Special_Dismounted.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Special_Mounted.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Ulti_02_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Ulti_02_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Ulti_02_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Walk_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Walk_Side_L_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Kintaro_Walk_Side_R_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_PowerHold_Power_Charged_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Power_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Power_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Bear_Rush_IsMounting.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_AttackBlock.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_BasicAttack01.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_BasicAttack02.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_BasicAttack03.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Bear_FishSlam_Ultimate1_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Bear_Ultimate1_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Boomerang_Axe_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Boomerang_Axe_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Boomerang_Axe_PowerHold_Charged_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Dash.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Deathdoor_Divine_Revive_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Deathdoor_Divine_Revive_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Deathdoor_Divine_Revive_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Deathdoor_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Deathdoor_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Deathdoor_Reviving_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Default_Death.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Default_Death_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Defense.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Dohyo.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_FightingIdle_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_FishProjectile_Ultimate1.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_FishSlam_Ultimate1_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_FishSlam_Ultimate1_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_FishSlam_Ultimate1_Wrestle.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Fish_FishSlam_Ultimate1.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Fish_Ultimate1.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Flock_Teleportation_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Hit_Stun_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Hit_Stun_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Interacting_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Interacting_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_IsDismounting.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Leap.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Nekodamashi.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_PowerHold_Power_Charged_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Power_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Power_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Raijin_Axe.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Run_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Rushed_Strikes.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Special_Dismounted.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Special_Mounted.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Ulti_02_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Ulti_02_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Ulti_02_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Ultimate1_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Ultimate1_Out.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Ultimate1_Wrestle.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Walk_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Kintaro_Woodcutter_Swipe.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Narrative\Kintaro_Book_Defeat_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Narrative\Kintaro_Book_Ready_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Narrative\Kintaro_Book_Ready_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Narrative\Kintaro_Book_Selection_In.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Narrative\Kintaro_Book_Selection_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Animations\Narrative\Kintaro_Book_Victory_Loop.fbx|oCAnimation
-3D|Characters\Heroes\Kintaro\Kintaro_Axe_GEO.fbx|oCGeometry
-3D|Characters\Heroes\Kintaro\Kintaro_Bear_GEO.fbx|oCGeometry
-3D|Characters\Heroes\Kintaro\Kintaro_BigFish_GEO.fbx|oCGeometry
-3D|Characters\Heroes\Kintaro\Kintaro_GEO.fbx|oCGeometry
 3D|Characters\Heroes\Melusine\Animations\Melusine_Attack_Default_01.fbx|oCAnimation
 3D|Characters\Heroes\Melusine\Animations\Melusine_Attack_Default_02.fbx|oCAnimation
 3D|Characters\Heroes\Melusine\Animations\Melusine_Attack_Default_03.fbx|oCAnimation
@@ -290,6 +179,25 @@
 3D|Characters\Heroes\Melusine\Narrative\MELUSINE_Book_LoopDefeat.fbx|oCAnimation
 3D|Characters\Heroes\Melusine\Narrative\MELUSINE_Book_ReadyLoop.fbx|oCAnimation
 3D|Characters\Heroes\Melusine\Narrative\MELUSINE_Book_SelectionLoop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Dash_Default.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Death.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_DeathDoor_Divine_Revive_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_DeathDoor_Divine_Revive_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_DeathDoor_Divine_Revive_Out.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_DeathDoor_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_DeathDoor_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Deathdoor_Special_Revive.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Flock_Teleportation_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Flock_Teleportation_Out.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Idle_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Interaction.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Revived_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Revived_SuccessBasic.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Run_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Spawning.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Stun_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Stun_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Walk_Loop.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Communs\RED_Wolf_Dash_Default.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Communs\RED_Wolf_Death.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Communs\RED_Wolf_DeathDoor_Divine_Revive_In.fbx|oCAnimation
@@ -310,25 +218,92 @@
 3D|Characters\Heroes\RED\Animations\Communs\RED_Wolf_Stun_In.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Communs\RED_Wolf_Stun_Loop.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Communs\RED_Wolf_Walk.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Narrative\RED_Human_Book_InReady.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Narrative\RED_Human_Book_InSelection.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Narrative\RED_Human_Book_LoopDefeat.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Narrative\RED_Human_Book_LoopReady.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Narrative\RED_Human_Book_LoopSelection.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Narrative\RED_Human_FacingDanger_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Narrative\RED_Human_FacingDanger_Loop.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Narrative\RED_Wolf_Book_InSelection.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Narrative\RED_Wolf_Book_LoopSelection.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Narrative\RED_Wolf_FacingDanger_In.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Narrative\RED_Wolf_FacingDanger_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Aggressive_Defense_Cloak_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Attack_Flurry.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_BasicAttack_Cleave_1.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_BasicAttack_Cleave_2.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_BasicAttack_Dagger_1.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_BasicAttack_Dagger_2.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_DashAttack.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Dash_Fan_Spikes.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Defensive_Cloak_Idle_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Defensive_Cloak_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Defensive_Cloak_Run_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Defensive_Cloak_Walk_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Primary_Rush.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Primary_RushFinisher.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Seconday_Bomb_Default.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Seconday_Bomb_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Seconday_Bomb_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Seconday_Bomb_Out.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_ShapeShift_To_Human.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_ShapeShift_To_Wolf.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Transformation_To_Human.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Transformation_To_Human_TEMP.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Transformation_To_Wolf.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Transformation_To_Wolf_TEMP.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Ultimate2_GrandMother_Souvenir.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Human_Ultimate_Gun.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Aggressive_Defense_Howl.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Attack_Flurry.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_BasicAttack_Claws_1.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_BasicAttack_Claws_2.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_BasicAttack_Cleave_1b.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_BasicAttack_Cleave_2.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Dash_Fan_Spikes.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Defensive_Howl.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Pimary_Bite_In.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Pimary_Bite_Out.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Primary_RushFinisher.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Secondary_Leap_Default.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Secondary_Leap_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Secondary_Leap_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Secondary_Leap_Out.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_ShapeShift_To_Human.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_ShapeShift_To_Wolf.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Skill_DoubleStrike.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Transformation_To_Human.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Transformation_To_Human_TEMP.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Transformation_To_Wolf.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Transformation_To_Wolf_TEMP.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Ultimate01_In.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Ultimate01_Loop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Ultimate01_Out.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Skills\RED_Wolf_Ultimate2_Bite_Out.fbx|oCAnimation
+3D|Characters\Heroes\RED\GEO_RedGun.fbx|oCGeometry
 3D|Characters\Heroes\RED\RED_Human_GEO.fbx|oCGeometry
 3D|Characters\Heroes\RED\RED_wolf_GEO.fbx|oCGeometry
+3D|Characters\Heroes\RED\Red_Bomb.fbx|oCGeometry
+3D|Characters\Heroes\RED\Red_Dagger.fbx|oCGeometry
 3D|Characters\Heroes\RED\Textures\M_RED_Wolf.mat.ot|oCMaterial
+3D|Characters\Heroes\RED\Textures\M_RedGun.mat.ot|oCMaterial
+3D|Characters\Heroes\RED\Textures\M_Red_Bomb.mat.ot|oCMaterial
+3D|Characters\Heroes\RED\Textures\M_Red_Dagger.mat.ot|oCMaterial
+3D|Characters\Heroes\RED\Textures\M_Red_Dagger_Projectile.mat.ot|oCMaterial
+3D|Characters\Heroes\RED\Textures\T_Bomb_Red_ALB.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_Bomb_Red_MRA.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RED_Wolf_ALB.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RED_Wolf_EMI.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RED_Wolf_MRA.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RED_Wolf_NRM.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_RedGun_ALB.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_RedGun_MRA.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_RedGun_NRM.tga|oCTexture
 3D|Characters\Heroes\RED\Textures\T_RedWolfBlood_ALB.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_Red_Dagger_ALB.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_Red_Dagger_MRA.tga|oCTexture
+3D|Characters\Heroes\RED\Textures\T_Red_Dagger_NRM.tga|oCTexture
 3D|Characters\Heroes\Romeo\Animations\Book\Rome_Book_InReady.fbx|oCAnimation
 3D|Characters\Heroes\Romeo\Animations\Book\Rome_Book_InSelection.fbx|oCAnimation
 3D|Characters\Heroes\Romeo\Animations\Book\Rome_Book_LoopDefeat.fbx|oCAnimation
@@ -550,7 +525,6 @@
 3D|Characters\NPC\BabaYaga\Textures\T_Crow_EMI.tga|oCTexture
 3D|Characters\NPC\BabaYaga\Textures\T_Crow_MRA.tga|oCTexture
 3D|Characters\NPC\BabaYaga\Textures\T_Crow_NRM.tga|oCTexture
-3D|Characters\NPC\Fish\Fish_A_GEO.fbx|oCGeometry
 3D|DecalCube_1x1.fbx|oCGeometry
 3D|Dt_MinimapFogOfWarEraser.mat.ot|oCMaterial
 3D|LD_Basic\Common\Cube_1x1.fbx|oCGeometry
@@ -558,9 +532,6 @@
 3D|LD_Basic\Common\Sphere_radius_1.fbx|oCGeometry
 3D|Mechas\LockKey\T_KeyTubeB_EMI.tga|oCTexture
 3D|Scenery\DarkHills\Loot_Money.fbx|oCGeometry
-3D|Scenery\DarkHills\T_Fish_A_ALB.tga|oCTexture
-3D|Scenery\DarkHills\T_Fish_A_MRA.tga|oCTexture
-3D|Scenery\DarkHills\T_Fish_A_NRM.tga|oCTexture
 3D|Scenery\DarkHills\T_Tree_Big_Roots_FX_ALB.tga|oCTexture
 3D|Scenery\DarkHills\T_Tree_Big_Roots_NRM.tga|oCTexture
 Definitions|Heroes\BloodWolf.herodef.ot|oCDtHeroDefinition
@@ -618,8 +589,8 @@ EntitySettings|GameUis\Common_Ui\Enemies_Status_Ui.entity.ot|oCEntitySettingsRes
 EntitySettings|GameUis\Common_Ui\Life_Bar_Boss_Common.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\Common_Ui\Life_Bar_Common.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\Common_Ui\Life_Bar_Hero_Common.entity.ot|oCEntitySettingsResource
-EntitySettings|GameUis\Common_Ui\Life_Bar_Hero_Kintaro.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\Common_Ui\Life_Bar_Hero_Peer.entity.ot|oCEntitySettingsResource
+EntitySettings|GameUis\Common_Ui\Life_Bar_Hero_Red.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\Common_Ui\Life_Bar_Hero_Romeo.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\Common_Ui\Life_Bar_Hero_SunWukong.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\Common_Ui\Life_Bar_NPC_Common.entity.ot|oCEntitySettingsResource
@@ -675,11 +646,13 @@ EntitySettings|GameUis\Modal\Modal_Social_Options_Menu.entity.ot|oCEntitySetting
 EntitySettings|GameUis\Modal\Modal_Social_Options_Menu_InGame.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\Modal\Modal_Warning.entity.ot|oCEntitySettingsResource
 EntitySettings|GameUis\SkillsUi\Skill_Menu.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_BloodWolf\Hero_BloodWolf_Kit3.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_BloodWolf\Hero_BloodWolf_Summon1.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_BloodWolf\Hero_BloodWolf_Summon1_Model.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Ability_GameUi.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_Alt_Form_Common.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Bomb.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Default.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Default_LowRes.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_FX.entity.ot|oCEntitySettingsResource
@@ -708,20 +681,6 @@ EntitySettings|Heroes\Hero_Juliet\Hero_Romeo_Juliet_Secondary_Dash_Multi_Control
 EntitySettings|Heroes\Hero_Juliet\Hero_Romeo_Juliet_Secondary_Dash_Solo_Controller.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Juliet\Juliet_Combo_Point_Ui.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Juliet\Life_Bar_Hero_Juliet.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Bear.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Bear_Common.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Bear_Interaction.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_FX.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Skill_Damage_Link_FX.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Special_Delayed_AOE.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Spirit.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Spirit_Projectile.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Thrown_Axe.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Ultimate_1_Carp.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Ultimate_1_Carp_Model.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Ultimate_1_Projectile.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Kintaro\Hero_Kintaro_Ultimate_2_Projectile.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Melusine\Hero_Melusine.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_FX.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_Power_Caster_Model.entity.ot|oCEntitySettingsResource
@@ -731,6 +690,13 @@ EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_Water_Core.entity.ot|oCEntityS
 EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_Wisp.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_Wisp_Ultimate_2.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Melusine\Hero_Melusine_Wisp_Ultimate_2_Sing_Stance_Wisp.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Red\Hero_Red.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Red\Hero_Red_Ash_Cloud.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Red\Hero_Red_Bomb.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Red\Hero_Red_FX.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Red\Hero_Red_Projectile_Spike.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Red\Hero_Red_Weapon_World.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Red\Red_Combo_Point_Ui.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Romeo\Ghost_Hero_Romeo.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Romeo\Hero_Romeo.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Romeo\Hero_Romeo_FX.entity.ot|oCEntitySettingsResource
@@ -772,12 +738,15 @@ FX|Materials\Basic_Emissive_Blend.mat.ot|oCMaterial
 FX|Materials\Basic_Emissive_Opaque.mat.ot|oCMaterial
 FX|Materials\Basic_Warning_Zone_Cone_01.mat.ot|oCMaterial
 FX|Materials\Basic_Warning_Zone_Pulse.mat.ot|oCMaterial
+FX|Materials\Basic_Warning_Zone_Pulse_UP.mat.ot|oCMaterial
 FX|Materials\Character_Shadow.mat.ot|oCMaterial
 FX|Materials\Damage_Zone_01_DECAL.mat.ot|oCMaterial
 FX|Materials\Damage_Zone_01_w_Spike_DECAL.mat.ot|oCMaterial
 FX|Materials\Dot_Blurred_01_blend.mat.ot|oCMaterial
 FX|Materials\Enemies_Tainted_Ground_Decal_01.mat.ot|oCMaterial
 FX|Materials\Geppetto_Bomb_Visor_Decal.mat.ot|oCMaterial
+FX|Materials\Gusting_Roar_Cone_01.mat.ot|oCMaterial
+FX|Materials\Gusting_Roar_Cone_Fire_01.mat.ot|oCMaterial
 FX|Materials\Heart_Shield_01.mat.ot|oCMaterial
 FX|Materials\Invisible.mat.ot|oCMaterial
 FX|Materials\Juliet_Bullet_Power_01.mat.ot|oCMaterial
@@ -787,14 +756,7 @@ FX|Materials\Juliet_Special_Projectile_01.mat.ot|oCMaterial
 FX|Materials\Juliet_Visor_02.mat.ot|oCMaterial
 FX|Materials\Juliet_Visor_Center_01.mat.ot|oCMaterial
 FX|Materials\Juliet_Visor_Side_01.mat.ot|oCMaterial
-FX|Materials\Kintaro_Axe_Fresnel_01.mat.ot|oCMaterial
-FX|Materials\Kintaro_Axe_Fresnel_02.mat.ot|oCMaterial
-FX|Materials\Kintaro_Power_Cone_01.mat.ot|oCMaterial
-FX|Materials\Kintaro_Skill_Ultimate_1_Projectil_Fish.mat.ot|oCMaterial
-FX|Materials\Kintaro_Ulti02_Salt_Line_Limit.mat.ot|oCMaterial
-FX|Materials\Kintaro_Ulti02_Salt_Line_Shadow_Limit.mat.ot|oCMaterial
 FX|Materials\Kintaro_Ulti_Line_Limit.mat.ot|oCMaterial
-FX|Materials\Kintaro_Ulti_Water_Ground.mat.ot|oCMaterial
 FX|Materials\Melusine_Decal_Skill_Aftershock_01.mat.ot|oCMaterial
 FX|Materials\Melusine_Decal_Water_Stream_01.mat.ot|oCMaterial
 FX|Materials\Melusine_Decal_Water_Stream_Idle_01.mat.ot|oCMaterial
@@ -818,6 +780,10 @@ FX|Materials\R&J_Special_Range_Ring_01.mat.ot|oCMaterial
 FX|Materials\R&J_Ultimate_1_Arrow_01.mat.ot|oCMaterial
 FX|Materials\R&J_Ultimate_1_Arrow_02.mat.ot|oCMaterial
 FX|Materials\R&J_Ultimate_Veil_01.mat.ot|oCMaterial
+FX|Materials\RED_Bomb_Warning_Zone.mat.ot|oCMaterial
+FX|Materials\RED_Skill_Combo_Chain_Aura_Decal_01.mat.ot|oCMaterial
+FX|Materials\RED_Skill_Distant_Blow_Target_Indicator.mat.ot|oCMaterial
+FX|Materials\RED_Ultimate_Ash_Cloud_Decal_01.mat.ot|oCMaterial
 FX|Materials\Romeo_Rose_01.mat.ot|oCMaterial
 FX|Materials\Romeo_Rose_Mesh_01.mat.ot|oCMaterial
 FX|Materials\Romeo_Rose_Mesh_outline_01.mat.ot|oCMaterial
@@ -849,8 +815,8 @@ FX|Materials\UIFX_Item_Miniature_Frame_Dissolve_Highlight.mat.ot|oCMaterial
 FX|Materials\UIFX_Item_Miniature_Frame_Shine.mat.ot|oCMaterial
 FX|Materials\UIFX_Item_Miniature_SuperEffect_Glow.mat.ot|oCMaterial
 FX|Materials\UIFX_Juliet_Ammo_Ignite_Flames.mat.ot|oCMaterial
-FX|Materials\UIFX_Kintaro_Berzerk_01.mat.ot|oCMaterial
 FX|Materials\UIFX_R&J_Skill_Ulti_AOE_Performance_Gauge_Glow.mat.ot|oCMaterial
+FX|Materials\UIFX_RED_Combo_Flame_01.mat.ot|oCMaterial
 FX|Materials\UIFX_Romeo_Dash_Attack_Glow.mat.ot|oCMaterial
 FX|Materials\UIFX_Rotating_Highlight_01.mat.ot|oCMaterial
 FX|Materials\UIFX_Shine_01.mat.ot|oCMaterial
@@ -858,19 +824,15 @@ FX|Materials\UIFX_Skill_Glow_Ray.mat.ot|oCMaterial
 FX|Materials\UIFX_Status_Glow_01.mat.ot|oCMaterial
 FX|Materials\UIFX_Status_Glow_02.mat.ot|oCMaterial
 FX|Materials\UIFX_SuperEffect_Count_Glow_01.mat.ot|oCMaterial
-FX|Materials\kintaro_Electric_Axe.mat.ot|oCMaterial
-FX|Materials\kintaro_Skill_Defense_Attack_Block_shield.mat.ot|oCMaterial
+FX|Materials\WOLF_Skill_Quest_Human_Defense_Dark_Claws.mat.ot|oCMaterial
 FX|Meshes\Cylinder_Curved_02.fbx|oCGeometry
 FX|Meshes\Debug_XYZ.fbx|oCGeometry
 FX|Meshes\Disc_01.fbx|oCGeometry
 FX|Meshes\Disc_Warning_01.fbx|oCGeometry
-FX|Meshes\Hemisphere_02.fbx|oCGeometry
 FX|Meshes\Hexagonal_Locators.fbx|oCGeometry
 FX|Meshes\Juliet_Bullet_01.fbx|oCGeometry
 FX|Meshes\Juliet_Gun_Cannon_Shell.fbx|oCGeometry
 FX|Meshes\Juliet_Special_Projectile.fbx|oCGeometry
-FX|Meshes\Kintaro_Axe.fbx|oCGeometry
-FX|Meshes\Kintaro_Axe_All.fbx|oCGeometry
 FX|Meshes\Left_Right_Locators_01.fbx|oCGeometry
 FX|Meshes\Melusine_Orb_01.fbx|oCGeometry
 FX|Meshes\Piper_Fortissimo_Ring_01.fbx|oCGeometry
@@ -890,6 +852,8 @@ FX|Meshes\Sphere_Swirly_01.fbx|oCGeometry
 FX|Meshes\Spiders_Web_Root_01.fbx|oCGeometry
 FX|Meshes\Sun_Wukong_Cloud_01.fbx|oCGeometry
 FX|Meshes\Triangular_Locators.fbx|oCGeometry
+FX|Meshes\WOLF_FX_Claws_Skinned.fbx|oCGeometry
+FX|Meshes\WOLF_Roar_Cone.fbx|oCGeometry
 FX|Meshes\Wukong_Hand_Block_FX.fbx|oCGeometry
 FX|Settings\Baba_Yaga_Spells\Baba_Yaga_Crow_Feathers.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Baba_Yaga_Spells\Baba_Yaga_Crow_Feathers_Revive.vfx.ot|oCScheduledVfxSettings
@@ -907,6 +871,7 @@ FX|Settings\Baba_Yaga_Spells\Baba_Yaga_Revive_Thread_Loop.vfx.ot|oCScheduledVfxS
 FX|Settings\Baba_Yaga_Spells\Ravenswatch_End Cine_Crow_Trail.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Baba_Yaga_Spells\Ravenswatch_Super_Flock_Crow_Feathers.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Baba_Yaga_Spells\Ravenswatch_Super_Flock_Crow_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Enemies\Crabs\Crab_Dash_Dirt_Rumble.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Enemies\Dullahan\Dullahan_Ghost_Skull_Impact_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Enemies\Mordred\Mordred_Corrupted_Wave_Zone_Impact_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Enemies\Spiders_Nightmares\Spider_Spiderweb_Impact_Splash.vfx.ot|oCScheduledVfxSettings
@@ -922,6 +887,7 @@ FX|Settings\Enemies\Wolves\Wolf_Bite_Trapped_Impact_01.vfx.ot|oCScheduledVfxSett
 FX|Settings\Enemies\Wolves\Wolf_Slash_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Beam_Loop_Thin.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Explosion.vfx.ot|oCScheduledVfxSettings
+FX|Settings\FX\Common_FX\Basic_Fire.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Impact_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Impact_Fail_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Basic_Poison_Impact_01.vfx.ot|oCScheduledVfxSettings
@@ -965,6 +931,7 @@ FX|Settings\FX\Common_FX\Enemies_Spawning_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Enemy_Death_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Enemy_Vanishing_Ashes_Small.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Explosion_Ground_Impact.vfx.ot|oCScheduledVfxSettings
+FX|Settings\FX\Common_FX\Explosion_Ground_Impact_Fire.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Healing_Orb_Collect.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Healing_Orb_Loop.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\Hero_Dash_Kick_Burst.vfx.ot|oCScheduledVfxSettings
@@ -1032,12 +999,14 @@ FX|Settings\FX\Common_FX\Vulnerable_Impact_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\FX\Common_FX\XP_Gain_Feedback_Sparkles.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Aladdin_FX\Aladdin_Skill_Attack_Spawns_DS_Feedback.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Aladdin_FX\Lamp_Damage_Buildup.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Aladdin_FX\Special_Vanish_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Battlecry_Scream_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Sword_Impact_01_Fire.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Block_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Enemies_Death_Explosion_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Injection_Ribbons_Aura_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Power_Orb_Core_Explosion_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Power_Orb_Explosion_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Power_Orb_Explosion_Decal_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Geppetto_FX\Geppetto_Defense_Link_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Geppetto_FX\Geppetto_Dummies_Unstable_Loop.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Geppetto_FX\Geppetto_Skill_Power_Overcharge_Ready_Loop.vfx.ot|oCScheduledVfxSettings
@@ -1095,117 +1064,6 @@ FX|Settings\Heroes\Hero_Juliet_FX\Juliet_Ulti_2_Flask_Explosion_Normal_01.vfx.ot
 FX|Settings\Heroes\Hero_Juliet_FX\Juliet_Ulti_2_Flask_Explosion_Perfect_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Juliet_FX\Juliet_Ulti_2_Flask_Glow_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Juliet_FX\Juliet_Ultimate_2_Bullet_Trail_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Heroes_Level_Up_Kintaro.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Abillity_Defence_Scream_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Abillity_Defence_Wind_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Attack_Slash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Axe_Charge_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Axe_impact_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear impact_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear impact_02.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear_Attack_Slash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear_Cursor_Loop.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear_FinisherAttack_DustLanding_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear_FinisherAttack_Slash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear_Skill_Move_Speed_PawsEffect_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear_bite_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear_bite_After_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Bear_bite_close_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Defense_Block_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Defense_Deals_Damage_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Defense_Deals_Damage_02.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Defense_Deals_Damage_Vulnerable_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Defense_Deals_Damage_Vulnerable_02.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Defense_Deals_Damage_Vulnerable_Impact_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Dismonted_Power_Bear_smash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Dismonted_Power_Bear_smash_Ground_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Dismonted_Power_Slash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_FinisherAttack_Jump_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_FinisherAttack_Slash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_FinisherAttack_Smash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Power_Monted_Dash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Power_Monted_Dash_Smoke_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Power_Monted_groundShock_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Attack_Special_Swipe.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Bold_Strike.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Bold_Strike_02.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Chain_Speed_Glow_Step_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Chain_Speed_Glow_Step_02.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Chain_Speed_Glow_Step_03.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Dash_After_Power_Speedlines.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Dash_After_Power_woosh.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Dash_Attack_Axe_Slash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Dash_Attack_Bear_Slash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Dash_Attack_Bear_Trail_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Dismonted_Power_ThrowsAxe.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Forest_Spirit_Impact.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Forest_Spirit_Shoot.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Forest_Spirit_Spawn.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Forest_Spirit_Trail.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Forest_Spirit_Wisp.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Move_Speed_Trail_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Power charge_Lvl01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Power_Hold_LVLup_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Quest_Lightning_Axe.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Quest_Lightning_Strike.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Quest_Lightning_Zone.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Special_Buff_After_Power_Aura_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Special_Buff_After_Power_Smash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Special_Buff_After_Power_Timer_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Special_Delayed_AEO_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Special_Delayed_Earthquake_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Spirit_Link_Aura_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Spirit_Link_Aura_02.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Spirit_Link_Beam_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Spirit_Link_Impact_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Spirit_Link_Projectile.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Thrown_Axe_Impact_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Thrown_Axe_Spin_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Thrown_Axe_Trail_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Skill_Trait_Heal.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Spacial_JumpDust_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Spacial_JumpDust_02.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Spacial_JumpFollow.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Spacial_JumpedSmash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Spacial_SmashBear_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Spacial_Smash_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Spacial_Twirl_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti01_BuildUp_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Arms_Energy.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Ball_Salt.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_EnergyImpact_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_FeetDust_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_GlowHand.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Impact01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Null.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Palm_Clap_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Palm_Impact_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Shockwave_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Throw_Salt.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Trail_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Vanish.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_Wind_Loop_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_healZone.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti02_healZone_out.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_01_TwirlOnCarp_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_02_Paulm_Strike_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_02_Paulm_Strike_02.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_02_slashSaltThrow.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_02_windLeg.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_CarpeAuger_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_CarpeSlam_Impact.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_CarpeSlash.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_CarpeWave_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_Fish_appearance_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_LeapFrogging_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_LittleFish_Explosion_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_LittleFish_Glow_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_LittleFish_Trail_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_Little_Fish_Spawn_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_PrepPunchCarpe_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_PunchImpact_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_Ulti_PunchWindCarpe_01.vfx.ot|oCScheduledVfxSettings
-FX|Settings\Heroes\Hero_Kintaro_FX\Kintaro_contactPoint_GetOnBear_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Melusine_FX\Heroes_Level_Up_Melusine.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Melusine_FX\Melusine_Dive_Bomb_Warmup_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Melusine_FX\Melusine_Front_Water_Trail_01.vfx.ot|oCScheduledVfxSettings
@@ -1307,16 +1165,91 @@ FX|Settings\Heroes\Hero_R&J_Common_FX\R&J_Ultimate_1_Perfect_Zone_Aura_01.vfx.ot
 FX|Settings\Heroes\Hero_R&J_Common_FX\R&J_Ultimate_1_Zone_Active_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_R&J_Common_FX\R&J_Ultimate_1_Zone_Smoke_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_R&J_Common_FX\R&J_Ultimate_1_Zone_Smoke_Ignite_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Cleave_Slash_Red.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Cleave_Slash_Wolf.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Cleave_Slash_Wolf_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\Cleave_Slash_Wolf_Claw.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Heroes_Level_Up_RED.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Adrenaline_Heal_Symbol_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Adrenaline_Speed_Attack_Symbol_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Basic_Attack_Slash_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Basic_Attack_Slash_02.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Basic_Attack_Thrust_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Bomb_Explosion_5m.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Bomb_Explosion_Skill_Ignite_5m.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Bomb_Explosion_Skill_Vulnerable_5m.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Bomb_Short_Wick.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Bomb_Wick.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Cloak_Trail_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Cloak_Trail_Ending_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Cloak_Trail_Ending_Burst.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Dash_Kick_Burst.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Dash_LV00.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Dash_LV01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Dash_LV02.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Dash_LV03.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\RED_Dash_Shine_LV01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Dash_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Impact_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Impact_Dash.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Shadow_Strikes_Complete_Aura_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill Primary Triggers Special Bomb Shine.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Combo_Chain_Eyes_Glow.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Combo_Chain_Eyes_Glow_Burst.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Dash_Attack_Thrust_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Dash_Projectile_Trail_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Defense_Combo_Reset_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Human_Defense_Quest_Proc.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Primary_Finisher.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Special_Ignite_Wick_Flames.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Skill_Wolf_Power_Quest_Ability_Reload.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Transformation_Burst.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Transformation_Moonrise.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Activation_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Ash_Cloud_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Ash_Cloud_Damage.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Ash_Cloud_Damage_Impact.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Ash_Cloud_Heal_02.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Roar_Skill_Fire_Ground.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Shotgun_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Shotgun_Skill_Fire.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\RED_Ultimate_Shotgun_Skill_Fire_Ground.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Red_Skill_Special_Larger_Damage_Ring_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Skill_Defense_AOE_Red.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\Skill_Red_Move_Speed_Trail_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Skills_Distant_Blow_Beam_Arc.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\WOLF_Basic_Attack_Slash_01_L.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Basic_Attack_Slash_01_R.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\WOLF_Bite_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Bloodlust_Hand_Trail.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\WOLF_Dash_Attack_Slash_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Dash_End.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Dash_LV01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Dash_LV02.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Dash_LV03.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\WOLF_Dash_Trail.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Defensive_Moon.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Gusting_Roar_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Gusting_Roar_Fire_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Gusting_Roar_Fire_Buildup_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Gusting_Roar_Fire_Mouth_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Red_FX\WOLF_Leap_Impact.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Leap_Impact_Skill_Ignite.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Quest_Devourer_Dripping_Proc.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Quest_Devourer_Dripping_Saliva.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Skill_Attack_Flurry_Slash_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Skill_Secondary_Ignite_Flaming_Fist.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Special_Skill_Vulnerable.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Transformation_Burst.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Transformation_Sunrise.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Ultimate_2_Bite_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Ultimate_2_Bite_Impact_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Ultimate_2_Bite_Skill_Explosive.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Ultimate_2_Blood_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\WOLF_Ultimate_2_Shield_Zone_02.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Wolf_Impact_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Wolf_Impact_01_Bite.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Red_FX\Wolf_Impact_01_Claws.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Romeo_FX\Heroes_Level_Up_Juliet.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Romeo_FX\Heroes_Level_Up_Romeo.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Romeo_FX\Romeo_After_Defense_Aura_Rapiere_01.vfx.ot|oCScheduledVfxSettings
@@ -1540,6 +1473,7 @@ FX|Settings\Power_Ups_Common\Melody_The_Goose_Girl_AOE.vfx.ot|oCScheduledVfxSett
 FX|Settings\Power_Ups_Common\Melody_The_Goose_Girl_Warmup.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Power_Ups_Common\Melody_The_Goose_Girl_Warmup_Decals.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Power_Ups_Common\Object_Dropping_Trail_01.vfx.ot|oCScheduledVfxSettings
+FX|Textures\Fire\Flame_Mask_01.png|oCTexture
 FX|Textures\Glows\Basic_Glow_Squared_Common.png|oCTexture
 FX|Textures\Glows\Basic_Glow_Squared_Epic.png|oCTexture
 FX|Textures\Glows\Basic_Glow_Squared_Legendary.png|oCTexture
@@ -1552,7 +1486,6 @@ FX|Textures\Glows\Glow_Rays_Loop_Anim_01.png|oCTexture
 FX|Textures\Glows\Glow_Rays_Loop_Gold_Anim_01.png|oCTexture
 FX|Textures\Glows\Glow_and_Rays_01~C.png|oCTexture
 FX|Textures\Glows\Halo_Blue_01.png|oCTexture
-FX|Textures\Glows\Halo_Blue_02.png|oCTexture
 FX|Textures\Glows\Halo_Orange_01.png|oCTexture
 FX|Textures\Glows\In_Combat_Portrait_Glow.png|oCTexture
 FX|Textures\Glows\Square_Glow.png|oCTexture
@@ -1560,7 +1493,6 @@ FX|Textures\Glows\Stylized_Dot_Glow_01.png|oCTexture
 FX|Textures\Glows\UI_FX_Status_Glow.png|oCTexture
 FX|Textures\Glows\UI_Stylized_Glow_01_Orange.png|oCTexture
 FX|Textures\Impacts\Brambles_Ground_Decal_01~C.png|oCTexture
-FX|Textures\Impacts\FX_Impact_Ring_00.png|oCTexture
 FX|Textures\Impacts\Impact_Ring_02.png|oCTexture
 FX|Textures\Impacts\Impact_Spark_Random_01.png|oCTexture
 FX|Textures\Liquids\Melusine_Decal_Water_Stream_Mask_01.png|oCTexture
@@ -1569,8 +1501,9 @@ FX|Textures\Other\Juliet_Visor_02.png|oCTexture
 FX|Textures\Other\Juliet_Visor_02_Center.png|oCTexture
 FX|Textures\Other\Juliet_Visor_02_Side.png|oCTexture
 FX|Textures\Other\Nightmare_Spiderweb_Ground_Decal_01~C.png|oCTexture
-FX|Textures\Other\Piper_Fortissimo_Zone_Mask_02_Freezing~C.png|oCTexture
 FX|Textures\Other\R&J_Special_Ring_MRA.tga|oCTexture
+FX|Textures\Other\RED_Savagery_Timer_Decal.png|oCTexture
+FX|Textures\Other\RED_Ultimate_Ash_Decal_Mask.png|oCTexture
 FX|Textures\Other\Rails_Visor_01~C.png|oCTexture
 FX|Textures\Other\Spiders_Web_01.png|oCTexture
 FX|Textures\Other\Sun_Wukong_Stance_Decal_Awakened.png|oCTexture
@@ -1587,7 +1520,6 @@ FX|Textures\Patterns\Diagonal_Wisp_Pattern_01_Horizontal_50.png|oCTexture
 FX|Textures\Patterns\Fire_Noise_02.png|oCTexture
 FX|Textures\Patterns\Firework_Rocket_01.png|oCTexture
 FX|Textures\Patterns\Gold_Pattern_01.png|oCTexture
-FX|Textures\Patterns\Grain_Noise_01.png|oCTexture
 FX|Textures\Patterns\Ground_Grass_ALB.png|oCTexture
 FX|Textures\Patterns\Noise_A.png|oCTexture
 FX|Textures\Patterns\Noise_A_50.png|oCTexture
@@ -1603,11 +1535,10 @@ FX|Textures\Patterns\Smoke_Noise_A.png|oCTexture
 FX|Textures\Patterns\Smoke_Noise_A_50.png|oCTexture
 FX|Textures\Patterns\Square_Noise_01_H.png|oCTexture
 FX|Textures\Patterns\Square_Noise_01_H_50.png|oCTexture
-FX|Textures\Patterns\Square_Noise_01_V.png|oCTexture
 FX|Textures\Patterns\Sun_Wukong_Lotus_02.png|oCTexture
 FX|Textures\Patterns\Water_Flow_Pattern_01_50.png|oCTexture
+FX|Textures\Patterns\Wind_Gusts_Pattern_01.png|oCTexture
 FX|Textures\Patterns\Wind_Gusts_Pattern_01_50.png|oCTexture
-FX|Textures\Patterns\Wind_Gusts_Pattern_01_H.png|oCTexture
 FX|Textures\Patterns\Wind_Gusts_Pattern_01_H_50.png|oCTexture
 FX|Textures\Ramps\BW_rampSYM_H_01.png|oCTexture
 FX|Textures\Ramps\BW_rampSYM_V_01~C.png|oCTexture
@@ -1635,7 +1566,6 @@ FX|Textures\Shapes\Dot_Blurred_Linear_Inverted_Alpha_w_Noise_01.png|oCTexture
 FX|Textures\Shapes\Dot_Blurred_Square_Alpha.png|oCTexture
 FX|Textures\Shapes\Dot_Blurred_Square_Flash_Anim_01.png|oCTexture
 FX|Textures\Shapes\Dot_Blurred_Square_Flash_Anim_01_Red.png|oCTexture
-FX|Textures\Shapes\Kintaro_Ulti02_Salt_Zone.png|oCTexture
 FX|Textures\Shapes\Line_Arrow_01.png|oCTexture
 FX|Textures\Shapes\Square_Black.png|oCTexture
 FX|Textures\Shapes\Square_Grey50.png|oCTexture
@@ -1648,16 +1578,16 @@ FX|Textures\Warnings\Basic_Circle_Warning_50.png|oCTexture
 FX|Textures\Warnings\Basic_Circle_Warning_w_Spike.png|oCTexture
 FX|Textures\Warnings\Cone_Warning_01~C.png|oCTexture
 FX|Textures\Warnings\Melusine_Special_Warning~C.png|oCTexture
+FX|Textures\Warnings\RED_Bomb_Warning.png|oCTexture
 Fonts|Germania One\Germania_One_Outline~GAM.fnt|oCFont
 Lights|OmniLightFog.mat.ot|oCMaterial
 Lights|OmniLightToon.mat.ot|oCMaterial
 Lights|SpotLightToon.mat.ot|oCMaterial
 Text|Hero_Juliet_Barks~GAM.xls|oCLocalText
 Text|Hero_Juliet_Common~GAM.xls|oCLocalText
-Text|Hero_Kintaro_Barks~GAM.xls|oCLocalText
-Text|Hero_Kintaro_Common~GAM.xls|oCLocalText
 Text|Hero_Melusine_Barks~GAM.xls|oCLocalText
 Text|Hero_Melusine_Common~GAM.xls|oCLocalText
+Text|Hero_RED_Barks~GAM.xls|oCLocalText
 Text|Hero_RED_Common~GAM.xls|oCLocalText
 Text|Hero_Romeo_Barks~GAM.xls|oCLocalText
 Text|Hero_Romeo_Common~GAM.xls|oCLocalText
@@ -1831,7 +1761,6 @@ Ui|Gauges\Heroes_HUD_HP_Gauge_Fill_02.png|oCTexture
 Ui|Gauges\Heroes_HUD_HP_Gauge_Fill_Back.png|oCTexture
 Ui|Gauges\Heroes_HUD_HP_Gauge_Fill_Shield_01.png|oCTexture
 Ui|Gauges\Interaction_Gauge_Frame_01.png|oCTexture
-Ui|Gauges\Kintaro_Gauge_Berzerk_Mask.png|oCTexture
 Ui|Gauges\UI_Gauge_Graduation_01.png|oCTexture
 Ui|Gauges\UI_Gauge_Graduation_02.png|oCTexture
 Ui|HUD\AstralBonus_Frame.png|oCTexture
@@ -1988,61 +1917,6 @@ Ui|Heroes\Juliet\Skill Ultimate 1 End AOE.png|oCTexture
 Ui|Heroes\Juliet\Skill Ultimate 1 Heal.png|oCTexture
 Ui|Heroes\Juliet\Skill Ultimate 2 Dash AOE.png|oCTexture
 Ui|Heroes\Juliet\Skill Ultimate 2 Marked.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Attack.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Attack_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Defensive.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Defensive_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Power.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Power_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Special.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Special_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Trait.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Trait_Alt.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Trait_Alt_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Dismounted_Trait_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Attack.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Attack_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Defensive.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Defensive_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Power.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Power_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Special.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Special_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Trait.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Mounted_Trait_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Ultimate_1.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Ultimate_1_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Ultimate_2.png|oCTexture
-Ui|Heroes\Kintaro\Ability_Kintaro_Ultimate_2_Disabled.png|oCTexture
-Ui|Heroes\Kintaro\HUD_Banner_Kintaro.png|oCTexture
-Ui|Heroes\Kintaro\Kintaro_Bear_Arrow_UI.png|oCTexture
-Ui|Heroes\Kintaro\Portrait_Kintaro_01.png|oCTexture
-Ui|Heroes\Kintaro\Skill Attack Bite.png|oCTexture
-Ui|Heroes\Kintaro\Skill Attack Chain Speed.png|oCTexture
-Ui|Heroes\Kintaro\Skill Attack Quest Lightning.png|oCTexture
-Ui|Heroes\Kintaro\Skill Attack Special Swipe.png|oCTexture
-Ui|Heroes\Kintaro\Skill Dash Attack.png|oCTexture
-Ui|Heroes\Kintaro\Skill Defense Attack Block.png|oCTexture
-Ui|Heroes\Kintaro\Skill Defense Deals Damage.png|oCTexture
-Ui|Heroes\Kintaro\Skill Defense Summon Spirit.png|oCTexture
-Ui|Heroes\Kintaro\Skill Passive Ability Attack.png|oCTexture
-Ui|Heroes\Kintaro\Skill Passive Armor.png|oCTexture
-Ui|Heroes\Kintaro\Skill Passive Bear Combo.png|oCTexture
-Ui|Heroes\Kintaro\Skill Passive Damage Per Internal Damage.png|oCTexture
-Ui|Heroes\Kintaro\Skill Passive Internal Damage.png|oCTexture
-Ui|Heroes\Kintaro\Skill Passive Move Speed.png|oCTexture
-Ui|Heroes\Kintaro\Skill Power Bear Charge.png|oCTexture
-Ui|Heroes\Kintaro\Skill Power Chain Damage.png|oCTexture
-Ui|Heroes\Kintaro\Skill Power Hold.png|oCTexture
-Ui|Heroes\Kintaro\Skill Power Throws Axe.png|oCTexture
-Ui|Heroes\Kintaro\Skill Special Buff After Power.png|oCTexture
-Ui|Heroes\Kintaro\Skill Special Dash After Power.png|oCTexture
-Ui|Heroes\Kintaro\Skill Special Delayed AOE.png|oCTexture
-Ui|Heroes\Kintaro\Skill Trait Heal.png|oCTexture
-Ui|Heroes\Kintaro\Skill Ultimate 1 Projectile.png|oCTexture
-Ui|Heroes\Kintaro\Skill Ultimate 1 Slam.png|oCTexture
-Ui|Heroes\Kintaro\Skill Ultimate 2 Clap.png|oCTexture
-Ui|Heroes\Kintaro\Skill Ultimate 2 Heal.png|oCTexture
 Ui|Heroes\Melusine\Ability_Melusine_Attack.png|oCTexture
 Ui|Heroes\Melusine\Ability_Melusine_Attack_Disabled.png|oCTexture
 Ui|Heroes\Melusine\Ability_Melusine_Defensive.png|oCTexture
@@ -2095,10 +1969,29 @@ Ui|Heroes\Quest_Marker_Increment_Scroll_Anim_01.png|oCTexture
 Ui|Heroes\Quest_Marker_Ongoing.png|oCTexture
 Ui|Heroes\Quest_Marker_Ongoing_Blank.png|oCTexture
 Ui|Heroes\Red\Ability_RED_Human_Attack.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Attack_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Defensive.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Defensive_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Power.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Power_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Special.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Special_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Trait.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Trait_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Ultimate_1.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Ultimate_1_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Ultimate_1_Skill.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Ultimate_2.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Ultimate_2_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_RED_Human_Ultimate_2_Skill.png|oCTexture
+Ui|Heroes\Red\Ability_WOLF_Attack_Disabled.png|oCTexture
 Ui|Heroes\Red\Ability_WOLF_Defensive.png|oCTexture
 Ui|Heroes\Red\Ability_WOLF_Defensive_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_WOLF_Power_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_WOLF_Special_Disabled.png|oCTexture
 Ui|Heroes\Red\Ability_WOLF_Trait.png|oCTexture
 Ui|Heroes\Red\Ability_WOLF_Trait_Disabled.png|oCTexture
+Ui|Heroes\Red\Ability_WOLF_Ultimate_1_Disabled.png|oCTexture
 Ui|Heroes\Red\Ability_WOLF_Ultimate_2.png|oCTexture
 Ui|Heroes\Red\Ability_WOLF_Ultimate_2_Disabled.png|oCTexture
 Ui|Heroes\Red\Ability_Wolf_Attack.png|oCTexture
@@ -2106,9 +1999,44 @@ Ui|Heroes\Red\Ability_Wolf_Power.png|oCTexture
 Ui|Heroes\Red\Ability_Wolf_Special.png|oCTexture
 Ui|Heroes\Red\Ability_Wolf_Ultimate_1.png|oCTexture
 Ui|Heroes\Red\HUD_Banner_RED.png|oCTexture
+Ui|Heroes\Red\HUD_RED_Combo_Human.png|oCTexture
+Ui|Heroes\Red\HUD_RED_Combo_Human_Charging.png|oCTexture
+Ui|Heroes\Red\HUD_RED_Combo_Wolf.png|oCTexture
+Ui|Heroes\Red\HUD_RED_Combo_Wolf_Charging.png|oCTexture
 Ui|Heroes\Red\Portrait_RED_01.png|oCTexture
 Ui|Heroes\Red\Portrait_RED_WOLF_01.png|oCTexture
+Ui|Heroes\Red\Skill Attack Cleave.png|oCTexture
+Ui|Heroes\Red\Skill Attack Crit Chance With Combo Points.png|oCTexture
+Ui|Heroes\Red\Skill Attack Flurry.png|oCTexture
+Ui|Heroes\Red\Skill Attack Wide Attacks.png|oCTexture
+Ui|Heroes\Red\Skill Dash Attack Wolf.png|oCTexture
+Ui|Heroes\Red\Skill Dash Attack.png|oCTexture
+Ui|Heroes\Red\Skill Dash Projectiles.png|oCTexture
+Ui|Heroes\Red\Skill Defense AOE On Trigger.png|oCTexture
+Ui|Heroes\Red\Skill Defense Clear Secondary CD.png|oCTexture
+Ui|Heroes\Red\Skill Defense Combo.png|oCTexture
 Ui|Heroes\Red\Skill Defense Human Quest.png|oCTexture
+Ui|Heroes\Red\Skill Defensive Mark.png|oCTexture
+Ui|Heroes\Red\Skill Passive Combo Chain.png|oCTexture
+Ui|Heroes\Red\Skill Passive Combo Points Heal.png|oCTexture
+Ui|Heroes\Red\Skill Passive Combo Use Bonus.png|oCTexture
+Ui|Heroes\Red\Skill Power Clear Cooldown On Kill.png|oCTexture
+Ui|Heroes\Red\Skill Power Extra Combo Points.png|oCTexture
+Ui|Heroes\Red\Skill Power Finisher.png|oCTexture
+Ui|Heroes\Red\Skill Power Triggers Special.png|oCTexture
+Ui|Heroes\Red\Skill Power Wolf Quest.png|oCTexture
+Ui|Heroes\Red\Skill Special Can Hold.png|oCTexture
+Ui|Heroes\Red\Skill Special Ignite.png|oCTexture
+Ui|Heroes\Red\Skill Special Quick Bombs.png|oCTexture
+Ui|Heroes\Red\Skill Special Reduce Armour.png|oCTexture
+Ui|Heroes\Red\Skill Special Use Combo Points.png|oCTexture
+Ui|Heroes\Red\Skill Trait Better Forms.png|oCTexture
+Ui|Heroes\Red\Skill Ultimate 1 Fire.png|oCTexture
+Ui|Heroes\Red\Skill Ultimate 1 Reload.png|oCTexture
+Ui|Heroes\Red\Skill Ultimate 2 Explosif.png|oCTexture
+Ui|Heroes\Red\Skill Ultimate 2 Heal.png|oCTexture
+Ui|Heroes\Red\Skill_Evisceration.png|oCTexture
+Ui|Heroes\Red\Skill_Trait_Active.png|oCTexture
 Ui|Heroes\Romeo\Ability_Romeo_Attack.png|oCTexture
 Ui|Heroes\Romeo\Ability_Romeo_Attack_Disabled.png|oCTexture
 Ui|Heroes\Romeo\Ability_Romeo_Attack_Multi_Hit.png|oCTexture
@@ -2234,11 +2162,11 @@ Ui|Melodies\UI_Melody_Icon_Locked_bg.png|oCTexture
 Ui|Melodies\UI_Melody_Icon_LongJohnSilver.png|oCTexture
 Ui|Melodies\UI_Melody_Icon_bg.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Juliet.png|oCTexture
-Ui|MiniMap\Icons\High\Minimap_IconHigh_Kintaro.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Mermaid.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Object.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Player.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_Romeo.png|oCTexture
+Ui|MiniMap\Icons\High\Minimap_IconHigh_Scarlet.png|oCTexture
 Ui|MiniMap\Icons\High\Minimap_IconHigh_SunWukong.png|oCTexture
 Ui|MiniMap\Icons\Map_Icons_Object.png|oCTexture
 Ui|MiniMap\Icons\Map_Icons_OtherPlayer_Pin.png|oCTexture

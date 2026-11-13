@@ -216,6 +216,7 @@ description = "• Howl, and a dire wolf answers: it follows you and charges you
 clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx"
 duration    = 0.6
 cooldown    = 8
+moving      = true        # howled on the move, as the clone's special was
 steps       = [ { wait = 0.3 }, { summon = "Enemies/Wolves/Standard_Wolf_Dire", lifetime = 20, burst = "own:Bomb", burst_on_hit = true, look = { albedo = "art/Dire_Blood_ALB.png" }, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5, appear = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx" } ]
 
 # Defense and the ultimates: wolf moves of its own (the clone kept Scarlet's).
@@ -236,6 +237,7 @@ description = "• Lunge at what is ahead of you: a bite that makes enemies #Ble
 clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_In.fbx"
 duration    = 0.6
 cooldown    = 12
+lunge       = { speed = 14, at = 0.05, duration = 0.25 }
 hits        = [ { at = 0.25, radius = 3, damage = 200, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" }, { at = 0.3, radius = 3, damage = 50, status = "Weak" } ]
 
 [content.frame.abilities.ultimate]
