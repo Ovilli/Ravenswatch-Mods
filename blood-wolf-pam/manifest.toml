@@ -237,7 +237,6 @@ description = "• Lunge at what is ahead of you: a bite that makes enemies #Ble
 clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_In.fbx"
 duration    = 0.6
 cooldown    = 12
-lunge       = { speed = 14, at = 0.05, duration = 0.25 }
 hits        = [ { at = 0.25, radius = 3, damage = 200, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" }, { at = 0.3, radius = 3, damage = 50, status = "Weak" } ]
 
 [content.frame.abilities.ultimate]
