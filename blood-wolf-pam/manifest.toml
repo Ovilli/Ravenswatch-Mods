@@ -206,7 +206,7 @@ description = "• Bite ahead of you and plant a blood seed: it bursts shortly a
 clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_Out.fbx"
 duration    = 0.8
 cooldown    = 6
-hits        = [ { at = 0.25, radius = 3, damage = 100, stagger = 25, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" } ]
+hits        = [ { at = 0.25, radius = 3, damage = 250, stagger = 25, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" } ]
 steps       = [ { wait = 0.25 }, { fire = "own:Seed", forward = 1.5 } ]
 
 # Bomber Wolf. The special's howl calls a pet (`frame.pets` below): Pam's
