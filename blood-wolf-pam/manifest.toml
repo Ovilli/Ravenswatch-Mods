@@ -9,8 +9,8 @@
 # The clone manifest is kept at ~/.cache/rsmm/blood-wolf-kit/manifest.clone.toml.
 #
 # What the clone had that this file cannot say yet (see the notes at each
-# button): a third combo step, the blood seed riding on the bitten enemy, the
-# bomber wolf's own bleed bomb, and Scarlet's defense/ultimate behaviour and
+# button): the blood seed riding on the bitten enemy, the bomber wolf's own
+# bleed bomb, and Scarlet's defense/ultimate behaviour and
 # talents (Blood Wolf now has buttons and talents of its own).
 
 [mod]
@@ -65,17 +65,17 @@ clip = "Characters\\Heroes\\RED\\Animations\\Communs\\RED_Wolf_Flock_Teleportati
 # --- Buttons ---------------------------------------------------------------------
 # (The game spells four of the wolf's button pictures "Ability_Wolf_" and their
 # greyed twins "Ability_WOLF_": both are named as shipped.)
-# Blood Fangs. The clone's three-hit combo (claw, claw, bleeding double strike)
-# as the two steps a from-scratch combo has: a claw, then the double strike,
-# which is the hit that bleeds.
+# Blood Fangs. The clone's three-hit combo, as three steps of its own: claw,
+# claw, then the double strike, which is the hit that bleeds.
 [content.frame.abilities.attack]
 icon        = "Heroes\\Red\\Ability_Wolf_Attack.png"
 icon_disabled = "Heroes\\Red\\Ability_WOLF_Attack_Disabled.png"
 name        = "Blood Fangs"
-description = "• A two-hit combo. The second hit makes enemies #Bleed@"
+description = "• A three-hit combo. The third hit makes enemies #Bleed@"
 cooldown    = 0.3
 combo       = [
     { clip = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_BasicAttack_Claws_1.fbx", duration = 0.55, hit_at = 0.2, link_at = 0.3, exit_at = 0.45, hits = [ { radius = 2.8, damage = 150, stagger = 8, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Basic_Attack_Slash_01_L.vfx.ot" } ] },
+    { clip = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_BasicAttack_Claws_2.fbx", duration = 0.55, hit_at = 0.2, link_at = 0.3, exit_at = 0.45, hits = [ { radius = 2.8, damage = 150, stagger = 8, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Basic_Attack_Slash_01_R.vfx.ot" } ] },
     { clip = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Skill_DoubleStrike.fbx", duration = 0.7, hit_at = 0.3, link_at = 0.45, exit_at = 0.6, hits = [ { radius = 3.2, damage = 180, stagger = 12, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Dash_Attack_Slash_01.vfx.ot", shake = "light" } ] },
 ]
 
