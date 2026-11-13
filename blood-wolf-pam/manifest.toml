@@ -309,3 +309,56 @@ name        = "Passive Alpha"
 title       = "Alpha"
 description = "• Deal &+{0}%~ damage to bosses"
 add_stats   = [ { stat = "Increase damage to boss", values = [0.10, 0.15, 0.20, 0.25] } ]
+
+[[content.frame.talents]]
+name        = "Special Blood Bond"
+title       = "Blood Bond"
+description = "• #SPECIAL@ deals &+{0}%~ damage for each status on the enemy"
+add_stats   = [ { stat = "Increase secondary damage for each debuff", values = [0.10, 0.15, 0.20, 0.25] } ]
+
+[[content.frame.talents]]
+name        = "Defense Echoing Howl"
+title       = "Echoing Howl"
+description = "• Blood Howl echoes a moment later for #150%@ area damage and #Bleed@"
+actions     = [ { on = "defense", hits = [ { at = 1.2, radius = 4.5, damage = 150, status = "Bleed", fx = "Settings\\Enemies\\Wolves\\Elite_Wolf_Howl_01.vfx.ot" } ] } ]
+
+[[content.frame.talents]]
+name        = "Trait Tear Open"
+title       = "Tear Open"
+description = "• #TRAIT@ gains &+{0}%~ #Crit Chance@"
+add_stats   = [ { stat = "Crit chance trait", values = [0.10, 0.15, 0.20, 0.25] } ]
+
+[[content.frame.talents]]
+name        = "Passive Lick Wounds"
+title       = "Lick Wounds"
+description = "• Healing you receive is increased by &+{0}%~"
+add_stats   = [ { stat = "Increase healing received", values = [0.15, 0.20, 0.25, 0.30] } ]
+
+# --- Its story (7 pages, as every shipped hero) ----------------------------------
+[[content.memoirs]]
+title = "The Red Hood"
+text  = "There was a girl once, and a hood, and a path through the wood she was told never to leave."
+
+[[content.memoirs]]
+title = "Grandmother's House"
+text  = "What waited in the bed had her grandmother's voice. It did not have her grandmother's teeth."
+
+[[content.memoirs]]
+title = "The Bite"
+text  = "The huntsman came too late to stop the bite, and just in time to see what it began."
+
+[[content.memoirs]]
+title = "Full Moon"
+text  = "She learned to wear the wolf like the hood: on at moonrise, off by morning. For a while."
+
+[[content.memoirs]]
+title = "The Last Morning"
+text  = "One dawn the wolf did not leave. It stood in the doorway, licked its teeth, and found it did not miss her."
+
+[[content.memoirs]]
+title = "The Pack"
+text  = "A wolf alone is hungry. So it howled into the dark hills, and the dark hills, bleeding, howled back."
+
+[[content.memoirs]]
+title = "Blood Wolf"
+text  = "The Nightmares call it by no name. They know it by what it leaves behind: everything it has bitten, still bleeding."
