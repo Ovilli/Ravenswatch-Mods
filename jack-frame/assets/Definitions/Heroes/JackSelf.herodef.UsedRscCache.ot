@@ -1,5 +1,6 @@
 3D|Characters\Character_Grey.mat.ot|oCMaterial
 3D|Characters\Character_Static_Grey.mat.ot|oCMaterial
+3D|Characters\Heroes\Aladdin\Textures\T_Aladdin_ALB.tga|oCTexture
 3D|Characters\Heroes\Juliet\Animations\Juliet_BasicAttack_01.fbx|oCAnimation
 3D|Characters\Heroes\Juliet\Animations\Juliet_BasicAttack_02.fbx|oCAnimation
 3D|Characters\Heroes\Juliet\Animations\Juliet_BasicAttack_03.fbx|oCAnimation
@@ -125,6 +126,7 @@
 3D|Characters\Heroes\Kintaro\Textures\T_Hero_JackSelf_Weapon_ALB.tga|oCTexture
 3D|Characters\Heroes\Kintaro\Textures\T_JackSelf_Axe_ALB.tga|oCTexture
 3D|Characters\Heroes\Kintaro\Textures\T_JackSelf_Bean_ALB.tga|oCTexture
+3D|Characters\Heroes\Kintaro\Textures\T_Kintaro_ALB.tga|oCTexture
 3D|Characters\Heroes\Melusine\Animations\Melusine_Attack_Default_01.fbx|oCAnimation
 3D|Characters\Heroes\Melusine\Animations\Melusine_Attack_Default_02.fbx|oCAnimation
 3D|Characters\Heroes\Melusine\Animations\Melusine_Attack_Default_03.fbx|oCAnimation
@@ -181,6 +183,7 @@
 3D|Characters\Heroes\Melusine\Narrative\MELUSINE_Book_ReadyLoop.fbx|oCAnimation
 3D|Characters\Heroes\Melusine\Narrative\MELUSINE_Book_SelectionLoop.fbx|oCAnimation
 3D|Characters\Heroes\RED\RED_Human_GEO.fbx|oCGeometry
+3D|Characters\Heroes\RED\Textures\T_Red_Dagger_ALB.tga|oCTexture
 3D|Characters\Heroes\Romeo\Animations\Book\Rome_Book_InReady.fbx|oCAnimation
 3D|Characters\Heroes\Romeo\Animations\Book\Rome_Book_InSelection.fbx|oCAnimation
 3D|Characters\Heroes\Romeo\Animations\Book\Rome_Book_LoopDefeat.fbx|oCAnimation
