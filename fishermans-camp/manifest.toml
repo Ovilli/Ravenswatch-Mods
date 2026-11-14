@@ -1,7 +1,7 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.5.0"
+version     = "0.6.0"
 author      = "RSMM"
 description = "Adds a fisherman's camp to the Dark Hills, built from community fan art on the game's own High Fisherman Platform: the fan-art hut on the raised deck, the giant catch on its tarp, drying racks with fish, a cloth awning, crates and barrels. A smaller standalone hut also appears in crystal clearings."
 enabled     = true
@@ -50,20 +50,28 @@ question = "does a hold prompt appear on the hut, and does the interaction compl
 id       = "no_crash"
 question = "did the run survive, and did the other crystal clearings still spawn their crystals?"
 
-# --- the fishing dock (pois/fishing_dock) ---------------------------------
+# --- the fishing platform (pois/fishing_dock, v3 layout) -----------------
 
 [[experiment]]
 id       = "dock_found"
-question = "did a ghoul camp on the High Fisherman Platform (raised plank decks on pillars over water) show the fan-art hut on its middle deck instead of the usual hut? (4 copies: roughly one 64x64 camp in four)"
+question = "did a Dark Hills 40x40 ghoul camp turn into the fishing platform standing in shallow water? (16 copies: most 40x40 camps)"
+
+[[experiment]]
+id       = "dock_layout"
+question = "does it read like the reference: the big angled upper deck at the back with the hut on its left and the giant fish on the grate in the middle, a row of posts dropping into an open water hole in front of it, and the lower walkway wrapping round the hole as a U (left wing with the lean-to, front walkway, right arm)?"
 
 [[experiment]]
 id       = "dock_all_parts"
-question = "do ALL the kit parts draw: the hut, the giant fish on the green tarp, three drying racks with fish, the cloth awning, three crate/barrel stacks? (each is its own entity now; v0.4 drew only the hut)"
+question = "do all the parts draw (hut, fish + grate, crane, drying rack, torn tarp, crates/barrels, every deck section, both long ramps)? Name any missing area."
 
 [[experiment]]
-id       = "dock_parts_on_decks"
-question = "do the parts stand ON the decks (not floating, not sunk into the planks), and does the hut block you?"
+id       = "dock_ramps_walk"
+question = "can you walk: up a long ramp (front-left or right) from the water onto the lower walkway, then up the wide tarp ramp (left of the hole) or the stair (right of the hole) onto the upper deck? (the diagonal ramps are staircases of small steps; say if one feels stuck or bumpy)"
+
+[[experiment]]
+id       = "dock_walls"
+question = "do the railings stop you walking off the decks, and do the rope fence round the hole and the hut block you? Is any walkway blocked by an invisible wall?"
 
 [[experiment]]
 id       = "dock_no_crash"
-question = "did the run load and survive the dock tile, with the ghouls and the reward on the top deck intact?"
+question = "did the run load and survive the platform tile, with the ghouls and the reward (now on the upper deck, left of the fish) intact?"
