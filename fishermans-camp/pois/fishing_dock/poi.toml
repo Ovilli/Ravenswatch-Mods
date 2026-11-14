@@ -1,51 +1,73 @@
-# THE FISHING DOCK — the fan art's fisherman camp, built the way the shipped
-# Dark Hills docks are: on the game's own High Fisherman Platform (raised
-# plank decks at 4 m and 8 m on pontoon pillars, slopes, boats, fishnets), with
-# the fan-art pieces stood on its decks as a kit of small parts. Every binary
-# here is built locally from the fan art and gitignored; only this file is
-# shared.
+# THE FISHING PLATFORM — the fan art's fishing platform as a whole tile of its
+# own, after the reference renders: the upper deck at the back (2 m) with the
+# tall-roofed hut, the giant fish on its pallet and the blood path, the drying
+# rack, the crane and the cloth awnings; the lower walkways (1 m) round an open
+# water hole with rope fences, posts and a torn tarp; the cloth tent, the
+# broken lean-to, crates and barrels; ramps up to the deck and down to the
+# water; everything standing in shallow water. Every binary here is built
+# locally from the fan art and gitignored; only this file is shared.
 #
-# The shipped docks are KITS: ~100 small entities placed ~470 times, each
-# walkable deck carrying its own collision box. Six giant meshes at the tile
-# centre (v0.4) drew only the first; one mesh per entity, placed where it
-# stands, is the shipped way and the one proven on the hut.
-base      = "Dark_Hills/64x64_HighFishermanPlatform_Ghouls_Camp"
+# Built as a KIT (one mesh per entity): the hut is the prop (model.glb, it
+# carries the minimap icon and the interaction), every other part is its own
+# entity under parts/. All are authored in tile coordinates and stand at the
+# tile origin. About 1.0 M vertices in 22 meshes, each under the cooker's
+# 65535-vertex limit, which is per mesh.
+#
+# The tile is the Dark Hills ghoul camp with a moat (40x40_Chest_SmallPool): it
+# already has water. Its own scenery and its invisible pit walls are cleared,
+# its centre is flooded into shallow water, and its reward is lifted onto the
+# upper deck. Its ghouls stay.
+base      = "Dark_Hills/40x40_Chest_SmallPool_Ghouls_Camp"
 chapters  = ["Dark_Hills"]
 kinds     = ["Camp"]
-# PLAYTEST: 16 entries (the SDK's cap) next to the chapter's 6 shipped 64x64
-# Camp tiles, so roughly three 64x64 camps in four are the dock. A map rolls 5
-# Camps over 14 40x40 and 5 64x64 slots. Lower to 1-2 once it is confirmed.
+# PLAYTEST: 16 (the SDK's cap) next to the chapter's 9 shipped 40x40 Camps, so
+# about two 40x40 camps in three are the platform. Lower it once confirmed.
 copies    = 16
 own_level = true
 
-# Everything the shipped tile stands stays (decks, slopes, pillars, boats,
-# ghouls, the reward on the top deck) except its hut, whose spot ours takes.
-clear = { remove = ["Hut.entity.ot"] }
+clear = { walls = true }
+move = [
+  { entity = "Enemy_Camp_Reward_Spawner_Dark_Hills.entity.ot", pos = [-1.2, 2.0, -9.3] },
+  { entity = "LD_Reward_Pedestal.entity.ot", pos = [-1.2, 2.0, -9.3] },
+]
+terrain = [
+  { op = "set", x = 0.0, z = -2.0, radius = 19.0, amount = -1.6, falloff = "smooth", layer = "Height" },
+  { op = "set", x = 0.0, z = -2.0, radius = 14.0, amount = -1.6, falloff = "constant", layer = "Height" },
+]
 
 entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.entity.ot"
 material_base = "Scenery\\DarkHills\\M_Walls_Ruins.mat.ot"
 transform = { fit = "rig", scale = 1.0 }
 interactive = true
 
-# The hut (model.glb, the prop: it carries the minimap icon and the
-# interaction) blocks; the deck under it is the shipped one.
+# The hut blocks.
 collision = [
-  { kind = "wall", size = [4.0, 2.5, 3.0], at = [0.0, 1.25, -0.9] },
+  { kind = "wall", size = [6.4, 2.6, 6.4], at = [-10.5, 3.3, -12.0] },
 ]
 
-# Where everything stands. Mid deck top = y 4 (Platform_Floor_8x8_02 floors at
-# x -11..13, z 2..18), upper deck = y 8 (reward at -1.4, -19.1). The shipped
-# hut stood at (0.4, 3.8, 1.0) on the 8x4 floor at (0.9, 4, 0.1).
 places = [
-  { entity = "@prop",   pos = [0.4, 4.0, 1.0] },
-  { entity = "@catch",  pos = [9.0, 4.0, 10.0],  yaw = 30.0 },
-  { entity = "@awning", pos = [12.6, 4.0, 10.5] },
-  { entity = "@rack",   pos = [1.0, 4.0, 15.5] },
-  { entity = "@rack",   pos = [-7.0, 4.0, 12.5], yaw = 90.0 },
-  { entity = "@rack",   pos = [7.0, 8.0, -11.5] },
-  { entity = "@stack",  pos = [-2.0, 4.0, 4.5] },
-  { entity = "@stack",  pos = [12.0, 4.0, 16.5], yaw = 20.0 },
-  { entity = "@stack",  pos = [-9.0, 8.0, -10.5] },
+  { entity = "@prop", pos = [0.0, 0.0, 0.0] },
+  { entity = "@back", pos = [0.0, 0.0, 0.0] },
+  { entity = "@fish", pos = [0.0, 0.0, 0.0] },
+  { entity = "@fish__2", pos = [0.0, 0.0, 0.0] },
+  { entity = "@front", pos = [0.0, 0.0, 0.0] },
+  { entity = "@front__2", pos = [0.0, 0.0, 0.0] },
+  { entity = "@front__3", pos = [0.0, 0.0, 0.0] },
+  { entity = "@hut__2", pos = [0.0, 0.0, 0.0] },
+  { entity = "@lower", pos = [0.0, 0.0, 0.0] },
+  { entity = "@lower__2", pos = [0.0, 0.0, 0.0] },
+  { entity = "@lower__3", pos = [0.0, 0.0, 0.0] },
+  { entity = "@lower__4", pos = [0.0, 0.0, 0.0] },
+  { entity = "@lower__5", pos = [0.0, 0.0, 0.0] },
+  { entity = "@lower__6", pos = [0.0, 0.0, 0.0] },
+  { entity = "@lower__7", pos = [0.0, 0.0, 0.0] },
+  { entity = "@ramps", pos = [0.0, 0.0, 0.0] },
+  { entity = "@upper", pos = [0.0, 0.0, 0.0] },
+  { entity = "@upper__2", pos = [0.0, 0.0, 0.0] },
+  { entity = "@upper__3", pos = [0.0, 0.0, 0.0] },
+  { entity = "@upper__4", pos = [0.0, 0.0, 0.0] },
+  { entity = "@upper__5", pos = [0.0, 0.0, 0.0] },
+  { entity = "@upper__6", pos = [0.0, 0.0, 0.0] },
 ]
 
 # ⚠ Every table header goes below this line.
@@ -58,3 +80,39 @@ normal = "Scenery\\DarkHills\\T_Walls_Ruins_NRM.tga"
 [marker]
 icon = "icon.png"
 reveal_radius = 20000.0
+
+# Walkable decks and ramps (ground), railings (wall), in tile coordinates.
+[parts.upper]
+collision = [
+  { kind = "ground", size = [30.0, 3.5, 10.0], at = [-1.0, 0.25, -11.0] },
+  { kind = "wall", size = [30.0, 2.0, 0.3], at = [-1.0, 3.0, -16.0] },
+  { kind = "wall", size = [0.3, 2.0, 10.0], at = [-16.0, 3.0, -11.0] },
+  { kind = "wall", size = [0.3, 2.0, 10.0], at = [14.0, 3.0, -11.0] },
+  { kind = "ground", size = [3.0, 0.5, 3.236], at = [-8.5, 1.262, -4.538], rot = [18.0, 0.0, 0.0] },
+  { kind = "ground", size = [3.0, 0.5, 3.236], at = [9.5, 1.262, -4.538], rot = [18.0, 0.0, 0.0] },
+]
+
+[parts.lower]
+collision = [
+  { kind = "ground", size = [9.0, 2.5, 16.0], at = [-7.5, -0.25, 2.0] },
+  { kind = "ground", size = [6.0, 2.5, 16.0], at = [9.0, -0.25, 2.0] },
+  { kind = "ground", size = [9.0, 2.5, 6.0], at = [1.5, -0.25, -3.0] },
+  { kind = "ground", size = [9.0, 2.5, 4.0], at = [1.5, -0.25, 8.0] },
+  { kind = "wall", size = [9.0, 2.0, 0.3], at = [1.5, 2.0, 0.0] },
+  { kind = "wall", size = [9.0, 2.0, 0.3], at = [1.5, 2.0, 6.0] },
+  { kind = "wall", size = [0.3, 2.0, 6.0], at = [-3.0, 2.0, 3.0] },
+  { kind = "wall", size = [0.3, 2.0, 6.0], at = [6.0, 2.0, 3.0] },
+  { kind = "wall", size = [0.3, 2.0, 16.0], at = [-12.0, 2.0, 2.0] },
+  { kind = "wall", size = [0.3, 2.0, 16.0], at = [12.0, 2.0, 2.0] },
+  { kind = "wall", size = [1.0, 2.0, 0.3], at = [-11.5, 2.0, 10.0] },
+  { kind = "wall", size = [9.0, 2.0, 0.3], at = [-3.5, 2.0, 10.0] },
+  { kind = "wall", size = [4.0, 2.0, 0.3], at = [6.0, 2.0, 10.0] },
+  { kind = "wall", size = [1.0, 2.0, 0.3], at = [11.5, 2.0, 10.0] },
+]
+
+[parts.ramps]
+collision = [
+  { kind = "ground", size = [3.0, 0.5, 3.236], at = [-9.5, 0.262, 11.462], rot = [18.0, 0.0, 0.0] },
+  { kind = "ground", size = [3.0, 0.5, 3.236], at = [2.5, 0.262, 11.462], rot = [18.0, 0.0, 0.0] },
+  { kind = "ground", size = [3.0, 0.5, 3.236], at = [9.5, 0.262, 11.462], rot = [18.0, 0.0, 0.0] },
+]
