@@ -1,0 +1,26 @@
+[mod]
+id = "banned-talents"
+name = "Banned Talents"
+version = "1.0.0"
+author = "RSMM"
+description = "Keeps the selected talents out of every talent offer, for every hero: they can never be dealt at the starting pick or on level-up. Their cards still show in the compendium. Edited from the talent picker."
+enabled = false
+load_order = 50
+sdk_version = ">=3.0,<4"
+license = "MIT"
+tags = [
+  "talents",
+  "challenge",
+  "difficulty",
+]
+# A data-level ban: every peer running the mod builds the same offer pools, so
+# the seeded talent draw stays identical in co-op.
+multiplayer_scope = "deterministic-shared"
+
+[[content]]
+kind = "talent"
+mode = "ban"
+id = "banned_talents"
+# The picker in the mod's config panel decides; this list is used only when
+# the mod has no picker. Ids are "<Hero>/<controller>", e.g. "Red/Basic Cleave".
+talents = []

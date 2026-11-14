@@ -1,0 +1,5 @@
+[fields.banned]
+type = "multiselect"
+source = "talent-catalog"
+label = "Banned talents"
+default = []
