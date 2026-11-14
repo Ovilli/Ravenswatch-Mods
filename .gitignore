@@ -3,3 +3,11 @@ gretel
 hero-swap
 _merged/
 Ravenwtach fan art-20261114T160310Z-1-001.zip
+
+# Fan-art POI: the fan art and everything RSMM builds from it stay local
+# (never on GitHub). Only the manifest is shared.
+*.zip
+fishermans-camp/art/
+fishermans-camp/assets/
+fishermans-camp/.rsmm_emitted.json
+fishermans-camp/.rsmm_emit_cache.json
