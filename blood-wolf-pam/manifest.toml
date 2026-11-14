@@ -15,7 +15,7 @@
 [mod]
 id                = "blood-wolf-pam"
 name              = "Blood Wolf"
-version           = "0.2.0"
+version           = "0.3.0"
 author            = "Local"
 description       = "Blood Wolf: a wolf hero of its own, written from scratch on Scarlet's wolf assets."
 license           = "MIT"
@@ -24,6 +24,13 @@ enabled           = false
 multiplayer_scope = "deterministic-shared"
 experimental      = true
 tags              = ["hero", "red"]
+
+# The power is a `template` (Scarlet's own wolf bite) and the build fixes the
+# combo and the talent cards need: CLI channel v33 (RSMM 5.9.32) or newer. An
+# older RSMM skips the mod with a plain message instead of keeping the last
+# build it made (what "nothing changes between versions" looked like).
+[requires]
+cli = 33
 
 [[content]]
 kind        = "hero"
@@ -219,46 +226,41 @@ cooldown    = 6
 # Pam's clone: the bite's base hit at 1x (Scarlet's is higher).
 values      = { "Wolf Primary Ability Damage Multiplier Default" = 1.0 }
 
-# Bomber Wolf. The special's howl calls a pet (`frame.pets` below): Pam's
-# blood-red dire wolf on the pet base, so it follows Blood Wolf and goes for
-# the enemies.
+# Dire Wolf. The special's howl calls a pet (`frame.pets` below) on the pet
+# base, so it follows Blood Wolf and goes for the enemies. Pam (2026-11-14):
+# the base special is the CLAW dire wolf; her Rabid talent turns it into the
+# bite wolf that bursts.
 [content.frame.abilities.special]
 icon        = "Heroes\\Red\\Ability_Wolf_Special.png"
 icon_disabled = "Heroes\\Red\\Ability_WOLF_Special_Disabled.png"
-name        = "Bomber Wolf"
-description = "• Howl, and a dire wolf answers: it follows you and charges your enemies. Its first bite blows it up in a bleeding explosion"
+name        = "Dire Wolf"
+description = "• Howl, and a dire wolf answers: it follows you and claws your enemies"
 clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Defensive_Howl.fbx"
 duration    = 0.6
 cooldown    = 8
 moving      = true        # howled on the move, as the clone's special was
 
 
-# The bomber wolf, as Pam tuned it in the clone (0.1): one per press of the
-# special, a pet that follows Blood Wolf and charges the enemies; its first
-# bite blows it up into Blood Wolf's bleed bomb, it also bursts if killed or
-# after 20 s. The bite: every enemy in a cone twice as wide and long, from
-# closer, 35% faster, retried 0.5 s after a miss, none of the enemy wolf's
-# own debuffs.
+# One wolf per press of the special, a pet that follows Blood Wolf and charges
+# the enemies, gone after 20 s.
+#   Base: the dire wolf as it fights by default, with its claw (Double Slash).
+#   With Rabid (`upgrade`, while "Skill Special Rabid" is held): the bomber
+#   wolf as Pam tuned it in the clone (0.1): blood-red, it bites instead, and
+#   its first bite blows it up into Blood Wolf's bleed bomb (also if killed or
+#   after 20 s). The bite: every enemy in a cone twice as wide and long, from
+#   closer, 35% faster, retried 0.5 s after a miss, none of the enemy wolf's
+#   own debuffs.
 [content.frame.pets]
 entity         = "Enemies/Wolves/Standard_Wolf_Dire"
-look           = { albedo = "art/Dire_Blood_ALB.png" }
 count          = 1
 button         = "special"
 spawn          = "button"
 counter        = "none"
 aggro          = true
-burst          = "own:Bomb"
-burst_on_hit   = true
 lifetime       = 20
-attack         = "Bite"
-attack_area    = 1.2
-attack_reach   = 2.0
-attack_range   = 1.0
-attack_targets = 0
-attack_speed   = 1.35
-attack_debuffs = false
-attack_cooldown = 0.5
 appear         = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx"
+talent         = "Skill Special Rabid"
+upgrade        = { look = { albedo = "art/Dire_Blood_ALB.png" }, burst = "own:Bomb", burst_on_hit = true, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5 }
 
 # Defense and the ultimates: wolf moves of its own (the clone kept Scarlet's).
 [content.frame.abilities.defense]
@@ -380,10 +382,9 @@ description = "• #POWER@ deals &+{0}%~ damage for each status on the enemy"
 add_stats   = [ { stat = "Increase primary damage for each debuff", values = [0.10, 0.15, 0.20, 0.25] } ]
 
 [[content.frame.talents]]
-name        = "Special Pack Hunter"
-title       = "Pack Hunter"
-description = "• #SPECIAL@ gains &+{0}%~ #Crit Chance@"
-add_stats   = [ { stat = "Crit chance secondary", values = [0.10, 0.15, 0.20, 0.25] } ]
+name        = "Special Rabid"
+title       = "Rabid"
+description = "• #SPECIAL@ calls a rabid wolf instead: it bites, and its first bite blows it up in a #Bleed@ing explosion"
 starter     = true
 
 [[content.frame.talents]]
