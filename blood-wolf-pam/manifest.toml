@@ -20,7 +20,7 @@ author            = "Local"
 description       = "Blood Wolf: a wolf hero of its own, written from scratch on Scarlet's wolf assets."
 license           = "MIT"
 sdk_version       = ">=3.0,<4"
-enabled           = false
+enabled           = true
 multiplayer_scope = "deterministic-shared"
 experimental      = true
 tags              = ["hero", "red"]
