@@ -216,6 +216,9 @@ name        = "Blood Seed"
 description = "• Rush in and bite, planting a blood seed in what you bite. It bursts into a bleeding explosion shortly after, or as soon as the enemy dies"
 template    = "Red: Wolf Primary"
 cooldown    = 6
+# Turn to the cursor on press: Scarlet's bite only turns to an enemy it finds
+# (13 m, aimed half-circle); with none it lunged wherever the wolf faced.
+aim         = true
 # Pam's clone: the bite's base hit at 1x (Scarlet's is higher).
 values      = { "Wolf Primary Ability Damage Multiplier Default" = 1.0 }
 
