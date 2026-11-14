@@ -202,20 +202,26 @@ combo       = [
     { clip = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Skill_DoubleStrike.fbx", hit_at = 0.23, link_at = 0.6, exit_at = 0.8, hits = [ { radius = 3.2, damage = 180, stagger = 12, status = "Bleed", fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Dash_Attack_Slash_01.vfx.ot", shake = "light" } ] },
 ]
 
-# Blood Seed, as Pam made it in the clone (0.1): a rushing bite (the wolf's
-# lunge clip carries it ~10 m) that plants a blood seed IN the bitten enemy:
-# Carmilla's blood-seed debuff on the bite's damage (frame.edits below). The
-# seed bursts into Blood Wolf's bleed bomb when it runs out (1.5 s), or at once
-# if the enemy dies first.
+# Blood Seed, as Pam made it in the clone (0.1): a rushing bite that plants a
+# blood seed IN the bitten enemy: Carmilla's blood-seed debuff on the bite's
+# damage (frame.edits below). The seed bursts into Blood Wolf's bleed bomb when
+# it runs out (1.5 s), or at once if the enemy dies first.
+# Shaped as Scarlet's wolf bite (playtest 2026-11-14: 0.2 lunged its full
+# length and bit only where the lunge happened to end): the lunge stops at the
+# first enemy in reach and the bite clip (bite + recovery) plays there; an
+# enemy already in reach is bitten at once. A lunge that reaches no one ends
+# with no bite. Intangible throughout, as Scarlet's.
 [content.frame.abilities.power]
 icon        = "Heroes\\Red\\Ability_Wolf_Power.png"
 icon_disabled = "Heroes\\Red\\Ability_WOLF_Power_Disabled.png"
 name        = "Blood Seed"
 description = "• Rush in and bite, planting a blood seed in what you bite. It bursts into a bleeding explosion shortly after, or as soon as the enemy dies"
 clip        = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_In.fbx"
-duration    = 0.9
 cooldown    = 6
-hits        = [ { at = 0.45, radius = 3, damage = 250, stagger = 25, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" } ]
+intangible  = true
+strike      = { clip = "Characters\\Heroes\\RED\\Animations\\Skills\\RED_Wolf_Pimary_Bite_Out.fbx", after = 0.25 }
+# On the bite's own clip (Scarlet's bite lands 0.23 s into it).
+hits        = [ { at = 0.23, radius = 3, damage = 250, stagger = 25, fx = "Settings\\Heroes\\Hero_Red_FX\\WOLF_Bite_01.vfx.ot", shake = "light" } ]
 
 # Bomber Wolf. The special's howl calls a pet (`frame.pets` below): Pam's
 # blood-red dire wolf on the pet base, so it follows Blood Wolf and goes for
