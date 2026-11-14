@@ -11,10 +11,11 @@ end)
 local last
 R.schedule.every(2, function()
     local parts = {}
-    for _, k in ipairs({ "menu", "book", "modal", "loading" }) do
+    for _, k in ipairs({ "menu", "book", "modal", "loading", "page" }) do
         local n, why = R.ui.count(k)
         parts[#parts + 1] = k .. "=" .. (n == nil and ("?(" .. tostring(why) .. ")") or tostring(n))
     end
+    parts[#parts + 1] = "on page " .. tostring(R.ui.page())
     local line = table.concat(parts, " ")
     if line ~= last then           -- log changes only, not every tick
         R.log("[ui-probe] state " .. line)
