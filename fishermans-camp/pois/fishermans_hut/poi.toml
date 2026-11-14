@@ -29,11 +29,12 @@ transform = { fit = "rig", scale = 1.0 }
 # WALKABLE DECK. Boxes in the prop's space (x, y up, z toward the door), full
 # sizes in game units, rotations in degrees. `ground` is walkable, `wall`
 # blocks. The deck top is y = 0.5; the ramp falls from the deck edge (z = 1.3)
-# to the ground at z = 2.85 (a negative X rotation lowers its +Z end); the
+# to the ground at z = 2.85 (a POSITIVE X rotation lowers its +Z end, as
+# on the shipped slopes); the
 # wall is the hut body.
 collision = [
   { kind = "ground", size = [4.9, 1.0, 4.15], at = [0.0, 0.0, -0.775] },
-  { kind = "ground", size = [1.6, 0.5, 1.629], at = [0.0, 0.012, 1.998], rot = [-17.88, 0.0, 0.0] },
+  { kind = "ground", size = [1.6, 0.5, 1.629], at = [0.0, 0.012, 1.998], rot = [17.88, 0.0, 0.0] },
   { kind = "wall",   size = [4.0, 2.5, 3.0],  at = [0.0, 1.75, -0.9] },
 ]
 

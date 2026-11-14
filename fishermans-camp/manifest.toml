@@ -1,9 +1,9 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.4.0"
+version     = "0.5.0"
 author      = "RSMM"
-description = "Adds a fishing dock to the Dark Hills, built from community fan art: plank bridges on posts across the moat of a ghoul camp, the fisherman's hut raised on its deck, and the giant catch on a gutting floor. Bridges and decks are walkable. A smaller standalone hut also appears in crystal clearings."
+description = "Adds a fisherman's camp to the Dark Hills, built from community fan art on the game's own High Fisherman Platform: the fan-art hut on the raised deck, the giant catch on its tarp, drying racks with fish, a cloth awning, crates and barrels. A smaller standalone hut also appears in crystal clearings."
 enabled     = true
 load_order  = 32
 sdk_version = ">=3.0,<4"
@@ -54,24 +54,16 @@ question = "did the run survive, and did the other crystal clearings still spawn
 
 [[experiment]]
 id       = "dock_found"
-question = "did a ghoul camp with a moat show the fishing dock (plank bridges with railings, the hut on the island, the giant fish) instead of its usual rocks and reeds? (4 copies: roughly one 40x40 camp in five)"
+question = "did a ghoul camp on the High Fisherman Platform (raised plank decks on pillars over water) show the fan-art hut on its middle deck instead of the usual hut? (4 copies: roughly one 64x64 camp in four)"
 
 [[experiment]]
-id       = "dock_bridges_walk"
-question = "can you cross all three bridges over the moat, and do the railings stop you stepping off the sides?"
+id       = "dock_all_parts"
+question = "do ALL the kit parts draw: the hut, the giant fish on the green tarp, three drying racks with fish, the cloth awning, three crate/barrel stacks? (each is its own entity now; v0.4 drew only the hut)"
 
 [[experiment]]
-id       = "dock_cleared"
-question = "is the old camp scenery gone (no rocks, reeds or old bridges poking through), while the ghouls still spawn and the camp reward still appears when they die?"
-
-[[experiment]]
-id       = "dock_gutting_deck"
-question = "can you walk up the ramp onto the raised gutting deck (the giant fish on the green tarp), and do its two railings hold you?"
-
-[[experiment]]
-id       = "dock_all_meshes"
-question = "do ALL parts of the dock draw: hut, bridges, gutting deck, drying racks with fish? (the dock is six meshes on one prop; a missing part means an extra mesh component did not draw)"
+id       = "dock_parts_on_decks"
+question = "do the parts stand ON the decks (not floating, not sunk into the planks), and does the hut block you?"
 
 [[experiment]]
 id       = "dock_no_crash"
-question = "did the run load and survive the dock tile?"
+question = "did the run load and survive the dock tile, with the ghouls and the reward on the top deck intact?"
