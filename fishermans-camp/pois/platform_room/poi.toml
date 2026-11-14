@@ -1,47 +1,31 @@
-# THE FISHING PLATFORM (v3) — the fan art's fishing platform as a whole tile,
-# laid out from the reference blockout back-projected to a plan (pitch 38 deg,
-# 90 deg FOV, mannequins at 1.8 m; fishermans-camp-tools/scripts/backproject.py
-# + layout_ref3.py): the angled upper deck (2.4 m) at the back with the
-# tall-roofed hut on its left, the giant fish on the grate in its middle, the
-# crane, the drying rack and the torn tarp; a row of posts under its front
-# edge dropping into the open water hole; the wide wedge ramp off its
-# front-left (under a tarp) and a stair off its front-right; the lower ring
-# (0.2 m) as a U round the hole — the left wing with the lean-to, the front
-# walkway, the right arm with the niche — and two long ramps into the water.
-# Every binary here is built locally from the fan art and gitignored; only
-# this file is shared.
+# THE FISHING PLATFORM ROOM — the fan art's whole fishing platform, built as an
+# UNDERGROUND SUB-TILE the way the game builds its Ghoul den and Thieves' stash
+# rooms: it is never chosen for a map slot. The fisherman's hut entrance
+# (pois/fishermans_hut) `needs` one tile flagged Fishermans_Platform_Underground,
+# so the generator drops this one into one of the map's off-map room slots, and
+# the hut's door teleporter brings you here; the teleporter on the front walkway
+# takes you back. Layout: fishermans-camp-tools/scripts/layout_ref3.py.
 #
-# Built as a KIT (one mesh per entity): the hut is the prop (model.glb, it
-# carries the minimap icon and the interaction), every other part is its own
-# entity under parts/, all authored in tile coordinates at the tile origin,
-# each under the cooker's 65535-vertex limit.
-#
-# Collision is ALL axis-aligned (no rot): decks are strips, the ramps are
-# staircases of 0.8 m cells (<= 0.4 m per step; a 0.5 m step is proven
-# climbable), diagonal railings are chains of overlapping blocks.
-base      = "Dark_Hills/40x40_Chest_SmallPool_Ghouls_Camp"
+# Built as a KIT (one mesh per entity, the hut is the prop). Every binary here
+# is built locally from the fan art and gitignored; only this file is shared.
+base      = "Dark_Hills/DarkHill_Thieves_Stashes_Gold_Room_Underground_01"
 chapters  = ["Dark_Hills"]
-kinds     = ["Camp"]
-# PLAYTEST: 16 (the SDK's cap) next to the chapter's 9 shipped 40x40 Camps, so
-# about two 40x40 camps in three are the platform. Lower it once confirmed.
-copies    = 16
+subtile   = true
+kinds     = ["Fishermans_Platform_Underground"]
+copies    = 1
 own_level = true
 
-clear = { walls = true }
-move = [
-  { entity = "Enemy_Camp_Reward_Spawner_Dark_Hills.entity.ot", pos = [-1.8, 2.4, -0.6] },
-  { entity = "LD_Reward_Pedestal.entity.ot", pos = [-1.8, 2.4, -0.6] },
-]
-# The whole platform stands in shallow water: the tile is flooded to -1.6 m
-# inside 19.5 m of its centre (the ramps end inside that disc).
-terrain = [
-  { op = "set", x = 0.0, z = 0.0, radius = 19.5, amount = -1.6, falloff = "constant", layer = "Height" },
+# Only the room's lighting zone survives; its walls, floor, jars and its own
+# teleporter are sunk. The platform brings its own floor (parts.lower).
+clear = { keep = ["Zone_Render_Setting"] }
+
+teleporters = [
+  { side = "in", id = "Fishermans_Platform", pos = [-1.5, 0.2, 11.0], yaw = 180.0 },
 ]
 
 entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.entity.ot"
 material_base = "Scenery\\DarkHills\\M_Walls_Ruins.mat.ot"
 transform = { fit = "rig", scale = 1.0 }
-interactive = true
 
 # The hut blocks.
 collision = [
@@ -50,6 +34,15 @@ collision = [
 
 places = [
   { entity = "@prop", pos = [0.0, 0.0, 0.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-4.0, 3.6, -4.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [2.5, 3.4, -2.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [8.0, 1.6, 2.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-12.0, 1.6, 1.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-1.0, 1.6, 11.5] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [10.0, 1.4, 8.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-12.0, 1.4, 9.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [6.0, 3.4, -9.0] },
+  { entity = "Objects_Common\\Light_Underground_Exit_Model.entity.ot", pos = [-1.5, 0.2, 12.2] },
   { entity = "@back", pos = [0.0, 0.0, 0.0] },
   { entity = "@back__2", pos = [0.0, 0.0, 0.0] },
   { entity = "@fish", pos = [0.0, 0.0, 0.0] },
@@ -81,10 +74,6 @@ places = [
 albedo = "Scenery\\DarkHills\\T_Walls_Ruins_ALB.tga"
 mra    = "Scenery\\DarkHills\\T_Walls_Ruins_MRA.tga"
 normal = "Scenery\\DarkHills\\T_Walls_Ruins_NRM.tga"
-
-[marker]
-icon = "icon.png"
-reveal_radius = 20000.0
 
 # the upper deck, the wedge ramp and the stair
 [parts.upper]
@@ -415,6 +404,7 @@ collision = [
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-4.853, 1.2, 2.773] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-4.547, 1.2, 2.107] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-4.24, 1.2, 1.44] },
+  { kind = "ground", size = [80.0, 1.0, 80.0], at = [0.0, -2.1, 0.0] },
 ]
 
 # the two long ramps into the water

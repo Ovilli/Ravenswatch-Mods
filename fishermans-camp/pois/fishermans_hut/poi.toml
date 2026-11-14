@@ -1,44 +1,61 @@
-# THE FISHERMAN'S HUT — a log cabin with a lantern post, crates, barrels and the
-# day's catch, standing in a Dark Hills clearing of its own, marked on the
-# minimap, and interactive.
+# THE FISHERMAN'S HUT — the ENTRANCE to the fishing platform. A log cabin with a
+# lantern post, crates, barrels and the day's catch in a Dark Hills clearing,
+# marked on the minimap. Its door is a sub-tile teleporter: step up to it and
+# you are taken to the fishing platform room (pois/platform_room), built the way
+# the game builds its Ghoul den and Thieves' stash rooms.
 #
-# The art is fan art, composed into one mesh with one texture atlas. Every
-# binary in this folder (model.glb, albedo/mra/normal/icon.png) is built locally
-# and gitignored: only this file and the manifest are shared.
+# How the pair finds each other:
+#   * `needs` asks the map generator for one tile flagged
+#     Fishermans_Platform_Underground (the room), placed in one of the map's
+#     off-map room slots — exactly what the Ghoul den entrance does;
+#   * the `out` teleporter here and the `in` one in the room share the id
+#     Fishermans_Platform;
+#   * the Fishermans_Entrance flag is capped at 1 per map (manifest
+#     [[content]] tilegen add_quotas): Dark Hills has only 5 room slots and the
+#     game's own rooms use up to 4, so a second hut would ask for a room that
+#     has nowhere to go.
+#
+# Every binary in this folder is built locally from the fan art and gitignored;
+# only this file and the manifest are shared.
 
-# Same anchor as the runestone shrine: a bare grass clearing whose only placed
-# entity is one crystal dead centre, at zero yaw and unit scale.
-base     = "Dark_Hills/6x6_Crystal_01"
-chapters = ["Dark_Hills"]
-kinds    = ["Crystal"]
-copies    = 1
-replaces = "Objects_Common\\DreamCrystal_Medium.entity.ot"
+# A bare grass clearing whose only placed entity is one crystal dead centre.
+base      = "Dark_Hills/6x6_Crystal_01"
+chapters  = ["Dark_Hills"]
+kinds     = ["Crystal"]
+flags     = ["Fishermans_Entrance"]
+# PLAYTEST: several pool entries so the hut shows up most runs; the quota
+# keeps it to one per map.
+copies    = 6
+own_level = true
+clear     = true
+
+needs = [
+  { flags = ["Fishermans_Platform_Underground"] },
+]
+
+# On the deck in front of the door (the door faces +Z; deck top y = 0.5).
+teleporters = [
+  { side = "out", id = "Fishermans_Platform", pos = [0.0, 0.5, 0.7] },
+]
+
+places = [
+  { entity = "@prop", pos = [0.0, 0.0, 0.0] },
+]
 
 entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.entity.ot"
 material_base = "Scenery\\DarkHills\\M_Walls_Ruins.mat.ot"
 
-# Authored at game scale (door 2.37 tall, a hero is about 2.3), ground at y=0.
-# The hut stands on a plank deck 0.5 high with a ramp down the door side;
-# footprint 4.9 x 5.7 inside the clearing's ~5.8 of clear floor. 54k vertices,
-# under the cooker's 65535 cap. The door faces +Z.
-#
-# ⚠ Keep scale 1.0 and no rotate_deg: the collision boxes below are in the
-# prop's own space and do not follow the mesh transform.
+# Authored at game scale (door 2.37 tall), ground at y=0, 54k vertices.
+# ⚠ Keep scale 1.0 and no rotate_deg: the collision boxes are in the prop's
+# own space and do not follow the mesh transform.
 transform = { fit = "rig", scale = 1.0 }
 
-# WALKABLE DECK. Boxes in the prop's space (x, y up, z toward the door), full
-# sizes in game units, rotations in degrees. `ground` is walkable, `wall`
-# blocks. The deck top is y = 0.5; the ramp falls from the deck edge (z = 1.3)
-# to the ground at z = 2.85 (a POSITIVE X rotation lowers its +Z end, as
-# on the shipped slopes); the
-# wall is the hut body.
+# Deck (top y = 0.5), the ramp down the door side, and the hut body.
 collision = [
   { kind = "ground", size = [4.9, 1.0, 4.15], at = [0.0, 0.0, -0.775] },
   { kind = "ground", size = [1.6, 0.5, 1.629], at = [0.0, 0.012, 1.998], rot = [17.88, 0.0, 0.0] },
   { kind = "wall",   size = [4.0, 2.5, 3.0],  at = [0.0, 1.75, -0.9] },
 ]
-
-interactive = true
 
 # ⚠ Every table header goes below this line.
 
