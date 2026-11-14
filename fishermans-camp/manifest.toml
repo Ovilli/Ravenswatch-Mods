@@ -1,9 +1,9 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.6.0"
+version     = "0.7.0"
 author      = "RSMM"
-description = "Adds a fisherman's camp to the Dark Hills, built from community fan art on the game's own High Fisherman Platform: the fan-art hut on the raised deck, the giant catch on its tarp, drying racks with fish, a cloth awning, crates and barrels. A smaller standalone hut also appears in crystal clearings."
+description = "Adds a fisherman's hut to the Dark Hills. Step up to its door and you are taken to the fishing platform, a whole fan-art scene in a room of its own (the way the Ghoul den and the Thieves' stashes work): the tall-roofed hut on the upper deck, the giant catch on its grate, the crane and drying rack, walkways round an open water hole, crates, barrels and tarps."
 enabled     = true
 load_order  = 32
 sdk_version = ">=3.0,<4"
@@ -11,67 +11,46 @@ tags = ["world", "map", "poi", "structures", "custom-art"]
 # Map generation is seeded run state: everyone in the lobby needs this mod.
 multiplayer_scope = "deterministic-shared"
 
-# The hut takes one of Dark Hills' three Crystal clearings (copies = 1 in
-# pois/fishermans_hut/poi.toml), so expect roughly one hut a run and no crystal
-# in that clearing.
+# The hut (pois/fishermans_hut) takes one Dark Hills crystal clearing; its door
+# teleports you to the platform room (pois/platform_room), which the map
+# generator puts in one of its off-map room slots because the hut `needs` it.
 #
 # ⚠ The art (art/, pois/*/*.glb|png, assets/) is fan art and stays off GitHub;
 # see the mods repo .gitignore. Rebuild it locally from the fan-art zip.
 
+# At most ONE hut per map: Dark Hills has 5 off-map room slots and its own
+# rooms (Ghoul den, a Thieves' stash, up to two stone reserves) use up to 4,
+# so a second hut would need a room with nowhere to go.
+[[content]]
+kind       = "tilegen"
+id         = "one_hut"
+chapter    = "DarkHills"
+add_quotas = { "Fishermans_Entrance" = 1 }
+
 [[experiment]]
 id       = "hut_found"
-question = "did a Dark Hills crystal clearing hold the fisherman's hut instead of a crystal?"
+question = "did a Dark Hills crystal clearing hold the fisherman's hut (with its minimap icon) instead of a crystal? Only one per map."
 
 [[experiment]]
-id       = "art_renders"
-question = "does the hut look textured (log walls, plank roof, metal door hinges) rather than grey or a checkerboard, and stand on the ground at about hero scale?"
+id       = "hut_draws"
+question = "is the hut textured and standing on the ground (not grey, not invisible)?"
 
 [[experiment]]
-id       = "walk_deck"
-question = "can you walk UP the ramp onto the plank deck and stand on it at deck height, and walk back down? (the first mod-written collision: if you walk through the deck at ground level, collision did not take)"
+id       = "door_teleports"
+question = "does a prompt appear at the hut's door, and does using it take you somewhere (fade out / in)? Where do you land?"
 
 [[experiment]]
-id       = "hut_blocks"
-question = "does the hut body block you (you cannot walk into the log walls), and do enemies path onto the deck too?"
+id       = "room_draws"
+question = "in the room: do you see the fishing platform (decks, the big hut, the fish on the grate, ramps, posts round the water hole) and a dark water floor? Is it lit, or pitch black?"
 
 [[experiment]]
-id       = "faces_camera"
-question = "does the door face the camera? If not, which way does it face (away / left / right)?"
+id       = "room_walk"
+question = "can you walk the platform: up the long ramps from the water floor, up the tarp ramp or the stair to the upper deck? Any invisible wall across a walkway?"
 
 [[experiment]]
-id       = "minimap_marked"
-question = "does the hut icon (a brown hut with a blue fish) show on the minimap and the map screen?"
-
-[[experiment]]
-id       = "poi_interactable"
-question = "does a hold prompt appear on the hut, and does the interaction complete?"
+id       = "room_return"
+question = "does the teleporter on the front walkway (by the glow) take you back out to the hut?"
 
 [[experiment]]
 id       = "no_crash"
-question = "did the run survive, and did the other crystal clearings still spawn their crystals?"
-
-# --- the fishing platform (pois/fishing_dock, v3 layout) -----------------
-
-[[experiment]]
-id       = "dock_found"
-question = "did a Dark Hills 40x40 ghoul camp turn into the fishing platform standing in shallow water? (16 copies: most 40x40 camps)"
-
-[[experiment]]
-id       = "dock_layout"
-question = "does it read like the reference: the big angled upper deck at the back with the hut on its left and the giant fish on the grate in the middle, a row of posts dropping into an open water hole in front of it, and the lower walkway wrapping round the hole as a U (left wing with the lean-to, front walkway, right arm)?"
-
-[[experiment]]
-id       = "dock_all_parts"
-question = "do all the parts draw (hut, fish + grate, crane, drying rack, torn tarp, crates/barrels, every deck section, both long ramps)? Name any missing area."
-
-[[experiment]]
-id       = "dock_ramps_walk"
-question = "can you walk: up a long ramp (front-left or right) from the water onto the lower walkway, then up the wide tarp ramp (left of the hole) or the stair (right of the hole) onto the upper deck? (the diagonal ramps are staircases of small steps; say if one feels stuck or bumpy)"
-
-[[experiment]]
-id       = "dock_walls"
-question = "do the railings stop you walking off the decks, and do the rope fence round the hole and the hut block you? Is any walkway blocked by an invisible wall?"
-
-[[experiment]]
-id       = "dock_no_crash"
-question = "did the run load and survive the platform tile, with the ghouls and the reward (now on the upper deck, left of the fish) intact?"
+question = "did the run load and survive, including entering and leaving the room? Did the Ghoul den and Thieves' stash still work?"
