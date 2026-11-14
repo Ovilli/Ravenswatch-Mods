@@ -260,7 +260,10 @@ aggro          = true
 lifetime       = 20
 appear         = "Characters\\Enemies\\Wolves\\Animations\\Wolf_DireTimber_UTurn_R.fbx"
 talent         = "Skill Special Rabid"
-upgrade        = { look = { albedo = "art/Dire_Blood_ALB.png" }, burst = "own:Bomb", burst_on_hit = true, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5 }
+# `burst` names the bomb by its file, not "own:Bomb": RSMM 5.9.32 does not
+# resolve own: inside `upgrade` (fixed in the next CLI), and the Rabid wolf
+# then never exploded.
+upgrade        = { look = { albedo = "art/Dire_Blood_ALB.png" }, burst = "Heroes/Hero_Common/Hero_BloodWolf_Bomb", burst_on_hit = true, attack = "Bite", attack_area = 1.2, attack_reach = 2.0, attack_range = 1.0, attack_targets = 0, attack_speed = 1.35, attack_debuffs = false, attack_cooldown = 0.5 }
 
 # Defense and the ultimates: wolf moves of its own (the clone kept Scarlet's).
 [content.frame.abilities.defense]
