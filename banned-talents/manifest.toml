@@ -17,6 +17,11 @@ tags = [
 # the seeded talent draw stays identical in co-op.
 multiplayer_scope = "deterministic-shared"
 
+# The talent ban needs CLI channel 34 or newer (the first with `mode = "ban"`
+# on talents). An older RSMM skips the mod with a plain message.
+[requires]
+cli = 34
+
 [[content]]
 kind = "talent"
 mode = "ban"
