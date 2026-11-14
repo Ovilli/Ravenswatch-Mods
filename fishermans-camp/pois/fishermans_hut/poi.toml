@@ -18,28 +18,39 @@
 # Every binary in this folder is built locally from the fan art and gitignored;
 # only this file and the manifest are shared.
 
-# A bare grass clearing whose only placed entity is one crystal dead centre.
-base      = "Dark_Hills/6x6_Crystal_01"
+# Base: the Old Shipyard (a Dark Hills `Special` 40x40: beached boats, a fishnet,
+# planks, a cultist camp and dream crystals — kept as they are). An entrance
+# has to be a 40x40 Special tile: the playtest of 2026-11-15 showed a crystal
+# clearing carrying `needs` is never placed (0 of ~4 expected picks, while the
+# same clearing without `needs` was placed 3 times), and every shipped entrance
+# that pulls an underground room — the Ghoul den first — is a 40x40 Special.
+base      = "Dark_Hills/40x40_Old_Shipyard_CrystalField"
 chapters  = ["Dark_Hills"]
-kinds     = ["Crystal"]
+# `Special` only: the base's `Crystal_Field` tag is capped at 1 per map, and
+# keeping it would make the hut and the real crystal field exclude each other.
+kinds     = ["Special"]
 flags     = ["Fishermans_Entrance"]
+# The base only appears from the yellow ring outward (tier band 0.33..1); 0
+# lets the hut stand anywhere.
+weight    = 0.0
 # PLAYTEST: several pool entries so the hut shows up most runs; the quota
 # keeps it to one per map.
 copies    = 6
 own_level = true
-clear     = true
 
 needs = [
   { flags = ["Fishermans_Platform_Underground"] },
 ]
 
-# On the deck in front of the door (the door faces +Z; deck top y = 0.5).
+# The hut stands in the open grass at the centre; the ground there is y = 2.0
+# (the field's crystals stand at 2.0). The teleporter is on the deck in front
+# of the door (the door faces +Z; deck top = ground + 0.5).
 teleporters = [
-  { side = "out", id = "Fishermans_Platform", pos = [0.0, 0.5, 0.7] },
+  { side = "out", id = "Fishermans_Platform", pos = [0.0, 2.5, 0.7] },
 ]
 
 places = [
-  { entity = "@prop", pos = [0.0, 0.0, 0.0] },
+  { entity = "@prop", pos = [0.0, 2.0, 0.0] },
 ]
 
 entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.entity.ot"
