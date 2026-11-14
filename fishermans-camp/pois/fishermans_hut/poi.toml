@@ -1,0 +1,51 @@
+# THE FISHERMAN'S HUT — a log cabin with a lantern post, crates, barrels and the
+# day's catch, standing in a Dark Hills clearing of its own, marked on the
+# minimap, and interactive.
+#
+# The art is fan art, composed into one mesh with one texture atlas. Every
+# binary in this folder (model.glb, albedo/mra/normal/icon.png) is built locally
+# and gitignored: only this file and the manifest are shared.
+
+# Same anchor as the runestone shrine: a bare grass clearing whose only placed
+# entity is one crystal dead centre, at zero yaw and unit scale.
+base     = "Dark_Hills/6x6_Crystal_01"
+chapters = ["Dark_Hills"]
+kinds    = ["Crystal"]
+copies   = 1
+replaces = "Objects_Common\\DreamCrystal_Medium.entity.ot"
+
+entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.entity.ot"
+material_base = "Scenery\\DarkHills\\M_Walls_Ruins.mat.ot"
+
+# Authored at game scale (door 2.37 tall, a hero is about 2.3), ground at y=0.
+# The hut stands on a plank deck 0.5 high with a ramp down the door side;
+# footprint 4.9 x 5.7 inside the clearing's ~5.8 of clear floor. 54k vertices,
+# under the cooker's 65535 cap. The door faces +Z.
+#
+# ⚠ Keep scale 1.0 and no rotate_deg: the collision boxes below are in the
+# prop's own space and do not follow the mesh transform.
+transform = { fit = "rig", scale = 1.0 }
+
+# WALKABLE DECK. Boxes in the prop's space (x, y up, z toward the door), full
+# sizes in game units, rotations in degrees. `ground` is walkable, `wall`
+# blocks. The deck top is y = 0.5; the ramp falls from the deck edge (z = 1.3)
+# to the ground at z = 2.85 (a negative X rotation lowers its +Z end); the
+# wall is the hut body.
+collision = [
+  { kind = "ground", size = [4.9, 1.0, 4.15], at = [0.0, 0.0, -0.775] },
+  { kind = "ground", size = [1.6, 0.5, 1.629], at = [0.0, 0.012, 1.998], rot = [-17.88, 0.0, 0.0] },
+  { kind = "wall",   size = [4.0, 2.5, 3.0],  at = [0.0, 1.75, -0.9] },
+]
+
+interactive = true
+
+# ⚠ Every table header goes below this line.
+
+[slots]
+albedo = "Scenery\\DarkHills\\T_Walls_Ruins_ALB.tga"
+mra    = "Scenery\\DarkHills\\T_Walls_Ruins_MRA.tga"
+normal = "Scenery\\DarkHills\\T_Walls_Ruins_NRM.tga"
+
+[marker]
+icon = "icon.png"
+reveal_radius = 20000.0

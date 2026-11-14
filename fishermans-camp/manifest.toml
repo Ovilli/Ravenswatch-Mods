@@ -1,0 +1,51 @@
+[mod]
+id          = "fishermans-camp"
+name        = "Fisherman's Camp"
+version     = "0.2.0"
+author      = "RSMM"
+description = "Adds a fisherman's hut to the Dark Hills: a log cabin with a lantern post, crates, barrels and the day's catch, standing in a clearing of its own, with its own minimap icon, and interactive. Built from community fan art."
+enabled     = true
+load_order  = 32
+sdk_version = ">=3.0,<4"
+tags = ["world", "map", "poi", "structures", "custom-art"]
+# Map generation is seeded run state: everyone in the lobby needs this mod.
+multiplayer_scope = "deterministic-shared"
+
+# The hut takes one of Dark Hills' three Crystal clearings (copies = 1 in
+# pois/fishermans_hut/poi.toml), so expect roughly one hut a run and no crystal
+# in that clearing.
+#
+# ⚠ The art (art/, pois/*/*.glb|png, assets/) is fan art and stays off GitHub;
+# see the mods repo .gitignore. Rebuild it locally from the fan-art zip.
+
+[[experiment]]
+id       = "hut_found"
+question = "did a Dark Hills crystal clearing hold the fisherman's hut instead of a crystal?"
+
+[[experiment]]
+id       = "art_renders"
+question = "does the hut look textured (log walls, plank roof, metal door hinges) rather than grey or a checkerboard, and stand on the ground at about hero scale?"
+
+[[experiment]]
+id       = "walk_deck"
+question = "can you walk UP the ramp onto the plank deck and stand on it at deck height, and walk back down? (the first mod-written collision: if you walk through the deck at ground level, collision did not take)"
+
+[[experiment]]
+id       = "hut_blocks"
+question = "does the hut body block you (you cannot walk into the log walls), and do enemies path onto the deck too?"
+
+[[experiment]]
+id       = "faces_camera"
+question = "does the door face the camera? If not, which way does it face (away / left / right)?"
+
+[[experiment]]
+id       = "minimap_marked"
+question = "does the hut icon (a brown hut with a blue fish) show on the minimap and the map screen?"
+
+[[experiment]]
+id       = "poi_interactable"
+question = "does a hold prompt appear on the hut, and does the interaction complete?"
+
+[[experiment]]
+id       = "no_crash"
+question = "did the run survive, and did the other crystal clearings still spawn their crystals?"
