@@ -19,8 +19,11 @@ own_level = true
 # teleporter are sunk. The platform brings its own floor (parts.lower).
 clear = { keep = ["Zone_Render_Setting"] }
 
+# The room's own return teleporter (an object clear cannot sink) is taken over
+# under our pair name. It stands at (4.86, 0, 23.0) facing -Z, so the whole kit
+# is placed at OFFSET below to put the front walkway under it.
 teleporters = [
-  { side = "in", id = "Fishermans_Platform", pos = [-1.5, 0.2, 11.0], yaw = 180.0 },
+  { side = "in", id = "Fishermans_Platform", replace = "Objects_Common\\Thieves_Underground_Teleporter_In.entity.ot" },
 ]
 
 entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.entity.ot"
@@ -33,39 +36,39 @@ collision = [
 ]
 
 places = [
-  { entity = "@prop", pos = [0.0, 0.0, 0.0] },
-  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-4.0, 3.6, -4.0] },
-  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [2.5, 3.4, -2.0] },
-  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [8.0, 1.6, 2.0] },
-  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-12.0, 1.6, 1.0] },
-  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-1.0, 1.6, 11.5] },
-  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [10.0, 1.4, 8.0] },
-  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-12.0, 1.4, 9.0] },
-  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [6.0, 3.4, -9.0] },
-  { entity = "Objects_Common\\Light_Underground_Exit_Model.entity.ot", pos = [-1.5, 0.2, 12.2] },
-  { entity = "@back", pos = [0.0, 0.0, 0.0] },
-  { entity = "@back__2", pos = [0.0, 0.0, 0.0] },
-  { entity = "@fish", pos = [0.0, 0.0, 0.0] },
-  { entity = "@front", pos = [0.0, 0.0, 0.0] },
-  { entity = "@front__2", pos = [0.0, 0.0, 0.0] },
-  { entity = "@front__3", pos = [0.0, 0.0, 0.0] },
-  { entity = "@front__4", pos = [0.0, 0.0, 0.0] },
-  { entity = "@front__5", pos = [0.0, 0.0, 0.0] },
-  { entity = "@hut__2", pos = [0.0, 0.0, 0.0] },
-  { entity = "@hut__3", pos = [0.0, 0.0, 0.0] },
-  { entity = "@lower", pos = [0.0, 0.0, 0.0] },
-  { entity = "@lower__2", pos = [0.0, 0.0, 0.0] },
-  { entity = "@lower__3", pos = [0.0, 0.0, 0.0] },
-  { entity = "@lower__4", pos = [0.0, 0.0, 0.0] },
-  { entity = "@lower__5", pos = [0.0, 0.0, 0.0] },
-  { entity = "@lower__6", pos = [0.0, 0.0, 0.0] },
-  { entity = "@ramps", pos = [0.0, 0.0, 0.0] },
-  { entity = "@upper", pos = [0.0, 0.0, 0.0] },
-  { entity = "@upper__2", pos = [0.0, 0.0, 0.0] },
-  { entity = "@upper__3", pos = [0.0, 0.0, 0.0] },
-  { entity = "@upper__4", pos = [0.0, 0.0, 0.0] },
-  { entity = "@upper__5", pos = [0.0, 0.0, 0.0] },
-  { entity = "@upper__6", pos = [0.0, 0.0, 0.0] },
+  { entity = "@prop", pos = [6.36, -0.2, 12.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [2.36, 3.4, 8.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [8.86, 3.2, 10.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [14.36, 1.4, 14.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-5.64, 1.4, 13.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [5.36, 1.4, 23.5] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [16.36, 1.2, 20.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-5.64, 1.2, 21.0] },
+  { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [12.36, 3.2, 3.0] },
+  { entity = "Objects_Common\\Light_Underground_Exit_Model.entity.ot", pos = [4.86, 0.0, 24.2] },
+  { entity = "@back", pos = [6.36, -0.2, 12.0] },
+  { entity = "@back__2", pos = [6.36, -0.2, 12.0] },
+  { entity = "@fish", pos = [6.36, -0.2, 12.0] },
+  { entity = "@front", pos = [6.36, -0.2, 12.0] },
+  { entity = "@front__2", pos = [6.36, -0.2, 12.0] },
+  { entity = "@front__3", pos = [6.36, -0.2, 12.0] },
+  { entity = "@front__4", pos = [6.36, -0.2, 12.0] },
+  { entity = "@front__5", pos = [6.36, -0.2, 12.0] },
+  { entity = "@hut__2", pos = [6.36, -0.2, 12.0] },
+  { entity = "@hut__3", pos = [6.36, -0.2, 12.0] },
+  { entity = "@lower", pos = [6.36, -0.2, 12.0] },
+  { entity = "@lower__2", pos = [6.36, -0.2, 12.0] },
+  { entity = "@lower__3", pos = [6.36, -0.2, 12.0] },
+  { entity = "@lower__4", pos = [6.36, -0.2, 12.0] },
+  { entity = "@lower__5", pos = [6.36, -0.2, 12.0] },
+  { entity = "@lower__6", pos = [6.36, -0.2, 12.0] },
+  { entity = "@ramps", pos = [6.36, -0.2, 12.0] },
+  { entity = "@upper", pos = [6.36, -0.2, 12.0] },
+  { entity = "@upper__2", pos = [6.36, -0.2, 12.0] },
+  { entity = "@upper__3", pos = [6.36, -0.2, 12.0] },
+  { entity = "@upper__4", pos = [6.36, -0.2, 12.0] },
+  { entity = "@upper__5", pos = [6.36, -0.2, 12.0] },
+  { entity = "@upper__6", pos = [6.36, -0.2, 12.0] },
 ]
 
 # ⚠ Every table header goes below this line.
