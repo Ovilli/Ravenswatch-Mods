@@ -1,9 +1,9 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.2.0"
+version     = "0.4.0"
 author      = "RSMM"
-description = "Adds a fisherman's hut to the Dark Hills: a log cabin with a lantern post, crates, barrels and the day's catch, standing in a clearing of its own, with its own minimap icon, and interactive. Built from community fan art."
+description = "Adds a fishing dock to the Dark Hills, built from community fan art: plank bridges on posts across the moat of a ghoul camp, the fisherman's hut raised on its deck, and the giant catch on a gutting floor. Bridges and decks are walkable. A smaller standalone hut also appears in crystal clearings."
 enabled     = true
 load_order  = 32
 sdk_version = ">=3.0,<4"
@@ -49,3 +49,29 @@ question = "does a hold prompt appear on the hut, and does the interaction compl
 [[experiment]]
 id       = "no_crash"
 question = "did the run survive, and did the other crystal clearings still spawn their crystals?"
+
+# --- the fishing dock (pois/fishing_dock) ---------------------------------
+
+[[experiment]]
+id       = "dock_found"
+question = "did a ghoul camp with a moat show the fishing dock (plank bridges with railings, the hut on the island, the giant fish) instead of its usual rocks and reeds? (4 copies: roughly one 40x40 camp in five)"
+
+[[experiment]]
+id       = "dock_bridges_walk"
+question = "can you cross all three bridges over the moat, and do the railings stop you stepping off the sides?"
+
+[[experiment]]
+id       = "dock_cleared"
+question = "is the old camp scenery gone (no rocks, reeds or old bridges poking through), while the ghouls still spawn and the camp reward still appears when they die?"
+
+[[experiment]]
+id       = "dock_gutting_deck"
+question = "can you walk up the ramp onto the raised gutting deck (the giant fish on the green tarp), and do its two railings hold you?"
+
+[[experiment]]
+id       = "dock_all_meshes"
+question = "do ALL parts of the dock draw: hut, bridges, gutting deck, drying racks with fish? (the dock is six meshes on one prop; a missing part means an extra mesh component did not draw)"
+
+[[experiment]]
+id       = "dock_no_crash"
+question = "did the run load and survive the dock tile?"

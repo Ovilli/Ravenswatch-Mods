@@ -1,0 +1,75 @@
+# THE FISHING DOCK — the fan art's fishing platform, built over the moat of a
+# Dark Hills ghoul camp: plank bridges on posts with railings across the water,
+# the fisherman's hut raised on its deck on the island, and the giant catch on
+# a gutting floor. Every binary here is built locally from the fan art and is
+# gitignored; only this file is shared.
+
+# The base is the pooled 40x40 "SmallPool" ghoul camp: an island ringed by a
+# 4 m deep moat with three crossings, fenced everywhere else by the level's own
+# pit walls. The bridges stand exactly on the shipped crossings, so the walls
+# still fit. The camp's ghouls and its reward are kept.
+base      = "Dark_Hills/40x40_Chest_SmallPool_Ghouls_Camp"
+chapters  = ["Dark_Hills"]
+kinds     = ["Camp"]
+# 4 entries next to the chapter's own Camp tiles: roughly one 40x40 camp in
+# five becomes the dock while it is being playtested. Lower it afterwards.
+copies    = 4
+own_level = true
+
+# Sink the camp's own scenery (rocks, reeds, its plain bridges and pontoons)
+# 1000 m under the map; keep the ghoul spawners, the reward and its pedestal.
+clear = true
+
+# The whole dock is ONE prop of this mod's, stood at the tile origin.
+places = [{ entity = "@prop", pos = [0.0, 0.0, 0.0] }]
+
+entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.entity.ot"
+material_base = "Scenery\\DarkHills\\M_Walls_Ruins.mat.ot"
+
+# Authored in tile coordinates, in six meshes (model.glb, model_2..6.glb, each
+# under the cooker's 65535-vertex cap; the prop draws one graphic component
+# per mesh). Scale 1 and no rotation: the collision below is in the same space
+# and does not follow the mesh transform.
+transform = { fit = "rig", scale = 1.0 }
+
+interactive = true
+
+# WALKABLE: one ground box per bridge (top at y = 0, over the moat), a thin
+# wall along each bridge side (the railings), the hut's proven deck, ramp and
+# body moved to the island, and the gutting deck (1.0 high) with its ramp and
+# its two railings.
+collision = [
+  { kind = "ground", size = [4.9, 1.0, 4.15], at = [-6.5, 0.0, -5.775] },
+  { kind = "ground", size = [1.6, 0.5, 1.629], at = [-6.5, 0.012, -3.002], rot = [-17.88, 0.0, 0.0] },
+  { kind = "wall", size = [4.0, 2.5, 3.0], at = [-6.5, 1.75, -5.9] },
+  { kind = "wall", size = [0.3, 2.0, 8.0], at = [-13.5, 1.0, 2.8], rot = [0.0, 90.0, 0.0] },
+  { kind = "wall", size = [0.3, 2.0, 8.0], at = [-13.5, 1.0, -4.8], rot = [0.0, 90.0, 0.0] },
+  { kind = "ground", size = [8.0, 1.0, 8.0], at = [-13.5, -0.5, -1.0], rot = [0.0, 90.0, 0.0] },
+  { kind = "wall", size = [0.3, 2.0, 8.0], at = [-4.8, 1.0, 7.0] },
+  { kind = "wall", size = [0.3, 2.0, 8.0], at = [2.8, 1.0, 7.0] },
+  { kind = "ground", size = [8.0, 1.0, 8.0], at = [-1.0, -0.5, 7.0] },
+  { kind = "wall", size = [0.3, 2.0, 8.0], at = [-4.8, 1.0, 15.0] },
+  { kind = "wall", size = [0.3, 2.0, 8.0], at = [2.8, 1.0, 15.0] },
+  { kind = "ground", size = [8.0, 1.0, 8.0], at = [-1.0, -0.5, 15.0] },
+  { kind = "wall", size = [0.3, 2.0, 8.0], at = [15.511, 1.0, -3.766], rot = [0.0, 107.0, 0.0] },
+  { kind = "wall", size = [0.3, 2.0, 8.0], at = [13.289, 1.0, -11.034], rot = [0.0, 107.0, 0.0] },
+  { kind = "ground", size = [8.0, 1.0, 8.0], at = [14.4, -0.5, -7.4], rot = [0.0, 107.0, 0.0] },
+  { kind = "wall", size = [0.3, 2.0, 4.0], at = [9.811, 1.0, -1.966], rot = [0.0, 107.0, 0.0] },
+  { kind = "wall", size = [0.3, 2.0, 4.0], at = [7.589, 1.0, -9.234], rot = [0.0, 107.0, 0.0] },
+  { kind = "ground", size = [8.0, 1.0, 4.0], at = [8.7, -0.5, -5.6], rot = [0.0, 107.0, 0.0] },
+  { kind = "wall", size = [0.3, 2.0, 6.0], at = [3.5, 2.0, -6.8], rot = [0.0, 90.0, 0.0] },
+  { kind = "wall", size = [0.3, 2.0, 5.5], at = [6.3, 2.0, -4.25] },
+  { kind = "ground", size = [6.0, 1.0, 5.5], at = [3.5, 0.5, -4.25] },
+  { kind = "ground", size = [2.0, 0.5, 3.257], at = [3.5, 0.262, -0.027], rot = [-17.88, 0.0, 0.0] },
+]
+
+# ⚠ Every table header goes below this line.
+
+[slots]
+albedo = "Scenery\\DarkHills\\T_Walls_Ruins_ALB.tga"
+mra    = "Scenery\\DarkHills\\T_Walls_Ruins_MRA.tga"
+normal = "Scenery\\DarkHills\\T_Walls_Ruins_NRM.tga"
+
+[marker]
+icon = "icon.png"
+reveal_radius = 20000.0
