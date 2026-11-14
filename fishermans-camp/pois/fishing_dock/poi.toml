@@ -12,9 +12,10 @@
 base      = "Dark_Hills/64x64_HighFishermanPlatform_Ghouls_Camp"
 chapters  = ["Dark_Hills"]
 kinds     = ["Camp"]
-# 4 entries next to the chapter's own Camp tiles while it is playtested;
-# lower it afterwards.
-copies    = 4
+# PLAYTEST: 16 entries (the SDK's cap) next to the chapter's 6 shipped 64x64
+# Camp tiles, so roughly three 64x64 camps in four are the dock. A map rolls 5
+# Camps over 14 40x40 and 5 64x64 slots. Lower to 1-2 once it is confirmed.
+copies    = 16
 own_level = true
 
 # Everything the shipped tile stands stays (decks, slopes, pillars, boats,
