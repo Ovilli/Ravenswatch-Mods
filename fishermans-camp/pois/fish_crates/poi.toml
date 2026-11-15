@@ -1,18 +1,17 @@
-# FISH CRATES — where the fish for the fisherman's quest come from.
+# FISH CRATES — where the fish for the fisherman's quest come from: a fish
+# pile to pick up (ingredient "Fish", the manifest's [[content]] kind =
+# "ingredient"), carried down to the giant catch in the platform room.
 #
-# The reverse of the 3 Pigs straw quest: there the straw house pulls 15 small
-# "3Pigs_Material" crate/cart tiles onto the map within 130 m (its tile
-# constraints), each spawning straw while the pig's mission asks for it. Here
-# the fisherman's hut pulls these tiles in the same way (its `needs`, flag
-# Fishermans_Fish_Crates, on the map surface), and each holds a fish pile you
-# pick up (ingredient "Fish", the manifest's [[content]] kind = "ingredient").
-# You bring the fish down to the giant catch in the platform room.
+# They ADD to the map and replace nothing: the manifest's tilegen block adds a
+# kind of their own (Fishermans_Fish_Crates, 12 per map) and 12 new 6x6 slots
+# that allow only that kind — free ground no shipped tile ever used.
 #
 # Base: the game's own straw crate tile, with only its straw spawner removed:
 # the crates, planks and the cart wheel stay as the dressing.
 base      = "Dark_Hills/6x6_3Pigs_Material_Crates"
 chapters  = ["Dark_Hills"]
-# Only ever placed by the hut's on-map `needs`, never chosen for a slot.
+# Its kind is the one the manifest's tilegen block ADDS, so the shipped recipe
+# does not know it yet: "surface" skips that check (and keeps it a map tile).
 subtile   = "surface"
 kinds     = ["Fishermans_Fish_Crates"]
 copies    = 1

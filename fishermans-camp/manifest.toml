@@ -44,6 +44,26 @@ kind       = "tilegen"
 id         = "one_hut"
 chapter    = "DarkHills"
 add_quotas = { "Fishermans_Entrance" = 1 }
+# THE FISH CRATES get places of their OWN: a new kind that no shipped slot
+# allows, and 12 new 6x6 slots that allow only it, so the crates add to the map
+# and take no crystal's, fountain's or anything else's spot. The spots are free,
+# dry, flat ground on the playable island, off the paths and clear of every
+# shipped slot (fishermans-camp-tools/scripts/find_slots.py; map in its data/).
+add_kinds  = { "Fishermans_Fish_Crates" = { count = 12, footprints = { "6x6" = true } } }
+add_slots  = [
+  { group = "6x6", pos = [30.0, 0.0, -6.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [58.0, -0.11, -194.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [-94.0, 8.0, 110.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [-110.0, 0.0, -46.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [-30.0, 0.0, -110.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [98.0, -4.0, 70.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [66.0, 0.0, -90.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [22.0, 0.0, 94.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [98.0, 0.0, -26.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [-26.0, 0.0, -46.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [-34.0, 8.0, 114.0], allow = { "Fishermans_Fish_Crates" = true } },
+  { group = "6x6", pos = [-86.0, 4.0, 54.0], allow = { "Fishermans_Fish_Crates" = true } },
+]
 
 [[experiment]]
 id       = "hut_found"
