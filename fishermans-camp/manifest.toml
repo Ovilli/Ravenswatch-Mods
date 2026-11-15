@@ -1,7 +1,7 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.8.3"
+version     = "0.8.4"
 author      = "RSMM"
 description = "Adds a fisherman's hut to the Dark Hills. Step up to its door and you are taken to the fishing platform, a whole fan-art scene in a room of its own (the way the Ghoul den and the Thieves' stashes work): the tall-roofed hut on the upper deck, the giant catch on its grate, the crane and drying rack, walkways round an open water hole, crates, barrels and tarps."
 enabled     = true
@@ -46,6 +46,18 @@ question = "does the underground look (dim light, fog, colour) stay on the whole
 [[experiment]]
 id       = "room_look"
 question = "v0.8.2: is the water now brown and murky with reeds round the platform's edge, like the reference art? No black floor? Still no rocky bumps?"
+
+[[experiment]]
+id       = "right_ramp"
+question = "v0.8.4: can you walk freely up and down the right long ramp now (the invisible post in its mouth is gone)? Any other spot that blocks?"
+
+[[experiment]]
+id       = "camp"
+question = "is there an enemy camp on the upper deck by the hut? Do the enemies spawn, stay on the platform and fight normally (no falling through decks, no getting stuck)?"
+
+[[experiment]]
+id       = "fish_prompt"
+question = "walk up to the giant fish: does a hold-to-interact prompt appear at the fish (not somewhere else on the deck)? Is it blocked while enemies are near (in combat)? Interacting does nothing yet."
 
 [[experiment]]
 id       = "edges"
