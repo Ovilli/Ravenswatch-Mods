@@ -1,7 +1,7 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.7.0"
+version     = "0.8.0"
 author      = "RSMM"
 description = "Adds a fisherman's hut to the Dark Hills. Step up to its door and you are taken to the fishing platform, a whole fan-art scene in a room of its own (the way the Ghoul den and the Thieves' stashes work): the tall-roofed hut on the upper deck, the giant catch on its grate, the crane and drying rack, walkways round an open water hole, crates, barrels and tarps."
 enabled     = true
@@ -11,7 +11,7 @@ tags = ["world", "map", "poi", "structures", "custom-art"]
 # Map generation is seeded run state: everyone in the lobby needs this mod.
 multiplayer_scope = "deterministic-shared"
 
-# The hut (pois/fishermans_hut) takes one Dark Hills crystal clearing; its door
+# The hut (pois/fishermans_hut) takes one 6x6 Dark Hills crystal clearing; its door
 # teleports you to the platform room (pois/platform_room), which the map
 # generator puts in one of its off-map room slots because the hut `needs` it.
 #
@@ -29,27 +29,35 @@ add_quotas = { "Fishermans_Entrance" = 1 }
 
 [[experiment]]
 id       = "hut_found"
-question = "did a Dark Hills crystal clearing hold the fisherman's hut (with its minimap icon) instead of a crystal? Only one per map."
-
-[[experiment]]
-id       = "hut_draws"
-question = "is the hut textured and standing on the ground (not grey, not invisible)?"
+question = "v0.8 moved the hut from the 40x40 Old Shipyard to a 6x6 crystal clearing: did a hut appear (minimap icon), and only one per map? If it never shows in several runs, the 6x6 entrance does not work and it goes back to 40x40."
 
 [[experiment]]
 id       = "door_teleports"
-question = "does a prompt appear at the hut's door, and does using it take you somewhere (fade out / in)? Where do you land?"
+question = "does the hut door still take you to the platform, and do you arrive in shallow water in front of the front walkway, facing the platform?"
 
 [[experiment]]
-id       = "room_draws"
-question = "in the room: do you see the fishing platform (decks, the big hut, the fish on the grate, ramps, posts round the water hole) and a dark water floor? Is it lit, or pitch black?"
+id       = "room_scale"
+question = "is the platform now about 3x bigger, so the heroes look the right size on it? Do the meshes and the walking surfaces still line up (no floating, no sinking through the decks)?"
+
+[[experiment]]
+id       = "room_terrain"
+question = "are the rocky bumps/cave walls gone from the room? Is there flat, shallow water all round the platform, reaching the edges of the room?"
 
 [[experiment]]
 id       = "room_walk"
-question = "can you walk the platform: up the long ramps from the water floor, up the tarp ramp or the stair to the upper deck? Any invisible wall across a walkway?"
+question = "can you walk up both long ramps out of the water, up the wedge ramp and the stair to the upper deck? Any step that blocks, or an invisible wall across a walkway?"
 
 [[experiment]]
-id       = "room_return"
-question = "does the teleporter on the front walkway (by the glow) take you back out to the hut?"
+id       = "room_walls"
+question = "walk out across the water in every direction: does an invisible wall stop you before the water ends?"
+
+[[experiment]]
+id       = "room_exits"
+question = "there are 3 return teleporters: the one you arrived at, and one at the foot of each long ramp. Does each take you back out to the hut? Which way do they face?"
+
+[[experiment]]
+id       = "room_light"
+question = "is the room lit well enough (20 point lights now), or still too dark? Any part pitch black?"
 
 [[experiment]]
 id       = "no_crash"

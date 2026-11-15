@@ -18,44 +18,43 @@
 # Every binary in this folder is built locally from the fan art and gitignored;
 # only this file and the manifest are shared.
 
-# Base: the Old Shipyard (a Dark Hills `Special` 40x40), CLEARED so the hut
-# stands in a place of its own: no dream crystals, boats or fences. An entrance
-# has to be a 40x40 Special tile: the playtest of 2026-11-15 showed a crystal
-# clearing carrying `needs` is never placed (0 of ~4 expected picks, while the
-# same clearing without `needs` was placed 3 times), and every shipped entrance
-# that pulls an underground room — the Ghoul den first — is a 40x40 Special.
-base      = "Dark_Hills/40x40_Old_Shipyard_CrystalField"
+# Base: a 6x6 dream-crystal clearing (one crystal at the centre, flat ground at
+# y = 0), CLEARED so the hut stands there instead. The hut and its ramp take
+# about 5 x 5.6 m, so it fits the small slot instead of using up a whole 40x40
+# `Special` (v0.7 used the Old Shipyard). Dark Hills has no 4x4 slots; 6x6 is
+# the smallest that holds the hut (3x3 is too small).
+#
+# ⚠ UNPROVEN: the v0.7 crystal-clearing attempt that never placed (0 of ~4
+# picks) ran before the constraint-encoding fix (the class-table indexes in
+# tile_cook.write); the game also ships a 6x6 entrance that pulls an
+# underground room (6x6_Stone_Reserve_Entrance_01). If the hut stops showing,
+# go back to base = "Dark_Hills/40x40_Old_Shipyard_CrystalField",
+# kinds = ["Special"], ground y = 2.0, clear = { walls = true }.
+base      = "Dark_Hills/6x6_Crystal_01"
 chapters  = ["Dark_Hills"]
-# `Special` only: the base's `Crystal_Field` tag is capped at 1 per map, and
-# keeping it would make the hut and the real crystal field exclude each other.
-kinds     = ["Special"]
+# A `Crystal` pick in a 6x6 slot (the kind is 50 picks per map, 3x3 or 6x6).
+kinds     = ["Crystal"]
 flags     = ["Fishermans_Entrance"]
-# The base only appears from the yellow ring outward (tier band 0.33..1); 0
-# lets the hut stand anywhere.
 weight    = 0.0
 # PLAYTEST: several pool entries so the hut shows up most runs; the quota
 # keeps it to one per map.
 copies    = 6
 own_level = true
-# Sink the field's 258 placed objects (crystals, boats, planks, fences) and its
-# 14 invisible walls (laid out round those props); keep the two terrain-shape
-# slopes that make the hill. The field's enemy camp is a nested spawner that
-# `clear` cannot touch, so its cultists still guard the hut.
-clear     = { walls = true }
+# Sink the clearing's one dream crystal.
+clear     = true
 
 needs = [
   { flags = ["Fishermans_Platform_Underground"] },
 ]
 
-# The hut stands in the open grass at the centre; the ground there is y = 2.0
-# (the field's crystals stand at 2.0). The teleporter is on the deck in front
-# of the door (the door faces +Z; deck top = ground + 0.5).
+# The teleporter is on the deck in front of the door (the door faces +Z; deck
+# top = ground + 0.5).
 teleporters = [
-  { side = "out", id = "Fishermans_Platform", pos = [0.0, 2.5, 0.7] },
+  { side = "out", id = "Fishermans_Platform", pos = [0.0, 0.5, 0.7] },
 ]
 
 places = [
-  { entity = "@prop", pos = [0.0, 2.0, 0.0] },
+  { entity = "@prop", pos = [0.0, 0.0, 0.0] },
 ]
 
 entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.entity.ot"
