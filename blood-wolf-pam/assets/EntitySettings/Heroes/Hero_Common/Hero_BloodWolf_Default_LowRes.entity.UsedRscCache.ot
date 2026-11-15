@@ -31,11 +31,13 @@
 3D|Characters\Enemies\Wolves\Animations\Wolf_Shared_WalkStrafe_F_Loop.fbx|oCAnimation
 3D|Characters\Enemies\Wolves\Animations\Wolf_Shared_WalkStrafe_L_Loop.fbx|oCAnimation
 3D|Characters\Enemies\Wolves\Animations\Wolf_Shared_WalkStrafe_R_Loop.fbx|oCAnimation
-3D|Characters\Enemies\Wolves\Textures\M_BloodWolf_Summon3.mat.ot|oCMaterial
+3D|Characters\Enemies\Wolves\Textures\M_BloodWolf_Summon1.mat.ot|oCMaterial
+3D|Characters\Enemies\Wolves\Textures\M_BloodWolf_Summon2.mat.ot|oCMaterial
 3D|Characters\Enemies\Wolves\Textures\M_WolfAlpha.mat.ot|oCMaterial
 3D|Characters\Enemies\Wolves\Textures\M_WolfDire.mat.ot|oCMaterial
 3D|Characters\Enemies\Wolves\Textures\M_WolfTimber.mat.ot|oCMaterial
-3D|Characters\Enemies\Wolves\Textures\T_BloodWolf_Summon3_ALB.tga|oCTexture
+3D|Characters\Enemies\Wolves\Textures\T_BloodWolf_Summon1_ALB.tga|oCTexture
+3D|Characters\Enemies\Wolves\Textures\T_BloodWolf_Summon2_ALB.tga|oCTexture
 3D|Characters\Enemies\Wolves\Textures\T_Wolf_Alpha_ALB.tga|oCTexture
 3D|Characters\Enemies\Wolves\Textures\T_Wolf_Alpha_MRA.tga|oCTexture
 3D|Characters\Enemies\Wolves\Textures\T_Wolf_Alpha_NRM.tga|oCTexture
@@ -179,6 +181,7 @@
 3D|Characters\Heroes\Melusine\Narrative\MELUSINE_Book_LoopDefeat.fbx|oCAnimation
 3D|Characters\Heroes\Melusine\Narrative\MELUSINE_Book_ReadyLoop.fbx|oCAnimation
 3D|Characters\Heroes\Melusine\Narrative\MELUSINE_Book_SelectionLoop.fbx|oCAnimation
+3D|Characters\Heroes\RED\Animations\Communs\Hero_BloodWolf_DefenseSlam.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Dash_Default.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Communs\RED_Human_Death.fbx|oCAnimation
 3D|Characters\Heroes\RED\Animations\Communs\RED_Human_DeathDoor_Divine_Revive_In.fbx|oCAnimation
@@ -652,11 +655,11 @@ EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Bomb.entity.ot|oCEntitySettings
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Default.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Default_LowRes.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_FX.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Kit1.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_SpreadBomb.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon1.entity.ot|oCEntitySettingsResource
+EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon1_Model.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon2.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon2_Model.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon3.entity.ot|oCEntitySettingsResource
-EntitySettings|Heroes\Hero_Common\Hero_BloodWolf_Summon3_Model.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_Common.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_Common_Update5.entity.ot|oCEntitySettingsResource
 EntitySettings|Heroes\Hero_Common\Hero_Drop_Bag.entity.ot|oCEntitySettingsResource
@@ -1004,6 +1007,10 @@ FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Battlecry_Scream_01.vfx.ot|oCSchedule
 FX|Settings\Heroes\Hero_Beowulf_FX\Beowulf_Sword_Impact_01_Fire.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Beowulf_FX\Defense_Block_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Beowulf_FX\Skill_Enemies_Death_Explosion_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Attack_Dash_Trail_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Attack_Dash_Trail_02.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Attack_Dash_Trail_Claws_01.vfx.ot|oCScheduledVfxSettings
+FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Attack_Special_Rush_Slash_01_L.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Injection_Ribbons_Aura_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Power_Orb_Core_Explosion_01.vfx.ot|oCScheduledVfxSettings
 FX|Settings\Heroes\Hero_Carmilla_FX\Carmilla_Power_Orb_Explosion_01.vfx.ot|oCScheduledVfxSettings
@@ -1641,6 +1648,7 @@ Ui/Common/UI_Button_Rounded_Disabled.PNG.Texture.dxt
 Ui/Common/UI_Button_Rounded_Normal.PNG.Texture.dxt
 Ui/Common/UI_Button_Rounded_Selected.PNG.Texture.dxt
 Ui/Credits/UI_Credits_pic16.png.Texture.dxt
+Ui/Gauges/Heroes_HUD_HP_Gauge_Fill_02.png.Texture.dxt
 Ui/HUD/Message_Banner_Title_Scroll_01.png.Texture.dxt
 Ui/OptionMenu/UI_Options_Arrow.png.Texture.dxt
 Ui/Platform/UI_Social_Icons_Ingame_Playstation.png.Texture.dxt
@@ -1757,7 +1765,6 @@ Ui|Gauges\Heroes_HP_Gauge_Back.png|oCTexture
 Ui|Gauges\Heroes_HP_Gauge_Fill.png|oCTexture
 Ui|Gauges\Heroes_HUD_HP_Gauge_Back.png|oCTexture
 Ui|Gauges\Heroes_HUD_HP_Gauge_Fill_01.png|oCTexture
-Ui|Gauges\Heroes_HUD_HP_Gauge_Fill_02.png|oCTexture
 Ui|Gauges\Heroes_HUD_HP_Gauge_Fill_Back.png|oCTexture
 Ui|Gauges\Heroes_HUD_HP_Gauge_Fill_Shield_01.png|oCTexture
 Ui|Gauges\Interaction_Gauge_Frame_01.png|oCTexture
