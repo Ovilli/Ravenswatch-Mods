@@ -62,6 +62,9 @@ end
 -- interactive; a request/validate with no teleport = it is, but finds no
 -- partner.
 local budget = 30
+-- After each successful interaction, the next gameplay events of ANY name:
+-- what the teleporter actually did (or that it did nothing).
+local trail = 0
 local function dist(p)
     if not (hut and p) then return nil end
     local dx, dz = p[1] - hut[1], p[3] - hut[3]
@@ -74,15 +77,28 @@ if R.interact and R.interact.on then
             if budget <= 0 then return end
             budget = budget - 1
         end
-        R.log(("[fisher-probe] interact %s at %s%s entity=%s"):format(tostring(ev.phase),
+        local nm = R.interact.name and R.interact.name(ev) or nil
+        R.log(("[fisher-probe] interact %s at %s%s entity=%s a=%s b=%s class=%s name=%s"):format(
+            tostring(ev.phase),
             ev.pos and ("(%.1f, %.1f, %.1f)"):format(ev.pos[1], ev.pos[2], ev.pos[3]) or "(?)",
             d and (" — %.1f from the hut"):format(d) or "",
-            ev.entity and ("0x%x"):format(ev.entity) or "nil"))
+            ev.entity and ("0x%x"):format(ev.entity) or "nil",
+            tostring(ev.a), tostring(ev.b), tostring(ev.class), tostring(nm)))
+        if ev.phase == "success" or ev.phase == "local_success" then trail = 40 end
     end)
 end
 for _, name in ipairs({ "HERO_TELEPORTED", "TELEPORT_SUBMAP_EXIT", "TELEPORT_SUBMAP_ENTER",
                         "HERO_ENTER_THIEVES_STASH" }) do
     R.on("gameplay:" .. name, function()
         R.log("[fisher-probe] event " .. name)
+    end)
+end
+
+if R.on_match then
+    R.on_match("^gameplay:", function(_ev, name)
+        if trail <= 0 then return end
+        if name:find("INTERACTION", 1, true) then return end
+        trail = trail - 1
+        R.log("[fisher-probe]   after: " .. tostring(name))
     end)
 end
