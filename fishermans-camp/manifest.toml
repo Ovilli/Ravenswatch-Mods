@@ -1,7 +1,7 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.8.2"
+version     = "0.8.3"
 author      = "RSMM"
 description = "Adds a fisherman's hut to the Dark Hills. Step up to its door and you are taken to the fishing platform, a whole fan-art scene in a room of its own (the way the Ghoul den and the Thieves' stashes work): the tall-roofed hut on the upper deck, the giant catch on its grate, the crane and drying rack, walkways round an open water hole, crates, barrels and tarps."
 enabled     = true
@@ -48,8 +48,16 @@ id       = "room_look"
 question = "v0.8.2: is the water now brown and murky with reeds round the platform's edge, like the reference art? No black floor? Still no rocky bumps?"
 
 [[experiment]]
-id       = "right_side"
-question = "can you now walk from the upper deck down the short stair to the right arm, and up/down the right long ramp? Any other invisible wall anywhere?"
+id       = "edges"
+question = "v0.8.3: hug walls and railings everywhere, especially where ramps start: do you still drop under the map for a moment? Can you step up or down any deck edge without a ramp, or slip out through a gap in a fence?"
+
+[[experiment]]
+id       = "props_physics"
+question = "break the crates and barrels: does anything stay floating where one stood? Can you walk right up to the big fish now?"
+
+[[experiment]]
+id       = "light_cloth"
+question = "is the room bright enough now (brighter ambient + 12 warm lanterns on the decks)? Do the tarps look torn and natural instead of square?"
 
 [[experiment]]
 id       = "room_walk"
