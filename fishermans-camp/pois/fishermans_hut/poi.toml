@@ -18,8 +18,8 @@
 # Every binary in this folder is built locally from the fan art and gitignored;
 # only this file and the manifest are shared.
 
-# Base: the Old Shipyard (a Dark Hills `Special` 40x40: beached boats, a fishnet,
-# planks, a cultist camp and dream crystals — kept as they are). An entrance
+# Base: the Old Shipyard (a Dark Hills `Special` 40x40), CLEARED so the hut
+# stands in a place of its own: no dream crystals, boats or fences. An entrance
 # has to be a 40x40 Special tile: the playtest of 2026-11-15 showed a crystal
 # clearing carrying `needs` is never placed (0 of ~4 expected picks, while the
 # same clearing without `needs` was placed 3 times), and every shipped entrance
@@ -37,6 +37,11 @@ weight    = 0.0
 # keeps it to one per map.
 copies    = 6
 own_level = true
+# Sink the field's 258 placed objects (crystals, boats, planks, fences) and its
+# 14 invisible walls (laid out round those props); keep the two terrain-shape
+# slopes that make the hill. The field's enemy camp is a nested spawner that
+# `clear` cannot touch, so its cultists still guard the hut.
+clear     = { walls = true }
 
 needs = [
   { flags = ["Fishermans_Platform_Underground"] },

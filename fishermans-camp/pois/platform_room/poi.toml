@@ -17,7 +17,11 @@ own_level = true
 
 # Only the room's lighting zone survives; its walls, floor, jars and its own
 # teleporter are sunk. The platform brings its own floor (parts.lower).
-clear = { keep = ["Zone_Render_Setting"] }
+# `walls`: the Gold Room's six invisible static walls (oCStaticWallGo) are not
+# placements, so only this sinks them. Left standing, COL_Wall_01 and the pit
+# walls ring the teleporter's alcove (x -3..11, z 10..23.5) and the hero, who
+# arrives 1.5 m in front of the teleporter, is boxed in there.
+clear = { keep = ["Zone_Render_Setting"], walls = true }
 
 # The room's own return teleporter (an object clear cannot sink) is taken over
 # under our pair name. It stands at (4.86, 0, 23.0) facing -Z, so the whole kit
