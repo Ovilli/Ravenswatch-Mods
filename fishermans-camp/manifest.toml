@@ -1,7 +1,7 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.9.2"
+version     = "0.9.3"
 author      = "RSMM"
 description = "Adds a fisherman's hut to the Dark Hills. Step up to its door and you are taken to the fishing platform, a whole fan-art scene in a room of its own (the way the Ghoul den and the Thieves' stashes work): the tall-roofed hut on the upper deck, the giant catch on its grate, the crane and drying rack, walkways round an open water hole, crates, barrels and tarps."
 enabled     = true
@@ -91,7 +91,7 @@ question = "v0.9: in Lua, does R.ingredient.add(\"Fish\", 3) show 3 fish (with t
 
 [[experiment]]
 id       = "fish_crates"
-question = "are there straw-quest-style crate spots round the hut (up to 12, within ~130 m) with a pile of fish on each, marked on the minimap? Does picking one up add 4 fish to the HUD?"
+question = "v0.9.3: are there 12 fish-crate spots spread over the whole island (not just round the hut), each with a fish pile worth 4? Are all the usual crystals, fountains, camps etc. still there (the crates now get spots of their own)?"
 
 [[experiment]]
 id       = "fish_handin"
