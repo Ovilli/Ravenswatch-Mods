@@ -36,7 +36,7 @@ terrain_size = [128.0, 128.0]
 # platform walked out of it, and the look snapped back to the outdoor one
 # (playtest 2026-11-15). Cover the whole walled room.
 # Its ambient light, (0.17, 0.16, 0.18) in the Gold Room: too dark (playtest).
-render_ambient = [0.42, 0.40, 0.40]
+render_ambient = [0.55, 0.52, 0.52]
 level_values = { "Render Settings Zone Scale Value" = 88.0, "Render Settings Zone Vertical Scale Value" = 40.0 }
 terrain = [
   { op = "set", layer = "Terrain Height", x = 0.0, z = 0.0, radius = 200.0, amount = -0.6, falloff = "constant" },
@@ -65,13 +65,14 @@ entity_base   = "DarkHills\\SceneryObjects_DarkHills\\Wall_Ruins_Block_Small_A.e
 material_base = "Scenery\\DarkHills\\M_Walls_Ruins.mat.ot"
 transform = { fit = "rig", scale = 1.0 }
 
-# The hut blocks (kit space: scaled with its placement).
-collision = [
-  { kind = "wall", size = [5.28, 2.6, 5.28], at = [-4.6, 3.7, -8.2] },
-]
+# The PROP is the giant catch on its grate (its mesh is built around the fish,
+# fishermans-camp-tools compose "origins"), interactive: the hold prompt stands
+# at the fish. It is where the fish quest is handed in (WIP).
+interactive = true
 
 places = [
-  { entity = "@prop", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
+  { entity = "@prop", pos = [3.28, 10.0, -24.65], scale = 2.5 },
+  { entity = "DarkHills\\Dark_Hills_Enemy_Spawner\\Dark_Hills_Basic_Enemy_Camp.entity.ot", pos = [-2.72, 10.0, -31.9] },
   { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-30.083, 9.0, -18.214] },
   { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-31.417, 9.0, -6.382] },
   { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-26.355, 9.0, 0.772] },
@@ -146,7 +147,6 @@ places = [
   { entity = "DarkHills\\Objects_DarkHills\\Destructible_Reed_Composition_Big.entity.ot", pos = [-41.529, 0.0, -7.123], yaw = 307 },
   { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Big.entity.ot", pos = [-40.814, 0.0, -14.13], yaw = 20 },
   { entity = "DarkHills\\SceneryObjects_DarkHills\\Lantern_Thieves_OrangeLight.entity.ot", pos = [-19.707, 10.0, -33.635] },
-  { entity = "DarkHills\\SceneryObjects_DarkHills\\Lantern_Thieves_OrangeLight.entity.ot", pos = [-9.564, 10.0, -38.837] },
   { entity = "DarkHills\\SceneryObjects_DarkHills\\Lantern_Thieves_OrangeLight.entity.ot", pos = [10.119, 10.0, -37.73] },
   { entity = "DarkHills\\SceneryObjects_DarkHills\\Lantern_Thieves_OrangeLight.entity.ot", pos = [19.54, 10.0, -28.382] },
   { entity = "DarkHills\\SceneryObjects_DarkHills\\Lantern_Thieves_OrangeLight.entity.ot", pos = [-8.127, 10.0, -26.013] },
@@ -158,9 +158,9 @@ places = [
   { entity = "DarkHills\\SceneryObjects_DarkHills\\Lantern_Thieves_OrangeLight.entity.ot", pos = [32.838, 4.5, -9.582] },
   { entity = "DarkHills\\SceneryObjects_DarkHills\\Lantern_Thieves_OrangeLight.entity.ot", pos = [32.081, 4.5, -14.732] },
   { entity = "@back", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
-  { entity = "@fish", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
   { entity = "@front", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
   { entity = "@front__2", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
+  { entity = "@hut", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
   { entity = "@hut__2", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
   { entity = "@hut__3", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
   { entity = "@lower", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
@@ -192,6 +192,7 @@ normal = "Scenery\\DarkHills\\T_Walls_Ruins_NRM.tga"
 
 [parts.back]
 collision = [
+  { kind = "wall", size = [5.28, 2.6, 5.28], at = [-4.6, 3.7, -8.2] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-14.4, 1.2, -2.72] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-14.66, 1.2, -2.1] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-14.92, 1.2, -1.48] },
@@ -421,11 +422,11 @@ collision = [
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [6.64, 3.4, -1.12] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [7.05, 3.086, -0.546] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [7.461, 2.771, 0.029] },
-  { kind = "wall", size = [0.8, 2.0, 0.8], at = [7.871, 2.457, 0.603] },
 ]
 
-[parts.fish]
+[parts.front]
 collision = [
+  { kind = "wall", size = [0.8, 2.0, 0.8], at = [7.871, 2.457, 0.603] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [8.281, 2.143, 1.178] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [8.691, 1.829, 1.752] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [9.102, 1.514, 2.326] },
@@ -655,11 +656,11 @@ collision = [
   { kind = "ground", size = [0.14, 1.8, 1.102], at = [2.319, -0.7, 6.086] },
   { kind = "ground", size = [0.14, 1.8, 1.102], at = [2.42, -0.7, 6.086] },
   { kind = "ground", size = [0.14, 1.8, 1.102], at = [2.52, -0.7, 6.086] },
-  { kind = "ground", size = [0.14, 1.8, 1.102], at = [2.62, -0.7, 6.086] },
 ]
 
-[parts.front]
+[parts.front__2]
 collision = [
+  { kind = "ground", size = [0.14, 1.8, 1.102], at = [2.62, -0.7, 6.086] },
   { kind = "ground", size = [0.14, 1.8, 1.102], at = [2.72, -0.7, 6.086] },
   { kind = "ground", size = [0.14, 1.8, 1.102], at = [2.821, -0.7, 6.086] },
   { kind = "ground", size = [0.14, 1.8, 1.102], at = [2.921, -0.7, 6.086] },
@@ -889,11 +890,11 @@ collision = [
   { kind = "ground", size = [0.24, 0.16, 0.24], at = [-13.198, -1.52, 9.577] },
   { kind = "ground", size = [0.24, 0.095, 0.24], at = [-13.198, -1.552, 9.777] },
   { kind = "ground", size = [0.24, 0.984, 0.24], at = [-12.998, -1.108, 7.177] },
-  { kind = "ground", size = [0.24, 0.92, 0.24], at = [-12.998, -1.14, 7.377] },
 ]
 
-[parts.front__2]
+[parts.hut]
 collision = [
+  { kind = "ground", size = [0.24, 0.92, 0.24], at = [-12.998, -1.14, 7.377] },
   { kind = "ground", size = [0.24, 0.856, 0.24], at = [-12.998, -1.172, 7.577] },
   { kind = "ground", size = [0.24, 0.792, 0.24], at = [-12.998, -1.204, 7.777] },
   { kind = "ground", size = [0.24, 0.728, 0.24], at = [-12.998, -1.236, 7.977] },
@@ -1123,11 +1124,11 @@ collision = [
   { kind = "ground", size = [0.24, 1.084, 0.24], at = [-10.798, -1.058, 8.777] },
   { kind = "ground", size = [0.24, 1.02, 0.24], at = [-10.798, -1.09, 8.977] },
   { kind = "ground", size = [0.24, 0.956, 0.24], at = [-10.798, -1.122, 9.177] },
-  { kind = "ground", size = [0.24, 1.781, 0.24], at = [-10.598, -0.71, 6.777] },
 ]
 
 [parts.hut__2]
 collision = [
+  { kind = "ground", size = [0.24, 1.781, 0.24], at = [-10.598, -0.71, 6.777] },
   { kind = "ground", size = [0.24, 1.716, 0.24], at = [-10.598, -0.742, 6.977] },
   { kind = "ground", size = [0.24, 1.652, 0.24], at = [-10.598, -0.774, 7.177] },
   { kind = "ground", size = [0.24, 1.588, 0.24], at = [-10.598, -0.806, 7.377] },
@@ -1357,11 +1358,11 @@ collision = [
   { kind = "ground", size = [0.24, 0.198, 0.24], at = [13.188, -1.501, 9.5] },
   { kind = "ground", size = [0.24, 0.134, 0.24], at = [13.188, -1.533, 9.7] },
   { kind = "ground", size = [0.24, 0.069, 0.24], at = [13.188, -1.566, 9.9] },
-  { kind = "ground", size = [0.24, 1.425, 0.24], at = [13.388, -0.888, 5.5] },
 ]
 
 [parts.hut__3]
 collision = [
+  { kind = "ground", size = [0.24, 1.425, 0.24], at = [13.388, -0.888, 5.5] },
   { kind = "ground", size = [0.24, 1.36, 0.24], at = [13.388, -0.92, 5.7] },
   { kind = "ground", size = [0.24, 1.296, 0.24], at = [13.388, -0.952, 5.9] },
   { kind = "ground", size = [0.24, 1.231, 0.24], at = [13.388, -0.985, 6.1] },
@@ -1591,11 +1592,11 @@ collision = [
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.852, 0.4, -2.908] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.752, 0.4, -2.908] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.652, 0.4, -2.908] },
-  { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.552, 0.4, -2.908] },
 ]
 
 [parts.lower]
 collision = [
+  { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.552, 0.4, -2.908] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.452, 0.4, -2.908] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.352, 0.4, -2.908] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.252, 0.4, -2.908] },
@@ -1825,11 +1826,11 @@ collision = [
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [4.92, 0.4, -1.942] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [5.019, 0.4, -1.942] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [5.119, 0.4, -1.942] },
-  { kind = "ground", size = [0.14, 4.0, 1.046], at = [5.219, 0.4, -1.942] },
 ]
 
 [parts.lower__2]
 collision = [
+  { kind = "ground", size = [0.14, 4.0, 1.046], at = [5.219, 0.4, -1.942] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [5.319, 0.4, -1.942] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [5.418, 0.4, -1.942] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [5.518, 0.4, -1.942] },
@@ -2059,11 +2060,11 @@ collision = [
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.876, 0.4, -0.009] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.776, 0.4, -0.009] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.677, 0.4, -0.009] },
-  { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.577, 0.4, -0.009] },
 ]
 
 [parts.lower__3]
 collision = [
+  { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.577, 0.4, -0.009] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.477, 0.4, -0.009] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.377, 0.4, -0.009] },
   { kind = "ground", size = [0.14, 4.0, 1.046], at = [-0.277, 0.4, -0.009] },
@@ -2293,11 +2294,11 @@ collision = [
   { kind = "ground", size = [0.24, 2.539, 0.24], at = [-10.739, -0.331, 0.54] },
   { kind = "ground", size = [0.24, 2.486, 0.24], at = [-10.739, -0.357, 0.74] },
   { kind = "ground", size = [0.24, 2.432, 0.24], at = [-10.739, -0.384, 0.94] },
-  { kind = "ground", size = [0.24, 2.379, 0.24], at = [-10.739, -0.411, 1.14] },
 ]
 
 [parts.lower__4]
 collision = [
+  { kind = "ground", size = [0.24, 2.379, 0.24], at = [-10.739, -0.411, 1.14] },
   { kind = "ground", size = [0.24, 2.326, 0.24], at = [-10.739, -0.437, 1.34] },
   { kind = "ground", size = [0.24, 2.272, 0.24], at = [-10.739, -0.464, 1.54] },
   { kind = "ground", size = [0.24, 2.219, 0.24], at = [-10.739, -0.491, 1.74] },
@@ -2527,11 +2528,11 @@ collision = [
   { kind = "ground", size = [0.24, 3.224, 0.24], at = [-8.939, 0.012, -0.26] },
   { kind = "ground", size = [0.24, 3.17, 0.24], at = [-8.939, -0.015, -0.06] },
   { kind = "ground", size = [0.24, 3.117, 0.24], at = [-8.939, -0.042, 0.14] },
-  { kind = "ground", size = [0.24, 3.064, 0.24], at = [-8.939, -0.068, 0.34] },
 ]
 
 [parts.lower__5]
 collision = [
+  { kind = "ground", size = [0.24, 3.064, 0.24], at = [-8.939, -0.068, 0.34] },
   { kind = "ground", size = [0.24, 3.01, 0.24], at = [-8.939, -0.095, 0.54] },
   { kind = "ground", size = [0.24, 2.957, 0.24], at = [-8.939, -0.122, 0.74] },
   { kind = "ground", size = [0.24, 2.903, 0.24], at = [-8.939, -0.149, 0.94] },
@@ -2761,11 +2762,11 @@ collision = [
   { kind = "ground", size = [0.24, 3.431, 0.24], at = [-7.739, 0.115, 0.14] },
   { kind = "ground", size = [0.24, 3.378, 0.24], at = [-7.739, 0.089, 0.34] },
   { kind = "ground", size = [0.24, 3.324, 0.24], at = [-7.739, 0.062, 0.54] },
-  { kind = "ground", size = [0.24, 3.271, 0.24], at = [-7.739, 0.035, 0.74] },
 ]
 
 [parts.lower__6]
 collision = [
+  { kind = "ground", size = [0.24, 3.271, 0.24], at = [-7.739, 0.035, 0.74] },
   { kind = "ground", size = [0.24, 3.218, 0.24], at = [-7.739, 0.009, 0.94] },
   { kind = "ground", size = [0.24, 3.164, 0.24], at = [-7.739, -0.018, 1.14] },
   { kind = "ground", size = [0.24, 3.111, 0.24], at = [-7.739, -0.045, 1.34] },
@@ -2995,11 +2996,11 @@ collision = [
   { kind = "ground", size = [0.24, 3.102, 0.24], at = [-6.139, -0.049, 2.94] },
   { kind = "ground", size = [0.24, 3.049, 0.24], at = [-6.139, -0.076, 3.14] },
   { kind = "ground", size = [0.24, 2.996, 0.24], at = [-6.139, -0.102, 3.34] },
-  { kind = "ground", size = [0.24, 3.956, 0.24], at = [-5.939, 0.378, -0.06] },
 ]
 
 [parts.ramps]
 collision = [
+  { kind = "ground", size = [0.24, 3.956, 0.24], at = [-5.939, 0.378, -0.06] },
   { kind = "ground", size = [0.24, 3.902, 0.24], at = [-5.939, 0.351, 0.14] },
   { kind = "ground", size = [0.24, 3.849, 0.24], at = [-5.939, 0.325, 0.34] },
   { kind = "ground", size = [0.24, 3.795, 0.24], at = [-5.939, 0.297, 0.54] },
@@ -3229,11 +3230,11 @@ collision = [
   { kind = "ground", size = [0.24, 2.716, 0.24], at = [6.7, -0.242, 2.38] },
   { kind = "ground", size = [0.24, 2.644, 0.24], at = [6.7, -0.278, 2.58] },
   { kind = "ground", size = [0.24, 2.572, 0.24], at = [6.7, -0.314, 2.78] },
-  { kind = "ground", size = [0.24, 2.499, 0.24], at = [6.7, -0.351, 2.98] },
 ]
 
 [parts.upper]
 collision = [
+  { kind = "ground", size = [0.24, 2.499, 0.24], at = [6.7, -0.351, 2.98] },
   { kind = "ground", size = [0.24, 2.427, 0.24], at = [6.7, -0.387, 3.18] },
   { kind = "ground", size = [0.24, 2.354, 0.24], at = [6.7, -0.423, 3.38] },
   { kind = "ground", size = [0.24, 2.282, 0.24], at = [6.7, -0.459, 3.58] },
@@ -3463,11 +3464,11 @@ collision = [
   { kind = "ground", size = [0.12, 1.85, 0.12], at = [-11.899, -0.675, 2.11] },
   { kind = "ground", size = [0.12, 0.237, 0.12], at = [-11.8, -1.482, 10.31] },
   { kind = "ground", size = [0.12, 2.17, 0.12], at = [-11.7, -0.515, 0.81] },
-  { kind = "ground", size = [0.12, 0.357, 0.12], at = [-11.599, -1.421, 10.11] },
 ]
 
 [parts.upper__2]
 collision = [
+  { kind = "ground", size = [0.12, 0.357, 0.12], at = [-11.599, -1.421, 10.11] },
   { kind = "ground", size = [0.12, 2.276, 0.12], at = [-11.5, -0.462, 0.61] },
   { kind = "ground", size = [0.12, 0.477, 0.12], at = [-11.399, -1.361, 9.91] },
   { kind = "ground", size = [0.12, 2.382, 0.12], at = [-11.3, -0.409, 0.41] },
@@ -3697,11 +3698,11 @@ collision = [
   { kind = "ground", size = [0.12, 1.8, 0.32], at = [13.001, -0.7, -1.79] },
   { kind = "ground", size = [0.12, 1.8, 0.32], at = [13.101, -0.7, -1.79] },
   { kind = "ground", size = [0.12, 1.8, 0.32], at = [13.201, -0.7, -1.79] },
-  { kind = "ground", size = [0.12, 1.8, 0.12], at = [13.201, -0.7, 4.61] },
 ]
 
 [parts.upper__3]
 collision = [
+  { kind = "ground", size = [0.12, 1.8, 0.12], at = [13.201, -0.7, 4.61] },
   { kind = "ground", size = [0.12, 1.741, 0.22], at = [13.201, -0.73, 4.76] },
   { kind = "ground", size = [0.12, 1.55, 0.12], at = [13.201, -0.825, 5.11] },
   { kind = "ground", size = [0.12, 1.741, 0.32], at = [13.301, -0.73, 4.71] },
@@ -3931,11 +3932,11 @@ collision = [
   { kind = "wall", size = [0.22, 3.0, 0.32], at = [5.251, 1.7, 1.71] },
   { kind = "wall", size = [0.22, 3.4, 0.82], at = [5.251, 0.1, 9.86] },
   { kind = "wall", size = [0.22, 3.0, 0.52], at = [5.351, 1.7, 1.91] },
-  { kind = "wall", size = [0.22, 3.4, 0.32], at = [5.351, 0.1, 9.51] },
 ]
 
 [parts.upper__4]
 collision = [
+  { kind = "wall", size = [0.22, 3.4, 0.32], at = [5.351, 0.1, 9.51] },
   { kind = "wall", size = [0.22, 2.8, 0.32], at = [5.451, 1.6, 2.11] },
   { kind = "wall", size = [0.22, 3.4, 0.32], at = [5.451, 0.1, 9.41] },
   { kind = "wall", size = [0.22, 2.8, 0.32], at = [5.55, 1.6, 2.21] },
@@ -4165,11 +4166,11 @@ collision = [
   { kind = "wall", size = [0.52, 5.6, 0.22], at = [8.901, 1.2, -6.64] },
   { kind = "wall", size = [0.32, 2.6, 0.22], at = [-10.5, 1.5, -0.44] },
   { kind = "wall", size = [0.32, 2.7, 0.22], at = [-10.5, -0.25, 8.86] },
-  { kind = "wall", size = [0.32, 2.7, 0.22], at = [-10.399, 1.55, -0.54] },
 ]
 
 [parts.upper__5]
 collision = [
+  { kind = "wall", size = [0.32, 2.7, 0.22], at = [-10.399, 1.55, -0.54] },
   { kind = "wall", size = [0.32, 2.7, 0.22], at = [-10.399, -0.25, 8.76] },
   { kind = "wall", size = [0.32, 2.7, 0.22], at = [-10.3, 1.55, -0.64] },
   { kind = "wall", size = [0.32, 2.9, 0.22], at = [-10.3, -0.15, 8.66] },
