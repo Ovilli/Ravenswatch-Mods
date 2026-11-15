@@ -66,6 +66,22 @@ id       = "room_look"
 question = "v0.8.2: is the water now brown and murky with reeds round the platform's edge, like the reference art? No black floor? Still no rocky bumps?"
 
 [[experiment]]
+id       = "fish_ingredient"
+question = "v0.9: in Lua, does R.ingredient.add(\"Fish\", 3) show 3 fish (with the fish icon) on the HUD? That proves the new Fish ingredient loaded."
+
+[[experiment]]
+id       = "fish_crates"
+question = "are there straw-quest-style crate spots round the hut (up to 12, within ~130 m) with a pile of fish on each, marked on the minimap? Does picking one up add 4 fish to the HUD?"
+
+[[experiment]]
+id       = "fish_handin"
+question = "at the giant fish in the room: does a hold prompt with a fish icon and a 0/8 counter appear? Handing in 8 fish: does the pig house's pick-a-magic-object reward appear? Then 12 and 20 for the 2nd and 3rd rewards?"
+
+[[experiment]]
+id       = "room_scale2"
+question = "the room is 2x now (was 2.5x): is the size right? Can you still walk every ramp, with no invisible posts or drops you can slip through?"
+
+[[experiment]]
 id       = "right_ramp"
 question = "v0.8.4: can you walk freely up and down the right long ramp now (the invisible post in its mouth is gone)? Any other spot that blocks?"
 
