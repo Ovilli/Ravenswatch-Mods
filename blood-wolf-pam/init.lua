@@ -9,7 +9,7 @@ end)
 -- TESTING ONLY (local playtest, not Pam's): 5000 XP once per run on Blood
 -- Wolf, so the ultimates unlock at once. Same pattern as mods/gretel. Remove
 -- before sending the mod back: from a store it is free XP.
-local XP, XP_TRIES = 5000, 5
+local XP, XP_TRIES = 20000, 5
 R.xp.arm()                       -- capture the level component before the run builds it
 
 local done, pending, tries, who, polls = false, false, 0, nil, 0
