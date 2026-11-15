@@ -39,6 +39,12 @@ level_values = { "Render Settings Zone Scale Value" = 88.0, "Render Settings Zon
 terrain = [
   { op = "set", layer = "Terrain Height", x = 0.0, z = 0.0, radius = 200.0, amount = -0.6, falloff = "constant" },
   { op = "set", layer = "Water Height", x = 0.0, z = 0.0, radius = 1.0, amount = 0.3 },
+  # the swamp look of the game's own fisherman platform (64x64_HighFishermanPlatform):
+  # brown water, a mud bed, some duckweed; the Gold Room's floor colour had black cave patches
+  { op = "tint", layer = "Vertex Color Water", color = "#af6d33", amount = 1.0, x = 0.0, z = 0.0, radius = 200.0, falloff = "constant" },
+  { op = "tint", layer = "Vertex Color Terrain", color = "#ffffff", amount = 1.0, x = 0.0, z = 0.0, radius = 200.0, falloff = "constant" },
+  { op = "set", layer = "Mud", amount = 0.9, x = 0.0, z = 0.0, radius = 200.0, falloff = "constant" },
+  { op = "set", layer = "Water Lentils", amount = 0.2, x = 0.0, z = 0.0, radius = 200.0, falloff = "constant" },
 ]
 
 # Three ways out, all paired with the hut's door:
@@ -116,6 +122,27 @@ places = [
   { entity = "DarkHills\\Objects_DarkHills\\Destructible_Barrel_Fish.entity.ot", pos = [20.48, 10.0, -33.85], yaw = 0 },
   { entity = "DarkHills\\Objects_DarkHills\\Destructible_Barrel_Classic.entity.ot", pos = [22.355, 10.0, -31.6], yaw = -70 },
   { entity = "DarkHills\\Objects_DarkHills\\Destructible_Barrel_Fish.entity.ot", pos = [21.48, 10.0, -32.65], yaw = -30 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Big.entity.ot", pos = [-39.998, 0.0, -16.569], yaw = 0 },
+  { entity = "DarkHills\\Objects_DarkHills\\Destructible_Reed_Composition_Medium.entity.ot", pos = [-39.368, 0.0, -20.591], yaw = 73 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Small.entity.ot", pos = [-34.34, 0.0, -28.539], yaw = 146 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reeds_Patch_A.entity.ot", pos = [-24.049, 0.0, -37.626], yaw = 219 },
+  { entity = "DarkHills\\Objects_DarkHills\\Destructible_Reed_Composition_Big.entity.ot", pos = [-14.431, 0.0, -43.206], yaw = 292 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Big.entity.ot", pos = [-3.733, 0.0, -44.079], yaw = 5 },
+  { entity = "DarkHills\\Objects_DarkHills\\Destructible_Reed_Composition_Medium.entity.ot", pos = [6.983, 0.0, -42.764], yaw = 78 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Small.entity.ot", pos = [13.879, 0.0, -42.113], yaw = 151 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reeds_Patch_A.entity.ot", pos = [21.086, 0.0, -36.314], yaw = 224 },
+  { entity = "DarkHills\\Objects_DarkHills\\Destructible_Reed_Composition_Big.entity.ot", pos = [27.623, 0.0, -27.98], yaw = 297 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Big.entity.ot", pos = [32.538, 0.0, -23.35], yaw = 10 },
+  { entity = "DarkHills\\Objects_DarkHills\\Destructible_Reed_Composition_Medium.entity.ot", pos = [34.441, 0.0, -18.805], yaw = 83 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Small.entity.ot", pos = [37.242, 0.0, -11.698], yaw = 156 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reeds_Patch_A.entity.ot", pos = [40.24, 0.0, 0.315], yaw = 229 },
+  { entity = "DarkHills\\Objects_DarkHills\\Destructible_Reed_Composition_Big.entity.ot", pos = [20.907, 0.0, 16.803], yaw = 302 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Big.entity.ot", pos = [12.0, 0.0, 20.197], yaw = 15 },
+  { entity = "DarkHills\\Objects_DarkHills\\Destructible_Reed_Composition_Medium.entity.ot", pos = [-10.203, 0.0, 22.256], yaw = 88 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Small.entity.ot", pos = [-24.012, 0.0, 18.047], yaw = 161 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reeds_Patch_A.entity.ot", pos = [-39.513, 0.0, 4.427], yaw = 234 },
+  { entity = "DarkHills\\Objects_DarkHills\\Destructible_Reed_Composition_Big.entity.ot", pos = [-41.529, 0.0, -7.123], yaw = 307 },
+  { entity = "DarkHills\\SceneryObjects_DarkHills\\Reed_Composition_Big.entity.ot", pos = [-40.814, 0.0, -14.13], yaw = 20 },
   { entity = "@back", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
   { entity = "@fish", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
   { entity = "@front", pos = [-0.22, 4.0, -13.15], scale = 2.5 },
@@ -280,23 +307,12 @@ collision = [
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-4.853, 1.2, 2.773] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-4.547, 1.2, 2.107] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-4.24, 1.2, 1.44] },
-  { kind = "wall", size = [0.712, 1.008, 0.378], at = [-5.034, 2.984, -5.362] },
   { kind = "wall", size = [0.737, 0.576, 0.733], at = [-5.949, 2.688, -4.794] },
   { kind = "wall", size = [5.029, 1.924, 4.008], at = [1.6, 3.702, -4.6] },
-  { kind = "wall", size = [3.482, 1.297, 1.363], at = [-0.6, 3.4, -3.6] },
   { kind = "wall", size = [0.898, 0.72, 0.905], at = [0.8, 2.76, -1.4] },
   { kind = "wall", size = [0.462, 2.0, 0.473], at = [-10.08, 3.2, -5.12] },
-  { kind = "wall", size = [3.346, 0.835, 1.699], at = [-11.58, 7.4, -4.42] },
-  { kind = "wall", size = [1.243, 1.311, 0.672], at = [-10.68, 6.7, -4.84] },
-  { kind = "wall", size = [1.256, 2.0, 1.298], at = [-11.764, 4.609, -3.926] },
-  { kind = "wall", size = [2.985, 0.662, 3.094], at = [-8.88, 2.831, -4.22] },
   { kind = "wall", size = [0.294, 2.0, 0.301], at = [5.666, 3.2, -9.326] },
   { kind = "wall", size = [0.294, 2.0, 0.301], at = [7.774, 3.2, -6.674] },
-  { kind = "wall", size = [2.499, 0.14, 3.043], at = [6.72, 4.8, -8.0] },
-  { kind = "wall", size = [0.521, 0.845, 0.526], at = [5.9, 4.15, -8.746] },
-  { kind = "wall", size = [0.521, 0.845, 0.526], at = [6.458, 4.15, -8.044] },
-  { kind = "wall", size = [0.521, 0.845, 0.526], at = [7.078, 4.15, -7.264] },
-  { kind = "wall", size = [9.741, 1.655, 10.336], at = [6.86, 1.728, -2.92] },
   { kind = "wall", size = [1.44, 0.68, 1.201], at = [-13.08, 0.54, 0.68] },
   { kind = "wall", size = [0.378, 2.0, 0.387], at = [12.48, -0.9, 12.8] },
   { kind = "ground", size = [0.2, 0.082, 0.2], at = [-14.398, -1.559, 8.777] },
@@ -385,10 +401,6 @@ collision = [
   { kind = "ground", size = [0.2, 1.096, 0.2], at = [-12.598, -1.052, 7.177] },
   { kind = "ground", size = [0.2, 1.032, 0.2], at = [-12.598, -1.084, 7.377] },
   { kind = "ground", size = [0.2, 0.968, 0.2], at = [-12.598, -1.116, 7.577] },
-]
-
-[parts.fish]
-collision = [
   { kind = "ground", size = [0.2, 0.903, 0.2], at = [-12.598, -1.149, 7.777] },
   { kind = "ground", size = [0.2, 0.839, 0.2], at = [-12.598, -1.181, 7.977] },
   { kind = "ground", size = [0.2, 0.775, 0.2], at = [-12.598, -1.212, 8.177] },
@@ -399,6 +411,10 @@ collision = [
   { kind = "ground", size = [0.2, 0.455, 0.2], at = [-12.598, -1.373, 9.177] },
   { kind = "ground", size = [0.2, 0.391, 0.2], at = [-12.598, -1.405, 9.377] },
   { kind = "ground", size = [0.2, 0.327, 0.2], at = [-12.598, -1.437, 9.577] },
+]
+
+[parts.fish]
+collision = [
   { kind = "ground", size = [0.2, 0.262, 0.2], at = [-12.598, -1.469, 9.777] },
   { kind = "ground", size = [0.2, 0.198, 0.2], at = [-12.598, -1.501, 9.977] },
   { kind = "ground", size = [0.2, 0.134, 0.2], at = [-12.598, -1.533, 10.177] },
@@ -625,10 +641,6 @@ collision = [
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-13.147, 0.325, 7.233] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-13.597, 0.033, 7.752] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-14.048, -0.258, 8.271] },
-]
-
-[parts.front]
-collision = [
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-14.498, -0.55, 8.79] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-9.485, 1.2, 7.683] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-9.935, 0.908, 8.202] },
@@ -638,6 +650,10 @@ collision = [
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-11.737, -0.258, 10.277] },
   { kind = "wall", size = [0.8, 2.0, 0.8], at = [-12.188, -0.55, 10.796] },
   { kind = "ground", size = [0.2, 1.771, 0.2], at = [10.588, -0.715, 7.1] },
+]
+
+[parts.front]
+collision = [
   { kind = "ground", size = [0.2, 1.773, 0.2], at = [10.788, -0.714, 6.9] },
   { kind = "ground", size = [0.2, 1.709, 0.2], at = [10.788, -0.746, 7.1] },
   { kind = "ground", size = [0.2, 1.645, 0.2], at = [10.788, -0.778, 7.3] },
@@ -865,10 +881,6 @@ collision = [
   { kind = "ground", size = [0.2, 0.719, 0.2], at = [13.588, -1.24, 7.5] },
   { kind = "ground", size = [0.2, 0.655, 0.2], at = [13.588, -1.272, 7.7] },
   { kind = "ground", size = [0.2, 0.59, 0.2], at = [13.588, -1.305, 7.9] },
-]
-
-[parts.hut__2]
-collision = [
   { kind = "ground", size = [0.2, 0.526, 0.2], at = [13.588, -1.337, 8.1] },
   { kind = "ground", size = [0.2, 0.462, 0.2], at = [13.588, -1.369, 8.3] },
   { kind = "ground", size = [0.2, 0.397, 0.2], at = [13.588, -1.401, 8.5] },
@@ -877,6 +889,10 @@ collision = [
   { kind = "ground", size = [0.2, 0.204, 0.2], at = [13.588, -1.498, 9.1] },
   { kind = "ground", size = [0.2, 0.14, 0.2], at = [13.588, -1.53, 9.3] },
   { kind = "ground", size = [0.2, 0.075, 0.2], at = [13.588, -1.562, 9.5] },
+]
+
+[parts.hut__2]
+collision = [
   { kind = "ground", size = [0.2, 1.173, 0.2], at = [13.788, -1.014, 5.9] },
   { kind = "ground", size = [0.2, 1.108, 0.2], at = [13.788, -1.046, 6.1] },
   { kind = "ground", size = [0.2, 1.044, 0.2], at = [13.788, -1.078, 6.3] },
@@ -1105,10 +1121,6 @@ collision = [
   { kind = "ground", size = [0.2, 2.061, 0.2], at = [-11.139, -0.57, 1.94] },
   { kind = "ground", size = [0.2, 2.007, 0.2], at = [-11.139, -0.597, 2.14] },
   { kind = "ground", size = [0.2, 1.954, 0.2], at = [-11.139, -0.623, 2.34] },
-]
-
-[parts.lower]
-collision = [
   { kind = "ground", size = [0.2, 1.9, 0.2], at = [-11.139, -0.65, 2.54] },
   { kind = "ground", size = [0.2, 1.847, 0.2], at = [-11.139, -0.677, 2.74] },
   { kind = "ground", size = [0.2, 2.594, 0.2], at = [-10.939, -0.303, 0.14] },
@@ -1116,6 +1128,10 @@ collision = [
   { kind = "ground", size = [0.2, 2.487, 0.2], at = [-10.939, -0.357, 0.54] },
   { kind = "ground", size = [0.2, 2.433, 0.2], at = [-10.939, -0.384, 0.74] },
   { kind = "ground", size = [0.2, 2.38, 0.2], at = [-10.939, -0.41, 0.94] },
+]
+
+[parts.lower]
+collision = [
   { kind = "ground", size = [0.2, 2.327, 0.2], at = [-10.939, -0.437, 1.14] },
   { kind = "ground", size = [0.2, 2.273, 0.2], at = [-10.939, -0.464, 1.34] },
   { kind = "ground", size = [0.2, 2.22, 0.2], at = [-10.939, -0.49, 1.54] },
@@ -1345,16 +1361,16 @@ collision = [
   { kind = "ground", size = [0.2, 2.264, 0.2], at = [-9.139, -0.468, 3.14] },
   { kind = "ground", size = [0.2, 2.21, 0.2], at = [-9.139, -0.495, 3.34] },
   { kind = "ground", size = [0.2, 2.157, 0.2], at = [-9.139, -0.522, 3.54] },
-]
-
-[parts.lower__2]
-collision = [
   { kind = "ground", size = [0.2, 2.104, 0.2], at = [-9.139, -0.548, 3.74] },
   { kind = "ground", size = [0.2, 2.05, 0.2], at = [-9.139, -0.575, 3.94] },
   { kind = "ground", size = [0.2, 1.997, 0.2], at = [-9.139, -0.602, 4.14] },
   { kind = "ground", size = [0.2, 1.943, 0.2], at = [-9.139, -0.629, 4.34] },
   { kind = "ground", size = [0.2, 1.89, 0.2], at = [-9.139, -0.655, 4.54] },
   { kind = "ground", size = [0.2, 1.837, 0.2], at = [-9.139, -0.681, 4.74] },
+]
+
+[parts.lower__2]
+collision = [
   { kind = "ground", size = [0.2, 3.651, 0.2], at = [-8.939, 0.226, -1.86] },
   { kind = "ground", size = [0.2, 3.598, 0.2], at = [-8.939, 0.199, -1.66] },
   { kind = "ground", size = [0.2, 3.544, 0.2], at = [-8.939, 0.172, -1.46] },
@@ -1585,15 +1601,15 @@ collision = [
   { kind = "ground", size = [0.2, 2.044, 0.2], at = [-7.939, -0.578, 5.14] },
   { kind = "ground", size = [0.2, 3.965, 0.2], at = [-7.739, 0.383, -1.86] },
   { kind = "ground", size = [0.2, 3.912, 0.2], at = [-7.739, 0.356, -1.66] },
-]
-
-[parts.lower__3]
-collision = [
   { kind = "ground", size = [0.2, 3.858, 0.2], at = [-7.739, 0.329, -1.46] },
   { kind = "ground", size = [0.2, 3.805, 0.2], at = [-7.739, 0.302, -1.26] },
   { kind = "ground", size = [0.2, 3.752, 0.2], at = [-7.739, 0.276, -1.06] },
   { kind = "ground", size = [0.2, 3.698, 0.2], at = [-7.739, 0.249, -0.86] },
   { kind = "ground", size = [0.2, 3.645, 0.2], at = [-7.739, 0.222, -0.66] },
+]
+
+[parts.lower__3]
+collision = [
   { kind = "ground", size = [0.2, 3.591, 0.2], at = [-7.739, 0.196, -0.46] },
   { kind = "ground", size = [0.2, 3.538, 0.2], at = [-7.739, 0.169, -0.26] },
   { kind = "ground", size = [0.2, 3.485, 0.2], at = [-7.739, 0.142, -0.06] },
@@ -1825,14 +1841,14 @@ collision = [
   { kind = "ground", size = [0.2, 3.369, 0.2], at = [-6.139, 0.084, 1.94] },
   { kind = "ground", size = [0.2, 3.316, 0.2], at = [-6.139, 0.058, 2.14] },
   { kind = "ground", size = [0.2, 3.263, 0.2], at = [-6.139, 0.031, 2.34] },
-]
-
-[parts.lower__4]
-collision = [
   { kind = "ground", size = [0.2, 3.209, 0.2], at = [-6.139, 0.004, 2.54] },
   { kind = "ground", size = [0.2, 3.156, 0.2], at = [-6.139, -0.022, 2.74] },
   { kind = "ground", size = [0.2, 3.102, 0.2], at = [-6.139, -0.049, 2.94] },
   { kind = "ground", size = [0.2, 3.049, 0.2], at = [-6.139, -0.076, 3.14] },
+]
+
+[parts.lower__4]
+collision = [
   { kind = "ground", size = [0.2, 2.996, 0.2], at = [-6.139, -0.102, 3.34] },
   { kind = "ground", size = [0.2, 3.956, 0.2], at = [-5.939, 0.378, -0.06] },
   { kind = "ground", size = [0.2, 3.902, 0.2], at = [-5.939, 0.351, 0.14] },
@@ -2065,13 +2081,13 @@ collision = [
   { kind = "ground", size = [0.2, 3.948, 0.2], at = [6.7, 0.374, -1.02] },
   { kind = "ground", size = [0.2, 3.876, 0.2], at = [6.7, 0.338, -0.82] },
   { kind = "ground", size = [0.2, 3.803, 0.2], at = [6.7, 0.301, -0.62] },
+  { kind = "ground", size = [0.2, 3.731, 0.2], at = [6.7, 0.265, -0.42] },
+  { kind = "ground", size = [0.2, 3.658, 0.2], at = [6.7, 0.229, -0.22] },
+  { kind = "ground", size = [0.2, 3.586, 0.2], at = [6.7, 0.193, -0.02] },
 ]
 
 [parts.lower__5]
 collision = [
-  { kind = "ground", size = [0.2, 3.731, 0.2], at = [6.7, 0.265, -0.42] },
-  { kind = "ground", size = [0.2, 3.658, 0.2], at = [6.7, 0.229, -0.22] },
-  { kind = "ground", size = [0.2, 3.586, 0.2], at = [6.7, 0.193, -0.02] },
   { kind = "ground", size = [0.2, 3.513, 0.2], at = [6.7, 0.156, 0.18] },
   { kind = "ground", size = [0.2, 3.441, 0.2], at = [6.7, 0.12, 0.38] },
   { kind = "ground", size = [0.2, 3.369, 0.2], at = [6.7, 0.084, 0.58] },
