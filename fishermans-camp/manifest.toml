@@ -1,7 +1,7 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.9.1"
+version     = "0.9.2"
 author      = "RSMM"
 description = "Adds a fisherman's hut to the Dark Hills. Step up to its door and you are taken to the fishing platform, a whole fan-art scene in a room of its own (the way the Ghoul den and the Thieves' stashes work): the tall-roofed hut on the upper deck, the giant catch on its grate, the crane and drying rack, walkways round an open water hole, crates, barrels and tarps."
 enabled     = true
@@ -86,8 +86,8 @@ id       = "right_ramp"
 question = "v0.8.4: can you walk freely up and down the right long ramp now (the invisible post in its mouth is gone)? Any other spot that blocks?"
 
 [[experiment]]
-id       = "camp"
-question = "is there an enemy camp on the upper deck by the hut? Do the enemies spawn, stay on the platform and fight normally (no falling through decks, no getting stuck)?"
+id       = "right_side_092"
+question = "v0.9.2: is the whole right side walkable now (crates/barrels only stand against railings, no 1.5 m crates)? Can you walk right up to the giant fish all round? No enemies in the room?"
 
 [[experiment]]
 id       = "fish_prompt"
