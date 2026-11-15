@@ -66,12 +66,13 @@ material_base = "Scenery\\DarkHills\\M_Walls_Ruins.mat.ot"
 transform = { fit = "rig", scale = 1.0 }
 
 # The PROP is the giant catch on its grate (its mesh is built around the fish,
-# fishermans-camp-tools compose "origins"), interactive: the hold prompt stands
-# at the fish. It is where the fish quest is handed in (WIP).
-interactive = true
+# fishermans-camp-tools compose "origins"). The fish quest is handed in AT it:
+# the invisible hand-in (manifest ingredient "Fish", delivery "catch") stands
+# on the same spot, so its hold prompt and "n/8" counter appear at the fish.
 
 places = [
   { entity = "@prop", pos = [3.28, 10.0, -24.65], scale = 2.5 },
+  { entity = "ingredient:Fish/catch", pos = [3.28, 10.0, -24.65] },
   { entity = "DarkHills\\Dark_Hills_Enemy_Spawner\\Dark_Hills_Basic_Enemy_Camp.entity.ot", pos = [-2.72, 10.0, -31.9] },
   { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-30.083, 9.0, -18.214] },
   { entity = "Objects_Common\\Point_Light_Opti_Model.entity.ot", pos = [-31.417, 9.0, -6.382] },

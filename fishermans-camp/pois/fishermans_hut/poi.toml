@@ -45,6 +45,9 @@ clear     = true
 
 needs = [
   { flags = ["Fishermans_Platform_Underground"] },
+  # The fish for the quest: 12 fish-crate tiles on the map within 130 m, the
+  # way the straw house pulls in its 15 straw crates/carts (pois/fish_crates).
+  { flags = ["Fishermans_Fish_Crates"], count = 12, underground = false, max = 130.0 },
 ]
 
 # The teleporter is on the deck in front of the door (the door faces +Z; deck

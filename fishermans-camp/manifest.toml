@@ -1,12 +1,14 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.8.4"
+version     = "0.9.0"
 author      = "RSMM"
 description = "Adds a fisherman's hut to the Dark Hills. Step up to its door and you are taken to the fishing platform, a whole fan-art scene in a room of its own (the way the Ghoul den and the Thieves' stashes work): the tall-roofed hut on the upper deck, the giant catch on its grate, the crane and drying rack, walkways round an open water hole, crates, barrels and tarps."
 enabled     = true
 load_order  = 32
 sdk_version = ">=3.0,<4"
+# The fish quest uses the `ingredient` kind, which is not proven in game yet.
+experimental = true
 tags = ["world", "map", "poi", "structures", "custom-art"]
 # Map generation is seeded run state: everyone in the lobby needs this mod.
 multiplayer_scope = "deterministic-shared"
@@ -21,6 +23,22 @@ multiplayer_scope = "deterministic-shared"
 # At most ONE hut per map: Dark Hills has 5 off-map room slots and its own
 # rooms (Ghoul den, a Thieves' stash, up to two stone reserves) use up to 4,
 # so a second hut would need a room with nowhere to go.
+# THE FISH QUEST — the 3 Pigs straw quest in reverse. Fish piles lie out on the
+# map (pois/fish_crates, pulled in round the hut like the straw house's crates);
+# carry them down to the giant catch in the platform room. Hand in 8 fish for a
+# reward (the pig house's pick-a-magic-object chest), then 12 more for a
+# second, then 20 for a third: the wishing well's rising price, in fish.
+[[content]]
+kind     = "ingredient"
+id       = "fish"
+name     = "Fish"
+icon     = "icons/fish_ingredient.png"
+pickups  = [
+  { id = "fish",      count = 1, look = "DarkHills\\SceneryObjects_DarkHills\\Fish_Dead.entity.ot" },
+  { id = "fish_pile", count = 4, look = "DarkHills\\SceneryObjects_DarkHills\\Fishes_Ground_A.entity.ot" },
+]
+delivery = { id = "catch", prices = [8, 12, 20] }
+
 [[content]]
 kind       = "tilegen"
 id         = "one_hut"
