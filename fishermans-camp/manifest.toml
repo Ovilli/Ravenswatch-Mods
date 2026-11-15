@@ -1,7 +1,7 @@
 [mod]
 id          = "fishermans-camp"
 name        = "Fisherman's Camp"
-version     = "0.8.0"
+version     = "0.8.1"
 author      = "RSMM"
 description = "Adds a fisherman's hut to the Dark Hills. Step up to its door and you are taken to the fishing platform, a whole fan-art scene in a room of its own (the way the Ghoul den and the Thieves' stashes work): the tall-roofed hut on the upper deck, the giant catch on its grate, the crane and drying rack, walkways round an open water hole, crates, barrels and tarps."
 enabled     = true
@@ -37,27 +37,35 @@ question = "does the hut door still take you to the platform, and do you arrive 
 
 [[experiment]]
 id       = "room_scale"
-question = "is the platform now about 3x bigger, so the heroes look the right size on it? Do the meshes and the walking surfaces still line up (no floating, no sinking through the decks)?"
+question = "v0.8.1 is 2.5x (was 3x): do the heroes now look the right size on the platform?"
+
+[[experiment]]
+id       = "room_atmosphere"
+question = "does the underground look (dim light, fog, colour) stay on the whole time, everywhere on the platform and in the water, including up the ramps and on the upper deck?"
 
 [[experiment]]
 id       = "room_terrain"
-question = "are the rocky bumps/cave walls gone from the room? Is there flat, shallow water all round the platform, reaching the edges of the room?"
+question = "still flat shallow water all round, no rocky bumps?"
 
 [[experiment]]
 id       = "room_walk"
-question = "can you walk up both long ramps out of the water, up the wedge ramp and the stair to the upper deck? Any step that blocks, or an invisible wall across a walkway?"
+question = "the ramp steps are half as high now: is walking up the ramps smooth, and does the camera stay steady going up and down them?"
+
+[[experiment]]
+id       = "room_props"
+question = "the crates and barrels are now the game's own destructible ones: do they break when hit (and drop anything)? Do the big fish, the drying rack and the nets block you now? Anything else you can still walk through?"
 
 [[experiment]]
 id       = "room_walls"
-question = "walk out across the water in every direction: does an invisible wall stop you before the water ends?"
+question = "does the invisible wall still stop you before the water ends?"
 
 [[experiment]]
 id       = "room_exits"
-question = "there are 3 return teleporters: the one you arrived at, and one at the foot of each long ramp. Does each take you back out to the hut? Which way do they face?"
+question = "do all 3 return teleporters (arrival, foot of each long ramp) take you back to the hut?"
 
 [[experiment]]
 id       = "room_light"
-question = "is the room lit well enough (20 point lights now), or still too dark? Any part pitch black?"
+question = "is the room lit well enough?"
 
 [[experiment]]
 id       = "no_crash"
