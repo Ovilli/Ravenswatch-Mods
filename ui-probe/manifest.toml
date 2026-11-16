@@ -4,7 +4,7 @@ name        = "UI probe (R.ui test)"
 version     = "0.1.0"
 author      = "Local"
 description = "Debug: logs R.ui's ui:open / ui:close events and what R.ui.is_open reports, for the PR #110 in-game pass."
-enabled     = false
+enabled     = true
 load_order  = 90
 sdk_version = ">=3.0,<4"
 multiplayer_scope = "local-only"

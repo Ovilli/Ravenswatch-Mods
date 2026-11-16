@@ -20,7 +20,7 @@ name         = "Jack, the Giant-Slayer"
 version      = "0.2.0"
 author       = "Ovilli"
 description  = "Jack and the Beanstalk as a playable hero: a farm boy with a woodcutter's axe and a pocket of magic beans."
-enabled      = false
+enabled      = true
 load_order   = 95
 sdk_version  = ">=3.0,<4"
 license      = "MIT"

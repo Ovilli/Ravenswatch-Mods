@@ -4,7 +4,7 @@ name = "Duplicate Heroes"
 version = "0.3.0"
 author = "Dzikii"
 description = "Pick a hero another player has already taken. The lobby is told you chose a different, free slot, so the duplicate never reaches the check that refuses it. No hero is replaced and no game file is changed."
-enabled = false
+enabled = true
 sdk_version = ">=3.0,<4"
 tags = ["multiplayer", "heroes"]
 license = "MIT"

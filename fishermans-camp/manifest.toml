@@ -4,7 +4,7 @@ name        = "Fisherman's Camp"
 version     = "0.9.3"
 author      = "RSMM"
 description = "Adds a fisherman's hut to the Dark Hills. Step up to its door and you are taken to the fishing platform, a whole fan-art scene in a room of its own (the way the Ghoul den and the Thieves' stashes work): the tall-roofed hut on the upper deck, the giant catch on its grate, the crane and drying rack, walkways round an open water hole, crates, barrels and tarps."
-enabled     = false
+enabled     = true
 load_order  = 32
 sdk_version = ">=3.0,<4"
 # The fish quest uses the `ingredient` kind, which is not proven in game yet.

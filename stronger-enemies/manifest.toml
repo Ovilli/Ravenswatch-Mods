@@ -7,7 +7,7 @@ license     = "MIT"
 summary     = "Tougher monsters and bosses: set enemy health and damage multipliers, and force the corrupted variant on every enemy that supports it."
 description = """Raises the game's own chapter scaling for every enemy tier (common, elite, boss) on every difficulty by multipliers you choose in the mod's settings (default: health x1.5, damage +25%), and can force the corrupted (tainted) variant on every enemy that supports it: bigger, glowing, +50% health, +75% damage. Heroes are untouched. Changes apply the next time you launch the game."""
 sdk_version = "3"
-enabled     = false
+enabled     = true
 tags        = ["difficulty", "enemies", "bosses"]
 # Enemy health and damage are simulated by the host; everyone in the party
 # should run the same version so the numbers agree.

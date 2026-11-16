@@ -4,7 +4,7 @@ name        = "Sprint"
 version     = "1.0.1"
 author      = "RSMM"
 description = "Multiplies hero move speed so crossing a generated map to inspect a mod takes seconds instead of a long walk. A testing tool, not a balance change."
-enabled     = false
+enabled     = true
 load_order  = 6
 sdk_version = ">=3.0,<4"
 license     = "MIT"

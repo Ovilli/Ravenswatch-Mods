@@ -633,16 +633,27 @@ text  = "\"The bigger they are,\" Jack tells the Nightmares, sharpening the blad
 [content.frame.abilities.attack]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Attack.png"   # HUD picture (borrowed until Jack has his own)
 name        = "Woodcutter's Chop"
-description = "• A quick chop of the axe that staggers what it hits"
-clip        = "anim:Chop"
-sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Dodge FMod Event"
-duration    = 0.6
-cooldown    = 0.35
-hits        = [ { at = 0.3, radius = 2.5, damage = 160, stagger = 5, fx = "fx:Chop", shake = "light" } ]
-# The two-step combo (each step's timeline lands its hit) is kept in
-# ~/.cache/rsmm/jack-kit/attack_combo_v1.toml: it comes back once Jack's own
-# states stay active in game (they switch off in the frame they start, so a
-# timeline-driven hit never lands -- playtest 2026-11-08).
+description = "• Two quick chops of the axe; each staggers what it hits"
+cooldown    = 0.1
+# A combo as shipped heroes build it (their AttackCombo): each step's timeline
+# lands the hit (hit_at), opens the next press (link_at) and lets him MOVE
+# again (exit_at: pushing the stick then ends the step). A single timer-driven
+# button had no exit, so Jack stood rooted for the whole chop (playtest
+# 2026-11-16).
+[[content.frame.abilities.attack.combo]]
+clip     = "anim:Chop"
+hit_at   = 0.3
+link_at  = 0.4
+exit_at  = 0.5
+sound    = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Dodge FMod Event"
+hits     = [ { radius = 2.5, damage = 140, stagger = 5, fx = "fx:Chop", shake = "light" } ]
+
+[[content.frame.abilities.attack.combo]]
+clip     = "anim:Chop"
+hit_at   = 0.3
+link_at  = 0.4
+exit_at  = 0.5
+hits     = [ { radius = 2.8, damage = 180, stagger = 10, fx = "fx:Chop", shake = "light" } ]
 
 [content.frame.abilities.power]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Power.png"   # HUD picture (borrowed until Jack has his own)
