@@ -127,6 +127,7 @@ layers = [
   { texture = "art/fx/leaf.png", burst = 16, lifetime = [0.8, 1.2], size = [0.3, 0.5], speed = 8, up = 4, rotation = 180, gravity = 4, drag = 2, spin = 240, colors = [[0.45, 0.8, 0.3, 1], [0.3, 0.6, 0.2, 0]] },
   { texture = "art/fx/ring.png", burst = 1, lifetime = 0.35, size = 7, colors = [[0.9, 0.85, 0.7, 0.9], [0.9, 0.85, 0.7, 0]], grow = [0.2, 1.0] },
   { light = 6, burst = 1, lifetime = 0.25, size = 5, colors = [[1, 0.85, 0.6, 1], [1, 0.85, 0.6, 0]] },
+  { texture = "art/fx/cracks.png", mesh = "decal", burst = 1, lifetime = 2, size = 5, colors = [[1, 1, 1, 0.9], [1, 1, 1, 0.9], [1, 1, 1, 0]] },
 ]
 
 [content.frame.effects.LeafSwirl]
@@ -159,6 +160,7 @@ layers = [
   { texture = "art/fx/leaf.png", burst = 20, lifetime = [1.0, 1.5], size = [0.4, 0.7], speed = 9, up = 6, rotation = 180, gravity = 4, drag = 2, spin = 240, colors = [[0.45, 0.8, 0.3, 1], [0.3, 0.6, 0.2, 0]] },
   { texture = "art/fx/ring.png", burst = 1, lifetime = 0.5, size = 14, colors = [[1, 0.92, 0.7, 1], [1, 0.92, 0.7, 0]], grow = [0.1, 1.0] },
   { light = 20, burst = 1, lifetime = 0.4, size = 9, colors = [[1, 0.85, 0.55, 1], [1, 0.7, 0.4, 0]] },
+  { texture = "art/fx/cracks.png", mesh = "decal", burst = 1, lifetime = 3, size = 9, colors = [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 0]] },
 ]
 
 [content.frame.effects.AxeBurst]
@@ -167,6 +169,22 @@ layers = [
   { texture = "art/fx/chip.png", burst = 12, lifetime = [0.5, 0.8], size = [0.25, 0.45], speed = 8, up = 3, rotation = 180, gravity = 14, drag = 1, spin = 540, colors = [[0.62, 0.42, 0.24, 1], [0.45, 0.3, 0.17, 0]] },
   { texture = "art/fx/ring.png", burst = 1, lifetime = 0.3, size = 5, colors = [[1, 0.9, 0.6, 0.9], [1, 0.9, 0.6, 0]], grow = [0.2, 1.0] },
   { light = 10, burst = 1, lifetime = 0.2, size = 4, colors = [[1, 0.85, 0.5, 1], [1, 0.75, 0.4, 0]] },
+]
+
+# Hit effects of his buttons: played where the attack faces, so a fan at
+# angle 90 sweeps straight ahead (his own slash.png on the shipped fan shape).
+[content.frame.effects.Chop]
+layers = [
+  { texture = "art/fx/slash.png", mesh = "Fan_Flat_Large_180", angle = 90, burst = 1, lifetime = 0.2, size = 1.4, colors = [[1, 0.95, 0.8, 1], [1, 0.85, 0.6, 0]], grow = [0.85, 1.0] },
+  { texture = "art/fx/chip.png", burst = 8, lifetime = [0.45, 0.7], size = [0.2, 0.35], speed = 6, up = 3, rotation = 180, gravity = 14, drag = 1, spin = 540, colors = [[0.62, 0.42, 0.24, 1], [0.45, 0.3, 0.17, 0]] },
+  { light = 6, burst = 1, lifetime = 0.15, size = 3, colors = [[1, 0.9, 0.7, 1], [1, 0.9, 0.7, 0]] },
+]
+
+[content.frame.effects.Whirl]
+layers = [
+  { texture = "art/fx/slash.png", mesh = "Fan_Flat_Large_180", angle = 90, burst = 1, lifetime = 0.25, size = 2.1, colors = [[1, 0.97, 0.85, 1], [0.85, 1, 0.7, 0]], grow = [0.8, 1.0] },
+  { texture = "art/fx/slash.png", mesh = "Fan_Flat_Large_180", angle = -90, burst = 1, lifetime = 0.25, size = 2.1, delay = 0.05, colors = [[1, 0.97, 0.85, 1], [0.85, 1, 0.7, 0]], grow = [0.8, 1.0] },
+  { texture = "art/fx/leaf.png", burst = 18, lifetime = [0.7, 1.0], size = [0.3, 0.5], speed = 9, up = 2, radius = 1.5, rotation = 180, gravity = 3, drag = 2.5, spin = 300, colors = [[0.5, 0.85, 0.35, 1], [0.35, 0.65, 0.25, 0]] },
 ]
 
 [content.frame.effects.AxeTrail]
@@ -620,7 +638,7 @@ clip        = "anim:Chop"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Dodge FMod Event"
 duration    = 0.6
 cooldown    = 0.35
-hits        = [ { at = 0.3, radius = 2.5, damage = 160, stagger = 5, fx = "fx:AxeBurst", shake = "light" } ]
+hits        = [ { at = 0.3, radius = 2.5, damage = 160, stagger = 5, fx = "fx:Chop", shake = "light" } ]
 # The two-step combo (each step's timeline lands its hit) is kept in
 # ~/.cache/rsmm/jack-kit/attack_combo_v1.toml: it comes back once Jack's own
 # states stay active in game (they switch off in the frame they start, so a
@@ -646,7 +664,7 @@ clip        = "anim:Whirl"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Seed Bean Jump FMod Event"
 duration    = 1.3
 cooldown    = 8
-hits        = [ { at = 0.45, radius = 4, damage = 180, knockback = 30, fx = "fx:LeafSwirl", shake = "light" }, { at = 0.85, radius = 4, damage = 250, knockback = 30, fx = "fx:LeafSwirl", shake = "light" } ]
+hits        = [ { at = 0.45, radius = 4, damage = 180, knockback = 30, fx = "fx:Whirl", shake = "light" }, { at = 0.85, radius = 4, damage = 250, knockback = 30, fx = "fx:Whirl", shake = "light" } ]
 indicator   = { radius = 4, color = [0.55, 0.9, 0.3, 1] }
 steps       = [ { wait = 0.45 }, { fire = "own:Bean", angles = [0, 60, 120, 180, 240, 300], speed = 12, lifetime = 0.7, damage = 80, size = 1.5 } ]
 
