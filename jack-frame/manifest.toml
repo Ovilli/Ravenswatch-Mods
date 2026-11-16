@@ -112,62 +112,71 @@ impact   = "fx:BeanBloom"
 # Written from these layers (engine/vfx_writer.py), no other hero's effect
 # copied: each layer's sprite (art/fx, white shapes) tinted by its colours over
 # its life. Use one anywhere with fx = "fx:<name>" (hits, projectile trails).
+# Motion: chips are heavy (fall fast, tumble), leaves light (drift, flutter),
+# dust billows then stops (drag). `light` layers are glows: no sprite, each
+# particle lights the ground in its colour, as wide as its size.
 [content.frame.effects.WoodChips]
 layers = [
-  { texture = "art/fx/chip.png", burst = 14, lifetime = [0.35, 0.6], size = [0.25, 0.45], speed = 7, radius = 0.3, rotation = 180, colors = [[0.62, 0.42, 0.24, 1], [0.45, 0.3, 0.17, 0]], grow = [1.0, 0.7] },
-  { texture = "art/fx/puff.png", soft = true, burst = 4, lifetime = [0.4, 0.6], size = [1.2, 1.8], speed = 1.5, colors = [[0.78, 0.7, 0.56, 0.6], [0.78, 0.7, 0.56, 0]], grow = [0.6, 1.3] },
+  { texture = "art/fx/chip.png", burst = 14, lifetime = [0.45, 0.7], size = [0.25, 0.45], speed = 7, up = 3, radius = 0.3, rotation = 180, gravity = 14, drag = 1, spin = 540, colors = [[0.62, 0.42, 0.24, 1], [0.45, 0.3, 0.17, 0]], grow = [1.0, 0.7] },
+  { texture = "art/fx/puff.png", soft = true, burst = 4, lifetime = [0.4, 0.6], size = [1.2, 1.8], speed = 3, drag = 3, spin = 30, colors = [[0.78, 0.7, 0.56, 0.6], [0.78, 0.7, 0.56, 0]], grow = [0.6, 1.3] },
 ]
 
 [content.frame.effects.GroundBurst]
 layers = [
-  { texture = "art/fx/puff.png", soft = true, burst = 10, lifetime = [0.5, 0.9], size = [1.5, 2.5], speed = 5, radius = 1, colors = [[0.75, 0.66, 0.5, 0.8], [0.75, 0.66, 0.5, 0]], grow = [0.5, 1.4] },
-  { texture = "art/fx/leaf.png", burst = 16, lifetime = [0.6, 1.0], size = [0.3, 0.5], speed = 8, up = 3, rotation = 180, colors = [[0.45, 0.8, 0.3, 1], [0.3, 0.6, 0.2, 0]] },
+  { texture = "art/fx/puff.png", soft = true, burst = 10, lifetime = [0.6, 1.0], size = [1.5, 2.5], speed = 8, radius = 1, drag = 3, spin = 20, colors = [[0.75, 0.66, 0.5, 0.8], [0.75, 0.66, 0.5, 0]], grow = [0.5, 1.4] },
+  { texture = "art/fx/leaf.png", burst = 16, lifetime = [0.8, 1.2], size = [0.3, 0.5], speed = 8, up = 4, rotation = 180, gravity = 4, drag = 2, spin = 240, colors = [[0.45, 0.8, 0.3, 1], [0.3, 0.6, 0.2, 0]] },
   { texture = "art/fx/ring.png", burst = 1, lifetime = 0.35, size = 7, colors = [[0.9, 0.85, 0.7, 0.9], [0.9, 0.85, 0.7, 0]], grow = [0.2, 1.0] },
+  { light = 6, burst = 1, lifetime = 0.25, size = 5, colors = [[1, 0.85, 0.6, 1], [1, 0.85, 0.6, 0]] },
 ]
 
 [content.frame.effects.LeafSwirl]
 layers = [
-  { texture = "art/fx/leaf.png", burst = 24, lifetime = [0.5, 0.8], size = [0.3, 0.5], speed = 9, radius = 1.5, rotation = 180, colors = [[0.5, 0.85, 0.35, 1], [0.35, 0.65, 0.25, 0]], grow = [1.0, 0.6] },
-  { texture = "art/fx/chip.png", burst = 8, lifetime = [0.3, 0.5], size = [0.2, 0.35], speed = 10, radius = 1.5, rotation = 180, colors = [[0.62, 0.42, 0.24, 1], [0.62, 0.42, 0.24, 0]] },
+  { texture = "art/fx/leaf.png", burst = 24, lifetime = [0.7, 1.0], size = [0.3, 0.5], speed = 9, up = 2, radius = 1.5, rotation = 180, gravity = 3, drag = 2.5, spin = 300, colors = [[0.5, 0.85, 0.35, 1], [0.35, 0.65, 0.25, 0]], grow = [1.0, 0.6] },
+  { texture = "art/fx/chip.png", burst = 8, lifetime = [0.4, 0.6], size = [0.2, 0.35], speed = 10, up = 2, radius = 1.5, rotation = 180, gravity = 14, drag = 1, spin = 540, colors = [[0.62, 0.42, 0.24, 1], [0.62, 0.42, 0.24, 0]] },
+  { texture = "art/fx/ring.png", burst = 1, lifetime = 0.3, size = 8, colors = [[0.85, 1, 0.7, 0.8], [0.85, 1, 0.7, 0]], grow = [0.3, 1.0] },
 ]
 
 [content.frame.effects.Roar]
 layers = [
   { texture = "art/fx/ring.png", burst = 1, lifetime = 0.4, size = 8, colors = [[1, 0.95, 0.75, 1], [1, 0.95, 0.75, 0]], grow = [0.15, 1.0] },
   { texture = "art/fx/ring.png", burst = 1, lifetime = 0.55, size = 6, delay = 0.1, colors = [[1, 0.9, 0.6, 0.7], [1, 0.9, 0.6, 0]], grow = [0.15, 1.0] },
-  { texture = "art/fx/puff.png", soft = true, burst = 8, lifetime = [0.5, 0.8], size = [1.2, 2], speed = 4, colors = [[0.8, 0.72, 0.58, 0.6], [0.8, 0.72, 0.58, 0]], grow = [0.6, 1.4] },
+  { texture = "art/fx/puff.png", soft = true, burst = 8, lifetime = [0.5, 0.8], size = [1.2, 2], speed = 7, drag = 3, spin = 20, colors = [[0.8, 0.72, 0.58, 0.6], [0.8, 0.72, 0.58, 0]], grow = [0.6, 1.4] },
+  { light = 8, burst = 1, lifetime = 0.3, size = 7, colors = [[1, 0.9, 0.65, 1], [1, 0.9, 0.65, 0]] },
 ]
 
 [content.frame.effects.BeanBloom]
 layers = [
-  { texture = "art/fx/leaf.png", burst = 20, lifetime = [0.6, 1.1], size = [0.4, 0.7], speed = 5, up = 4, rotation = 180, colors = [[0.55, 0.95, 0.35, 1], [0.35, 0.7, 0.2, 0]], grow = [0.5, 1.0, 0.8] },
+  { texture = "art/fx/leaf.png", burst = 20, lifetime = [0.8, 1.2], size = [0.4, 0.7], speed = 5, up = 5, rotation = 180, gravity = 4, drag = 2, spin = 200, colors = [[0.55, 0.95, 0.35, 1], [0.35, 0.7, 0.2, 0]], grow = [0.5, 1.0, 0.8] },
   { texture = "art/fx/puff.png", soft = true, burst = 1, lifetime = 0.4, size = 5, colors = [[0.7, 1, 0.5, 0.9], [0.7, 1, 0.5, 0]], grow = [0.3, 1.0] },
-  { texture = "art/fx/spark.png", burst = 10, lifetime = [0.4, 0.7], size = [0.3, 0.5], speed = 3, up = 2, colors = [[0.85, 1, 0.6, 1], [0.85, 1, 0.6, 0]] },
+  { texture = "art/fx/spark.png", burst = 10, lifetime = [0.5, 0.8], size = [0.3, 0.5], speed = 3, up = 2, gravity = -1, drag = 2, colors = [[0.85, 1, 0.6, 1], [0.85, 1, 0.6, 0]] },
+  { light = 6, burst = 1, lifetime = 0.35, size = 4, colors = [[0.6, 1, 0.4, 1], [0.6, 1, 0.4, 0]] },
 ]
 
 [content.frame.effects.GiantImpact]
 layers = [
-  { texture = "art/fx/puff.png", soft = true, burst = 18, lifetime = [0.8, 1.3], size = [2.5, 4], speed = 7, radius = 2, colors = [[0.72, 0.64, 0.5, 0.9], [0.72, 0.64, 0.5, 0]], grow = [0.5, 1.5] },
-  { texture = "art/fx/chip.png", burst = 24, lifetime = [0.6, 1.0], size = [0.3, 0.6], speed = 11, up = 4, rotation = 180, colors = [[0.6, 0.4, 0.22, 1], [0.45, 0.3, 0.17, 0]] },
-  { texture = "art/fx/leaf.png", burst = 20, lifetime = [0.8, 1.3], size = [0.4, 0.7], speed = 9, up = 5, rotation = 180, colors = [[0.45, 0.8, 0.3, 1], [0.3, 0.6, 0.2, 0]] },
+  { texture = "art/fx/puff.png", soft = true, burst = 18, lifetime = [0.9, 1.4], size = [2.5, 4], speed = 10, radius = 2, drag = 2.5, spin = 20, colors = [[0.72, 0.64, 0.5, 0.9], [0.72, 0.64, 0.5, 0]], grow = [0.5, 1.5] },
+  { texture = "art/fx/chip.png", burst = 24, lifetime = [0.7, 1.1], size = [0.3, 0.6], speed = 11, up = 6, rotation = 180, gravity = 14, drag = 0.8, spin = 540, colors = [[0.6, 0.4, 0.22, 1], [0.45, 0.3, 0.17, 0]] },
+  { texture = "art/fx/leaf.png", burst = 20, lifetime = [1.0, 1.5], size = [0.4, 0.7], speed = 9, up = 6, rotation = 180, gravity = 4, drag = 2, spin = 240, colors = [[0.45, 0.8, 0.3, 1], [0.3, 0.6, 0.2, 0]] },
   { texture = "art/fx/ring.png", burst = 1, lifetime = 0.5, size = 14, colors = [[1, 0.92, 0.7, 1], [1, 0.92, 0.7, 0]], grow = [0.1, 1.0] },
+  { light = 20, burst = 1, lifetime = 0.4, size = 9, colors = [[1, 0.85, 0.55, 1], [1, 0.7, 0.4, 0]] },
 ]
 
 [content.frame.effects.AxeBurst]
 layers = [
-  { texture = "art/fx/spark.png", burst = 12, lifetime = [0.25, 0.45], size = [0.5, 0.9], speed = 8, colors = [[1, 0.95, 0.7, 1], [1, 0.8, 0.4, 0]] },
-  { texture = "art/fx/chip.png", burst = 12, lifetime = [0.4, 0.7], size = [0.25, 0.45], speed = 8, rotation = 180, colors = [[0.62, 0.42, 0.24, 1], [0.45, 0.3, 0.17, 0]] },
+  { texture = "art/fx/spark.png", burst = 12, lifetime = [0.25, 0.45], size = [0.5, 0.9], speed = 10, gravity = 6, drag = 4, colors = [[1, 0.95, 0.7, 1], [1, 0.8, 0.4, 0]] },
+  { texture = "art/fx/chip.png", burst = 12, lifetime = [0.5, 0.8], size = [0.25, 0.45], speed = 8, up = 3, rotation = 180, gravity = 14, drag = 1, spin = 540, colors = [[0.62, 0.42, 0.24, 1], [0.45, 0.3, 0.17, 0]] },
   { texture = "art/fx/ring.png", burst = 1, lifetime = 0.3, size = 5, colors = [[1, 0.9, 0.6, 0.9], [1, 0.9, 0.6, 0]], grow = [0.2, 1.0] },
+  { light = 10, burst = 1, lifetime = 0.2, size = 4, colors = [[1, 0.85, 0.5, 1], [1, 0.75, 0.4, 0]] },
 ]
 
 [content.frame.effects.AxeTrail]
 layers = [
-  { texture = "art/fx/puff.png", soft = true, rate = 40, burst = 0, duration = 1.0, lifetime = [0.2, 0.3], size = [0.4, 0.6], colors = [[0.85, 0.8, 0.65, 0.5], [0.85, 0.8, 0.65, 0]], grow = [1.0, 0.4] },
+  { texture = "art/fx/puff.png", soft = true, rate = 40, burst = 0, duration = 1.0, lifetime = [0.2, 0.3], size = [0.4, 0.6], drag = 4, colors = [[0.85, 0.8, 0.65, 0.5], [0.85, 0.8, 0.65, 0]], grow = [1.0, 0.4] },
 ]
 
 [content.frame.effects.BeanTrail]
 layers = [
-  { texture = "art/fx/spark.png", rate = 30, burst = 0, duration = 1.0, lifetime = [0.25, 0.4], size = [0.3, 0.45], colors = [[0.75, 1, 0.5, 1], [0.5, 0.9, 0.3, 0]], grow = [1.0, 0.3] },
+  { texture = "art/fx/spark.png", rate = 30, burst = 0, duration = 1.0, lifetime = [0.3, 0.45], size = [0.3, 0.45], gravity = -1, drag = 2, colors = [[0.75, 1, 0.5, 1], [0.5, 0.9, 0.3, 0]], grow = [1.0, 0.3] },
 ]
 
 # --- His own animations (step E) -----------------------------------------------
@@ -611,7 +620,7 @@ clip        = "anim:Chop"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Dodge FMod Event"
 duration    = 0.6
 cooldown    = 0.35
-hits        = [ { at = 0.3, radius = 2.5, damage = 160, stagger = 5, fx = "Settings\\FX\\Common_FX\\Impact_Wood.vfx.ot", shake = "light" } ]
+hits        = [ { at = 0.3, radius = 2.5, damage = 160, stagger = 5, fx = "fx:AxeBurst", shake = "light" } ]
 # The two-step combo (each step's timeline lands its hit) is kept in
 # ~/.cache/rsmm/jack-kit/attack_combo_v1.toml: it comes back once Jack's own
 # states stay active in game (they switch off in the frame they start, so a
@@ -625,7 +634,7 @@ clip        = "anim:Timber"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Beanstalk ShakeImpact FMod Event"
 duration    = 1.0
 cooldown    = 6
-hits        = [ { at = 0.45, radius = 3.5, damage = 350, stun = 1.0, knockback = 60, stagger = 20, fx = "Settings\\FX\\Common_FX\\Bean_Grows_Out_02.vfx.ot", shake = "medium" } ]
+hits        = [ { at = 0.45, radius = 3.5, damage = 350, stun = 1.0, knockback = 60, stagger = 20, fx = "fx:GroundBurst", shake = "medium" } ]
 steps       = [ { wait = 0.3 }, { fire = "own:Axe", speed = 18, lifetime = 0.5, damage = 250, size = 1.3, explode = 3, forward = 0.5 } ]
 indicator   = { radius = 3, forward = 2.5, color = [0.55, 0.9, 0.3, 1] }
 
@@ -637,7 +646,7 @@ clip        = "anim:Whirl"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Seed Bean Jump FMod Event"
 duration    = 1.3
 cooldown    = 8
-hits        = [ { at = 0.45, radius = 4, damage = 180, knockback = 30, fx = "Settings\\FX\\Common_FX\\Basic_Slash_360.vfx.ot", shake = "light" }, { at = 0.85, radius = 4, damage = 250, knockback = 30, fx = "Settings\\FX\\Common_FX\\Basic_Slash_360.vfx.ot", shake = "light" } ]
+hits        = [ { at = 0.45, radius = 4, damage = 180, knockback = 30, fx = "fx:LeafSwirl", shake = "light" }, { at = 0.85, radius = 4, damage = 250, knockback = 30, fx = "fx:LeafSwirl", shake = "light" } ]
 indicator   = { radius = 4, color = [0.55, 0.9, 0.3, 1] }
 steps       = [ { wait = 0.45 }, { fire = "own:Bean", angles = [0, 60, 120, 180, 240, 300], speed = 12, lifetime = 0.7, damage = 80, size = 1.5 } ]
 
@@ -649,7 +658,7 @@ clip        = "anim:Shout"
 sound       = "Enemies\\Ogres\\Ogre_Cyclop_Sinbad_Quest.entity.ot | Cine Scream FMod Event"
 duration    = 1.05
 cooldown    = 8
-hits        = [ { at = 0.3, radius = 3.5, damage = 150, stun = 0.8, status = "Weak", fx = "Settings\\FX\\Common_FX\\Raven_Eye_Reveal_Shockwave.vfx.ot", shake = "medium" } ]
+hits        = [ { at = 0.3, radius = 3.5, damage = 150, stun = 0.8, status = "Weak", fx = "fx:Roar", shake = "medium" } ]
 indicator   = { radius = 3.5, color = [0.55, 0.9, 0.3, 1] }
 
 [content.frame.abilities.trait]
@@ -661,7 +670,7 @@ sound       = "DarkHills\\Jack\\Bean_Stalk.entity.ot | FMod Event BeanstalkGrows
 # TEMPORARY playtest bisection: no duration override, so its timeline is the
 # clip's own length, as the dash's (the one button that animates) is.
 cooldown    = 12
-hits        = [ { at = 0.9, radius = 5, damage = 300, status = "Rooted", fx = "Settings\\FX\\Common_FX\\Bean_Grows_Out_01.vfx.ot", shake = "medium" } ]
+hits        = [ { at = 0.9, radius = 5, damage = 300, status = "Rooted", fx = "fx:BeanBloom", shake = "medium" } ]
 steps       = [ { wait = 0.2 }, { fire = "own:Bean", speed = 9, lifetime = 0.7, damage = 150, size = 2, explode = 3.5, root = 2, forward = 0.5 } ]
 indicator   = { radius = 3.5, forward = 3, color = [0.55, 0.9, 0.3, 1] }
 
@@ -673,7 +682,7 @@ clip        = "anim:GiantFalls"
 sound       = "DarkHills\\Jack\\Ogre_Fight_Intro_Cinematic.entity.ot | Cine Beanstalk Top Shake FMod Event"
 duration    = 1.1
 cooldown    = 60
-hits        = [ { at = 0.45, radius = 6, damage = 800, knockback = 80, fx = "Settings\\FX\\Common_FX\\Destructible_Explosion_Big.vfx.ot", shake = "medium" }, { at = 0.9, radius = 8, damage = 2000, stun = 2.0, status = "Vulnerable", fx = "Settings\\FX\\Common_FX\\Destructible_Explosion_Very_Big.vfx.ot", shake = "heavy" } ]
+hits        = [ { at = 0.45, radius = 6, damage = 800, knockback = 80, fx = "fx:GroundBurst", shake = "medium" }, { at = 0.9, radius = 8, damage = 2000, stun = 2.0, status = "Vulnerable", fx = "fx:GiantImpact", shake = "heavy" } ]
 steps       = [ { wait = 0.8 }, { fire = "own:Axe", speed = 14, lifetime = 0.6, damage = 800, size = 2.5, explode = 4, forward = 1 } ]
 indicator   = { radius = 4, forward = 4, color = [0.55, 0.9, 0.3, 1] }
 
@@ -685,6 +694,6 @@ clip        = "anim:GiantSlayer"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Shake Beanstalk FMod Event"
 duration    = 2.4
 cooldown    = 60
-hits        = [ { at = 1.2, radius = 4, damage = 500, stun = 1.5, status = "Bleed", fx = "Settings\\FX\\Common_FX\\Destructible_Explosion_Medium.vfx.ot", shake = "medium" } ]
+hits        = [ { at = 1.2, radius = 4, damage = 500, stun = 1.5, status = "Bleed", fx = "fx:AxeBurst", shake = "medium" } ]
 steps       = [ { wait = 1.0 }, { fire = "own:Axe", angles = [-15, 0, 15], speed = 25, damage = 800, explode = 2, forward = 1 } ]
 indicator   = { radius = 4, color = [0.55, 0.9, 0.3, 1] }
