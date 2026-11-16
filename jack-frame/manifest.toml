@@ -452,6 +452,27 @@ clip = "anim:BookVictory"
 [content.frame.slots."Preview Defeat Animatic"]
 clip = "anim:BookDefeat"
 
+# Slots every shipped hero fills (13/13) that the rig's on-foot set could not
+# lend (Kintaro's are bear-only): Jack's own clips, cooked but unused before
+# (audit 2026-11-16).
+[content.frame.slots."Teleporting In Anim"]
+clip = "anim:TeleportIn"
+
+[content.frame.slots."Spawning Default Appearance Anim"]
+clip = "anim:Spawn"
+
+[content.frame.slots."Deathdoor Anim Ally Revive Out"]
+clip = "anim:ReviveOut"
+
+[content.frame.slots."Deathdoor Anim Special Revive Out"]
+clip = "anim:SpecialRevive"
+
+[content.frame.slots."Cinematic Mood Anim Face Danger In"]
+clip = "anim:DangerIn"
+
+[content.frame.slots."Cinematic Mood Anim Face Danger Loop"]
+clip = "anim:DangerLoop"
+
 # His talents: his own list (the name's first word is its column in the book).
 # Effects are written on each talent (talent factory): add_stats = numbers per
 # rarity ({0} on the card), actions = area hits each time `on` fires while the
