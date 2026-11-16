@@ -17,7 +17,7 @@
 [mod]
 id           = "jack-frame"
 name         = "Jack (from scratch, boot test)"
-version      = "0.6.0"
+version      = "0.7.0"
 author       = "Ovilli"
 description  = "First boot test of a hero written from scratch: Jack's own files, no other hero inside."
 enabled      = false
