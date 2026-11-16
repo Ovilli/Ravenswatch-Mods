@@ -4,7 +4,7 @@ name         = "gretel"
 version      = "0.1.0"
 author       = "Indiano_Jones"
 description  = "Gretel, a hero built by Indiano_Jones: Hansel's moves, her own look."
-enabled      = true
+enabled      = false
 load_order   = 94
 sdk_version  = ">=3.0,<4"
 license      = "MIT"

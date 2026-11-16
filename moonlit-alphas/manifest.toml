@@ -4,7 +4,7 @@ name        = "Moonlit Alphas"
 version     = "1.0.0"
 author      = "RSMM"
 description = "LOCAL ONLY. Alpha wolves wear Melion's runebound pelt on YOUR screen — dark fur, glowing cyan sigils. In co-op nobody else sees it. Ships the baked albedo/MRA maps directly, so it reproduces on any install."
-enabled     = true
+enabled     = false
 load_order  = 20
 sdk_version = ">=3.0,<4"
 # Texture-only data override: real DDS bytes under assets/ replace the target

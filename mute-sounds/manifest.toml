@@ -20,7 +20,7 @@ license     = "MIT"
 summary     = "Pick exactly which in-game sounds to silence, down to single hero sounds."
 description = "Choose exactly which in-game sounds to silence (music, menus, voices, a hero's effects, enemies, ambience...) from the mod's config."
 sdk_version = "3"
-enabled     = true
+enabled     = false
 tags        = ["audio", "qol"]
 
 multiplayer_scope = "local-only"

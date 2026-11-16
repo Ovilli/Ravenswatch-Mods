@@ -11,6 +11,6 @@ author      = "Ovilli"
 license     = "MIT"
 description = "Logs Kit Pet spawner calls, the spawned entity, and whether it stays alive."
 sdk_version = "3"
-enabled     = true
+enabled     = false
 tags        = ["test", "debug"]
 multiplayer_scope = "local-only"

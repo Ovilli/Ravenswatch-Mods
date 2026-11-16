@@ -19,7 +19,7 @@ name        = "Same Hero"
 version     = "0.1.0"
 author      = "RSMM"
 description = "Co-op: click any hero in hero select, even one a friend already has; you play it when the run starts. Nobody else is changed."
-enabled     = true
+enabled     = false
 load_order  = 50
 sdk_version = ">=3.0,<4"
 # The host rewrites the run roster before it is sent; clients just receive it.

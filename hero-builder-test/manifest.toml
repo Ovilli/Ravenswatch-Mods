@@ -8,7 +8,7 @@ name         = "Hero builder test"
 version      = "0.2.0"
 author       = "RSMM"
 description  = "A Scarlet clone whose buttons use every Hero tab block."
-enabled      = true
+enabled      = false
 sdk_version  = ">=3.0,<4"
 license      = "MIT"
 tags         = ["heroes", "test"]

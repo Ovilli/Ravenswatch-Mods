@@ -36,7 +36,7 @@ author      = "RSMM"
 license     = "MIT"
 description = "Renames Red's Short Wick to Deadly Combo and repoints the cut POWER-finisher damage scaling onto it, at a flat 60% across all rarities."
 sdk_version = "3"
-enabled     = true
+enabled     = false
 tags        = ["talents", "red", "balance"]
 
 # The `skill` kind is rated `guess` as a whole. Only its `relabel` mode is used

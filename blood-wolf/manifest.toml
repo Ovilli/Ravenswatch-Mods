@@ -6,7 +6,7 @@ author            = "Local"
 description       = "Clone of Scarlet (Red) named Blood Wolf, locked into Wolf form."
 license           = "MIT"
 sdk_version       = ">=3.0,<4"
-enabled           = true
+enabled           = false
 multiplayer_scope = "deterministic-shared"
 tags              = ["hero", "red"]
 experimental      = true

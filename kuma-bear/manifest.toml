@@ -6,7 +6,7 @@ author            = "Local"
 description       = "Kintaro's bear Kuma turns up in the Dark Hills as an elite enemy: Kuma's body and animations, a leap slam, a claw flurry and a bite, and more health than an Alpha."
 license           = "MIT"
 sdk_version       = ">=3.0,<4"
-enabled           = true
+enabled           = false
 multiplayer_scope = "deterministic-shared"
 tags              = ["enemy", "kintaro"]
 # `ai` and `reskin` build the enemy an entity of its own; not proven in game yet.

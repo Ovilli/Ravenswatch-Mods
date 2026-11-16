@@ -4,7 +4,7 @@ name        = "Runestone Shrine"
 version     = "1.1.0"
 author      = "RSMM"
 description = "Adds a structure Ravenswatch does not have: a rune-carved pillar on a stepped plinth with a faceted crystal floating above it, standing alone at the centre of a clearing of its own. It generates on the Dark Hills map, carries its own minimap icon, and can be interacted with. The mesh, its three texture maps and the icon are all authored by this mod."
-enabled     = true
+enabled     = false
 load_order  = 31
 sdk_version = ">=3.0,<4"
 license     = "MIT"

@@ -4,7 +4,7 @@ name = "Hero Swap"
 version = "0.2.0"
 author = "RSMM"
 description = "Play Beowulf when another player has already taken him — without giving up a hero you own. Beowulf's definition is shipped on the Merlin slot, which is DLC you do not have and therefore cost you nothing. Pick Merlin in the lobby and you play Beowulf. Requires the unlock-heroes mod."
-enabled = true
+enabled = false
 sdk_version = ">=3.0,<4"
 tags = ["heroes", "multiplayer", "experimental"]
 license = "MIT"
