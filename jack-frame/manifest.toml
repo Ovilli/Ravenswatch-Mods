@@ -713,12 +713,14 @@ indicator   = { radius = 3, forward = 2.5, color = [0.55, 0.9, 0.3, 1] }
 [content.frame.abilities.special]
 icon        = "Heroes\\Kintaro\\Ability_Kintaro_Dismounted_Special.png"   # HUD picture (borrowed until Jack has his own)
 name        = "Woodcutter's Whirl"
-description = "• Sweep the axe around you twice, knocking enemies away and flinging magic beans in every direction"
+description = "• HOLD to keep sweeping the axe around you, knocking enemies away; the first sweep flings magic beans in every direction"
 clip        = "anim:Whirl"
 sound       = "DarkHills\\Jack\\Jack_NPC_Model.entity.ot | Voice Walla Jack Seed Bean Jump FMod Event"
-duration    = 1.3
+duration    = 2.5            # the longest it can be held
+hold        = true           # let go to stop
+loop        = true
 cooldown    = 8
-hits        = [ { at = 0.45, radius = 4, damage = 180, knockback = 30, fx = "fx:Whirl", shake = "light" }, { at = 0.85, radius = 4, damage = 250, knockback = 30, fx = "fx:Whirl", shake = "light" } ]
+hits        = [ { at = 0.45, radius = 4, damage = 180, knockback = 30, fx = "fx:Whirl", shake = "light" }, { at = 0.85, radius = 4, damage = 120, knockback = 30, fx = "fx:Whirl", shake = "light" }, { at = 1.25, radius = 4, damage = 120, knockback = 30, fx = "fx:Whirl", shake = "light" }, { at = 1.65, radius = 4, damage = 120, knockback = 30, fx = "fx:Whirl", shake = "light" }, { at = 2.05, radius = 4, damage = 120, knockback = 30, fx = "fx:Whirl", shake = "light" } ]
 indicator   = { radius = 4, color = [0.55, 0.9, 0.3, 1] }
 steps       = [ { wait = 0.45 }, { fire = "own:Bean", angles = [0, 60, 120, 180, 240, 300], speed = 12, lifetime = 0.7, damage = 80, size = 1.5 } ]
 
