@@ -38,6 +38,8 @@ name        = "Jack"
 description = "Jack traded the family cow for a handful of beans, and by morning a beanstalk reached the clouds. Now every pocket is full of magic beans, and every bean is a beanstalk waiting to happen."
 
 [content.frame]
+# A beanstalk's worth of leaves and sparks on level up (beside the shared flash)
+level_up = "fx:LevelUp"
 rig      = "Hero_Kintaro"
 mesh     = "Characters\\Heroes\\Kintaro\\Kintaro_GEO.fbx"
 material = "Characters\\Heroes\\Kintaro\\Textures\\M_Kintaro.mat.ot"
@@ -115,6 +117,13 @@ impact   = "fx:BeanBloom"
 # Motion: chips are heavy (fall fast, tumble), leaves light (drift, flutter),
 # dust billows then stops (drag). `light` layers are glows: no sprite, each
 # particle lights the ground in its colour, as wide as its size.
+[content.frame.effects.LevelUp]
+layers = [
+  { texture = "art/fx/leaf.png", burst = 30, lifetime = [1.0, 1.6], size = [0.3, 0.55], speed = 4, up = 6, radius = 0.6, rotation = 180, gravity = 3, drag = 1.5, spin = 220, colors = [[0.6, 1, 0.4, 1], [0.4, 0.8, 0.25, 0]] },
+  { texture = "art/fx/spark.png", burst = 16, lifetime = [0.6, 1.0], size = [0.3, 0.5], speed = 2, up = 5, radius = 0.5, gravity = -2, drag = 1.5, colors = [[1, 0.95, 0.6, 1], [0.85, 1, 0.6, 0]] },
+  { light = 10, burst = 1, lifetime = 0.6, size = 5, colors = [[0.7, 1, 0.45, 1], [0.7, 1, 0.45, 0]] },
+]
+
 [content.frame.effects.WoodChips]
 layers = [
   { texture = "art/fx/chip.png", burst = 14, lifetime = [0.45, 0.7], size = [0.25, 0.45], speed = 7, up = 3, radius = 0.3, rotation = 180, gravity = 14, drag = 1, spin = 540, colors = [[0.62, 0.42, 0.24, 1], [0.45, 0.3, 0.17, 0]], grow = [1.0, 0.7] },
@@ -455,6 +464,19 @@ clip = "anim:BookDefeat"
 # Slots every shipped hero fills (13/13) that the rig's on-foot set could not
 # lend (Kintaro's are bear-only): Jack's own clips, cooked but unused before
 # (audit 2026-11-16).
+# Select-screen framing for a boy-sized hero (Kintaro's 25 m frames his
+# bear; Juliet, human-sized, uses 18.6 / 1.58).
+[content.frame.slots."Preview Camera Distance"]
+value = 18.0
+
+[content.frame.slots."Preview Camera Y Translate"]
+value = 1.5
+
+# Torso effects and markers hang here: the shared locator names
+# DEF.SpineMiddle, a bone his skeleton (Kintaro's set) does not have.
+[content.frame.slots."Locator Torso"]
+bone = "DEF.Chest"
+
 [content.frame.slots."Teleporting In Anim"]
 clip = "anim:TeleportIn"
 
