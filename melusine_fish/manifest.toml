@@ -1,0 +1,22 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+[mod]
+id          = "melusine_fish"
+name        = "Melusine: Blue Big Fish"
+version     = "0.3.3"
+author      = "local-only"
+description = "Shared fish reskin: every Melusine skin uses the same custom body and copied fish textures."
+enabled     = true
+tags        = ["skin", "model", "private-only"]
+license     = "none"
+multiplayer_scope = "deterministic-shared"
+
+[[content]]
+kind   = "mesh"
+id     = "melusine_fish_body"
+target = "Characters/Heroes/Melusine/Melusine_GEO.fbx"
+model  = "art/melusine_fish.glb"
+
+[content.transform]
+skin      = "gltf"
+submeshes = "map"
