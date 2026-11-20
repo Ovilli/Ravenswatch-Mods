@@ -7,9 +7,9 @@ version     = "0.3.3"
 author      = "local-only"
 description = "Shared fish reskin: every Melusine skin uses the same custom body and copied fish textures."
 enabled     = true
-tags        = ["skin", "model", "private-only"]
+tags        = ["skin", "model"]
 license     = "none"
-multiplayer_scope = "deterministic-shared"
+multiplayer_scope = "cosmetic"
 
 [[content]]
 kind   = "mesh"
