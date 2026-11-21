@@ -14,3 +14,4 @@ fishermans-camp/.rsmm_emit_cache.json
 fishermans-camp/pois/*/*.glb
 fishermans-camp/pois/*/*.png
 fishermans-camp/_parked/
+__pycache__/

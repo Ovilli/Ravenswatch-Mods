@@ -31,7 +31,12 @@ jobs:
       - name: Install RSMM
         run: python -m pip install -e ./rsmm-manager
 
-      - name: Package mods
+      # Lint before pack: a mod that fails `rsmm lint` used to be packed and
+      # published anyway. It is now left out (and its old ZIP removed below),
+      # the rest still publish, and the job fails at the end so it shows.
+      # Folders tagged `debug` or `test` are probes, not releases: neither
+      # linted nor packed (RSMM #202, decision 6).
+      - name: Lint and package mods
         shell: bash
         env:
           RSMM_REPO_ROOT: ${{ github.workspace }}/rsmm-manager
@@ -39,12 +44,27 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p dist
+          : > lint-failed.txt
 
           while IFS= read -r -d '' manifest; do
             mod_dir="${manifest%/manifest.toml}"
             mod_name="${mod_dir#./}"
             # `_merged` (and any `_*`) is apply's generated output, not a mod.
             [[ "$mod_name" == _* ]] && continue
+            if python - "$manifest" <<'PY'
+          import sys, tomllib
+          tags = tomllib.load(open(sys.argv[1], "rb")).get("mod", {}).get("tags") or []
+          sys.exit(0 if {str(t).strip().lower() for t in tags} & {"debug", "test"} else 1)
+          PY
+            then
+              echo "skip $mod_name (tagged debug/test)"
+              continue
+            fi
+            if ! rsmm lint "$mod_name"; then
+              echo "::error title=rsmm lint::$mod_name fails rsmm lint; not published"
+              echo "$mod_name" >> lint-failed.txt
+              continue
+            fi
             rsmm pack "$mod_name"
             cp "rsmm-manager/dist/${mod_name}.zip" "dist/${mod_name}.zip"
           done < <(find . -mindepth 2 -maxdepth 2 -type f -name manifest.toml -print0 | sort -z)
@@ -77,3 +97,12 @@ jobs:
                 gh release delete-asset mod-downloads "$asset" --repo "$GITHUB_REPOSITORY" --yes
               fi
             done
+
+      - name: Fail if a mod failed lint
+        shell: bash
+        run: |
+          if [[ -s lint-failed.txt ]]; then
+            echo "Not published (fix rsmm lint, then push):"
+            sed 's/^/  /' lint-failed.txt
+            exit 1
+          fi

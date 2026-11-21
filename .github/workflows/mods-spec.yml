@@ -1,0 +1,29 @@
+name: Mods spec
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  mods-spec:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Check out RSMM (loader Lua SDK)
+        uses: actions/checkout@v5
+        with:
+          repository: Ravenswatch-Modding/RavenswatchModManager
+          ref: main
+          path: rsmm-manager
+
+      - name: Install Lua 5.4
+        run: sudo apt-get install -y lua5.4
+
+      # Loads each mod's init.lua against RSMM's mocked native layer and drives
+      # its events. A mod folder that is absent is skipped; any failure exits 1.
+      - name: Run mods spec
+        run: lua5.4 tests/mods_spec.lua rsmm-manager/src/loader/lib .
