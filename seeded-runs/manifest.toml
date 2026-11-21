@@ -1,7 +1,7 @@
 [mod]
 id          = "seeded-runs"
 name        = "Seeded Runs"
-version     = "1.0.0"
+version     = "1.0.1"
 author      = "RSMM"
 description = "Forces the run seed so every Dark Hills run generates the identical map. Testing a map mod stops being a hunt: find your tile once, then walk the same route every launch."
 enabled     = false
@@ -12,6 +12,9 @@ tags = ["dev", "testing", "map"]
 # Everyone in a lobby generates the map from the seed, so a forced seed has to
 # be forced for all of them or the maps diverge.
 multiplayer_scope = "deterministic-shared"
+# The game saves what R.options.set wrote to _Save/GameSettings.ini; rsmm
+# clears these lines on restore, disable and uninstall so the seed does not stick.
+restore_options = ["Forced seed", "Dev"]
 
 [config.seed]
 type        = "int"
