@@ -1,0 +1,121 @@
+#:schema https://docs.rsmm.me/manifest.schema.json
+
+[mod]
+id          = "pus"
+name        = "pus"
+version     = "0.1.0"
+author      = "Boris"
+description = ""
+enabled     = true
+sdk_version = ">=3.0,<4"
+tags        = []
+license     = ""
+experimental = true
+
+[[content]]
+kind        = "hero"
+id          = "Puss"
+name        = "Puss Test"
+description = "Cat"
+
+[[content.memoirs]]
+title = "Chapter One"
+text = "Write your hero's story here."
+
+[content.frame]
+rig = "Hero_Romeo"
+mesh = "Characters\\Heroes\\Romeo\\Romeo_GEO.fbx"
+material = "Characters\\Heroes\\Romeo\\Textures\\M_Romeo.mat.ot"
+portrait = "art/ui/portrait.png"
+
+[content.frame.effects.Slash]
+layers = [
+  { texture = "art/fx/slash.png", mesh = "Fan_Flat_Large_180", angle = 90, burst = 1, lifetime = 0.2, size = 1.4, colors = [[1, 0.95, 0.8, 1], [1, 0.8, 0.5, 0]], grow = [0.85, 1] },
+  { light = 5, burst = 1, lifetime = 0.15, size = 3, colors = [[1, 0.9, 0.7, 1], [1, 0.9, 0.7, 0]] },
+]
+
+[content.frame.effects.Burst]
+layers = [
+  { texture = "art/fx/puff.png", soft = true, burst = 8, lifetime = [0.5, 0.8], size = [1.2, 2], speed = 6, drag = 3, colors = [[1, 0.85, 0.6, 0.8], [1, 0.6, 0.3, 0]], grow = [0.6, 1.4] },
+  { texture = "art/fx/spark.png", burst = 14, lifetime = [0.3, 0.6], size = [0.3, 0.5], speed = 8, up = 3, gravity = 6, drag = 2, colors = [[1, 0.95, 0.7, 1], [1, 0.7, 0.3, 0]] },
+  { texture = "art/fx/ring.png", burst = 1, lifetime = 0.35, size = 6, colors = [[1, 0.9, 0.7, 0.9], [1, 0.9, 0.7, 0]], grow = [0.2, 1] },
+  { light = 8, burst = 1, lifetime = 0.3, size = 6, colors = [[1, 0.8, 0.5, 1], [1, 0.8, 0.5, 0]] },
+]
+
+[content.frame.abilities.attack]
+name = "Strike"
+description = "• A quick two-hit combo"
+cooldown = 0.1
+
+[[content.frame.abilities.attack.combo]]
+clip = "Characters\\Heroes\\Romeo\\Animations\\Romeo_Attack_Default_Step_1.fbx"
+hit_at = 0.25
+link_at = 0.35
+exit_at = 0.5
+hits = [{ radius = 2.5, damage = 140, fx = "fx:Slash", shake = "light" }]
+
+[[content.frame.abilities.attack.combo]]
+clip = "Characters\\Heroes\\Romeo\\Animations\\Romeo_Attack_Default_Step_2.fbx"
+hit_at = 0.25
+link_at = 0.35
+exit_at = 0.5
+hits = [{ radius = 2.8, damage = 180, fx = "fx:Slash", shake = "light" }]
+
+[content.frame.abilities.defense]
+name = "Stand Firm"
+description = "• #Stun@ and #Weaken@ enemies around you"
+clip = "Characters\\Heroes\\Romeo\\Animations\\Romeo_Defense_Attack.fbx"
+cooldown = 10
+hits = [{ at = 0.2, radius = 3, damage = 100, stun = 1, status = "Weak", fx = "fx:Burst" }]
+
+[content.frame.abilities.trait]
+name = "Snare"
+description = "• #Root@ enemies around you"
+clip = "Characters\\Heroes\\Romeo\\Animations\\Romeo_Trait_Active.fbx"
+cooldown = 12
+hits = [{ at = 0.3, radius = 4, damage = 120, status = "Rooted", fx = "fx:Burst" }]
+
+[content.frame.abilities.ultimate]
+name = "Finale"
+description = "• A huge blast that leaves enemies #Vulnerable@"
+clip = "Characters\\Heroes\\Romeo\\Animations\\Romeo_Ultimate2_In.fbx"
+cooldown = 60
+hits = [{ at = 0.4, radius = 7, damage = 1500, stun = 1.5, status = "Vulnerable", fx = "fx:Burst", shake = "heavy" }]
+
+[content.frame.abilities.power]
+template = "Red: Primary"
+cooldown = 6
+
+[content.frame.abilities.special]
+template = "Red: Secondary"
+cooldown = 6
+
+[[content.frame.talents]]
+name = "Attack Keen Edge"
+title = "Keen Edge"
+description = "• #ATTACK@ gains &+{0}%~ #Crit Chance@"
+starter = true
+add_stats = [{ stat = "Crit chance basic", values = [0.08, 0.12, 0.16, 0.2] }]
+
+[[content.frame.talents]]
+name = "Power Quick Wave"
+title = "Quick Wave"
+description = "• #POWER@ cooldown is reduced by &{0}%~"
+add_stats = [{ stat = "CD reduce primary", values = [0.1, 0.15, 0.2, 0.25] }]
+
+[[content.frame.talents]]
+name = "Special Third Spin"
+title = "Third Spin"
+description = "• #SPECIAL@ spins once more for #200%@ damage"
+actions = [{ on = "special", hits = [{ at = 0.7, radius = 3, damage = 200, fx = "fx:Slash" }] }]
+
+[[content.frame.talents]]
+name = "Passive Tough Skin"
+title = "Tough Skin"
+description = "• Gain &+{0}~ #ARMOR@"
+starter = true
+add_stats = [{ stat = "Armour", values = [5, 8, 11, 15], percent = false }]
+
+[content.frame.ultimates."Ultimate Power 1"]
+title = "Finale"
+description = "• A huge blast that leaves enemies #Vulnerable@"
